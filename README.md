@@ -59,6 +59,12 @@ Proprietary — see [LICENSE](LICENSE) for details. Includes third-party softwar
 
 ---
 
+## Security
+
+See [SECURITY.md](SECURITY.md) for privacy rules and data classification policies.
+
+---
+
 ## Acknowledgements
 
 Built with [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com). Licensed under [MIT](LICENSE).
