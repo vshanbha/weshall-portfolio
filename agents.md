@@ -13,6 +13,12 @@ All work follows the **Agent Workflow** defined in [`docs/AgentWorkflow.md`](doc
 
 Read `docs/AgentWorkflow.md` before starting any new task.
 
+## Security and Privacy
+
+Read [`SECURITY.md`](SECURITY.md) for data classification rules and privacy requirements.
+
+**Key rule:** Never commit personal email, phone, address, or API keys to this repository. Use environment variables for sensitive configuration.
+
 ## Objective
 
 Build and maintain the public-facing website for **weshall.build** — a professional portfolio and technical blog.
