@@ -4,7 +4,8 @@
   "description": "Weshall Build - Deep-dive analysis of complex technical, operational, and architectural domains",
   "type": "module",
   "author": "Vishal Shanbhag",
-  "license": "MIT",
+  "license": "Proprietary",
+  "packageManager": "pnpm@10.29.2",
   "keywords": [
     "astro",
     "astro-theme",
