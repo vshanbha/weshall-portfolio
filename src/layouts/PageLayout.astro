@@ -31,9 +31,9 @@ const { title, description, image, imageAlt, noindex, nofollow } = Astro.props;
 >
   <Header slot="header" />
 
-  <main class="min-h-screen pt-16">
+  <div class="min-h-screen pt-16">
     <slot />
-  </main>
+  </div>
 
   <Footer slot="footer" />
 </BaseLayout>
