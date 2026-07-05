@@ -1,9 +1,9 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "description": "Southwell Astro Boilerplate - A production-ready starter template built on Astro 6 and Tailwind CSS v4",
+  "description": "Weshall Build - Deep-dive analysis of complex technical, operational, and architectural domains",
   "type": "module",
-  "author": "Southwell Media",
+  "author": "Vishal Shanbhag",
   "license": "MIT",
   "keywords": [
     "astro",
