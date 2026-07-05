@@ -44,6 +44,33 @@ Weshall Build is a platform for deep-dive analysis of complex technical, operati
 
 ---
 
+## Deployment
+
+See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instructions.
+
+### Quick Start (Local Development)
+
+1. Copy a deployment template:
+   ```bash
+   cp .env.gh-pages .env
+   ```
+
+2. Update `SITE_URL` to `http://localhost:4321` in `.env`:
+   ```bash
+   SITE_URL=http://localhost:4321
+   BASE_PATH=/
+   PLAYWRIGHT_BASE_URL=http://localhost:4321
+   ```
+
+3. Start development server:
+   ```bash
+   pnpm dev
+   ```
+
+Site will be available at http://localhost:4321
+
+---
+
 ## Languages
 
 - English (default)
