@@ -27,8 +27,24 @@ This document defines the persistent operating model for the **Portfolio** proje
 
 ### Branching Policy
 
-- All work for a specific issue must be isolated to a dedicated feature branch: `issue-<number>-<description>`.
+- **Main branch protection:** `main` is production-ready only. Never push directly to `main`.
+- **Dev branch:** `dev` is the integration branch for all features. All work merges to `dev` first.
+- **Feature branches:** All work for a specific issue must be isolated to a dedicated feature branch: `issue-<number>-<description>` or `feature/<description>`.
+- **Workflow:**
+  1. Create feature branch from `dev`
+  2. Implement and test locally
+  3. Run `pnpm validate` + `pnpm test:e2e`
+  4. Manual verification in browser (Gate B)
+  5. Merge to `dev` after approval
+  6. `dev` → `main` only after full QA pass
 - Agents must commit in atomic, logical chunks to facilitate granular review.
+
+### E2E Testing Policy
+
+- **Local only (for now):** E2E tests (`pnpm test:e2e`) run locally via a git pre-push hook before any push to `dev` or feature branches.
+- **CI/CD exclusion:** E2E tests are NOT part of the CI/CD pipeline until the site is stable. Only unit tests (`pnpm test`) run in CI.
+- **Pre-push hook:** The hook at `.git/hooks/pre-push` runs `pnpm test:e2e` automatically. Skip with `git push --no-verify` if needed.
+- **When to promote to CI:** Once the site has stable pages and content, E2E tests should be added to the GitHub Actions workflow.
 
 ### Specialised Agent Skills
 
@@ -91,9 +107,9 @@ Content arrives from `factory/` via the **Manual Export Gate**. When content lan
 
 ## 6. Quality Matrix
 
-| Work Type | Validation Command | Gate |
-|-----------|-------------------|------|
-| Component/page code | `pnpm validate` | B |
-| Unit tests | `pnpm test` | B |
-| E2E tests | `pnpm test:e2e` | B |
-| Content receipt | Verify frontmatter + visual check | B |
+| Work Type | Validation Command | Gate | CI/CD |
+|-----------|-------------------|------|-------|
+| Component/page code | `pnpm validate` | B | Yes |
+| Unit tests | `pnpm test` | B | Yes |
+| E2E tests | `pnpm test:e2e` | B | No (local pre-push hook only) |
+| Content receipt | Verify frontmatter + visual check | B | — |
