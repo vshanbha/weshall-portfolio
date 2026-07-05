@@ -5,14 +5,16 @@
 
 import { type Locale, defaultLocale, locales } from './config';
 import { en } from './translations/en';
-import { es } from './translations/es';
-import { fr } from './translations/fr';
+import { de } from './translations/de';
+import { hi } from './translations/hi';
+import { mr } from './translations/mr';
 
 // Translation map
 const translations = {
   en,
-  es,
-  fr,
+  de,
+  hi,
+  mr,
 } as const;
 
 type NestedKeyOf<T> = T extends object
