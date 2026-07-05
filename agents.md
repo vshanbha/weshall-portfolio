@@ -2,6 +2,17 @@
 
 This document contains the operational principles, content conventions, and development protocols for agents working within the `portfolio/` project.
 
+## Working Agreement
+
+All work follows the **Agent Workflow** defined in [`docs/AgentWorkflow.md`](docs/AgentWorkflow.md). This covers:
+
+- **Phase lifecycle:** Scoping → Design → Review (Gate A) → Build → Validation → Final Review (Gate B)
+- **Branching policy:** `issue-<number>-<description>` feature branches
+- **Definition of Done:** Explicit verification against acceptance criteria
+- **Quality matrix:** Validation commands and gate requirements
+
+Read `docs/AgentWorkflow.md` before starting any new task.
+
 ## Objective
 
 Build and maintain the public-facing website for **weshall.build** — a professional portfolio and technical blog.
