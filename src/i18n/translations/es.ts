@@ -6,7 +6,7 @@ import type { TranslationKeys } from './en';
 export const es: TranslationKeys = {
   // Site
   site: {
-    name: 'Velocity',
+    name: 'Weshall Build',
     description: 'Una plantilla moderna de inicio con Astro',
   },
 
@@ -113,7 +113,7 @@ export const es: TranslationKeys = {
   // Credibility Section
   credibility: {
     badge: 'Probado en Producción',
-    title: 'Creado por Southwell Media. Nacido de la',
+     title: 'Creado por Weshall Build Team. Nacido de la',
     titleHighlight: 'presión de plazos',
     paragraph1:
       'Somos una agencia digital que entrega sitios de marketing de alto rendimiento. Nos cansamos de pasar los primeros 3 días de cada proyecto configurando las mismas herramientas, configuraciones SEO y definiciones de tipos.',
@@ -156,7 +156,7 @@ export const es: TranslationKeys = {
 
   // Footer
   footer: {
-    copyright: '© {year} Velocity. Todos los derechos reservados.',
+      copyright: '© {year} Weshall Build. Todos los derechos reservados.',
     madeWith: 'Hecho con',
     maintainedBy: 'Mantenido por',
     links: {
