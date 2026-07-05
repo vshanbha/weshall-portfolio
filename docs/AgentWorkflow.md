@@ -88,6 +88,16 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 - [ ] Astro Technical Standards (Iron Laws) respected
 - [ ] Accessibility requirements met (WCAG 2.2 AA)
 
+### Layout Protection Rule
+
+**Do not modify existing layout files (`BaseLayout.astro`, `PageLayout.astro`, etc.) unless absolutely necessary.**
+
+- Layouts define the structural HTML contract for all pages.
+- Changes to layouts can have cascading effects across the entire site.
+- If a layout appears to have a bug, verify against the [Velocity demo](https://demo.deployvelocity.com) before modifying.
+- If modification is required, document the exact reasoning and get explicit approval.
+- New page-specific styling should be done in the page or component, not the layout.
+
 ## 4. Onboarding New Sessions
 
 1. **Confirm the active feature branch:** `issue-<number>-<description>`.
