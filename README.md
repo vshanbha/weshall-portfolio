@@ -117,4 +117,4 @@ MIT — see [LICENSE](LICENSE) for details.
 
 **Links**: [Docs](https://github.com/southwellmedia/velocity-docs) | [CLI](https://github.com/southwellmedia/create-velocity-astro) | [Astro](https://docs.astro.build) | [Tailwind v4](https://tailwindcss.com/docs)
 
-**Built by [Southwell Media](https://southwellmedia.com)**
+**Built by [Weshall Build Team](https://github.com/vshanbha)**
