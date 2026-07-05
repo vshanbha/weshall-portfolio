@@ -49,7 +49,7 @@ export interface SiteConfig {
 const siteConfig: SiteConfig = {
   name: 'Weshall Build',
   description: 'Deep-dive analysis of complex technical, operational, and architectural domains',
-  url: 'https://vshanbha.github.io/weshall-portfolio',
+  url: process.env.SITE_URL || 'http://localhost:4321',
   ogImage: '/og-default.png',
   author: 'Vishal Shanbhag',
   email: 'contact@weshall.build',
