@@ -55,7 +55,7 @@ Weshall Build is a platform for deep-dive analysis of complex technical, operati
 
 ## License
 
-MIT — see [LICENSE](LICENSE) for details.
+Proprietary — see [LICENSE](LICENSE) for details. Includes third-party software under [MIT License](LICENSE) (Velocity template by Southwell Media).
 
 ---
 
