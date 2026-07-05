@@ -1,5 +1,3 @@
-import { SITE_URL, GOOGLE_SITE_VERIFICATION, BING_SITE_VERIFICATION } from 'astro:env/server';
-
 export interface SiteConfig {
   name: string;
   description: string;
@@ -49,23 +47,15 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'Velocity',
-  description: 'A modern website built with Astro and Tailwind CSS',
-  url: SITE_URL || 'https://example.com',
+  name: 'Weshall Build',
+  description: 'Deep-dive analysis of complex technical, operational, and architectural domains',
+  url: process.env.SITE_URL || 'https://vshanbha.github.io/weshall-portfolio',
   ogImage: '/og-default.png',
-  author: 'Southwell Media',
-  // Demo contact info - replace with your actual business details
-  email: 'hello@example.com',
-  phone: '+1 (555) 123-4567',
-  address: {
-    street: '123 Main St',
-    city: 'Dallas',
-    state: 'TX',
-    zip: '75001',
-    country: 'US',
-  },
+  author: 'Vishal Shanbhag',
+  email: 'contact@weshall.build',
   socialLinks: [
-    'https://github.com/southwellmedia',
+    'https://github.com/vshanbha',
+    'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
   ],
   // Twitter metadata - update with your actual handles or remove
   // twitter: {
@@ -73,14 +63,14 @@ const siteConfig: SiteConfig = {
   //   creator: '@yourhandle',
   // },
   verification: {
-    google: GOOGLE_SITE_VERIFICATION,
-    bing: BING_SITE_VERIFICATION,
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    bing: process.env.BING_SITE_VERIFICATION,
   },
   // Branding: Logo files live in src/assets/branding/
   // Replace the SVG files there with your own branding
   branding: {
     logo: {
-      alt: 'Velocity',
+      alt: 'Weshall Build',
     },
     favicon: {
       svg: '/favicon.svg',
