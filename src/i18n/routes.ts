@@ -47,29 +47,29 @@ export type RouteDefinition = Record<Locale, string> & {
 export const routes = {
   // Home page (root) - not shown in nav (logo links there)
   home: {
-    en: '', es: '', fr: '',
+    en: '', de: '', hi: '', mr: '',
     nav: { show: false, order: 0, label: 'nav.home' },
   },
 
   // Static pages
   about: {
-    en: 'about', es: 'sobre-nosotros', fr: 'a-propos',
+    en: 'about', de: 'ueber-uns', hi: 'hamare-baare-mein', mr: 'amchya-baddal',
     nav: { show: true, order: 3, label: 'nav.about' },
   },
   contact: {
-    en: 'contact', es: 'contacto', fr: 'contact',
+    en: 'contact', de: 'kontakt', hi: 'sampark', mr: 'sampark',
     nav: { show: true, order: 4, label: 'nav.contact' },
   },
 
   // Blog section
   blog: {
-    en: 'blog', es: 'blog', fr: 'blogue',
+    en: 'blog', de: 'blog', hi: 'blog', mr: 'blog',
     nav: { show: true, order: 2, label: 'nav.blog' },
   },
 
   // Components showcase
   components: {
-    en: 'components', es: 'componentes', fr: 'composants',
+    en: 'components', de: 'komponenten', hi: 'components', mr: 'components',
     nav: { show: true, order: 1, label: 'nav.components' },
   },
 } as const satisfies Record<string, RouteDefinition>;
