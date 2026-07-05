@@ -5,7 +5,8 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://example.com',
+  site: 'https://vshanbha.github.io',
+  base: '/weshall-portfolio',
 
   // i18n configuration
   i18n: {
