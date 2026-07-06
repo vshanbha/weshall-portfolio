@@ -47,7 +47,7 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'Weshall Build',
+  name: 'We shall Build',
   description: 'Deep-dive analysis of complex technical, operational, and architectural domains',
   url: import.meta.env.SITE_URL || 'http://localhost:4321',
   ogImage: '/og-default.png',
@@ -70,7 +70,7 @@ const siteConfig: SiteConfig = {
   // Replace the SVG files there with your own branding
   branding: {
     logo: {
-      alt: 'Weshall Build',
+      alt: 'We shall Build',
     },
     favicon: {
       svg: '/favicon.svg',
