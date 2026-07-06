@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="src/assets/branding/logomark.svg" alt="We shall Build" width="100" />
+  <img src="src/assets/branding/logomark.svg" alt="We shall build" width="100" />
 </p>
 
 <p align="center">
-  <strong>We shall Build</strong> — Deep-dive analysis of complex technical, operational, and architectural domains.
+  <strong>We shall build</strong> — Deep-dive analysis of complex technical, operational, and architectural domains.
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 ## About
 
-We shall Build is a platform for deep-dive analysis of complex technical, operational, and architectural domains. Built on the [Velocity](https://github.com/southwellmedia/velocity) template.
+We shall build is a platform for deep-dive analysis of complex technical, operational, and architectural domains. Built on the [Velocity](https://github.com/southwellmedia/velocity) template.
 
 ---
 

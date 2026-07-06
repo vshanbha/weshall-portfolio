@@ -3,7 +3,7 @@
  */
 export const hi = {
   site: {
-    name: 'We shall Build',
+    name: 'We shall build',
     description: 'जटिल तकनीकी, संचालन और वास्तुशिल्प क्षेत्रों का गहन विश्लेषण',
   },
   nav: {
@@ -26,7 +26,7 @@ export const hi = {
     copy: 'कॉपी करें',
   },
   footer: {
-    copyright: '© {year} We shall Build. सर्वाधिकार सुरक्षित।',
+    copyright: '© {year} We shall build. सर्वाधिकार सुरक्षित।',
     madeWith: 'बनाया गया',
     maintainedBy: 'द्वारा बनाए रखा गया',
     links: {
