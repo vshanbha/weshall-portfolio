@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This guide covers deployment scenarios for the We shall Build portfolio site.
+This guide covers deployment scenarios for the We shall build portfolio site.
 
 ## Environment Variables
 

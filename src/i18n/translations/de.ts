@@ -3,7 +3,7 @@
  */
 export const de = {
   site: {
-    name: 'We shall Build',
+    name: 'We shall build',
     description: 'Tiefgehende Analyse komplexer technischer, operativer und architektonischer Bereiche',
   },
   nav: {
@@ -26,7 +26,7 @@ export const de = {
     copy: 'Kopieren',
   },
   footer: {
-    copyright: '© {year} We shall Build. Alle Rechte vorbehalten.',
+    copyright: '© {year} We shall build. Alle Rechte vorbehalten.',
     madeWith: 'Erstellt mit',
     maintainedBy: 'Pflege durch',
     links: {

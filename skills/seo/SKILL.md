@@ -71,7 +71,7 @@ import SEO from '@/components/seo/SEO.astro';
 import SEO from '@/components/seo/SEO.astro';
 
 const meta = {
-  title: 'Building High-Trust Technical Platforms — We shall Build',
+  title: 'Building High-Trust Technical Platforms — We shall build',
   description: 'Deep-dive analysis of complex technical, operational, and architectural domains.',
   image: '/og-images/blog-building-trust.png',
 };
