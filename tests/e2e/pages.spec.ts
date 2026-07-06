@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Coming Soon Pages', () => {
   test('home page loads with correct branding', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'We shall Build' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'We shall build' })).toBeVisible();
     await expect(page.locator('body')).toContainText('We shall build this site soon');
   });
 
@@ -34,7 +34,7 @@ test.describe('Coming Soon Pages', () => {
   test('navigation links work', async ({ page }) => {
     await page.goto('/');
     const links = [
-      { href: '/', label: 'We shall Build' },
+      { href: '/', label: 'We shall build' },
       { href: '/components', label: 'Components' },
       { href: '/blog', label: 'Blog' },
       { href: '/about', label: 'About' },
