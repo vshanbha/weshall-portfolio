@@ -3,10 +3,6 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
-import dotenv from 'dotenv';
-
-// Load environment variables from .env file
-dotenv.config();
 
 export default defineConfig({
   site: process.env.SITE_URL || 'http://localhost:4321',
