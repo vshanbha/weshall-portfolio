@@ -20,11 +20,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const canonicalUrl = new URL(`/articles/${entry.id}/`, Astro.site);
+const canonicalUrl = new URL(`/blog/${entry.id}/`, Astro.site);
 
 const ogImage = entry.data.image
   ? typeof entry.data.image === 'string' ? entry.data.image : entry.data.image.src
-  : `/og/articles/${entry.id}.png`;
+  : `/og/blog/${entry.id}.png`;
 ---
 
 <BlogLayout
