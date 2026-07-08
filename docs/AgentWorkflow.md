@@ -43,7 +43,9 @@ This document defines the persistent operating model for the **Portfolio** proje
 
 - **Local only (for now):** E2E tests (`pnpm test:e2e`) run locally via a git pre-push hook before any push to `dev` or feature branches.
 - **CI/CD exclusion:** E2E tests are NOT part of the CI/CD pipeline until the site is stable. Only unit tests (`pnpm test`) run in CI.
-- **Pre-push hook:** The hook at `.git/hooks/pre-push` runs `pnpm test:e2e` automatically. Skip with `git push --no-verify` if needed.
+- **Pre-push hook:** The hook at `.githooks/pre-push` runs `pnpm test:e2e` automatically. Skip with `git push --no-verify` if needed.
+  - Hook is version-controlled — update `.githooks/pre-push` to modify behaviour.
+  - Enabled via `git config core.hooksPath .githooks` (runs automatically after clone).
 - **When to promote to CI:** Once the site has stable pages and content, E2E tests should be added to the GitHub Actions workflow.
 
 ### Specialised Agent Skills
