@@ -1,0 +1,16 @@
+#!/bin/sh
+# Pre-push hook — runs E2E tests before pushing
+# Installed via: git config core.hooksPath .githooks
+
+echo "Running E2E tests before push..."
+pnpm test:e2e
+status=$?
+
+if [ $status -ne 0 ]; then
+  echo "E2E tests failed. Push aborted."
+  echo "To skip (not recommended): git push --no-verify"
+  exit 1
+fi
+
+echo "E2E tests passed. Proceeding with push."
+exit 0
