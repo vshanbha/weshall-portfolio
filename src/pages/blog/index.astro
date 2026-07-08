@@ -2,12 +2,22 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import BlogCard from '@/components/blog/BlogCard.astro';
 import { getCollection } from 'astro:content';
+import { useTranslations } from '@/i18n/index';
+import { getLocaleFromPath, defaultLocale, type Locale } from '@/i18n/config';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
 
 const allEntries = await getCollection('articles', ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
 
-const sorted = allEntries
+const localeEntries = allEntries.filter((e) => {
+  const articleLocale = e.data.locale || defaultLocale;
+  return articleLocale === locale || articleLocale === defaultLocale;
+});
+
+const sorted = localeEntries
   .sort((a, b) => {
     if (a.data.featured && !b.data.featured) return -1;
     if (!a.data.featured && b.data.featured) return 1;
@@ -16,16 +26,16 @@ const sorted = allEntries
 ---
 
 <PageLayout
-  title="Blog"
-  description="Deep-dive analysis of complex technical, operational, and architectural domains"
+  title={t('blog.title')}
+  description={t('blog.description')}
 >
   <section class="py-24 md:py-32">
     <div class="container mx-auto px-4">
       <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-center">
-        Blog
+        {t('blog.title')}
       </h1>
       <p class="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto text-center">
-        Deep-dive analysis of complex technical, operational, and architectural domains
+        {t('blog.description')}
       </p>
 
       {sorted.length > 0 ? (
@@ -45,7 +55,7 @@ const sorted = allEntries
         </div>
       ) : (
         <p class="mt-16 text-center text-muted-foreground">
-          No articles published yet. We shall build them soon.
+          {t('blog.noPosts')}
         </p>
       )}
     </div>
