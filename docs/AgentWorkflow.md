@@ -39,6 +39,33 @@ This document defines the persistent operating model for the **Portfolio** proje
   6. `dev` → `main` only after full QA pass
 - Agents must commit in atomic, logical chunks to facilitate granular review.
 
+### Parallel Agent Isolation (Worktree Policy)
+
+When launching multiple agents in parallel, each agent MUST operate in an
+isolated `git worktree` to prevent working-directory cross-contamination.
+
+**Setup:**
+- Each parallel agent gets a dedicated worktree:
+  `portfolio/.worktrees/<issue-branch>/`
+- Create via: `git worktree add ../.worktrees/<branch> <branch>`
+- The main working tree stays clean; agents never share unstaged/untracked
+  state
+- Each agent receives its worktree path as its working directory
+
+**Constraints:**
+- `node_modules` is shared — serialise `pnpm install` and `pnpm test:e2e`
+  across agents via the orchestrator
+- Vite's dev server may reject serving font files from the parent tree's
+  `node_modules` via symlink. Run `pnpm test:e2e` from the main working tree
+  (checking out the branch temporarily) if worktree tests show spurious
+  font-related failures.
+- Git objects/refs are shared — safe because each agent operates on its own
+  branch
+
+**Cleanup:**
+- Remove worktree after merge: `git worktree remove .worktrees/<branch>`
+- Prune orphans: `git worktree prune`
+
 ### E2E Testing Policy
 
 - **Local only (for now):** E2E tests (`pnpm test:e2e`) run locally via a git pre-push hook before any push to `dev` or feature branches.
@@ -119,6 +146,8 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 ## 4. Onboarding New Sessions
 
 1. **Confirm the active feature branch:** `issue-<number>-<description>`.
+   **For parallel multi-agent sessions:** each agent works from a dedicated
+   `git worktree` — see §3 Parallel Agent Isolation.
 2. **Read `agents.md`** for applicable standards and quality gates.
 3. **Consult Velocity docs** at [docs.deployvelocity.com](https://docs.deployvelocity.com/) for component and pattern guidance.
 4. **Load the relevant skills** for the task at hand.
