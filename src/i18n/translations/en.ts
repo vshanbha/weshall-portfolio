@@ -15,7 +15,6 @@ export const en = {
     blog: 'Blog',
     contact: 'Contact',
     features: 'Features',
-    components: 'Components',
     docs: 'Docs',
     getStarted: 'Get Started',
   },

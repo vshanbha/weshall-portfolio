@@ -13,7 +13,6 @@ export const de = {
     articles: 'Artikel',
     contact: 'Kontakt',
     features: 'Funktionen',
-    components: 'Komponenten',
     docs: 'Dokumentation',
     getStarted: 'Loslegen',
   },

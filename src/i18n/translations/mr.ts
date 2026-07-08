@@ -13,7 +13,6 @@ export const mr = {
     articles: 'लेख',
     contact: 'संपर्क',
     features: 'वैशिष्ट्ये',
-    components: 'घटक',
     docs: 'दस्तऐवज',
     getStarted: 'सुरू करा',
   },

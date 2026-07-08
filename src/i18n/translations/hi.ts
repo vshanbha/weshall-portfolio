@@ -13,7 +13,6 @@ export const hi = {
     articles: 'लेख',
     contact: 'संपर्क',
     features: 'विशेषताएँ',
-    components: 'कंपोनेंट्स',
     docs: 'दस्तावेज़',
     getStarted: 'शुरू करें',
   },

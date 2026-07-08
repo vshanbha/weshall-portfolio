@@ -53,11 +53,11 @@ export const routes = {
 
   // Static pages
   about: {
-    en: 'about', de: 'ueber-uns', hi: 'hamare-baare-mein', mr: 'amchya-baddal',
+    en: 'about', de: 'about', hi: 'about', mr: 'about',
     nav: { show: true, order: 3, label: 'nav.about' },
   },
   contact: {
-    en: 'contact', de: 'kontakt', hi: 'sampark', mr: 'sampark',
+    en: 'contact', de: 'contact', hi: 'contact', mr: 'contact',
     nav: { show: true, order: 4, label: 'nav.contact' },
   },
 
@@ -67,11 +67,6 @@ export const routes = {
     nav: { show: true, order: 2, label: 'nav.blog' },
   },
 
-  // Components showcase
-  components: {
-    en: 'components', de: 'komponenten', hi: 'components', mr: 'components',
-    nav: { show: true, order: 1, label: 'nav.components' },
-  },
 } as const satisfies Record<string, RouteDefinition>;
 
 /**
