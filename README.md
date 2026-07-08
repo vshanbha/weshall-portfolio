@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="src/assets/branding/logomark.svg" alt="Weshall Build" width="100" />
+  <img src="src/assets/branding/logomark.svg" alt="We shall build" width="100" />
 </p>
 
 <p align="center">
-  <strong>Weshall Build</strong> — Deep-dive analysis of complex technical, operational, and architectural domains.
+  <strong>We shall build</strong> — Deep-dive analysis of complex technical, operational, and architectural domains.
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 ## About
 
-Weshall Build is a platform for deep-dive analysis of complex technical, operational, and architectural domains. Built on the [Velocity](https://github.com/southwellmedia/velocity) template.
+We shall build is a platform for deep-dive analysis of complex technical, operational, and architectural domains. Built on the [Velocity](https://github.com/southwellmedia/velocity) template.
 
 ---
 
@@ -41,6 +41,33 @@ Weshall Build is a platform for deep-dive analysis of complex technical, operati
 | `pnpm format` | Prettier |
 | `pnpm test` | Vitest |
 | `pnpm test:e2e` | Playwright E2E |
+
+---
+
+## Deployment
+
+See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instructions.
+
+### Quick Start (Local Development)
+
+1. Copy a deployment template:
+   ```bash
+   cp .env.gh-pages .env
+   ```
+
+2. Update `SITE_URL` to `http://localhost:4321` in `.env`:
+   ```bash
+   SITE_URL=http://localhost:4321
+   BASE_PATH=/
+   PLAYWRIGHT_BASE_URL=http://localhost:4321
+   ```
+
+3. Start development server:
+   ```bash
+   pnpm dev
+   ```
+
+Site will be available at http://localhost:4321
 
 ---
 

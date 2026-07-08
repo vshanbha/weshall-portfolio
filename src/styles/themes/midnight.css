@@ -13,7 +13,7 @@
 :root {
   /* -------------------------------------------------------------------------
      Brand Scale Override — Violet (hue 295)
-     Replaces the default International Orange with electric violet.
+     Replaces the default Warm Terracotta with electric violet.
      Any component using brand-* classes picks this up automatically.
      ------------------------------------------------------------------------- */
   --brand-50: oklch(97% 0.015 295);

@@ -3,7 +3,7 @@
  */
 export const mr = {
   site: {
-    name: 'Weshall Build',
+    name: 'We shall build',
     description: 'गुंतागुंतीच्या, ऑपरेशनल आणि आर्किटेक्चरल क्षेत्रांचे सखोल विश्लेषण',
   },
   nav: {
@@ -26,7 +26,7 @@ export const mr = {
     copy: 'कॉपी करा',
   },
   footer: {
-    copyright: '© {year} Weshall Build. सर्व हक्क राखीव.',
+    copyright: '© {year} We shall build. सर्व हक्क राखीव.',
     madeWith: 'बनवले',
     maintainedBy: 'द्वारे देखभाल केली',
     links: {

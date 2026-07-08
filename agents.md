@@ -243,6 +243,8 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 | Create PR | `gh pr create --title "title" --body "description"` |
 | List PRs | `gh pr list` |
 | View PR | `gh pr view <number>` |
+| View issue | `gh issue view <number>` |
+| Comment on issue | `gh issue comment <number> --body "comment text"` |
 | Run tests | `pnpm test` |
 | Run E2E tests | `pnpm test:e2e` |
 | Full validation | `pnpm validate` |

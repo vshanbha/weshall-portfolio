@@ -4,7 +4,7 @@
 export const en = {
   // Site
   site: {
-    name: 'Weshall Build',
+    name: 'We shall build',
     description: 'Deep-dive analysis of complex technical, operational, and architectural domains',
   },
 
@@ -111,7 +111,7 @@ export const en = {
   // Credibility Section
   credibility: {
     badge: 'Production Tested',
-    title: 'Built by Weshall Build Team. Born from',
+    title: 'Built by We shall build Team. Born from',
     titleHighlight: 'deadline pressure',
     paragraph1:
       "We're a digital agency that ships high-performance marketing sites. We got tired of spending the first 3 days of every project setting up the same tooling, SEO configs, and type definitions.",
@@ -154,7 +154,7 @@ export const en = {
 
   // Footer
   footer: {
-    copyright: '© {year} Weshall Build. All rights reserved.',
+    copyright: '© {year} We shall build. All rights reserved.',
     madeWith: 'Made with',
     maintainedBy: 'Maintained by',
     links: {

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document defines privacy and security rules for the Weshall Build portfolio project. The portfolio is public-facing; the factory project is always private.
+This document defines privacy and security rules for the We shall build portfolio project. The portfolio is public-facing; the factory project is always private.
 
 ## Data Classification
 

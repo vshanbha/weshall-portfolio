@@ -98,6 +98,22 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 - If modification is required, document the exact reasoning and get explicit approval.
 - New page-specific styling should be done in the page or component, not the layout.
 
+### Git Push Rules
+
+**`--no-verify` is unacceptable unless there is a genuine issue with E2E tests that should be ignored.**
+
+- Never skip pre-push hooks without explicit justification.
+- If E2E tests fail, investigate the root cause before deciding to skip.
+- Document the reason if `--no-verify` is used.
+
+### Process Management Rules
+
+**Do not use `pkill` by default. First check if the process is actually running.**
+
+- Check with `lsof` or `ps` before attempting to kill processes.
+- `pkill` wastes time when the process is not running and can timeout.
+- Only use `pkill` after confirming the process exists.
+
 ## 4. Onboarding New Sessions
 
 1. **Confirm the active feature branch:** `issue-<number>-<description>`.
