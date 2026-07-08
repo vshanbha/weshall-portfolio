@@ -7,20 +7,21 @@
 
 :root {
   /* -------------------------------------------------------------------------
-     Grayscale - The foundation (OKLCH neutral scale)
+     Grayscale - Warm Stone foundation (OKLCH, hue 70 for warm tint)
+     Matches brand-identity.md palette: #FAF8F5, #2A2826, #8A8580, #E3DFDA
      ------------------------------------------------------------------------- */
-  --gray-0: oklch(100% 0 0);
-  --gray-50: oklch(98.3% 0 0);
-  --gray-100: oklch(96.5% 0 0);
-  --gray-200: oklch(91.3% 0 0);
-  --gray-300: oklch(85.8% 0 0);
-  --gray-400: oklch(64% 0 0);
-  --gray-500: oklch(52% 0 0);
-  --gray-600: oklch(38% 0 0);
-  --gray-700: oklch(32% 0 0);
-  --gray-800: oklch(26.7% 0 0);
-  --gray-900: oklch(19.4% 0 0);
-  --gray-950: oklch(12.3% 0 0);
+  --gray-0: oklch(99.5% 0.004 70);      /* #FAF8F5 — warm off-white */
+  --gray-50: oklch(97.8% 0.005 70);
+  --gray-100: oklch(96% 0.006 70);
+  --gray-200: oklch(91% 0.008 70);       /* ~#E3DFDA — warm border */
+  --gray-300: oklch(85.5% 0.009 70);
+  --gray-400: oklch(63.5% 0.010 70);
+  --gray-500: oklch(51.5% 0.010 70);     /* ~#8A8580 — warm muted */
+  --gray-600: oklch(37.5% 0.010 70);
+  --gray-700: oklch(31.5% 0.010 70);
+  --gray-800: oklch(26% 0.009 70);
+  --gray-900: oklch(19% 0.008 70);       /* ~#2A2826 — warm near-black */
+  --gray-950: oklch(12% 0.007 70);
 
   /* -------------------------------------------------------------------------
      Brand Terracotta Scale - Warm Terracotta (#C2684A)
