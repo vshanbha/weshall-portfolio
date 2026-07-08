@@ -13,12 +13,12 @@ const STATIC_PAGES = [
 ];
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Get all blog posts
-  const blogPosts = await getCollection('blog', ({ data }) => {
+  // Get all articles
+  const blogPosts = await getCollection('articles', ({ data }) => {
     return import.meta.env.PROD ? data.draft !== true : true;
   });
 
-  // Generate paths for blog posts
+  // Generate paths for articles
   const blogPaths = blogPosts.map((post) => ({
     params: { slug: `blog/${post.id}` },
     props: {

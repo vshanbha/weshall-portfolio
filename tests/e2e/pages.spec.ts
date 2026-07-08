@@ -19,10 +19,10 @@ test.describe('Coming Soon Pages', () => {
     await expect(page.locator('body')).toContainText('under construction');
   });
 
-  test('blog page loads', async ({ page }) => {
+  test('blog page loads and shows articles', async ({ page }) => {
     await page.goto('/blog');
     await expect(page.getByRole('heading', { name: 'Blog' })).toBeVisible();
-    await expect(page.locator('body')).toContainText('under construction');
+    await expect(page.locator('body')).toContainText('No articles published yet');
   });
 
   test('components page loads', async ({ page }) => {
@@ -48,6 +48,13 @@ test.describe('Coming Soon Pages', () => {
 
   test('404 page shows for unknown routes', async ({ page }) => {
     await page.goto('/nonexistent-page');
+    await expect(page.locator('body')).toContainText('404');
+  });
+});
+
+test.describe('Blog Detail', () => {
+  test('blog article detail page returns 404 for unknown slug', async ({ page }) => {
+    await page.goto('/blog/nonexistent-article');
     await expect(page.locator('body')).toContainText('404');
   });
 });
