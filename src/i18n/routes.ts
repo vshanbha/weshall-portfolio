@@ -51,20 +51,26 @@ export const routes = {
     nav: { show: false, order: 0, label: 'nav.home' },
   },
 
+  // Articles section
+  articles: {
+    en: 'articles', de: 'artikel', hi: 'lekh', mr: 'lekh',
+    nav: { show: true, order: 2, label: 'nav.articles' },
+  },
+
   // Static pages
   about: {
     en: 'about', de: 'ueber-uns', hi: 'hamare-baare-mein', mr: 'amchya-baddal',
-    nav: { show: true, order: 3, label: 'nav.about' },
+    nav: { show: true, order: 4, label: 'nav.about' },
   },
   contact: {
     en: 'contact', de: 'kontakt', hi: 'sampark', mr: 'sampark',
-    nav: { show: true, order: 4, label: 'nav.contact' },
+    nav: { show: true, order: 5, label: 'nav.contact' },
   },
 
   // Blog section
   blog: {
     en: 'blog', de: 'blog', hi: 'blog', mr: 'blog',
-    nav: { show: true, order: 2, label: 'nav.blog' },
+    nav: { show: true, order: 3, label: 'nav.blog' },
   },
 
   // Components showcase

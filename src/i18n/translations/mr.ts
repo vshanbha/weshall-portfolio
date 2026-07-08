@@ -10,6 +10,7 @@ export const mr = {
     home: 'मुख्यपृष्ठ',
     about: 'आमच्याबद्दल',
     blog: 'ब्लॉग',
+    articles: 'लेख',
     contact: 'संपर्क',
     features: 'वैशिष्ट्ये',
     components: 'घटक',

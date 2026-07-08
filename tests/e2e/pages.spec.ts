@@ -19,10 +19,10 @@ test.describe('Coming Soon Pages', () => {
     await expect(page.locator('body')).toContainText('under construction');
   });
 
-  test('blog page loads', async ({ page }) => {
+  test('blog page loads and shows articles', async ({ page }) => {
     await page.goto('/blog');
     await expect(page.getByRole('heading', { name: 'Blog' })).toBeVisible();
-    await expect(page.locator('body')).toContainText('under construction');
+    await expect(page.locator('body')).toContainText('No articles published yet');
   });
 
   test('components page loads', async ({ page }) => {
@@ -36,6 +36,7 @@ test.describe('Coming Soon Pages', () => {
     const links = [
       { href: '/', label: 'We shall build' },
       { href: '/components', label: 'Components' },
+      { href: '/articles', label: 'Articles' },
       { href: '/blog', label: 'Blog' },
       { href: '/about', label: 'About' },
       { href: '/contact', label: 'Contact' },
@@ -52,8 +53,21 @@ test.describe('Coming Soon Pages', () => {
   });
 });
 
+test.describe('Articles Pipeline', () => {
+  test('articles index page loads with empty state', async ({ page }) => {
+    await page.goto('/articles');
+    await expect(page.getByRole('heading', { name: 'Articles' })).toBeVisible();
+    await expect(page.locator('body')).toContainText('No articles published yet');
+  });
+
+  test('article detail page returns 404 for unknown slug', async ({ page }) => {
+    const response = await page.goto('/articles/nonexistent-article');
+    await expect(page.locator('body')).toContainText('404');
+  });
+});
+
 test.describe('Layout Structure', () => {
-  const pages = ['/', '/about', '/contact', '/blog', '/components'];
+  const pages = ['/', '/about', '/contact', '/blog', '/components', '/articles'];
 
   for (const path of pages) {
     test(`header renders on ${path}`, async ({ page }) => {

@@ -15,7 +15,7 @@ const { currentSlug, tags, locale = defaultLocale, maxPosts = 3 } = Astro.props;
 const t = useTranslations(locale);
 
 // Get all published posts in the same locale
-const allPosts = await getCollection('blog', ({ data }) => {
+const allPosts = await getCollection('articles', ({ data }) => {
   return data.locale === locale && (import.meta.env.PROD ? data.draft !== true : true);
 });
 
@@ -44,9 +44,9 @@ const getPostUrl = (postId: string) => {
   const slug = postId.replace(`${locale}/`, '');
   // Default locale doesn't have prefix
   if (locale === defaultLocale) {
-    return `/blog/${slug}`;
+    return `/articles/${slug}`;
   }
-  return `/${locale}/blog/${slug}`;
+  return `/${locale}/articles/${slug}`;
 };
 ---
 
