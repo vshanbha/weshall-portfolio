@@ -27,8 +27,8 @@ This document defines the persistent operating model for the **Portfolio** proje
 
 ### Branching Policy
 
-- **Main branch protection:** `main` is production-ready only. Never push directly to `main`.
 - **Dev branch:** `dev` is the integration branch for all features. All work merges to `dev` first.
+- **Main branch protection:** `main` is production-ready only. `dev` → `main` via PR only — never push or merge directly. See [`DEPLOYMENT.md`](DEPLOYMENT.md) for deployment details.
 - **Feature branches:** All work for a specific issue must be isolated to a dedicated feature branch: `issue-<number>-<description>` or `feature/<description>`.
 - **Workflow:**
   1. Create feature branch from `dev`
