@@ -211,7 +211,7 @@ See [Velocity Configuration](https://docs.deployvelocity.com/configuration/) for
 
 ## Deployment
 
-The site is configured for deployment on Netlify, Vercel, or Cloudflare Pages. Security headers, caching, and build configuration are defined in `netlify.toml`, `vercel.json`, and `wrangler.toml`. See [Velocity Deployment](https://docs.deployvelocity.com/deployment/) for platform-specific guidance.
+The site deploys to **GitHub Pages** via GitHub Actions. Deployment happens automatically on merge to `main`. See [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) for environment variables, scenarios (local, GitHub Pages, custom domain), and troubleshooting.
 
 ## Skills
 
@@ -238,9 +238,9 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 | View history | `git log --oneline -10` |
 | Stage files | `git add <file>` |
 | Commit | `git commit -m "message"` |
-| Push | `git push origin main` |
+| Push | `git push origin <branch>` (never push directly to `main`) |
 | Pull | `git pull origin main` |
-| Create PR | `gh pr create --title "title" --body "description"` |
+| Create PR | `gh pr create --base main --head <branch> --title "title" --body "description"` |
 | List PRs | `gh pr list` |
 | View PR | `gh pr view <number>` |
 | View issue | `gh issue view <number>` |
