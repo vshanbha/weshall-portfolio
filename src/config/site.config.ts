@@ -47,8 +47,8 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'We shall build',
-  description: 'Deep-dive analysis of complex technical, operational, and architectural domains',
+  name: 'We Shall Build',
+  description: 'Build what matters. We deliver the capability that turns ambitious ideas into products that ship.',
   url: import.meta.env.SITE_URL || 'http://localhost:4321',
   ogImage: '/og-default.png',
   author: 'Vishal Shanbhag',
@@ -66,18 +66,16 @@ const siteConfig: SiteConfig = {
     google: process.env.GOOGLE_SITE_VERIFICATION,
     bing: process.env.BING_SITE_VERIFICATION,
   },
-  // Branding: Logo files live in src/assets/branding/
-  // Replace the SVG files there with your own branding
   branding: {
     logo: {
-      alt: 'We shall build',
+      alt: 'We Shall Build',
     },
     favicon: {
       svg: '/favicon.svg',
     },
     colors: {
-      themeColor: '#F94C10',
-      backgroundColor: '#ffffff',
+      themeColor: '#C2684A',
+      backgroundColor: '#FAF8F5',
     },
   },
 };
