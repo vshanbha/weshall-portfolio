@@ -51,3 +51,29 @@ test.describe('Coming Soon Pages', () => {
     await expect(page.locator('body')).toContainText('404');
   });
 });
+
+test.describe('Layout Structure', () => {
+  const pages = ['/', '/about', '/contact', '/blog', '/components'];
+
+  for (const path of pages) {
+    test(`header renders on ${path}`, async ({ page }) => {
+      await page.goto(path);
+      const header = page.locator('header');
+      await expect(header).toBeVisible();
+      await expect(header.getByRole('link', { name: 'We shall build' })).toBeVisible();
+    });
+
+    test(`footer renders on ${path}`, async ({ page }) => {
+      await page.goto(path);
+      const footer = page.locator('footer');
+      await expect(footer).toBeVisible();
+    });
+  }
+
+  test('footer GitHub link points to project repo', async ({ page }) => {
+    await page.goto('/');
+    const githubLink = page.locator('footer a[href*="github.com"]');
+    await expect(githubLink).toBeVisible();
+    await expect(githubLink).toHaveAttribute('href', /vshanbha\/weshall-portfolio/);
+  });
+});
