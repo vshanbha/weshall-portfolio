@@ -21,6 +21,9 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+        env:
+          SITE_URL: 'https://weshall.build'
+          BASE_PATH: '/'
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

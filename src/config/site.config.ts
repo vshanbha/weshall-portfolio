@@ -47,14 +47,14 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'Weshall Build',
-  description: 'Deep-dive analysis of complex technical, operational, and architectural domains',
-  url: process.env.SITE_URL || 'https://vshanbha.github.io/weshall-portfolio',
+  name: 'We Shall Build',
+  description: 'Build what matters. We deliver the capability that turns ambitious ideas into products that ship.',
+  url: import.meta.env.SITE_URL || 'http://localhost:4321',
   ogImage: '/og-default.png',
   author: 'Vishal Shanbhag',
   email: 'contact@weshall.build',
   socialLinks: [
-    'https://github.com/vshanbha',
+    'https://github.com/vshanbha/weshall-portfolio',
     'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
   ],
   // Twitter metadata - update with your actual handles or remove
@@ -66,18 +66,16 @@ const siteConfig: SiteConfig = {
     google: process.env.GOOGLE_SITE_VERIFICATION,
     bing: process.env.BING_SITE_VERIFICATION,
   },
-  // Branding: Logo files live in src/assets/branding/
-  // Replace the SVG files there with your own branding
   branding: {
     logo: {
-      alt: 'Weshall Build',
+      alt: 'We Shall Build',
     },
     favicon: {
       svg: '/favicon.svg',
     },
     colors: {
-      themeColor: '#F94C10',
-      backgroundColor: '#ffffff',
+      themeColor: '#C2684A',
+      backgroundColor: '#FAF8F5',
     },
   },
 };

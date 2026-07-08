@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Coming Soon Pages', () => {
   test('home page loads with correct branding', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'Weshall Build' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'We shall build' })).toBeVisible();
     await expect(page.locator('body')).toContainText('We shall build this site soon');
   });
 
@@ -33,9 +33,17 @@ test.describe('Coming Soon Pages', () => {
 
   test('navigation links work', async ({ page }) => {
     await page.goto('/');
-    await page.click('a[href="/about"]');
-    await expect(page).toHaveURL('/about');
-    await expect(page.getByRole('heading', { name: 'About' })).toBeVisible();
+    const links = [
+      { href: '/', label: 'We shall build' },
+      { href: '/components', label: 'Components' },
+      { href: '/blog', label: 'Blog' },
+      { href: '/about', label: 'About' },
+      { href: '/contact', label: 'Contact' },
+    ];
+    for (const link of links) {
+      await page.getByRole('link', { name: link.label }).first().click();
+      await expect(page).toHaveURL(link.href);
+    }
   });
 
   test('404 page shows for unknown routes', async ({ page }) => {
