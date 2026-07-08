@@ -10,7 +10,6 @@ export const de = {
     home: 'Startseite',
     about: 'Über uns',
     blog: 'Blog',
-    articles: 'Artikel',
     contact: 'Kontakt',
     features: 'Funktionen',
     components: 'Komponenten',
