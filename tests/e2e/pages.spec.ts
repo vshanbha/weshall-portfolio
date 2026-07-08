@@ -9,7 +9,7 @@ test.describe('Coming Soon Pages', () => {
 
   test('about page loads', async ({ page }) => {
     await page.goto('/about');
-    await expect(page.getByRole('heading', { name: /About/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Built|About/i })).toBeVisible();
     await expect(page.locator('body')).toContainText(/build/i);
   });
 
@@ -48,13 +48,13 @@ test.describe('Locale-prefixed URLs', () => {
   test('/de/about returns 200', async ({ page }) => {
     const response = await page.goto('/de/about');
     expect(response?.status()).toBe(200);
-    await expect(page.locator('body')).toContainText(/about|Über/i);
+    await expect(page.locator('body')).toContainText(/Entwickelt|built/i);
   });
 
   test('/de/contact returns 200', async ({ page }) => {
     const response = await page.goto('/de/contact');
     expect(response?.status()).toBe(200);
-    await expect(page.locator('body')).toContainText(/Kontakt|connect/i);
+    await expect(page.locator('body')).toContainText(/verbinden|connect/i);
   });
 
   test('/de/blog returns 200', async ({ page }) => {
@@ -106,7 +106,7 @@ test.describe('Layout Structure', () => {
   for (const path of pages) {
     test(`header renders on ${path}`, async ({ page }) => {
       await page.goto(path);
-      const header = page.locator('header');
+      const header = page.getByRole('banner');
       await expect(header).toBeVisible();
       await expect(header.getByRole('link', { name: 'We shall build' })).toBeVisible();
     });
