@@ -13,6 +13,7 @@ export const en = {
     home: 'Home',
     about: 'About',
     blog: 'Blog',
+    articles: 'Articles',
     contact: 'Contact',
     features: 'Features',
     components: 'Components',
