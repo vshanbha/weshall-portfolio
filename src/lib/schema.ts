@@ -4,6 +4,8 @@ import type {
   BlogPosting,
   BreadcrumbList,
   FAQPage,
+  Service,
+  Person,
   WithContext,
   SearchAction,
 } from 'schema-dts';
@@ -111,6 +113,84 @@ export function createBreadcrumbSchema(
       name: item.name,
       item: item.url,
     })),
+  };
+}
+
+/**
+ * Create Person schema for about page
+ */
+export function createPersonSchema(): WithContext<Person> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Vishal Shanbhag',
+    givenName: 'Vishal',
+    familyName: 'Shanbhag',
+    jobTitle: 'Senior Java Architect & Engineering Lead',
+    url: `${siteConfig.url}/about`,
+    sameAs: [
+      'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+      'https://github.com/vshanbha/weshall-portfolio',
+      'https://www.baeldung.com/author/vishalshanbhag/',
+      'https://javapro.io/author/vishalshanbhag/',
+      'https://medium.com/@vvsvish',
+    ],
+    knowsAbout: [
+      'Enterprise Java',
+      'Spring Boot',
+      'Quarkus',
+      'AI Integration',
+      'LangChain4J',
+      'Cloud Architecture',
+      'Kubernetes',
+      'Workflow Automation',
+      'Banking Systems',
+      'Technical Leadership',
+    ],
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: 'Mumbai University',
+    },
+    knowsLanguage: ['English', 'German', 'Hindi', 'Marathi', 'Konkani'],
+  };
+}
+
+/**
+ * Create Service schema for work page
+ */
+export function createServiceSchema(): WithContext<Service> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: [
+      'Enterprise AI Integration',
+      'Architecture Evolution',
+      'Embedded Engineering',
+      'Technical Advisory',
+    ],
+    provider: {
+      '@type': 'Person',
+      name: 'Vishal Shanbhag',
+      jobTitle: 'Senior AI Engineer | Java Architect | Enterprise Integration Specialist',
+      url: siteConfig.url,
+      sameAs: [
+        'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+        'https://github.com/vshanbha',
+      ],
+    } as Person,
+    description:
+      'Senior architect and hands-on engineer helping product companies evolve architecture, integrate AI into production, and build systems that ship. 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products.',
+    areaServed: ['DE', 'UK', 'US', 'EU'],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Engineering Services',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Enterprise AI Integration' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Architecture Evolution' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Embedded Engineering' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Technical Advisory' } },
+      ],
+    },
   };
 }
 

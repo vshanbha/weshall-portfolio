@@ -3,14 +3,15 @@
  */
 export const mr = {
   site: {
-    name: 'We shall build',
+    name: 'We Shall Build',
     description: 'गुंतागुंतीच्या, ऑपरेशनल आणि आर्किटेक्चरल क्षेत्रांचे सखोल विश्लेषण',
   },
   nav: {
     home: 'मुख्यपृष्ठ',
     about: 'आमच्याबद्दल',
     blog: 'ब्लॉग',
-    articles: 'लेख',
+    work: 'Work',
+    approach: 'Approach',
     contact: 'संपर्क',
     features: 'वैशिष्ट्ये',
     docs: 'दस्तऐवज',
@@ -26,14 +27,13 @@ export const mr = {
     copy: 'कॉपी करा',
   },
   hero: {
-    badge: 'v1.0 सार्वजनिक बीटा लाइव्ह आहे',
-    title: 'तुमची पुढची साइट',
-    titleHighlight: 'इथून सुरू होते.',
-    description:
-      'रिपॉझिटरी क्लोन करा. टोकन कस्टमाइझ करा. शुक्रवारपर्यंत डिप्लॉय करा. व्हेलॉसिटी कंटाळवाणी कामे हाताळते जेणेकरून तुम्ही महत्त्वाच्या कामावर लक्ष केंद्रित करू शकाल.',
-    cta: 'सुरू करा',
-    github: 'GitHub वर पहा',
-    socialProof: '40+ एजन्सींद्वारे प्रॉडक्शनमध्ये वापरले जाते',
+    badge: '',
+    title: 'Senior architect and hands-on engineer.',
+    titleHighlight: '',
+    description: '20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products. I integrate AI into real production environments — not demos, not hype. I build products, evolve architectures, and keep systems running while they change.',
+    cta: 'Start a Conversation',
+    github: 'Read My Work',
+    socialProof: '',
   },
   techStack: {
     astro: {
@@ -129,15 +129,15 @@ export const mr = {
     },
   },
   cta: {
-    title: 'कॉन्फिगर करणे थांबवा.',
-    titleHighlight: 'शिप करणे सुरू करा.',
-    description:
-      'व्हेलॉसिटीसह जलद, चांगल्या वेबसाइट्स तयार करणाऱ्या डेव्हलपरमध्ये सामील व्हा. मुक्त स्रोत आणि कायमचे विनामूल्य.',
-    docs: 'दस्तऐवज वाचा',
-    command: 'npm create velocity@latest',
+    title: 'Build what matters.',
+    titleHighlight: '',
+    description: 'Every project starts with a conversation. Let\'s talk about what you\'re building — and how to get it across the line.',
+    button: 'Start a Conversation',
+    docs: '',
+    command: '',
   },
   footer: {
-    copyright: '© {year} We shall build. सर्व हक्क राखीव.',
+    copyright: '© {year} We Shall Build. सर्व हक्क राखीव.',
     madeWith: 'बनवले',
     maintainedBy: 'द्वारे देखभाल केली',
     links: {
@@ -148,40 +148,95 @@ export const mr = {
     },
   },
   home: {
-    title: 'व्हेलॉसिटीमध्ये आपले स्वागत आहे',
-    subtitle: 'अभिमतपूर्ण Astro स्टार्टर जो तुम्ही खरोखर वापरू इच्छिताल',
-    cta: 'सुरू करा',
+    capabilities: {
+      title: 'What I Do',
+      items: [
+        { title: 'Enterprise Architecture', description: 'Design and evolve the systems that keep financial institutions running and product companies scaling across banking, SaaS, and AI.' },
+        { title: 'AI Integration', description: 'Integrate AI into existing production environments — not demos, not prototypes. LangChain4J, RAG, MCP, and governance-aware adoption.' },
+        { title: 'Hands-on Engineering', description: 'Java/JVM, Spring Boot, Quarkus, GraalVM, cloud-native, Kubernetes. I write code, ship features, and keep systems running while they change.' },
+        { title: 'Technical Leadership', description: 'Partner alongside growing teams as a safe pair of hands. Low ego, high signal. Commitment, not Commandment.' },
+      ],
+    },
+    socialProof: {
+      title: 'Trusted by',
+      items: ['Techstars Fintech Accelerator', 'Carbon13 Climate-Tech Venture Builder', 'Baeldung — Contributing Author', 'JavaPro — Contributing Author', 'Jcon — Gen AI Speaker (Ljubljana, 2025)'],
+    },
+    articles: {
+      title: 'Latest Writing',
+      emptyTitle: 'Coming soon',
+      emptyDescription: 'Articles on enterprise architecture, AI integration, and the engineering patterns that survive production reality are in the works.',
+      subscribe: 'Get notified when I publish',
+    },
+  },
+  work: {
+    meta: { title: 'What I Do', description: 'Senior architect and hands-on engineer. Enterprise Java, AI integration, cloud-native systems.' },
+    hero: { title: 'What I Do', titleHighlight: '', description: 'I work with product companies that are past the prototype stage — helping them evolve from startup chaos into enterprise-capable operational maturity without losing momentum.' },
+    services: {
+      title: 'How I Can Help',
+      description: 'Every engagement starts with understanding your constraints. Then we figure out what needs to change, and what needs to stay the same.',
+      items: [
+        { title: 'Enterprise AI Integration', description: 'Bringing AI into production environments — not demos, not prototypes. I help teams navigate the gap between AI experimentation and systems that stay reliable, measurable and maintainable six months later.' },
+        { title: 'Architecture Evolution', description: 'Helping companies move from monolithic startup architecture to cloud-native systems without rewriting everything at once. I sequence architectural change pragmatically — preserving operational continuity while evolving toward enterprise readiness.' },
+        { title: 'Embedded Engineering', description: 'I work alongside existing teams as a hands-on contributor — building features, hardening infrastructure, and raising engineering standards from the inside. This is not detached consulting; it is delivery-oriented partnership.' },
+        { title: 'Technical Advisory', description: 'Architecture reviews, strategy workshops, and independent technical assessment for leadership teams facing critical decisions. I help translate technical risk into business language.' },
+      ],
+    },
+    process: {
+      title: 'How I Work',
+      description: 'I start with a low-risk engagement so you can evaluate whether the collaboration works — then we build from there.',
+      items: [
+        { title: 'Phase 1: Discovery & Trial', description: 'A structured engagement — typically two to four weeks — where I work directly with your team to understand your architecture, your constraints, and your goals.' },
+        { title: 'Phase 2: Embedded Partnership', description: 'If Phase 1 demonstrates value, we move into an ongoing embedded engagement — part-time or full-time, remote or on-site — where I drive the agreed evolution while your team continues shipping.' },
+      ],
+    },
+    cta: { title: "Let's Talk", description: 'Not sure what you need yet? That is exactly the right place to start. Send me a message and we will figure it out together.', button: 'Start a Conversation' },
+  },
+  approach: {
+    meta: { title: 'Approach', description: 'How I think about engineering, architecture, and building systems that ship.' },
+    hero: { title: 'Approach', titleHighlight: '', description: 'How I think about engineering, architecture, and building systems that ship.' },
   },
   about: {
-    meta: {
-      title: 'आमच्याबद्दल',
-      description: 'व्हेलॉसिटी आणि त्यामागील टीमबद्दल जाणून घ्या.',
+    meta: { title: 'About', description: 'Senior Java Architect and Engineering Lead with 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products.' },
+    hero: { title: 'Senior architect and', titleHighlight: 'hands-on engineer.', description: '20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products. I integrate AI into real production environments — not demos, not hype. I build products, evolve architectures, and keep systems running while they change.' },
+    competencies: {
+      title: 'Core Competencies',
+      items: [
+        { title: 'Enterprise Java & JVM Systems', description: 'Deep expertise across Java (8–21), Spring Boot, Quarkus, Hibernate, event-driven and distributed architectures for high-throughput transactional systems.' },
+        { title: 'AI & Agentic Systems', description: 'Practical implementation of LLM integration, LangChain4J, RAG, MCP, and AI-assisted engineering workflows with a production-first mindset.' },
+        { title: 'Cloud-Native Architecture', description: 'Hands-on experience with AWS, Azure, Kubernetes, Docker, serverless patterns, and cloud-native Java deployments at scale.' },
+        { title: 'Workflow & Search Platforms', description: 'Large-scale workflow automation, Apache Solr, enterprise search, and systems processing 100,000+ transactional events daily with full auditability.' },
+        { title: 'Technical Leadership', description: 'Fractional CTO, team building, startup technical strategy, and enterprise consulting — partnering with growing teams as a builder who ships.' },
+      ],
     },
-    hero: {
-      badge: 'आमची कथा',
-      title: 'डेव्हलपर्सनी तयार केले,',
-      titleHighlight: 'डेव्हलपर्ससाठी.',
-      description: 'व्हेलॉसिटीचा जन्म समान टूलिंग पुन्हा पुन्हा सेट करण्याच्या निराशेतून झाला. आम्ही असा स्टार्टर तयार केला ज्याची आम्ही नेहमीच इच्छा केली होती.',
+    experience: {
+      title: 'Selected Experience',
+      items: [
+        { role: 'Founding Engineer / CTO', company: 'Inbotiqa', period: '2011 – Present', summary: 'Architected and delivered YUDOmail, an enterprise email productivity SaaS platform for global banking. Processing 100,000+ transactional emails daily with 3,000+ user concurrency.' },
+        { role: 'Technical Advisor (Architecture & Strategy)', company: 'BauAI', period: '2025 – 2026', summary: 'Provided strategic guidance transitioning an AI-generated codebase into a structured, sustainable production environment.' },
+        { role: 'Strategic Architecture Consultant', company: 'HDFC Life Insurance', period: '2015 – 2016', summary: 'Architected an internal mobile platform enabling policyholders to request verified home care for elderly parents. Led early evaluation and adoption of serverless/MBaaS platforms.' },
+        { role: 'Team Leader – AVP', company: 'Nomura / Lehman Brothers', period: '2006 – 2011', summary: 'Managed infrastructure and development for BPM Centre of Excellence, leading a team of ~5 engineers. Designed high-throughput email case management systems for operational exception handling.' },
+      ],
     },
-    mission: {
-      title: 'आमचे ध्येय',
-      description: 'बॉयलरप्लेट काढून टाकून आणि अर्थपूर्ण डिफॉल्ट्स प्रदान करून डेव्हलपर्सना सुंदर, कार्यक्षम वेबसाइट्स जलद शिप करण्यात मदत करणे.',
+    publications: {
+      title: 'Publications & Speaking',
+      items: [
+        { title: 'Bridging Java and Python for AI/ML in Production', url: 'https://javapro.io/2026/03/10/bridging-java-and-python-for-ai-ml-in-production-the-case-for-graalpy-on-graalvm/', platform: 'JavaPro' },
+        { title: 'Greener Code: Sustainable Java Deployments', url: 'https://javapro.io/2025/06/11/greener-code-sustainable-java-deployments-with-native-builds-and-knative-serverless-on-kubernetes/', platform: 'JavaPro' },
+        { title: 'How to Secure Ollama Server', url: 'https://medium.com/@vvsvish/how-to-secure-ollama-server-64cde5e59971', platform: 'Medium' },
+        { title: 'Terminal is Back', url: 'https://medium.com/@vvsvish/terminal-is-back-473221f94c19', platform: 'Medium' },
+        { title: 'Baeldung Author Page', url: 'https://www.baeldung.com/author/vishalshanbhag/', platform: 'Baeldung' },
+        { title: "Hitchhiker's Guide to the AI Galaxy – for Java Developers", url: '', platform: 'Jcon Gen AI (Ljubljana, 2025)' },
+      ],
     },
-    values: {
-      title: 'आमचा विश्वास',
-      performance: {
-        title: 'कार्यक्षमता प्रथम',
-        description: 'प्रत्येक निर्णय कार्यक्षमता लक्षात घेऊन घेतला जातो. डिफॉल्टनुसार शून्य JavaScript, ऑप्टिमाइझ केलेल्या प्रतिमा आणि किमान CSS.',
-      },
-      simplicity: {
-        title: 'साधेपणा महत्त्वाचा आहे',
-        description: 'आम्ही जटिलता दूर करतो जेणेकरून तुम्ही ज्या गोष्टीला महत्त्व आहे त्यावर लक्ष केंद्रित करू शकाल: तुमच्या वापरकर्त्यांसाठी उत्तम उत्पादने तयार करणे.',
-      },
-      openSource: {
-        title: 'मुक्त स्रोत',
-        description: 'व्हेलॉसिटी विनामूल्य आणि मुक्त स्रोत आहे. आम्ही या समुदायाला परत देण्यावर विश्वास ठेवतो ज्याने हे शक्य केले.',
-      },
+    philosophy: {
+      title: 'Engineering Philosophy',
+      quotes: [
+        'Production systems do not care about AI hype cycles. Operational reliability eventually defeats architectural fashion.',
+        'The interesting enterprise problem is not "how do we add more AI agents?" but "how do we integrate AI into existing systems and engineering workflows in ways that remain reliable, measurable and maintainable six months later?"',
+        'AI is a tool, not a substitute for architectural discipline. Cost and operational awareness must drive architecture over uncontrolled experimentation.',
+      ],
     },
+    cta: { title: 'Have a problem worth solving?', button: 'Start a Conversation' },
   },
   contact: {
     meta: {

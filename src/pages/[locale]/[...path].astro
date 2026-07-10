@@ -4,12 +4,16 @@ import { getCollection } from 'astro:content';
 import PageLayout from '@/layouts/PageLayout.astro';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import BlogCard from '@/components/blog/BlogCard.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import CTA from '@/components/ui/marketing/CTA/CTA.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import { useTranslations } from '@/i18n/index';
 import { defaultLocale, type Locale, locales } from '@/i18n/config';
 import { routes } from '@/i18n/routes';
 import siteConfig from '@/config/site.config';
-import { createBlogPostSchema } from '@/lib/schema';
+import { createBlogPostSchema, createServiceSchema } from '@/lib/schema';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const nonDefaultLocales = locales.filter((l) => l !== defaultLocale);
@@ -129,6 +133,89 @@ if (isArticle && entry) {
           </h1>
           <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
             {t('contact.hero.description')}
+          </p>
+        </div>
+      </section>
+    </PageLayout>
+  ) : isPage && routeId === 'work' ? (
+    <PageLayout title={t('work.meta.title')} description={t('work.meta.description')}>
+      <!-- Hero -->
+      <section class="py-24 md:py-32">
+        <div class="container mx-auto px-4 text-center">
+          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+            {t('work.hero.title')}
+          </h1>
+          <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+            {t('work.hero.description')}
+          </p>
+        </div>
+      </section>
+
+      <!-- Service Categories -->
+      <section class="py-24 md:py-32 bg-muted/50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold tracking-tight text-center">{t('work.services.title')}</h2>
+          <p class="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto text-center">{t('work.services.description')}</p>
+          <div class="mt-12 grid gap-6 md:grid-cols-2">
+            {[0, 1, 2, 3].map((i) => (
+              <Card variant="default" padding="md">
+                <div class="flex items-start gap-4">
+                  <div class="p-2.5 rounded-lg bg-muted shrink-0">
+                    <Icon name={['zap', 'layers', 'terminal', 'search'][i]} size="md" />
+                  </div>
+                  <div>
+                    <h3 class="font-semibold mb-1">{t(`work.services.items.${i}.title`)}</h3>
+                    <p class="text-sm text-muted-foreground leading-relaxed">{t(`work.services.items.${i}.description`)}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- How I Work -->
+      <section class="py-24 md:py-32">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold tracking-tight text-center">{t('work.process.title')}</h2>
+          <p class="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto text-center">{t('work.process.description')}</p>
+          <div class="mt-12 grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+            {[0, 1].map((i) => (
+              <Card variant="outline" padding="lg">
+                <h3 class="text-xl font-bold">{t(`work.process.items.${i}.title`)}</h3>
+                <p class="mt-4 text-muted-foreground">{t(`work.process.items.${i}.description`)}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <CTA variant="default" size="lg">
+        <Fragment slot="heading">
+          <h2>{t('work.cta.title')}</h2>
+        </Fragment>
+        <Fragment slot="description">
+          <p>{t('work.cta.description')}</p>
+        </Fragment>
+        <Fragment slot="actions">
+          <Button href="/contact" variant="primary" size="lg">
+            {t('work.cta.button')}
+          </Button>
+        </Fragment>
+      </CTA>
+
+      <JsonLd schema={createServiceSchema()} />
+    </PageLayout>
+  ) : isPage && routeId === 'approach' ? (
+    <PageLayout title={t('approach.meta.title')} description={t('approach.meta.description')}>
+      <section class="py-24 md:py-32">
+        <div class="container mx-auto px-4 text-center">
+          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+            {t('approach.hero.title')}
+          </h1>
+          <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+            {t('approach.hero.description')}
           </p>
         </div>
       </section>
