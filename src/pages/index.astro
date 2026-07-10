@@ -2,6 +2,11 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import { useTranslations } from '@/i18n/index';
 import { getLocaleFromPath } from '@/i18n/config';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import EmptyState from '@/components/patterns/EmptyState.astro';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = useTranslations(locale);
@@ -11,14 +16,81 @@ const t = useTranslations(locale);
   title={t('site.name')}
   description={t('site.description')}
 >
-  <section class="py-24 md:py-32">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-        {t('site.name')}
-      </h1>
-      <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-        {t('site.description')}
-      </p>
+  <!-- Hero -->
+  <CTA variant="default" size="xl">
+    <Fragment slot="heading">
+      <h1>{t('hero.title')}</h1>
+    </Fragment>
+    <Fragment slot="description">
+      <p>{t('hero.description')}</p>
+    </Fragment>
+    <Fragment slot="actions">
+      <Button variant="primary" size="lg" href="/contact">
+        {t('hero.cta')}
+      </Button>
+      <Button variant="outline" size="lg" href="/blog">
+        {t('hero.github')}
+      </Button>
+    </Fragment>
+  </CTA>
+
+  <!-- Capability Cards -->
+  <section class="py-24">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">{t('home.capabilities.title')}</h2>
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {[0, 1, 2, 3].map((i) => (
+          <Card variant="default" padding="md" hover>
+            <h3 class="text-lg font-semibold mb-2">{t(`home.capabilities.items.${i}.title`)}</h3>
+            <p class="text-muted-foreground text-sm">{t(`home.capabilities.items.${i}.description`)}</p>
+          </Card>
+        ))}
+      </div>
     </div>
   </section>
+
+  <!-- Social Proof Strip -->
+  <section class="py-16 border-y border-border">
+    <div class="container mx-auto px-6">
+      <p class="text-sm text-muted-foreground text-center mb-6">{t('home.socialProof.title')}</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <Badge variant="default" size="md" pill>{t(`home.socialProof.items.${i}`)}</Badge>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Articles -->
+  <section class="py-24">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">{t('home.articles.title')}</h2>
+      <EmptyState
+        icon="book"
+        title={t('home.articles.emptyTitle')}
+        description={t('home.articles.emptyDescription')}
+      />
+      <div class="mt-8 text-center">
+        <p class="text-sm text-muted-foreground mb-4">{t('home.articles.subscribe')}</p>
+        <Button variant="outline" size="md" href="/contact">
+          Get Notified
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <CTA variant="default" size="lg">
+    <Fragment slot="heading">
+      <h2>{t('cta.title')}</h2>
+    </Fragment>
+    <Fragment slot="description">
+      <p>{t('cta.description')}</p>
+    </Fragment>
+    <Fragment slot="actions">
+      <Button variant="primary" size="lg" href="/contact">
+        {t('cta.button')}
+      </Button>
+    </Fragment>
+  </CTA>
 </PageLayout>
