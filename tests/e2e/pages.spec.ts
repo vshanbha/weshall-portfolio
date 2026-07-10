@@ -1,22 +1,22 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Coming Soon Pages', () => {
+test.describe('Pages', () => {
   test('home page loads with correct branding', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'We shall build' })).toBeVisible();
-    await expect(page.locator('body')).toContainText('We shall build');
+    await expect(page.getByRole('heading', { name: 'Senior architect and hands-on engineer' })).toBeVisible();
+    await expect(page.locator('body')).toContainText('We Shall Build');
   });
 
   test('about page loads', async ({ page }) => {
     await page.goto('/about');
-    await expect(page.getByRole('heading', { name: /Built|About/i })).toBeVisible();
-    await expect(page.locator('body')).toContainText(/build/i);
+    await expect(page.getByRole('heading', { name: /Senior architect|hands-on engineer/i })).toBeVisible();
+    await expect(page.locator('body')).toContainText(/Core Competencies|Engineering Philosophy/i);
   });
 
   test('contact page loads', async ({ page }) => {
     await page.goto('/contact');
-    await expect(page.getByRole('heading', { name: /Connect|Contact/i })).toBeVisible();
-    await expect(page.locator('body')).toContainText(/connect|building/i);
+    await expect(page.getByRole('heading', { name: /Connect|Contact|Lassen/i })).toBeVisible();
+    await expect(page.locator('body')).toContainText(/connect|building|verbinden/i);
   });
 
   test('blog page loads and shows articles', async ({ page }) => {
@@ -24,11 +24,19 @@ test.describe('Coming Soon Pages', () => {
     await expect(page.getByRole('heading', { name: 'Blog' })).toBeVisible();
   });
 
+  test('work page loads', async ({ page }) => {
+    await page.goto('/work');
+    await expect(page.getByRole('heading', { name: 'What I Do' })).toBeVisible();
+    await expect(page.locator('body')).toContainText(/How I Can Help|How I Work/i);
+  });
+
   test('navigation links work', async ({ page }) => {
     await page.goto('/');
     const links = [
-      { href: '/', label: 'We shall build' },
+      { href: '/', label: 'We Shall Build' },
       { href: '/blog', label: 'Blog' },
+      { href: '/work', label: 'Work' },
+      { href: '/approach', label: 'Approach' },
       { href: '/about', label: 'About' },
       { href: '/contact', label: 'Contact' },
     ];
@@ -48,7 +56,7 @@ test.describe('Locale-prefixed URLs', () => {
   test('/de/about returns 200', async ({ page }) => {
     const response = await page.goto('/de/about');
     expect(response?.status()).toBe(200);
-    await expect(page.locator('body')).toContainText(/Entwickelt|built/i);
+    await expect(page.locator('body')).toContainText(/Uber uns|Senior architect/i);
   });
 
   test('/de/contact returns 200', async ({ page }) => {
@@ -59,6 +67,11 @@ test.describe('Locale-prefixed URLs', () => {
 
   test('/de/blog returns 200', async ({ page }) => {
     const response = await page.goto('/de/blog');
+    expect(response?.status()).toBe(200);
+  });
+
+  test('/de/work returns 200', async ({ page }) => {
+    const response = await page.goto('/de/work');
     expect(response?.status()).toBe(200);
   });
 
@@ -77,6 +90,11 @@ test.describe('Locale-prefixed URLs', () => {
     expect(response?.status()).toBe(200);
   });
 
+  test('/hi/work returns 200', async ({ page }) => {
+    const response = await page.goto('/hi/work');
+    expect(response?.status()).toBe(200);
+  });
+
   test('/mr/about returns 200', async ({ page }) => {
     const response = await page.goto('/mr/about');
     expect(response?.status()).toBe(200);
@@ -91,6 +109,11 @@ test.describe('Locale-prefixed URLs', () => {
     const response = await page.goto('/mr/blog');
     expect(response?.status()).toBe(200);
   });
+
+  test('/mr/work returns 200', async ({ page }) => {
+    const response = await page.goto('/mr/work');
+    expect(response?.status()).toBe(200);
+  });
 });
 
 test.describe('Blog Detail', () => {
@@ -101,14 +124,14 @@ test.describe('Blog Detail', () => {
 });
 
 test.describe('Layout Structure', () => {
-  const pages = ['/', '/about', '/contact', '/blog'];
+  const pages = ['/', '/about', '/contact', '/blog', '/work'];
 
   for (const path of pages) {
     test(`header renders on ${path}`, async ({ page }) => {
       await page.goto(path);
       const header = page.getByRole('banner');
       await expect(header).toBeVisible();
-      await expect(header.getByRole('link', { name: 'We shall build' })).toBeVisible();
+      await expect(header.getByRole('link', { name: 'We Shall Build' })).toBeVisible();
     });
 
     test(`footer renders on ${path}`, async ({ page }) => {
