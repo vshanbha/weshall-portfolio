@@ -89,7 +89,9 @@ Agents must NOT automate or bypass this gate. Content arriving in `portfolio/src
 - **AI Safety:** AI agents may draft components, propose styling, and suggest content structure. They must NOT deploy directly, alter production configuration, or bypass human review.
 - **Data Integrity:** Agents MUST NOT delete, move, rename, or otherwise modify files or directory structures without explicit, prior user approval for each specific action.
 - **Shell Command Integrity:** All shell commands must be executed independently. Do not chain commands using operators like `&&`, `;`, `||`, or pipes `|` when multiple distinct actions are involved. Each command must be proposed and approved separately.
+- **Shell Command Integrity:** All shell commands must be executed independently. Do not chain commands using operators like `&&`, `;`, `||`, or pipes `|` when multiple distinct actions are involved. Each command must be proposed and approved separately.
 - **No Secrets in Code:** Never commit environment variables, API keys, or secrets. Use `.env` (gitignored) and reference `.env.example` for documentation.
+- **Locale Integrity:** When modifying translation files (`src/i18n/translations/*.ts`), existing translations in non-English locales (de, hi, mr) must be preserved. Never replace a language-specific translation with English text. If new content needs to be added to a locale file and no translation exists, add the English text as a placeholder AND flag it in a comment (e.g. `// TODO: translate`). For brand names that appear in all locales, transliterate into the target script (e.g. Devanagari for hi/mr) rather than keeping Roman script.
 
 ## Astro Technical Standards (Iron Laws)
 

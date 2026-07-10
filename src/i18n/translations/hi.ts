@@ -3,7 +3,7 @@
  */
 export const hi = {
   site: {
-    name: 'We Shall Build',
+    name: 'वी शॉल बिल्ड', // We Shall Build — transliterated, needs native-speaker review
     description: 'जटिल तकनीकी, संचालन और वास्तुशिल्प क्षेत्रों का गहन विश्लेषण',
   },
   nav: {
@@ -137,7 +137,7 @@ export const hi = {
     command: '',
   },
   footer: {
-    copyright: '© {year} We Shall Build. सर्वाधिकार सुरक्षित।',
+    copyright: '© {year} वी शॉल बिल्ड. सर्वाधिकार सुरक्षित।',
     madeWith: 'बनाया गया',
     maintainedBy: 'द्वारा बनाए रखा गया',
     links: {

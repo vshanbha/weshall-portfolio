@@ -3,7 +3,7 @@
  */
 export const mr = {
   site: {
-    name: 'We Shall Build',
+    name: 'वी शॉल बिल्ड', // We Shall Build — transliterated, needs native-speaker review
     description: 'गुंतागुंतीच्या, ऑपरेशनल आणि आर्किटेक्चरल क्षेत्रांचे सखोल विश्लेषण',
   },
   nav: {
@@ -137,7 +137,7 @@ export const mr = {
     command: '',
   },
   footer: {
-    copyright: '© {year} We Shall Build. सर्व हक्क राखीव.',
+    copyright: '© {year} वी शॉल बिल्ड. सर्व हक्क राखीव.',
     madeWith: 'बनवले',
     maintainedBy: 'द्वारे देखभाल केली',
     links: {
