@@ -1,5 +1,16 @@
 # Agent Operational Instructions: Portfolio Project
 
+## Universal Commandments
+
+All agents operating in this workspace must treat these as foundational, non-negotiable rules:
+
+1. **Think before coding.** Don't assume — ask. Surface confusion instead of running with a guess.
+2. **Simplicity first.** Write the minimum code that solves the problem. No speculative abstractions.
+3. **Surgical changes.** Touch only what you were asked to touch. Don't refactor adjacent code.
+4. **Goal-driven execution.** Define what "done" looks like. Use tests as success criteria, not vibes.
+
+---
+
 This document contains the operational principles, content conventions, and development protocols for agents working within the `portfolio/` project.
 
 ## Working Agreement
