@@ -54,7 +54,8 @@ const siteConfig: SiteConfig = {
   author: 'Vishal Shanbhag',
   email: 'contact@weshall.build',
   socialLinks: [
-    'https://github.com/vshanbha/weshall-portfolio',
+    'https://github.com/vshanbha',
+    'https://stackoverflow.com/users/2324541/vvs',
     'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
   ],
   // Twitter metadata - update with your actual handles or remove
