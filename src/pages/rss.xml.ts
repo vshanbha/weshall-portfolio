@@ -23,7 +23,7 @@ function formatRfc822Date(date: Date): string {
 
 export async function GET(context: APIContext) {
   // Get only English, non-draft posts for RSS
-  const posts = await getCollection('blog', ({ data }) =>
+  const posts = await getCollection('articles', ({ data }) =>
     data.locale === 'en' && !data.draft
   );
 

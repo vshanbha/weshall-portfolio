@@ -1,0 +1,15 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "lsp": true,
+  "model": "opencode-go/deepseek-v4-flash",
+  "agent": {
+    "plan": {
+      "model": "opencode-go/glm-5.2"
+    }
+  },
+  "skills": {
+    "paths": [
+      "skills"
+    ]
+  }
+}
