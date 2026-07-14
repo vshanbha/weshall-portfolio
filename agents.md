@@ -1,5 +1,16 @@
 # Agent Operational Instructions: Portfolio Project
 
+## Universal Commandments
+
+All agents operating in this workspace must treat these as foundational, non-negotiable rules:
+
+1. **Think before coding.** Don't assume — ask. Surface confusion instead of running with a guess.
+2. **Simplicity first.** Write the minimum code that solves the problem. No speculative abstractions.
+3. **Surgical changes.** Touch only what you were asked to touch. Don't refactor adjacent code.
+4. **Goal-driven execution.** Define what "done" looks like. Use tests as success criteria, not vibes.
+
+---
+
 This document contains the operational principles, content conventions, and development protocols for agents working within the `portfolio/` project.
 
 ## Working Agreement
@@ -78,7 +89,9 @@ Agents must NOT automate or bypass this gate. Content arriving in `portfolio/src
 - **AI Safety:** AI agents may draft components, propose styling, and suggest content structure. They must NOT deploy directly, alter production configuration, or bypass human review.
 - **Data Integrity:** Agents MUST NOT delete, move, rename, or otherwise modify files or directory structures without explicit, prior user approval for each specific action.
 - **Shell Command Integrity:** All shell commands must be executed independently. Do not chain commands using operators like `&&`, `;`, `||`, or pipes `|` when multiple distinct actions are involved. Each command must be proposed and approved separately.
+- **Shell Command Integrity:** All shell commands must be executed independently. Do not chain commands using operators like `&&`, `;`, `||`, or pipes `|` when multiple distinct actions are involved. Each command must be proposed and approved separately.
 - **No Secrets in Code:** Never commit environment variables, API keys, or secrets. Use `.env` (gitignored) and reference `.env.example` for documentation.
+- **Locale Integrity:** When modifying translation files (`src/i18n/translations/*.ts`), existing translations in non-English locales (de, hi, mr) must be preserved. Never replace a language-specific translation with English text. If new content needs to be added to a locale file and no translation exists, add the English text as a placeholder AND flag it in a comment (e.g. `// TODO: translate`). For brand names that appear in all locales, transliterate into the target script (e.g. Devanagari for hi/mr) rather than keeping Roman script.
 
 ## Astro Technical Standards (Iron Laws)
 
@@ -211,7 +224,7 @@ See [Velocity Configuration](https://docs.deployvelocity.com/configuration/) for
 
 ## Deployment
 
-The site is configured for deployment on Netlify, Vercel, or Cloudflare Pages. Security headers, caching, and build configuration are defined in `netlify.toml`, `vercel.json`, and `wrangler.toml`. See [Velocity Deployment](https://docs.deployvelocity.com/deployment/) for platform-specific guidance.
+The site deploys to **GitHub Pages** via GitHub Actions. Deployment happens automatically on merge to `main`. See [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) for environment variables, scenarios (local, GitHub Pages, custom domain), and troubleshooting.
 
 ## Skills
 
@@ -238,11 +251,13 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 | View history | `git log --oneline -10` |
 | Stage files | `git add <file>` |
 | Commit | `git commit -m "message"` |
-| Push | `git push origin main` |
+| Push | `git push origin <branch>` (never push directly to `main`) |
 | Pull | `git pull origin main` |
-| Create PR | `gh pr create --title "title" --body "description"` |
+| Create PR | `gh pr create --base main --head <branch> --title "title" --body "description"` |
 | List PRs | `gh pr list` |
 | View PR | `gh pr view <number>` |
+| View issue | `gh issue view <number>` |
+| Comment on issue | `gh issue comment <number> --body "comment text"` |
 | Run tests | `pnpm test` |
 | Run E2E tests | `pnpm test:e2e` |
 | Full validation | `pnpm validate` |
@@ -254,6 +269,7 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 - **Use descriptive commit messages** that explain what and why, not just what.
 - **Branch for features:** `git checkout -b feature/描述` for non-trivial changes.
 - **Run `pnpm validate`** (lint + check + build) before committing web changes.
+- **Pre-push hook:** E2E tests run automatically via `.githooks/pre-push`. If the hook isn't active on a fresh clone, run `git config core.hooksPath .githooks` once.
 - **Run `git pull` before starting work** to ensure you're on the latest.
 - **Check `gh pr list`** before creating PRs to avoid duplicates.
 - **One concern per commit** — keep changes focused and reviewable.

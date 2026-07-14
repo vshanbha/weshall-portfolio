@@ -1,18 +1,23 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
+import { useTranslations } from '@/i18n/index';
+import { getLocaleFromPath } from '@/i18n/config';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
 ---
 
 <PageLayout
-  title="Components"
-  description="Component showcase"
+  title={t('approach.meta.title')}
+  description={t('approach.meta.description')}
 >
   <section class="py-24 md:py-32">
     <div class="container mx-auto px-4 text-center">
       <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-        Components
+        {t('approach.hero.title')}
       </h1>
       <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-        This page is under construction. We shall build it soon.
+        {t('approach.hero.description')}
       </p>
     </div>
   </section>
