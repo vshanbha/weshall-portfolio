@@ -141,10 +141,10 @@ test.describe('Layout Structure', () => {
     });
   }
 
-  test('footer GitHub link points to project repo', async ({ page }) => {
+  test('footer GitHub link points to user profile', async ({ page }) => {
     await page.goto('/');
     const githubLink = page.locator('footer a[href*="github.com"]');
     await expect(githubLink).toBeVisible();
-    await expect(githubLink).toHaveAttribute('href', /vshanbha\/weshall-portfolio/);
+    await expect(githubLink).toHaveAttribute('href', /github\.com\/vshanbha/);
   });
 });
