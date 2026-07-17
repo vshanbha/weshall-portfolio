@@ -18,7 +18,7 @@ This document contains the operational principles, content conventions, and deve
 All work follows the **Agent Workflow** defined in [`docs/AgentWorkflow.md`](docs/AgentWorkflow.md). This covers:
 
 - **Phase lifecycle:** Scoping → Design → Review (Gate A) → Build → Validation → Final Review (Gate B)
-- **Branching policy:** `issue-<number>-<description>` feature branches
+- **Branching policy:** `issue-<number>-<description>` feature branches for development work. For blog content exports, use a single shared branch named `feature/article`.
 - **Definition of Done:** Explicit verification against acceptance criteria
 - **Quality matrix:** Validation commands and gate requirements
 
