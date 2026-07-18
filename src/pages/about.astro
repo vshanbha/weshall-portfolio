@@ -83,7 +83,7 @@ const tr = getTranslations(locale) as TranslationKeys;
       <p class="text-muted-foreground mb-8">{t('about.speaking.articles.intro')}</p>
       <h3 class="text-xl font-semibold font-display mb-4">{t('about.speaking.articles.title')}</h3>
       <ol class="space-y-3 list-decimal list-inside">
-        {tr.about.speaking.articles.items.map((item) => (
+        {tr.about.speaking.articles.items.map((item: { title: string; url: string; platform: string }) => (
           <li class="text-muted-foreground">
             {item.url ? (
               <a

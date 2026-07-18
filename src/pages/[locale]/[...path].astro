@@ -1,9 +1,10 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import PageLayout from '@/layouts/PageLayout.astro';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import BlogCard from '@/components/blog/BlogCard.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
@@ -49,7 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return paths;
 };
 
-const { locale, path } = Astro.params;
+const { locale } = Astro.params;
 const type = (Astro.props as { type?: string }).type || 'unknown';
 const resolvedLocale = (locale || defaultLocale) as Locale;
 const t = useTranslations(resolvedLocale);
@@ -60,10 +61,10 @@ const isPage = type === 'page';
 const isArticle = type === 'article';
 
 const routeId = (Astro.props as { routeId?: string }).routeId;
-const entry = (Astro.props as { entry?: any }).entry;
+const entry = (Astro.props as { entry?: CollectionEntry<'articles'> }).entry;
 
 // Fetch blog listing data if needed (also used for static generation)
-let blogEntries: any[] = [];
+let blogEntries: CollectionEntry<'articles'>[] = [];
 if (isHome || isPage) {
   const allEntries = await getCollection('articles', ({ data }) => {
     return import.meta.env.PROD ? data.draft !== true : true;
@@ -80,14 +81,14 @@ if (isHome || isPage) {
     });
 }
 
-let articleEntry: any = null;
+let articleEntry: CollectionEntry<'articles'> | null = null;
 let Content: any = null;
 let canonicalUrl: URL | null = null;
 let ogImageUrl: string | null = null;
 
 if (isArticle && entry) {
   articleEntry = entry;
-  const rendered = await articleEntry.render();
+  const rendered = await render(articleEntry);
   Content = rendered.Content;
   canonicalUrl = new URL(`/${resolvedLocale}/blog/${articleEntry.id}/`, Astro.site);
   const img = articleEntry.data.image;
@@ -100,16 +101,59 @@ if (isArticle && entry) {
 {
   isHome ? (
     <PageLayout title={t('site.name')} description={t('site.description')}>
-      <section class="py-24 md:py-32">
-        <div class="container mx-auto px-4 text-center">
-          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            {t('site.name')}
-          </h1>
-          <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('site.description')}
-          </p>
+      <CTA variant="default" size="xl">
+        <Fragment slot="heading">
+          <h1>{t('hero.title')}</h1>
+        </Fragment>
+        <Fragment slot="description">
+          <p>{t('hero.bridge')}</p>
+        </Fragment>
+        <Fragment slot="actions">
+          <Button variant="primary" size="lg" href={`/${resolvedLocale}/contact`}>
+            {t('hero.cta.primary')}
+          </Button>
+          <Button variant="outline" size="lg" href={`/${resolvedLocale}/blog`}>
+            {t('hero.cta.secondary')}
+          </Button>
+        </Fragment>
+      </CTA>
+
+      <section class="py-16 md:py-24 bg-muted/50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold font-display text-center mb-12">
+            {t('home.stories.title')}
+          </h2>
+          <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto auto-rows-fr">
+            {tr.home.stories.items.map((item: any) => (
+              <Card variant="default" padding="lg" class="h-full flex flex-col">
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">{item.title}</h3>
+                  <p class="text-xs text-muted-foreground mb-4">{item.subtitle}</p>
+                </div>
+                <div class="space-y-3 flex-1">
+                  {item.paragraphs.map((p: string) => (
+                    <p class="text-sm text-muted-foreground leading-relaxed">{p}</p>
+                  ))}
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
+
+      <CTA variant="default" size="lg">
+        <Fragment slot="heading">
+          <h2>{t('cta.title')}</h2>
+        </Fragment>
+        <Fragment slot="description">
+          <p>{t('cta.description')}</p>
+        </Fragment>
+        <Fragment slot="actions">
+          <Button variant="primary" size="lg" href={`/${resolvedLocale}/contact`}>
+            {t('cta.button')}
+          </Button>
+        </Fragment>
+      </CTA>
     </PageLayout>
   ) : isPage && routeId === 'about' ? (
     <PageLayout title={t('about.meta.title')} description={t('about.meta.description')}>
