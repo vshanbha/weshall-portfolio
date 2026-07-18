@@ -126,32 +126,27 @@ export function createPersonSchema(): WithContext<Person> {
     name: 'Vishal Shanbhag',
     givenName: 'Vishal',
     familyName: 'Shanbhag',
-    jobTitle: 'Senior Java Architect & Engineering Lead',
+    jobTitle: 'Senior Architect & Engineering Lead',
     url: `${siteConfig.url}/about`,
     sameAs: [
       'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
-      'https://github.com/vshanbha/weshall-portfolio',
       'https://www.baeldung.com/author/vishalshanbhag/',
       'https://javapro.io/author/vishalshanbhag/',
       'https://medium.com/@vvsvish',
     ],
     knowsAbout: [
-      'Enterprise Java',
-      'Spring Boot',
-      'Quarkus',
+      'Enterprise Architecture',
       'AI Integration',
-      'LangChain4J',
-      'Cloud Architecture',
-      'Kubernetes',
-      'Workflow Automation',
-      'Banking Systems',
+      'Java/JVM',
+      'Cloud-Native Architecture',
+      'Banking & FinTech',
       'Technical Leadership',
     ],
     alumniOf: {
       '@type': 'CollegeOrUniversity',
       name: 'Mumbai University',
     },
-    knowsLanguage: ['English', 'German', 'Hindi', 'Marathi', 'Konkani'],
+    knowsLanguage: ['English', 'Hindi', 'Marathi', 'Konkani', 'German'],
   };
 }
 
@@ -163,34 +158,23 @@ export function createServiceSchema(): WithContext<Service> {
     '@context': 'https://schema.org',
     '@type': 'Service',
     serviceType: [
-      'Enterprise AI Integration',
-      'Architecture Evolution',
+      'Senior Architecture Advisory',
+      'AI Integration',
+      'Technical Hiring Advisory',
       'Embedded Engineering',
-      'Technical Advisory',
     ],
     provider: {
       '@type': 'Person',
       name: 'Vishal Shanbhag',
-      jobTitle: 'Senior AI Engineer | Java Architect | Enterprise Integration Specialist',
+      jobTitle: 'Senior Architect & Engineering Lead',
       url: siteConfig.url,
       sameAs: [
         'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
-        'https://github.com/vshanbha',
       ],
     } as Person,
     description:
-      'Senior architect and hands-on engineer helping product companies evolve architecture, integrate AI into production, and build systems that ship. 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products.',
+      'Senior engineering judgement for post-MVP companies. Architecture, hiring, tech selection, and hardening. 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products.',
     areaServed: ['DE', 'UK', 'US', 'EU'],
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Engineering Services',
-      itemListElement: [
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Enterprise AI Integration' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Architecture Evolution' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Embedded Engineering' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Technical Advisory' } },
-      ],
-    },
   };
 }
 

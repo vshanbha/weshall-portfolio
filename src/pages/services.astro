@@ -1,0 +1,60 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { useTranslations, getTranslations } from '@/i18n/index';
+import { getLocaleFromPath } from '@/i18n/config';
+import type { TranslationKeys } from '@/i18n/translations/en';
+import Button from '@/components/ui/form/Button/Button.astro';
+import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import { createServiceSchema } from '@/lib/schema';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+const tr = getTranslations(locale) as TranslationKeys;
+---
+
+<PageLayout
+  title={t('services.meta.title')}
+  description={t('services.meta.description')}
+>
+  <!-- Section 1 — Hero -->
+  <section class="py-24 md:py-32">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl font-display text-balance">
+        {t('services.hero.title')}
+      </h1>
+      <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
+        {t('services.hero.description')}
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 2 — How I work -->
+  <section class="py-16 md:py-24 bg-muted/50">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 class="text-3xl font-bold font-display text-center mb-8">
+        {t('services.howwork.title')}
+      </h2>
+      {tr.services.howwork.paragraphs.map((p: string) => (
+        <p class="mb-4 text-muted-foreground leading-relaxed">{p}</p>
+      ))}
+    </div>
+  </section>
+
+  <!-- Section 3 — CTA (Sounding Board) -->
+  <CTA variant="default" size="lg">
+    <Fragment slot="heading">
+      <h2 class="text-3xl font-bold font-display text-balance">{t('services.cta.title')}</h2>
+    </Fragment>
+    <Fragment slot="description">
+      <p>{t('services.cta.description')}</p>
+    </Fragment>
+    <Fragment slot="actions">
+      <Button variant="primary" size="lg" href="/contact">
+        {t('services.cta.button')}
+      </Button>
+    </Fragment>
+  </CTA>
+
+  <JsonLd schema={createServiceSchema()} />
+</PageLayout>

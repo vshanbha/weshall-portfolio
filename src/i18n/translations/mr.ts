@@ -10,8 +10,7 @@ export const mr = {
     home: 'मुख्यपृष्ठ',
     about: 'आमच्याबद्दल',
     blog: 'ब्लॉग',
-    work: 'Work',
-    approach: 'Approach',
+    services: 'What I do', // TODO: translate
     contact: 'संपर्क',
     features: 'वैशिष्ट्ये',
     docs: 'दस्तऐवज',
@@ -26,14 +25,15 @@ export const mr = {
     copied: 'कॉपी झाले!',
     copy: 'कॉपी करा',
   },
+
+  // Hero Section
   hero: {
-    badge: '',
-    title: 'Senior architect and hands-on engineer.',
-    titleHighlight: '',
-    description: '20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products. I integrate AI into real production environments — not demos, not hype. I build products, evolve architectures, and keep systems running while they change.',
-    cta: 'Start a Conversation',
-    github: 'Read My Work',
-    socialProof: '',
+    title: 'Build what matters.', // TODO: translate
+    bridge: 'For founders and technical leads at growth-stage companies: senior engineering judgement when the stakes are high and the path isn\'t clear.', // TODO: translate
+    cta: {
+      primary: 'Talk to me', // TODO: translate
+      secondary: 'Read the latest', // TODO: translate
+    },
   },
   techStack: {
     astro: {
@@ -147,101 +147,149 @@ export const mr = {
       license: 'परवाना',
     },
   },
+  // Home page
+  // TODO: translate
   home: {
-    capabilities: {
-      title: 'What I Do',
+    stories: {
+      title: 'Engagement stories', // TODO: translate
       items: [
-        { title: 'Enterprise Architecture', description: 'Design and evolve the systems that keep financial institutions running and product companies scaling across banking, SaaS, and AI.' },
-        { title: 'AI Integration', description: 'Integrate AI into existing production environments — not demos, not prototypes. LangChain4J, RAG, MCP, and governance-aware adoption.' },
-        { title: 'Hands-on Engineering', description: 'Java/JVM, Spring Boot, Quarkus, GraalVM, cloud-native, Kubernetes. I write code, ship features, and keep systems running while they change.' },
-        { title: 'Technical Leadership', description: 'Partner alongside growing teams as a safe pair of hands. Low ego, high signal. Commitment, not Commandment.' },
+        {
+          title: 'BlueMoney',
+          subtitle: 'Short-term lending, Nigeria',
+          paragraphs: [
+            'Three founders with successful careers elsewhere wanted to pivot from inventory lending into a regulated short-term lending business. They understood their customer intimately: small businesses dealing primarily in cash, no credit history, but creditworthy.', // TODO: translate
+            'Their in-house developer was promoted to Founding Engineer, but lending is a regulated business. I came in around July\u00a02025 to map the loan workflow and compare platforms. I convinced them to use mature software instead of building from scratch. By October they were technically ready; launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.', // TODO: translate
+          ],
+        },
+        {
+          title: 'Inbotiqa',
+          subtitle: 'Enterprise email processing, global banking',
+          paragraphs: [
+            'I joined as the founding engineer. We built the system that processes 100,000+ transactional emails a day for global banking, at 99.9% availability.',
+            'The numbers I care about are the operational ones: turnaround-time compliance went from 40–60% to over 95%; same-day close-out from 22% to 85%; email volume dropped 43%, and complaints went to zero.',
+            'Inbotiqa is a Techstars portfolio company and went through their Fintech accelerator in London in 2019.',
+          ],
+        },
+        {
+          title: 'HDFC Life Insurance',
+          subtitle: 'Strategic architecture consulting, India',
+          paragraphs: [
+            'Led the evaluation and selection of Serverless/MBaaS platforms in 2015, years before they became industry standard. Architected an internal mobile platform for policyholders\' families to request verified home care for elderly parents.',
+            'The work was strategic architecture consulting: evaluating nascent technology, making the build vs. buy decision, and designing a system that would remain maintainable long after the engagement ended.',
+          ],
+        },
       ],
     },
-    socialProof: {
-      title: 'Trusted by',
-      items: ['Techstars Fintech Accelerator', 'Carbon13 Climate-Tech Venture Builder', 'Baeldung — Contributing Author', 'JavaPro — Contributing Author', 'Jcon — Gen AI Speaker (Ljubljana, 2025)'],
-    },
-    articles: {
-      title: 'Latest Writing',
-      emptyTitle: 'Coming soon',
-      emptyDescription: 'Articles on enterprise architecture, AI integration, and the engineering patterns that survive production reality are in the works.',
-      subscribe: 'Get notified when I publish',
-    },
   },
-  work: {
-    meta: { title: 'What I Do', description: 'Senior architect and hands-on engineer. Enterprise Java, AI integration, cloud-native systems.' },
-    hero: { title: 'What I Do', titleHighlight: '', description: 'I work with product companies that are past the prototype stage — helping them evolve from startup chaos into enterprise-capable operational maturity without losing momentum.' },
-    services: {
-      title: 'How I Can Help',
-      description: 'Every engagement starts with understanding your constraints. Then we figure out what needs to change, and what needs to stay the same.',
-      items: [
-        { title: 'Enterprise AI Integration', description: 'Bringing AI into production environments — not demos, not prototypes. I help teams navigate the gap between AI experimentation and systems that stay reliable, measurable and maintainable six months later.' },
-        { title: 'Architecture Evolution', description: 'Helping companies move from monolithic startup architecture to cloud-native systems without rewriting everything at once. I sequence architectural change pragmatically — preserving operational continuity while evolving toward enterprise readiness.' },
-        { title: 'Embedded Engineering', description: 'I work alongside existing teams as a hands-on contributor — building features, hardening infrastructure, and raising engineering standards from the inside. This is not detached consulting; it is delivery-oriented partnership.' },
-        { title: 'Technical Advisory', description: 'Architecture reviews, strategy workshops, and independent technical assessment for leadership teams facing critical decisions. I help translate technical risk into business language.' },
+  // Services page
+  // TODO: translate
+  services: {
+    meta: {
+      title: 'What I do', // TODO: translate
+      description: 'Senior engineering judgement for growth-stage companies. Architecture, hiring, tech selection, and hardening.', // TODO: translate
+    },
+    hero: {
+      title: 'Senior engineering judgement.',
+      description: 'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.', // TODO: translate
+    },
+    howwork: {
+      title: 'How I work',
+      paragraphs: [
+        'I work alongside founders and technical leads who need senior engineering judgement — for a decision, a hire, a technology bet, or a sanity check.', // TODO: translate
+        'The relationship starts with a conversation. A paid sounding board session, 30 or 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.', // TODO: translate
+        'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.', // TODO: translate
       ],
     },
-    process: {
-      title: 'How I Work',
-      description: 'I start with a low-risk engagement so you can evaluate whether the collaboration works — then we build from there.',
-      items: [
-        { title: 'Phase 1: Discovery & Trial', description: 'A structured engagement — typically two to four weeks — where I work directly with your team to understand your architecture, your constraints, and your goals.' },
-        { title: 'Phase 2: Embedded Partnership', description: 'If Phase 1 demonstrates value, we move into an ongoing embedded engagement — part-time or full-time, remote or on-site — where I drive the agreed evolution while your team continues shipping.' },
-      ],
+    cta: {
+      title: 'Talk to me', // TODO: translate
+      description: 'A 30-minute or 60-minute sounding board session. No pitch, no obligation.', // TODO: translate
+      button: 'Talk to me', // TODO: translate
     },
-    cta: { title: "Let's Talk", description: 'Not sure what you need yet? That is exactly the right place to start. Send me a message and we will figure it out together.', button: 'Start a Conversation' },
   },
-  approach: {
-    meta: { title: 'Approach', description: 'How I think about engineering, architecture, and building systems that ship.' },
-    hero: { title: 'Approach', titleHighlight: '', description: 'How I think about engineering, architecture, and building systems that ship.' },
-  },
+
+  // About page
   about: {
-    meta: { title: 'About', description: 'Senior Java Architect and Engineering Lead with 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products.' },
-    hero: { title: 'Senior architect and', titleHighlight: 'hands-on engineer.', description: '20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products. I integrate AI into real production environments — not demos, not hype. I build products, evolve architectures, and keep systems running while they change.' },
-    competencies: {
-      title: 'Core Competencies',
-      items: [
-        { title: 'Enterprise Java & JVM Systems', description: 'Deep expertise across Java (8–21), Spring Boot, Quarkus, Hibernate, event-driven and distributed architectures for high-throughput transactional systems.' },
-        { title: 'AI & Agentic Systems', description: 'Practical implementation of LLM integration, LangChain4J, RAG, MCP, and AI-assisted engineering workflows with a production-first mindset.' },
-        { title: 'Cloud-Native Architecture', description: 'Hands-on experience with AWS, Azure, Kubernetes, Docker, serverless patterns, and cloud-native Java deployments at scale.' },
-        { title: 'Workflow & Search Platforms', description: 'Large-scale workflow automation, Apache Solr, enterprise search, and systems processing 100,000+ transactional events daily with full auditability.' },
-        { title: 'Technical Leadership', description: 'Fractional CTO, team building, startup technical strategy, and enterprise consulting — partnering with growing teams as a builder who ships.' },
+    // TODO: translate
+    meta: {
+      title: 'About',
+      description: 'Builder, senior architect, and hands-on engineer. 20+ years from Mumbai to Cologne.',
+    },
+    origin: {
+      title: 'Origin',
+      paragraphs: [
+        'I come from Mumbai, India. These days I am in Hürth, near Cologne, Germany.',
+        'I graduated as an electronics engineer from Mumbai University in 2002. I stumbled into software because, after the 9/11 attacks of 2001, jobs dried up and a financial crisis loomed. The software industry was the first to hire. I have been building production systems ever since.',
+        'I came to Germany in 2023 because my wife was transferred. I like to travel, and the startup, software, and climate tech scene here? Das gefällt mir. I am staying.',
+        'I speak five languages at varying levels of decline: English — native, Hindi and Marathi native, Konkani conversational, German at B1 and counting.',
       ],
     },
-    experience: {
-      title: 'Selected Experience',
-      items: [
-        { role: 'Founding Engineer / CTO', company: 'Inbotiqa', period: '2011 – Present', summary: 'Architected and delivered YUDOmail, an enterprise email productivity SaaS platform for global banking. Processing 100,000+ transactional emails daily with 3,000+ user concurrency.' },
-        { role: 'Technical Advisor (Architecture & Strategy)', company: 'BauAI', period: '2025 – 2026', summary: 'Provided strategic guidance transitioning an AI-generated codebase into a structured, sustainable production environment.' },
-        { role: 'Strategic Architecture Consultant', company: 'HDFC Life Insurance', period: '2015 – 2016', summary: 'Architected an internal mobile platform enabling policyholders to request verified home care for elderly parents. Led early evaluation and adoption of serverless/MBaaS platforms.' },
-        { role: 'Team Leader – AVP', company: 'Nomura / Lehman Brothers', period: '2006 – 2011', summary: 'Managed infrastructure and development for BPM Centre of Excellence, leading a team of ~5 engineers. Designed high-throughput email case management systems for operational exception handling.' },
+    whatido: {
+      title: 'What I do', // TODO: translate
+      paragraphs: [
+        'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype — and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
+        'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.', // TODO: translate
+        'I work with companies that have found their footing and need to build the systems that carry them through the next phase — without breaking what is already working.', // TODO: translate
       ],
     },
-    publications: {
-      title: 'Publications & Speaking',
-      items: [
-        { title: 'Bridging Java and Python for AI/ML in Production', url: 'https://javapro.io/2026/03/10/bridging-java-and-python-for-ai-ml-in-production-the-case-for-graalpy-on-graalvm/', platform: 'JavaPro' },
-        { title: 'Greener Code: Sustainable Java Deployments', url: 'https://javapro.io/2025/06/11/greener-code-sustainable-java-deployments-with-native-builds-and-knative-serverless-on-kubernetes/', platform: 'JavaPro' },
-        { title: 'How to Secure Ollama Server', url: 'https://medium.com/@vvsvish/how-to-secure-ollama-server-64cde5e59971', platform: 'Medium' },
-        { title: 'Terminal is Back', url: 'https://medium.com/@vvsvish/terminal-is-back-473221f94c19', platform: 'Medium' },
-        { title: 'Baeldung Author Page', url: 'https://www.baeldung.com/author/vishalshanbhag/', platform: 'Baeldung' },
-        { title: "Hitchhiker's Guide to the AI Galaxy – for Java Developers", url: '', platform: 'Jcon Gen AI (Ljubljana, 2025)' },
+    careerarc: {
+      title: 'The career arc, briefly',
+      paragraphs: [
+        'My first big job out of university was at <strong>Infosys</strong>, in their Banking & Capital Markets group. That is where I got my first global exposure: on-site in Richmond, Virginia, for a major US bank, harmonising a relational data model across 500+ tables.',
+        '2006 took me to <strong>Lehman Brothers</strong> in Mumbai. I survived the 2008 bankruptcy. Met my future co-founder there.',
+        'A stint at <strong>Nomura</strong> followed, and in 2011, I joined as the founding engineer. We built <strong>Inbotiqa</strong> together.',
       ],
-    },
-    philosophy: {
-      title: 'Engineering Philosophy',
-      quotes: [
-        'Production systems do not care about AI hype cycles. Operational reliability eventually defeats architectural fashion.',
-        'The interesting enterprise problem is not "how do we add more AI agents?" but "how do we integrate AI into existing systems and engineering workflows in ways that remain reliable, measurable and maintainable six months later?"',
-        'AI is a tool, not a substitute for architectural discipline. Cost and operational awareness must drive architecture over uncontrolled experimentation.',
+      highlights: [
+        {
+          name: 'Inbotiqa / YUDOmail',
+          description: ' is the work I am asked about most. I built the system that processes 100,000+ transactional emails a day for global banking, at 99.9% availability. The numbers I care about are the operational ones: turnaround-time compliance went from 40–60% to over 95%; same-day close-out from 22% to 85%; email volume dropped 43%, and complaints went to zero. Inbotiqa is a Techstars portfolio company and went through their Fintech accelerator in London in 2019.',
+        },
+        {
+          name: 'BauAI',
+          description: ' (Sep 2025 – Feb 2026) is the most recent. A vibe-coding-generated codebase that needed to become a scalable, production-ready product. The work was less "add more AI" and more "decide which AI-generated decisions survive contact with users."',
+        },
       ],
+      earlier: 'Earlier: <strong>HDFC Life Insurance</strong> (early serverless, 2015), <strong>Progress Software</strong> (2011).',
+      linkedin: {
+        text: 'Connect with me on LinkedIn',
+        url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+        note: '; drop a note when you connect, or I might filter you as spam.',
+      },
     },
-    cta: { title: 'Have a problem worth solving?', button: 'Start a Conversation' },
+    speaking: {
+      title: 'Speaking, writing, mentorship',
+      articles: {
+        title: 'Select articles',
+        intro: 'I write for JavaPro and Baeldung — two names every Java professional recognises.', // TODO: translate
+        items: [
+          { title: 'Bridging Java and Python for AI/ML in Production: The Case for GraalPy on GraalVM', url: 'https://javapro.io/2026/03/10/bridging-java-and-python-for-ai-ml-in-production-the-case-for-graalpy-on-graalvm/', platform: 'JavaPro' },
+          { title: 'Greener Code: Sustainable Java Deployments with Native Builds and Knative Serverless on Kubernetes', url: 'https://javapro.io/2025/06/11/greener-code-sustainable-java-deployments-with-native-builds-and-knative-serverless-on-kubernetes/', platform: 'JavaPro' },
+          { title: 'How to Secure Ollama Server', url: 'https://medium.com/@vvsvish/how-to-secure-ollama-server-64cde5e59971', platform: 'Medium' },
+          // TODO: translate
+          { title: 'Flutter ain\'t going away', url: 'https://medium.com/@vvsvish', platform: 'Level Up Coding' },
+          // TODO: translate
+          { title: 'Why you shouldn\'t use Langchain\'s indexing API?', url: 'https://medium.com/@vvsvish', platform: 'Level Up Coding' },
+          { title: 'Baeldung Author Page', url: 'https://www.baeldung.com/author/vishalshanbhag/', platform: 'Baeldung' },
+        ],
+      },
+    },
+    offtheclock: {
+      title: 'Off the clock',
+      paragraphs: [
+        'I trek, I travel, I write — in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, and is named after my hometown. Yes, it confuses everyone.', // TODO: translate
+        "I got married first, fell in love later — in India, that is called an arranged marriage. I do not read books much, but the Mahabharata, R.K. Narayan's condensed English version, which I read years ago, is the one that has stayed with me. I grew up on Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music.", // TODO: translate
+      ],
+      closingLead: 'If you have an idea that needs software to give it life, ', // TODO: translate
+      closing: 'talk to me.', // TODO: translate
+    },
+    cta: {
+      title: 'Have a problem worth solving?',
+      button: 'Start a Conversation',
+    },
   },
   contact: {
     meta: {
       title: 'संपर्क करा',
-      description: 'व्हेलॉसिटी टीमशी संपर्क साधा.',
+      description: 'विशाल शानभागशी संपर्क साधा.',
     },
     hero: {
       badge: 'संपर्कात रहा',
@@ -268,15 +316,15 @@ export const mr = {
       title: 'आमच्यापर्यंत पोहोचण्याचे इतर मार्ग',
       email: {
         label: 'ईमेल',
-        value: 'hello@velocity.dev',
+        value: 'contact@weshall.build',
       },
       github: {
         label: 'GitHub',
-        value: 'github.com/velocity',
+        value: 'github.com/vshanbha',
       },
       twitter: {
         label: 'Twitter',
-        value: '@velocity_dev',
+        value: '',
       },
     },
   },

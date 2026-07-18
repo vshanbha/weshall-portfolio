@@ -88,8 +88,8 @@ const {
   colorScheme = 'default',
   nav,
   extraNav = [],
-  showCta = false,
-  cta = { label: 'Get Started', href: '#cta' },
+  showCta = true,
+  cta = { label: "Let's talk", href: '/contact' },
   actions = [],
   showThemeToggle = true,
   showLanguageSwitcher = true,
@@ -197,7 +197,7 @@ const buttonId = `${menuId}-button`;
         <a href={getLocalizedPath('home', locale)} class="flex items-center gap-2">
           <Logo size={size === 'lg' ? 'md' : 'sm'} forceDark={isInvert} />
           <span class={cn(
-            'font-display text-xl font-bold tracking-tight',
+            'font-display text-xl font-bold tracking-tight whitespace-nowrap',
             isInvert ? 'text-on-invert' : 'text-brand-500'
           )}>
             {logoText || siteConfig.name}
