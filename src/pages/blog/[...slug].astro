@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import { createBlogPostSchema } from '@/lib/schema';
@@ -17,8 +17,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
 };
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { entry } = Astro.props as { entry: CollectionEntry<'articles'> };
+const { Content } = await render(entry);
 
 const canonicalUrl = new URL(`/blog/${entry.id}/`, Astro.site);
 
