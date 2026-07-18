@@ -171,26 +171,25 @@ export const en = {
         {
           title: 'BlueMoney',
           subtitle: 'Short-term lending, Nigeria',
+          href: '/stories/bluemoney',
           paragraphs: [
-            'Three founders with successful careers elsewhere wanted to pivot from inventory lending into a regulated short-term lending business. They understood their customer intimately: small businesses dealing primarily in cash, no credit history, but creditworthy.',
-            'Their in-house developer was promoted to Founding Engineer, but lending is a regulated business. I came in around July\u00a02025 to map the loan workflow and compare platforms. I convinced them to use mature software instead of building from scratch. By October they were technically ready; launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.',
+            'Pivoted a three-founder team from inventory lending into a regulated short-term lending business in Nigeria. Convinced them to buy mature platforms instead of building from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.',
           ],
         },
         {
           title: 'Inbotiqa',
           subtitle: 'Enterprise email processing, global banking',
+          href: '/stories/inbotiqa',
           paragraphs: [
-            'I joined as the founding engineer. We built the system that processes 100,000+ transactional emails a day for global banking, at 99.9% availability.',
-            'The numbers I care about are the operational ones: turnaround-time compliance went from 40–60% to over 95%; same-day close-out from 22% to 85%; email volume dropped 43%, and complaints went to zero.',
-            'Inbotiqa is a Techstars portfolio company and went through their Fintech accelerator in London in 2019.',
+            'Founding engineer at a Techstars portfolio company. Built the platform processing 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.',
           ],
         },
         {
           title: 'HDFC Life Insurance',
           subtitle: 'Strategic architecture consulting, India',
+          href: '/stories/hdfc-life',
           paragraphs: [
-            'Led the evaluation and selection of Serverless/MBaaS platforms in 2015, years before they became industry standard. Architected an internal mobile platform for policyholders\' families to request verified home care for elderly parents.',
-            'The work was strategic architecture consulting: evaluating nascent technology, making the build vs. buy decision, and designing a system that would remain maintainable long after the engagement ended.',
+            'Led serverless/MBaaS platform evaluation in 2015 — years before it became mainstream. Architected an internal mobile platform enabling policyholders\' families to request verified home care for elderly parents. Build-versus-buy at scale.',
           ],
         },
       ],
@@ -302,44 +301,29 @@ export const en = {
   // Contact page
   contact: {
     meta: {
-      title: 'Contact Us',
-      description: 'Get in touch with Vishal Shanbhag.',
+      title: 'Contact',
+      description: 'Connect with Vishal Shanbhag on LinkedIn or book via Upwork.',
     },
     hero: {
-      badge: 'Get in Touch',
-      title: "Let's",
-      titleHighlight: 'connect.',
-      description: 'Have a question, suggestion, or just want to say hello? We would love to hear from you.',
+      title: "Let's talk.",
+      description: 'The best way to reach me is through LinkedIn — it keeps the signal high and the noise low. If you have a clear brief, Upwork is the fastest route to a structured engagement.',
     },
-    form: {
-      title: 'Send us a message',
-      name: 'Your Name',
-      namePlaceholder: 'John Doe',
-      email: 'Email Address',
-      emailPlaceholder: 'john@example.com',
-      subject: 'Subject',
-      subjectPlaceholder: 'How can we help?',
-      message: 'Message',
-      messagePlaceholder: 'Tell us more about your project or question...',
-      submit: 'Send Message',
-      sending: 'Sending...',
-      success: 'Message sent successfully! We will get back to you soon.',
-      error: 'Failed to send message. Please try again later.',
+    linkedin: {
+      title: 'Connect on LinkedIn',
+      description: 'LinkedIn requires authentication to message, which filters out the noise. Send me a connection request with a note about what you are working on — I read every one.',
+      button: 'Connect on LinkedIn',
+      url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
-    info: {
-      title: 'Other ways to reach us',
-      email: {
-        label: 'Email',
-        value: 'contact@weshall.build',
-      },
-      github: {
-        label: 'GitHub',
-        value: 'github.com/vshanbha',
-      },
-      twitter: {
-        label: 'Twitter',
-        value: '',
-      },
+    upwork: {
+      title: 'Book via Upwork',
+      description: 'For sounding board sessions, tech-selection reports, or AI-agent hardening reviews. Fixed-price projects with a clear scope and a senior engineer on the other end.',
+      button: 'View Upwork Profile',
+      url: '#', // TODO: add Upwork profile URL
+    },
+    direct: {
+      title: 'Direct contact',
+      email: 'contact@weshall.build',
+      github: 'github.com/vshanbha',
     },
   },
 

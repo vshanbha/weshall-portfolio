@@ -2,6 +2,8 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import { useTranslations } from '@/i18n/index';
 import { getLocaleFromPath } from '@/i18n/config';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const t = useTranslations(locale);
@@ -12,12 +14,46 @@ const t = useTranslations(locale);
   description={t('contact.meta.description')}
 >
   <section class="py-24 md:py-32">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-        {t('contact.hero.title')} {t('contact.hero.titleHighlight')}
+    <div class="container mx-auto px-4 text-center max-w-3xl">
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl font-display text-balance mb-8">
+        {t('contact.hero.title')}
       </h1>
-      <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+      <p class="text-lg text-muted-foreground text-balance mx-auto max-w-2xl">
         {t('contact.hero.description')}
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-muted/50">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="grid gap-8 md:grid-cols-2">
+        <Card variant="default" padding="lg" class="flex flex-col">
+          <h2 class="text-2xl font-bold font-display mb-4">{t('contact.linkedin.title')}</h2>
+          <p class="text-muted-foreground mb-6 flex-1">{t('contact.linkedin.description')}</p>
+          <Button variant="primary" size="lg" href={t('contact.linkedin.url')}>
+            {t('contact.linkedin.button')}
+          </Button>
+        </Card>
+
+        <Card variant="default" padding="lg" class="flex flex-col">
+          <h2 class="text-2xl font-bold font-display mb-4">{t('contact.upwork.title')}</h2>
+          <p class="text-muted-foreground mb-6 flex-1">{t('contact.upwork.description')}</p>
+          <Button variant="outline" size="lg" href={t('contact.upwork.url')}>
+            {t('contact.upwork.button')}
+          </Button>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-4 text-center max-w-xl">
+      <h2 class="text-xl font-semibold font-display mb-4">{t('contact.direct.title')}</h2>
+      <p class="text-muted-foreground">
+        Email: <a href={`mailto:${t('contact.direct.email')}`} class="underline underline-offset-2 hover:text-primary transition-colors">{t('contact.direct.email')}</a>
+      </p>
+      <p class="text-muted-foreground mt-2">
+        GitHub: <a href={`https://${t('contact.direct.github')}`} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-primary transition-colors">{t('contact.direct.github')}</a>
       </p>
     </div>
   </section>
