@@ -33,7 +33,7 @@ const currentLocale = getLocaleFromPath(currentPath);
     aria-haspopup="true"
   >
     <span class="text-base">{localeFlags[currentLocale]}</span>
-    <span>{localeNames[currentLocale]}</span>
+    <span class="hidden sm:inline">{localeNames[currentLocale]}</span>
     <svg
       class="h-4 w-4 transition-transform"
       xmlns="http://www.w3.org/2000/svg"
