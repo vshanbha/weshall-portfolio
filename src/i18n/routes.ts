@@ -57,26 +57,20 @@ export const routes = {
     nav: { show: true, order: 2, label: 'nav.blog' },
   },
 
-  // Work page
-  work: {
-    en: 'work', de: 'work', hi: 'work', mr: 'work',
-    nav: { show: true, order: 3, label: 'nav.work' },
-  },
-
-  // Approach page
-  approach: {
-    en: 'approach', de: 'approach', hi: 'approach', mr: 'approach',
-    nav: { show: true, order: 4, label: 'nav.approach' },
+  // Services page
+  services: {
+    en: 'services', de: 'services', hi: 'services', mr: 'services',
+    nav: { show: true, order: 3, label: 'nav.services' },
   },
 
   // Static pages
   about: {
     en: 'about', de: 'about', hi: 'about', mr: 'about',
-    nav: { show: true, order: 5, label: 'nav.about' },
+    nav: { show: true, order: 4, label: 'nav.about' },
   },
   contact: {
     en: 'contact', de: 'contact', hi: 'contact', mr: 'contact',
-    nav: { show: true, order: 6, label: 'nav.contact' },
+    nav: { show: true, order: 5, label: 'nav.contact' },
   },
 
 } as const satisfies Record<string, RouteDefinition>;
