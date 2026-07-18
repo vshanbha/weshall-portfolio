@@ -155,27 +155,26 @@ export const mr = {
       items: [
         {
           title: 'BlueMoney',
-          subtitle: 'Short-term lending, Nigeria',
+          subtitle: 'Short-term lending, Nigeria', // TODO: translate
+          href: '/stories/bluemoney',
           paragraphs: [
-            'Three founders with successful careers elsewhere wanted to pivot from inventory lending into a regulated short-term lending business. They understood their customer intimately: small businesses dealing primarily in cash, no credit history, but creditworthy.', // TODO: translate
-            'Their in-house developer was promoted to Founding Engineer, but lending is a regulated business. I came in around July\u00a02025 to map the loan workflow and compare platforms. I convinced them to use mature software instead of building from scratch. By October they were technically ready; launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.', // TODO: translate
+            'Pivoted a three-founder team from inventory lending into a regulated short-term lending business in Nigeria. Convinced them to buy mature platforms instead of building from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.', // TODO: translate
           ],
         },
         {
           title: 'Inbotiqa',
-          subtitle: 'Enterprise email processing, global banking',
+          subtitle: 'Enterprise email processing, global banking', // TODO: translate
+          href: '/stories/inbotiqa',
           paragraphs: [
-            'I joined as the founding engineer. We built the system that processes 100,000+ transactional emails a day for global banking, at 99.9% availability.',
-            'The numbers I care about are the operational ones: turnaround-time compliance went from 40–60% to over 95%; same-day close-out from 22% to 85%; email volume dropped 43%, and complaints went to zero.',
-            'Inbotiqa is a Techstars portfolio company and went through their Fintech accelerator in London in 2019.',
+            'Founding engineer at a Techstars portfolio company. Built the platform processing 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.', // TODO: translate
           ],
         },
         {
           title: 'HDFC Life Insurance',
-          subtitle: 'Strategic architecture consulting, India',
+          subtitle: 'Strategic architecture consulting, India', // TODO: translate
+          href: '/stories/hdfc-life',
           paragraphs: [
-            'Led the evaluation and selection of Serverless/MBaaS platforms in 2015, years before they became industry standard. Architected an internal mobile platform for policyholders\' families to request verified home care for elderly parents.',
-            'The work was strategic architecture consulting: evaluating nascent technology, making the build vs. buy decision, and designing a system that would remain maintainable long after the engagement ended.',
+            'Led serverless/MBaaS platform evaluation in 2015 — years before it became mainstream. Architected an internal mobile platform enabling policyholders\' families to request verified home care for elderly parents. Build-versus-buy at scale.', // TODO: translate
           ],
         },
       ],
@@ -292,40 +291,25 @@ export const mr = {
       description: 'विशाल शानभागशी संपर्क साधा.',
     },
     hero: {
-      badge: 'संपर्कात रहा',
-      title: 'चला',
-      titleHighlight: 'कनेक्ट होऊया.',
-      description: 'प्रश्न आहे, सूचना आहे किंवा फक्त नमस्कार म्हणायचे आहे? तुमच्याकडून ऐकून आम्हाला आनंद होईल.',
+      title: 'चला बोलूया.', // TODO: translate
+      description: 'माझ्यापर्यंत पोहोचण्याचा सर्वोत्तम मार्ग LinkedIn आहे — हे सिग्नल उच्च आणि आवाज कमी ठेवते. तुमच्याकडे स्पष्ट ब्रीफ असल्यास, Upwork हा संरचित व्यस्ततेचा सर्वात जलद मार्ग आहे.', // TODO: translate
     },
-    form: {
-      title: 'आम्हाला संदेश पाठवा',
-      name: 'तुमचे नाव',
-      namePlaceholder: 'अमित शर्मा',
-      email: 'ईमेल पत्ता',
-      emailPlaceholder: 'amit@example.com',
-      subject: 'विषय',
-      subjectPlaceholder: 'आम्ही तुम्हाला कशी मदत करू शकतो?',
-      message: 'संदेश',
-      messagePlaceholder: 'तुमच्या प्रकल्पाबद्दल किंवा प्रश्नाबद्दल अधिक सांगा...',
-      submit: 'संदेश पाठवा',
-      sending: 'पाठवले जात आहे...',
-      success: 'संदेश यशस्वीरित्या पाठवला! आम्ही लवकरच तुमच्याशी संपर्क साधू.',
-      error: 'संदेश पाठविण्यात अयशस्वी. कृपया नंतर पुन्हा प्रयत्न करा.',
+    linkedin: {
+      title: 'LinkedIn वर कनेक्ट करा', // TODO: translate
+      description: 'LinkedIn ला संदेश पाठविण्यासाठी प्रमाणीकरण आवश्यक आहे, जे आवाज फिल्टर करते. तुम्ही कशावर काम करत आहात याबद्दल नोटसह मला कनेक्शन विनंती पाठवा — मी प्रत्येक वाचतो.', // TODO: translate
+      button: 'LinkedIn वर कनेक्ट करा', // TODO: translate
+      url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
-    info: {
-      title: 'आमच्यापर्यंत पोहोचण्याचे इतर मार्ग',
-      email: {
-        label: 'ईमेल',
-        value: 'contact@weshall.build',
-      },
-      github: {
-        label: 'GitHub',
-        value: 'github.com/vshanbha',
-      },
-      twitter: {
-        label: 'Twitter',
-        value: '',
-      },
+    upwork: {
+      title: 'Upwork द्वारे बुक करा', // TODO: translate
+      description: 'साउंडिंग बोर्ड सत्र, तंत्र-निवड अहवाल, किंवा AI-एजंट हार्डनिंग पुनरावलोकनांसाठी. स्पष्ट व्याप्ती असलेले निश्चित-किंमत प्रकल्प आणि दुसऱ्या बाजूला एक वरिष्ठ अभियंता.', // TODO: translate
+      button: 'Upwork प्रोफाइल पहा', // TODO: translate
+      url: '#', // TODO: add Upwork profile URL
+    },
+    direct: {
+      title: 'थेट संपर्क', // TODO: translate
+      email: 'contact@weshall.build',
+      github: 'github.com/vshanbha',
     },
   },
   form: {

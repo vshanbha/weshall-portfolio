@@ -15,8 +15,8 @@ test.describe('Pages', () => {
 
   test('contact page loads', async ({ page }) => {
     await page.goto('/contact');
-    await expect(page.getByRole('heading', { name: /Connect|Contact|Lassen/i })).toBeVisible();
-    await expect(page.locator('body')).toContainText(/connect|building|verbinden/i);
+    await expect(page.getByRole('heading', { name: /Let.s talk|Kontakt/i })).toBeVisible();
+    await expect(page.locator('body')).toContainText(/LinkedIn|Upwork/i);
   });
 
   test('blog page loads and shows articles', async ({ page }) => {
@@ -61,7 +61,7 @@ test.describe('Locale-prefixed URLs', () => {
   test('/de/contact returns 200', async ({ page }) => {
     const response = await page.goto('/de/contact');
     expect(response?.status()).toBe(200);
-    await expect(page.locator('body')).toContainText(/verbinden|connect/i);
+    await expect(page.locator('body')).toContainText(/LinkedIn|Upwork/i);
   });
 
   test('/de/blog returns 200', async ({ page }) => {
