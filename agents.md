@@ -174,6 +174,19 @@ origin:
 
 **Review Gate:** Content must have `reviewed: true` before being published. This ensures only validated truth is exposed publicly.
 
+### Article Publishing Convention
+
+```
+src/content/articles/
+  my-article.md                 ← article (flat file, no subdirectories)
+  my-article-hero.png           ← hero/OG image alongside the article
+```
+
+- **Flat files only.** Subdirectories produce `/index` in the URL slug. One `.md` file per article.
+- **Images live alongside** the article file. Reference them as `./my-article-hero.png` in frontmatter `image` field.
+- **Slug = filename** (without extension). E.g. `zeroclaw-personal-ai-assistant.md` → `/blog/zeroclaw-personal-ai-assistant/`.
+- **Already published elsewhere:** Add `portfolio_publish: false` to factory article frontmatter with a note explaining why.
+
 ## Design System
 
 Velocity uses a three-tier token architecture with OKLCH colours:
