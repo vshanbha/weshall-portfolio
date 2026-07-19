@@ -277,6 +277,7 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 
 ### Best Practices
 
+- **GitHub comment policy:** All issue/PR comments must be shown to the user for approval before posting. Comments must never mention person names or company names — this is a public repository.
 - **Always run `git status` and `git diff`** before committing to understand what changed.
 - **Never commit secrets, API keys, or credentials.** Use `.env` (gitignored).
 - **Use descriptive commit messages** that explain what and why, not just what.
