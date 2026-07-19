@@ -62,8 +62,5 @@ export function removeLocaleFromPath(path: string): string {
  */
 export function localePath(path: string, locale: Locale): string {
   const cleanPath = removeLocaleFromPath(path);
-  if (locale === defaultLocale) {
-    return cleanPath || '/';
-  }
   return `/${locale}${cleanPath}`;
 }

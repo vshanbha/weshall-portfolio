@@ -1,0 +1,80 @@
+---
+import { getStaticPathsHelper } from '@/i18n/paths-helper';
+import PageLayout from '@/layouts/PageLayout.astro';
+import { useTranslations, getTranslations } from '@/i18n/index';
+import type { Locale } from '@/i18n/config';
+import type { TranslationKeys } from '@/i18n/translations/en';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+
+export const getStaticPaths = getStaticPathsHelper;
+
+const { lang } = Astro.params;
+const locale = lang as Locale;
+const t = useTranslations(locale);
+const tr = getTranslations(locale) as TranslationKeys;
+---
+
+<PageLayout
+  title={t('site.name')}
+  description={t('site.description')}
+>
+  <CTA variant="default" size="xl">
+    <Fragment slot="heading">
+      <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-balance text-foreground">{t('hero.title')}</h1>
+    </Fragment>
+    <Fragment slot="description">
+      <p>{t('hero.bridge')}</p>
+    </Fragment>
+    <Fragment slot="actions">
+      <Button variant="primary" size="lg" href={`/${locale}/contact`}>
+        {t('hero.cta.primary')}
+      </Button>
+      <Button variant="outline" size="lg" href={`/${locale}/blog`}>
+        {t('hero.cta.secondary')}
+      </Button>
+    </Fragment>
+  </CTA>
+
+  <section class="py-16 md:py-24 bg-muted/50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold font-display text-center mb-12">
+        {t('home.stories.title')}
+      </h2>
+      <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto auto-rows-fr">
+        {(tr.home.stories.items as unknown as any[]).map((item: { title: string; subtitle: string; paragraphs: string[] }) => (
+          <div class="block h-full">
+            <Card variant="default" padding="lg" class="h-full flex flex-col">
+              <div>
+                <h3 class="text-lg font-semibold mb-1">
+                  {item.title}
+                </h3>
+                <p class="text-xs text-muted-foreground mb-4">{item.subtitle}</p>
+              </div>
+              <div class="space-y-3 flex-1">
+                {item.paragraphs.map((p: string) => (
+                  <p class="text-sm text-muted-foreground leading-relaxed">{p}</p>
+                ))}
+              </div>
+            </Card>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA variant="default" size="lg">
+    <Fragment slot="heading">
+      <h2>{t('cta.title')}</h2>
+    </Fragment>
+    <Fragment slot="description">
+      <p>{t('cta.description')}</p>
+    </Fragment>
+    <Fragment slot="actions">
+      <Button variant="primary" size="lg" href={`/${locale}/contact`}>
+        {t('cta.button')}
+      </Button>
+    </Fragment>
+  </CTA>
+</PageLayout>
