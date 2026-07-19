@@ -39,16 +39,12 @@ const tr = getTranslations(locale) as TranslationKeys;
         {t('home.stories.title')}
       </h2>
       <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto auto-rows-fr">
-        {(tr.home.stories.items as unknown as any[]).map((item: { title: string; subtitle: string; href: string; paragraphs: string[] }) => (
-          <a href={item.href} class="block h-full no-underline group">
-            <Card variant="default" padding="lg" class="h-full flex flex-col transition-all duration-200 group-hover:shadow-md group-hover:-translate-y-0.5">
+        {(tr.home.stories.items as unknown as any[]).map((item: { title: string; subtitle: string; paragraphs: string[] }) => (
+          <div class="block h-full">
+            <Card variant="default" padding="lg" class="h-full flex flex-col">
               <div>
-                <h3 class="text-lg font-semibold mb-1 group-hover:text-primary transition-colors">
+                <h3 class="text-lg font-semibold mb-1">
                   {item.title}
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block w-4 h-4 ml-1 align-text-bottom opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                  </svg>
                 </h3>
                 <p class="text-xs text-muted-foreground mb-4">{item.subtitle}</p>
               </div>
@@ -58,7 +54,7 @@ const tr = getTranslations(locale) as TranslationKeys;
                 ))}
               </div>
             </Card>
-          </a>
+          </div>
         ))}
       </div>
     </div>
