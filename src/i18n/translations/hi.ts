@@ -189,7 +189,7 @@ export const hi = {
       title: 'How I work', // TODO: translate
       paragraphs: [
         'I work alongside founders and technical leads who need senior engineering judgement — for a decision, a hire, a technology bet, or a sanity check.', // TODO: translate
-        'The relationship starts with a conversation. A paid sounding board session, 30 or 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.', // TODO: translate
+        'The relationship starts with a conversation. A sounding board session, 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.', // TODO: translate
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.', // TODO: translate
       ],
     },
@@ -227,7 +227,7 @@ export const hi = {
       paragraphs: [
         'My first big job out of university was at <strong>Infosys</strong>, in their Banking & Capital Markets group. That is where I got my first global exposure: on-site in Richmond, Virginia, for a major US bank, harmonising a relational data model across 500+ tables.', // TODO: translate
         '2006 took me to <strong>Lehman Brothers</strong> in Mumbai. I survived the 2008 bankruptcy. Met my future co-founder there.', // TODO: translate
-        'A stint at <strong>Nomura</strong> followed, and in 2011, I joined as the founding engineer. We built <strong>Inbotiqa</strong> together.', // TODO: translate
+        'At <strong>Nomura</strong> I stayed with the same team, working in the same building. A few years later, in 2011, I co-founded <strong>Inbotiqa</strong> with the colleague I met at Lehman.', // TODO: translate
       ],
       highlights: [
         {
@@ -286,21 +286,17 @@ export const hi = {
     },
     linkedin: {
       title: 'LinkedIn पर कनेक्ट करें', // TODO: translate
-      description: 'LinkedIn को संदेश भेजने के लिए प्रमाणीकरण की आवश्यकता होती है, जो शोर को फ़िल्टर करता है। मुझे एक कनेक्शन अनुरोध भेजें जिसमें आप किस पर काम कर रहे हैं, इसके बारे में एक नोट हो — मैं हर एक पढ़ता हूं।', // TODO: translate
+      description: 'मुझे एक कनेक्शन अनुरोध भेजें जिसमें आप किस पर काम कर रहे हैं, इसके बारे में एक नोट हो। मैं हर एक पढ़ता हूं।', // TODO: translate
       button: 'LinkedIn पर कनेक्ट करें', // TODO: translate
       url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
     upwork: {
       title: 'Upwork के माध्यम से बुक करें', // TODO: translate
-      description: 'साउंडिंग बोर्ड सत्र, तकनीक-चयन रिपोर्ट, या AI-एजेंट हार्डनिंग समीक्षाओं के लिए। स्पष्ट दायरे के साथ निश्चित मूल्य वाली परियोजनाएं और दूसरी तरफ एक वरिष्ठ इंजीनियर।', // TODO: translate
+      description: 'साउंडिंग बोर्ड सत्रों के लिए। आपकी चुनौतियों को समझने और सही तकनीकी विकल्प तलाशने के लिए एक तकनीकी परामर्श।', // TODO: translate
       button: 'Upwork प्रोफ़ाइल देखें', // TODO: translate
-      url: '#', // TODO: add Upwork profile URL
+      url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
-    direct: {
-      title: 'सीधा संपर्क', // TODO: translate
-      email: 'contact@weshall.build',
-      github: 'github.com/vshanbha',
-    },
+
   },
   form: {
     name: 'नाम',

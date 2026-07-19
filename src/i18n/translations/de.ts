@@ -191,7 +191,7 @@ export const de = {
       title: 'How I work',
       paragraphs: [
         'I work alongside founders and technical leads who need senior engineering judgement — for a decision, a hire, a technology bet, or a sanity check.',
-        'The relationship starts with a conversation. A paid sounding board session, 30 or 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.',
+        'The relationship starts with a conversation. A sounding board session, 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.',
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.',
       ],
     },
@@ -230,7 +230,7 @@ export const de = {
       paragraphs: [
         'My first big job out of university was at <strong>Infosys</strong>, in their Banking & Capital Markets group. That is where I got my first global exposure: on-site in Richmond, Virginia, for a major US bank, harmonising a relational data model across 500+ tables.',
         '2006 took me to <strong>Lehman Brothers</strong> in Mumbai. I survived the 2008 bankruptcy. Met my future co-founder there.',
-        'A stint at <strong>Nomura</strong> followed, and in 2011, I joined as the founding engineer. We built <strong>Inbotiqa</strong> together.',
+        'At <strong>Nomura</strong> I stayed with the same team, working in the same building. A few years later, in 2011, I co-founded <strong>Inbotiqa</strong> with the colleague I met at Lehman.',
       ],
       highlights: [
         {
@@ -292,21 +292,17 @@ export const de = {
     },
     linkedin: {
       title: 'Auf LinkedIn vernetzen', // TODO: translate
-      description: 'LinkedIn erfordert eine Authentifizierung, um Nachrichten zu senden, was das Rauschen herausfiltert. Senden Sie mir eine Kontaktanfrage mit einer Notiz zu dem, woran Sie arbeiten — ich lese jede.', // TODO: translate
+      description: 'Senden Sie mir eine Kontaktanfrage mit einer Notiz zu dem, woran Sie arbeiten. Ich lese jede.', // TODO: translate
       button: 'Auf LinkedIn vernetzen', // TODO: translate
       url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
     upwork: {
       title: 'Über Upwork buchen', // TODO: translate
-      description: 'Für Sounding-Board-Sitzungen, Technologieauswahl-Berichte oder KI-Agent-Härtungs-Reviews. Festpreisprojekte mit klarem Umfang und einem Senior Engineer auf der anderen Seite.', // TODO: translate
+      description: 'Für Sounding-Board-Sitzungen. Eine technische Beratung, um Ihre Herausforderungen zu analysieren und die richtigen technischen Optionen zu erkunden.', // TODO: translate
       button: 'Upwork-Profil ansehen', // TODO: translate
-      url: '#', // TODO: add Upwork profile URL
+      url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
-    direct: {
-      title: 'Direkter Kontakt', // TODO: translate
-      email: 'contact@weshall.build',
-      github: 'github.com/vshanbha',
-    },
+
   },
   form: {
     name: 'Name',

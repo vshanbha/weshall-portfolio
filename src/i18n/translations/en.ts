@@ -136,7 +136,7 @@ export const en = {
     },
     testimonial: {
       quote: "\"The cleanest boilerplate I've seen in 2024. It cuts the fluff.\"",
-      author: '— Alex C., Senior Frontend Dev',
+      author: '- Alex C., Senior Frontend Dev',
     },
   },
 
@@ -144,7 +144,7 @@ export const en = {
   cta: {
     title: 'Build what matters.',
     titleHighlight: '',
-    description: 'Every project starts with a conversation. Let\'s talk about what you\'re building — and how to get it across the line.',
+    description: 'Every project starts with a conversation. Let\'s talk about what you\'re building and how to get it across the line.',
     button: 'Start a Conversation',
     docs: '',
     command: '',
@@ -186,7 +186,7 @@ export const en = {
           title: 'HDFC Life Insurance',
           subtitle: 'Strategic architecture consulting, India',
           paragraphs: [
-            'Led serverless/MBaaS platform evaluation in 2015 — years before it became mainstream. Architected an internal mobile platform enabling policyholders\' families to request verified home care for elderly parents. Build-versus-buy at scale.',
+            'Led serverless/MBaaS platform evaluation in 2015, years before it became mainstream. Architected an internal mobile platform enabling policyholders\' families to request verified home care for elderly parents. Build-versus-buy at scale.',
           ],
         },
       ],
@@ -206,8 +206,8 @@ export const en = {
     howwork: {
       title: 'How I work',
       paragraphs: [
-        'I work alongside founders and technical leads who need senior engineering judgement — for a decision, a hire, a technology bet, or a sanity check.',
-        'The relationship starts with a conversation. A paid sounding board session, 30 or 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.',
+        'I work alongside founders and technical leads who need senior engineering judgement: for a decision, a hire, a technology bet, or a sanity check.',
+        'The relationship starts with a conversation. A sounding board session, 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.',
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.',
       ],
     },
@@ -230,15 +230,15 @@ export const en = {
         'I come from Mumbai, India. These days I am in Hürth, near Cologne, Germany.',
         'I graduated as an electronics engineer from Mumbai University in 2002. I stumbled into software because, after the 9/11 attacks of 2001, jobs dried up and a financial crisis loomed. The software industry was the first to hire. I have been building production systems ever since.',
         'I came to Germany in 2023 because my wife was transferred. I like to travel, and the startup, software, and climate tech scene here? Das gefällt mir. I am staying.',
-        'I speak five languages at varying levels of decline: English — native, Hindi and Marathi native, Konkani conversational, German at B1 and counting.',
+        'I speak five languages at varying levels of decline: English native, Hindi and Marathi native, Konkani conversational, German at B1 and counting.',
       ],
     },
     whatido: {
       title: 'What I do',
       paragraphs: [
-        'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype — and prototypes, when they solve something real, attract users, funding, and a team.',
+        'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype. And prototypes, when they solve something real, attract users, funding, and a team.',
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.',
-        'I work with companies that have found their footing and need to build the systems that carry them through the next phase — without breaking what is already working.',
+        'I work with companies that have found their footing and need to build the systems that carry them through the next phase without breaking what is already working.',
       ],
     },
     careerarc: {
@@ -246,7 +246,7 @@ export const en = {
       paragraphs: [
         'My first big job out of university was at <strong>Infosys</strong>, in their Banking & Capital Markets group. That is where I got my first global exposure: on-site in Richmond, Virginia, for a major US bank, harmonising a relational data model across 500+ tables.',
         '2006 took me to <strong>Lehman Brothers</strong> in Mumbai. I survived the 2008 bankruptcy. Met my future co-founder there.',
-        'A stint at <strong>Nomura</strong> followed, and in 2011, I joined as the founding engineer. We built <strong>Inbotiqa</strong> together.',
+        'At <strong>Nomura</strong> I stayed with the same team, working in the same building. A few years later, in 2011, I co-founded <strong>Inbotiqa</strong> with the colleague I met at Lehman.',
       ],
       highlights: [
         {
@@ -269,7 +269,7 @@ export const en = {
       title: 'Speaking, writing, mentorship',
       articles: {
         title: 'Select articles',
-        intro: 'I write for JavaPro and Baeldung — two names every Java professional recognises.',
+        intro: 'I write for JavaPro and Baeldung, two names every Java professional recognises.',
         items: [
           { title: 'Bridging Java and Python for AI/ML in Production: The Case for GraalPy on GraalVM', url: 'https://javapro.io/2026/03/10/bridging-java-and-python-for-ai-ml-in-production-the-case-for-graalpy-on-graalvm/', platform: 'JavaPro' },
           { title: 'Greener Code: Sustainable Java Deployments with Native Builds and Knative Serverless on Kubernetes', url: 'https://javapro.io/2025/06/11/greener-code-sustainable-java-deployments-with-native-builds-and-knative-serverless-on-kubernetes/', platform: 'JavaPro' },
@@ -283,8 +283,8 @@ export const en = {
     offtheclock: {
       title: 'Off the clock',
       paragraphs: [
-        'I trek, I travel, I write — in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, and is named after my hometown. Yes, it confuses everyone.',
-        "I got married first, fell in love later — in India, that is called an arranged marriage. I do not read books much, but the Mahabharata, R.K. Narayan's condensed English version, which I read years ago, is the one that has stayed with me. I grew up on Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music.",
+        'I trek, I travel, I write, in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, and is named after my hometown. Yes, it confuses everyone.',
+        "I got married first, fell in love later. In India, that is called an arranged marriage. I do not read books much, but the Mahabharata, R.K. Narayan's condensed English version, which I read years ago, is the one that has stayed with me. I grew up on Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music.",
       ],
       closingLead: 'If you have an idea that needs software to give it life, ',
       closing: 'talk to me.',
@@ -303,25 +303,21 @@ export const en = {
     },
     hero: {
       title: "Let's talk.",
-      description: 'The best way to reach me is through LinkedIn — it keeps the signal high and the noise low. If you have a clear brief, Upwork is the fastest route to a structured engagement.',
+      description: 'The best way to reach me is through LinkedIn: it keeps the signal high and the noise low. If you have a clear brief, Upwork is the fastest route to a structured engagement.',
     },
     linkedin: {
       title: 'Connect on LinkedIn',
-      description: 'LinkedIn requires authentication to message, which filters out the noise. Send me a connection request with a note about what you are working on — I read every one.',
+      description: 'Send me a connection request with a note about what you are working on. I read every one.',
       button: 'Connect on LinkedIn',
       url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
     upwork: {
       title: 'Book via Upwork',
-      description: 'For sounding board sessions, tech-selection reports, or AI-agent hardening reviews. Fixed-price projects with a clear scope and a senior engineer on the other end.',
+      description: 'For sounding board sessions. A technical consultation to break down your challenges and explore the right technical options.',
       button: 'View Upwork Profile',
-      url: '#', // TODO: add Upwork profile URL
+      url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
-    direct: {
-      title: 'Direct contact',
-      email: 'contact@weshall.build',
-      github: 'github.com/vshanbha',
-    },
+
   },
 
   // Forms
