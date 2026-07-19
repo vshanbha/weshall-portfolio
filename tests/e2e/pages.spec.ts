@@ -190,6 +190,28 @@ test.describe('Blog Detail', () => {
   });
 });
 
+test.describe('Legal Pages', () => {
+  test('impressum page loads with required information', async ({ page }) => {
+    await page.goto('/impressum');
+    await expect(page.locator('body')).toContainText('Impressum');
+    await expect(page.locator('body')).toContainText(/Vishal Shanbhag|Ortshofstraße/);
+    await expect(page.locator('body')).toContainText(/contact@weshall\.build/);
+  });
+
+  test('datenschutz page loads with privacy information', async ({ page }) => {
+    await page.goto('/datenschutz');
+    await expect(page.locator('body')).toContainText('Datenschutzerklärung');
+    await expect(page.locator('body')).toContainText(/GitHub\.Inc|DSGVO/);
+  });
+
+  test('footer shows impressum and datenschutz links', async ({ page }) => {
+    await page.goto('/');
+    const footer = page.locator('footer');
+    await expect(footer.getByRole('link', { name: 'Impressum' })).toBeVisible();
+    await expect(footer.getByRole('link', { name: 'Datenschutz' })).toBeVisible();
+  });
+});
+
 test.describe('Layout Structure', () => {
   const pages = ['/', '/about', '/contact', '/blog', '/services'];
 
