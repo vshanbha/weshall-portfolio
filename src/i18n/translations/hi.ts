@@ -154,7 +154,6 @@ export const hi = {
         {
           title: 'BlueMoney', // TODO: translate
           subtitle: 'Short-term lending, Nigeria', // TODO: translate
-          href: '/stories/bluemoney',
           paragraphs: [
             'Pivoted a three-founder team from inventory lending into a regulated short-term lending business in Nigeria. Convinced them to buy mature platforms instead of building from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.', // TODO: translate
           ],
@@ -162,7 +161,6 @@ export const hi = {
         {
           title: 'Inbotiqa', // TODO: translate
           subtitle: 'Enterprise email processing, global banking', // TODO: translate
-          href: '/stories/inbotiqa',
           paragraphs: [
             'Founding engineer at a Techstars portfolio company. Built the platform processing 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.', // TODO: translate
           ],
@@ -170,7 +168,6 @@ export const hi = {
         {
           title: 'HDFC Life Insurance', // TODO: translate
           subtitle: 'Strategic architecture consulting, India', // TODO: translate
-          href: '/stories/hdfc-life',
           paragraphs: [
             'Led serverless/MBaaS platform evaluation in 2015 — years before it became mainstream. Architected an internal mobile platform enabling policyholders\' families to request verified home care for elderly parents. Build-versus-buy at scale.', // TODO: translate
           ],
