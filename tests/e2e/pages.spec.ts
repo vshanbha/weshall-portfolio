@@ -51,66 +51,26 @@ test.describe('Pages', () => {
   });
 });
 
-test.describe('Locale-prefixed URLs', () => {
-  test('/de/about returns 200', async ({ page }) => {
-    const response = await page.goto('/de/about');
+test.describe('English-only locale', () => {
+  test('/en/about returns 200', async ({ page }) => {
+    const response = await page.goto('/en/about');
     expect(response?.status()).toBe(200);
     await expect(page.locator('body')).toContainText(/Origin|Mumbai/i);
   });
 
-  test('/de/contact returns 200', async ({ page }) => {
-    const response = await page.goto('/de/contact');
+  test('/en/contact returns 200', async ({ page }) => {
+    const response = await page.goto('/en/contact');
     expect(response?.status()).toBe(200);
     await expect(page.locator('body')).toContainText(/LinkedIn|Upwork/i);
   });
 
-  test('/de/blog returns 200', async ({ page }) => {
-    const response = await page.goto('/de/blog');
+  test('/en/blog returns 200', async ({ page }) => {
+    const response = await page.goto('/en/blog');
     expect(response?.status()).toBe(200);
   });
 
-  test('/de/services returns 200', async ({ page }) => {
-    const response = await page.goto('/de/services');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/hi/about returns 200', async ({ page }) => {
-    const response = await page.goto('/hi/about');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/hi/contact returns 200', async ({ page }) => {
-    const response = await page.goto('/hi/contact');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/hi/blog returns 200', async ({ page }) => {
-    const response = await page.goto('/hi/blog');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/hi/services returns 200', async ({ page }) => {
-    const response = await page.goto('/hi/services');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/mr/about returns 200', async ({ page }) => {
-    const response = await page.goto('/mr/about');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/mr/contact returns 200', async ({ page }) => {
-    const response = await page.goto('/mr/contact');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/mr/blog returns 200', async ({ page }) => {
-    const response = await page.goto('/mr/blog');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/mr/services returns 200', async ({ page }) => {
-    const response = await page.goto('/mr/services');
+  test('/en/services returns 200', async ({ page }) => {
+    const response = await page.goto('/en/services');
     expect(response?.status()).toBe(200);
   });
 });
