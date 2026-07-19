@@ -192,7 +192,7 @@ export const mr = {
       title: 'How I work',
       paragraphs: [
         'I work alongside founders and technical leads who need senior engineering judgement — for a decision, a hire, a technology bet, or a sanity check.', // TODO: translate
-        'The relationship starts with a conversation. A paid sounding board session, 30 or 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.', // TODO: translate
+        'The relationship starts with a conversation. A sounding board session, 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.', // TODO: translate
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.', // TODO: translate
       ],
     },
@@ -232,7 +232,7 @@ export const mr = {
       paragraphs: [
         'My first big job out of university was at <strong>Infosys</strong>, in their Banking & Capital Markets group. That is where I got my first global exposure: on-site in Richmond, Virginia, for a major US bank, harmonising a relational data model across 500+ tables.',
         '2006 took me to <strong>Lehman Brothers</strong> in Mumbai. I survived the 2008 bankruptcy. Met my future co-founder there.',
-        'A stint at <strong>Nomura</strong> followed, and in 2011, I joined as the founding engineer. We built <strong>Inbotiqa</strong> together.',
+        'At <strong>Nomura</strong> I stayed with the same team, working in the same building. A few years later, in 2011, I co-founded <strong>Inbotiqa</strong> with the colleague I met at Lehman.',
       ],
       highlights: [
         {
@@ -293,21 +293,17 @@ export const mr = {
     },
     linkedin: {
       title: 'LinkedIn वर कनेक्ट करा', // TODO: translate
-      description: 'LinkedIn ला संदेश पाठविण्यासाठी प्रमाणीकरण आवश्यक आहे, जे आवाज फिल्टर करते. तुम्ही कशावर काम करत आहात याबद्दल नोटसह मला कनेक्शन विनंती पाठवा — मी प्रत्येक वाचतो.', // TODO: translate
+      description: 'तुम्ही कशावर काम करत आहात याबद्दल नोटसह मला कनेक्शन विनंती पाठवा. मी प्रत्येक वाचतो.', // TODO: translate
       button: 'LinkedIn वर कनेक्ट करा', // TODO: translate
       url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
     upwork: {
       title: 'Upwork द्वारे बुक करा', // TODO: translate
-      description: 'साउंडिंग बोर्ड सत्र, तंत्र-निवड अहवाल, किंवा AI-एजंट हार्डनिंग पुनरावलोकनांसाठी. स्पष्ट व्याप्ती असलेले निश्चित-किंमत प्रकल्प आणि दुसऱ्या बाजूला एक वरिष्ठ अभियंता.', // TODO: translate
+      description: 'साउंडिंग बोर्ड सत्रांसाठी. तुमच्या आव्हानांचे विश्लेषण करून योग्य तांत्रिक पर्याय शोधण्यासाठी एक तांत्रिक सल्ला.', // TODO: translate
       button: 'Upwork प्रोफाइल पहा', // TODO: translate
-      url: '#', // TODO: add Upwork profile URL
+      url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
-    direct: {
-      title: 'थेट संपर्क', // TODO: translate
-      email: 'contact@weshall.build',
-      github: 'github.com/vshanbha',
-    },
+
   },
   form: {
     name: 'नाव',

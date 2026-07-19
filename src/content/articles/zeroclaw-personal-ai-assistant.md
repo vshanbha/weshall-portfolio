@@ -7,8 +7,8 @@ tags: [zeroClaw, self-hosted, AI, agent, Discord, Linux]
 draft: false
 featured: false
 locale: en
-# image: ./zeroclaw-personal-ai-assistant-hero.png
-# imageAlt: "ZeroClaw chat interface on Kali Linux"
+image: ./zeroclaw-personal-ai-assistant-hero.png
+imageAlt: "ZeroClaw chat interface on Kali Linux"
 ---
 
 # ZeroClaw: From Zero to Super Powered assistant.
