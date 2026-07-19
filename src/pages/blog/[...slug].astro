@@ -1,55 +1,28 @@
 ---
-import { getCollection, render, type CollectionEntry } from 'astro:content';
-import BlogLayout from '@/layouts/BlogLayout.astro';
-import JsonLd from '@/components/seo/JsonLd.astro';
-import { createBlogPostSchema } from '@/lib/schema';
-import siteConfig from '@/config/site.config';
+import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const entries = await getCollection('articles', ({ data }) => {
     return import.meta.env.PROD ? data.draft !== true : true;
   });
-
   return entries.map((entry) => ({
     params: { slug: entry.id },
-    props: { entry },
   }));
 };
 
-const { entry } = Astro.props as { entry: CollectionEntry<'articles'> };
-const { Content } = await render(entry);
-
-const canonicalUrl = new URL(`/blog/${entry.id}/`, Astro.site);
-
-const ogImage = entry.data.image
-  ? typeof entry.data.image === 'string' ? entry.data.image : entry.data.image.src
-  : `/og/blog/${entry.id}.png`;
+const { slug } = Astro.params;
 ---
 
-<BlogLayout
-  title={`${entry.data.title} — ${siteConfig.name}`}
-  description={entry.data.description}
-  publishedAt={entry.data.publishedAt}
-  updatedAt={entry.data.updatedAt}
-  author={entry.data.author}
-  image={ogImage}
-  imageAlt={entry.data.imageAlt}
-  tags={entry.data.tags}
-  slug={entry.id}
-  locale={entry.data.locale}
->
-  <JsonLd
-    schema={createBlogPostSchema({
-      title: entry.data.title,
-      description: entry.data.description,
-      url: canonicalUrl.toString(),
-      image: ogImage,
-      datePublished: entry.data.publishedAt,
-      dateModified: entry.data.updatedAt || entry.data.publishedAt,
-      author: { name: entry.data.author },
-    })}
-  />
-
-  <Content />
-</BlogLayout>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Blog — We Shall Build</title>
+  <meta http-equiv="refresh" content={`0; url=/en/blog/${slug}`}>
+  <link rel="canonical" href={`/en/blog/${slug}`}>
+</head>
+<body>
+  <script>window.location.href = `/en/blog/${slug}`;</script>
+</body>
+</html>

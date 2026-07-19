@@ -31,13 +31,13 @@ test.describe('Pages', () => {
   });
 
   test('navigation links work', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/en/');
     const links = [
-      { href: '/', label: 'We Shall Build' },
-      { href: '/blog', label: 'Blog' },
-      { href: '/services', label: 'What I do' },
-      { href: '/about', label: 'About' },
-      { href: '/contact', label: 'Contact' },
+      { href: '/en', label: 'We Shall Build' },
+      { href: '/en/blog', label: 'Blog' },
+      { href: '/en/services', label: 'What I do' },
+      { href: '/en/about', label: 'About' },
+      { href: '/en/contact', label: 'Contact' },
     ];
     for (const link of links) {
       await page.getByRole('link', { name: link.label }).first().click();
