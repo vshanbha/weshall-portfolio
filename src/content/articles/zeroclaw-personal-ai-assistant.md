@@ -18,9 +18,14 @@ imageAlt: "ZeroClaw chat interface on Kali Linux"
 In the last 6 months or so, the internet has gone viral with a phenomenon called [OpenClaw](https://openclaw.ai/). 
 Programmers, Indie hackers, and DIY enthusiasts are all trying out different configurations with the bot to automate their daily workflows and create solutions. 
 
+For the uninitiated, OpenClaw is an AI agent that you can install on your own hardware or cloud and talk to it using channels like WhatsApp, Discord, Telegram, etc. 
+You ask it to do things for you, and it does that like a diligent assistant.
+
+So now every Tony Stark can have their own Jarvis. 
+
 I am a little late to the game, but the Electronics engineer inside me says, I want more. More like I want less. Something that consumes less memory, less CPU and so on. 
 
-Tony Stark didn't buy his Iron Man suit off a shelf. He built it in a cave with a box of scraps. Different constraints, same energy.
+Tony Stark didn't buy his Iron Man suit off a shelf. He built it in a cave with a box of scraps. Different constraints, same energy. I have an old 2012 version Mac Mini, and I use it for many things, and my first target was to host my Jarvis on it. More on that later.
 
 Somewhere in my internet browsing, I came across [ZeroClaw](https://www.zeroclawlabs.ai/), which is essentially a lightweight, self-hosted agent runtime. The promise (I mean tagline): 
 
@@ -28,11 +33,9 @@ Somewhere in my internet browsing, I came across [ZeroClaw](https://www.zeroclaw
 
 I also found an [article](https://zeroclaw.net/) that talked about its performance stats. It said 5mb RAM usage and 10 ms startup times. I was immediately like - "Where do I sign up?"
 
-Per the documentation, ZeroClaw is a single Rust binary. It talks to LLM providers, connects to messaging channels you already use, and acts through tools on your machine.  
+Per the documentation, ZeroClaw is a single Rust binary. It talks to LLM providers, connects to messaging channels you already use, and acts through tools on your machine. You can ask it to do all things that OpenClaw can.
 
-You can ask it to do all things that OpenClaw can. For builders and technical professionals, the pitch is: a personal AI assistant that runs on hardware you control, stores memory locally, and extends through skills and plugins. If you have been thinking about the private AI appliance path, this is the open-core foundation you build on.
-
-All of that at a lower hardware cost. 
+All of that at a much lower hardware cost. 
 **It's a poor Tony Stark's Jarvis.** 
 
 The fine print, though, as with most open source projects, is that the line "**you own it**" implies that practically means you maintain it. There is no support team to call when the agent does something creative with your filesystem at 3 AM. This is the trade-off, and it is worth understanding before you install anything.
@@ -40,12 +43,12 @@ The fine print, though, as with most open source projects, is that the line "**y
 
 You don't need a Malibu mansion and a reactor in your chest, but you do need a Linux machine and a Discord server. So here is the list:
 
-- A Linux machine. Even a Raspberry Pi will do. (In my case, that is - [Kali Linux 2025.4, x86_64, running on a 12-year-old Mac Mini](https://medium.com/@vvsvish/how-to-dual-boot-mac-and-linux-45055ae6b942))
+- A Linux machine. Even a Raspberry Pi will do. (In my case, that is - [Kali Linux 2025.4, x86_64, running on a 2012 version Mac Mini with no further Apple MacOS updates](https://medium.com/@vvsvish/how-to-dual-boot-mac-and-linux-45055ae6b942))
 - A Discord account and a private server (create one at discord.com if you do not have one)
 - An **opencode** API key (from your opencode account) or a key from another provider (OpenAI, Google, Claude or whatever else compatible)
 - 30 minutes (may be more if we run into troubleshooting issues)
 
-ZeroClaw is a binary. So it does not need Node.js, Python, or any runtime you might already have installed. The installer handles everything, which is either reassuring or terrifying, depending on your relationship with curl-piped-to-bash. Thankfully, their installer also offers "uninstall". So theoretically, one can clean up without too many issues. Time for practice.
+ZeroClaw is a binary. So it does not need Node.js, Python, or any runtime you might already have installed. The installer handles everything, which is either reassuring or terrifying, depending on your relationship with curl, Linux command pipes and bash. Thankfully, their installer also offers "uninstall". So theoretically, one can clean up without too many issues. Time for practice.
 
 ## 1. Install ZeroClaw
 
@@ -131,7 +134,7 @@ The wizard writes your config to `~/.zeroclaw` and takes you straight to the cha
 
 ### Chat
 
-The built in Chat screen should work already. Let's talk to our bot. 
+The built in Chat screen should work already. Time to say hello. 
 
 > hello
 >
@@ -162,13 +165,13 @@ Click **Save Changes**. If you skip this, the bot connects but never sees any me
 
 ### Set up the Token in ZeroClaw
 
-On the ZeroClaw dashboard, look for the settings gear in the left navigation. This offers a UI for some powerful feature configurations. For today, we care only about Channels.
+On the ZeroClaw dashboard, look for the settings gear in the left navigation. It offers a UI for some powerful feature configurations. For today, we care only about Channels.
 The detailed instructions are in the documentation for [Discord](https://docs.zeroclawlabs.ai/v0.8.2/en/channels/discord.html)
 
 The documentation contains a lot of detail, and there is no point in just pasting it again here. Therefore, I have listed the minimum tasks required to get it working.
 Look up the Channel list, find Discord and get started. 
 - Give it a Name
-- Control the Behaviour - Approval Timeout Secs, Slash Commands.
+- Control the Behaviour - Approval Timeout Secs (I'd recommend giving at least 2 mins so you can see and act on the approvals), Slash Commands.
 - Under "Control" - set the token
 
 Look up our Agent in the Agent list on the left navigation.
@@ -187,7 +190,7 @@ After all the changes, **reload the daemon** so the changes take effect.
 3. Under **Bot Permissions**, check at least: **Send Messages**, **Read Message History**, **View Channels, Use Slash Commands, Use External Emojis**.
 4. Copy the URL at the bottom, open it in your browser, pick your server, and click **Authorise**.
 
-The bot now appears in your member list (offline until you start ZeroClaw).
+The bot now appears in your member list (offline until you reload the daemon of ZeroClaw).
 
 ## 4. Start and Test
 
@@ -227,9 +230,7 @@ Before you close the terminal, verify each of these:
 - [ ] Sending a message in Discord gets a reply
 - [ ] `zeroclaw service status` shows the daemon running (if you installed the service)
 
-- [ ] If you run into any issues — the [Troubleshooting](#troubleshooting) section at the bottom of this article covers the common ones
-
-If all four pass, your personal AI assistant is live.
+If all four pass, your personal AI assistant is live. If you run into any issues, the [Troubleshooting](#troubleshooting) section at the bottom of this article covers the common ones
 
 
 ## What to Do Next
@@ -240,7 +241,7 @@ If all four pass, your personal AI assistant is live.
 
 **Add skills.** The [ZeroClaw Skills registry](https://github.com/zeroclaw-labs/zeroclaw-skills) has community-contributed tools and workflows. 
 
-**Read the philosophy.** ZeroClaw has four opinions that shape every design decision. Understanding them helps you configure the agent in ways that match the project's intent rather than fighting it.
+**Read the philosophy.** ZeroClaw has a few opinions that shape every design decision. Understanding them helps you configure the agent in ways that match the project's intent rather than fighting it.
 
 
 ## The Bigger Picture
@@ -249,15 +250,13 @@ ZeroClaw is not a chatbot wrapper. It is a runtime for autonomous agents that ca
 
 ZeroClaw is what happens when someone looks at the cloud-AI stack and says, 'I want that, but I want it in my garage.' It's Jarvis without the cloud subscription leash.
 
-For technical professionals considering the private AI appliance path, ZeroClaw is the open-core foundation. The stack is open source. The moat, deployment automation, operational excellence, and support are yours to build on top of it.
+For technical professionals considering the private AI appliance path, ZeroClaw is the open-core foundation. The stack is open source. The deployment automation, operational excellence, and support are yours to build on top of it. 
 
 This installation is the first experiment. The article series will cover what we learn, what breaks, and what we wish we had known before starting. The goal is not to document a perfect setup. The goal is to document the real one.
 
-> Every Iron Man started in a garage. This is the first step.
+> Most builders started in a garage. This is the first step.
 
----
-
-*This article is part of the [weshall.build](https://weshall.build) local-AI and production readiness content series.*
+Ready to take your AI appliance further? [Book a sounding board session](/en/contact) for discussions on what else you can do or scaling your setup; no pitch, no obligation.
 
 ## Troubleshooting 
 
@@ -314,18 +313,22 @@ The `agent_browser` backend is the pragmatic choice for most self-hosted setups.
 
 This bug comes in two flavours.
 
-**Flavour 1 \u2014 30s listener timeout (v0.8.2 and earlier):** The Discord adapter had a 30-second listener timeout. When an agent's turn exceeded 30s (slow Ollama model, heavy tool use), the cleanup signal never fired, and the typing state got stuck.
+**Flavour 1: 30s listener timeout (v0.8.2 and earlier).** The Discord adapter had a 30-second listener timeout. When an agent's turn exceeded 30s (slow Ollama model, heavy tool use), the cleanup signal never fired, and the typing state got stuck.
 
-Fix: Upgrade to **v0.8.3+** which improved the ack reaction timing (\U0001f440 now appears within ~200ms instead of 5\u201330s) and documented the typing behaviour across all channels.
+Fix: Upgrade to **v0.8.3+** which improved the ack reaction timing (👀 now appears within ~200ms instead of 5–30s) and documented the typing behaviour across all channels.
 
-**Flavour 2 \u2014 Daemon reload from dashboard mid-response (v0.8.3+):** This is a newly discovered bug ([GitHub #9198](https://github.com/zeroclaw-labs/zeroclaw/issues/9198)). If you reload the daemon from the web dashboard while the agent is mid-response, the typing indicator gets stuck permanently. New conversations work, but the indicator reappears after each response \u2014 even when nothing is being generated. A full CLI restart clears it properly.
+**Flavour 2: Daemon reload from dashboard mid-response (v0.8.3+).** This is likely something I found ([GitHub #9198](https://github.com/zeroclaw-labs/zeroclaw/issues/9198)). If you reload the daemon from the web dashboard while the agent is mid-response, the typing indicator gets stuck permanently. New conversations work, but the indicator reappears after each response, even when nothing is being generated. A full CLI service restart clears it properly.
 
 **Reproduction:**
 1. Start a conversation in Discord (wait for typing indicator)
 2. Switch to the ZeroClaw dashboard and hit **Reload Daemon** (no config changes needed)
-3. Switch back to Discord \u2014 the bot's response never arrives, and the typing indicator stays stuck
-4. Start a new conversation \u2014 it works, but the typing indicator reappears after the response and stays
-5. Run `zeroclaw service restart` from CLI \u2014 the typing indicator finally clears
+3. Switch back to Discord. The bot's response never arrives, and the typing indicator stays stuck
+4. Start a new conversation. It works, but the typing indicator reappears after the response and stays
+5. Run `zeroclaw service restart` from CLI. The typing indicator finally clears
 
 **Workaround if you hit this:** Use CLI restart (`systemctl restart zeroclaw` or `zeroclaw service restart`), not the dashboard reload, when the agent is mid-response.
+
+---
+
+*This article is part of the [weshall.build ](https://weshall.build) local-AI and production readiness content series.*
 
