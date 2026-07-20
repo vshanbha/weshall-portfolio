@@ -150,31 +150,27 @@ export const de = {
   // TODO: translate
   home: {
     stories: {
-      title: 'Engagement stories',
+      title: 'Engagement stories', // TODO: translate
       items: [
         {
           title: 'BlueMoney',
-          subtitle: 'Short-term lending, Nigeria',
+          subtitle: 'Short-term lending, Nigeria', // TODO: translate
           paragraphs: [
-            'Three founders with successful careers elsewhere wanted to pivot from inventory lending into a regulated short-term lending business. They understood their customer intimately: small businesses dealing primarily in cash, no credit history, but creditworthy.', // TODO: translate
-            'Their in-house developer was promoted to Founding Engineer, but lending is a regulated business. I came in around July\u00a02025 to map the loan workflow and compare platforms. I convinced them to use mature software instead of building from scratch. By October they were technically ready; launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.', // TODO: translate
+            'Pivoted a three-founder team from inventory lending into a regulated short-term lending business in Nigeria. Convinced them to buy mature platforms instead of building from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.', // TODO: translate
           ],
         },
         {
           title: 'Inbotiqa',
-          subtitle: 'Enterprise email processing, global banking',
+          subtitle: 'Enterprise email processing, global banking', // TODO: translate
           paragraphs: [
-            'I joined as the founding engineer. We built the system that processes 100,000+ transactional emails a day for global banking, at 99.9% availability.',
-            'The numbers I care about are the operational ones: turnaround-time compliance went from 40–60% to over 95%; same-day close-out from 22% to 85%; email volume dropped 43%, and complaints went to zero.',
-            'Inbotiqa is a Techstars portfolio company and went through their Fintech accelerator in London in 2019.',
+            'Founding engineer at a Techstars portfolio company. Built the platform processing 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.', // TODO: translate
           ],
         },
         {
           title: 'HDFC Life Insurance',
-          subtitle: 'Strategic architecture consulting, India',
+          subtitle: 'Strategic architecture consulting, India', // TODO: translate
           paragraphs: [
-            'Led the evaluation and selection of Serverless/MBaaS platforms in 2015, years before they became industry standard. Architected an internal mobile platform for policyholders\' families to request verified home care for elderly parents.',
-            'The work was strategic architecture consulting: evaluating nascent technology, making the build vs. buy decision, and designing a system that would remain maintainable long after the engagement ended.',
+            'Led serverless/MBaaS platform evaluation in 2015 — years before it became mainstream. Architected an internal mobile platform enabling policyholders\' families to request verified home care for elderly parents. Build-versus-buy at scale.', // TODO: translate
           ],
         },
       ],
@@ -195,7 +191,7 @@ export const de = {
       title: 'How I work',
       paragraphs: [
         'I work alongside founders and technical leads who need senior engineering judgement — for a decision, a hire, a technology bet, or a sanity check.',
-        'The relationship starts with a conversation. A paid sounding board session, 30 or 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.',
+        'The relationship starts with a conversation. A sounding board session, 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.',
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.',
       ],
     },
@@ -234,7 +230,7 @@ export const de = {
       paragraphs: [
         'My first big job out of university was at <strong>Infosys</strong>, in their Banking & Capital Markets group. That is where I got my first global exposure: on-site in Richmond, Virginia, for a major US bank, harmonising a relational data model across 500+ tables.',
         '2006 took me to <strong>Lehman Brothers</strong> in Mumbai. I survived the 2008 bankruptcy. Met my future co-founder there.',
-        'A stint at <strong>Nomura</strong> followed, and in 2011, I joined as the founding engineer. We built <strong>Inbotiqa</strong> together.',
+        'At <strong>Nomura</strong> I stayed with the same team, working in the same building. A few years later, in 2011, I co-founded <strong>Inbotiqa</strong> with the colleague I met at Lehman.',
       ],
       highlights: [
         {
@@ -291,41 +287,22 @@ export const de = {
       description: 'Nehmen Sie Kontakt mit Vishal Shanbhag auf.',
     },
     hero: {
-      badge: 'Nehmen Sie Kontakt auf',
-      title: 'Lassen Sie uns',
-      titleHighlight: 'verbinden.',
-      description: 'Haben Sie eine Frage, einen Vorschlag oder möchten Sie einfach Hallo sagen? Wir freuen uns, von Ihnen zu hören.',
+      title: 'Lassen Sie uns sprechen.', // TODO: translate
+      description: 'Der beste Weg, mich zu erreichen, ist über LinkedIn — es hält das Signal hoch und das Rauschen niedrig. Wenn Sie ein klares Briefing haben, ist Upwork der schnellste Weg zu einem strukturierten Engagement.', // TODO: translate
     },
-    form: {
-      title: 'Senden Sie uns eine Nachricht',
-      name: 'Ihr Name',
-      namePlaceholder: 'Max Mustermann',
-      email: 'E-Mail-Adresse',
-      emailPlaceholder: 'max@beispiel.de',
-      subject: 'Betreff',
-      subjectPlaceholder: 'Wie können wir helfen?',
-      message: 'Nachricht',
-      messagePlaceholder: 'Erzählen Sie uns mehr über Ihr Projekt oder Ihre Frage...',
-      submit: 'Nachricht senden',
-      sending: 'Wird gesendet...',
-      success: 'Nachricht erfolgreich gesendet! Wir werden uns bald bei Ihnen melden.',
-      error: 'Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.',
+    linkedin: {
+      title: 'Auf LinkedIn vernetzen', // TODO: translate
+      description: 'Senden Sie mir eine Kontaktanfrage mit einer Notiz zu dem, woran Sie arbeiten. Ich lese jede.', // TODO: translate
+      button: 'Auf LinkedIn vernetzen', // TODO: translate
+      url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
-    info: {
-      title: 'Weitere Möglichkeiten, uns zu erreichen',
-      email: {
-        label: 'E-Mail',
-        value: 'contact@weshall.build',
-      },
-      github: {
-        label: 'GitHub',
-        value: 'github.com/vshanbha',
-      },
-      twitter: {
-        label: 'Twitter',
-        value: '',
-      },
+    upwork: {
+      title: 'Über Upwork buchen', // TODO: translate
+      description: 'Für Sounding-Board-Sitzungen. Eine technische Beratung, um Ihre Herausforderungen zu analysieren und die richtigen technischen Optionen zu erkunden.', // TODO: translate
+      button: 'Upwork-Profil ansehen', // TODO: translate
+      url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
+
   },
   form: {
     name: 'Name',

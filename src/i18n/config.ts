@@ -3,7 +3,7 @@
  * Defines supported locales and default language settings
  */
 
-export const locales = ['en', 'de', 'hi', 'mr'] as const;
+export const locales = ['en'] as const;
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
@@ -62,8 +62,5 @@ export function removeLocaleFromPath(path: string): string {
  */
 export function localePath(path: string, locale: Locale): string {
   const cleanPath = removeLocaleFromPath(path);
-  if (locale === defaultLocale) {
-    return cleanPath || '/';
-  }
   return `/${locale}${cleanPath}`;
 }

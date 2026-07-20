@@ -15,8 +15,8 @@ test.describe('Pages', () => {
 
   test('contact page loads', async ({ page }) => {
     await page.goto('/contact');
-    await expect(page.getByRole('heading', { name: /Connect|Contact|Lassen/i })).toBeVisible();
-    await expect(page.locator('body')).toContainText(/connect|building|verbinden/i);
+    await expect(page.getByRole('heading', { name: /Let.s talk|Kontakt/i })).toBeVisible();
+    await expect(page.locator('body')).toContainText(/LinkedIn|Upwork/i);
   });
 
   test('blog page loads and shows articles', async ({ page }) => {
@@ -31,13 +31,13 @@ test.describe('Pages', () => {
   });
 
   test('navigation links work', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/en/');
     const links = [
-      { href: '/', label: 'We Shall Build' },
-      { href: '/blog', label: 'Blog' },
-      { href: '/services', label: 'What I do' },
-      { href: '/about', label: 'About' },
-      { href: '/contact', label: 'Contact' },
+      { href: '/en', label: 'We Shall Build' },
+      { href: '/en/blog', label: 'Blog' },
+      { href: '/en/services', label: 'What I do' },
+      { href: '/en/about', label: 'About' },
+      { href: '/en/contact', label: 'Contact' },
     ];
     for (const link of links) {
       await page.getByRole('link', { name: link.label }).first().click();
@@ -51,66 +51,26 @@ test.describe('Pages', () => {
   });
 });
 
-test.describe('Locale-prefixed URLs', () => {
-  test('/de/about returns 200', async ({ page }) => {
-    const response = await page.goto('/de/about');
+test.describe('English-only locale', () => {
+  test('/en/about returns 200', async ({ page }) => {
+    const response = await page.goto('/en/about');
     expect(response?.status()).toBe(200);
     await expect(page.locator('body')).toContainText(/Origin|Mumbai/i);
   });
 
-  test('/de/contact returns 200', async ({ page }) => {
-    const response = await page.goto('/de/contact');
+  test('/en/contact returns 200', async ({ page }) => {
+    const response = await page.goto('/en/contact');
     expect(response?.status()).toBe(200);
-    await expect(page.locator('body')).toContainText(/verbinden|connect/i);
+    await expect(page.locator('body')).toContainText(/LinkedIn|Upwork/i);
   });
 
-  test('/de/blog returns 200', async ({ page }) => {
-    const response = await page.goto('/de/blog');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/de/services returns 200', async ({ page }) => {
-    const response = await page.goto('/de/services');
+  test('/en/blog returns 200', async ({ page }) => {
+    const response = await page.goto('/en/blog');
     expect(response?.status()).toBe(200);
   });
 
-  test('/hi/about returns 200', async ({ page }) => {
-    const response = await page.goto('/hi/about');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/hi/contact returns 200', async ({ page }) => {
-    const response = await page.goto('/hi/contact');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/hi/blog returns 200', async ({ page }) => {
-    const response = await page.goto('/hi/blog');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/hi/services returns 200', async ({ page }) => {
-    const response = await page.goto('/hi/services');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/mr/about returns 200', async ({ page }) => {
-    const response = await page.goto('/mr/about');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/mr/contact returns 200', async ({ page }) => {
-    const response = await page.goto('/mr/contact');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/mr/blog returns 200', async ({ page }) => {
-    const response = await page.goto('/mr/blog');
-    expect(response?.status()).toBe(200);
-  });
-
-  test('/mr/services returns 200', async ({ page }) => {
-    const response = await page.goto('/mr/services');
+  test('/en/services returns 200', async ({ page }) => {
+    const response = await page.goto('/en/services');
     expect(response?.status()).toBe(200);
   });
 });
@@ -187,6 +147,28 @@ test.describe('Blog Detail', () => {
   test('blog article detail page returns 404 for unknown slug', async ({ page }) => {
     await page.goto('/blog/nonexistent-article');
     await expect(page.locator('body')).toContainText('404');
+  });
+});
+
+test.describe('Legal Pages', () => {
+  test('impressum page loads with required information', async ({ page }) => {
+    await page.goto('/impressum');
+    await expect(page.locator('body')).toContainText('Impressum');
+    await expect(page.locator('body')).toContainText(/Vishal Shanbhag|Ortshofstraße/);
+    await expect(page.locator('body')).toContainText(/contact@weshall\.build/);
+  });
+
+  test('datenschutz page loads with privacy information', async ({ page }) => {
+    await page.goto('/datenschutz');
+    await expect(page.locator('body')).toContainText('Datenschutzerklärung');
+    await expect(page.locator('body')).toContainText(/GitHub\.Inc|DSGVO/);
+  });
+
+  test('footer shows impressum and datenschutz links', async ({ page }) => {
+    await page.goto('/');
+    const footer = page.locator('footer');
+    await expect(footer.getByRole('link', { name: 'Impressum' })).toBeVisible();
+    await expect(footer.getByRole('link', { name: 'Datenschutz' })).toBeVisible();
   });
 });
 

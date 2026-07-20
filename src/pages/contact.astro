@@ -1,24 +1,14 @@
 ---
-import PageLayout from '@/layouts/PageLayout.astro';
-import { useTranslations } from '@/i18n/index';
-import { getLocaleFromPath } from '@/i18n/config';
-
-const locale = getLocaleFromPath(Astro.url.pathname);
-const t = useTranslations(locale);
 ---
-
-<PageLayout
-  title={t('contact.meta.title')}
-  description={t('contact.meta.description')}
->
-  <section class="py-24 md:py-32">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-        {t('contact.hero.title')} {t('contact.hero.titleHighlight')}
-      </h1>
-      <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-        {t('contact.hero.description')}
-      </p>
-    </div>
-  </section>
-</PageLayout>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Contact — We Shall Build</title>
+  <meta http-equiv="refresh" content="0; url=/en/contact">
+  <link rel="canonical" href="/en/contact">
+</head>
+<body>
+  <script>window.location.href = '/en/contact';</script>
+</body>
+</html>

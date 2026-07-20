@@ -28,12 +28,7 @@ export function getLocalizedPath(routeId: RouteId, locale: Locale): string {
   const route = routes[routeId];
   const slug = route[locale];
 
-  // For default locale, no prefix needed
-  if (locale === defaultLocale) {
-    return slug ? `/${slug}` : '/';
-  }
-
-  // For other locales, add prefix
+  // Always prefix with locale
   return slug ? `/${locale}/${slug}` : `/${locale}`;
 }
 
