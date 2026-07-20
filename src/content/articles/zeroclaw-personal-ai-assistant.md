@@ -227,7 +227,37 @@ Before you close the terminal, verify each of these:
 - [ ] Sending a message in Discord gets a reply
 - [ ] `zeroclaw service status` shows the daemon running (if you installed the service)
 
+- [ ] If you run into any issues — the [Troubleshooting](#troubleshooting) section at the bottom of this article covers the common ones
+
 If all four pass, your personal AI assistant is live.
+
+
+## What to Do Next
+
+**Add more channels.** ZeroClaw supports 30+ channels. Telegram is the easiest to add after Discord. Go through the [Docs](https://docs.zeroclawlabs.ai/v0.8.2/en/channels/overview.html)
+
+**Explore the dashboard.** Visit `http://127.0.0.1:42617/` (or localhost:8888 if SSH tunnelling on another machine in the network) in your browser. You can chat, browse memory, edit config, and manage cron jobs from there.
+
+**Add skills.** The [ZeroClaw Skills registry](https://github.com/zeroclaw-labs/zeroclaw-skills) has community-contributed tools and workflows. 
+
+**Read the philosophy.** ZeroClaw has four opinions that shape every design decision. Understanding them helps you configure the agent in ways that match the project's intent rather than fighting it.
+
+
+## The Bigger Picture
+
+ZeroClaw is not a chatbot wrapper. It is a runtime for autonomous agents that can execute shell commands, browse the web, control hardware (GPIO, I2C, SPI on Raspberry Pi), run scheduled tasks, and integrate with your editor via Agent Client Protocol.
+
+ZeroClaw is what happens when someone looks at the cloud-AI stack and says, 'I want that, but I want it in my garage.' It's Jarvis without the cloud subscription leash.
+
+For technical professionals considering the private AI appliance path, ZeroClaw is the open-core foundation. The stack is open source. The moat, deployment automation, operational excellence, and support are yours to build on top of it.
+
+This installation is the first experiment. The article series will cover what we learn, what breaks, and what we wish we had known before starting. The goal is not to document a perfect setup. The goal is to document the real one.
+
+> Every Iron Man started in a garage. This is the first step.
+
+---
+
+*This article is part of the [weshall.build](https://weshall.build) local-AI and production readiness content series.*
 
 ## Troubleshooting 
 
@@ -269,10 +299,10 @@ If ZeroClaw fails to open web pages or the browser tool returns an error like `b
    zeroclaw service restart
    ```
 
-Verify with:
-```sh
-zeroclaw agent -a <alias> -m "open https://example.com and tell me the page title"
-```
+5. Verify with:
+   ```sh
+   zeroclaw agent -a <alias> -m "open https://example.com and tell me the page title"
+   ```
 
 **Why not use rust_native or computer_use?**
 - `rust_native`: only available if you compiled ZeroClaw yourself with `--features browser-native`.
@@ -281,39 +311,21 @@ zeroclaw agent -a <alias> -m "open https://example.com and tell me the page titl
 The `agent_browser` backend is the pragmatic choice for most self-hosted setups.
 
 ### Discord Typing Indicator Stuck Forever
-If the bot shows "is typing..." permanently.  Even after it has responded, and it does not go away even if you restart the entire ZeroClaw service, you are hitting a known bug. The Discord adapter has a 30-second listener timeout. When an agent's turn exceeds 30s (slow Ollama model, heavy tool use), the cleanup signal never fires, and the typing state gets stuck.
 
-**Fix:** Upgrade to ZeroClaw **v0.8.3+** and restart the service. This release removed the typing indicator entirely (it was unreliable on long turns) and replaced it with an instant 👀 reaction as feedback. After upgrading:
+This bug comes in two flavours.
 
-```sh
-zeroclaw service restart
-zeroclaw service status
-```
+**Flavour 1 \u2014 30s listener timeout (v0.8.2 and earlier):** The Discord adapter had a 30-second listener timeout. When an agent's turn exceeded 30s (slow Ollama model, heavy tool use), the cleanup signal never fired, and the typing state got stuck.
 
-If you are already on v0.8.3 and still see the issue, make sure the service was fully restarted after the upgrade, not just a config reload.
+Fix: Upgrade to **v0.8.3+** which improved the ack reaction timing (\U0001f440 now appears within ~200ms instead of 5\u201330s) and documented the typing behaviour across all channels.
 
-## What to Do Next
+**Flavour 2 \u2014 Daemon reload from dashboard mid-response (v0.8.3+):** This is a newly discovered bug ([GitHub #9198](https://github.com/zeroclaw-labs/zeroclaw/issues/9198)). If you reload the daemon from the web dashboard while the agent is mid-response, the typing indicator gets stuck permanently. New conversations work, but the indicator reappears after each response \u2014 even when nothing is being generated. A full CLI restart clears it properly.
 
-**Add more channels.** ZeroClaw supports 30+ channels. Telegram is the easiest to add after Discord. Go through the [Docs](https://docs.zeroclawlabs.ai/v0.8.2/en/channels/overview.html)
+**Reproduction:**
+1. Start a conversation in Discord (wait for typing indicator)
+2. Switch to the ZeroClaw dashboard and hit **Reload Daemon** (no config changes needed)
+3. Switch back to Discord \u2014 the bot's response never arrives, and the typing indicator stays stuck
+4. Start a new conversation \u2014 it works, but the typing indicator reappears after the response and stays
+5. Run `zeroclaw service restart` from CLI \u2014 the typing indicator finally clears
 
-**Explore the dashboard.** Visit `http://127.0.0.1:42617/` (or localhost:8888 if SSH tunnelling on another machine in the network) in your browser. You can chat, browse memory, edit config, and manage cron jobs from there.
+**Workaround if you hit this:** Use CLI restart (`systemctl restart zeroclaw` or `zeroclaw service restart`), not the dashboard reload, when the agent is mid-response.
 
-**Add skills.** The [ZeroClaw Skills registry](https://github.com/zeroclaw-labs/zeroclaw-skills) has community-contributed tools and workflows. 
-
-**Read the philosophy.** ZeroClaw has four opinions that shape every design decision. Understanding them helps you configure the agent in ways that match the project's intent rather than fighting it.
-
-## The Bigger Picture
-
-ZeroClaw is not a chatbot wrapper. It is a runtime for autonomous agents that can execute shell commands, browse the web, control hardware (GPIO, I2C, SPI on Raspberry Pi), run scheduled tasks, and integrate with your editor via Agent Client Protocol.
-
-ZeroClaw is what happens when someone looks at the cloud-AI stack and says, 'I want that, but I want it in my garage.' It's Jarvis without the cloud subscription leash.
-
-For technical professionals considering the private AI appliance path, ZeroClaw is the open-core foundation. The stack is open source. The moat, deployment automation, operational excellence, and support are yours to build on top of it.
-
-This installation is the first experiment. The article series will cover what we learn, what breaks, and what we wish we had known before starting. The goal is not to document a perfect setup. The goal is to document the real one.
-
-> Every Iron Man started in a garage. This is the first step.
-
----
-
-*This article is part of the [weshall.build](https://weshall.build) local-AI and production readiness content series.*
