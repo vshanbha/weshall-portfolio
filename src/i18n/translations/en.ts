@@ -5,6 +5,7 @@ export const en = {
   // Site
   site: {
     name: 'We Shall Build',
+    tagline: 'Build What Matters',
     description: 'Senior architect and hands-on engineer. 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products.',
   },
 
