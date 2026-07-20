@@ -1,0 +1,49 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Impressum"
+  description="Impressum — Angaben gemäß § 5 DDG"
+  noindex={true}
+>
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-4 max-w-3xl prose prose-neutral">
+      <h1>Impressum</h1>
+
+      <h2>Angaben gemäß § 5 DDG</h2>
+
+      <p>
+        Vishal Shanbhag<br />
+        Ortshofstraße 81<br />
+        50354 Hürth<br />
+        Germany
+      </p>
+
+      <h2>Kontakt</h2>
+
+      <p>
+        Telefon: +49 15216489969<br />
+        E-Mail: contact@weshall.build
+      </p>
+
+      <h2>Umsatzsteuer-ID</h2>
+
+      <p>
+        Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+        DE362559303
+      </p>
+
+      <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+
+      <p>
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+        Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+
+      <p class="text-xs text-muted-foreground mt-12">
+        Quelle: <a href="https://www.e-recht24.de" target="_blank" rel="noopener noreferrer">eRecht24</a>
+      </p>
+    </div>
+  </section>
+</PageLayout>
