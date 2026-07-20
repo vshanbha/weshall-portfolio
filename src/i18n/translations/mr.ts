@@ -198,7 +198,7 @@ export const mr = {
     },
     cta: {
       title: 'Talk to me', // TODO: translate
-      description: 'A 30-minute or 60-minute sounding board session. No pitch, no obligation.', // TODO: translate
+      description: 'A 60-minute sounding board session. No pitch, no obligation.', // TODO: translate
       button: 'Talk to me', // TODO: translate
     },
   },
