@@ -213,7 +213,7 @@ export const en = {
     },
     cta: {
       title: 'Talk to me',
-      description: 'A 30-minute or 60-minute sounding board session. No pitch, no obligation.',
+      description: 'A 60-minute sounding board session. No pitch, no obligation.',
       button: 'Talk to me',
     },
   },
