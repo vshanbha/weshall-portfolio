@@ -29,7 +29,7 @@ const { title, description, image, imageAlt, noindex, nofollow } = Astro.props;
   noindex={noindex}
   nofollow={nofollow}
 >
-  <Header slot="header" />
+  <Header slot="header" showCta cta={{ label: "Let's talk", href: '/contact' }} />
 
   <div class="min-h-screen pt-16">
     <slot />
