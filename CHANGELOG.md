@@ -1,5 +1,23 @@
 # Changelog
 
+## [v0.1.2] - 2026-07-20
+
+### Bug Fixes
+
+- Remove meta refresh tags from redirect stubs (use JS-only redirect) ([`4f6b086`](https://github.com/vshanbha/weshall-portfolio/commit/4f6b086))
+- Align sitemap and i18n config to single locale (en), fixes hreflang conflicts ([`4f6b086`](https://github.com/vshanbha/weshall-portfolio/commit/4f6b086))
+- Remove duplicate `<title>` from redirect stubs ([`4f6b086`](https://github.com/vshanbha/weshall-portfolio/commit/4f6b086))
+- Homepage title now reads "We Shall Build — Build What Matters — We Shall Build" ([`4f6b086`](https://github.com/vshanbha/weshall-portfolio/commit/4f6b086))
+- CTA button props passed explicitly at call sites ([`4f6b086`](https://github.com/vshanbha/weshall-portfolio/commit/4f6b086))
+
+### Features
+
+- Add `llms.txt` for AI crawler discoverability ([`4f6b086`](https://github.com/vshanbha/weshall-portfolio/commit/4f6b086))
+
+### Commits
+
+`4f6b086` - SEO audit fixes: remove meta refresh, align sitemap to single locale, fix homepage title, add llms.txt, pass CTA via props
+
 ## [v0.1.1] - 2026-07-20
 
 ### Content
