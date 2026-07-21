@@ -7,15 +7,15 @@ tags: [founder, ultra-running, metaphor, entrepreneurship]
 draft: false
 featured: false
 locale: en
+image: ./forrest_monument_valley.png
+imageAlt: "AI generated image of Forrest Gump running through Monument Valley"
 ---
 
 # Run Further Than a Marathon
 
-For a couple of years now, I have used a slide in my founder talks. A picture of Forrest Gump running alone through Monument Valley. The caption: "It's a marathon, not a sprint." The character was fictional, but the lesson was real. Simple mind, single focus, relentless forward motion. I believed in that slide.
-
-![AI generated image of Forrest Gump running through Monument Valley](./forrest_monument_valley.png)
-
 *Forrest running through monument valley. Sorry can't use an image of the original Forrest Gump due to possible IP issues, so here is an AI generated one*
+
+For a couple of years now, I have used a slide in my founder talks. A picture of Forrest Gump running alone through Monument Valley. The caption: "It's a marathon, not a sprint." The character was fictional, but the lesson was real. Simple mind, single focus, relentless forward motion. I believed in that slide.
 
 This morning, I was doing my usual LinkedIn zombie scroll. A different picture stopped me. A lanky [Indian athlete holding the tricolour](https://x.com/sufirunner/status/2079247812127346739). The caption said she had just finished the Kanyakumari to Kashmir run in about 68 days.
 
