@@ -21,6 +21,6 @@ const { slug } = Astro.params;
   <link rel="canonical" href={`/en/blog/${slug}`}>
 </head>
 <body>
-  <script>window.location.href = `/en/blog/${slug}`;</script>
+  <script define:vars={{ slug }}>window.location.href = `/en/blog/${slug}`;</script>
 </body>
 </html>
