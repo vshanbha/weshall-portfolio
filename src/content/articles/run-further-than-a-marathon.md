@@ -17,7 +17,7 @@ For a couple of years now, I have used a slide in my founder talks. A picture of
 
 *Forrest running through monument valley. Sorry can't use an image of the original Forrest Gump due to possible IP issues, so here is an AI generated one*
 
-This morning, I was doing my usual LinkedIn zombie scroll. A different picture stopped me. A lanky Indian athlete holding the tricolour. The caption said she had just finished the Kanyakumari to Kashmir run in about 68 days.
+This morning, I was doing my usual LinkedIn zombie scroll. A different picture stopped me. A lanky [Indian athlete holding the tricolour](https://x.com/sufirunner/status/2079247812127346739). The caption said she had just finished the Kanyakumari to Kashmir run in about 68 days.
 
 Her name is Sufiya Sufi. She just ran 4,167 km from Kanyakumari, the southern tip of India, to Kashmir. Then she kept going toward Karakoram.
 
@@ -41,7 +41,7 @@ I have been a founder for years. It has been the hardest, most exhausting thing 
 
 There were nights spent debugging at 3 am because a production incident needed fixing. Weekends were burned to close a deal. Entire days working while running a fever from COVID because the team needed support. There was depression. Sleeplessness. The kind of exhaustion that sits in your bones and does not leave.
 
-On the bright side, there was the satisfaction of having built something outside the comfort of corporate. Something that lives in some of the world's largest banks. Software that catches exceptions when things fall through the cracks and real money is at stake. Software that prompted users to provide unsolicited and heartfelt thank you because we made their job easier. SMEs that grew because they could use our [software as a conveyor belt](https://inbotiqa.com/convergence-of-workflow-solutions-and-email/) to run their business workflows
+On the bright side, there was the satisfaction of having built something outside the comfort of corporate. Something that lives in some of the world's largest banks. Software that catches exceptions when things fall through the cracks and real money is at stake. Software that prompted users to provide unsolicited and heartfelt thank you because we made their job easier. SMEs that grew because they could use our [Software as a conveyor belt](https://inbotiqa.com/convergence-of-workflow-solutions-and-email/) to run their business workflows
 
 Those are the moments one quietly cherishes while still hoping for the financial reward that is assumed when one starts a company.
 
