@@ -4,14 +4,14 @@
 
 ## Key pages
 
-- Home: https://weshall.build/
-- About: https://weshall.build/en/about/
-- Services / What I do: https://weshall.build/en/services/
-- Blog: https://weshall.build/en/blog/
-- Contact: https://weshall.build/en/contact/
+- [Home](https://weshall.build/)
+- [About](https://weshall.build/en/about/)
+- [Services / What I do](https://weshall.build/en/services/)
+- [Blog](https://weshall.build/en/blog/)
+- [Contact](https://weshall.build/en/contact/)
 
 ## External profiles
 
-- GitHub: https://github.com/vshanbha
-- LinkedIn: https://www.linkedin.com/in/vishal-shanbhag-70b679a/
-- Stack Overflow: https://stackoverflow.com/users/2324541/vvs
+- [GitHub](https://github.com/vshanbha)
+- [LinkedIn](https://www.linkedin.com/in/vishal-shanbhag-70b679a/)
+- [Stack Overflow](https://stackoverflow.com/users/2324541/vvs)

@@ -148,6 +148,9 @@ export const hi = {
   },
   // Home page
   home: {
+    blog: {
+      title: 'Latest articles', // TODO: translate
+    },
     stories: {
       title: 'Engagement stories', // TODO: translate
       items: [

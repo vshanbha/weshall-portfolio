@@ -150,6 +150,9 @@ export const mr = {
   // Home page
   // TODO: translate
   home: {
+    blog: {
+      title: 'Latest articles', // TODO: translate
+    },
     stories: {
       title: 'Engagement stories', // TODO: translate
       items: [
