@@ -291,18 +291,18 @@ export const de = {
     },
     hero: {
       title: 'Lassen Sie uns sprechen.', // TODO: translate
-      description: 'Der beste Weg, mich zu erreichen, ist über LinkedIn — es hält das Signal hoch und das Rauschen niedrig. Wenn Sie ein klares Briefing haben, ist Upwork der schnellste Weg zu einem strukturierten Engagement.', // TODO: translate
+      description: 'Der beste Weg, mich zu erreichen, ist über LinkedIn — es hält das Signal hoch und das Rauschen niedrig. Wenn Sie ein klares Briefing haben, ist eine Sounding-Board-Sitzung der schnellste Weg zu einem strukturierten Engagement.', // TODO: translate
     },
     linkedin: {
       title: 'Auf LinkedIn vernetzen', // TODO: translate
-      description: 'Senden Sie mir eine Kontaktanfrage mit einer Notiz zu dem, woran Sie arbeiten. Ich lese jede.', // TODO: translate
+      description: 'Senden Sie mir eine Kontaktanfrage mit einer Notiz zu dem, woran Sie arbeiten, und erwähnen Sie weshall.build — ich lese jede.', // TODO: translate
       button: 'Auf LinkedIn vernetzen', // TODO: translate
       url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
     upwork: {
-      title: 'Über Upwork buchen', // TODO: translate
+      title: 'Sounding-Board buchen', // TODO: translate
       description: 'Für Sounding-Board-Sitzungen. Eine technische Beratung, um Ihre Herausforderungen zu analysieren und die richtigen technischen Optionen zu erkunden.', // TODO: translate
-      button: 'Upwork-Profil ansehen', // TODO: translate
+      button: 'Sitzung buchen', // TODO: translate
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
 

@@ -1,17 +1,26 @@
 # We Shall Build
 
-> Senior architect and hands-on engineer. 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products.
+> Senior technical architect and hands-on engineer. 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products. Independent consultancy offering architecture, strategy, and implementation advisory.
+
+Advisory services in AI systems architecture, platform engineering, and technical due diligence. The site features deep-dive technical articles, a philosophy of bypass surgery for broken systems, and productised entry offers.
 
 ## Key pages
 
-- [Home](https://weshall.build/)
-- [About](https://weshall.build/en/about/)
-- [Services / What I do](https://weshall.build/en/services/)
-- [Blog](https://weshall.build/en/blog/)
-- [Contact](https://weshall.build/en/contact/)
+- [Home](https://weshall.build/): Landing page with brand positioning, engagement story cards, and service overview
+- [About](https://weshall.build/en/about/): From Lehman Brothers through Inbotiqa co-founder to independent consulting
+- [Services](https://weshall.build/en/services/): Start with a sounding board session, then fixed-price engagements — hiring advisory, architecture diagnostic, tech-selection, AI agent hardening
+- [Blog](https://weshall.build/en/blog/): Deep-dive technical analysis, operational case studies, and engineering philosophy
+- [Contact](https://weshall.build/en/contact/): Connect via LinkedIn for direct conversations
 
 ## External profiles
 
-- [GitHub](https://github.com/vshanbha)
-- [LinkedIn](https://www.linkedin.com/in/vishal-shanbhag-70b679a/)
-- [Stack Overflow](https://stackoverflow.com/users/2324541/vvs)
+- [GitHub](https://github.com/vshanbha): Open source projects — AI agent tooling, platform utilities, and reference architectures
+- [LinkedIn](https://www.linkedin.com/in/vishal-shanbhag-70b679a/): Professional network with experience across architecture, engineering, and AI
+- [Stack Overflow](https://stackoverflow.com/users/2324541/vvs): 1,000+ reputation in Java, Solr, distributed systems, and web technologies
+
+## Optional
+
+- [Bye Bye WordPress (Part 1)](https://levelup.gitconnected.com/bye-bye-wordpress-61bc464702fb): Site architecture decision and static site rationale
+- [Oops, I Deleted It Again](https://ai.gopubby.com/oops-i-deleted-it-again-f6495ae4706b): AI agent hardening case study
+- [LangChain with Vector Store Indexing](https://levelup.gitconnected.com/langchain-with-vector-store-indexing-documents-at-scale-5d3b7718c29f): Document indexing at scale
+- [Apache Solr & Zookeeper Scaling](https://levelup.gitconnected.com/apache-solr-and-zookeeper-scaling-guidelines-269dad4fbfb2): Distributed systems scaling guidelines

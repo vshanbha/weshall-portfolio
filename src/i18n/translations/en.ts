@@ -303,22 +303,22 @@ export const en = {
   contact: {
     meta: {
       title: 'Contact',
-      description: 'Connect with Vishal Shanbhag on LinkedIn or book via Upwork.',
+      description: 'Connect with Vishal Shanbhag on LinkedIn or book a sounding board session.',
     },
     hero: {
       title: "Let's talk.",
-      description: 'The best way to reach me is through LinkedIn: it keeps the signal high and the noise low. If you have a clear brief, Upwork is the fastest route to a structured engagement.',
+      description: 'The best way to reach me is through LinkedIn: it keeps the signal high and the noise low. If you have a clear brief, a sounding board session is the fastest route to a structured engagement.',
     },
     linkedin: {
       title: 'Connect on LinkedIn',
-      description: 'Send me a connection request with a note about what you are working on. I read every one.',
+      description: 'Send me a connection request with a note about what you are working on and mention weshall.build — I read every one.',
       button: 'Connect on LinkedIn',
       url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
     upwork: {
-      title: 'Book via Upwork',
+      title: 'Book a Sounding Board',
       description: 'For sounding board sessions. A technical consultation to break down your challenges and explore the right technical options.',
-      button: 'View Upwork Profile',
+      button: 'Book a Session',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
 
