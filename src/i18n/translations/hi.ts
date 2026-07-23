@@ -285,18 +285,18 @@ export const hi = {
     },
     hero: {
       title: 'चलिए बात करते हैं।', // TODO: translate
-      description: 'मुझसे संपर्क करने का सबसे अच्छा तरीका LinkedIn है — यह सिग्नल को ऊंचा और शोर को कम रखता है। यदि आपके पास एक स्पष्ट ब्रीफ है, तो Upwork एक संरचित जुड़ाव का सबसे तेज़ तरीका है।', // TODO: translate
+      description: 'मुझसे संपर्क करने का सबसे अच्छा तरीका LinkedIn है — यह सिग्नल को ऊंचा और शोर को कम रखता है। यदि आपके पास एक स्पष्ट ब्रीफ है, तो साउंडिंग बोर्ड सत्र एक संरचित जुड़ाव का सबसे तेज़ तरीका है।', // TODO: translate
     },
     linkedin: {
       title: 'LinkedIn पर कनेक्ट करें', // TODO: translate
-      description: 'मुझे एक कनेक्शन अनुरोध भेजें जिसमें आप किस पर काम कर रहे हैं, इसके बारे में एक नोट हो। मैं हर एक पढ़ता हूं।', // TODO: translate
+      description: 'मुझे एक कनेक्शन अनुरोध भेजें जिसमें आप किस पर काम कर रहे हैं, इसके बारे में एक नोट हो और weshall.build का उल्लेख करें — मैं हर एक पढ़ता हूं।', // TODO: translate
       button: 'LinkedIn पर कनेक्ट करें', // TODO: translate
       url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
     upwork: {
-      title: 'Upwork के माध्यम से बुक करें', // TODO: translate
+      title: 'साउंडिंग बोर्ड बुक करें', // TODO: translate
       description: 'साउंडिंग बोर्ड सत्रों के लिए। आपकी चुनौतियों को समझने और सही तकनीकी विकल्प तलाशने के लिए एक तकनीकी परामर्श।', // TODO: translate
-      button: 'Upwork प्रोफ़ाइल देखें', // TODO: translate
+      button: 'सत्र बुक करें', // TODO: translate
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
 
