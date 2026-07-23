@@ -166,6 +166,9 @@ export const en = {
 
   // Home page
   home: {
+    blog: {
+      title: 'Latest articles',
+    },
     stories: {
       title: 'Engagement stories',
       items: [
