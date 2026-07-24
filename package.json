@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "We shall build - Deep-dive analysis of complex technical, operational, and architectural domains",
   "type": "module",
   "author": "Vishal Shanbhag",
@@ -32,7 +32,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@astrojs/mdx": "5.0.0",
+    "@astrojs/mdx": "7.0.3",
     "@astrojs/react": "5.0.0",
     "@astrojs/sitemap": "^3.7.1",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
