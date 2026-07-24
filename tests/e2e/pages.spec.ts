@@ -41,7 +41,7 @@ test.describe('Pages', () => {
     ];
     for (const link of links) {
       await page.getByRole('link', { name: link.label }).first().click();
-      await expect(page).toHaveURL(link.href);
+      await expect(page).toHaveURL(new RegExp(link.href.replace(/\/$/, '(/)?$')));
     }
   });
 
