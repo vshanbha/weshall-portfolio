@@ -6,7 +6,7 @@ export const en = {
   site: {
     name: 'We Shall Build',
     tagline: 'Build What Matters',
-    description: 'Enterprise software architect. 20+ years of engineering judgement in production for banking, fintech, SaaS, AI, and climate tech.',
+    description: 'Senior architect and hands-on engineer. 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products.',
   },
 
   // Navigation
@@ -39,14 +39,6 @@ export const en = {
     cta: {
         primary: 'Talk to me',
       secondary: 'Read the latest',
-    },
-    rightColumn: {
-      lead: 'From circuit board to boardroom.',
-      headline: 'Hardware foundations. Enterprise software. Climate focus.',
-      value: '20+ years of engineering judgement in production.',
-      worksAcross: 'Works across',
-      domains: 'Banking · Fintech · SaaS · AI · Climate Tech',
-      aboutLink: 'About me',
     },
   },
 
@@ -295,8 +287,8 @@ export const en = {
     offtheclock: {
       title: 'Off the clock',
       paragraphs: [
-        'I trek, I travel, I write — in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.',
-        'I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan\'s condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.',
+        'I trek, I travel, I write, in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, and is named after my hometown. Yes, it confuses everyone.',
+        "I got married first, fell in love later. In India, that is called an arranged marriage. I do not read books much, but the Mahabharata, R.K. Narayan's condensed English version, which I read years ago, is the one that has stayed with me. I grew up on Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music.",
       ],
       closingLead: 'If you have an idea that needs software to give it life, ',
       closing: 'talk to me.',
