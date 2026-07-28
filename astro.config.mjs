@@ -14,7 +14,17 @@ export default defineConfig({
     locales: ['en'],
     routing: {
       prefixDefaultLocale: true,
+      redirectToDefaultLocale: true,
     },
+  },
+
+  redirects: {
+    '/about': '/en/about',
+    '/contact': '/en/contact',
+    '/services': '/en/services',
+    '/blog': '/en/blog',
+    '/impressum': '/en/impressum',
+    '/datenschutz': '/en/datenschutz',
   },
 
   integrations: [
