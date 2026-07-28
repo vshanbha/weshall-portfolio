@@ -82,6 +82,11 @@ test.describe('Home Page Features', () => {
     await expect(page.getByText('For founders and technical leads')).toBeVisible();
     await expect(page.getByRole('link', { name: 'Talk to me' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Read the latest' })).toBeVisible();
+    await expect(page.getByText('From circuit board to boardroom.')).toBeVisible();
+    await expect(page.getByText('Hardware foundations. Enterprise software. Climate focus.')).toBeVisible();
+    await expect(page.getByText('20+ years of engineering judgement in production.')).toBeVisible();
+    await expect(page.getByText('Banking · Fintech · SaaS · AI · Climate Tech')).toBeVisible();
+    await expect(page.getByRole('link', { name: /About me/i })).toBeVisible();
   });
 
   test('renders three engagement story cards', async ({ page }) => {
