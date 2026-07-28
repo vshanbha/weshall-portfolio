@@ -8,7 +8,7 @@ test.describe('Pages', () => {
   });
 
   test('about page loads', async ({ page }) => {
-    await page.goto('/about');
+    await page.goto('/en/about');
     await expect(page.getByRole('heading', { name: /Origin/i })).toBeVisible();
     await expect(page.locator('body')).toContainText(/Mumbai|What I do/i);
   });
@@ -101,13 +101,13 @@ test.describe('Home Page Features', () => {
 
 test.describe('About Page Features', () => {
   test('displays portrait image', async ({ page }) => {
-    await page.goto('/about');
+    await page.goto('/en/about');
     const portrait = page.locator('img[alt="Vishal Shanbhag"]');
     await expect(portrait).toBeVisible();
   });
 
   test('shows all five narrative sections', async ({ page }) => {
-    await page.goto('/about');
+    await page.goto('/en/about');
     await expect(page.getByRole('heading', { name: /^What I do$/i }).first()).toBeVisible();
     await expect(page.getByRole('heading', { name: /The career arc, briefly/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /Speaking, writing, mentorship/i })).toBeVisible();
@@ -115,19 +115,19 @@ test.describe('About Page Features', () => {
   });
 
   test('career arc mentions Inbotiqa and BauAI', async ({ page }) => {
-    await page.goto('/about');
+    await page.goto('/en/about');
     await expect(page.locator('body')).toContainText(/Inbotiqa/);
     await expect(page.locator('body')).toContainText(/BauAI/);
   });
 
   test('shows select articles list', async ({ page }) => {
-    await page.goto('/about');
+    await page.goto('/en/about');
     await expect(page.getByRole('heading', { name: 'Select articles' })).toBeVisible();
     await expect(page.locator('body')).toContainText(/JavaPro/);
   });
 
   test('has "talk to me" closing CTA', async ({ page }) => {
-    await page.goto('/about');
+    await page.goto('/en/about');
     await expect(page.locator('body')).toContainText(/talk to me/);
   });
 });
@@ -157,14 +157,14 @@ test.describe('Blog Detail', () => {
 
 test.describe('Legal Pages', () => {
   test('impressum page loads with required information', async ({ page }) => {
-    await page.goto('/impressum');
+    await page.goto('/en/impressum');
     await expect(page.locator('body')).toContainText('Impressum');
     await expect(page.locator('body')).toContainText(/Vishal Shanbhag|Ortshofstraße/);
     await expect(page.locator('body')).toContainText(/contact@weshall\.build/);
   });
 
   test('datenschutz page loads with privacy information', async ({ page }) => {
-    await page.goto('/datenschutz');
+    await page.goto('/en/datenschutz');
     await expect(page.locator('body')).toContainText('Datenschutzerklärung');
     await expect(page.locator('body')).toContainText(/GitHub\.Inc|DSGVO/);
   });
@@ -178,7 +178,7 @@ test.describe('Legal Pages', () => {
 });
 
 test.describe('Layout Structure', () => {
-  const pages = ['/', '/about', '/contact', '/blog', '/services'];
+  const pages = ['/', '/en/about', '/en/contact', '/en/blog', '/en/services'];
 
   for (const path of pages) {
     test(`header renders on ${path}`, async ({ page }) => {
