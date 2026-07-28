@@ -48,7 +48,7 @@ export interface SiteConfig {
 
 const siteConfig: SiteConfig = {
   name: 'We Shall Build',
-  description: 'Build what matters. We deliver the capability that turns ambitious ideas into products that ship.',
+  description: 'Enterprise software architect. 20+ years of engineering judgement in production for banking, fintech, SaaS, AI, and climate tech.',
   url: import.meta.env.SITE_URL || 'http://localhost:4321',
   ogImage: '/og-default.png',
   author: 'Vishal Shanbhag',
