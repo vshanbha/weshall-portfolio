@@ -51,6 +51,26 @@ test.describe('Pages', () => {
   });
 });
 
+test.describe('Root-Level Redirects', () => {
+  const redirects = [
+    { from: '/about', to: '/en/about' },
+    { from: '/contact', to: '/en/contact' },
+    { from: '/services', to: '/en/services' },
+    { from: '/blog', to: '/en/blog' },
+    { from: '/impressum', to: '/en/impressum' },
+    { from: '/datenschutz', to: '/en/datenschutz' },
+  ];
+
+  for (const { from, to } of redirects) {
+    test(`${from} redirects to ${to}`, async ({ page }) => {
+      const response = await page.goto(from);
+      expect(response?.status()).toBe(200);
+      await expect(page).toHaveURL(new RegExp(to.replace(/\/$/, '') + '/?$'));
+      await expect(page.locator('body')).toContainText('We Shall Build');
+    });
+  }
+});
+
 test.describe('English-only locale', () => {
   test('/en/about returns 200', async ({ page }) => {
     const response = await page.goto('/en/about');
