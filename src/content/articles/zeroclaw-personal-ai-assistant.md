@@ -128,7 +128,7 @@ I am using **opencode** from the provider list. ZeroClaw has a first-class `open
 When prompted:
 - Provider: **opencode**
 - API key: paste your opencode key
-- Model: deepseek-v4-flash
+- Model: mimo-v2.5
 - URL: https://opencode.ai/zen/go/v1/chat/completions
 
 ### Risk Profile
