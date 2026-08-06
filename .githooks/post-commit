@@ -1,0 +1,59 @@
+#!/bin/sh
+# Post-commit hook — reviews the latest commit on dev and main branches
+# Fires opencode run with the commit diff for agentic code review
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ "$BRANCH" != "dev" ] && [ "$BRANCH" != "main" ]; then
+  exit 0
+fi
+
+COMMIT_HASH=$(git rev-parse --short HEAD)
+COMMIT_MSG=$(git log -1 --pretty=%s)
+DIFF=$(git diff HEAD~1..HEAD)
+
+if [ -z "$DIFF" ]; then
+  echo "No changes to review."
+  exit 0
+fi
+
+# Truncate large diffs to avoid token limits
+MAX_CHARS=12000
+DIFF_LEN=${#DIFF}
+if [ "$DIFF_LEN" -gt "$MAX_CHARS" ]; then
+  DIFF=$(printf '%s' "$DIFF" | head -c "$MAX_CHARS")
+  DIFF="$DIFF
+
+... [diff truncated — $DIFF_LEN chars total, showing first $MAX_CHARS]"
+fi
+
+echo ""
+echo "========================================"
+echo "  Code Review: commit $COMMIT_HASH"
+echo "  Branch: $BRANCH"
+echo "========================================"
+echo ""
+
+opencode run \
+  --agent plan \
+  --auto \
+  --title "review-$COMMIT_HASH" \
+  --format default \
+  "Review the latest commit on the $BRANCH branch of the weshall-portfolio project.
+
+Commit: $COMMIT_HASH
+Message: $COMMIT_MSG
+
+Context: This is an Astro 6 portfolio site (Velocity template) using Tailwind CSS, TypeScript, React islands, and pnpm. The project follows WCAG 2.2 AA accessibility, British English, and strict Astro conventions (zero-JS by default, typed content collections, Image component for optimisation).
+
+Review for:
+1. Correctness — does the code match the commit message intent?
+2. Conventions — does it follow Velocity/Astro patterns and project standards?
+3. Quality — any bugs, edge cases, performance issues, or accessibility gaps?
+4. Security — any secrets, unvalidated inputs, or risky patterns?
+5. Completeness — anything missing or half-done?
+
+Be specific. Reference file paths and line numbers. Suggest fixes, not just problems.
+
+Here is the diff to review:
+
+$DIFF"
