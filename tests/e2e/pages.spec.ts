@@ -184,6 +184,82 @@ test.describe('Blog Detail', () => {
   });
 });
 
+test.describe('Blog Article SEO', () => {
+  const articlePath = '/en/blog/how-this-site-was-built';
+
+  test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {
+    await page.goto(articlePath);
+    const blogPosting = await page.evaluate(() => {
+      const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+      for (const script of scripts) {
+        try {
+          const parsed = JSON.parse(script.textContent || '');
+          if (parsed['@type'] === 'BlogPosting') return parsed;
+        } catch {}
+      }
+      return null;
+    });
+    expect(blogPosting).not.toBeNull();
+    expect(blogPosting!['url']).toContain('/en/blog/how-this-site-was-built/');
+    expect(blogPosting!['url']).not.toContain('undefined');
+    expect(blogPosting!['mainEntityOfPage']['@id']).toContain('/en/blog/how-this-site-was-built/');
+  });
+
+  test('hreflang tags point to article URL, not blog index', async ({ page }) => {
+    await page.goto(articlePath);
+    const hreflang = page.locator('link[rel="alternate"][hreflang="en"]');
+    await expect(hreflang).toHaveAttribute('href', /\/en\/blog\/how-this-site-was-built/);
+    const href = await hreflang.getAttribute('href');
+    expect(href).not.toBe('http://localhost:4321/en/blog');
+  });
+
+  test('breadcrumb JSON-LD terminal item has article URL', async ({ page }) => {
+    await page.goto(articlePath);
+    const breadcrumb = await page.evaluate(() => {
+      const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+      for (const script of scripts) {
+        try {
+          const parsed = JSON.parse(script.textContent || '');
+          if (parsed['@type'] === 'BreadcrumbList') return parsed;
+        } catch {}
+      }
+      return null;
+    });
+    expect(breadcrumb).not.toBeNull();
+    const items = breadcrumb!['itemListElement'] as Array<{ name: string; item: string }>;
+    const lastItem = items[items.length - 1];
+    expect(lastItem['item']).toMatch(/\/en\/blog\/how-this-site-was-built\/?$/);
+  });
+});
+
+test.describe('Sitemap', () => {
+  test('sitemap contains only /en/ prefixed URLs', async () => {
+    const fs = await import('node:fs');
+    const path = await import('node:path');
+    const sitemapPath = path.resolve('dist/sitemap-0.xml');
+    const xml = fs.readFileSync(sitemapPath, 'utf-8');
+    const urls = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
+    expect(urls.length).toBeGreaterThan(0);
+    for (const url of urls) {
+      const loc = url.replace(/<\/?loc>/g, '');
+      expect(loc).toMatch(/https:\/\/.*\.build\/en\//);
+    }
+  });
+
+  test('sitemap does not contain bare domain URLs without locale prefix', async () => {
+    const fs = await import('node:fs');
+    const path = await import('node:path');
+    const sitemapPath = path.resolve('dist/sitemap-0.xml');
+    const xml = fs.readFileSync(sitemapPath, 'utf-8');
+    const urls = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
+    for (const url of urls) {
+      const loc = url.replace(/<\/?loc>/g, '');
+      const pathname = new URL(loc).pathname;
+      expect(pathname).toMatch(/^\/en\//);
+    }
+  });
+});
+
 test.describe('Legal Pages', () => {
   test('impressum page loads with required information', async ({ page }) => {
     await page.goto('/en/impressum');
