@@ -18,6 +18,7 @@ export default defineConfig({
   },
 
   redirects: {
+    '/sitemap.xml': '/sitemap-index.xml',
     '/about': '/en/about',
     '/contact': '/en/contact',
     '/services': '/en/services',
