@@ -1,0 +1,30 @@
+#!/bin/sh
+# Wrapper for the post-commit review agent.
+# Reads REVIEW_AGENT_TOOL from environment, falling back to .env, defaulting to opencode.
+
+# Load .env from repo root (env vars take precedence)
+if [ -z "$REVIEW_AGENT_TOOL" ]; then
+  GIT_ROOT=$(git rev-parse --show-toplevel)
+  if [ -f "$GIT_ROOT/.env" ]; then
+    REVIEW_AGENT_TOOL=$(grep '^REVIEW_AGENT_TOOL=' "$GIT_ROOT/.env" | cut -d= -f2-)
+  fi
+fi
+
+TOOL="${REVIEW_AGENT_TOOL:-opencode}"
+
+case "$TOOL" in
+  opencode)
+    opencode run --agent plan --auto --format default "$1"
+    ;;
+  claude)
+    echo "$1" | claude -p
+    ;;
+  codex)
+    codex --quiet -m "$1"
+    ;;
+  *)
+    echo "Unknown review agent tool: $TOOL"
+    echo "Set REVIEW_AGENT_TOOL to opencode, claude, or codex."
+    exit 1
+    ;;
+esac

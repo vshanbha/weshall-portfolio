@@ -195,12 +195,14 @@ export function switchLocale(currentPath: string, targetLocale: Locale): string 
  * // ]
  */
 export function getRouteTranslations(
-  routeId: RouteId
+  routeId: RouteId,
+  extra?: string
 ): Array<{ locale: Locale; path: string }> {
-  return locales.map((locale) => ({
-    locale,
-    path: getLocalizedPath(routeId, locale),
-  }));
+  return locales.map((locale) => {
+    const basePath = getLocalizedPath(routeId, locale);
+    const path = extra ? `${basePath}/${extra}/` : basePath;
+    return { locale, path };
+  });
 }
 
 /**
