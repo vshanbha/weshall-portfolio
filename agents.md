@@ -8,6 +8,7 @@ All agents operating in this workspace must treat these as foundational, non-neg
 2. **Simplicity first.** Write the minimum code that solves the problem. No speculative abstractions.
 3. **Surgical changes.** Touch only what you were asked to touch. Don't refactor adjacent code.
 4. **Goal-driven execution.** Define what "done" looks like. Use tests as success criteria, not vibes.
+5. **Preserve half-done work.** If files cause lint/type errors but represent intentional future work (e.g. placeholder translations, stub routes), fix the errors by widening types or adding suppression — never delete the files. Ask the human if uncertain.
 
 ---
 
