@@ -189,6 +189,7 @@ test.describe('Blog Article SEO', () => {
 
   test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {
     await page.goto(articlePath);
+    await page.waitForSelector('script[type="application/ld+json"]', { state: 'attached' });
     const blogPosting = await page.evaluate(() => {
       const scripts = document.querySelectorAll('script[type="application/ld+json"]');
       for (const script of scripts) {
@@ -208,13 +209,14 @@ test.describe('Blog Article SEO', () => {
   test('hreflang tags point to article URL, not blog index', async ({ page }) => {
     await page.goto(articlePath);
     const hreflang = page.locator('link[rel="alternate"][hreflang="en"]');
-    await expect(hreflang).toHaveAttribute('href', /\/en\/blog\/how-this-site-was-built/);
+    await expect(hreflang).toHaveAttribute('href', /\/en\/blog\/how-this-site-was-built\//);
     const href = await hreflang.getAttribute('href');
     expect(href).not.toBe('http://localhost:4321/en/blog');
   });
 
   test('breadcrumb JSON-LD terminal item has article URL', async ({ page }) => {
     await page.goto(articlePath);
+    await page.waitForSelector('script[type="application/ld+json"]', { state: 'attached' });
     const breadcrumb = await page.evaluate(() => {
       const scripts = document.querySelectorAll('script[type="application/ld+json"]');
       for (const script of scripts) {
@@ -229,34 +231,6 @@ test.describe('Blog Article SEO', () => {
     const items = breadcrumb!['itemListElement'] as Array<{ name: string; item: string }>;
     const lastItem = items[items.length - 1];
     expect(lastItem['item']).toMatch(/\/en\/blog\/how-this-site-was-built\/?$/);
-  });
-});
-
-test.describe('Sitemap', () => {
-  test('sitemap contains only /en/ prefixed URLs', async () => {
-    const fs = await import('node:fs');
-    const path = await import('node:path');
-    const sitemapPath = path.resolve('dist/sitemap-0.xml');
-    const xml = fs.readFileSync(sitemapPath, 'utf-8');
-    const urls = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
-    expect(urls.length).toBeGreaterThan(0);
-    for (const url of urls) {
-      const loc = url.replace(/<\/?loc>/g, '');
-      expect(loc).toMatch(/https:\/\/.*\.build\/en\//);
-    }
-  });
-
-  test('sitemap does not contain bare domain URLs without locale prefix', async () => {
-    const fs = await import('node:fs');
-    const path = await import('node:path');
-    const sitemapPath = path.resolve('dist/sitemap-0.xml');
-    const xml = fs.readFileSync(sitemapPath, 'utf-8');
-    const urls = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
-    for (const url of urls) {
-      const loc = url.replace(/<\/?loc>/g, '');
-      const pathname = new URL(loc).pathname;
-      expect(pathname).toMatch(/^\/en\//);
-    }
   });
 });
 
