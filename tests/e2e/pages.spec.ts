@@ -188,7 +188,8 @@ test.describe('Blog Article SEO', () => {
   const articlePath = '/en/blog/how-this-site-was-built';
 
   test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {
-    await page.goto(articlePath, { waitUntil: 'networkidle' });
+    await page.goto(articlePath);
+    await expect(page.locator('script[type="application/ld+json"]').first()).toBeAttached();
     const blogPosting = await page.evaluate(() => {
       const scripts = document.querySelectorAll('script[type="application/ld+json"]');
       for (const script of scripts) {
@@ -214,7 +215,8 @@ test.describe('Blog Article SEO', () => {
   });
 
   test('breadcrumb JSON-LD terminal item has article URL', async ({ page }) => {
-    await page.goto(articlePath, { waitUntil: 'networkidle' });
+    await page.goto(articlePath);
+    await expect(page.locator('script[type="application/ld+json"]').first()).toBeAttached();
     const breadcrumb = await page.evaluate(() => {
       const scripts = document.querySelectorAll('script[type="application/ld+json"]');
       for (const script of scripts) {
