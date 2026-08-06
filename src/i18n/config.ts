@@ -8,6 +8,7 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
 
+// TODO: Narrow to Record<Locale, string> when de/hi/mr locales are activated
 export const localeNames: Record<string, string> = {
   en: 'English',
   de: 'Deutsch',
@@ -15,6 +16,7 @@ export const localeNames: Record<string, string> = {
   mr: 'मराठी',
 };
 
+// TODO: Narrow to Record<Locale, string> when de/hi/mr locales are activated
 export const localeFlags: Record<string, string> = {
   en: '🇬🇧',
   de: '🇩🇪',
