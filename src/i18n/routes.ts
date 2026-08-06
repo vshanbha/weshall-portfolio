@@ -29,6 +29,7 @@ export type NavConfig = {
  * A route definition maps each locale to its URL slug
  * Optionally includes navigation configuration
  */
+// TODO: Narrow to Record<Locale, string> when de/hi/mr locales are activated
 export type RouteDefinition = Record<string, string> & {
   nav?: NavConfig;
 };
