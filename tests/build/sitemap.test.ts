@@ -27,3 +27,12 @@ describe('Sitemap build output', () => {
     }
   });
 });
+
+describe('Sitemap redirect', () => {
+  it('/sitemap.xml redirects to /sitemap-index.xml', () => {
+    const html = readFileSync(resolve('dist/sitemap.xml/index.html'), 'utf-8');
+    expect(html).toContain('http-equiv="refresh"');
+    expect(html).toContain('/sitemap-index.xml');
+    expect(html).toMatch(/<link rel="canonical" href="[^"]*\/sitemap-index\.xml">/);
+  });
+});
