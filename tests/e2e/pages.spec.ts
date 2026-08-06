@@ -52,6 +52,15 @@ test.describe('Pages', () => {
 });
 
 test.describe('Root-Level Redirects', () => {
+  test('/ serves a transparent redirect: JS-first with meta refresh fallback', async ({ page }) => {
+    const response = await page.request.get('/');
+    expect(response.status()).toBe(200);
+    const html = await response.text();
+    expect(html).not.toContain('<title>Redirecting');
+    expect(html).toContain('<script');
+    expect(html).toMatch(/http-equiv="refresh"\s+content="[12];url=\/en\//);
+  });
+
   const redirects = [
     { from: '/about', to: '/en/about' },
     { from: '/contact', to: '/en/contact' },
