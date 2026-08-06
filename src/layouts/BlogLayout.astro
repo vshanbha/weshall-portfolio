@@ -9,6 +9,7 @@ import ShareButtons from '@/components/blog/ShareButtons.astro';
 import RelatedPosts from '@/components/blog/RelatedPosts.astro';
 import { defaultLocale, type Locale } from '@/i18n/config';
 import { useTranslations } from '@/i18n/index';
+import { getLocalizedPath } from '@/i18n/helpers';
 
 interface Props {
   title: string;
@@ -41,9 +42,8 @@ const {
 const t = useTranslations(locale);
 const ogImage = ogImageProp || `/og${Astro.url.pathname}.png`;
 
-// Build breadcrumbs with locale-aware URLs
-const blogUrl = locale === defaultLocale ? '/blog' : `/${locale}/blog`;
-const homeUrl = locale === defaultLocale ? '/' : `/${locale}`;
+const blogUrl = getLocalizedPath('blog', locale);
+const homeUrl = getLocalizedPath('home', locale);
 
 const breadcrumbs = [
   { label: t('nav.home'), href: homeUrl },
