@@ -2,7 +2,7 @@ import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
-const localeEnum = z.enum(['en', 'de', 'hi', 'mr']);
+const localeEnum = z.enum(['en']);
 
 // Articles collection (primary content type)
 const articles = defineCollection({
