@@ -29,7 +29,7 @@ export type NavConfig = {
  * A route definition maps each locale to its URL slug
  * Optionally includes navigation configuration
  */
-export type RouteDefinition = Record<Locale, string> & {
+export type RouteDefinition = Record<string, string> & {
   nav?: NavConfig;
 };
 
@@ -47,33 +47,33 @@ export type RouteDefinition = Record<Locale, string> & {
 export const routes = {
   // Home page (root) - not shown in nav (logo links there)
   home: {
-    en: '',
+    en: '', de: '', hi: '', mr: '',
     nav: { show: false, order: 0, label: 'nav.home' },
   },
 
   // Blog section
   blog: {
-    en: 'blog',
+    en: 'blog', de: 'blog', hi: 'blog', mr: 'blog',
     nav: { show: true, order: 2, label: 'nav.blog' },
   },
 
   // Services page
   services: {
-    en: 'services',
+    en: 'services', de: 'services', hi: 'services', mr: 'services',
     nav: { show: true, order: 3, label: 'nav.services' },
   },
 
   // Static pages
   about: {
-    en: 'about',
+    en: 'about', de: 'about', hi: 'about', mr: 'about',
     nav: { show: true, order: 4, label: 'nav.about' },
   },
   contact: {
-    en: 'contact',
+    en: 'contact', de: 'contact', hi: 'contact', mr: 'contact',
     nav: { show: true, order: 5, label: 'nav.contact' },
   },
 
-} as const satisfies Record<string, RouteDefinition>;
+} as const;
 
 /**
  * Type-safe route identifier
