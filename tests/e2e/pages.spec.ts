@@ -214,6 +214,20 @@ test.describe('Blog Article SEO', () => {
     expect(href).not.toBe('http://localhost:4321/en/blog');
   });
 
+  test('exactly one canonical tag per page', async ({ page }) => {
+    await page.goto(articlePath);
+    const canonicals = page.locator('link[rel="canonical"]');
+    await expect(canonicals).toHaveCount(1);
+    const href = await canonicals.first().getAttribute('href');
+    expect(href).toMatch(/\/en\/blog\/how-this-site-was-built\/?$/);
+  });
+
+  test('og:locale is en_GB', async ({ page }) => {
+    await page.goto(articlePath);
+    const ogLocale = page.locator('meta[property="og:locale"]');
+    await expect(ogLocale).toHaveAttribute('content', 'en_GB');
+  });
+
   test('breadcrumb JSON-LD terminal item has article URL', async ({ page }) => {
     await page.goto(articlePath);
     await expect(page.locator('script[type="application/ld+json"]').first()).toBeAttached();
