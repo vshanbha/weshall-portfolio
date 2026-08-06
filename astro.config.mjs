@@ -30,6 +30,10 @@ export default defineConfig({
     react(),
     mdx(),
     sitemap({
+      filter: (page) => {
+        const pathname = new URL(page).pathname;
+        return pathname.startsWith('/en/');
+      },
       i18n: {
         defaultLocale: 'en',
         locales: {

@@ -34,13 +34,15 @@ const { routeId: propRouteId } = Astro.props;
 
 // Try to resolve routeId from current path if not provided
 let routeId = propRouteId;
+let extra: string | undefined;
 if (!routeId) {
   const resolved = resolveRouteFromPath(Astro.url.pathname);
   routeId = resolved?.routeId;
+  extra = resolved?.extra;
 }
 
 // Get all translations for this route
-const translations = routeId ? getRouteTranslations(routeId) : [];
+const translations = routeId ? getRouteTranslations(routeId, extra) : [];
 
 // Find the default locale URL for x-default
 const defaultUrl = translations.find((t) => t.locale === defaultLocale)?.path || '/';

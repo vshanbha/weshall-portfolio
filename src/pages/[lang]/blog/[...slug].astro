@@ -3,7 +3,7 @@ import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import { createBlogPostSchema } from '@/lib/schema';
-import { locales } from '@/i18n/config';
+import { locales, type Locale } from '@/i18n/config';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -22,14 +22,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return paths;
 };
 
-const { lang, entry } = Astro.props as { lang: string; entry: CollectionEntry<'articles'> };
+const { locale, entry } = Astro.props as { locale: Locale; entry: CollectionEntry<'articles'> };
 const { Content } = await render(entry);
 
-const canonicalUrl = new URL(`/${lang}/blog/${entry.id}/`, Astro.site);
+const canonicalUrl = new URL(`/${locale}/blog/${entry.id}/`, Astro.site);
 
 const ogImage = entry.data.image
   ? typeof entry.data.image === 'string' ? entry.data.image : entry.data.image.src
-  : `/og/${lang}/blog/${entry.id}.png`;
+  : `/og/${locale}/blog/${entry.id}.png`;
 ---
 
 <BlogLayout
@@ -43,7 +43,7 @@ const ogImage = entry.data.image
   imageAlt={entry.data.imageAlt}
   tags={entry.data.tags}
   slug={entry.id}
-  locale={lang}
+  locale={locale}
 >
   <JsonLd
     schema={createBlogPostSchema({
