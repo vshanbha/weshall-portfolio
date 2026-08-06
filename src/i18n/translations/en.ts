@@ -6,7 +6,7 @@ export const en = {
   site: {
     name: 'We Shall Build',
     tagline: 'Build What Matters',
-    description: 'Enterprise software architect. 20+ years of engineering judgement in production for banking, fintech, SaaS, AI, and climate tech.',
+    description: 'Senior Java Architect, Startup CTO, and Cloud & AI Engineer. 20+ years building production systems for banking, fintech, SaaS, AI, and climate tech. Techstars Fintech alumnus.',
   },
 
   // Navigation
