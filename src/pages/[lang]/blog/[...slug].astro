@@ -4,6 +4,7 @@ import BlogLayout from '@/layouts/BlogLayout.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import { createBlogPostSchema } from '@/lib/schema';
 import { locales, type Locale } from '@/i18n/config';
+import siteConfig from '@/config/site.config';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -25,7 +26,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const { locale, entry } = Astro.props as { locale: Locale; entry: CollectionEntry<'articles'> };
 const { Content } = await render(entry);
 
-const canonicalUrl = new URL(`/${locale}/blog/${entry.id}/`, Astro.site);
+const canonicalUrl = new URL(`/${locale}/blog/${entry.id}/`, siteConfig.url);
 
 const ogImage = entry.data.image
   ? typeof entry.data.image === 'string' ? entry.data.image : entry.data.image.src
