@@ -39,6 +39,10 @@ This document defines the persistent operating model for the **Portfolio** proje
   6. `dev` → `main` only after full QA pass
 - Agents must commit in atomic, logical chunks to facilitate granular review.
 
+### Git Hooks
+
+See [`GitHooks.md`](GitHooks.md) for the full hook pipeline, activation, and escape hatches.
+
 ### Parallel Agent Isolation (Worktree Policy)
 
 When launching multiple agents in parallel, each agent MUST operate in an
