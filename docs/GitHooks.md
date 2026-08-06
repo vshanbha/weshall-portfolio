@@ -14,9 +14,9 @@ fire only on `dev` and `main` — feature branches commit freely.
 ## Workflow
 
 ```
-feature/* → commit (no gates) → push (E2E tests) → PR to dev
-dev       → commit (validate gate + agent review) → merge to main
-main      → commit (validate gate + agent review) → deploy
+feature/* → commit (no gates) → push (no gates) → PR to dev
+dev       → commit (validate gate + agent review) → push (E2E tests) → merge to main
+main      → commit (validate gate + agent review) → push (E2E tests) → deploy
 ```
 
 ## Escape Hatch
