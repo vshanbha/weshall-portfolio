@@ -188,15 +188,14 @@ test.describe('Blog Article SEO', () => {
   const articlePath = '/en/blog/how-this-site-was-built';
 
   test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {
-    await page.goto(articlePath);
-    await page.waitForSelector('script[type="application/ld+json"]', { state: 'attached' });
+    await page.goto(articlePath, { waitUntil: 'networkidle' });
     const blogPosting = await page.evaluate(() => {
       const scripts = document.querySelectorAll('script[type="application/ld+json"]');
       for (const script of scripts) {
         try {
           const parsed = JSON.parse(script.textContent || '');
           if (parsed['@type'] === 'BlogPosting') return parsed;
-        } catch {}
+        } catch { /* ignore parse errors */ }
       }
       return null;
     });
@@ -215,15 +214,14 @@ test.describe('Blog Article SEO', () => {
   });
 
   test('breadcrumb JSON-LD terminal item has article URL', async ({ page }) => {
-    await page.goto(articlePath);
-    await page.waitForSelector('script[type="application/ld+json"]', { state: 'attached' });
+    await page.goto(articlePath, { waitUntil: 'networkidle' });
     const breadcrumb = await page.evaluate(() => {
       const scripts = document.querySelectorAll('script[type="application/ld+json"]');
       for (const script of scripts) {
         try {
           const parsed = JSON.parse(script.textContent || '');
           if (parsed['@type'] === 'BreadcrumbList') return parsed;
-        } catch {}
+        } catch { /* ignore parse errors */ }
       }
       return null;
     });
