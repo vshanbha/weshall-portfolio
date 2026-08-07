@@ -28,27 +28,27 @@ const {
 
 const pageTitle = title ? `${title} — ${siteConfig.name}` : siteConfig.name;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, siteConfig.url);
 
 // Process image - use dynamic OG image if no custom image provided
 let ogImage: string;
 if (image) {
-  ogImage = image.startsWith('http') ? image : new URL(image, Astro.site).toString();
+  ogImage = image.startsWith('http') ? image : new URL(image, siteConfig.url).toString();
 } else {
   // Generate dynamic OG image path based on current URL
   const pathname = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'index';
-  ogImage = new URL(`/og/${pathname}.png`, Astro.site).toString();
+  ogImage = new URL(`/og/${pathname}.png`, siteConfig.url).toString();
 }
 
 const robotsContent = [noindex ? 'noindex' : 'index', nofollow ? 'nofollow' : 'follow'].join(', ');
 
 // Normalize BCP-47 locale (e.g. "en") to OG language_TERRITORY format (e.g. "en_US")
 const localeMap: Record<string, string> = {
-  en: 'en_US', fr: 'fr_FR', de: 'de_DE', es: 'es_ES', it: 'it_IT',
+  en: 'en_GB', fr: 'fr_FR', de: 'de_DE', es: 'es_ES', it: 'it_IT',
   pt: 'pt_BR', nl: 'nl_NL', ja: 'ja_JP', ko: 'ko_KR', zh: 'zh_CN',
   ru: 'ru_RU', ar: 'ar_SA', hi: 'hi_IN', pl: 'pl_PL', sv: 'sv_SE',
 };
-const rawLocale = Astro.currentLocale || 'en_US';
+const rawLocale = Astro.currentLocale || 'en';
 const locale = rawLocale.includes('_') || rawLocale.includes('-')
   ? rawLocale.replace('-', '_')
   : (localeMap[rawLocale] || `${rawLocale}_${rawLocale.toUpperCase()}`);

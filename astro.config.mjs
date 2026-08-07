@@ -14,11 +14,11 @@ export default defineConfig({
     locales: ['en'],
     routing: {
       prefixDefaultLocale: true,
-      redirectToDefaultLocale: true,
     },
   },
 
   redirects: {
+    '/sitemap.xml': '/sitemap-index.xml',
     '/about': '/en/about',
     '/contact': '/en/contact',
     '/services': '/en/services',
@@ -31,6 +31,10 @@ export default defineConfig({
     react(),
     mdx(),
     sitemap({
+      filter: (page) => {
+        const pathname = new URL(page).pathname;
+        return pathname.startsWith('/en/');
+      },
       i18n: {
         defaultLocale: 'en',
         locales: {

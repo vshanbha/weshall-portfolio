@@ -29,7 +29,8 @@ export type NavConfig = {
  * A route definition maps each locale to its URL slug
  * Optionally includes navigation configuration
  */
-export type RouteDefinition = Record<Locale, string> & {
+// TODO: Narrow to Record<Locale, string> when de/hi/mr locales are activated
+export type RouteDefinition = Record<string, string> & {
   nav?: NavConfig;
 };
 
@@ -73,7 +74,7 @@ export const routes = {
     nav: { show: true, order: 5, label: 'nav.contact' },
   },
 
-} as const satisfies Record<string, RouteDefinition>;
+} as const;
 
 /**
  * Type-safe route identifier

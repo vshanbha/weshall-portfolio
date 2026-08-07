@@ -52,6 +52,15 @@ test.describe('Pages', () => {
 });
 
 test.describe('Root-Level Redirects', () => {
+  test('/ serves a transparent redirect: JS-first with meta refresh fallback', async ({ page }) => {
+    const response = await page.request.get('/');
+    expect(response.status()).toBe(200);
+    const html = await response.text();
+    expect(html).not.toContain('<title>Redirecting');
+    expect(html).toContain('<script');
+    expect(html).toMatch(/http-equiv="refresh"\s+content="[12];url=\/en\//);
+  });
+
   const redirects = [
     { from: '/about', to: '/en/about' },
     { from: '/contact', to: '/en/contact' },
@@ -172,6 +181,70 @@ test.describe('Blog Detail', () => {
   test('blog article detail page returns 404 for unknown slug', async ({ page }) => {
     await page.goto('/blog/nonexistent-article');
     await expect(page.locator('body')).toContainText('404');
+  });
+});
+
+test.describe('Blog Article SEO', () => {
+  const articlePath = '/en/blog/how-this-site-was-built';
+
+  test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {
+    await page.goto(articlePath);
+    await expect(page.locator('script[type="application/ld+json"]').first()).toBeAttached();
+    const blogPosting = await page.evaluate(() => {
+      const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+      for (const script of scripts) {
+        try {
+          const parsed = JSON.parse(script.textContent || '');
+          if (parsed['@type'] === 'BlogPosting') return parsed;
+        } catch { /* ignore parse errors */ }
+      }
+      return null;
+    });
+    expect(blogPosting).not.toBeNull();
+    expect(blogPosting!['url']).toContain('/en/blog/how-this-site-was-built/');
+    expect(blogPosting!['url']).not.toContain('undefined');
+    expect(blogPosting!['mainEntityOfPage']['@id']).toContain('/en/blog/how-this-site-was-built/');
+  });
+
+  test('hreflang tags point to article URL, not blog index', async ({ page }) => {
+    await page.goto(articlePath);
+    const hreflang = page.locator('link[rel="alternate"][hreflang="en"]');
+    await expect(hreflang).toHaveAttribute('href', /\/en\/blog\/how-this-site-was-built\//);
+    const href = await hreflang.getAttribute('href');
+    expect(href).not.toBe('http://localhost:4321/en/blog');
+  });
+
+  test('exactly one canonical tag per page', async ({ page }) => {
+    await page.goto(articlePath);
+    const canonicals = page.locator('link[rel="canonical"]');
+    await expect(canonicals).toHaveCount(1);
+    const href = await canonicals.first().getAttribute('href');
+    expect(href).toMatch(/\/en\/blog\/how-this-site-was-built\/?$/);
+  });
+
+  test('og:locale is en_GB', async ({ page }) => {
+    await page.goto(articlePath);
+    const ogLocale = page.locator('meta[property="og:locale"]');
+    await expect(ogLocale).toHaveAttribute('content', 'en_GB');
+  });
+
+  test('breadcrumb JSON-LD terminal item has article URL', async ({ page }) => {
+    await page.goto(articlePath);
+    await expect(page.locator('script[type="application/ld+json"]').first()).toBeAttached();
+    const breadcrumb = await page.evaluate(() => {
+      const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+      for (const script of scripts) {
+        try {
+          const parsed = JSON.parse(script.textContent || '');
+          if (parsed['@type'] === 'BreadcrumbList') return parsed;
+        } catch { /* ignore parse errors */ }
+      }
+      return null;
+    });
+    expect(breadcrumb).not.toBeNull();
+    const items = breadcrumb!['itemListElement'] as Array<{ name: string; item: string }>;
+    const lastItem = items[items.length - 1];
+    expect(lastItem['item']).toMatch(/\/en\/blog\/how-this-site-was-built\/?$/);
   });
 });
 
