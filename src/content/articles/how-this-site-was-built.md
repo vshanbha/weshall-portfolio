@@ -19,7 +19,7 @@ imageAlt: "PageSpeed results on desktop showing 100 Performance score"
 
 # How This Site Was Built With Astro
 
-A year after [ditching WordPress for Jekyll](https://levelup.gitconnected.com/bye-bye-wordpress-61bc464702fb) I found myself looking at this topic again. This time for my [personal site](https://weshall.build/). My UI creation skills are limited to telling my AI agent what to do. I needed a framework that offered a better template ecosystem and retained all the good things Jekyll brought.
+A year after [ditching WordPress for Jekyll](/en/blog/bye-bye-wordpress-part-1/) I found myself looking at this topic again. This time for my [personal site](https://weshall.build/). My UI creation skills are limited to telling my AI agent what to do. I needed a framework that offered a better template ecosystem and retained all the good things Jekyll brought.
 
 ## Why Astro
 

@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "We shall build - Deep-dive analysis of complex technical, operational, and architectural domains",
   "type": "module",
   "author": "Vishal Shanbhag",
@@ -27,8 +27,9 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate": "pnpm lint && pnpm check && pnpm build",
+    "validate": "pnpm lint && pnpm check && pnpm build && pnpm test:build",
     "test": "vitest",
+    "test:build": "vitest run tests/build/",
     "test:e2e": "playwright test"
   },
   "dependencies": {

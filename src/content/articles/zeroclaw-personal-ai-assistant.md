@@ -50,12 +50,38 @@ You don't need a Malibu mansion and a reactor in your chest, but you do need a L
 
 ZeroClaw is a binary. So it does not need Node.js, Python, or any runtime you might already have installed. The installer handles everything, which is either reassuring or terrifying, depending on your relationship with curl, Linux command pipes and bash. Thankfully, their installer also offers "uninstall". So theoretically, one can clean up without too many issues. Time for practice.
 
+## Before You Install: Who Runs This Thing
+
+At the time of writing, the [zeroclaw quickstart](https://docs.zeroclawlabs.ai/v0.8.4/en/getting-started/quickstart.html) skips over some details, and it matters for any always-on agent that takes instructions from remote channels.
+
+ZeroClaw runs as whoever invokes it. If that is your everyday user,  the one in the `docker` group, the one with passwordless sudo, then your agent inherits every one of those privileges. Linux does not distinguish between "you running a terminal command" and "your AI agent running a terminal command." They share the same user, the same groups, the same keys.
+
+For an agent you invoke in a terminal session and watch, this is acceptable. For an agent running as a background service, connected to a chat channel (such as Discord or Telegram), trusting instructions implicitly based on the configured channel, it is a different category of risk. A prompt injection in a webpage the agent reads, a skill that contains a surprise, a compromised chat account; All of these can instruct the agent to use its privileges in ways one did not intend.
+
+Therefore, we give the agent its own identity.
+```sh
+sudo useradd -r -s /usr/sbin/nologin zeroclaw
+```
+This creates a system user with no interactive login, no sudo, no Docker, no group memberships beyond its own. A blank slate.
+
+Verify:
+```sh
+groups zeroclaw
+```
+You should see exactly:
+
+```
+zeroclaw : zeroclaw
+```
+If you see anything else, such as `docker`, `sudo`, `wheel`, your system defaults added it. Investigate before proceeding. Everything from here on runs as this dedicated user. The agent has access to exactly what you explicitly give it, nothing else.
+
 ## 1. Install ZeroClaw
 
-Open a terminal. Run this:
+Open a terminal. Download the installer, then run it as the `zeroclaw` user:
 
 ```sh
-curl -fsSL https://zeroclawlabs.ai/install.sh | bash
+curl -fsSL https://zeroclawlabs.ai/install.sh -o /tmp/zeroclaw-install.sh
+sudo -u zeroclaw sh /tmp/zeroclaw-install.sh
 ```
 
 The installer asks whether you want a **prebuilt binary** (fast, recommended) or a **source build** (slower, customisable). Choose prebuilt. You are setting up an assistant, not contributing to the Rust ecosystem today.
@@ -102,7 +128,7 @@ I am using **opencode** from the provider list. ZeroClaw has a first-class `open
 When prompted:
 - Provider: **opencode**
 - API key: paste your opencode key
-- Model: deepseek-v4-flash
+- Model: mimo-v2.5
 - URL: https://opencode.ai/zen/go/v1/chat/completions
 
 ### Risk Profile
@@ -213,7 +239,7 @@ zeroclaw service install
 zeroclaw service start
 ```
 
-This registers it as a systemd service on Linux. The agent starts on boot and restarts if it crashes. That's it, we've just created a personal AI assistant that survives reboots. The implications of this are worth sitting with.
+This registers it as a systemd service on Linux running as the zeroclaw user. The agent starts on boot and restarts if it crashes. That's it, we've just created a personal AI assistant that survives reboots. The implications of this are worth sitting with.
 
 To check status:
 

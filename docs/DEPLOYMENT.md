@@ -104,6 +104,49 @@ pnpm build
 pnpm preview
 ```
 
+## Verifying the Deployment
+
+After a push to `main`, the GitHub Actions workflow deploys to GitHub Pages. To confirm the live site has the latest build:
+
+### Method 1: Check the Deployed Commit (source of truth)
+
+```bash
+gh api repos/vshanbha/weshall-portfolio/deployments \
+  | jq '.[0] | {sha, ref, environment}'
+```
+
+The latest deployment's `sha` should match the commit on `main`.
+
+### Method 2: Compare Build Asset Hashes
+
+Astro generates deterministic content-hashed filenames under `/_astro/` (e.g. `page.BraL6W9_.js`). If the hashes match between a local build and the live site, the same build is deployed.
+
+1. Build locally:
+   ```bash
+   pnpm build
+   ```
+
+2. Pick any asset from the live page source and compare:
+   ```bash
+   # live asset hash
+   curl -s https://weshall.build/en/ | grep -o '/_astro/[a-zA-Z0-9._-]*' | sort -u
+
+   # local asset hash
+   ls dist/_astro/
+   ```
+
+3. Asset filenames match → same build. If they differ → local and deployed builds are out of sync.
+
+Note: Asset hashes only change when the content of that asset changes. A deployment with no source changes may produce identical hashes — that's expected and correct.
+
+### Method 3: Check the GitHub Actions Run
+
+```bash
+gh run view <run-id> --json headSha,conclusion,status
+```
+
+The `headSha` should match the latest commit on `main` and `conclusion` should be `success`.
+
 ## Environment File Management
 
 ### Files in Repository

@@ -19,7 +19,9 @@ const { items, class: className } = Astro.props;
 // Build schema items with full URLs
 const schemaItems = items.map((item) => ({
   name: item.label,
-  url: item.href ? new URL(item.href, siteConfig.url).toString() : siteConfig.url,
+  url: item.href
+    ? new URL(item.href, siteConfig.url).toString()
+    : new URL(Astro.url.pathname, siteConfig.url).toString(),
 }));
 
 const schema = createBreadcrumbSchema(schemaItems);
