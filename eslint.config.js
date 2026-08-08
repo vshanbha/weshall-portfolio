@@ -18,6 +18,9 @@ export default [
   {
     files: ['**/*.astro'],
     languageOptions: {
+      globals: {
+        astroHTML: 'readonly',
+      },
       parserOptions: {
         parser: tseslint.parser,
       },

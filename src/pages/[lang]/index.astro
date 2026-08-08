@@ -9,6 +9,7 @@ import { defaultLocale } from '@/i18n/config';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import { SplitHero } from '@/components/ui/marketing/SplitHero';
 import BlogCard from '@/components/blog/BlogCard.astro';
 
 export const getStaticPaths = getStaticPathsHelper;
@@ -31,22 +32,7 @@ const recentArticles = allArticles
   title={`${t('site.name')} — ${t('site.tagline')}`}
   description={t('site.description')}
 >
-  <CTA variant="default" size="xl">
-    <Fragment slot="heading">
-      <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-balance text-foreground">{t('hero.title')}</h1>
-    </Fragment>
-    <Fragment slot="description">
-      <p>{t('hero.bridge')}</p>
-    </Fragment>
-    <Fragment slot="actions">
-      <Button variant="primary" size="lg" href={`/${locale}/contact`}>
-        {t('hero.cta.primary')}
-      </Button>
-      <Button variant="outline" size="lg" href={`/${locale}/blog`}>
-        {t('hero.cta.secondary')}
-      </Button>
-    </Fragment>
-  </CTA>
+  <SplitHero locale={locale} t={tr.hero as any} />
 
   <section class="py-16 md:py-24 bg-muted/50">
     <div class="container mx-auto px-4">

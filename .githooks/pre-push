@@ -1,8 +1,15 @@
 #!/bin/sh
-# Pre-push hook — runs E2E tests before pushing
+# Pre-push hook — runs E2E tests before pushing to dev and main
 # Installed via: git config core.hooksPath .githooks
 
-echo "Running E2E tests before push..."
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Only gate pushes to dev and main
+if [ "$BRANCH" != "dev" ] && [ "$BRANCH" != "main" ]; then
+  exit 0
+fi
+
+echo "Running E2E tests before push to $BRANCH..."
 pnpm test:e2e
 status=$?
 

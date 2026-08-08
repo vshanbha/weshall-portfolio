@@ -17,10 +17,24 @@ export default defineConfig({
     },
   },
 
+  redirects: {
+    '/sitemap.xml': '/sitemap-index.xml',
+    '/about': '/en/about',
+    '/contact': '/en/contact',
+    '/services': '/en/services',
+    '/blog': '/en/blog',
+    '/impressum': '/en/impressum',
+    '/datenschutz': '/en/datenschutz',
+  },
+
   integrations: [
     react(),
     mdx(),
     sitemap({
+      filter: (page) => {
+        const pathname = new URL(page).pathname;
+        return pathname.startsWith('/en/');
+      },
       i18n: {
         defaultLocale: 'en',
         locales: {

@@ -1,0 +1,79 @@
+---
+import Button from '@/components/ui/form/Button/Button.astro';
+
+export interface Props {
+  locale: string;
+  /** Translation object containing hero section strings */
+  t: {
+    title: string;
+    bridge: string;
+    cta: {
+      primary: string;
+      secondary: string;
+    };
+    rightColumn: {
+      lead: string;
+      headline: string;
+      value: string;
+      worksAcross: string;
+      domains: string;
+      aboutLink: string;
+    };
+  };
+}
+
+const { locale, t } = Astro.props;
+---
+
+<section class="py-[var(--space-section-xl)] bg-background">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+
+      <div class="flex-1 lg:flex-[1.2]">
+        <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-balance text-foreground mb-4">
+          {t.title}
+        </h1>
+        <p class="text-lg md:text-xl text-foreground-muted mb-8 max-w-2xl">
+          {t.bridge}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button variant="primary" size="lg" href={`/${locale}/contact`}>
+            {t.cta.primary}
+          </Button>
+          <Button variant="outline" size="lg" href={`/${locale}/blog`}>
+            {t.cta.secondary}
+          </Button>
+        </div>
+      </div>
+
+      <div class="w-full lg:w-auto lg:flex-[0.8] lg:min-w-[280px]">
+        <div class="bg-muted rounded-xl p-7 space-y-4">
+          <div class="font-display text-lg font-semibold text-foreground leading-snug">
+            {t.rightColumn.lead}
+          </div>
+          <div class="font-display text-base font-medium text-foreground leading-snug">
+            {t.rightColumn.headline}
+          </div>
+          <div class="font-sans text-sm text-foreground-muted leading-relaxed">
+            {t.rightColumn.value}
+          </div>
+          <hr class="border-border">
+          <div>
+            <div class="font-sans text-xs text-foreground-muted uppercase tracking-wider mb-2">
+              {t.rightColumn.worksAcross}
+            </div>
+            <div class="font-sans text-sm font-medium text-foreground">
+              {t.rightColumn.domains}
+            </div>
+          </div>
+          <div class="pt-2">
+            <a href={`/${locale}/about`} class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent bg-accent/10 hover:bg-accent/20 rounded-full px-4 py-1.5 transition-colors">
+              {t.rightColumn.aboutLink} →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
