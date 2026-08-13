@@ -24,6 +24,8 @@ interface Props {
   tags?: string[];
   slug?: string;
   locale?: Locale;
+  heroCaption?: string;
+  wordCount?: number;
 }
 
 const {
@@ -38,6 +40,8 @@ const {
   tags = [],
   slug = '',
   locale = defaultLocale,
+  heroCaption,
+  wordCount,
 } = Astro.props;
 
 const t = useTranslations(locale);
@@ -81,6 +85,8 @@ const fullUrl = new URL(Astro.url.pathname, siteConfig.url).toString();
     image={image}
     imageAlt={imageAlt}
     tags={tags}
+    caption={heroCaption}
+    wordCount={wordCount}
   />
 
   <article class={`py-12 ${image ? 'pt-24' : ''}`}>
@@ -93,8 +99,18 @@ const fullUrl = new URL(Astro.url.pathname, siteConfig.url).toString();
         <slot />
       </div>
 
+      <!-- CTA -->
+      <div class="mt-12 pt-8 border-t border-border">
+        <p class="text-center italic text-foreground-muted">
+          If you are building something that matters and want a senior software architect in the room,{' '}
+          <a href={getLocalizedPath('contact', locale)} class="text-brand-600 hover:text-brand-500 dark:text-brand-400 dark:hover:text-brand-300">
+            let's talk
+          </a>.
+        </p>
+      </div>
+
       <!-- Article Footer -->
-      <footer class="mt-12 pt-8 border-t border-border">
+      <footer class="mt-8 pt-8 border-t border-border">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
           <!-- Back link -->
           <a

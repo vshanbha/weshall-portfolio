@@ -187,6 +187,40 @@ test.describe('Blog Detail', () => {
 test.describe('Blog Article SEO', () => {
   const articlePath = '/en/blog/how-this-site-was-built';
 
+  test('article page has standard CTA with software architect', async ({ page }) => {
+    await page.goto(articlePath);
+    const cta = page.locator('text=senior software architect');
+    await expect(cta).toBeVisible();
+    const link = page.locator('a[href="/en/contact"]', { hasText: "let's talk" });
+    await expect(link).toBeVisible();
+  });
+
+  test('hero image renders without caption when heroCaption not set', async ({ page }) => {
+    await page.goto(articlePath);
+    const heroImage = page.locator('header img[alt*="PageSpeed"]');
+    await expect(heroImage).toBeVisible();
+    const caption = page.locator('header p.italic.text-center');
+    await expect(caption).toHaveCount(0);
+  });
+
+  test('hero image renders caption when heroCaption is set', async ({ page }) => {
+    await page.goto('/en/blog/run-further-than-a-marathon');
+    const heroImage = page.locator('header img[alt*="Forrest"]');
+    await expect(heroImage).toBeVisible();
+    const caption = page.locator('[data-testid="hero-caption"]');
+    await expect(caption).toBeVisible();
+    await expect(caption).toContainText('Forrest running through Monument Valley');
+  });
+
+  test('article page shows reading time based on content length', async ({ page }) => {
+    await page.goto(articlePath);
+    const readingTime = page.locator('header span', { hasText: 'min read' });
+    await expect(readingTime).toBeVisible();
+    const text = await readingTime.textContent();
+    const minutes = parseInt(text);
+    expect(minutes).toBeGreaterThanOrEqual(1);
+  });
+
   test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {
     await page.goto(articlePath);
     await expect(page.locator('script[type="application/ld+json"]').first()).toBeAttached();
