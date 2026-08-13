@@ -13,11 +13,14 @@ tags:
 draft: false
 featured: true
 locale: en
-image: ./oops-i-deleted-it-again-hero.png
-imageAlt: "AI-generated illustration of an agent deleting files"
 ---
 
+import { Image } from 'astro:assets';
+import heroImage from './oops-i-deleted-it-again-hero.png';
+
 # Oops, I Deleted It Again
+
+<Image src={heroImage} alt="AI-generated illustration of an agent deleting files" class="w-full rounded-lg" />
 
 A condensed summary of an article originally published on [AI Advances](https://ai.gopubby.com/oops-i-deleted-it-again-f6495ae4706b) in June 2026.
 

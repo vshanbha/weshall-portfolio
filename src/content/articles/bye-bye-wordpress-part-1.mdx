@@ -13,11 +13,14 @@ tags:
 draft: false
 featured: false
 locale: en
-image: ./bye-bye-wordpress-part-1.webp
-imageAlt: "PageSpeed Insights score of 100 for the Jekyll starter template"
 ---
 
+import { Image } from 'astro:assets';
+import heroImage from './bye-bye-wordpress-part-1.webp';
+
 # Bye Bye WordPress (Part 1)
+
+<Image src={heroImage} alt="PageSpeed Insights score of 100 for the Jekyll starter template" class="w-full rounded-lg" />
 
 A condensed summary of an article originally published on [Level Up Coding](https://levelup.gitconnected.com/bye-bye-wordpress-61bc464702fb) in February 2025.
 
