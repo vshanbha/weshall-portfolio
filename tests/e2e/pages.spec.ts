@@ -203,6 +203,15 @@ test.describe('Blog Article SEO', () => {
     await expect(caption).toHaveCount(0);
   });
 
+  test('hero image renders caption when heroCaption is set', async ({ page }) => {
+    await page.goto('/en/blog/run-further-than-a-marathon');
+    const heroImage = page.locator('header img[alt*="Forrest"]');
+    await expect(heroImage).toBeVisible();
+    const caption = page.locator('header p.italic.text-center');
+    await expect(caption).toBeVisible();
+    await expect(caption).toContainText('Forrest running through monument valley');
+  });
+
   test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {
     await page.goto(articlePath);
     await expect(page.locator('script[type="application/ld+json"]').first()).toBeAttached();
