@@ -16,6 +16,7 @@ const articles = defineCollection({
       author: z.string().default('Vishal Shanbhag'),
       image: image().optional(),
       imageAlt: z.string().optional(),
+      heroCaption: z.string().optional(),
       tags: z.array(z.string()).default([]),
       draft: z.boolean().default(false),
       featured: z.boolean().default(false),
