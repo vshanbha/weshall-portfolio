@@ -12,6 +12,7 @@ interface Props {
   tags?: string[];
   image?: ImageMetadata;
   imageAlt?: string;
+  caption?: string;
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   tags = [],
   image,
   imageAlt,
+  caption,
 } = Astro.props;
 
 // Estimate reading time
@@ -121,6 +123,9 @@ const readingTime = Math.max(1, Math.ceil(estimatedWords / wordsPerMinute));
           loading="eager"
         />
       </div>
+      {caption && (
+        <p class="text-sm text-foreground-muted mt-2 italic text-center">{caption}</p>
+      )}
     </div>
   )}
 </header>
