@@ -282,7 +282,9 @@ This installation is the first experiment. The article series will cover what we
 
 > Most builders started in a garage. This is the first step.
 
-Ready to take your AI appliance further? [Book a sounding board session](/en/contact) for discussions on what else you can do or scaling your setup; no pitch, no obligation.
+---
+
+*If you are building something that matters and want a senior software architect in the room, [let's talk](/en/contact).*
 
 ## Troubleshooting 
 
