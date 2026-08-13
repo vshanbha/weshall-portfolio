@@ -3,7 +3,7 @@ title: Run Further Than a Marathon
 description: A founder replaces his Forrest Gump slide with a real Indian ultra-runner and finds the metaphor he needed all along.
 publishedAt: 2026-07-21
 author: Vishal Shanbhag
-tags: [founder, ultra-running, metaphor, entrepreneurship]
+tags: [founder, ultra-running, metaphor, entrepreneurship, decision-making]
 draft: false
 featured: false
 locale: en
