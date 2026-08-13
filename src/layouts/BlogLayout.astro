@@ -25,6 +25,7 @@ interface Props {
   slug?: string;
   locale?: Locale;
   heroCaption?: string;
+  wordCount?: number;
 }
 
 const {
@@ -40,6 +41,7 @@ const {
   slug = '',
   locale = defaultLocale,
   heroCaption,
+  wordCount,
 } = Astro.props;
 
 const t = useTranslations(locale);
@@ -84,6 +86,7 @@ const fullUrl = new URL(Astro.url.pathname, siteConfig.url).toString();
     imageAlt={imageAlt}
     tags={tags}
     caption={heroCaption}
+    wordCount={wordCount}
   />
 
   <article class={`py-12 ${image ? 'pt-24' : ''}`}>

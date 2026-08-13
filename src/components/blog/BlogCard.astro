@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { formatDate } from '@/lib/utils';
+import { calculateReadingTime } from '@/lib/reading-time';
 
 interface Props {
   title: string;
@@ -12,6 +13,7 @@ interface Props {
   featured?: boolean;
   author?: string;
   image?: ImageMetadata;
+  wordCount?: number;
 }
 
 const {
@@ -23,12 +25,10 @@ const {
   featured = false,
   author,
   image,
+  wordCount = 0,
 } = Astro.props;
 
-// Estimate reading time (rough estimate based on average words)
-const wordsPerMinute = 200;
-const estimatedWords = description.split(' ').length * 10; // Rough estimate
-const readingTime = Math.max(1, Math.ceil(estimatedWords / wordsPerMinute));
+const readingTime = calculateReadingTime(wordCount || description.split(' ').length * 10);
 ---
 
 <article
