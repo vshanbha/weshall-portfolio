@@ -209,7 +209,7 @@ test.describe('Blog Article SEO', () => {
     await expect(heroImage).toBeVisible();
     const caption = page.locator('header p.italic.text-center');
     await expect(caption).toBeVisible();
-    await expect(caption).toContainText('Forrest running through monument valley');
+    await expect(caption).toContainText('Forrest running through Monument Valley');
   });
 
   test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {
