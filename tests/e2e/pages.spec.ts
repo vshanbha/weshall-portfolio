@@ -187,6 +187,14 @@ test.describe('Blog Detail', () => {
 test.describe('Blog Article SEO', () => {
   const articlePath = '/en/blog/how-this-site-was-built';
 
+  test('article page has standard CTA with software architect', async ({ page }) => {
+    await page.goto(articlePath);
+    const cta = page.locator('text=senior software architect');
+    await expect(cta).toBeVisible();
+    const link = page.locator('a[href="/en/contact"]', { hasText: "let's talk" });
+    await expect(link).toBeVisible();
+  });
+
   test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {
     await page.goto(articlePath);
     await expect(page.locator('script[type="application/ld+json"]').first()).toBeAttached();
