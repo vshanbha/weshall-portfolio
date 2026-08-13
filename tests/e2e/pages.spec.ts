@@ -207,9 +207,18 @@ test.describe('Blog Article SEO', () => {
     await page.goto('/en/blog/run-further-than-a-marathon');
     const heroImage = page.locator('header img[alt*="Forrest"]');
     await expect(heroImage).toBeVisible();
-    const caption = page.locator('header p.italic.text-center');
+    const caption = page.locator('[data-testid="hero-caption"]');
     await expect(caption).toBeVisible();
     await expect(caption).toContainText('Forrest running through Monument Valley');
+  });
+
+  test('article page shows reading time based on content length', async ({ page }) => {
+    await page.goto(articlePath);
+    const readingTime = page.locator('header span', { hasText: 'min read' });
+    await expect(readingTime).toBeVisible();
+    const text = await readingTime.textContent();
+    const minutes = parseInt(text);
+    expect(minutes).toBeGreaterThanOrEqual(1);
   });
 
   test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {

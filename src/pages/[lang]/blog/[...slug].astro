@@ -25,6 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const { locale, entry } = Astro.props as { locale: Locale; entry: CollectionEntry<'articles'> };
 const { Content } = await render(entry);
+const wordCount = entry.body?.split(/\s+/).filter(Boolean).length ?? 0;
 
 const canonicalUrl = new URL(`/${locale}/blog/${entry.id}/`, siteConfig.url);
 
@@ -43,6 +44,7 @@ const ogImage = entry.data.image
   image={entry.data.image}
   imageAlt={entry.data.imageAlt}
   heroCaption={entry.data.heroCaption}
+  wordCount={wordCount}
   tags={entry.data.tags}
   slug={entry.id}
   locale={locale}
