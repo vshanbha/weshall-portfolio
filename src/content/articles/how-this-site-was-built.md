@@ -10,6 +10,7 @@ tags:
   - framework
   - Jekyll
   - performance
+  - technology-selection
 draft: false
 featured: false
 locale: en

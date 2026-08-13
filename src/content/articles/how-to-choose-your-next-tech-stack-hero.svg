@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 550" fill="none">
+  <!-- Background -->
+  <rect width="400" height="550" fill="#FAFAFA"/>
+  
+  <!-- Title -->
+  <text x="200" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#1A1A1A" text-anchor="middle">Technology Selection Framework</text>
+  
+  <!-- Box 1: Define Motivations -->
+  <rect x="100" y="70" width="200" height="50" rx="8" fill="#C2684A"/>
+  <text x="200" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#FFFFFF" text-anchor="middle">Define Motivations</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M200 120 L200 140" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4,4"/>
+  <polygon points="200,145 195,138 205,138" fill="#1A1A1A"/>
+  
+  <!-- Box 2: Shortlist Options -->
+  <rect x="100" y="150" width="200" height="50" rx="8" fill="#C2684A"/>
+  <text x="200" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#FFFFFF" text-anchor="middle">Shortlist Options</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M200 200 L200 220" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4,4"/>
+  <polygon points="200,225 195,218 205,218" fill="#1A1A1A"/>
+  
+  <!-- Box 3: Gather Data -->
+  <rect x="100" y="230" width="200" height="50" rx="8" fill="#C2684A"/>
+  <text x="200" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#FFFFFF" text-anchor="middle">Gather Data</text>
+  
+  <!-- Arrow 3 -->
+  <path d="M200 280 L200 300" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4,4"/>
+  <polygon points="200,305 195,298 205,298" fill="#1A1A1A"/>
+  
+  <!-- Box 4: Evaluate Risk -->
+  <rect x="100" y="310" width="200" height="50" rx="8" fill="#C2684A"/>
+  <text x="200" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#FFFFFF" text-anchor="middle">Evaluate Risk</text>
+  
+  <!-- Arrow 4 -->
+  <path d="M200 360 L200 380" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4,4"/>
+  <polygon points="200,385 195,378 205,378" fill="#1A1A1A"/>
+  
+  <!-- Box 5: Make the Call -->
+  <rect x="100" y="390" width="200" height="50" rx="8" fill="#C2684A"/>
+  <text x="200" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#FFFFFF" text-anchor="middle">Make the Call</text>
+  
+  <!-- Brand watermark -->
+  <text x="200" y="520" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#1A1A1A" fill-opacity="0.15" text-anchor="middle">weshall.build</text>
+</svg>

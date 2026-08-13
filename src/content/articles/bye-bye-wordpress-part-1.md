@@ -9,6 +9,7 @@ tags:
   - web-development
   - performance
   - static-site
+  - framework
 draft: false
 featured: false
 locale: en
