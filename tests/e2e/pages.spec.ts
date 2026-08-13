@@ -195,6 +195,14 @@ test.describe('Blog Article SEO', () => {
     await expect(link).toBeVisible();
   });
 
+  test('hero image renders without caption when heroCaption not set', async ({ page }) => {
+    await page.goto(articlePath);
+    const heroImage = page.locator('header img[alt*="PageSpeed"]');
+    await expect(heroImage).toBeVisible();
+    const caption = page.locator('header p.italic.text-center');
+    await expect(caption).toHaveCount(0);
+  });
+
   test('BlogPosting JSON-LD has correct URL and @type', async ({ page }) => {
     await page.goto(articlePath);
     await expect(page.locator('script[type="application/ld+json"]').first()).toBeAttached();
