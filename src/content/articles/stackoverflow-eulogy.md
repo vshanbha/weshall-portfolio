@@ -36,7 +36,3 @@ I wrote the longer version of this piece because the data raised a question I co
 ---
 
 *Read the full story →* [The Banyan Tree called StackOverflow is Dying — Level Up Coding](https://medium.com/gitconnected/the-banyan-tree-called-stackoverflow-is-dying-3fe216e7682e)
-
----
-
-*If you are building something that matters and want a senior software architect in the room, [let's talk](/en/contact).*
