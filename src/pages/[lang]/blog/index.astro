@@ -54,6 +54,7 @@ const sorted = localeEntries.sort((a, b) => {
               author={entry.data.author}
               image={entry.data.image}
               featured={entry.data.featured}
+              wordCount={entry.body?.split(/\s+/).filter(Boolean).length ?? 0}
             />
           ))}
         </div>

@@ -1,0 +1,133 @@
+---
+title: How to Choose Your Next Software Technology Stack
+description: A practical framework for making technology selection decisions, demonstrated through a real-world case study of choosing a mobile development platform.
+publishedAt: 2026-08-13
+status: published
+tags:
+  - technology-selection
+  - decision-making
+  - mobile-development
+  - framework-evaluation
+  - startup
+  - stackoverflow
+  - framework
+  - developer-tools
+archetypes:
+  - III
+reviewed: true
+visibility: public
+ai_assisted: true
+human_reviewed: true
+human_input: true
+origin: medium
+medium_url: https://levelup.gitconnected.com/flutter-aint-going-away-stackoverflow-has-spoken-799fe4d7651f
+image: ./how-to-choose-your-next-tech-stack-hero.svg
+imageAlt: "Five-step flowchart: Define Motivations, Shortlist Options, Gather Data, Evaluate Risk, Make the Call"
+portfolio_publish_date: 2026-08-13
+---
+
+import { Image } from 'astro:assets';
+import heroImage from './how-to-choose-your-next-tech-stack-hero.svg';
+
+# How to Choose Your Next Software Technology Stack
+
+Choosing a Software technology stack is one of the most consequential decisions a startup founder or technical lead can make. The wrong choice means months of refactoring, hiring challenges, and technical debt. The right choice means speed, stability, and a team that enjoys coming to work. Here is a framework for making that decision systematically.
+
+## The Problem with Technology Hype
+
+Every few months, a new framework or language generates buzz. Clickbait content creators declare existing technologies dead to generate clicks. The hype often makes it hard to separate signal from noise.
+
+Yes, Community size, corporate backing, and ecosystem maturity all matter. But they matter as data points, not as verdicts. The decision should start with one's product-specific requirements, not with what is trending this week on Twitter (sorry, I mean X) or YouTube or LinkedIn.
+
+So I decided to apply my experience to define a short framework for helping choose the stack.
+
+## 1: Define Your Motivation Statements
+
+Before evaluating any technology, write down what our product actually needs. As techies, we are always tempted by buzz around the latest technologies, and we want to try it out in the next product/project. However, that is "want", not "need". What your product and team specifically require.
+
+An example of this could be: A developer says "we need to use Kafka". But that is not the need, is it?. The need really is:
+
+*We need a massively scalable asynchronous messaging system for inter-process communication.* The solution to that requirement in the technology selection could be Kafka or RabbitMQ, or even some proprietary solution. Framing a particular technology as a need would be a bias.
+
+Sometimes a bias is acceptable; it could stem from negative experiences, but it just needs to be framed and revisited to identify a proper motivation. Here is an example from an actual product decision:
+
+> One of the products I am working on requires developing a relatively complex mobile app associated with a long-running product (10+ years in production) built with legacy technology. This implies a tough choice. Which new technologies to go with?
+> I have worked with Angular and Ionic in past to launch cross-platform mobile Apps. I liked the structure of Angular and the cross-platform tools provided by Ionic.
+> However, anyone who has dealt with breaking changes between Angular versions will tell you that it is a pain. This is especially true in the early-stage Startup world where technical teams are really small. 1–2 developers as a whole team is not uncommon.
+
+This statement has a clear bias against wanting to use Angular despite knowing the technology. However, this bias could translate to a motivation statement:
+
+> Mature technology that offers backward compatibility such that breaking changes in version upgrades are uncommon.
+
+It is now a stronger statement of why the said person (yours truly) was against using Angular in the next project. In this choice, we included a bunch of other motivations:
+
+- A single codebase for all major platforms
+- Mature technology with features provided by the platform
+- Easy to learn for a team with a strong Java skill set
+- Strong typing with compile-time checking
+- Good developer tools and open source with strong community support.
+
+These motivations narrow the field drastically. Without them, you are comparing technologies based on emotions rather than requirements.
+
+## 2: Shortlist with Your Motivations
+
+With clear motivations, evaluate options against your specific criteria. Not all technologies that technically qualify will be the right fit.
+
+> With my motivation statements out, let's examine the options. JavaScript is by far the most used language on the web. Plus, anything that runs on the web browser mostly ends up getting cross-compiled into JavaScript anyway. Hence, we can't really avoid JavaScript.
+> With a strong set of Motivation statements, my choices were drastically narrowed down to just 3 options, with an honourable mention of a fourth one.
+
+The shortlist: React Native, Flutter, Kotlin Multiplatform, and Ionic Framework. Each met the basic requirements. The differences were in team fit, ecosystem maturity, and long-term maintenance burden.
+
+Ionic was eliminated despite meeting technical requirements. The team's past experience with Angular's breaking changes made it a risky choice for a small team.
+
+## 3: Use Data, Not Opinions
+
+Community engagement is a useful proxy for long-term viability. A technology with an active community gets faster bug fixes, more third-party libraries, and easier hiring.
+
+> I think a key data point is to measure the size of the community. I am not sure how one can really measure that, but I like StackOverflow Trends.
+
+StackOverflow Trends (before it was deprecated) provided one data point. GitHub stars, npm downloads, and conference talks provide others. No single metric tells the whole story, but a consistent pattern across multiple signals is meaningful.
+
+The key insight: do not rely on any single data source. Check multiple sources and observe patterns. And always ask: what does this data actually tell me about my specific use case?
+
+## 4: Consider Maintainer Risk
+
+Technology backed by a single maintainer or corporation carries specific risk. If the corporation changes priorities, the technology can stagnate or fork. Forks usually do offer a valid path for companies to migrate (e.g. MySQL vs MariaDB). However, sometimes corporations might just kill a technology. Think AngularJS 1.0. If you were one of the early adopters of that technology, you know exactly how much effort went into **migration** (I mean, **rewrite**).
+
+For the others, here is the [official discontinuation announcement](https://blog.angular.dev/discontinued-long-term-support-for-angularjs-cc066b82e65a).
+
+Among the Angular upgrades, this was the **worst** as far as users were concerned because Angular 2+ was syntactically completely different from Angular 1.0 and in an era where you couldn't point Claude, or Codex or whoever is writing your code now, to it and say "Rewrite this codebase". The rewrite was typically proportional in time and money to the size of the codebase.
+
+This is not a reason to avoid corporate-backed technologies. It is a reason to have a fallback plan. Can you migrate if needed? How painful would that migration be?
+
+## The Decision Framework
+
+<div class="grid md:grid-cols-[2fr_1fr] gap-8 items-start">
+
+<div>
+
+1. **Write your motivations first.** Not technologies you want. Constraints you cannot compromise on.
+2. **Shortlist against motivations.** Eliminate options that do not meet your hard requirements.
+3. **Gather data on shortlisted options.** Community size, corporate backing, ecosystem maturity, team learning curve.
+4. **Evaluate Maintainer risk.** What happens if the primary maintainer changes direction?
+5. **Make the decision.** Then stop second-guessing. Every technology has trade-offs. You have made a rational choice based on your specific requirements.
+
+The goal is not to pick the "best" technology. The goal is to pick the right technology for your specific situation, with clear reasoning you can defend when questioned.
+
+The wrong choice costs months of refactoring. The right choice costs a few hours of structured thinking. That's a trade worth making.
+
+</div>
+
+<div>
+
+<Image src={heroImage} alt="Five-step flowchart: Define Motivations, Shortlist Options, Gather Data, Evaluate Risk, Make the Call" class="w-full" />
+
+</div>
+
+</div>
+
+---
+
+*The longer article applies this framework to a specific mobile development decision, including the complete StackOverflow trend analysis, the specific data points used in the evaluation, and the detailed comparison for the shortlisted options.*
+
+[*Read the full version on Medium*](https://levelup.gitconnected.com/flutter-aint-going-away-stackoverflow-has-spoken-799fe4d7651f)
