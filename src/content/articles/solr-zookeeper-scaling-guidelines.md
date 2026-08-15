@@ -2,8 +2,9 @@
 title: Apache Solr and Zookeeper Scaling Guidelines
 description: A set of guidelines for scaling deployment of Apache Solr and Zookeeper with consideration to high availability and disaster recovery.
 publishedAt: 2026-08-15
-draft: false
-reviewed: true
+author: Vishal Shanbhag
+image: ./solr-zookeeper-hero.svg
+imageAlt: "Three Node Solr Deployment Architecture showing Solr, Zookeeper, and shard replicas across three nodes"
 tags:
   - apache-solr
   - apache-zookeeper
@@ -11,19 +12,15 @@ tags:
   - high-availability
   - disaster-recovery
   - scaling
-archetypes:
-  - II
-visibility: public
-ai_assisted: true
-human_reviewed: true
-human_input: true
+draft: false
+featured: false
+locale: en
 origin: medium
 medium_url: https://levelup.gitconnected.com/apache-solr-and-zookeeper-scaling-guidelines-269dad4fbfb2
-image: ./solr-zookeeper-hero.svg
-imageAlt: "Three Node Solr Deployment Architecture showing Solr, Zookeeper, and shard replicas across three nodes"
+reviewed: true
 ---
 
-# Apache Solr and Zookeeper Scaling Guidelines
+# Apache Solr and ZooKeeper Scaling Guidelines
 
 A condensed summary of an article originally published on [Level Up Coding](https://levelup.gitconnected.com/apache-solr-and-zookeeper-scaling-guidelines-269dad4fbfb2) in August 2024.
 
@@ -58,7 +55,7 @@ Apache Solr and Apache ZooKeeper are two separate clusters. Each of them can han
 
 ## Deployment Architecture
 
-Apache Solr and Apache ZooKeeper can be deployed on bare-metal servers, Virtual Machines (VMs) and Docker Containers. For the purpose of this architecture discussion, it is assumed that VM or bare-metal servers are used. If planning Solr deployment using Docker / Kubernetes, other sources of documentation explain the relevant deployment architecture.
+Apache Solr and Apache ZooKeeper can be deployed on bare-metal servers, Virtual Machines (VMs) and Docker Containers. For the purpose of this architecture discussion, it is assumed that VMs or bare-metal servers are used. If planning Solr deployment using Docker / Kubernetes, other sources of documentation explain the relevant deployment architecture.
 
 Logically, the structure of the deployment won't change much. What changes is the containerization technology that is used.
 
