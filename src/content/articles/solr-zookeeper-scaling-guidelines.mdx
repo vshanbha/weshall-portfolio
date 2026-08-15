@@ -1,0 +1,87 @@
+---
+title: Apache Solr and Zookeeper Scaling Guidelines
+description: Guidelines for scaling Apache Solr deployments with high availability and disaster recovery — from practical experience with search infrastructure.
+publishedAt: 2024-08-11
+author: Vishal Shanbhag
+tags:
+  - apache-solr
+  - apache-zookeeper
+  - search-engine
+  - high-availability
+  - disaster-recovery
+  - scaling
+draft: false
+featured: false
+locale: en
+---
+
+# Apache Solr and Zookeeper Scaling Guidelines
+
+A condensed summary of an article originally published on [Level Up Coding](https://levelup.gitconnected.com/apache-solr-and-zookeeper-scaling-guidelines-269dad4fbfb2) in August 2024.
+
+---
+
+> Apache Solr is one of the oldest Open Source search engines available for download and use in any project that needs a search engine. It has been around since long before Elasticsearch. It is based on the Apache Lucene project.
+
+The purpose of the article is to offer guidelines on scaling Apache Solr to work with more requests and more data, maximise the utilisation of available infrastructure for short-term requirements, and provide guidelines for procuring additional infrastructure to allow for strategic growth.
+
+## The Assumption
+
+> If you reached here, you are either planning to use or already using an Apache Solr search infrastructure. So I'll skip over the introduction of Solr Concepts and move forward.
+
+This is a practical guide, not a primer. If you are on the fence about using Solr, have a look at its ranking per DB Engines. At the time of writing it is still ranked number 3 amongst search engine software and the top-ranked open source search engine available for commercial use.
+
+## Scaling for More Requests and More Data
+
+The two primary scaling challenges are handling more users (requests) and managing more data. These require different strategies:
+
+**Horizontal scaling** means adding more Solr nodes to distribute the query load. This works well for read-heavy workloads where you can replicate cores across multiple nodes.
+
+**Vertical scaling** means adding more resources (CPU, RAM, disk) to existing nodes. This helps when your data volume grows beyond what a single node can handle efficiently.
+
+The real challenge is maximising infrastructure utilisation for short-term requirements while planning for strategic growth. Most teams over-provision for peak load and waste resources during normal operations.
+
+## High Availability Architecture
+
+High availability in Solr depends heavily on Zookeeper. Zookeeper manages cluster state, configuration, and leader election. Without it, Solr is just a standalone search engine.
+
+**Key principles:**
+- Run an odd number of Zookeeper nodes (3 or 5) for quorum
+- Keep Zookeeper nodes on separate physical machines from Solr nodes
+- Monitor Zookeeper latency and session counts
+- Use dedicated disks for Zookeeper transaction logs
+
+**SolrCloud considerations:**
+- Use collection aliases for zero-downtime reindexing
+- Configure shard splitting strategies before you need them
+- Set up replica placement rules to avoid single points of failure
+
+## Disaster Recovery
+
+Disaster recovery for Solr involves two components: data backup and configuration backup.
+
+**Data backup:** Solr's Snapshot functionality creates point-in-time backups without impacting ongoing operations. These can be stored on shared filesystems or S3-compatible storage.
+
+**Configuration backup:** Zookeeper stores all Solr configurations. Regular backups of Zookeeper's data directory ensure you can recover from configuration disasters.
+
+**Recovery testing:** The most overlooked aspect. Your backup is only as good as your last successful restore test. Schedule regular recovery drills.
+
+## Common Scaling Mistakes
+
+1. **Over-sharding:** Creating too many shards early on. Each shard adds overhead. Start with fewer, larger shards and split when needed.
+
+2. **Ignoring commit strategy:** Hard commits affect search visibility and performance. Soft commits handle near-real-time search without the overhead.
+
+3. **Skipping monitoring:** Solr provides extensive metrics through JMX and the admin interface. Use them. Track query latency, index size, cache hit rates, and GC pauses.
+
+4. **Single data centre deployment:** If you need true disaster recovery, you need geographic redundancy. Solr's replication handles this, but network latency affects write performance.
+
+## The Practical Approach
+
+Start simple. Use SolrCloud with a modest cluster. Monitor performance under real load. Scale horizontally when query latency increases. Scale vertically when index size exceeds node capacity. And always, always test your disaster recovery plan before you need it.
+
+---
+
+*The full article includes detailed configuration examples for Zookeeper quorum setup, SolrCloud collection creation commands, and specific tuning parameters for high-throughput search workloads.*
+
+[*Read the full version on Medium*](https://levelup.gitconnected.com/apache-solr-and-zookeeper-scaling-guidelines-269dad4fbfb2)
