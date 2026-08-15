@@ -13,7 +13,7 @@ tags:
   - disaster-recovery
   - scaling
 draft: false
-featured: false
+featured: true
 locale: en
 origin: medium
 medium_url: https://levelup.gitconnected.com/apache-solr-and-zookeeper-scaling-guidelines-269dad4fbfb2
