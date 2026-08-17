@@ -7,7 +7,6 @@ import type {
   Service,
   Person,
   WithContext,
-  SearchAction,
 } from 'schema-dts';
 import siteConfig from '@/config/site.config';
 
@@ -21,18 +20,6 @@ export function createWebsiteSchema(): WithContext<WebSite> {
     name: siteConfig.name,
     url: siteConfig.url,
     description: siteConfig.description,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${siteConfig.url}/search?q={search_term_string}`,
-      },
-      'query-input': {
-        '@type': 'PropertyValueSpecification',
-        valueRequired: true,
-        valueName: 'search_term_string',
-      },
-    } as SearchAction,
   };
 }
 
