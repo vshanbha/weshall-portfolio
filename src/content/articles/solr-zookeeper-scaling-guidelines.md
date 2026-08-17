@@ -1,5 +1,5 @@
 ---
-title: Apache Solr and Zookeeper Scaling Guidelines
+title: Apache Solr and ZooKeeper Scaling Guidelines
 description: A set of guidelines for scaling deployment of Apache Solr and Zookeeper with consideration to high availability and disaster recovery.
 publishedAt: 2026-08-15
 author: Vishal Shanbhag
