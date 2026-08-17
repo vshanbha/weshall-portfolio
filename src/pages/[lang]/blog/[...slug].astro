@@ -54,7 +54,7 @@ const ogImage = entry.data.image
       title: entry.data.title,
       description: entry.data.description,
       url: canonicalUrl.toString(),
-      image: ogImage,
+      image: new URL(ogImage, siteConfig.url).toString(),
       datePublished: entry.data.publishedAt,
       dateModified: entry.data.updatedAt || entry.data.publishedAt,
       author: { name: entry.data.author },

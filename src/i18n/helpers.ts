@@ -200,7 +200,7 @@ export function getRouteTranslations(
 ): Array<{ locale: Locale; path: string }> {
   return locales.map((locale) => {
     const basePath = getLocalizedPath(routeId, locale);
-    const path = extra ? `${basePath}/${extra}/` : basePath;
+    const path = extra ? `${basePath}/${extra}/` : `${basePath}/`;
     return { locale, path };
   });
 }
