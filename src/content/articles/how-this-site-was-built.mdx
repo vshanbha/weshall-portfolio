@@ -19,6 +19,7 @@ imageAlt: "PageSpeed results on desktop showing 100 Performance score"
 ---
 
 import { Image } from 'astro:assets';
+import desktopPageSpeed from './weshall-pagespeed-desktop.png';
 import mobilePageSpeed from './weshall-pagespeed-mobile.png';
 
 # How This Site Was Built With Astro
@@ -55,7 +56,11 @@ Content lives in a private Obsidian vault. The public site lives in a separate r
 
 Most of the time was taken not in the code, but in getting the content right. But it's live, and the page speed insights are even better than the placeholder I created with Jekyll.
 
+<Image src={desktopPageSpeed} alt="PageSpeed results on desktop showing 100 Performance score" widths={[640, 960, 1280]} sizes="(max-width: 768px) 100vw, 768px" class="w-full rounded-lg" />
+<p class="text-sm text-foreground-muted mt-2 italic text-center">Desktop scorecard — 100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO</p>
+
 <Image src={mobilePageSpeed} alt="PageSpeed results on mobile showing performance metrics" widths={[640, 960, 1280]} sizes="(max-width: 768px) 100vw, 768px" class="w-full rounded-lg" />
+<p class="text-sm text-foreground-muted mt-2 italic text-center">Mobile scorecard — 100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO</p>
 
 Would I do it again? Yes definitely. Starting from scratch? No way!
 
