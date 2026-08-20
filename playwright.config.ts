@@ -18,9 +18,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm dev',
+    command: 'pnpm build && pnpm preview',
     url: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
-    timeout: 30_000,
+    timeout: 60_000,
   },
 });
