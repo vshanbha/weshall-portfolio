@@ -4,7 +4,7 @@
   "model": "opencode-go/mimo-v2.5",
   "agent": {
     "plan": {
-      "model": "opencode-go/qwen3.7-plus"
+      "model": "opencode-go/mimo-v2.5"
     }
   },
   "skills": {
