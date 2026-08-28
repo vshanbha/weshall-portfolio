@@ -1,7 +1,7 @@
 ---
 title: To Build or Not to Build
 description: Practical advice on deciding whether to add a feature to your product, based on experience as a Founder and Advisor building software-driven products.
-publishedAt: 2024-07-07
+publishedAt: 2026-08-18
 author: Vishal Shanbhag
 tags:
   - product-management
