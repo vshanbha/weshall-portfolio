@@ -4,6 +4,7 @@
 export const de = {
   site: {
     name: 'We Shall Build',
+    tagline: 'Build What Matters', // TODO: translate
     description: 'Tiefgehende Analyse komplexer technischer, operativer und architektonischer Bereiche',
   },
   nav: {
