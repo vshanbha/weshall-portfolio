@@ -4,6 +4,7 @@
 export const hi = {
   site: {
     name: 'वी शॉल बिल्ड', // We Shall Build — transliterated, needs native-speaker review
+    tagline: 'Build What Matters', // TODO: translate
     description: 'जटिल तकनीकी, संचालन और वास्तुशिल्प क्षेत्रों का गहन विश्लेषण',
   },
   nav: {
