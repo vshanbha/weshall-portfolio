@@ -10,7 +10,7 @@ test.describe('Pages', () => {
   test('about page loads', async ({ page }) => {
     await page.goto('/en/about');
     await expect(page.getByRole('heading', { name: /Origin/i })).toBeVisible();
-    await expect(page.locator('body')).toContainText(/Mumbai|What I do/i);
+    await expect(page.locator('body')).toContainText(/Mumbai|How I build/i);
   });
 
   test('contact page loads', async ({ page }) => {
