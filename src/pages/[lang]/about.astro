@@ -58,6 +58,7 @@ const tr = getTranslations(locale) as TranslationKeys;
         items={[...tr.about.beliefs.commandments].map((item: { title: string; content: string; defaultOpen: boolean; href?: string; linkText?: string }) => ({
           ...item,
           href: item.href ? `/${locale}${item.href}` : undefined,
+          linkText: item.linkText ?? t('common.readMore'),
         }))}
         variant="card"
         size="lg"
