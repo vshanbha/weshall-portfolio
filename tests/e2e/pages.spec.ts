@@ -152,7 +152,7 @@ test.describe('About Page Features', () => {
     await expect(portrait).toBeVisible();
   });
 
-  test('shows all five narrative sections', async ({ page }) => {
+  test('shows all four narrative sections', async ({ page }) => {
     await page.goto('/en/about');
     await expect(page.getByRole('heading', { name: /^What I do$/i }).first()).toBeVisible();
     await expect(page.getByRole('heading', { name: /The career arc, briefly/i })).toBeVisible();
