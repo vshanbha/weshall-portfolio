@@ -152,9 +152,10 @@ test.describe('About Page Features', () => {
     await expect(portrait).toBeVisible();
   });
 
-  test('shows all four narrative sections', async ({ page }) => {
+  test('shows all five narrative sections', async ({ page }) => {
     await page.goto('/en/about');
     await expect(page.getByRole('heading', { name: /^How I build$/i }).first()).toBeVisible();
+    await expect(page.getByRole('heading', { name: /^What I believe$/i }).first()).toBeVisible();
     await expect(page.getByRole('heading', { name: /The career arc, briefly/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /Speaking, writing, mentorship/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /Off the clock/i })).toBeVisible();
@@ -183,6 +184,14 @@ test.describe('About Page Features', () => {
     await page.goto('/en/about');
     await expect(page.locator('body')).toContainText(/Inbotiqa/);
     await expect(page.locator('body')).toContainText(/BauAI/);
+  });
+
+  test('last commandment links to companion article', async ({ page }) => {
+    await page.goto('/en/about');
+    await page.getByText('We shall run further than a marathon.').click();
+    const link = page.locator('a[href*="/blog/run-further-than-a-marathon/"]');
+    await expect(link).toBeVisible();
+    await expect(link).toHaveText('Read the full analogy');
   });
 
   test('shows select articles list', async ({ page }) => {

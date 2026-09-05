@@ -346,6 +346,8 @@ export const en = {
           title: 'We shall run further than a marathon.',
           content: 'A marathon has a finish line at 42 km. Sufiya Sufi ran 4,167 km from Kanyakumari to Kashmir in 68 days, then kept going toward Karakoram. That is the difference between a product launch and a company. Sprints are for work breakdown. The vision needs the kind of distance where the finish line keeps moving because the purpose has not been met yet. The long game has no finish line.',
           defaultOpen: false,
+          href: '/blog/run-further-than-a-marathon/',
+          linkText: 'Read the full analogy',
         },
       ],
     },
