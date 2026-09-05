@@ -187,6 +187,47 @@ export const de = {
         },
       ],
     },
+    testimonials: {
+      title: 'What clients say', // TODO: translate
+      items: [
+        {
+          id: 'bluemoney',
+          company: 'BlueMoney',
+          author: 'Arrie',
+          role: 'Founding Engineer',
+          quote: 'Vishal helped us make the right build vs. buy decision under timeline pressure, set up our lending operations with professional SOPs, and continues to be our sounding board as we navigate the real market.', // TODO: translate
+          linkedin: '',
+          website: '',
+        },
+        {
+          id: 'ourish',
+          company: 'Ourish',
+          author: 'Kunal Kakar',
+          role: 'Director — Sales and Operations',
+          quote: 'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond is delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.', // TODO: translate
+          linkedin: 'https://www.linkedin.com/in/kunalkakar/',
+          website: '',
+        },
+        {
+          id: 'powermarket',
+          company: 'PowerMarket',
+          author: 'Abhinav Jain',
+          role: 'Founder',
+          quote: 'We had been looking into developing our tech and dev team. However, we needed advice on how to get started, who to hire, what kind of skills to target, and once we had a pipeline of candidates, how to evaluate their tech skills. Vishal was a phenomenal resource who guided us throughout the process, and then went above and beyond. He is one of the most knowledgeable technology resources that we have come across thus far and will definitely go back to him for further help.', // TODO: translate
+          linkedin: 'https://www.linkedin.com/in/abhinavjainuk/',
+          website: 'https://powermarket.net/',
+        },
+        {
+          id: 'sable',
+          company: 'Sable International',
+          author: 'Leanne Shrosbree',
+          role: 'Customer Service & Operations Director',
+          quote: 'Through a genuinely collaborative partnership with Vishal and the Inbotiqa team, we\u2019ve been able to improve, refine and maximise YuDo\u2019s potential. It\u2019s supported our growth, enabled our teams and helped us deliver for our clients consistently. That longevity and value speak volumes about the people behind it. We\u2019re genuinely grateful for the care, support and partnership you\u2019ve shown us over such a long time.', // TODO: translate
+          linkedin: 'https://www.linkedin.com/in/leanne-shrosbree-74261b53/',
+          website: '',
+        },
+      ],
+    },
   },
   // Services page
   // TODO: translate
@@ -235,6 +276,61 @@ export const de = {
         'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype — and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.',
         'I work with companies that have found their footing and need to build the systems that carry them through the next phase — without breaking what is already working.', // TODO: translate
+      ],
+    },
+    beliefs: {
+      title: 'What I believe', // TODO: translate
+      commandments: [
+        {
+          title: 'We shall ask WHY before we ask HOW.', // TODO: translate
+          content: 'Think like Master Oogway, asking existential questions, not about the universe, but about the product. Why are we doing this? Why does it matter? Who is this for? The answers shape everything that follows.', // TODO: translate
+          defaultOpen: true,
+        },
+        {
+          title: 'We shall build for outcomes, not features.', // TODO: translate
+          content: 'A king summoned six blind men and asked them to describe an elephant. The one who touched the trunk said, "A snake." The one who touched the leg said, "A tree." The one who touched the tail said, "A rope." Every description was true from where they stood. Every description was wrong for the whole. Often, a feature request is a blind man describing the elephant. The customer touches their piece -- a workflow that hurts, a button they keep clicking, a report they export every morning -- and names that piece as the problem that needs to be solved. Our job is to see the animal. Work backwards from the outcome. The feature request is just the symptom. Find the cause, the motivation, the desired outcome.', // TODO: translate
+          defaultOpen: true,
+        },
+        {
+          title: 'We shall build by principles, not by whim.', // TODO: translate
+          content: 'Ideas are noise until filtered. Design principles are the sieve -- they separate what belongs from what distracts. Every feature request, every suggestion, every pivot passes through the same filter.', // TODO: translate
+          defaultOpen: true,
+        },
+        {
+          title: 'We shall keep it simple and stupid.', // TODO: translate
+          content: 'Google launched in 1998 with around a million dollars from angel investors and a white page with a logo and a text box. No categories, no stock tickers, no news, no weather, no email. Their competitors -- Lycos, AltaVista, Excite -- were multi-billion-dollar portals that did everything. The blank page won. Simplicity is not a limitation. It is a slingshot. David did not try to be Goliath. He found Goliath\'s weakness and aimed for it.', // TODO: translate
+          defaultOpen: true,
+        },
+        {
+          title: 'We shall prototype before we commit.', // TODO: translate
+          content: 'Google Glass. A product nobody asked for, built by one of the world\'s biggest companies, backed by billions in R&D. It failed because the customer discovery happened after the investment, not before. Prototypes exist to kill bad ideas cheaply. A rough prototype that fails with five users costs you a week. A finished product that fails with five hundred customers costs you months of development time and much more in costs.', // TODO: translate
+          defaultOpen: true,
+        },
+        {
+          title: 'We shall build with grit, spit, and a whole lot of duct tape.', // TODO: translate
+          content: 'Like the Penguins of Madagascar building a plane from scrap. The tools are never perfect, the ground is never level, and the requirements change before you finish typing. Most of the building is resourcefulness -- making something work with what you have.', // TODO: translate
+          defaultOpen: true,
+        },
+        {
+          title: 'We shall deploy what works.', // TODO: translate
+          content: '"If you are not embarrassed by the first version of your product, you have launched too late." -- Reid Hoffman. The Apple I was a circuit board -- ugly, incomplete, but it worked. Done is better than perfect. Perfection achieved through iteration is still perfection. Perfection before launch is a product that never shipped.', // TODO: translate
+          defaultOpen: true,
+        },
+        {
+          title: 'We shall learn from failures.', // TODO: translate
+          content: 'Edison found 10,000 ways that did not work. Keep a log. Failures are data, not shame. The features that became the mainstays are often nowhere in the first draft.', // TODO: translate
+          defaultOpen: true,
+        },
+        {
+          title: 'We shall rise after every hit.', // TODO: translate
+          content: '"It ain\'t about how hard you\'re hit. It\'s about how you can get hit and keep moving forward." -- Rocky Balboa. Building is not a single fight. It is a long sequence of setbacks, near-misses, and unexpected punches. The ones who finish are not the ones who never fell -- they are the ones who got back up.', // TODO: translate
+          defaultOpen: true,
+        },
+        {
+          title: 'We shall run further than a marathon.', // TODO: translate
+          content: 'A marathon has a finish line at 42 km. Sufiya Sufi ran 4,167 km from Kanyakumari to Kashmir in 68 days, then kept going toward Karakoram. That is the difference between a product launch and a company. Sprints are for work breakdown. The vision needs the kind of distance where the finish line keeps moving because the purpose has not been met yet. The long game has no finish line.', // TODO: translate
+          defaultOpen: true,
+        },
       ],
     },
     careerarc: {

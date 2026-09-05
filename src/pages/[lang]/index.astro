@@ -9,6 +9,7 @@ import { defaultLocale } from '@/i18n/config';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import VerticalTabs from '@/components/ui/overlay/VerticalTabs/VerticalTabs.astro';
 import { SplitHero } from '@/components/ui/marketing/SplitHero';
 import BlogCard from '@/components/blog/BlogCard.astro';
 
@@ -58,6 +59,51 @@ const recentArticles = allArticles
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold font-display text-center mb-12">
+        {t('home.testimonials.title')}
+      </h2>
+      <VerticalTabs
+        tabs={(tr.home.testimonials.items as unknown as any[]).map((item: { id: string; company: string; author: string; role: string }) => ({
+          id: item.id,
+          label: item.company,
+          description: `${item.author} — ${item.role}`,
+        }))}
+      >
+        {(tr.home.testimonials.items as unknown as any[]).map((item: { id: string; quote: string; linkedin: string; website: string }) => (
+          <div data-tab-content={item.id}>
+            <blockquote class="text-lg text-muted-foreground italic mb-6 leading-relaxed">
+              &ldquo;{item.quote}&rdquo;
+            </blockquote>
+            <div class="flex gap-4 text-sm">
+              {item.linkedin && (
+                <a
+                  href={item.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline underline-offset-2 hover:text-primary transition-colors"
+                >
+                  LinkedIn
+                </a>
+              )}
+              {item.website && (
+                <a
+                  href={item.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline underline-offset-2 hover:text-primary transition-colors"
+                >
+                  Website
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </VerticalTabs>
     </div>
   </section>
 

@@ -126,6 +126,23 @@ test.describe('Home Page Features', () => {
     await expect(page.getByText('Short-term lending, Nigeria')).toBeVisible();
     await expect(page.getByText('Enterprise email processing, global banking')).toBeVisible();
   });
+
+  test('renders testimonials section with 4 clients', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByText('What clients say')).toBeVisible();
+    const companies = ['BlueMoney', 'Ourish', 'PowerMarket', 'Sable International'];
+    for (const company of companies) {
+      await expect(page.getByRole('tab', { name: company })).toBeVisible();
+    }
+  });
+
+  test('testimonials show quote when tab selected', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('[data-vtab-trigger="powermarket"]').click();
+    await expect(page.locator('.vtabs-content-desktop [data-tab-content="powermarket"]')).toBeVisible();
+    await expect(page.locator('.vtabs-content-desktop [data-tab-content="powermarket"] blockquote')).toContainText(/phenomenal resource/);
+    await expect(page.locator('.vtabs-content-desktop [data-tab-content="powermarket"] a[href*="linkedin"]')).toBeVisible();
+  });
 });
 
 test.describe('About Page Features', () => {
@@ -138,9 +155,29 @@ test.describe('About Page Features', () => {
   test('shows all five narrative sections', async ({ page }) => {
     await page.goto('/en/about');
     await expect(page.getByRole('heading', { name: /^What I do$/i }).first()).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'What I believe' })).toBeVisible();
     await expect(page.getByRole('heading', { name: /The career arc, briefly/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /Speaking, writing, mentorship/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /Off the clock/i })).toBeVisible();
+  });
+
+  test('displays all 10 commandments in accordion', async ({ page }) => {
+    await page.goto('/en/about');
+    const commandments = [
+      'We shall ask WHY before we ask HOW.',
+      'We shall build for outcomes, not features.',
+      'We shall build by principles, not by whim.',
+      'We shall keep it simple and stupid.',
+      'We shall prototype before we commit.',
+      'We shall build with grit, spit, and a whole lot of duct tape.',
+      'We shall deploy what works.',
+      'We shall learn from failures.',
+      'We shall rise after every hit.',
+      'We shall run further than a marathon.',
+    ];
+    for (const title of commandments) {
+      await expect(page.getByText(title)).toBeVisible();
+    }
   });
 
   test('career arc mentions Inbotiqa and BauAI', async ({ page }) => {
