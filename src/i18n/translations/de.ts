@@ -204,7 +204,7 @@ export const de = {
           company: 'Ourish',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
-          quote: 'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond is delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.', // TODO: translate
+          quote: 'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond in delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.', // TODO: translate
           linkedin: 'https://www.linkedin.com/in/kunalkakar/',
           website: '',
         },
