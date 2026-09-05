@@ -8,6 +8,7 @@ import { Image } from 'astro:assets';
 import photo from '@/assets/photo.jpg';
 import Button from '@/components/ui/form/Button/Button.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import Accordion from '@/components/ui/overlay/Accordion/Accordion.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import { createPersonSchema } from '@/lib/schema';
 
@@ -47,6 +48,17 @@ const tr = getTranslations(locale) as TranslationKeys;
       {tr.about.whatido.paragraphs.map((p) => (
         <p class="mb-4 text-muted-foreground leading-relaxed">{p}</p>
       ))}
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 class="text-3xl font-bold font-display mb-8">{t('about.beliefs.title')}</h2>
+      <Accordion
+        items={[...tr.about.beliefs.commandments]}
+        variant="card"
+        size="lg"
+      />
     </div>
   </section>
 
