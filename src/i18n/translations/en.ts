@@ -304,17 +304,17 @@ export const en = {
         },
         {
           title: 'We shall build for outcomes, not features.',
-          content: 'A king summoned six blind men and asked them to describe an elephant. The one who touched the trunk said, "A snake." The one who touched the leg said, "A tree." The one who touched the tail said, "A rope." Every description was true from where they stood. Every description was wrong for the whole. Often, a feature request is a blind man describing the elephant. The customer touches their piece — a workflow that hurts, a button they keep clicking, a report they export every morning — and names that piece as the problem that needs to be solved. Our job is to see the animal. Work backwards from the outcome. The feature request is just the symptom. Find the cause, the motivation, the desired outcome.',
+          content: 'A king summoned six blind men and asked them to describe an elephant. The one who touched the trunk said, "A snake." The one who touched the leg said, "A tree." The one who touched the tail said, "A rope." Every description was true from where they stood. Every description was wrong for the whole. Often, a feature request is a blind man describing the elephant. The customer touches their piece, a workflow that hurts, a button they keep clicking, a report they export every morning, and names that piece as the problem that needs to be solved. Our job is to see the animal. Work backwards from the outcome. The feature request is just the symptom. Find the cause, the motivation, the desired outcome.',
           defaultOpen: true,
         },
         {
           title: 'We shall build by principles, not by whim.',
-          content: 'Ideas are noise until filtered. Design principles are the sieve — they separate what belongs from what distracts. Every feature request, every suggestion, every pivot passes through the same filter.',
+          content: 'Ideas are noise until filtered. Design principles are the sieve. They separate what belongs from what distracts. Every feature request, every suggestion, every pivot passes through the same filter.',
           defaultOpen: true,
         },
         {
           title: 'We shall keep it simple and stupid.',
-          content: 'Google launched in 1998 with around a million dollars from angel investors and a white page with a logo and a text box. No categories, no stock tickers, no news, no weather, no email. Their competitors — Lycos, AltaVista, Excite — were multi-billion-dollar portals that did everything. The blank page won. Simplicity is not a limitation. It is a slingshot. David did not try to be Goliath. He found Goliath\'s weakness and aimed for it.',
+          content: 'Google launched in 1998 with around a million dollars from angel investors and a white page with a logo and a text box. No categories, no stock tickers, no news, no weather, no email. Their competitors, Lycos, AltaVista, Excite, were multi-billion-dollar portals that did everything. The blank page won. Simplicity is not a limitation. It is a slingshot. David did not try to be Goliath. He found Goliath\'s weakness and aimed for it.',
           defaultOpen: true,
         },
         {
@@ -324,7 +324,7 @@ export const en = {
         },
         {
           title: 'We shall build with grit, spit, and a whole lot of duct tape.',
-          content: 'Like the Penguins of Madagascar building a plane from scrap. The tools are never perfect, the ground is never level, and the requirements change before you finish typing. Most of the building is resourcefulness — making something work with what you have.',
+          content: 'Like the Penguins of Madagascar building a plane from scrap. The tools are never perfect, the ground is never level, and the requirements change before you finish typing. Most of the building is resourcefulness, making something work with what you have.',
           defaultOpen: true,
         },
         {
@@ -339,7 +339,7 @@ export const en = {
         },
         {
           title: 'We shall rise after every hit.',
-          content: '"It ain\'t about how hard you\'re hit. It\'s about how you can get hit and keep moving forward." — Rocky Balboa. Building is not a single fight. It is a long sequence of setbacks, near-misses, and unexpected punches. The ones who finish are not the ones who never fell — they are the ones who got back up.',
+          content: '"It ain\'t about how hard you\'re hit. It\'s about how you can get hit and keep moving forward." — Rocky Balboa. Building is not a single fight. It is a long sequence of setbacks, near-misses, and unexpected punches. The ones who finish are not the ones who never fell. They are the ones who got back up.',
           defaultOpen: true,
         },
         {
