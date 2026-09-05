@@ -329,7 +329,7 @@ export const en = {
         },
         {
           title: 'We shall deploy what works.',
-          content: '"If you are not embarrassed by the first version of your product, you have launched too late." — Reid Hoffman. The Apple I was a circuit board — ugly, incomplete, but it worked. Done is better than perfect. Perfection achieved through iteration is still perfection. Perfection before launch is a product that never shipped.',
+          content: '"If you are not embarrassed by the first version of your product, you have launched too late." Reid Hoffman. The Apple I was a circuit board. Ugly, incomplete, but it worked. Done is better than perfect. Perfection achieved through iteration is still perfection. Perfection before launch is a product that never shipped.',
           defaultOpen: true,
         },
         {
@@ -339,7 +339,7 @@ export const en = {
         },
         {
           title: 'We shall rise after every hit.',
-          content: '"It ain\'t about how hard you\'re hit. It\'s about how you can get hit and keep moving forward." — Rocky Balboa. Building is not a single fight. It is a long sequence of setbacks, near-misses, and unexpected punches. The ones who finish are not the ones who never fell. They are the ones who got back up.',
+          content: '"It ain\'t about how hard you\'re hit. It\'s about how you can get hit and keep moving forward." Rocky Balboa. Building is not a single fight. It is a long sequence of setbacks, near-misses, and unexpected punches. The ones who finish are not the ones who never fell. They are the ones who got back up.',
           defaultOpen: true,
         },
         {
