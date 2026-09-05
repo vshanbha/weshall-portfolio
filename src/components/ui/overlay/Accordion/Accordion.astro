@@ -12,9 +12,9 @@ interface AccordionItem {
   title: string;
   content: string;
   defaultOpen?: boolean;
-  /** Optional link rendered below the content (locale-independent path, e.g. /blog/my-article/) */
+  /** Optional link rendered below the content (locale-independent path, e.g. /blog/my-article/). Requires linkText to render. */
   href?: string;
-  /** Label for the optional link. Falls back to 'Read more'. */
+  /** Label for the optional link. Must be provided by the caller; no default. */
   linkText?: string;
 }
 
