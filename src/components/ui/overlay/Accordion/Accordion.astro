@@ -12,6 +12,10 @@ interface AccordionItem {
   title: string;
   content: string;
   defaultOpen?: boolean;
+  /** Optional link rendered below the content (locale-independent path, e.g. /blog/my-article/) */
+  href?: string;
+  /** Label for the optional link. Falls back to 'Read more'. */
+  linkText?: string;
 }
 
 interface Props {
@@ -51,6 +55,14 @@ const groupName = exclusive ? `accordion-${Math.random().toString(36).slice(2, 9
       </summary>
       <div class="pb-4 text-sm text-foreground-muted leading-relaxed">
         {item.content}
+        {item.href && (
+          <a
+            href={item.href}
+            class="inline-block mt-2 underline underline-offset-2 hover:text-primary transition-colors"
+          >
+            {item.linkText ?? 'Read more'}
+          </a>
+        )}
       </div>
     </details>
   ))}

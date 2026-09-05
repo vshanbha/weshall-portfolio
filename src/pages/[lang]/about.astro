@@ -48,9 +48,17 @@ const tr = getTranslations(locale) as TranslationKeys;
       {tr.about.whatido.paragraphs.map((p) => (
         <p class="mb-4 text-muted-foreground leading-relaxed">{p}</p>
       ))}
-      <h3 class="text-xl font-semibold font-display mt-8 mb-4">{t('about.beliefs.title')}</h3>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 class="text-3xl font-bold font-display mb-8">{t('about.beliefs.title')}</h2>
       <Accordion
-        items={[...tr.about.beliefs.commandments]}
+        items={[...tr.about.beliefs.commandments].map((item: { title: string; content: string; defaultOpen: boolean; href?: string; linkText?: string }) => ({
+          ...item,
+          href: item.href ? `/${locale}${item.href}` : undefined,
+        }))}
         variant="card"
         size="lg"
       />
