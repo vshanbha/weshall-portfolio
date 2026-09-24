@@ -4,6 +4,29 @@ import { glob } from 'astro/loaders';
 
 const localeEnum = z.enum(['en', 'de', 'hi', 'mr']);
 
+/**
+ * Image provenance — source of truth for AI transparency (EU AI Act Art. 50).
+ *
+ * Only known, truthful values may be written here. Never use placeholders such
+ * as `unknown` or `optional`; omit the key instead. Absent optional keys mean
+ * "not recorded by the publisher", not "unknown but asserted".
+ */
+const imageProvenance = z
+  .object({
+    kind: z.enum(['ai-generated']),
+    /** Visible disclosure text rendered under the hero image. */
+    disclosure: z.string().min(1).max(200),
+    /** Generation system as recorded by the source (manifest or publisher records). */
+    system: z.string().min(1).max(120).optional(),
+    /** System/model version — only when it can be verified. */
+    systemVersion: z.string().min(1).max(60).optional(),
+    createdOn: z.coerce.date().optional(),
+    sourceUrl: z.string().url().optional(),
+    /** Publish only after confirming the prompt is safe to make public. */
+    prompt: z.string().min(1).optional(),
+  })
+  .optional();
+
 // Articles collection (primary content type)
 const articles = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
@@ -17,6 +40,7 @@ const articles = defineCollection({
       image: image().optional(),
       imageAlt: z.string().optional(),
       heroCaption: z.string().max(200).optional(),
+      imageProvenance,
       tags: z.array(z.string()).default([]),
       draft: z.boolean().default(false),
       featured: z.boolean().default(false),
