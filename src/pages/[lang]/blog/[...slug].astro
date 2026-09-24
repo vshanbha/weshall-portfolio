@@ -2,7 +2,7 @@
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
-import { createBlogPostSchema } from '@/lib/schema';
+import { createBlogPostSchema, createWebPageSchema } from '@/lib/schema';
 import { locales, type Locale } from '@/i18n/config';
 import siteConfig from '@/config/site.config';
 import type { GetStaticPaths } from 'astro';
@@ -32,6 +32,20 @@ const canonicalUrl = new URL(`/${locale}/blog/${entry.id}/`, siteConfig.url);
 const ogImage = entry.data.image
   ? typeof entry.data.image === 'string' ? entry.data.image : entry.data.image.src
   : `/og/${locale}/blog/${entry.id}.png`;
+
+// Publishing principles — locale-specific About-page editorial-standards anchor.
+const publishingPrinciples = new URL(
+  `/${locale}/about#editorial-standards`,
+  siteConfig.url
+).toString();
+
+// An explicit hero caption wins; AI-generated images fall back to the
+// provenance disclosure so the disclosure is always rendered.
+const heroCaption = entry.data.heroCaption ?? entry.data.imageProvenance?.disclosure;
+
+// Caption/credit are only attached to images whose provenance is recorded.
+const imageCaption = entry.data.imageProvenance ? heroCaption : undefined;
+const imageCredit = entry.data.imageProvenance ? entry.data.author : undefined;
 ---
 
 <BlogLayout
@@ -43,22 +57,35 @@ const ogImage = entry.data.image
   ogImage={ogImage}
   image={entry.data.image}
   imageAlt={entry.data.imageAlt}
-  heroCaption={entry.data.heroCaption}
+  heroCaption={heroCaption}
   wordCount={wordCount}
   tags={entry.data.tags}
   slug={entry.id}
   locale={locale}
 >
   <JsonLd
-    schema={createBlogPostSchema({
-      title: entry.data.title,
-      description: entry.data.description,
-      url: canonicalUrl.toString(),
-      image: new URL(ogImage, siteConfig.url).toString(),
-      datePublished: entry.data.publishedAt,
-      dateModified: entry.data.updatedAt || entry.data.publishedAt,
-      author: { name: entry.data.author },
-    })}
+    schema={[
+      createBlogPostSchema({
+        title: entry.data.title,
+        description: entry.data.description,
+        url: canonicalUrl.toString(),
+        image: new URL(ogImage, siteConfig.url).toString(),
+        datePublished: entry.data.publishedAt,
+        dateModified: entry.data.updatedAt || entry.data.publishedAt,
+        author: { name: entry.data.author },
+        publishingPrinciples,
+        imageCaption,
+        imageCredit,
+      }),
+      createWebPageSchema({
+        url: canonicalUrl.toString(),
+        reviewedBy: {
+          name: entry.data.author,
+          url: new URL(`/${locale}/about`, siteConfig.url).toString(),
+        },
+        publishingPrinciples,
+      }),
+    ]}
   />
 
   <Content />
