@@ -1,9 +1,4 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "lsp": true,
-  "skills": {
-    "paths": [
-      "skills"
-    ]
-  }
+  "skills": ["skills"]
 }
