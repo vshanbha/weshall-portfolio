@@ -1,0 +1,54 @@
+name: Validate
+
+# Blocking checks for content and site builds. CI validates technical
+# transparency requirements (visible disclosure, IPTC/XMP, C2PA, JSON-LD);
+# a passing run is not a legal audit.
+
+on:
+  pull_request:
+  push:
+    branches: [main, dev]
+
+permissions:
+  contents: read
+
+env:
+  # Pinned tool versions for reproducible provenance checks.
+  C2PATOOL_VERSION: '0.28.0'
+  EXIFTOOL_VERSION: '13.55'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install ExifTool ${{ env.EXIFTOOL_VERSION }}
+        run: |
+          # Tagged source archive: exiftool.org only serves the current release.
+          curl -fsSL -o /tmp/exiftool.tar.gz "https://github.com/exiftool/exiftool/archive/refs/tags/${EXIFTOOL_VERSION}.tar.gz"
+          tar -xzf /tmp/exiftool.tar.gz -C /tmp
+          sudo install -m 755 "/tmp/exiftool-${EXIFTOOL_VERSION}/exiftool" /usr/local/bin/exiftool
+          exiftool -ver
+
+      - name: Install c2patool ${{ env.C2PATOOL_VERSION }}
+        run: |
+          curl -fsSL -o /tmp/c2patool.tar.gz "https://github.com/contentauth/c2patool/releases/download/v${C2PATOOL_VERSION}/v${C2PATOOL_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+          tar -xzf /tmp/c2patool.tar.gz -C /tmp
+          sudo install -m 755 /tmp/c2patool/c2patool /usr/local/bin/c2patool
+          c2patool --version
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: pnpm validate
+        run: pnpm validate
+        env:
+          SITE_URL: 'https://weshall.build'
+          BASE_PATH: '/'
