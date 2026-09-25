@@ -9,6 +9,10 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  # Pinned so the provenance build step matches ci.yml (docs/IMAGE_PROVENANCE.md).
+  EXIFTOOL_VERSION: '13.55'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,6 +23,14 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+      # `pnpm build` stamps IPTC/XMP provenance onto delivered images and fails
+      # without ExifTool, which is not preinstalled on the runner image.
+      - name: Install ExifTool ${{ env.EXIFTOOL_VERSION }}
+        run: |
+          curl -fsSL -o /tmp/exiftool.tar.gz "https://github.com/exiftool/exiftool/archive/refs/tags/${EXIFTOOL_VERSION}.tar.gz"
+          tar -xzf /tmp/exiftool.tar.gz -C /tmp
+          sudo install -m 755 "/tmp/exiftool-${EXIFTOOL_VERSION}/exiftool" /usr/local/bin/exiftool
+          exiftool -ver
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
         env:
