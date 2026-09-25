@@ -22,7 +22,7 @@ Closes #<number>
 
 ## Review (Gate B)
 
-Review of the change itself — by a human (paired session or line-by-line read) **and** the agent pass (see `agents.md` → *Code Review (Gate B)*):
+Review of the change itself — by a human (paired session or line-by-line read) **and** the agent pass (see `agents.md` → _Code Review (Gate B)_):
 
 - [ ] Acceptance criteria verified one by one against the issue or plan
 - [ ] Every hunk read: nothing unrelated, nothing speculative
