@@ -13,6 +13,9 @@ featured: false
 locale: en
 origin: medium
 medium_url: https://medium.com/@vvsvish/to-build-or-not-to-build-9003412e43d2
+reviewed: true
+ai_assisted: true
+human_reviewed: true
 ---
 
 # To Build or Not to Build
