@@ -130,6 +130,21 @@ an AI system, and are not marked.
 Screenshots, diagrams, SVGs and sourced photographs are deliberately not marked:
 there is no evidence they were AI-generated.
 
+### Where the recorded provenance values come from
+
+- **Marathon hero** — read from the C2PA manifest embedded in the file:
+  `softwareAgent` `gpt-image` `2.0`, `when 2026-07-21`, `digitalSourceType`
+  `trainedAlgorithmicMedia`. Nothing inferred.
+- **Oops hero** — the file carries no manifest and no generation metadata: it was
+  re-downloaded from the published article and re-padded to 16:9 (`exiftool`
+  returns only orientation/resolution, `c2patool` returns "No claim found").
+  `system: ChatGPT` and `createdOn: 2026-06-21` therefore rest on the
+  publisher's own metadata inspection, recorded during planning and approved in
+  the issue #20 clarification comment of 2026-09-24. That comment is the
+  publisher record for this image; `sourceUrl` is the published article itself.
+  No model or version is asserted, because none is verifiable — and the schema
+  forbids inventing one.
+
 ## Checks
 
 `pnpm validate` runs lint, `astro check`, the build (including the provenance
