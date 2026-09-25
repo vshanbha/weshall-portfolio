@@ -148,6 +148,7 @@ export const hi = {
     copyright: '© {year} वी शॉल बिल्ड. सर्वाधिकार सुरक्षित।',
     madeWith: 'बनाया गया',
     maintainedBy: 'द्वारा बनाए रखा गया',
+    aiUseInPublishing: 'AI use in publishing', // TODO: translate
     links: {
       documentation: 'दस्तावेज़',
       github: 'GitHub',
@@ -379,6 +380,11 @@ export const hi = {
       ],
       closingLead: 'If you have an idea that needs software to give it life, ', // TODO: translate
       closing: 'talk to me.', // TODO: translate
+    },
+    editorialStandards: {
+      title: 'Editorial standards', // TODO: translate
+      statement:
+        'AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own.', // TODO: translate
     },
     cta: {
       title: 'Have a problem worth solving?', // TODO: translate

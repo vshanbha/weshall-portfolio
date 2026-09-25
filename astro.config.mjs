@@ -4,6 +4,28 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
+/**
+ * remark-gfm renders a markdown task list (`- [ ] item`) as a bare
+ * `<input type="checkbox" disabled>` with no accessible name, which fails
+ * WCAG 4.1.2 (axe rule: "label"). Give each checkbox the text of its own list
+ * item as its name, so state and meaning survive for assistive technology.
+ */
+function rehypeTaskListLabels() {
+  const toText = (node) =>
+    node.type === 'text' ? String(node.value ?? '') : (node.children ?? []).map(toText).join('');
+
+  const walk = (node, listItem) => {
+    const current = node.tagName === 'li' ? node : listItem;
+    if (node.tagName === 'input' && node.properties?.type === 'checkbox' && current) {
+      const label = toText(current).replace(/\s+/g, ' ').trim();
+      if (label) node.properties = { ...node.properties, ariaLabel: label };
+    }
+    for (const child of node.children ?? []) walk(child, current);
+  };
+
+  return (tree) => walk(tree, null);
+}
+
 export default defineConfig({
   site: process.env.SITE_URL || 'http://localhost:4321',
   base: process.env.BASE_PATH || '/',
@@ -66,6 +88,7 @@ export default defineConfig({
       theme: 'github-dark',
       wrap: true,
     },
+    rehypePlugins: [rehypeTaskListLabels],
   },
 
   prefetch: {

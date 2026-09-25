@@ -1,5 +1,6 @@
 import type {
   WebSite,
+  WebPage,
   Organization,
   BlogPosting,
   BreadcrumbList,
@@ -55,6 +56,12 @@ export function createBlogPostSchema(post: {
   datePublished: Date;
   dateModified?: Date;
   author: { name: string; url?: string };
+  /** Absolute URL of the locale-specific editorial-standards statement. */
+  publishingPrinciples: string;
+  /** Visible caption shown with the article image (AI-generated images must disclose). */
+  imageCaption?: string;
+  /** Credit line for the article image, when one applies. */
+  imageCredit?: string;
 }): WithContext<BlogPosting> {
   return {
     '@context': 'https://schema.org',
@@ -62,9 +69,18 @@ export function createBlogPostSchema(post: {
     headline: post.title,
     description: post.description,
     url: post.url,
-    image: post.image,
+    image:
+      post.imageCaption || post.imageCredit
+        ? {
+            '@type': 'ImageObject',
+            url: post.image,
+            caption: post.imageCaption,
+            creditText: post.imageCredit,
+          }
+        : post.image,
     datePublished: post.datePublished.toISOString(),
     dateModified: post.dateModified?.toISOString() || post.datePublished.toISOString(),
+    publishingPrinciples: post.publishingPrinciples,
     author: {
       '@type': 'Person',
       name: post.author.name,
@@ -82,6 +98,32 @@ export function createBlogPostSchema(post: {
       '@type': 'WebPage',
       '@id': post.url,
     },
+  };
+}
+
+/**
+ * Create WebPage schema for an article page.
+ *
+ * A second, standalone JSON-LD object (no `@graph`) carrying the
+ * publisher-level transparency fields: who reviewed the content, and where the
+ * publishing principles are published. The reviewer is an inline Person — no
+ * separate identity node is created.
+ */
+export function createWebPageSchema(page: {
+  url: string;
+  reviewedBy: { name: string; url?: string };
+  publishingPrinciples: string;
+}): WithContext<WebPage> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    url: page.url,
+    reviewedBy: {
+      '@type': 'Person',
+      name: page.reviewedBy.name,
+      url: page.reviewedBy.url,
+    },
+    publishingPrinciples: page.publishingPrinciples,
   };
 }
 
