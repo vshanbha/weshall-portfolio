@@ -195,11 +195,13 @@ describe('Footer AI use in publishing link', () => {
 describe('JSON-LD transparency fields', () => {
   function jsonLd(page: string): Array<Record<string, unknown>> {
     const html = readHtml(page);
-    const blocks = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g);
-    expect(blocks).not.toBeNull();
-    return (blocks ?? []).map((block) =>
-      JSON.parse(block.replace(/<\/?script[^>]*>/g, ''))
-    ) as Array<Record<string, unknown>>;
+    const marker = '<script type="application/ld+json">';
+    const blocks = html
+      .split(marker)
+      .slice(1)
+      .map((chunk) => chunk.split('</script>')[0]);
+    expect(blocks.length).toBeGreaterThan(0);
+    return blocks.map((block) => JSON.parse(block) as Record<string, unknown>);
   }
 
   it.each(articles.map((article) => [article.slug, article] as const))(
