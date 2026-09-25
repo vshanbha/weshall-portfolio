@@ -21,7 +21,7 @@ const imageProvenance = z
     /** System/model version — only when it can be verified. */
     systemVersion: z.string().min(1).max(60).optional(),
     createdOn: z.coerce.date().optional(),
-    sourceUrl: z.string().url().optional(),
+    sourceUrl: z.url().optional(),
     /** Publish only after confirming the prompt is safe to make public. */
     prompt: z.string().min(1).optional(),
   })
@@ -31,21 +31,36 @@ const imageProvenance = z
 const articles = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
   schema: ({ image }) =>
-    z.object({
-      title: z.string().max(120),
-      description: z.string().max(250),
-      publishedAt: z.coerce.date(),
-      updatedAt: z.coerce.date().optional(),
-      author: z.string().default('Vishal Shanbhag'),
-      image: image().optional(),
-      imageAlt: z.string().optional(),
-      heroCaption: z.string().max(200).optional(),
-      imageProvenance,
-      tags: z.array(z.string()).default([]),
-      draft: z.boolean().default(false),
-      featured: z.boolean().default(false),
-      locale: localeEnum.default('en'),
-    }),
+    z
+      .object({
+        title: z.string().max(120),
+        description: z.string().max(250),
+        publishedAt: z.coerce.date(),
+        updatedAt: z.coerce.date().optional(),
+        author: z.string().default('Vishal Shanbhag'),
+        image: image().optional(),
+        imageAlt: z.string().optional(),
+        heroCaption: z.string().max(200).optional(),
+        imageProvenance,
+        tags: z.array(z.string()).default([]),
+        draft: z.boolean().default(false),
+        featured: z.boolean().default(false),
+        locale: localeEnum.default('en'),
+        /**
+         * Editorial review gate (see `agents.md` and `factory/AGENTS.md`).
+         * These three values are copied from the factory source article, which
+         * records the human review behind the export gate.
+         */
+        reviewed: z.boolean().default(false),
+        ai_assisted: z.boolean().default(false),
+        human_reviewed: z.boolean().default(false),
+      })
+      // Review gate: nothing reaches the site without a recorded human review.
+      .refine((data) => data.draft === true || data.reviewed === true, {
+        message:
+          'Published articles must pass the review gate: set `reviewed: true` once the human review is done (see agents.md).',
+        path: ['reviewed'],
+      }),
 });
 
 // Blog collection with Content Layer API
