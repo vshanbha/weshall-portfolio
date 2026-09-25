@@ -1,7 +1,12 @@
 name: Deploy to GitHub Pages
 
+# Runs only after the Validate workflow (ci.yml) has succeeded for the same
+# push to main. Checks live in ci.yml; this workflow builds and publishes.
+
 on:
-  push:
+  workflow_run:
+    workflows: [Validate]
+    types: [completed]
     branches: [main]
 
 permissions:
@@ -13,11 +18,22 @@ env:
   # Pinned so the provenance build step matches ci.yml (docs/IMAGE_PROVENANCE.md).
   EXIFTOOL_VERSION: '13.55'
 
+# Never let two deployments race each other.
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
 jobs:
   build:
+    # Only for Validate runs that were triggered by a push to main and passed.
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
     runs-on: ubuntu-latest
     steps:
+      # workflow_run starts from the default branch tip; build the commit that
+      # was actually validated.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
