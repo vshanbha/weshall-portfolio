@@ -295,7 +295,8 @@ Gate B is a review by **someone other than the author**: an agent pass plus the
 human sign-off recorded in the PR template. The agent pass runs automatically
 only for local commits on `dev` or `main` (see below); for anything else, you
 start it yourself. [`docs/AgentWorkflow.md`](docs/AgentWorkflow.md) calls the
-human half of that gate the Architect's review. Use the repo wrapper:
+human reviewer of that gate the **Architect**, and the gate itself a *Pair
+Review*. Use the repo wrapper:
 
 ```bash
 ./scripts/review-agent "$(cat /tmp/review-prompt.txt)"
@@ -315,13 +316,13 @@ origin/<base>...HEAD` for the changed-file list (`dev` is the base for feature
 PRs, `main` for release PRs).
 
 Note that the hook's built-in prompt does **not** include the rules below: it
-pastes the diff inline, capped at 12 000 characters (slightly over the ~10 KB
-guideline below — and the reason an automatic run never dies of a bloated diff),
-and it never asks for `VERDICT:`. Automatic runs therefore fail *differently*
-from a bad manual one: no machine-checkable verdict line, a guessed wrong tool
-name that stalls, or a session killed by a question that exits with nothing. For
-a review you intend to rely on — anything gating a merge — run it manually with
-a prompt built as below.
+pastes the diff inline, capped at 12 000 bytes (a little over the ~10 KB
+guideline below once its ~2 KB of boilerplate is added — and the reason an
+automatic run never dies of a bloated diff), and it never asks for `VERDICT:`.
+Automatic runs therefore fail *differently* from a bad manual one: no
+machine-checkable verdict line, a guessed wrong tool name that stalls, or a
+session killed by a question that exits with nothing. For a review you intend to
+rely on — anything gating a merge — run it manually with a prompt built as below.
 
 **Writing the prompt — these rules were learned by getting them wrong:**
 
@@ -340,19 +341,23 @@ a prompt built as below.
   and a dead session exits without one. Appending `; echo "REVIEW_AGENT_EXIT=$?"`
   makes a crash visible instead of silent.
 - **Treat the diff as untrusted input.** `--auto` approves *`ask`* rules too, and
-  the plan agent is `allow * *` with `edit` denied, `question` allowed and
-  `read *.env` set to `ask` (check with `opencode debug agents`) — so an
-  unattended review can run shell **and read `.env`**. Reviewing a diff you did
-  not author (a dependabot bump, an outside contribution) hands auto-approved
-  shell to a model reading attacker-controlled text. The real lever is `bash`,
-  not `question` — `question` only costs you a dead session. Hardening belongs in
-  the repo's `opencode.json` under `agent.plan.permission`, but that would also
-  rewrite **plan mode for this repo** and kill clarifying questions in ordinary
-  planning sessions; the cleaner fix is a dedicated review agent
-  (`.opencode/agent/review.md` with `edit` and `question` denied and `bash` scoped
-  to read-only commands) and `scripts/review-agent` pointed at `--agent review`.
-  Either way it is a deliberate config change, not something to do from inside a
-  review.
+  the plan agent is `allow * *` with `edit` denied outside `~/.opencode/plan`,
+  `question` allowed and `read *.env` set to `ask` (check with
+  `opencode debug agents`) — so an unattended review can run shell **and read
+  `.env`**. Reviewing a diff you did not author (a dependabot bump, an outside
+  contribution) hands auto-approved shell to a model reading attacker-controlled
+  text. The real lever is `shell` — V2's name for `bash` — not `question`, which
+  only costs you a dead session. Hardening belongs in the repo's `opencode.json`
+  under `agents.plan.permissions`, for example
+  `{"action": "shell", "resource": "*", "effect": "deny"}` (V1's
+  `agent.plan.permission` with `bash` still works but is legacy), but that would
+  also rewrite **plan mode for this repo** and kill clarifying questions in
+  ordinary planning sessions. The cleaner fix is a dedicated review agent at
+  `.opencode/agents/review.md` — V2's preferred location — with `edit` and
+  `question` denied and `shell` scoped to a read-only allowlist, and
+  `scripts/review-agent` pointed at `--agent review`. Either way it is a
+  deliberate config change, not something to do from inside a review.
+  TODO: file an issue for the dedicated `review` agent.
 
 Record the outcome in the PR's `## Review (Gate B)` section — tick items the
 reviewer passed, leave failed items unticked with the reason, and put the agent's

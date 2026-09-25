@@ -42,7 +42,7 @@ REVIEW_AGENT_TOOL=claude    # or opencode, codex
 Environment variables take precedence over `.env`. The hook itself never changes
 regardless of which tool is configured.
 
-The hook's built-in prompt pastes the diff inline (12 000-character cap) and does
+The hook's built-in prompt pastes the diff inline (12 000-byte cap) and does
 not ask for a `VERDICT:` line, so an automatic run cannot be checked the way a
 manual one can. For a review that gates a merge, build the prompt per the rules
 in [`agents.md`](../agents.md) → *Code Review (Gate B)*.
