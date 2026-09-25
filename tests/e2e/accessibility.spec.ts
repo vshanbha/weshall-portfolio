@@ -33,6 +33,8 @@ const PAGES = [
   '/en/datenschutz',
   '/en/impressum',
   '/en/services',
+  // Locale-less routes are meta-refresh stubs; this one is a real rendered page.
+  '/404.html',
 ];
 
 function report(violations: Awaited<ReturnType<AxeBuilder['analyze']>>['violations']): string {
