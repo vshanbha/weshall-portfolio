@@ -63,7 +63,12 @@ if any value cannot be verified.
 | ExifTool   | 13.55           | `brew install exiftool`                                            | `apt-get install libimage-exiftool-perl` |
 | `c2patool` | 0.28.0 (pinned) | [GitHub release](https://github.com/contentauth/c2patool/releases) | same, `x86_64-unknown-linux-gnu`         |
 
-CI pins both versions in `.github/workflows/ci.yml`.
+CI pins both versions in `.github/workflows/ci.yml`, which runs every check on
+pull requests and on pushes to `dev` and `main`. `.github/workflows/deploy.yml`
+runs only after that Validate workflow has succeeded for the same push to
+`main`: it installs the pinned ExifTool (the build stamps the metadata) and
+publishes that commit's `dist`. A push to `main` therefore cannot ship
+artefacts the checks would reject.
 
 ### Adding another AI-generated image
 

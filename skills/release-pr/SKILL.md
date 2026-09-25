@@ -185,7 +185,7 @@ Current version: see `package.json` (`"version": "0.1.0"`).
      --title "vX.Y.Z" \
      --notes-file CHANGELOG.md
    ```
-10. **`deploy.yml` triggers automatically** on push to `main`
+10. **`deploy.yml` triggers automatically** once Validate succeeds for that push to `main`
 
 ### Changelog Format
 
@@ -238,12 +238,15 @@ Use these to populate the changelog sections.
 
 ## CI/CD Integration
 
-The `deploy.yml` workflow triggers on push to `main`:
+The `deploy.yml` workflow runs after the `Validate` workflow (`ci.yml`) has
+succeeded for a push to `main`:
 
-1. Builds the Astro site
+1. Builds the Astro site (stamping image provenance)
 2. Deploys to GitHub Pages
 
 This means:
+- **Every push to `dev` or `main`** — runs the `ci.yml` checks
+- **Checks** — live in `ci.yml` only; deployment waits for them to pass
 - **PRs to `dev`** — do not trigger deployment
 - **Merging `dev` → `main`** — does not trigger deployment (manual release process)
 - **Pushing to `main`** (via release) — triggers deployment
