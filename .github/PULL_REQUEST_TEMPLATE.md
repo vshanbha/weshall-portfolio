@@ -22,7 +22,7 @@ Closes #<number>
 
 ## Review (Gate B)
 
-Human review of the change itself — paired review session, or a line-by-line read:
+Review of the change itself — by a human (paired session or line-by-line read) and/or the agent pass:
 
 - [ ] Acceptance criteria verified one by one against the issue or plan
 - [ ] Every hunk read: nothing unrelated, nothing speculative
