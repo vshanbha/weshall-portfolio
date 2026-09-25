@@ -291,26 +291,37 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 
 ### Code Review (Gate B)
 
-Gate B is a review by a **different agent than the author**. Use the repo wrapper:
+Gate B is a review by **someone other than the author**: an agent pass on every
+change, plus the human sign-off recorded in the PR template (`docs/AgentWorkflow.md`
+calls the human the Architect of that gate). Use the repo wrapper:
 
 ```bash
 ./scripts/review-agent "$(cat /tmp/review-prompt.txt)"
 ```
 
-It reads `REVIEW_AGENT_TOOL` from `.env` (default `opencode`) and runs
-`opencode run --agent plan --auto --format default <prompt>`.
+It reads `REVIEW_AGENT_TOOL` from the environment first, then falls back to
+`.env`, defaulting to `opencode`, and runs
+`opencode run --agent plan --auto --format default <prompt>`
+(see [`docs/GitHooks.md`](docs/GitHooks.md) for the tool configuration).
 
 **When it runs by itself:** `.githooks/post-commit` fires it after local commits
 on `dev` or `main`, reviewing `HEAD~1..HEAD` — **one commit only**. Feature-branch
-commits are skipped, and a GitHub merge (or a `git pull` fast-forward) creates no
-local commit at all, so a PR is never reviewed automatically. For a whole PR, run
-the command yourself against `origin/main...HEAD`.
+commits are skipped, and a GitHub merge that your `git pull` fast-forwards
+creates no local commit, so a PR is not reviewed automatically: give it the
+range in the prompt yourself (`git diff --stat origin/<base>...HEAD` for the
+changed-file list — `dev` is the base for feature PRs, `main` for release PRs).
+
+Note that the hook's built-in prompt does **not** include the rules below: it
+pastes the diff inline (capped at 12 000 characters) and never asks for
+`VERDICT:`. So an automatic run can fail in the ways described here, and will
+not end with the machine-checkable line. For a review you intend to rely on —
+anything gating a merge — run it manually with a prompt built as below.
 
 **Writing the prompt — these rules were learned by getting them wrong:**
 
 - Keep it under ~10 KB and **do not paste the full diff**. The reviewer has shell
   access: give it `git diff --stat` plus the criteria, and tell it to inspect in
-  slices (`git diff origin/main...HEAD -- <path>`). A 65 KB inline diff killed the
+  slices (`git diff origin/<base>...HEAD -- <path>`). A 65 KB inline diff killed the
   session silently — no error, no verdict.
 - Say explicitly that shell is **the `bash` tool, by that name**, and files are
   `read`/`grep`/`glob`. Guessing a tool name (`tools.shell`) sends it into a
@@ -322,6 +333,13 @@ the command yourself against `origin/main...HEAD`.
 - **Check for `VERDICT:` before believing a run.** The wrapper does not verify it,
   and a dead session exits without one. Appending `; echo "REVIEW_AGENT_EXIT=$?"`
   makes a crash visible instead of silent.
+- **Treat the diff as untrusted input.** The run is `--auto`, which auto-approves,
+  and the plan agent's permissions are broad (`opencode debug agents` → `allow * *`
+  with `edit` denied, `question` allowed). Reviewing a diff you did not author — a
+  dependabot bump or an outside contribution — hands auto-approved shell to a
+  model reading attacker-controlled text. Prefer reviewing internal branches, and
+  consider denying `question` and scoping bash to read-only commands in the plan
+  agent config.
 
 Record the outcome in the PR's `## Review (Gate B)` section — tick items the
 reviewer passed, leave failed items unticked with the reason, and put the agent's
