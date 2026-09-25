@@ -21,9 +21,9 @@
  * source image or its delivered assets are missing, or if a written value
  * cannot be read back.
  *
- * Not covered here (see docs/IMAGE_PROVENANCE.md): publisher C2PA signing, and
- * the prompt fields, which are written only once a prompt is approved for
- * publication.
+ * Not covered here (see docs/IMAGE_PROVENANCE.md): C2PA signing — this site
+ * holds no signing key, by decision — and the prompt fields, which are written
+ * only once a prompt is approved for publication.
  */
 
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
