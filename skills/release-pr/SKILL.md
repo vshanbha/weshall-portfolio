@@ -80,6 +80,10 @@ Examples:
 
 ### PR Body Template
 
+The repository ships this template as `.github/PULL_REQUEST_TEMPLATE.md`, which
+GitHub pre-fills for every new PR — keep the two in sync. It adds a **Review
+(Gate B)** section so the human review has a recorded artifact.
+
 ```markdown
 ## Summary
 
