@@ -316,13 +316,14 @@ origin/<base>...HEAD` for the changed-file list (`dev` is the base for feature
 PRs, `main` for release PRs).
 
 Note that the hook's built-in prompt does **not** include the rules below: it
-pastes the diff inline, capped at 12 000 bytes (a little over the ~10 KB
-guideline below once its ~2 KB of boilerplate is added — and the reason an
-automatic run never dies of a bloated diff), and it never asks for `VERDICT:`.
-Automatic runs therefore fail *differently* from a bad manual one: no
-machine-checkable verdict line, a guessed wrong tool name that stalls, or a
-session killed by a question that exits with nothing. For a review you intend to
-rely on — anything gating a merge — run it manually with a prompt built as below.
+pastes the diff inline, capped at 12 000 bytes (11.7 KB — already above the
+~10 KB guideline below, and about 13 KB once the prompt's ~1 KB of boilerplate
+and truncation notice are added — and the reason an automatic run never dies of
+a bloated diff), and it never asks for `VERDICT:`. Automatic runs therefore fail
+*differently* from a bad manual one: no machine-checkable verdict line, a guessed
+wrong tool name that stalls, or a session killed by a question that exits with
+nothing. For a review you intend to rely on — anything gating a merge — run it
+manually with a prompt built as below.
 
 **Writing the prompt — these rules were learned by getting them wrong:**
 
@@ -330,9 +331,12 @@ rely on — anything gating a merge — run it manually with a prompt built as b
   access: give it `git diff --stat` plus the criteria, and tell it to inspect in
   slices (`git diff origin/<base>...HEAD -- <path>`). A 65 KB inline diff killed the
   session silently — no error, no verdict.
-- Say explicitly that shell is **the `bash` tool, by that name**, and files are
-  `read`/`grep`/`glob`. Guessing a tool name (`tools.shell`) sends it into a
-  search spiral.
+- Say explicitly how to run shell commands and read files. The reviewer's own
+  catalog decides the tool name: `bash` worked in the runs recorded here, while
+  OpenCode V2's *permission action* for shell is `shell` (see the security note
+  below). Files are `read`/`grep`/`glob`. If the first call errors, look the name
+  up **once** with `search` — guessing repeatedly is what turns into a search
+  spiral.
 - Say explicitly **never to call the question/ask-user tool**. Nobody answers,
   and the session dies with `The user dismissed this question`.
 - Require the output to end with exactly two lines:
@@ -346,12 +350,19 @@ rely on — anything gating a merge — run it manually with a prompt built as b
   `opencode debug agents`) — so an unattended review can run shell **and read
   `.env`**. Reviewing a diff you did not author (a dependabot bump, an outside
   contribution) hands auto-approved shell to a model reading attacker-controlled
-  text. The real lever is `shell` — V2's name for `bash` — not `question`, which
-  only costs you a dead session. Hardening belongs in the repo's `opencode.json`
-  under `agents.plan.permissions`, for example
-  `{"action": "shell", "resource": "*", "effect": "deny"}` (V1's
-  `agent.plan.permission` with `bash` still works but is legacy), but that would
-  also rewrite **plan mode for this repo** and kill clarifying questions in
+  text. Two levers matter: the `shell` permission action (V1: `bash`) and
+  `read` — `question` only costs you a dead session. Hardening belongs in the
+  repo's `opencode.json` under `agents.plan.permissions`, for example:
+
+  ```jsonc
+  [
+    { "action": "shell", "resource": "*", "effect": "deny" },
+    { "action": "read", "resource": "*.env*", "effect": "deny" }
+  ]
+  ```
+
+  (V1's `agent.plan.permission` with `bash` still works but is legacy). That
+  would also rewrite **plan mode for this repo** and kill clarifying questions in
   ordinary planning sessions. The cleaner fix is a dedicated review agent at
   `.opencode/agents/review.md` — V2's preferred location — with `edit` and
   `question` denied and `shell` scoped to a read-only allowlist, and
