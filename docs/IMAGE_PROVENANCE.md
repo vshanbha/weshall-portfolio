@@ -89,14 +89,18 @@ artefacts the checks would reject.
   invalidates the manifest's asset hash. The marathon hero therefore keeps its
   original manifest on the PNG (including `og:image`), while its WebP renditions
   carry IPTC/XMP. Provenance is present on both delivered forms.
-- **Publisher signing of the Oops hero is deferred.** It has no C2PA manifest yet;
-  it carries IPTC/XMP, the visible caption and JSON-LD instead. A tripwire test
-  records the current state and must be updated when a manifest is added.
-- **Certificate trust warnings on the existing manifest are pre-existing.**
+- **No publisher C2PA signing — decided against.** A private signing key would
+  be overkill for a personal site, so this site holds none. Manifests come from
+  the tool that generated the image; images created before tools embedded
+  signatures keep whatever they came with. An image with no manifest (the Oops
+  hero) is disclosed through its visible caption, the stamped IPTC/XMP metadata
+  and JSON-LD — the accepted treatment, not a gap to close.
+- **Certificate trust warnings on the existing manifest are accepted.**
   `signingCredential.untrusted` and `signingCredential.invalid` come from the
-  original signing certificate, not from this work. The check asserts that the
-  claim signature validates and that `assertion.dataHash.mismatch` is absent —
-  i.e. the manifest still describes the file it is attached to.
+  original signing certificate, not from this work, and cannot be repaired
+  without the generator's key. The check asserts that the claim signature
+  validates and that `assertion.dataHash.mismatch` is absent — i.e. the
+  manifest still describes the file it is attached to.
 - **No rights statement is asserted.** `CopyrightNotice` and `WebStatementOfRights`
   are omitted: no canonical rights URL exists for these images, and asserting
   rights over third-party or generated material would be a fabrication.

@@ -292,14 +292,6 @@ describe('C2PA integrity', () => {
     // The asset hash must still match: adding metadata would invalidate it.
     expect(report.statusCodes).not.toContain('assertion.dataHash.mismatch');
   });
-
-  it('has no C2PA manifest on the Oops hero — publisher signing is deferred', () => {
-    // Tripwire: when a publisher-signed manifest is added, replace this with a
-    // validation check for the new manifest.
-    const assets = deliveredAssets('./oops-i-deleted-it-again-hero.png');
-    expect(assets.length).toBeGreaterThan(0);
-    expect(assets.some((asset) => c2paReport(asset).found)).toBe(false);
-  });
 });
 
 describe('Provenance frontmatter hygiene', () => {
