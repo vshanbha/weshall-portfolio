@@ -9,6 +9,9 @@ featured: false
 locale: en
 image: ./zeroclaw-personal-ai-assistant-hero.png
 imageAlt: "ZeroClaw chat interface on Kali Linux"
+reviewed: true
+ai_assisted: true
+human_reviewed: true
 ---
 
 # ZeroClaw: From Zero to Super Powered assistant.

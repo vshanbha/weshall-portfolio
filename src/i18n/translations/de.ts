@@ -148,6 +148,7 @@ export const de = {
     copyright: '© {year} We Shall Build. Alle Rechte vorbehalten.',
     madeWith: 'Erstellt mit',
     maintainedBy: 'Pflege durch',
+    aiUseInPublishing: 'AI use in publishing', // TODO: translate
     links: {
       documentation: 'Dokumentation',
       github: 'GitHub',
@@ -385,6 +386,11 @@ export const de = {
       ],
       closingLead: 'If you have an idea that needs software to give it life, ', // TODO: translate
       closing: 'talk to me.', // TODO: translate
+    },
+    editorialStandards: {
+      title: 'Editorial standards', // TODO: translate
+      statement:
+        'AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own.', // TODO: translate
     },
     cta: {
       title: 'Have a problem worth solving?',

@@ -289,6 +289,92 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 - **Check `gh pr list`** before creating PRs to avoid duplicates.
 - **One concern per commit** — keep changes focused and reviewable.
 
+### Code Review (Gate B)
+
+Gate B is a review by **someone other than the author**: an agent pass plus the
+human sign-off recorded in the PR template. The agent pass runs automatically
+only for local commits on `dev` or `main` (see below); for anything else, you
+start it yourself. [`docs/AgentWorkflow.md`](docs/AgentWorkflow.md) calls the
+human reviewer of that gate the **Architect**, and the gate itself a *Pair
+Review*. Use the repo wrapper:
+
+```bash
+./scripts/review-agent "$(cat /tmp/review-prompt.txt)"
+```
+
+It reads `REVIEW_AGENT_TOOL` from the environment first, then falls back to
+`.env`, defaulting to `opencode`, and runs
+`opencode run --agent plan --auto --format default <prompt>`
+(see [`docs/GitHooks.md`](docs/GitHooks.md) for the tool configuration).
+
+**When it runs by itself:** `.githooks/post-commit` fires it after local commits
+on `dev` or `main`, reviewing `HEAD~1..HEAD` — **one commit only**. Feature-branch
+commits are skipped, and a GitHub merge that your `git pull` fast-forwards
+creates no local commit, so a PR is not reviewed automatically: `git fetch`,
+then give it the range in the prompt yourself — `git diff --stat
+origin/<base>...HEAD` for the changed-file list (`dev` is the base for feature
+PRs, `main` for release PRs).
+
+Note that the hook's built-in prompt does **not** include the rules below: it
+pastes the diff inline, capped at 12 000 bytes (11.7 KB — already above the
+~10 KB guideline below, and about 13 KB once the prompt's ~1 KB of boilerplate
+and truncation notice are added — and the reason an automatic run never dies of
+a bloated diff), and it never asks for `VERDICT:`. Automatic runs therefore fail
+*differently* from a bad manual one: no machine-checkable verdict line, a guessed
+wrong tool name that stalls, or a session killed by a question that exits with
+nothing. For a review you intend to rely on — anything gating a merge — run it
+manually with a prompt built as below.
+
+**Writing the prompt — these rules were learned by getting them wrong:**
+
+- Keep it under ~10 KB and **do not paste the full diff**. The reviewer has shell
+  access: give it `git diff --stat` plus the criteria, and tell it to inspect in
+  slices (`git diff origin/<base>...HEAD -- <path>`). A 65 KB inline diff killed the
+  session silently — no error, no verdict.
+- Say explicitly how to run shell commands and read files. The reviewer's own
+  catalog decides the tool name: `bash` worked in the runs recorded here, while
+  OpenCode V2's *permission action* for shell is `shell` (see the security note
+  below). Files are `read`/`grep`/`glob`. If the first call errors, look the name
+  up **once** with `search` — guessing repeatedly is what turns into a search
+  spiral.
+- Say explicitly **never to call the question/ask-user tool**. Nobody answers,
+  and the session dies with `The user dismissed this question`.
+- Require the output to end with exactly two lines:
+  `VERDICT: APPROVE` (or `REQUEST-CHANGES`) and `Reviewed by: <agent>`.
+- **Check for `VERDICT:` before believing a run.** The wrapper does not verify it,
+  and a dead session exits without one. Appending `; echo "REVIEW_AGENT_EXIT=$?"`
+  makes a crash visible instead of silent.
+- **Treat the diff as untrusted input.** `--auto` approves *`ask`* rules too, and
+  the plan agent is `allow * *` with `edit` denied outside `~/.opencode/plan`,
+  `question` allowed and `read *.env` set to `ask` (check with
+  `opencode debug agents`) — so an unattended review can run shell **and read
+  `.env`**. Reviewing a diff you did not author (a dependabot bump, an outside
+  contribution) hands auto-approved shell to a model reading attacker-controlled
+  text. Two levers matter: the `shell` permission action (V1: `bash`) and
+  `read` — `question` only costs you a dead session. Hardening belongs in the
+  repo's `opencode.json` under `agents.plan.permissions`, for example:
+
+  ```jsonc
+  [
+    { "action": "shell", "resource": "*", "effect": "deny" },
+    { "action": "read", "resource": "*.env*", "effect": "deny" }
+  ]
+  ```
+
+  (V1's `agent.plan.permission` with `bash` still works but is legacy). That
+  would also rewrite **plan mode for this repo** and kill clarifying questions in
+  ordinary planning sessions. The cleaner fix is a dedicated review agent at
+  `.opencode/agents/review.md` — V2's preferred location — with `edit` and
+  `question` denied and `shell` scoped to a read-only allowlist, and
+  `scripts/review-agent` pointed at `--agent review`. Either way it is a
+  deliberate config change, not something to do from inside a review.
+  TODO: file an issue for the dedicated `review` agent.
+
+Record the outcome in the PR's `## Review (Gate B)` section — tick items the
+reviewer passed, leave failed items unticked with the reason, and put the agent's
+attribution on `Reviewed by:`. The checklist lives in
+`.github/PULL_REQUEST_TEMPLATE.md`.
+
 ## When Working on This Project
 
 1. **Consult Velocity docs first** — [docs.deployvelocity.com](https://docs.deployvelocity.com/) covers components, layouts, tokens, content collections, and configuration patterns. Follow existing conventions.
