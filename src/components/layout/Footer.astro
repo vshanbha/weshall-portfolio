@@ -483,6 +483,23 @@ const displayTagline = tagline || t('site.description');
     )}
   </div>
 
+  {/* Publishing transparency — shared by every footer layout */}
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mt-8 flex justify-center">
+      <a
+        href={`${getLocalizedPath('about', locale)}#editorial-standards`}
+        class={cn(
+          'text-xs underline underline-offset-2 transition-colors',
+          background === 'invert'
+            ? 'text-on-invert/60 hover:text-on-invert'
+            : 'text-foreground-muted hover:text-foreground'
+        )}
+      >
+        {t('footer.aiUseInPublishing')}
+      </a>
+    </div>
+  </div>
+
   {/* Default slot for additional content */}
   <slot />
 </footer>

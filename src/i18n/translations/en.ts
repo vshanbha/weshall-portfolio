@@ -164,6 +164,7 @@ export const en = {
     copyright: '© {year} We Shall Build. All rights reserved.',
     madeWith: 'Made with',
     maintainedBy: 'Maintained by',
+    aiUseInPublishing: 'AI use in publishing',
     links: {
       documentation: 'Documentation',
       github: 'GitHub',
@@ -398,6 +399,11 @@ export const en = {
       ],
       closingLead: 'If you have an idea that needs software to give it life, ',
       closing: 'talk to me.',
+    },
+    editorialStandards: {
+      title: 'Editorial standards',
+      statement:
+        'AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own.',
     },
     cta: {
       title: 'Have a problem worth solving?',

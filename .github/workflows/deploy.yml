@@ -1,7 +1,12 @@
 name: Deploy to GitHub Pages
 
+# Runs only after the Validate workflow (ci.yml) has succeeded for the same
+# push to main. Checks live in ci.yml; this workflow builds and publishes.
+
 on:
-  push:
+  workflow_run:
+    workflows: [Validate]
+    types: [completed]
     branches: [main]
 
 permissions:
@@ -9,16 +14,42 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  # Pinned so the provenance build step matches ci.yml (docs/IMAGE_PROVENANCE.md).
+  EXIFTOOL_VERSION: '13.55'
+
+# Never let two deployments race each other.
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
 jobs:
   build:
+    # Only for Validate runs that were triggered by a push to main and passed.
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
     runs-on: ubuntu-latest
     steps:
+      # workflow_run starts from the default branch tip; build the commit that
+      # was actually validated.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
+      # `pnpm build` stamps IPTC/XMP provenance onto delivered images and fails
+      # without ExifTool, which is not preinstalled on the runner image.
+      - name: Install ExifTool ${{ env.EXIFTOOL_VERSION }}
+        run: |
+          # The script resolves Image::ExifTool relative to its own directory,
+          # so it must stay inside the extracted tree rather than in /usr/local/bin.
+          curl -fsSL -o /tmp/exiftool.tar.gz "https://github.com/exiftool/exiftool/archive/refs/tags/${EXIFTOOL_VERSION}.tar.gz"
+          tar -xzf /tmp/exiftool.tar.gz -C "$HOME"
+          chmod +x "$HOME/exiftool-${EXIFTOOL_VERSION}/exiftool"
+          echo "$HOME/exiftool-${EXIFTOOL_VERSION}" >> "$GITHUB_PATH"
+          "$HOME/exiftool-${EXIFTOOL_VERSION}/exiftool" -ver
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
         env:
