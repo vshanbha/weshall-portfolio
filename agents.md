@@ -289,6 +289,45 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 - **Check `gh pr list`** before creating PRs to avoid duplicates.
 - **One concern per commit** — keep changes focused and reviewable.
 
+### Code Review (Gate B)
+
+Gate B is a review by a **different agent than the author**. Use the repo wrapper:
+
+```bash
+./scripts/review-agent "$(cat /tmp/review-prompt.txt)"
+```
+
+It reads `REVIEW_AGENT_TOOL` from `.env` (default `opencode`) and runs
+`opencode run --agent plan --auto --format default <prompt>`.
+
+**When it runs by itself:** `.githooks/post-commit` fires it after local commits
+on `dev` or `main`, reviewing `HEAD~1..HEAD` — **one commit only**. Feature-branch
+commits are skipped, and a GitHub merge (or a `git pull` fast-forward) creates no
+local commit at all, so a PR is never reviewed automatically. For a whole PR, run
+the command yourself against `origin/main...HEAD`.
+
+**Writing the prompt — these rules were learned by getting them wrong:**
+
+- Keep it under ~10 KB and **do not paste the full diff**. The reviewer has shell
+  access: give it `git diff --stat` plus the criteria, and tell it to inspect in
+  slices (`git diff origin/main...HEAD -- <path>`). A 65 KB inline diff killed the
+  session silently — no error, no verdict.
+- Say explicitly that shell is **the `bash` tool, by that name**, and files are
+  `read`/`grep`/`glob`. Guessing a tool name (`tools.shell`) sends it into a
+  search spiral.
+- Say explicitly **never to call the question/ask-user tool**. Nobody answers,
+  and the session dies with `The user dismissed this question`.
+- Require the output to end with exactly two lines:
+  `VERDICT: APPROVE` (or `REQUEST-CHANGES`) and `Reviewed by: <agent>`.
+- **Check for `VERDICT:` before believing a run.** The wrapper does not verify it,
+  and a dead session exits without one. Appending `; echo "REVIEW_AGENT_EXIT=$?"`
+  makes a crash visible instead of silent.
+
+Record the outcome in the PR's `## Review (Gate B)` section — tick items the
+reviewer passed, leave failed items unticked with the reason, and put the agent's
+attribution on `Reviewed by:`. The checklist lives in
+`.github/PULL_REQUEST_TEMPLATE.md`.
+
 ## When Working on This Project
 
 1. **Consult Velocity docs first** — [docs.deployvelocity.com](https://docs.deployvelocity.com/) covers components, layouts, tokens, content collections, and configuration patterns. Follow existing conventions.
