@@ -136,14 +136,18 @@ there is no evidence they were AI-generated.
   `softwareAgent` `gpt-image` `2.0`, `when 2026-07-21`, `digitalSourceType`
   `trainedAlgorithmicMedia`. Nothing inferred.
 - **Oops hero** — the file carries no manifest and no generation metadata: it was
-  re-downloaded from the published article and re-padded to 16:9 (`exiftool`
-  returns only orientation/resolution, `c2patool` returns "No claim found").
-  `system: ChatGPT` and `createdOn: 2026-06-21` therefore rest on the
-  publisher's own metadata inspection, recorded during planning and approved in
-  the issue #20 clarification comment of 2026-09-24. That comment is the
-  publisher record for this image; `sourceUrl` is the published article itself.
-  No model or version is asserted, because none is verifiable — and the schema
-  forbids inventing one.
+  re-downloaded from the published article and kept as a portrait 4:5 image
+  (1122 × 1402). The 16:9 hero box is produced by CSS (`aspect-video` with
+  `object-contain`), not by letterboxing the file — a pixel scan finds no padded
+  rows or columns. ExifTool returns only orientation/resolution; `c2patool`
+  returns "No claim found". `system: ChatGPT` and `createdOn: 2026-06-21`
+  therefore rest on the publisher's own metadata inspection, recorded during
+  planning and approved in the "Approved clarifications to the implementation
+  plan" comment of 2026-09-24 on `vshanbha/weshall-factory` issue #20 (the
+  private factory tracker — portfolio issue #20 is an unrelated bug). That
+  comment is the publisher record for this image; `sourceUrl` is the published
+  article itself. No model or version is asserted: none is verifiable, and the
+  approved clarification says "do not infer or invent an exact model/version".
 
 ## Checks
 
