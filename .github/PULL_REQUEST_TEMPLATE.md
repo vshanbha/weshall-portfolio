@@ -31,7 +31,7 @@ Human review of the change itself — paired review session, or a line-by-line r
 - [ ] Claims checked against their sources _(content PRs)_
 - [ ] New translation strings added to all four locale files, placeholders marked `// TODO: translate` _(i18n changes)_
 
-Reviewed by: <!-- handle of whoever performed the review -->
+Reviewed by: <!-- human handle or agent name that performed the review -->
 
 ## Screenshots
 
