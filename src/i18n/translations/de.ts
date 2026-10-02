@@ -362,6 +362,16 @@ export const de = {
     },
     speaking: {
       title: 'Speaking, writing, mentorship',
+      talks: {
+        title: 'Speaking', // TODO: translate
+        items: [
+          {
+            event: 'Jcon Gen AI (Ljubljana, 2025)',
+            title: 'Hitchhiker\'s Guide to the AI Galaxy – for Java Developers',
+            description: 'A 60-minute session for 100+ developers on entering the GenAI universe: local LLMs, GraalVM polyglot setups, and MCP-powered Java services.', // TODO: translate
+          },
+        ],
+      },
       articles: {
         title: 'Select articles',
         intro: 'I write for JavaPro and Baeldung — two names every Java professional recognises.', // TODO: translate
@@ -375,6 +385,13 @@ export const de = {
           { title: 'Why you shouldn\'t use Langchain\'s indexing API?', url: 'https://medium.com/@vvsvish', platform: 'Level Up Coding' },
           // TODO: translate
           { title: 'Baeldung Author Page', url: 'https://www.baeldung.com/author/vishalshanbhag/', platform: 'Baeldung' },
+        ],
+      },
+      mentoring: {
+        title: 'Mentoring', // TODO: translate
+        items: [
+          { org: 'Founder Institute', detail: 'Mentor (2024 – present), advising early-stage startups on product and technical strategy.' }, // TODO: translate
+          { org: 'ReDI School', detail: 'Volunteer teacher (2023), mentoring students in HTML/CSS for integration and career development.' }, // TODO: translate
         ],
       },
     },
