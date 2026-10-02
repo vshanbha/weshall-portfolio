@@ -96,6 +96,15 @@ const tr = getTranslations(locale) as TranslationKeys;
   <section class="py-16 md:py-24 bg-muted/50">
     <div class="container mx-auto px-4 max-w-3xl">
       <h2 class="text-3xl font-bold font-display mb-4">{t('about.speaking.title')}</h2>
+      <h3 class="text-xl font-semibold font-display mb-4">{t('about.speaking.talks.title')}</h3>
+      {tr.about.speaking.talks.items.map((item: { event: string; title: string; description: string }) => (
+        <div class="mb-6">
+          <p class="text-foreground font-semibold mb-1">{item.event}</p>
+          <p class="text-muted-foreground leading-relaxed">
+            <em>{item.title}</em> — {item.description}
+          </p>
+        </div>
+      ))}
       <p class="text-muted-foreground mb-8">{t('about.speaking.articles.intro')}</p>
       <h3 class="text-xl font-semibold font-display mb-4">{t('about.speaking.articles.title')}</h3>
       <ol class="space-y-3 list-decimal list-inside">
@@ -133,6 +142,12 @@ const tr = getTranslations(locale) as TranslationKeys;
           </li>
         ))}
       </ol>
+      <h3 class="text-xl font-semibold font-display mt-8 mb-4">{t('about.speaking.mentoring.title')}</h3>
+      {tr.about.speaking.mentoring.items.map((item: { org: string; detail: string }) => (
+        <p class="text-muted-foreground leading-relaxed mb-3">
+          <strong class="text-foreground font-semibold">{item.org}</strong> — {item.detail}
+        </p>
+      ))}
     </div>
   </section>
 
