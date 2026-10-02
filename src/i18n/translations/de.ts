@@ -227,6 +227,15 @@ export const de = {
           linkedin: 'https://www.linkedin.com/in/leanne-shrosbree-74261b53/',
           website: '',
         },
+        {
+          id: 'bauai',
+          company: 'BauAI',
+          author: 'Tushar Adsul',
+          role: 'Managing Director',
+          quote: "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.", // TODO: translate
+          linkedin: 'https://www.linkedin.com/company/bauai/',
+          website: 'https://www.bauai.eu/',
+        },
       ],
     },
   },
