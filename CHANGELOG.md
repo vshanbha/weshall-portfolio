@@ -18,7 +18,8 @@
 - Rename the About _What I do_ section to _How I build_ ([`5262b4b`](https://github.com/vshanbha/weshall-portfolio/commit/5262b4b))
 - Collapse the commandments under _How I build_ by default in dormant locales ([`d4d7e3c`](https://github.com/vshanbha/weshall-portfolio/commit/d4d7e3c))
 - Remove the hardcoded English _Read more_ fallback from Accordion ([`11f9d5f`](https://github.com/vshanbha/weshall-portfolio/commit/11f9d5f))
-- Remove em dashes from commandments and quote attributions for ai-tells compliance ([`342f0c0`](https://github.com/vshanbha/weshall-portfolio/commit/342f0c0), [`b00d8f0`](https://github.com/vshanbha/weshall-portfolio/commit/b00d8f0), [`ddfed79`](https://github.com/vshanbha/weshall-portfolio/commit/ddfed79))
+- Remove em dashes from commandments and quote attributions for ai-tells compliance ([`342f0c0`](https://github.com/vshanbha/weshall-portfolio/commit/342f0c0), [`b00d8f0`](https://github.com/vshanbha/weshall-portfolio/commit/b00d8f0), [`ddfed79`](https://github.com/vshanbha/weshall-portfolio/commit/ddfed79), [`a2570ff`](https://github.com/vshanbha/weshall-portfolio/commit/a2570ff))
+- Fix grammar in the Ourish quote across dormant locales ([`c07bd3e`](https://github.com/vshanbha/weshall-portfolio/commit/c07bd3e), [`fec7011`](https://github.com/vshanbha/weshall-portfolio/commit/fec7011))
 - Restore the Jcon talk and mentoring entries to the About speaking section ([`8cd0b3a`](https://github.com/vshanbha/weshall-portfolio/commit/8cd0b3a))
 
 ### Tests
@@ -27,6 +28,8 @@
 - Add blocking image provenance checks and build-output tests ([`fbf7399`](https://github.com/vshanbha/weshall-portfolio/commit/fbf7399))
 - Extract JSON-LD blocks without a tag-matching regex ([`76c1e09`](https://github.com/vshanbha/weshall-portfolio/commit/76c1e09))
 - Keep `astro preview` in the foreground so the Playwright webServer check succeeds ([`5d43e01`](https://github.com/vshanbha/weshall-portfolio/commit/5d43e01))
+- Update the stale About page regex to _How I build_ ([`98ca202`](https://github.com/vshanbha/weshall-portfolio/commit/98ca202))
+- Drop the C2PA tripwire and record the signing decision ([`c9a0bab`](https://github.com/vshanbha/weshall-portfolio/commit/c9a0bab))
 
 ### CI/CD
 
@@ -39,6 +42,18 @@
 - Raise `sharp` to ^0.35.4 to satisfy the Astro 7.2.8 minimum ([`c2db45e`](https://github.com/vshanbha/weshall-portfolio/commit/c2db45e))
 - Add a PR template recording the Gate B review ([`701baad`](https://github.com/vshanbha/weshall-portfolio/commit/701baad))
 - Migrate OpenCode configuration to V2 ([`b22fb94`](https://github.com/vshanbha/weshall-portfolio/commit/b22fb94))
+- Move the commandments under _What I do_, collapse by default, update testimonials ([`8fe41a0`](https://github.com/vshanbha/weshall-portfolio/commit/8fe41a0))
+
+### Docs
+
+- Document how to run the Gate B review agent ([`33ce8ee`](https://github.com/vshanbha/weshall-portfolio/commit/33ce8ee))
+- Correct the review-agent guidance against the reviewer's findings ([`f3a4e5e`](https://github.com/vshanbha/weshall-portfolio/commit/f3a4e5e))
+- Close the review-agent guidance contradictions ([`2357f4a`](https://github.com/vshanbha/weshall-portfolio/commit/2357f4a))
+- Use current OpenCode V2 names and settle the Gate B wording ([`7e7bda8`](https://github.com/vshanbha/weshall-portfolio/commit/7e7bda8))
+- Fix the Prettier regression and the shell/permission ambiguity ([`bde06b2`](https://github.com/vshanbha/weshall-portfolio/commit/bde06b2))
+- Record where the provenance note's Oops hero values come from ([`a42211c`](https://github.com/vshanbha/weshall-portfolio/commit/a42211c))
+- Correct two claims the re-review caught in the provenance note ([`08cf195`](https://github.com/vshanbha/weshall-portfolio/commit/08cf195))
+- Correct the Accordion JSDoc for the href/linkText contract ([`56b4592`](https://github.com/vshanbha/weshall-portfolio/commit/56b4592))
 
 ### Commits
 
@@ -56,18 +71,32 @@
 `342f0c0` - fix: remove remaining em dashes from quote attributions in commandments
 `b00d8f0` - fix: remove em dashes from What I Believe commandments (ai-tells compliance)
 `ddfed79` - fix: replace em dash in Ourish role across all dormant locale files
+`a2570ff` - fix: replace em dash in Ourish testimonial role with comma
+`c07bd3e` - fix: grammar in Ourish quote — 'is delivering' → 'in delivering'
+`fec7011` - fix: grammar in Ourish quote across dormant locales
 `8cd0b3a` - Restore Jcon talk and mentoring entries to About speaking section
 `6cd69d5` - test: add axe WCAG 2.2 AA checks to the e2e suite
 `d5e2b10` - test: include the 404 page in the axe scan
 `fbf7399` - test: add blocking provenance checks, CI workflow and docs
 `76c1e09` - test: extract JSON-LD blocks without a tag-matching regex
 `5d43e01` - test(e2e): keep astro preview in foreground for Playwright
+`98ca202` - test: update stale About page regex to 'How I build'
+`c9a0bab` - test: drop the C2PA tripwire and record the signing decision
 `dbf6978` - ci: gate deployment on the Validate workflow
 `620c61c` - ci: install pinned ExifTool in the deploy build
 `7fe3d7a` - ci: keep ExifTool inside its source tree so Image::ExifTool resolves
 `32d5c64` - chore(deps): bump the npm_and_yarn group across 1 directory with 3 updates
 `c2db45e` - chore(deps): raise sharp to ^0.35.4 for astro 7.2.8 minimum
+`8fe41a0` - refactor: move commandments under What I do, collapse by default, update testimonials
 `701baad` - docs: add a PR template with a recorded Gate B review
+`33ce8ee` - docs: document how to run the Gate B review agent
+`f3a4e5e` - docs: correct the review-agent guidance against the reviewer's findings
+`2357f4a` - docs: close the review-agent guidance contradictions
+`7e7bda8` - docs: use current OpenCode V2 names and settle the Gate B wording
+`bde06b2` - docs: fix the Prettier regression and the shell/permission ambiguity
+`a42211c` - docs: record where the Oops hero's provenance values come from
+`08cf195` - docs: correct two claims the re-review caught in the provenance note
+`56b4592` - docs: correct Accordion JSDoc for href/linkText contract
 `b22fb94` - opencode migrated to v2
 
 ## [v0.3.2] - 2026-08-28
@@ -76,11 +105,6 @@
 
 - Replace the em-dash with a dash separator in page titles and remove the duplicate site name ([`13fdb81`](https://github.com/vshanbha/weshall-portfolio/commit/13fdb81))
 - Simplify title construction and add the missing tagline translations for de/hi/mr ([`9daaf32`](https://github.com/vshanbha/weshall-portfolio/commit/9daaf32))
-
-### Content
-
-- Republish an article and correct its publishing date ([`547fd2e`](https://github.com/vshanbha/weshall-portfolio/commit/547fd2e))
-- Remove numbers from image captions ([`817eb66`](https://github.com/vshanbha/weshall-portfolio/commit/817eb66))
 
 ### Chores
 
@@ -128,6 +152,8 @@
 - Add the Solr/Zookeeper scaling article ([`1eafd91`](https://github.com/vshanbha/weshall-portfolio/commit/1eafd91))
 - Mark 3 articles as featured ([`0efcc3f`](https://github.com/vshanbha/weshall-portfolio/commit/0efcc3f))
 - Add the custom domain CNAME ([`d1b622d`](https://github.com/vshanbha/weshall-portfolio/commit/d1b622d))
+- Republish an article and correct its publishing date ([`547fd2e`](https://github.com/vshanbha/weshall-portfolio/commit/547fd2e))
+- Remove numbers from image captions ([`817eb66`](https://github.com/vshanbha/weshall-portfolio/commit/817eb66))
 
 ### Tests
 
@@ -150,7 +176,6 @@
 `30946be` - content: add standard CTA to all articles
 `8f04d87` - refactor: move CTA to BlogLayout, add caption prop to ArticleHero
 `49f6ab7` - fix: restore frontmatter image fields for blog list cards
-`d4d7e3c` - fix: collapse commandments in dormant locales, rename E2E test
 `1eafd91` - Add Solr/Zookeeper scaling article (Type B from Medium)
 `0efcc3f` - Mark 3 articles as featured
 `019bb1e` - Fix frontmatter to match portfolio schema
