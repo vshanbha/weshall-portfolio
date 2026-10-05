@@ -1,5 +1,175 @@
 # Changelog
 
+## [v0.3.3] - 2026-10-05
+
+### Features
+
+- Record AI image provenance in a typed frontmatter object ([`f163c6c`](https://github.com/vshanbha/weshall-portfolio/commit/f163c6c))
+- Surface AI publishing transparency to readers and machines ([`46e80a7`](https://github.com/vshanbha/weshall-portfolio/commit/46e80a7))
+- Stamp IPTC/XMP provenance onto delivered images after build ([`503a30f`](https://github.com/vshanbha/weshall-portfolio/commit/503a30f))
+- Enforce the editorial review gate in the content schema ([`66f35e6`](https://github.com/vshanbha/weshall-portfolio/commit/66f35e6))
+- Home page story and testimonial sections, About page beliefs, locale translations ([`f951a0b`](https://github.com/vshanbha/weshall-portfolio/commit/f951a0b))
+- Publish approved testimonial as the fifth home page client tab ([`b9ff8f4`](https://github.com/vshanbha/weshall-portfolio/commit/b9ff8f4))
+- Promote _What I believe_ to an H2 section and link the companion article from the accordion ([`081be39`](https://github.com/vshanbha/weshall-portfolio/commit/081be39))
+
+### Bug Fixes
+
+- Clear the four WCAG 2.2 AA violations reported by axe ([`a282408`](https://github.com/vshanbha/weshall-portfolio/commit/a282408))
+- Rename the About _What I do_ section to _How I build_ ([`5262b4b`](https://github.com/vshanbha/weshall-portfolio/commit/5262b4b))
+- Collapse the commandments under _How I build_ by default in dormant locales ([`d4d7e3c`](https://github.com/vshanbha/weshall-portfolio/commit/d4d7e3c))
+- Remove the hardcoded English _Read more_ fallback from Accordion ([`11f9d5f`](https://github.com/vshanbha/weshall-portfolio/commit/11f9d5f))
+- Remove em dashes from commandments and quote attributions for ai-tells compliance ([`342f0c0`](https://github.com/vshanbha/weshall-portfolio/commit/342f0c0), [`b00d8f0`](https://github.com/vshanbha/weshall-portfolio/commit/b00d8f0), [`ddfed79`](https://github.com/vshanbha/weshall-portfolio/commit/ddfed79))
+- Restore the Jcon talk and mentoring entries to the About speaking section ([`8cd0b3a`](https://github.com/vshanbha/weshall-portfolio/commit/8cd0b3a))
+
+### Tests
+
+- Add axe WCAG 2.2 AA checks to the E2E suite, including the 404 page ([`6cd69d5`](https://github.com/vshanbha/weshall-portfolio/commit/6cd69d5), [`d5e2b10`](https://github.com/vshanbha/weshall-portfolio/commit/d5e2b10))
+- Add blocking image provenance checks and build-output tests ([`fbf7399`](https://github.com/vshanbha/weshall-portfolio/commit/fbf7399))
+- Extract JSON-LD blocks without a tag-matching regex ([`76c1e09`](https://github.com/vshanbha/weshall-portfolio/commit/76c1e09))
+- Keep `astro preview` in the foreground so the Playwright webServer check succeeds ([`5d43e01`](https://github.com/vshanbha/weshall-portfolio/commit/5d43e01))
+
+### CI/CD
+
+- Gate deployment on the Validate workflow ([`dbf6978`](https://github.com/vshanbha/weshall-portfolio/commit/dbf6978))
+- Install a pinned ExifTool in the deploy build, kept inside its source tree ([`620c61c`](https://github.com/vshanbha/weshall-portfolio/commit/620c61c), [`7fe3d7a`](https://github.com/vshanbha/weshall-portfolio/commit/7fe3d7a))
+
+### Chores
+
+- Bump the `npm_and_yarn` group: `astro` 7.1.0 → 7.2.8, `js-yaml` 4.3.0 → 4.3.2, `svgo` 4.0.2 → 4.1.0 ([`32d5c64`](https://github.com/vshanbha/weshall-portfolio/commit/32d5c64))
+- Raise `sharp` to ^0.35.4 to satisfy the Astro 7.2.8 minimum ([`c2db45e`](https://github.com/vshanbha/weshall-portfolio/commit/c2db45e))
+- Add a PR template recording the Gate B review ([`701baad`](https://github.com/vshanbha/weshall-portfolio/commit/701baad))
+- Migrate OpenCode configuration to V2 ([`b22fb94`](https://github.com/vshanbha/weshall-portfolio/commit/b22fb94))
+
+### Commits
+
+`f163c6c` - feat(content): record AI image provenance in a typed frontmatter object
+`46e80a7` - feat: surface AI publishing transparency to readers and machines
+`503a30f` - feat: stamp IPTC/XMP provenance onto delivered images after build
+`66f35e6` - feat(content): enforce the editorial review gate in the schema
+`f951a0b` - session: home page stories + testimonials, about page beliefs, translations, opencode config
+`b9ff8f4` - feat(home): publish approved BauAI testimonial as fifth client tab
+`081be39` - feat: promote What I believe to H2 section + link companion article from accordion
+`a282408` - fix(a11y): clear the four WCAG 2.2 AA violations axe reports
+`5262b4b` - fix: rename About 'What I do' section to 'How I build'
+`d4d7e3c` - fix: collapse commandments in dormant locales, rename E2E test
+`11f9d5f` - fix: remove hardcoded English 'Read more' fallback from Accordion
+`342f0c0` - fix: remove remaining em dashes from quote attributions in commandments
+`b00d8f0` - fix: remove em dashes from What I Believe commandments (ai-tells compliance)
+`ddfed79` - fix: replace em dash in Ourish role across all dormant locale files
+`8cd0b3a` - Restore Jcon talk and mentoring entries to About speaking section
+`6cd69d5` - test: add axe WCAG 2.2 AA checks to the e2e suite
+`d5e2b10` - test: include the 404 page in the axe scan
+`fbf7399` - test: add blocking provenance checks, CI workflow and docs
+`76c1e09` - test: extract JSON-LD blocks without a tag-matching regex
+`5d43e01` - test(e2e): keep astro preview in foreground for Playwright
+`dbf6978` - ci: gate deployment on the Validate workflow
+`620c61c` - ci: install pinned ExifTool in the deploy build
+`7fe3d7a` - ci: keep ExifTool inside its source tree so Image::ExifTool resolves
+`32d5c64` - chore(deps): bump the npm_and_yarn group across 1 directory with 3 updates
+`c2db45e` - chore(deps): raise sharp to ^0.35.4 for astro 7.2.8 minimum
+`701baad` - docs: add a PR template with a recorded Gate B review
+`b22fb94` - opencode migrated to v2
+
+## [v0.3.2] - 2026-08-28
+
+### Bug Fixes
+
+- Replace the em-dash with a dash separator in page titles and remove the duplicate site name ([`13fdb81`](https://github.com/vshanbha/weshall-portfolio/commit/13fdb81))
+- Simplify title construction and add the missing tagline translations for de/hi/mr ([`9daaf32`](https://github.com/vshanbha/weshall-portfolio/commit/9daaf32))
+
+### Content
+
+- Republish an article and correct its publishing date ([`547fd2e`](https://github.com/vshanbha/weshall-portfolio/commit/547fd2e))
+- Remove numbers from image captions ([`817eb66`](https://github.com/vshanbha/weshall-portfolio/commit/817eb66))
+
+### Chores
+
+- Bump `sharp` to ^0.35.1 and fix E2E to run against the production build ([`71bbabb`](https://github.com/vshanbha/weshall-portfolio/commit/71bbabb))
+- Change the planning model to MiMo V2.5 ([`9a6d093`](https://github.com/vshanbha/weshall-portfolio/commit/9a6d093))
+
+### Commits
+
+`9daaf32` - fix: simplify title construction, add missing tagline translations for de/hi/mr
+`13fdb81` - fix: replace em-dash with dash separator in page titles, remove duplicate site name
+`9a6d093` - chore: change planning model to MiMo V2.5
+`845d10d` - publishing date of article modified since this is a republishing of an old article
+`71bbabb` - fix(deps): bump sharp to ^0.35.1, fix e2e to run against production build
+`547fd2e` - new article re-published
+`817eb66` - removed numbers from image captions
+`5059b41` - chore: bump version to 0.3.2
+
+## [v0.3.1] - 2026-08-17
+
+### Bug Fixes
+
+- Resolve SEO audit #27 findings: hreflang trailing slash, absolute image URLs, publisher logo, title typo, redirect shim metadata ([`f83e5da`](https://github.com/vshanbha/weshall-portfolio/commit/f83e5da))
+- Remove the dead `SearchAction` code from the WebSite schema ([`feb75aa`](https://github.com/vshanbha/weshall-portfolio/commit/feb75aa))
+- Add a desktop scorecard image and captions to the _How this site was built_ article ([`006bcb0`](https://github.com/vshanbha/weshall-portfolio/commit/006bcb0))
+- Fix frontmatter to match the portfolio schema ([`019bb1e`](https://github.com/vshanbha/weshall-portfolio/commit/019bb1e))
+- Remove an orphaned `<hr>` in the marathon article ([`8dd8f51`](https://github.com/vshanbha/weshall-portfolio/commit/8dd8f51))
+- Restore frontmatter `image` fields for blog list cards ([`49f6ab7`](https://github.com/vshanbha/weshall-portfolio/commit/49f6ab7))
+- Wire `heroCaption` through the content schema ([`e39f917`](https://github.com/vshanbha/weshall-portfolio/commit/e39f917))
+- Clean up `heroCaption` per code review ([`17f4627`](https://github.com/vshanbha/weshall-portfolio/commit/17f4627))
+
+### Features
+
+- Accurate reading time from word count, with caption unit tests ([`d475ba8`](https://github.com/vshanbha/weshall-portfolio/commit/d475ba8))
+
+- Move the standard CTA to BlogLayout and add a `caption` prop to ArticleHero ([`8f04d87`](https://github.com/vshanbha/weshall-portfolio/commit/8f04d87))
+- Add the standard CTA to all articles ([`30946be`](https://github.com/vshanbha/weshall-portfolio/commit/30946be))
+- Convert 4 articles from MD to MDX for inline image captions ([`5144f9f`](https://github.com/vshanbha/weshall-portfolio/commit/5144f9f))
+- Use the Image component in MDX bodies, avoiding duplicate hero images ([`15fd40c`](https://github.com/vshanbha/weshall-portfolio/commit/15fd40c))
+- Convert remaining markdown images to the Image component ([`3cc9317`](https://github.com/vshanbha/weshall-portfolio/commit/3cc9317))
+
+### Content
+
+- Add the tech stack selection article and cross-pollinate tags ([`8e2cbdd`](https://github.com/vshanbha/weshall-portfolio/commit/8e2cbdd))
+- Add a short eulogy article with a cross-link ([`fd87359`](https://github.com/vshanbha/weshall-portfolio/commit/fd87359))
+- Add the Solr/Zookeeper scaling article ([`1eafd91`](https://github.com/vshanbha/weshall-portfolio/commit/1eafd91))
+- Mark 3 articles as featured ([`0efcc3f`](https://github.com/vshanbha/weshall-portfolio/commit/0efcc3f))
+- Add the custom domain CNAME ([`d1b622d`](https://github.com/vshanbha/weshall-portfolio/commit/d1b622d))
+
+### Tests
+
+- Add an E2E test for the blog article CTA ([`f054c8c`](https://github.com/vshanbha/weshall-portfolio/commit/f054c8c))
+- Add a hero caption negative test ([`7c56a93`](https://github.com/vshanbha/weshall-portfolio/commit/7c56a93))
+- Update the caption test to match the revised text ([`0947425`](https://github.com/vshanbha/weshall-portfolio/commit/0947425))
+
+### Chores
+
+- Bump `sharp` in the `npm_and_yarn` group ([`2a8c651`](https://github.com/vshanbha/weshall-portfolio/commit/2a8c651))
+- Add the `@/` path alias to the Vitest config ([`d91eb75`](https://github.com/vshanbha/weshall-portfolio/commit/d91eb75), [`87ddab0`](https://github.com/vshanbha/weshall-portfolio/commit/87ddab0))
+
+### Commits
+
+`8e2cbdd` - Add tech stack selection article + cross-pollinate tags
+`fd87359` - feat: add SO eulogy short article (Medium cross-link)
+`5144f9f` - refactor: convert 4 articles from MD to MDX for inline image captions
+`15fd40c` - fix: use Image component in MDX bodies, avoid duplicate hero images
+`3cc9317` - fix: convert remaining markdown images to Image component
+`30946be` - content: add standard CTA to all articles
+`8f04d87` - refactor: move CTA to BlogLayout, add caption prop to ArticleHero
+`49f6ab7` - fix: restore frontmatter image fields for blog list cards
+`d4d7e3c` - fix: collapse commandments in dormant locales, rename E2E test
+`1eafd91` - Add Solr/Zookeeper scaling article (Type B from Medium)
+`0efcc3f` - Mark 3 articles as featured
+`019bb1e` - Fix frontmatter to match portfolio schema
+`d1b622d` - Create CNAME
+`f83e5da` - fix(seo): resolve audit #27 findings — hreflang trailing slash, absolute image URLs, publisher logo, title typo, redirect shim metadata
+`feb75aa` - fix(seo): remove dead SearchAction code from WebSite schema
+`006bcb0` - fix(content): add desktop scorecard image and captions to how-this-site-was-built article
+`e39f917` - feat: wire heroCaption through content schema, add positive test
+`17f4627` - fix: clean up heroCaption per code review
+`d475ba8` - feat: accurate reading time from word count, caption unit tests
+`f054c8c` - test: add E2E test for blog article CTA
+`7c56a93` - test: add hero caption negative test
+`0947425` - fix: update caption test to match revised text
+`8dd8f51` - fix: remove orphaned hr in marathon article
+`87ddab0` - fix: add @/ path alias to vitest config for test imports
+`d91eb75` - chore: add @/ path alias to vitest config
+`2a8c651` - chore(deps): bump sharp in the npm_and_yarn group across 1 directory
+`fc40caf` - chore: release v0.3.1
+
 ## [v0.3.0] - 2026-08-06
 
 ### Bug Fixes
