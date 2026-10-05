@@ -208,15 +208,19 @@ findings are fixed before anything reaches `main`.
    git tag -a vX.Y.Z -m "Release vX.Y.Z"
    git push origin vX.Y.Z
    ```
-   Push only the tag. `git push origin main --follow-tags` would push `main`
-   again and can trigger a second deployment for no reason.
+   Push only the tag. `git push origin main --follow-tags` re-pushes `main` and
+   can trigger a second deployment for no reason. Note the pre-push hook gates on
+   the current _branch_, so with `main` checked out this still runs E2E first —
+   that is expected, not a second deploy.
 8. **Create the GitHub Release**
    ```bash
    gh release create vX.Y.Z \
      --title "vX.Y.Z" \
      --notes-file CHANGELOG.md
    ```
-9. **`deploy.yml` triggers automatically** once Validate succeeds for that push to `main`
+9. **Verify the deploy** — it fired at step 6, from the merge. Check the
+   `Deploy to GitHub Pages` run for that commit rather than waiting for a new
+   one. Steps 7 and 8 are metadata only and must not produce a second deploy.
 
 ### Changelog Format
 
@@ -303,6 +307,7 @@ This means:
 - **Every push to `dev` or `main`** — runs the `ci.yml` checks
 - **Checks** — live in `ci.yml` only; deployment waits for them to pass
 - **PRs to `dev`** — do not trigger deployment
+- **PRs to `main`** — do not deploy until merged; the merge is the trigger
 - **Merging any PR into `main`** — **does** deploy. `deploy.yml` keys off
   `workflow_run` for `Validate` on `branches: [main]` with
   `github.event.workflow_run.event == 'push'`, and a merge is a push to `main`.
