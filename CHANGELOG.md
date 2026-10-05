@@ -118,8 +118,6 @@
 `9a6d093` - chore: change planning model to MiMo V2.5
 `845d10d` - publishing date of article modified since this is a republishing of an old article
 `71bbabb` - fix(deps): bump sharp to ^0.35.1, fix e2e to run against production build
-`547fd2e` - new article re-published
-`817eb66` - removed numbers from image captions
 `5059b41` - chore: bump version to 0.3.2
 
 ## [v0.3.1] - 2026-08-17
@@ -180,6 +178,8 @@
 `0efcc3f` - Mark 3 articles as featured
 `019bb1e` - Fix frontmatter to match portfolio schema
 `d1b622d` - Create CNAME
+`547fd2e` - new article re-published
+`817eb66` - removed numbers from image captions
 `f83e5da` - fix(seo): resolve audit #27 findings — hreflang trailing slash, absolute image URLs, publisher logo, title typo, redirect shim metadata
 `feb75aa` - fix(seo): remove dead SearchAction code from WebSite schema
 `006bcb0` - fix(content): add desktop scorecard image and captions to how-this-site-was-built article
