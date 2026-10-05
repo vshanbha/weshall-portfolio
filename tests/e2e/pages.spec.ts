@@ -127,10 +127,10 @@ test.describe('Home Page Features', () => {
     await expect(page.getByText('Enterprise email processing, global banking')).toBeVisible();
   });
 
-  test('renders testimonials section with 4 clients', async ({ page }) => {
+  test('renders testimonials section with 5 clients', async ({ page }) => {
     await page.goto('/');
     await expect(page.getByText('What clients say')).toBeVisible();
-    const companies = ['BlueMoney', 'Ourish', 'PowerMarket', 'Sable International'];
+    const companies = ['BlueMoney', 'Ourish', 'PowerMarket', 'Sable International', 'BauAI'];
     for (const company of companies) {
       await expect(page.getByRole('tab', { name: company })).toBeVisible();
     }
