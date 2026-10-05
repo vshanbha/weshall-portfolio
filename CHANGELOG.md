@@ -98,6 +98,7 @@
 `08cf195` - docs: correct two claims the re-review caught in the provenance note
 `56b4592` - docs: correct Accordion JSDoc for href/linkText contract
 `b22fb94` - opencode migrated to v2
+`dbd28ff` - chore: bump version to 0.3.3
 
 ## [v0.3.2] - 2026-08-28
 
