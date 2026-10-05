@@ -23,7 +23,7 @@ This skill governs pull request creation and release management for the **portfo
 | Merge PR              | `gh pr merge <number>`                             |
 | Bump version          | `npm version patch --no-git-tag-version`           |
 | Create tag            | `git tag -a vX.Y.Z -m "Release vX.Y.Z"`            |
-| Push branch + tag     | `git push origin main --follow-tags`               |
+| Push tag only         | `git push origin vX.Y.Z`                           |
 | Create GitHub release | `gh release create vX.Y.Z`                         |
 
 ## Branch Naming
@@ -197,14 +197,19 @@ findings are fixed before anything reaches `main`.
      --title "Release: vX.Y.Z" \
      --body "<what shipped, validation results, Gate B record>"
    ```
-6. **Merge the release PR** — this does **not** deploy
+6. **Merge the release PR — this deploys.**
+   Merging into `main` produces a `push` event on `main`, which runs `ci.yml`
+   and then `deploy.yml`. Treat the merge as the production release: confirm the
+   branch is green and that Gate B has been signed off _before_ merging.
 7. **Tag the release on `main`**
    ```bash
    git checkout main
    git pull origin main
    git tag -a vX.Y.Z -m "Release vX.Y.Z"
-   git push origin main --follow-tags
+   git push origin vX.Y.Z
    ```
+   Push only the tag. `git push origin main --follow-tags` would push `main`
+   again and can trigger a second deployment for no reason.
 8. **Create the GitHub Release**
    ```bash
    gh release create vX.Y.Z \
@@ -298,8 +303,12 @@ This means:
 - **Every push to `dev` or `main`** — runs the `ci.yml` checks
 - **Checks** — live in `ci.yml` only; deployment waits for them to pass
 - **PRs to `dev`** — do not trigger deployment
-- **Merging `dev` → `main`** — does not trigger deployment (manual release process)
-- **Pushing to `main`** (via release) — triggers deployment
+- **Merging any PR into `main`** — **does** deploy. `deploy.yml` keys off
+  `workflow_run` for `Validate` on `branches: [main]` with
+  `github.event.workflow_run.event == 'push'`, and a merge is a push to `main`.
+  There is no separate deploy step to remember.
+- **Pushing tags** — do not deploy; tag-only pushes do not rerun `Validate` for a
+  new `main` commit.
 
 E2E tests run locally only (pre-push hook), not in CI.
 
