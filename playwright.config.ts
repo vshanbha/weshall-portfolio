@@ -18,7 +18,10 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm build && pnpm preview',
+    // Astro 7.2+ backgrounds `astro preview` when it detects an agentic
+    // environment, which makes the foreground process exit and fails Playwright's
+    // webServer readiness check. ASTRO_PREVIEW_BACKGROUND forces foreground mode.
+    command: 'ASTRO_PREVIEW_BACKGROUND=1 pnpm build && ASTRO_PREVIEW_BACKGROUND=1 pnpm preview',
     url: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,
