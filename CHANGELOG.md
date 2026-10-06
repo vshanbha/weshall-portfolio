@@ -33,6 +33,8 @@ npm — and a lint-time devDependency that never reaches the published site.
 `f833010` - docs(security): correct the http-cache-semantics claim and restate the advisory set
 `dc5b4dc` - chore(deps): resolve patched http-cache-semantics, source-map-js, postcss-selector-parser
 `8af54c2` - chore(deps): bump @vitest/mocker
+`438d0f0` - chore: release v0.3.4 changelog
+`5c68008` - fix(changelog): apply Gate B findings to the v0.3.4 entry
 
 ## [v0.3.3] - 2026-10-05
 
