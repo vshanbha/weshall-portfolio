@@ -20,7 +20,7 @@ This skill governs pull request creation and release management for the **portfo
 | Create PR             | `gh pr create`                                     |
 | List open PRs         | `gh pr list`                                       |
 | View PR               | `gh pr view <number>`                              |
-| Merge PR              | `gh pr merge <number>`                             |
+| Merge PR              | `gh pr merge <number> --merge`                     |
 | Bump version          | `npm version patch --no-git-tag-version`           |
 | Create tag            | `git tag -a vX.Y.Z -m "Release vX.Y.Z"`            |
 | Push tag only         | `git push origin vX.Y.Z`                           |
@@ -187,9 +187,8 @@ findings are fixed before anything reaches `main`.
    `--no-git-tag-version` keeps the tag off `dev` — tags belong on `main`.
    The bump commit is inside the range, so it must be in the Commits list.
    Since it does not exist yet at this point, add it with a follow-up docs
-   commit after step 3. That follow-up touches only `CHANGELOG.md`, so it is
-   exempt from the Commits list either way — see the range rule under
-   _Changelog Format_.
+   commit after step 3. That follow-up touches only `CHANGELOG.md`, so it never
+   belongs in the Commits list — see the range rule under _Changelog Format_.
 4. **Push `dev`** — the pre-push hook runs `pnpm test:e2e` first
    ```bash
    git push origin dev
@@ -204,6 +203,7 @@ findings are fixed before anything reaches `main`.
    git merge-base --is-ancestor origin/main HEAD \
      || { echo "main has commits dev lacks — the two ranges diverge"; exit 1; }
    END=$(git rev-parse --short HEAD)
+   echo "$END" > /tmp/release-end   # step 8 verifies against this value
    ```
 
    This is the set the tag will cover, because the tag lands on the merge
@@ -221,24 +221,46 @@ create` takes `CHANGELOG.md` as its notes, so a gap ships in the release.
 7. **Merge the release PR — this deploys.**
    Merge with a **merge commit**, not squash or rebase. Step 5's range
    equivalence depends on it: the tag must land on a merge whose second parent
-   is the `dev` tip that was validated. A squash commit collapses the branch
-   into one commit, so the tag-bounded set would be a single hash while the
-   validated set holds every individual commit — and step 5 cannot catch this,
-   because it runs before the merge choice is made.
+   is the `dev` tip that was validated. The other two methods break it
+   invisibly. A squash commit collapses the branch into one commit, so the
+   tag-bounded set is a single hash while the validated set holds every
+   individual commit. A rebase merge rewrites every hash, so the validated list
+   and the tag-bounded set would share none. Step 5 cannot catch either — it
+   runs before the merge choice is made, and step 8 checks it before tagging.
+
+   Step 5 validates `dev` at one instant, but gap fixes land on `dev` after
+   it. A fix touching only `CHANGELOG.md` is exempt and harmless; one touching
+   anything else would sit inside the tag-bounded set while never validated or
+   listed. **If any commit has landed on `dev` since step 5, re-run step 5**
+   before merging.
+
    Merging into `main` produces a `push` event on `main`, which runs `ci.yml`
    and then `deploy.yml`. Treat the merge as the production release: confirm the
    branch is green and that Gate B has been signed off _before_ merging.
+
 8. **Tag the release on `main`**
+
    ```bash
    git checkout main
    git pull origin main
+   # Refuse to tag a squash or rebase merge: step 7 requires a merge commit
+   # whose second parent is the dev tip step 5 validated.
+   git rev-parse --verify -q HEAD^2 >/dev/null \
+     || { echo "HEAD is not a merge commit — squash or rebase merge, do not tag"; exit 1; }
+   test "$(git rev-parse --short HEAD^2)" = "$(cat /tmp/release-end)" \
+     || { echo "second parent is not the dev tip validated in step 5"; exit 1; }
    git tag -a vX.Y.Z -m "Release vX.Y.Z"
    git push origin vX.Y.Z
    ```
+
+   The second test also catches a `dev` that advanced after step 5 — in which
+   case re-run step 5 rather than tagging.
+
    Push only the tag. `git push origin main --follow-tags` re-pushes `main` and
    can trigger a second deployment for no reason. Note the pre-push hook gates on
    the current _branch_, so with `main` checked out this still runs E2E first —
    that is expected, not a second deploy.
+
 9. **Create the GitHub Release**
    ```bash
    gh release create vX.Y.Z \
