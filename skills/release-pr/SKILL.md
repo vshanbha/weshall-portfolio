@@ -258,8 +258,14 @@ Rules:
 
 - Group changes by type: Features, Bug Fixes, Content, Security, Tests, CI/CD, Docs, Chores
 - Each entry links to its commit with a short hash
-- The Commits section lists every non-merge commit in the release range
+- The Commits section lists every non-merge commit in the release range,
+  where the range ends at the version bump commit — `git log --no-merges
+<last-tag>..<bump-commit>`. Release-preparation commits made after the bump
+  are outside the range and are not listed, which keeps the check from
+  chasing its own tail.
+- The Commits list runs newest-first, in `git log` order, including commits made while preparing the release
 - A commit belongs to exactly one release — check for duplicates and misattribution
+- Every listed hash must be inside the range above, so the range and the list terminate together
 - Newest version at the top; use the tag date for backfilled entries
 - British English; no person or company names beyond what the site already publishes
 - Use markdown formatting throughout
@@ -268,14 +274,14 @@ Rules:
 
 ### Generating the Changelog
 
-Collect commits since the last tag:
+Collect commits since the last tag, up to the version bump commit:
 
 ```bash
 # Find last tag
 git describe --tags --abbrev=0
 
 # List commits in the release range, excluding merge commits
-git log <last-tag>..HEAD --oneline --no-merges
+git log <last-tag>..<bump-commit> --oneline --no-merges
 ```
 
 Use these to populate the changelog sections. Every commit in the range should
@@ -283,13 +289,23 @@ appear in exactly one Commits list — verify rather than assume:
 
 ```bash
 # Any commit in the range missing from CHANGELOG.md?
-for h in $(git log --format='%h' --no-merges <last-tag>..HEAD); do
+for h in $(git log --format='%h' --no-merges <last-tag>..<bump-commit>); do
   grep -q "\`$h\`" CHANGELOG.md || echo "MISSING: $h"
 done
 
 # Any commit listed twice across the file?
 grep -oE '^`[0-9a-f]{7}`' CHANGELOG.md | sort | uniq -d
+
+# Commits listed that fall outside the range? (oldest section first)
+grep -oE '^`[0-9a-f]{7}`' CHANGELOG.md | tr -d '`' | sort -u > /tmp/listed
+git log --format='%h' <last-tag>..<bump-commit> --no-merges | sort -u > /tmp/inrange
+comm -23 /tmp/listed /tmp/inrange
 ```
+
+Stop at `<bump-commit>`, not `HEAD`. Chasing `HEAD` makes the check recurse:
+each fix commit becomes a new commit in range, so it must be listed too, and
+the list can never be closed. Release-prep commits after the bump sit outside
+the range by design.
 
 Both checks have caught real misattribution, where a commit was filed under the
 wrong release or appeared in two Commits lists at once.

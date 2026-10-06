@@ -27,14 +27,15 @@ npm — and a lint-time devDependency that never reaches the published site.
 
 ### Commits
 
+`dc4aaa6` - chore: bump version to 0.3.4
+`5c68008` - fix(changelog): apply Gate B findings to the v0.3.4 entry
+`438d0f0` - chore: release v0.3.4 changelog
 `910f0b8` - docs(security): date the http-cache-semantics verification
 `47a52e6` - docs(security): name the braces dependency chain and date the advisory check
 `5c15d47` - docs(security): drop the vitest advisories, now resolved by vitest 5.0.3
 `f833010` - docs(security): correct the http-cache-semantics claim and restate the advisory set
 `dc5b4dc` - chore(deps): resolve patched http-cache-semantics, source-map-js, postcss-selector-parser
 `8af54c2` - chore(deps): bump @vitest/mocker
-`438d0f0` - chore: release v0.3.4 changelog
-`5c68008` - fix(changelog): apply Gate B findings to the v0.3.4 entry
 
 ## [v0.3.3] - 2026-10-05
 
