@@ -264,11 +264,11 @@ create` takes `CHANGELOG.md` as its notes, so a gap ships in the release.
 
    Comparison uses full hashes: `--short` abbreviates to the minimum unique
    length, recomputed per call, so comparing two abbreviations taken at
-   different times can drift and refuse a valid release. The second test also
-   catches a `dev` that advanced
-   **before the merge** after step 5 — re-run step 5 then. An advance _after_
-   the merge leaves `HEAD^2` untouched and needs no catch; do not re-run step 5
-   there, or `END` would land past `HEAD^2` and wedge this guard permanently.
+   different times can drift and refuse a valid release.
+   The second test also catches a `dev` that advanced **before the merge**
+   after step 5 — re-run step 5 then. An advance _after_ the merge leaves
+   `HEAD^2` untouched and needs no catch; do not re-run step 5 there, or `END`
+   would land past `HEAD^2` and wedge this guard permanently.
 
    Push only the tag. `git push origin main --follow-tags` re-pushes `main` and
    can trigger a second deployment for no reason. Note the pre-push hook gates on
@@ -356,22 +356,18 @@ Collect commits since the previous release, up to the range end:
 ```bash
 END='<dev-head-snapshot-or-tag>'
 
-# Resolve END to a FULL commit hash before anything else uses it. Two failure
+# Resolve END to a FULL commit hash before the file is written. Two failure
 # modes are guarded at once: git rev-parse --short abbreviates to the minimum
 # unique length, recomputed per call, so a short prefix can drift and refuse a
 # valid release; and plain rev-parse echoes an unresolvable name straight back,
 # so a file would exist and hold garbage. --verify --quiet prints only the hash
 # and fails silently instead, and ^{commit} unwraps an annotated tag (END is a
 # tag on the backfill path) so the value can equal the commit hash step 8
-# compares against. The old file is removed first: otherwise a failed run here
-# leaves the previous release's value in place, and step 8 would blame the dev
-# tip when the real cause is that this block never completed.
+# compares against. The old file is removed first, so a run that fails
+# anywhere below leaves no file and step 8 cannot mistake it for a completed one.
 rm -f /tmp/release-end
 RESOLVED=$(git rev-parse --verify --quiet "$END^{commit}") \
   || { echo "cannot resolve END=$END as a commit"; exit 1; }
-printf '%s\n' "$RESOLVED" > /tmp/release-end
-grep -qE '^[0-9a-f]{40}$' /tmp/release-end \
-  || { echo "/tmp/release-end does not hold a full hash"; exit 1; }
 
 LAST=$(git describe --tags --abbrev=0 "$END"^)
 
@@ -384,6 +380,15 @@ LAST=$(git describe --tags --abbrev=0 "$END"^)
 # is still broken. Checking LAST directly names the real cause either way.
 test -n "$LAST" || { echo "cannot derive LAST from END=$END"; exit 1; }
 test -n "$(git log $LAST..$END)" || { echo "empty range — wrong LAST"; exit 1; }
+
+# Write last, so the file's existence means "this preamble ran to completion".
+# A write before the guards above would leave a file behind after a failure,
+# and step 8 would read it as a signal that step 5 finished when it had not.
+# Equality against $RESOLVED validates what step 8 actually reads, rather than
+# the shape of one line, so extra content cannot pass it either.
+printf '%s\n' "$RESOLVED" > /tmp/release-end
+test "$(cat /tmp/release-end)" = "$RESOLVED" \
+  || { echo "/tmp/release-end does not hold the resolved hash"; exit 1; }
 
 # List commits in the release range, excluding merge commits.
 git log $LAST..$END --oneline --no-merges
