@@ -187,8 +187,12 @@ findings are fixed before anything reaches `main`.
    `--no-git-tag-version` keeps the tag off `dev` — tags belong on `main`.
    The bump commit is inside the range, so it must be in the Commits list.
    Since it does not exist yet at this point, add it with a follow-up docs
-   commit after step 3 — that commit falls outside the range, so it is not
-   itself listed.
+   commit after step 3. While the entry is unreleased the range is
+   bump-bounded, so that follow-up sits outside it and is not itself listed —
+   which is what stops the recursion. Once the release is tagged the range is
+   tag-bounded, so anything committed before the tag moves into scope and
+   must be listed by a later commit, which itself lands after the tag and is
+   therefore outside it.
 4. **Push `dev`** — the pre-push hook runs `pnpm test:e2e` first
    ```bash
    git push origin dev
