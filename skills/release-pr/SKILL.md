@@ -187,8 +187,8 @@ findings are fixed before anything reaches `main`.
    `--no-git-tag-version` keeps the tag off `dev` — tags belong on `main`.
    The bump commit is inside the range, so it must be in the Commits list.
    Since it does not exist yet at this point, add it with a follow-up docs
-   commit after step 3. That follow-up touches only `CHANGELOG.md`, so it never
-   belongs in the Commits list — see the range rule under _Changelog Format_.
+   commit after step 3. That follow-up touches `CHANGELOG.md`, so it is exempt
+   from the Commits list — see the range rule under _Changelog Format_.
 4. **Push `dev`** — the pre-push hook runs `pnpm test:e2e` first
    ```bash
    git push origin dev
@@ -203,8 +203,9 @@ findings are fixed before anything reaches `main`.
    git merge-base --is-ancestor origin/main HEAD \
      || { echo "main has commits dev lacks — the two ranges diverge"; exit 1; }
    END=$(git rev-parse --short HEAD)
-   echo "$END" > /tmp/release-end   # step 8 verifies against this value
    ```
+
+   The preamble below persists `END` as a full hash when you run it.
 
    This is the set the tag will cover, because the tag lands on the merge
    commit whose second parent is this `dev` tip. A gap found here is fixed on
@@ -229,14 +230,21 @@ create` takes `CHANGELOG.md` as its notes, so a gap ships in the release.
    runs before the merge choice is made, and step 8 checks it before tagging.
 
    Step 5 validates `dev` at one instant, but gap fixes land on `dev` after
-   it. A fix touching only `CHANGELOG.md` is exempt and harmless; one touching
-   anything else would sit inside the tag-bounded set while never validated or
-   listed. **If any commit has landed on `dev` since step 5, re-run step 5**
-   before merging.
+   it. A fix touching `CHANGELOG.md` is exempt from the Commits list and adds
+   no gap — but it still advances `dev`, so step 8 still requires the re-run.
+   A fix touching no part of `CHANGELOG.md` would sit inside the tag-bounded
+   set unvalidated, and unlisted as well. **If any commit has landed on `dev`
+   since step 5, re-run step 5** before merging.
 
    Merging into `main` produces a `push` event on `main`, which runs `ci.yml`
    and then `deploy.yml`. Treat the merge as the production release: confirm the
    branch is green and that Gate B has been signed off _before_ merging.
+
+   If merging in the GitHub web UI, select **Create a merge commit**
+   explicitly — `gh pr merge --merge` only governs the CLI path. Note that
+   step 8's guard runs _after_ this deploy, so it protects the tag, not the
+   production release; the merge method has to be right here, not merely
+   correct later.
 
 8. **Tag the release on `main`**
 
@@ -245,16 +253,21 @@ create` takes `CHANGELOG.md` as its notes, so a gap ships in the release.
    git pull origin main
    # Refuse to tag a squash or rebase merge: step 7 requires a merge commit
    # whose second parent is the dev tip step 5 validated.
+   test -s /tmp/release-end || { echo "/tmp/release-end missing — re-run step 5"; exit 1; }
    git rev-parse --verify -q HEAD^2 >/dev/null \
-     || { echo "HEAD is not a merge commit — squash or rebase merge, do not tag"; exit 1; }
-   test "$(git rev-parse --short HEAD^2)" = "$(cat /tmp/release-end)" \
+     || { echo "HEAD is not a merge commit — squash/rebase merge, or main moved since step 7"; exit 1; }
+   test "$(git rev-parse HEAD^2)" = "$(cat /tmp/release-end)" \
      || { echo "second parent is not the dev tip validated in step 5"; exit 1; }
    git tag -a vX.Y.Z -m "Release vX.Y.Z"
    git push origin vX.Y.Z
    ```
 
-   The second test also catches a `dev` that advanced after step 5 — in which
-   case re-run step 5 rather than tagging.
+   Comparison uses full hashes: `--short` abbreviates to the minimum unique
+   length, recomputed per call, so a prefix captured in step 5 can drift and
+   refuse a valid release. The second test also catches a `dev` that advanced
+   **before the merge** after step 5 — re-run step 5 then. An advance _after_
+   the merge leaves `HEAD^2` untouched and needs no catch; do not re-run step 5
+   there, or `END` would land past `HEAD^2` and wedge this guard permanently.
 
    Push only the tag. `git push origin main --follow-tags` re-pushes `main` and
    can trigger a second deployment for no reason. Note the pre-push hook gates on
@@ -342,6 +355,14 @@ Collect commits since the previous release, up to the range end:
 ```bash
 END='<dev-head-snapshot-or-tag>'
 LAST=$(git describe --tags --abbrev=0 "$END"^)
+
+# Persist the FULL hash. git rev-parse --short abbreviates to the minimum
+# unique length, recomputed on every call, so a short prefix written now can
+# become ambiguous later and no longer match — the guard in step 8 would then
+# refuse a valid release. Every path that defines END lands here, which keeps
+# this the single source for both LAST and END.
+echo "$(git rev-parse "$END")" > /tmp/release-end
+test -s /tmp/release-end || { echo "cannot resolve END=$END"; exit 1; }
 
 # Guard LAST itself, not just the range. An empty LAST degrades $LAST..$END to
 # ..$END, which Git reads as HEAD..$END without erroring. Without this direct
