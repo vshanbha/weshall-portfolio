@@ -217,11 +217,11 @@ findings are fixed before anything reaches `main`.
 8. **Re-run the range checks against the tag.** Tagging flips the range from
    bump-bounded to tag-bounded, so commits made between the bump and the tag
    move into scope here. Run the preamble under _Generating the Changelog_
-   with `END='vX.Y.Z'` and `REL='vX.Y.Z'`, then run the four checks it feeds —
-   it derives `LAST` for you and guards against an empty range. Plain
-   `git describe --tags --abbrev=0` would return this new tag as `LAST`,
-   making the range empty and every check pass while hiding the gap this step
-   exists to catch.
+   with `END='vX.Y.Z'`, set `REL='vX.Y.Z'` in the checks, then run the four
+   checks it feeds — the preamble derives `LAST` for you and guards against an
+   empty range. Plain `git describe --tags --abbrev=0` would return this new
+   tag as `LAST`, making the range empty and every check pass while hiding the
+   gap this step exists to catch.
 
    Do this before step 9 — `gh release create` takes `CHANGELOG.md` as its
    notes, so a gap here ships in the published release.
@@ -307,11 +307,12 @@ END='<bump-commit-or-tag>'
 LAST=$(git describe --tags --abbrev=0 "$END"^)
 
 # Guard LAST itself, not just the range. An empty LAST degrades $LAST..$END to
-# ..$END, which Git reads as HEAD..$END without erroring. When HEAD contains
-# END -- the usual case, since step 8 leaves you at the tag -- that range is
-# empty and the guard below fires with the misleading "wrong LAST" message.
-# When HEAD does not contain END it is non-empty and the guard passes while
-# LAST is still broken. Checking LAST directly names the real cause either way.
+# ..$END, which Git reads as HEAD..$END without erroring. Without this direct
+# check, the range guard below would see that: when HEAD contains END -- the
+# usual case, you are on main at the tag from step 7 when step 8 runs -- the
+# range is empty and it fails with the misleading "wrong LAST" message; when
+# HEAD does not contain END the range is non-empty and it passes while LAST is
+# still broken. Checking LAST directly names the real cause either way.
 test -n "$LAST" || { echo "cannot derive LAST from END=$END"; exit 1; }
 test -n "$(git log $LAST..$END)" || { echo "empty range — wrong LAST"; exit 1; }
 
@@ -324,16 +325,17 @@ which after step 7 is `END` itself — `LAST==END`, empty range, every check
 passes without testing anything. The `^` is required when `END` is a tag and
 harmless when it is the bump commit, so it is unconditional.
 
-This preamble is the single source for `LAST` and `END`. The check blocks
-below and step 8 both consume it; neither restates it.
+This preamble is the single source for `LAST` and `END`. The check block below
+and step 8 both consume it; neither restates it.
 
 Use these to populate the changelog sections. Every commit in the range should
 appear in exactly one Commits list — verify rather than assume:
 
 ```bash
 # Fails loudly if the preamble has not run. Pasted alone, LAST and END would
-# be unset, git log .. would error silently out of the substitution, and the
-# for loop below would iterate zero times — a vacuous pass.
+# be unset, git log .. would fail with its exit status swallowed by the
+# substitution, and the for loop below would iterate zero times — so check 1
+# would pass vacuously while the stray-hash check reported a false failure.
 : "${LAST:?run the preamble under _Generating the Changelog_ first}"
 : "${END:?run the preamble under _Generating the Changelog_ first}"
 REL='v0.3.4'   # the section header being written, e.g. /^## \[v0.3.4\]/
