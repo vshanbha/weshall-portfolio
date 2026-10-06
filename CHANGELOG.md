@@ -33,6 +33,8 @@ npm — and a lint-time devDependency that never reaches the published site.
 
 ### Commits
 
+`25a1ca0` - fix(skill): make the merge-commit rule enforceable and complete the rationale
+`b7e5a55` - fix(skill): require a merge commit and repair three stale step references
 `2c0cc06` - fix(skill): exempt on contact with CHANGELOG.md, not sole ownership
 `de47b35` - refactor(release): validate the range before tagging, not after
 `02eccad` - fix(skill): restore the list indent lost in the step 8 rewrite
