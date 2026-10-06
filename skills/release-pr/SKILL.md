@@ -259,11 +259,11 @@ Rules:
 - Group changes by type: Features, Bug Fixes, Content, Security, Tests, CI/CD, Docs, Chores
 - Each entry links to its commit with a short hash
 - The Commits section lists every non-merge commit in the release range,
-  where the range ends at the version bump commit — `git log --no-merges
-<last-tag>..<bump-commit>`. Release-preparation commits made after the bump
-  are outside the range and are not listed, which keeps the check from
-  chasing its own tail.
-- The Commits list runs newest-first, in `git log` order, including commits made while preparing the release
+  where the range ends at the version bump commit —
+  `git log --no-merges <last-tag>..<bump-commit>`. Release-preparation commits
+  made after the bump are outside the range and are not listed, which keeps
+  the check from chasing its own tail.
+- The Commits list runs newest-first, in `git log` order, including release-prep commits made up to and including the bump; anything committed after the bump is outside the range
 - A commit belongs to exactly one release — check for duplicates and misattribution
 - Every listed hash must be inside the range above, so the range and the list terminate together
 - Newest version at the top; use the tag date for backfilled entries
@@ -288,18 +288,29 @@ Use these to populate the changelog sections. Every commit in the range should
 appear in exactly one Commits list — verify rather than assume:
 
 ```bash
+# Extract the current release's Commits section only. Scoping matters:
+# grepping the whole file reports every hash from older releases as
+# out-of-range, which drowns the result in false positives.
+REL='v0.3.4'          # the section being written, e.g. /^## \[v0.3.4\]/
+LAST='v0.3.3'
+BUMP='<bump-commit>'
+
 # Any commit in the range missing from CHANGELOG.md?
-for h in $(git log --format='%h' --no-merges <last-tag>..<bump-commit>); do
+for h in $(git log --format='%h' --no-merges $LAST..$BUMP); do
   grep -q "\`$h\`" CHANGELOG.md || echo "MISSING: $h"
 done
 
 # Any commit listed twice across the file?
 grep -oE '^`[0-9a-f]{7}`' CHANGELOG.md | sort | uniq -d
 
-# Commits listed that fall outside the range? (oldest section first)
-grep -oE '^`[0-9a-f]{7}`' CHANGELOG.md | tr -d '`' | sort -u > /tmp/listed
-git log --format='%h' <last-tag>..<bump-commit> --no-merges | sort -u > /tmp/inrange
-comm -23 /tmp/listed /tmp/inrange
+# Any hash in this release's section that is not in the range?
+sed -n "/^## \[$REL\]/,/^## \[/p" CHANGELOG.md \
+  | grep -oE '^`[0-9a-f]{7}`' | tr -d '`' | sort -u > /tmp/listed
+git log --format='%h' --no-merges $LAST..$BUMP | sort -u > /tmp/inrange
+comm -23 /tmp/listed /tmp/inrange   # any output = a stray hash
+
+# Any hash in the range not listed in this release's section?
+comm -13 /tmp/listed /tmp/inrange   # any output = a gap
 ```
 
 Stop at `<bump-commit>`, not `HEAD`. Chasing `HEAD` makes the check recurse:
