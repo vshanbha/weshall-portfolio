@@ -306,9 +306,12 @@ Collect commits since the previous release, up to the range end:
 END='<bump-commit-or-tag>'
 LAST=$(git describe --tags --abbrev=0 "$END"^)
 
-# Guard LAST itself, not just the range: an empty LAST degrades $LAST..$END to
-# ..$END, which Git reads as HEAD..$END -- frequently non-empty, so the check
-# would pass while testing nothing.
+# Guard LAST itself, not just the range. An empty LAST degrades $LAST..$END to
+# ..$END, which Git reads as HEAD..$END without erroring. When HEAD contains
+# END -- the usual case, since step 8 leaves you at the tag -- that range is
+# empty and the guard below fires with the misleading "wrong LAST" message.
+# When HEAD does not contain END it is non-empty and the guard passes while
+# LAST is still broken. Checking LAST directly names the real cause either way.
 test -n "$LAST" || { echo "cannot derive LAST from END=$END"; exit 1; }
 test -n "$(git log $LAST..$END)" || { echo "empty range — wrong LAST"; exit 1; }
 
@@ -328,9 +331,11 @@ Use these to populate the changelog sections. Every commit in the range should
 appear in exactly one Commits list — verify rather than assume:
 
 ```bash
-# Run the preamble under _Generating the Changelog_ first — it derives LAST
-# and END and guards both. Setting them by hand here bypasses those guards,
-# which is where a wrong LAST comes from.
+# Fails loudly if the preamble has not run. Pasted alone, LAST and END would
+# be unset, git log .. would error silently out of the substitution, and the
+# for loop below would iterate zero times — a vacuous pass.
+: "${LAST:?run the preamble under _Generating the Changelog_ first}"
+: "${END:?run the preamble under _Generating the Changelog_ first}"
 REL='v0.3.4'   # the section header being written, e.g. /^## \[v0.3.4\]/
                # equals END once tagged; while unreleased it is the version
                # being prepared and END is the bump commit
