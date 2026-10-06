@@ -57,15 +57,18 @@ so a patch or minor upgrade lands without crossing a major boundary.
 
 One advisory remains, with no upstream fix:
 
-| Package  | Severity | Advisory                                                                 | Why it stays                                                                                       |
-| -------- | -------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| `braces` | high     | [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) | No patched version published — `3.0.3` is `latest` on npm. Arrives via `fast-glob` → `micromatch`. |
+| Package  | Severity | Advisory                                                                 | Why it stays                                                                                  |
+| -------- | -------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `braces` | high     | [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) | No patched version published — `3.0.3` is `latest` on npm. Arrives via `eslint-plugin-astro`. |
 
-`braces` does not reach the deployed static site. It is pulled in by the build
-toolchain, so it executes at build time only — the published artefact is static
-HTML, CSS and images.
+`braces` does not reach the deployed static site. Its full chain is
+`eslint-plugin-astro` → `astro-eslint-parser` → `fast-glob` → `micromatch` →
+`braces` — a devDependency that runs at lint time only (part of the
+`pnpm validate` gate), never in the published artefact of static HTML, CSS
+and images.
 
-Re-check whenever `pnpm audit` output changes, or when `braces` gets a patch.
+Last verified: 2026-10-06 (`pnpm why braces`, `pnpm audit`). Re-check whenever
+`pnpm audit` output changes, or when `braces` gets a patch.
 
 **Verify fixable claims against npm, not just `pnpm audit`.** npm's advisory
 metadata can report `patched_versions: <0.0.0` for a package that does have a
