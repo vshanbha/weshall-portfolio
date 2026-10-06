@@ -243,6 +243,10 @@ Maintain a `CHANGELOG.md` at the portfolio root. Use this structure:
 
 - <description of content change> ([`ghi9012`](https://github.com/vshanbha/weshall-portfolio/commit/ghi9012))
 
+### Security
+
+- <description of security change> ([`jkl0123`](https://github.com/vshanbha/weshall-portfolio/commit/jkl0123))
+
 ### Commits
 
 `abc1234` - Commit message
