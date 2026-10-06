@@ -217,11 +217,11 @@ findings are fixed before anything reaches `main`.
 8. **Re-run the range checks against the tag.** Tagging flips the range from
    bump-bounded to tag-bounded, so commits made between the bump and the tag
    move into scope here. Run the preamble under _Generating the Changelog_
-   with `END='vX.Y.Z'`, set `REL='vX.Y.Z'` in the checks, then run the four
-   checks it feeds — the preamble derives `LAST` for you and guards against an
-   empty range. Plain `git describe --tags --abbrev=0` would return this new
-   tag as `LAST`, making the range empty and every check pass while hiding the
-   gap this step exists to catch.
+   with `END='vX.Y.Z'`, set `REL='vX.Y.Z'` in the check block, then run the
+   four checks it feeds — the preamble derives `LAST` for you and guards both
+   `LAST` and the range against emptiness. Plain `git describe --tags
+--abbrev=0` would return this new tag as `LAST`, making the range empty and
+   every check pass while hiding the gap this step exists to catch.
 
    Do this before step 9 — `gh release create` takes `CHANGELOG.md` as its
    notes, so a gap here ships in the published release.
@@ -308,11 +308,12 @@ LAST=$(git describe --tags --abbrev=0 "$END"^)
 
 # Guard LAST itself, not just the range. An empty LAST degrades $LAST..$END to
 # ..$END, which Git reads as HEAD..$END without erroring. Without this direct
-# check, the range guard below would see that: when HEAD contains END -- the
-# usual case, you are on main at the tag from step 7 when step 8 runs -- the
-# range is empty and it fails with the misleading "wrong LAST" message; when
-# HEAD does not contain END the range is non-empty and it passes while LAST is
-# still broken. Checking LAST directly names the real cause either way.
+# check, the range guard below would see that: when HEAD contains END — the
+# usual case, since both runs (step 2 on dev at the bump, step 8 on main at
+# the tag) leave HEAD at END — the range is empty and it fails with the
+# misleading "wrong LAST" message; when HEAD does not contain END the range is
+# non-empty and it passes while LAST is still broken. Checking LAST directly
+# names the real cause either way.
 test -n "$LAST" || { echo "cannot derive LAST from END=$END"; exit 1; }
 test -n "$(git log $LAST..$END)" || { echo "empty range — wrong LAST"; exit 1; }
 
@@ -332,10 +333,11 @@ Use these to populate the changelog sections. Every commit in the range should
 appear in exactly one Commits list — verify rather than assume:
 
 ```bash
-# Fails loudly if the preamble has not run. Pasted alone, LAST and END would
-# be unset, git log .. would fail with its exit status swallowed by the
-# substitution, and the for loop below would iterate zero times — so check 1
-# would pass vacuously while the stray-hash check reported a false failure.
+# Fails loudly if the preamble has not run. Without these guards, a block
+# pasted on its own would find LAST and END unset, git log .. would fail with
+# its exit status swallowed by the substitution, and the MISSING check's for
+# loop would iterate zero times — so it would pass vacuously while the
+# stray-hash check would report a false failure.
 : "${LAST:?run the preamble under _Generating the Changelog_ first}"
 : "${END:?run the preamble under _Generating the Changelog_ first}"
 REL='v0.3.4'   # the section header being written, e.g. /^## \[v0.3.4\]/
