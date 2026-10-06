@@ -2,11 +2,14 @@
 
 ## [v0.3.4] - 2026-10-06
 
-Security-only patch: dependency advisory reduction from 8 to 1.
+Dependency advisories cut from 8 to 1, the release runbook's range rule
+rewritten, the `v0.3.3` record backfilled by nine commits, and the
+`agents.md` → `AGENTS.md` rename landed across code and docs.
 
-`pnpm audit` against the `v0.3.3` lockfile reports 8 (2 critical, 3 high,
-3 moderate); GitHub's alert view splits the same 8 as 2/2/4, classifying
-`source-map-js` as moderate rather than high. Both agree on the total.
+Advisories first: `pnpm audit` against the `v0.3.3` lockfile reports 8 (2
+critical, 3 high, 3 moderate); GitHub's alert view splits the same 8 as 2/2/4,
+classifying `source-map-js` as moderate rather than high. Both agree on the
+total.
 
 That figure reads higher than the "38 to 4" recorded in v0.3.3. The advisory
 database had grown since — `tinypool`, `source-map-js` and
@@ -22,12 +25,59 @@ regressed; the count was re-measured against a newer database.
 One advisory survives: `braces`, with no upstream fix — `3.0.3` is `latest` on
 npm — and a lint-time devDependency that never reaches the published site.
 
+### Release runbook
+
+Work discovered while cutting v0.3.4: the release process could not prove that a
+changelog listed what a tag actually contained, and the runbook itself told the
+operator to commit to `main` after tagging — which `AGENTS.md` forbids.
+
+- Validate the range on `dev` before the release PR opens, so a gap is fixed
+  where pushing is allowed and no commit to `main` is ever needed after tagging
+  ([`de47b35`](https://github.com/vshanbha/weshall-portfolio/commit/de47b35))
+- Require a merge commit and refuse to tag a squash or rebase merge — either
+  silently breaks the bound the checks depend on, and both are enabled on this
+  repo ([`b7e5a55`](https://github.com/vshanbha/weshall-portfolio/commit/b7e5a55),
+  [`25a1ca0`](https://github.com/vshanbha/weshall-portfolio/commit/25a1ca0))
+- Exempt commits touching `CHANGELOG.md` from the Commits list: a commit cannot
+  contain its own hash, and a gap fix always edits the changelog, so one round
+  closes the check ([`2c0cc06`](https://github.com/vshanbha/weshall-portfolio/commit/2c0cc06),
+  [`6f8ac13`](https://github.com/vshanbha/weshall-portfolio/commit/6f8ac13))
+- Single-source the anti-recursion rationale, which had been stated four times in
+  forms that disagreed ([`8fd11d7`](https://github.com/vshanbha/weshall-portfolio/commit/8fd11d7),
+  [`66e7a1d`](https://github.com/vshanbha/weshall-portfolio/commit/66e7a1d))
+- Harden the guards against a partial write, an annotated tag, an empty range and
+  short-hash drift — each found by extracting the documented commands and running
+  them rather than reading them
+  ([`ef84475`](https://github.com/vshanbha/weshall-portfolio/commit/ef84475),
+  [`159122c`](https://github.com/vshanbha/weshall-portfolio/commit/159122c),
+  [`a34fadb`](https://github.com/vshanbha/weshall-portfolio/commit/a34fadb),
+  [`3ed58f3`](https://github.com/vshanbha/weshall-portfolio/commit/3ed58f3),
+  [`e301116`](https://github.com/vshanbha/weshall-portfolio/commit/e301116),
+  [`9554053`](https://github.com/vshanbha/weshall-portfolio/commit/9554053))
+
+### Changelog
+
+- Backfill the nine commits that appeared nowhere in the changelog, including the
+  transitive overrides that took `pnpm audit` from 38 to 4 — without them
+  v0.3.3 had no `### Security` section at all. A tenth commit, `5059b41`, was
+  already listed under v0.3.2 and was moved rather than added
+  ([`4c43aa7`](https://github.com/vshanbha/weshall-portfolio/commit/4c43aa7))
+- Correct commit attribution and ordering found by the release checks
+  ([`5c68008`](https://github.com/vshanbha/weshall-portfolio/commit/5c68008),
+  [`3e18ce7`](https://github.com/vshanbha/weshall-portfolio/commit/3e18ce7))
+
 ### Bug Fixes
 
 - Correct the `http-cache-semantics` claim in `SECURITY.md`, which had recorded it as unfixable on npm's `<0.0.0` advisory metadata ([`f833010`](https://github.com/vshanbha/weshall-portfolio/commit/f833010))
 
 ### Docs
 
+- Rename `agents.md` → `AGENTS.md` across nine references. OpenCode V2's docs
+  specify `AGENTS.md`, and `factory/` already used that casing, so the two
+  projects disagreed on the filename
+  ([`633528c`](https://github.com/vshanbha/weshall-portfolio/commit/633528c)).
+  Three published-article references were deferred to a content release, since
+  they change live copy.
 - Drop the advisories vitest 5.0.3 resolved ([`5c15d47`](https://github.com/vshanbha/weshall-portfolio/commit/5c15d47))
 - Name the full `braces` dependency chain and date both advisory checks ([`47a52e6`](https://github.com/vshanbha/weshall-portfolio/commit/47a52e6), [`910f0b8`](https://github.com/vshanbha/weshall-portfolio/commit/910f0b8))
 

@@ -210,8 +210,9 @@ findings are fixed before anything reaches `main`.
    This is the set the tag will cover, because the tag lands on the merge
    commit whose second parent is this `dev` tip. A gap found here is fixed on
    `dev`, where pushing is allowed — so no commit to `main` is ever needed
-   after the release has been tagged. Do it **before** step 6: `gh release
-create` takes `CHANGELOG.md` as its notes, so a gap ships in the release.
+   after the release has been tagged. Do it **before** step 6: the release
+   notes come from this range's `CHANGELOG.md` section, read from the tag at
+   steps 8–9, so a gap still ships unless caught here.
 
 6. **Open the release PR `dev` → `main`**
    ```bash
@@ -258,6 +259,15 @@ create` takes `CHANGELOG.md` as its notes, so a gap ships in the release.
      || { echo "HEAD is not a merge commit — squash/rebase merge, or main moved since step 7"; exit 1; }
    test "$(git rev-parse HEAD^2)" = "$(cat /tmp/release-end)" \
      || { echo "second parent is not the dev tip validated in step 5"; exit 1; }
+   # Assert the tree about to be tagged carries this release's changelog section.
+   # Checked HERE rather than in step 9: a tag is awkward to withdraw, and step 9
+   # reads this same tree, so a fix that only reached `dev` must reach `main` first.
+   # Redirect to a file rather than piping into grep -q: grep exits at the first
+   # match, closing the pipe while git show still has ~32 KB to write, so git
+   # dies of SIGPIPE (141) and pipefail reports failure despite a match.
+   git show HEAD:CHANGELOG.md > /tmp/head-changelog.md
+   grep -q '^## \[vX.Y.Z\]' /tmp/head-changelog.md \
+     || { echo "no vX.Y.Z section in CHANGELOG.md — merge the changelog fix to main first"; exit 1; }
    git tag -a vX.Y.Z -m "Release vX.Y.Z"
    git push origin vX.Y.Z
    ```
@@ -277,10 +287,27 @@ create` takes `CHANGELOG.md` as its notes, so a gap ships in the release.
 
 9. **Create the GitHub Release**
    ```bash
+   # Notes must come from the TAG's tree, not the working tree: if the changelog
+   # was corrected after the release merged, a main checkout still holds the old
+   # text and the notes would contradict the entry you wrote.
+   git show vX.Y.Z:CHANGELOG.md > /tmp/tagged-changelog.md
+   grep -q '^## \[vX.Y.Z\]' /tmp/tagged-changelog.md \
+     || { echo "the tag does not contain a vX.Y.Z section"; exit 1; }
+   # Extract only this release's section. Passing the whole file would publish
+   # every version's section back to v0.1.1 — the v0.3.3 body is one section.
+   # Stop at ANY following header rather than naming the previous version: that
+   # couples the stop rule to LAST, so a wrong or unsubstituted name yields empty
+   # notes, which the guard below catches.
+   awk '/^## \[vX.Y.Z\]/{f=1; next} /^## \[/{f=0} f' \
+     /tmp/tagged-changelog.md > /tmp/release-notes.md
+   test -s /tmp/release-notes.md \
+     || { echo "release notes extraction is empty — check the placeholder substitution"; exit 1; }
    gh release create vX.Y.Z \
      --title "vX.Y.Z" \
-     --notes-file CHANGELOG.md
+     --notes-file /tmp/release-notes.md
    ```
+   If step 8's assertion failed, the fix reached `dev` but not `main` — merge,
+   then tag.
 10. **Verify the deploy** — it fired at step 7, from the merge. Check the
     `Deploy to GitHub Pages` run for that commit rather than waiting for a new
     one. Steps 8 and 9 are metadata only and must not produce a second deploy.
@@ -319,7 +346,7 @@ Maintain a `CHANGELOG.md` at the portfolio root. Use this structure:
 
 Rules:
 
-- Group changes by type: Features, Bug Fixes, Content, Security, Tests, CI/CD, Docs, Chores
+- Group changes by type: Features, Bug Fixes, Content, Security, Release runbook, Changelog, Tests, CI/CD, Docs, Chores
 - Each entry links to its commit with a short hash
 - **Range rule:** the Commits section lists every non-merge commit in the
   release range.
