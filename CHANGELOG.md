@@ -8,6 +8,12 @@ Security-only patch: dependency advisory reduction from 8 to 1.
 3 moderate); GitHub's alert view splits the same 8 as 2/2/4, classifying
 `source-map-js` as moderate rather than high. Both agree on the total.
 
+That figure reads higher than the "38 to 4" recorded in v0.3.3. The advisory
+database had grown since — `tinypool`, `source-map-js` and
+`postcss-selector-parser` were not flagged when those overrides landed — so a
+later audit of the same lockfile reported 7, and GitHub reported 8. Nothing
+regressed; the count was re-measured against a newer database.
+
 ### Security
 
 - Bump `vitest` 3.2.6 → 5.0.3, clearing `vitest`, `@vitest/mocker` and `tinypool` — including both critical `tinypool` advisories ([`8af54c2`](https://github.com/vshanbha/weshall-portfolio/commit/8af54c2))
@@ -61,7 +67,7 @@ npm — and a lint-time devDependency that never reaches the published site.
 
 ### Security
 
-- Override transitive packages carrying known advisories — `pnpm audit` from 38 to 4 ([`ae2e474`](https://github.com/vshanbha/weshall-portfolio/commit/ae2e474))
+- Override transitive packages carrying known advisories — `pnpm audit` from 38 to 4 at release time ([`ae2e474`](https://github.com/vshanbha/weshall-portfolio/commit/ae2e474))
 - Document the remaining advisories with GHSA links in `SECURITY.md` ([`2586146`](https://github.com/vshanbha/weshall-portfolio/commit/2586146))
 
 ### Tests

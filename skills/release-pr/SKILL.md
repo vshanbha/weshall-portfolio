@@ -260,12 +260,17 @@ Rules:
 
 - Group changes by type: Features, Bug Fixes, Content, Security, Tests, CI/CD, Docs, Chores
 - Each entry links to its commit with a short hash
-- The Commits section lists every non-merge commit in the release range,
-  where the range ends at the version bump commit —
-  `git log --no-merges <last-tag>..<bump-commit>`. Release-preparation commits
-  made after the bump are outside the range and are not listed, which keeps
-  the check from chasing its own tail.
-- The Commits list runs newest-first, in `git log` order, including release-prep commits made up to and including the bump; anything committed after the bump is outside the range
+- The Commits section lists every non-merge commit in the release range.
+  While the entry is unreleased, the range ends at the version bump commit —
+  `git log --no-merges <last-tag>..<bump-commit>` — which stops the check
+  from chasing its own tail: each fix commit would otherwise enter the range
+  and need listing itself, so the list never closes. **Once the release is
+  tagged, the range ends at the tag instead** — `<last-tag>..<tag>`. The tag
+  is immutable, so nothing further can be added to it. Commits made between
+  the bump and the tag are then in scope and must be listed; bounding at the
+  bump at that point would leave them in no release at all, since they are
+  excluded from the next release's range too.
+- The Commits list runs newest-first, in `git log` order, including release-prep commits
 - A commit belongs to exactly one release — check for duplicates and misattribution
 - Every listed hash must be inside the range above, so the range and the list terminate together
 - Newest version at the top; use the tag date for backfilled entries
@@ -282,8 +287,10 @@ Collect commits since the last tag, up to the version bump commit:
 # Find last tag
 git describe --tags --abbrev=0
 
-# List commits in the release range, excluding merge commits
-git log <last-tag>..<bump-commit> --oneline --no-merges
+# List commits in the release range, excluding merge commits.
+# END is the bump commit while the entry is unreleased, and the tag
+# once the release has been tagged.
+git log <last-tag>..<end> --oneline --no-merges
 ```
 
 Use these to populate the changelog sections. Every commit in the range should
@@ -295,12 +302,12 @@ appear in exactly one Commits list — verify rather than assume:
 # out-of-range, which drowns the result in false positives.
 REL='v0.3.4'          # the section being written, e.g. /^## \[v0.3.4\]/
 LAST='v0.3.3'
-BUMP='<bump-commit>'
+END='<bump-commit-or-tag>'   # bump while unreleased; the tag once tagged
 
 # Any commit in the range missing from this release's section? Scope the
 # grep to the same section as the checks below — grepping the whole file
 # gives a false pass when a commit is misfiled under an older release.
-for h in $(git log --format='%h' --no-merges $LAST..$BUMP); do
+for h in $(git log --format='%h' --no-merges $LAST..$END); do
   sed -n "/^## \[$REL\]/,/^## \[/p" CHANGELOG.md | grep -q "\`$h\`" \
     || echo "MISSING: $h"
 done
@@ -311,7 +318,7 @@ grep -oE '^`[0-9a-f]{7,}`' CHANGELOG.md | sort | uniq -d
 # Any hash in this release's section that is not in the range?
 sed -n "/^## \[$REL\]/,/^## \[/p" CHANGELOG.md \
   | grep -oE '^`[0-9a-f]{7,}`' | tr -d '`' | sort -u > /tmp/listed
-git log --format='%h' --no-merges $LAST..$BUMP | sort -u > /tmp/inrange
+git log --format='%h' --no-merges $LAST..$END | sort -u > /tmp/inrange
 comm -23 /tmp/listed /tmp/inrange   # any output = a stray hash
 
 # Any hash in the range not listed in this release's section?
@@ -323,10 +330,14 @@ dynamically, so it emits 8+ characters when 7 would be ambiguous. A fixed
 `{7}` silently drops those from `/tmp/listed`, producing a phantom gap here
 and missing a real duplicate above. The two patterns must stay identical.
 
-Stop at `<bump-commit>`, not `HEAD`. Chasing `HEAD` makes the check recurse:
-each fix commit becomes a new commit in range, so it must be listed too, and
-the list can never be closed. Release-prep commits after the bump sit outside
-the range by design.
+Never use `HEAD` for `END`. Chasing `HEAD` makes the check recurse: each fix
+commit becomes a new commit in range, so it must be listed too, and the list
+can never be closed. Use the bump commit while the entry is still unreleased,
+and the tag once the release has been tagged — a tagged range is fixed, so it
+terminates without recursion. This distinction matters concretely: bounding a
+tagged release at its bump excludes commits made between bump and tag, which
+are then also outside the next release's range, leaving them in no release
+at all.
 
 Both checks have caught real misattribution, where a commit was filed under the
 wrong release or appeared in two Commits lists at once.
