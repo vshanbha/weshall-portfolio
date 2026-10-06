@@ -202,7 +202,7 @@ findings are fixed before anything reaches `main`.
    # Precondition: dev must contain main, so dev-HEAD-bounded == tag-bounded
    git merge-base --is-ancestor origin/main HEAD \
      || { echo "main has commits dev lacks — the two ranges diverge"; exit 1; }
-   END=$(git rev-parse --short HEAD)
+   END=$(git rev-parse HEAD)
    ```
 
    The preamble below persists `END` as a full hash when you run it.
@@ -356,13 +356,18 @@ Collect commits since the previous release, up to the range end:
 END='<dev-head-snapshot-or-tag>'
 LAST=$(git describe --tags --abbrev=0 "$END"^)
 
-# Persist the FULL hash. git rev-parse --short abbreviates to the minimum
-# unique length, recomputed on every call, so a short prefix written now can
-# become ambiguous later and no longer match — the guard in step 8 would then
-# refuse a valid release. Every path that defines END lands here, which keeps
-# this the single source for both LAST and END.
-echo "$(git rev-parse "$END")" > /tmp/release-end
-test -s /tmp/release-end || { echo "cannot resolve END=$END"; exit 1; }
+# Persist the FULL hash of END as a commit. Two failure modes are guarded at
+# once: git rev-parse --short abbreviates to the minimum unique length,
+# recomputed per call, so a short prefix can drift and refuse a valid release;
+# and plain rev-parse echoes an unresolvable name straight back, so the file
+# would exist and pass any size test while holding garbage. --verify --quiet
+# prints only the hash and fails silently instead, and ^{commit} unwraps an
+# annotated tag (END is a tag on the backfill path) so the value can equal the
+# commit hash step 8 compares against. Nothing is written unless it resolves.
+RESOLVED=$(git rev-parse --verify --quiet "$END^{commit}") \
+  || { echo "cannot resolve END=$END as a commit"; exit 1; }
+printf '%s\n' "$RESOLVED" > /tmp/release-end
+test -s /tmp/release-end || { echo "truncated write to /tmp/release-end"; exit 1; }
 
 # Guard LAST itself, not just the range. An empty LAST degrades $LAST..$END to
 # ..$END, which Git reads as HEAD..$END without erroring. Without this direct
