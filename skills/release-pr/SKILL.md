@@ -305,16 +305,19 @@ Rules:
 
 ### Generating the Changelog
 
-Collect commits since the last tag, up to the version bump commit:
+Collect commits since the previous release, up to the range end:
 
 ```bash
-# Find last tag
-git describe --tags --abbrev=0
+# Find the tag BEFORE END. Plain 'git describe --tags --abbrev=0' returns the
+# newest tag, which after step 7 is END itself -- LAST==END gives an empty range
+# and every check below passes without testing anything. The ^ is required for
+# a tagged END and harmless for a bump commit.
+END='<bump-commit-or-tag>'
+LAST=$(git describe --tags --abbrev=0 "$END"^)
+test -n "$(git log $LAST..$END)" || { echo "empty range — wrong LAST"; exit 1; }
 
 # List commits in the release range, excluding merge commits.
-# END is the bump commit while the entry is unreleased, and the tag
-# once the release has been tagged.
-git log <last-tag>..<end> --oneline --no-merges
+git log $LAST..$END --oneline --no-merges
 ```
 
 Use these to populate the changelog sections. Every commit in the range should
