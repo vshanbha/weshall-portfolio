@@ -187,12 +187,8 @@ findings are fixed before anything reaches `main`.
    `--no-git-tag-version` keeps the tag off `dev` — tags belong on `main`.
    The bump commit is inside the range, so it must be in the Commits list.
    Since it does not exist yet at this point, add it with a follow-up docs
-   commit after step 3. While the entry is unreleased the range is
-   bump-bounded, so that follow-up sits outside it and is not itself listed —
-   which is what stops the recursion. Once the release is tagged the range is
-   tag-bounded, so anything committed before the tag moves into scope and
-   must be listed by a later commit, which itself lands after the tag and is
-   therefore outside it.
+   commit after step 3. Whether that follow-up is itself listed depends on the
+   range phase — see the range rule under _Changelog Format_.
 4. **Push `dev`** — the pre-push hook runs `pnpm test:e2e` first
    ```bash
    git push origin dev
@@ -218,15 +214,38 @@ findings are fixed before anything reaches `main`.
    can trigger a second deployment for no reason. Note the pre-push hook gates on
    the current _branch_, so with `main` checked out this still runs E2E first —
    that is expected, not a second deploy.
-8. **Create the GitHub Release**
+8. **Re-run the range checks against the tag.** Tagging flips the range from
+   bump-bounded to tag-bounded, so commits made between the bump and the tag
+   move into scope here. Derive `LAST` from the tag itself rather than
+   `git describe --tags --abbrev=0`, which now returns the _new_ tag and makes
+   the range empty — every check would pass while hiding the very gap this step
+   exists to catch:
+
+   ```bash
+   REL='vX.Y.Z' END='vX.Y.Z'
+   LAST=$(git describe --tags --abbrev=0 "$END"^)   # the tag before END
+   test -n "$(git log $LAST..$END)" || { echo "empty range — wrong LAST"; exit 1; }
+   # then prefix each of the four check blocks below with these assignments
+   ```
+
+   Do this before step 9 — `gh release create` takes `CHANGELOG.md` as its
+   notes, so a gap here ships in the published release.
+
+   If a check reports a gap, commit the fix **on `main` and push it**. This is
+   the one post-merge step that triggers a metadata redeploy, and `pre-commit`
+   will run `pnpm validate` with `post-commit` firing the Gate B agent. Then
+   apply the same fix to `dev`, or the next release PR will reintroduce the
+   gap.
+
+9. **Create the GitHub Release**
    ```bash
    gh release create vX.Y.Z \
      --title "vX.Y.Z" \
      --notes-file CHANGELOG.md
    ```
-9. **Verify the deploy** — it fired at step 6, from the merge. Check the
-   `Deploy to GitHub Pages` run for that commit rather than waiting for a new
-   one. Steps 7 and 8 are metadata only and must not produce a second deploy.
+10. **Verify the deploy** — it fired at step 6, from the merge. Check the
+    `Deploy to GitHub Pages` run for that commit rather than waiting for a new
+    one. Steps 7 and 9 are metadata only and must not produce a second deploy.
 
 ### Changelog Format
 
@@ -264,7 +283,8 @@ Rules:
 
 - Group changes by type: Features, Bug Fixes, Content, Security, Tests, CI/CD, Docs, Chores
 - Each entry links to its commit with a short hash
-- The Commits section lists every non-merge commit in the release range.
+- **Range rule:** the Commits section lists every non-merge commit in the
+  release range.
   While the entry is unreleased, the range ends at the version bump commit —
   `git log --no-merges <last-tag>..<bump-commit>` — which stops the check
   from chasing its own tail: each fix commit would otherwise enter the range
@@ -334,17 +354,12 @@ dynamically, so it emits 8+ characters when 7 would be ambiguous. A fixed
 `{7}` silently drops those from `/tmp/listed`, producing a phantom gap here
 and missing a real duplicate above. The two patterns must stay identical.
 
-Never use `HEAD` for `END`. Chasing `HEAD` makes the check recurse: each fix
-commit becomes a new commit in range, so it must be listed too, and the list
-can never be closed. Use the bump commit while the entry is still unreleased,
-and the tag once the release has been tagged — a tagged range is fixed, so it
-terminates without recursion. This distinction matters concretely: bounding a
-tagged release at its bump excludes commits made between bump and tag, which
-are then also outside the next release's range, leaving them in no release
-at all.
+Never use `HEAD` for `END`. See the range rule under _Changelog Format_ for
+why `END` is the bump while unreleased and the tag once tagged — the
+rationale lives there alone, so it cannot go stale in a second copy.
 
-Both checks have caught real misattribution, where a commit was filed under the
-wrong release or appeared in two Commits lists at once.
+The gap and stray-hash checks have caught real misattribution, where a commit
+was filed under the wrong release or appeared in two Commits lists at once.
 
 **Backfills:** when a tagged release has no changelog entry, use that tag as the
 range start rather than the current one. Omit revert pairs and other net-zero
