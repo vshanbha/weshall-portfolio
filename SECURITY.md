@@ -75,6 +75,8 @@ metadata can report `patched_versions: <0.0.0` for a package that does have a
 published fix. `http-cache-semantics` was recorded here as unfixable on that
 basis and was wrong — `4.3.0` exists. Cross-check with
 `npm view <package> dist-tags` before accepting a `<0.0.0` as final.
+Verified 2026-10-06: `dist-tags.latest` is `4.3.0` and the lockfile resolves
+`4.3.0`.
 
 ## Reporting
 
