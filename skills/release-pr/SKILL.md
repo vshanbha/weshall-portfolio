@@ -216,17 +216,12 @@ findings are fixed before anything reaches `main`.
    that is expected, not a second deploy.
 8. **Re-run the range checks against the tag.** Tagging flips the range from
    bump-bounded to tag-bounded, so commits made between the bump and the tag
-   move into scope here. Derive `LAST` from the tag itself rather than
-   `git describe --tags --abbrev=0`, which now returns the _new_ tag and makes
-   the range empty — every check would pass while hiding the very gap this step
-   exists to catch:
-
-   ```bash
-   REL='vX.Y.Z' END='vX.Y.Z'
-   LAST=$(git describe --tags --abbrev=0 "$END"^)   # the tag before END
-   test -n "$(git log $LAST..$END)" || { echo "empty range — wrong LAST"; exit 1; }
-   # then prefix each of the four check blocks below with these assignments
-   ```
+   move into scope here. Run the preamble under _Generating the Changelog_
+   with `END='vX.Y.Z'` and `REL='vX.Y.Z'`, then run the four checks it feeds —
+   it derives `LAST` for you and guards against an empty range. Plain
+   `git describe --tags --abbrev=0` would return this new tag as `LAST`,
+   making the range empty and every check pass while hiding the gap this step
+   exists to catch.
 
    Do this before step 9 — `gh release create` takes `CHANGELOG.md` as its
    notes, so a gap here ships in the published release.
@@ -308,28 +303,41 @@ Rules:
 Collect commits since the previous release, up to the range end:
 
 ```bash
-# Find the tag BEFORE END. Plain 'git describe --tags --abbrev=0' returns the
-# newest tag, which after step 7 is END itself -- LAST==END gives an empty range
-# and every check below passes without testing anything. The ^ is required for
-# a tagged END and harmless for a bump commit.
 END='<bump-commit-or-tag>'
 LAST=$(git describe --tags --abbrev=0 "$END"^)
+
+# Guard LAST itself, not just the range: an empty LAST degrades $LAST..$END to
+# ..$END, which Git reads as HEAD..$END -- frequently non-empty, so the check
+# would pass while testing nothing.
+test -n "$LAST" || { echo "cannot derive LAST from END=$END"; exit 1; }
 test -n "$(git log $LAST..$END)" || { echo "empty range — wrong LAST"; exit 1; }
 
 # List commits in the release range, excluding merge commits.
 git log $LAST..$END --oneline --no-merges
 ```
 
+Plain `git describe --tags --abbrev=0` without the `^` returns the newest tag,
+which after step 7 is `END` itself — `LAST==END`, empty range, every check
+passes without testing anything. The `^` is required when `END` is a tag and
+harmless when it is the bump commit, so it is unconditional.
+
+This preamble is the single source for `LAST` and `END`. The check blocks
+below and step 8 both consume it; neither restates it.
+
 Use these to populate the changelog sections. Every commit in the range should
 appear in exactly one Commits list — verify rather than assume:
 
 ```bash
+# Run the preamble under _Generating the Changelog_ first — it derives LAST
+# and END and guards both. Setting them by hand here bypasses those guards,
+# which is where a wrong LAST comes from.
+REL='v0.3.4'   # the section header being written, e.g. /^## \[v0.3.4\]/
+               # equals END once tagged; while unreleased it is the version
+               # being prepared and END is the bump commit
+
 # Extract the current release's Commits section only. Scoping matters:
 # grepping the whole file reports every hash from older releases as
 # out-of-range, which drowns the result in false positives.
-REL='v0.3.4'          # the section being written, e.g. /^## \[v0.3.4\]/
-LAST='v0.3.3'
-END='<bump-commit-or-tag>'   # bump while unreleased; the tag once tagged
 
 # Any commit in the range missing from this release's section? Scope the
 # grep to the same section as the checks below — grepping the whole file
