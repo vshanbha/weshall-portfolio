@@ -55,24 +55,17 @@ so a patch or minor upgrade lands without crossing a major boundary.
 
 ### Known unfixable advisories
 
-Five advisories remain (four packages). One has no upstream fix at all; the
-other four are blocked on a single vitest major upgrade:
+One advisory remains, with no upstream fix:
 
-| Package          | Severity | Advisory                                                                                                                                           | Why it stays                                                                                       |
-| ---------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `braces`         | high     | [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm)                                                                           | No patched version published — `3.0.3` is `latest` on npm. Arrives via `fast-glob` → `micromatch`. |
-| `vitest`         | moderate | [GHSA-82fw-gwwq-j7x9](https://github.com/advisories/GHSA-82fw-gwwq-j7x9)                                                                           | Path traversal / arbitrary file read. Needs `>=4.1.11`; pinned at `^3.2.0`.                        |
-| `@vitest/mocker` | moderate | [GHSA-82fw-gwwq-j7x9](https://github.com/advisories/GHSA-82fw-gwwq-j7x9)                                                                           | Same advisory as `vitest`; resolves with it.                                                       |
-| `tinypool` (×2)  | critical | [GHSA-5gmw-xhrv-c9v3](https://github.com/advisories/GHSA-5gmw-xhrv-c9v3), [GHSA-85c8-ppgw-ccpr](https://github.com/advisories/GHSA-85c8-ppgw-ccpr) | Needs `>=2.1.2`. `vitest@3.2.6` requires `tinypool@^1.1.1`, so the fix is a major.                 |
+| Package  | Severity | Advisory                                                                 | Why it stays                                                                                       |
+| -------- | -------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `braces` | high     | [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) | No patched version published — `3.0.3` is `latest` on npm. Arrives via `fast-glob` → `micromatch`. |
 
-None of these reach the deployed static site. `vitest`, `@vitest/mocker` and
-`tinypool` are devDependencies that never ship. `braces` is pulled in by the
-build toolchain, so it executes at build time only — the published artefact is
-static HTML, CSS and images.
+`braces` does not reach the deployed static site. It is pulled in by the build
+toolchain, so it executes at build time only — the published artefact is static
+HTML, CSS and images.
 
-**The path to four of them:** migrating to `vitest` 4.x. That raises `vitest`,
-`@vitest/mocker` and `tinypool` together. Re-check when the migration happens,
-when `braces` gets a patch, or whenever `pnpm audit` output changes.
+Re-check whenever `pnpm audit` output changes, or when `braces` gets a patch.
 
 **Verify fixable claims against npm, not just `pnpm audit`.** npm's advisory
 metadata can report `patched_versions: <0.0.0` for a package that does have a
