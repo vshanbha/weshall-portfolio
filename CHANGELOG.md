@@ -59,6 +59,11 @@ npm — and a lint-time devDependency that never reaches the published site.
 - Fix grammar in the Ourish quote across dormant locales ([`c07bd3e`](https://github.com/vshanbha/weshall-portfolio/commit/c07bd3e), [`fec7011`](https://github.com/vshanbha/weshall-portfolio/commit/fec7011))
 - Restore the Jcon talk and mentoring entries to the About speaking section ([`8cd0b3a`](https://github.com/vshanbha/weshall-portfolio/commit/8cd0b3a))
 
+### Security
+
+- Override transitive packages carrying known advisories — `pnpm audit` from 38 to 4 ([`ae2e474`](https://github.com/vshanbha/weshall-portfolio/commit/ae2e474))
+- Document the remaining advisories with GHSA links in `SECURITY.md` ([`2586146`](https://github.com/vshanbha/weshall-portfolio/commit/2586146))
+
 ### Tests
 
 - Add axe WCAG 2.2 AA checks to the E2E suite, including the 404 page ([`6cd69d5`](https://github.com/vshanbha/weshall-portfolio/commit/6cd69d5), [`d5e2b10`](https://github.com/vshanbha/weshall-portfolio/commit/d5e2b10))
@@ -94,48 +99,58 @@ npm — and a lint-time devDependency that never reaches the published site.
 
 ### Commits
 
-`f163c6c` - feat(content): record AI image provenance in a typed frontmatter object
-`46e80a7` - feat: surface AI publishing transparency to readers and machines
-`503a30f` - feat: stamp IPTC/XMP provenance onto delivered images after build
-`66f35e6` - feat(content): enforce the editorial review gate in the schema
-`f951a0b` - session: home page stories + testimonials, about page beliefs, translations, opencode config
-`b9ff8f4` - feat(home): publish approved BauAI testimonial as fifth client tab
-`081be39` - feat: promote What I believe to H2 section + link companion article from accordion
-`a282408` - fix(a11y): clear the four WCAG 2.2 AA violations axe reports
-`5262b4b` - fix: rename About 'What I do' section to 'How I build'
-`d4d7e3c` - fix: collapse commandments in dormant locales, rename E2E test
-`11f9d5f` - fix: remove hardcoded English 'Read more' fallback from Accordion
-`342f0c0` - fix: remove remaining em dashes from quote attributions in commandments
-`b00d8f0` - fix: remove em dashes from What I Believe commandments (ai-tells compliance)
-`ddfed79` - fix: replace em dash in Ourish role across all dormant locale files
-`a2570ff` - fix: replace em dash in Ourish testimonial role with comma
-`c07bd3e` - fix: grammar in Ourish quote — 'is delivering' → 'in delivering'
-`fec7011` - fix: grammar in Ourish quote across dormant locales
-`8cd0b3a` - Restore Jcon talk and mentoring entries to About speaking section
-`6cd69d5` - test: add axe WCAG 2.2 AA checks to the e2e suite
-`d5e2b10` - test: include the 404 page in the axe scan
-`fbf7399` - test: add blocking provenance checks, CI workflow and docs
-`76c1e09` - test: extract JSON-LD blocks without a tag-matching regex
+`2586146` - docs(security): record the four advisories with no upstream fix
+`ae2e474` - chore(deps): override transitive packages with known advisories
+`314ee7d` - docs(skill): tighten the deploy verification wording
+`84298ea` - docs(skill): correct the deploy trigger in the release runbook
+`cc4a5a2` - docs(skill): reconcile release-pr ordering with the dev-first release flow
+`e66fa6f` - docs(changelog): record the v0.3.3 version bump commit
+`dbd28ff` - chore: bump version to 0.3.3
+`a494925` - fix(changelog): move 547fd2e and 817eb66 into the v0.3.1 commits list
+`c0a685d` - fix(changelog): correct commit attribution and backfill omissions
+`87633e6` - chore: release v0.3.3 changelog, backfill v0.3.1 and v0.3.2
 `5d43e01` - test(e2e): keep astro preview in foreground for Playwright
-`98ca202` - test: update stale About page regex to 'How I build'
+`c2db45e` - chore(deps): raise sharp to ^0.35.4 for astro 7.2.8 minimum
+`b9ff8f4` - feat(home): publish approved BauAI testimonial as fifth client tab (factory issue #14)
+`8cd0b3a` - Restore Jcon talk and mentoring entries to About speaking section (factory issue #5)
+`32d5c64` - chore(deps): bump the npm_and_yarn group across 1 directory with 3 updates
+`bde06b2` - docs: fix the Prettier regression and the shell/permission ambiguity
+`7e7bda8` - docs: use current OpenCode V2 names and settle the Gate B wording
+`2357f4a` - docs: close the review-agent guidance contradictions
+`f3a4e5e` - docs: correct the review-agent guidance against the reviewer's findings
+`33ce8ee` - docs: document how to run the Gate B review agent
+`08cf195` - docs: correct two claims the re-review caught in the provenance note
+`a42211c` - docs: record where the Oops hero's provenance values come from
+`d5e2b10` - test: include the 404 page in the axe scan
+`6cd69d5` - test: add axe WCAG 2.2 AA checks to the e2e suite
+`a282408` - fix(a11y): clear the four WCAG 2.2 AA violations axe reports
 `c9a0bab` - test: drop the C2PA tripwire and record the signing decision
 `dbf6978` - ci: gate deployment on the Validate workflow
-`620c61c` - ci: install pinned ExifTool in the deploy build
+`76c1e09` - test: extract JSON-LD blocks without a tag-matching regex
 `7fe3d7a` - ci: keep ExifTool inside its source tree so Image::ExifTool resolves
-`32d5c64` - chore(deps): bump the npm_and_yarn group across 1 directory with 3 updates
-`c2db45e` - chore(deps): raise sharp to ^0.35.4 for astro 7.2.8 minimum
-`8fe41a0` - refactor: move commandments under What I do, collapse by default, update testimonials
+`620c61c` - ci: install pinned ExifTool in the deploy build
 `701baad` - docs: add a PR template with a recorded Gate B review
-`33ce8ee` - docs: document how to run the Gate B review agent
-`f3a4e5e` - docs: correct the review-agent guidance against the reviewer's findings
-`2357f4a` - docs: close the review-agent guidance contradictions
-`7e7bda8` - docs: use current OpenCode V2 names and settle the Gate B wording
-`bde06b2` - docs: fix the Prettier regression and the shell/permission ambiguity
-`a42211c` - docs: record where the Oops hero's provenance values come from
-`08cf195` - docs: correct two claims the re-review caught in the provenance note
-`56b4592` - docs: correct Accordion JSDoc for href/linkText contract
+`66f35e6` - feat(content): enforce the editorial review gate in the schema
+`fbf7399` - test: add blocking provenance checks, CI workflow and docs
+`503a30f` - feat: stamp IPTC/XMP provenance onto delivered images after build
+`46e80a7` - feat: surface AI publishing transparency to readers and machines
+`f163c6c` - feat(content): record AI image provenance in a typed frontmatter object
 `b22fb94` - opencode migrated to v2
-`dbd28ff` - chore: bump version to 0.3.3
+`56b4592` - docs: correct Accordion JSDoc for href/linkText contract
+`11f9d5f` - fix: remove hardcoded English 'Read more' fallback from Accordion
+`081be39` - feat: promote What I believe to H2 section + link companion article from accordion
+`98ca202` - test: update stale About page regex to 'How I build'
+`5262b4b` - fix: rename About 'What I do' section to 'How I build'
+`d4d7e3c` - fix: collapse commandments in dormant locales, rename E2E test
+`8fe41a0` - refactor: move commandments under What I do, collapse by default, update testimonials
+`fec7011` - fix: grammar in Ourish quote across dormant locales
+`c07bd3e` - fix: grammar in Ourish quote — 'is delivering' → 'in delivering'
+`ddfed79` - fix: replace em dash in Ourish role across all dormant locale files
+`a2570ff` - fix: replace em dash in Ourish testimonial role with comma
+`342f0c0` - fix: remove remaining em dashes from quote attributions in commandments
+`b00d8f0` - fix: remove em dashes from What I Believe commandments (ai-tells compliance)
+`f951a0b` - session: home page stories + testimonials, about page beliefs, translations, opencode config
+`5059b41` - chore: bump version to 0.3.2
 
 ## [v0.3.2] - 2026-08-28
 
@@ -156,7 +171,6 @@ npm — and a lint-time devDependency that never reaches the published site.
 `9a6d093` - chore: change planning model to MiMo V2.5
 `845d10d` - publishing date of article modified since this is a republishing of an old article
 `71bbabb` - fix(deps): bump sharp to ^0.35.1, fix e2e to run against production build
-`5059b41` - chore: bump version to 0.3.2
 
 ## [v0.3.1] - 2026-08-17
 
