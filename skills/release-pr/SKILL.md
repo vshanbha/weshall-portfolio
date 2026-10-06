@@ -287,12 +287,15 @@ Rules:
   `git merge-base --is-ancestor origin/main HEAD` — if `main` has commits `dev`
   lacks, the two sets diverge and this shortcut is invalid.
 
-  **Commits that touch only `CHANGELOG.md` are exempt from the Commits list.**
-  A commit cannot contain its own hash, so listing the record-maintaining
-  commits is self-referential and unbounded. Since a gap fix touches only
-  `CHANGELOG.md`, the exemption also terminates the loop: one fix round, done.
-  Any commit touching another file is release content and must be listed —
-  including one that edits the changelog _and_ something else.
+  **Commits that touch `CHANGELOG.md` are exempt from the Commits list.** A
+  commit cannot contain its own hash, so listing record-maintaining commits is
+  self-referential and unbounded. Exempting on _any_ contact with the file — not
+  only commits touching nothing else — is what makes this hold: a gap fix
+  necessarily edits `CHANGELOG.md`, so it is always exempt and one round closes
+  the loop. Restricting it to single-file commits breaks immediately, because a
+  fix that also corrects the skill or the rules is in scope and unlisted,
+  leaving a permanent gap. A commit that touches no part of `CHANGELOG.md` is
+  release content and must be listed.
 
 - The Commits list runs newest-first, in `git log` order, including release-prep commits
 - A commit belongs to exactly one release — check for duplicates and misattribution
@@ -355,14 +358,14 @@ appear in exactly one Commits list — verify rather than assume:
 sed -n "/^## \[$REL\]/,/^## \[/p" CHANGELOG.md \
   | grep -oE '^`[0-9a-f]{7,}`' | tr -d '`' | sort -u > /tmp/listed
 
-# The range, and the in-scope subset. Commits touching only CHANGELOG.md are
-# exempt: they maintain the record and cannot contain their own hash.
+# The range, and the in-scope subset. Any commit touching CHANGELOG.md is
+# exempt: it maintains the record, and a gap fix always does too, so the
+# exemption is what stops the loop recursing.
 git log --format='%h' --no-merges $LAST..$END | sort -u > /tmp/inrange
 > /tmp/inscope
 for h in $(cat /tmp/inrange); do
-  others=$(git show --name-only --format='' "$h" | grep -v '^$' \
-           | grep -vc 'CHANGELOG.md')
-  [ "$others" -ne 0 ] && echo "$h" >> /tmp/inscope
+  git show --name-only --format='' "$h" | grep -q 'CHANGELOG.md' \
+    || echo "$h" >> /tmp/inscope
 done
 
 # 1. Any in-scope commit missing from this release's section? Scope the grep
@@ -392,8 +395,8 @@ and missing a real duplicate above. The two patterns must stay identical.
 Step 5 snapshots `dev` HEAD into `END`; that is safe because the value is
 copied once, not re-read. The old warning against `HEAD` was about _chasing_ it
 — re-reading HEAD after each fix puts the fix back in range, so the list never
-closes. The `CHANGELOG`-only exemption now terminates that loop regardless, but
-snapshotting still avoids a needless second round. See the range rule under
+closes. The `CHANGELOG`-touching exemption now terminates that loop regardless,
+but snapshotting still avoids a needless second round. See the range rule under
 _Changelog Format_ for the rationale; it lives there alone so it cannot go
 stale in a second copy.
 
