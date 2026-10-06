@@ -219,9 +219,9 @@ findings are fixed before anything reaches `main`.
    move into scope here. Run the preamble under _Generating the Changelog_
    with `END='vX.Y.Z'`, set `REL='vX.Y.Z'` in the check block, then run the
    four checks it feeds — the preamble derives `LAST` for you and guards both
-   `LAST` and the range against emptiness. Plain `git describe --tags
---abbrev=0` would return this new tag as `LAST`, making the range empty and
-   every check pass while hiding the gap this step exists to catch.
+   `LAST` and the range against emptiness. A plain `git describe` without the
+   `^` would return this new tag as `LAST`, making the range empty and every
+   check pass while hiding the gap this step exists to catch.
 
    Do this before step 9 — `gh release create` takes `CHANGELOG.md` as its
    notes, so a gap here ships in the published release.
