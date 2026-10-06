@@ -73,7 +73,7 @@ The `portfolio/` website is the **public delivery surface** for content authored
 - `portfolio/` is an independent project with its own conventions.
 - Content from `factory/` is imported into `portfolio/` via the **Manual Export Gate Protocol** (see below).
 - Agents must never treat `portfolio/` as an extension of `factory/`.
-- For factory-specific rules (vault structure, synthesis workflows, memory protocols), refer to [`factory/agents.md`](../factory/agents.md).
+- For factory-specific rules (vault structure, synthesis workflows, memory protocols), refer to [`factory/AGENTS.md`](../factory/AGENTS.md).
 
 ### Manual Export Gate Protocol
 
@@ -382,4 +382,4 @@ attribution on `Reviewed by:`. The checklist lives in
 3. For content originating from `factory/`, respect the export gate protocol.
 4. Run `pnpm validate` before considering any task complete.
 5. Do not modify deployment configuration without explicit approval.
-6. For factory-related content workflows, see [`factory/agents.md`](../factory/agents.md).
+6. For factory-related content workflows, see [`factory/AGENTS.md`](../factory/AGENTS.md).
