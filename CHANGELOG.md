@@ -4,14 +4,17 @@
 
 Security-only patch: dependency advisory reduction from 8 to 1.
 
+`pnpm audit` against the `v0.3.3` lockfile reports 8 (2 critical, 3 high,
+3 moderate); GitHub's alert view splits the same 8 as 2/2/4, classifying
+`source-map-js` as moderate rather than high. Both agree on the total.
+
 ### Security
 
 - Bump `vitest` 3.2.6 → 5.0.3, clearing `vitest`, `@vitest/mocker` and `tinypool` — including both critical `tinypool` advisories ([`8af54c2`](https://github.com/vshanbha/weshall-portfolio/commit/8af54c2))
 - Resolve patched `http-cache-semantics` 4.2.0 → 4.3.0, `source-map-js` 1.2.1 → 1.2.2 and `postcss-selector-parser` 7.1.4 → 7.1.6 ([`dc5b4dc`](https://github.com/vshanbha/weshall-portfolio/commit/dc5b4dc))
 
-Advisories on the default branch drop from 8 (2 critical, 2 high, 4 moderate)
-to 1. The survivor, `braces`, has no upstream fix — `3.0.3` is `latest` on npm
-— and is a lint-time devDependency that never reaches the published site.
+One advisory survives: `braces`, with no upstream fix — `3.0.3` is `latest` on
+npm — and a lint-time devDependency that never reaches the published site.
 
 ### Bug Fixes
 
@@ -30,7 +33,6 @@ to 1. The survivor, `braces`, has no upstream fix — `3.0.3` is `latest` on npm
 `f833010` - docs(security): correct the http-cache-semantics claim and restate the advisory set
 `dc5b4dc` - chore(deps): resolve patched http-cache-semantics, source-map-js, postcss-selector-parser
 `8af54c2` - chore(deps): bump @vitest/mocker
-`809dc47` - Merge pull request #39 from vshanbha/dependabot/npm_and_yarn/npm_and_yarn-8582f4163b
 
 ## [v0.3.3] - 2026-10-05
 
