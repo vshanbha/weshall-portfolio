@@ -33,6 +33,7 @@ npm — and a lint-time devDependency that never reaches the published site.
 
 ### Commits
 
+`6f8ac13` - fix(skill): close the guard's precision gaps and restate the exemption rule
 `25a1ca0` - fix(skill): make the merge-commit rule enforceable and complete the rationale
 `b7e5a55` - fix(skill): require a merge commit and repair three stale step references
 `2c0cc06` - fix(skill): exempt on contact with CHANGELOG.md, not sole ownership
