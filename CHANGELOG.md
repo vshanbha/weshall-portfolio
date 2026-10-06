@@ -33,6 +33,7 @@ npm — and a lint-time devDependency that never reaches the published site.
 
 ### Commits
 
+`3ed58f3` - fix(skill): make the persistence guards detect what their messages claim
 `a34fadb` - fix(skill): stop the persistence guard writing garbage, unwrap annotated tags
 `6f8ac13` - fix(skill): close the guard's precision gaps and restate the exemption rule
 `25a1ca0` - fix(skill): make the merge-commit rule enforceable and complete the rationale
