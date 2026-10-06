@@ -187,8 +187,9 @@ findings are fixed before anything reaches `main`.
    `--no-git-tag-version` keeps the tag off `dev` — tags belong on `main`.
    The bump commit is inside the range, so it must be in the Commits list.
    Since it does not exist yet at this point, add it with a follow-up docs
-   commit after step 3. Whether that follow-up is itself listed depends on the
-   range phase — see the range rule under _Changelog Format_.
+   commit after step 3. That follow-up touches only `CHANGELOG.md`, so it is
+   exempt from the Commits list either way — see the range rule under
+   _Changelog Format_.
 4. **Push `dev`** — the pre-push hook runs `pnpm test:e2e` first
    ```bash
    git push origin dev
@@ -218,6 +219,12 @@ create` takes `CHANGELOG.md` as its notes, so a gap ships in the release.
      --body "<what shipped, validation results, Gate B record>"
    ```
 7. **Merge the release PR — this deploys.**
+   Merge with a **merge commit**, not squash or rebase. Step 5's range
+   equivalence depends on it: the tag must land on a merge whose second parent
+   is the `dev` tip that was validated. A squash commit collapses the branch
+   into one commit, so the tag-bounded set would be a single hash while the
+   validated set holds every individual commit — and step 5 cannot catch this,
+   because it runs before the merge choice is made.
    Merging into `main` produces a `push` event on `main`, which runs `ci.yml`
    and then `deploy.yml`. Treat the merge as the production release: confirm the
    branch is green and that Gate B has been signed off _before_ merging.
@@ -329,12 +336,13 @@ git log $LAST..$END --oneline --no-merges
 ```
 
 Plain `git describe --tags --abbrev=0` without the `^` returns the newest tag,
-which after step 7 is `END` itself — `LAST==END`, empty range, every check
-passes without testing anything. The `^` is required when `END` is a tag and
-harmless when it is the bump commit, so it is unconditional.
+which is `END` itself whenever `END` _is_ a tag — a backfill or a post-release
+verification. Then `LAST==END`, the range is empty, and every check passes
+without testing anything. The `^` is required in that case and harmless when
+`END` is a commit snapshot, so it is unconditional.
 
 This preamble is the single source for `LAST` and `END`. The check block below
-and step 8 both consume it; neither restates it.
+and step 5 both consume it; neither restates it.
 
 Use these to populate the changelog sections. Every commit in the range should
 appear in exactly one Commits list — verify rather than assume:

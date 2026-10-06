@@ -33,6 +33,8 @@ npm — and a lint-time devDependency that never reaches the published site.
 
 ### Commits
 
+`2c0cc06` - fix(skill): exempt on contact with CHANGELOG.md, not sole ownership
+`de47b35` - refactor(release): validate the range before tagging, not after
 `02eccad` - fix(skill): restore the list indent lost in the step 8 rewrite
 `550df15` - docs(skill): tighten the guard-comment counterfactuals
 `1e04f93` - docs(skill): correct three prose claims the Gate B pass measured
