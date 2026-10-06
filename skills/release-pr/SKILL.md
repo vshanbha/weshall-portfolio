@@ -20,7 +20,7 @@ This skill governs pull request creation and release management for the **portfo
 | Create PR             | `gh pr create`                                     |
 | List open PRs         | `gh pr list`                                       |
 | View PR               | `gh pr view <number>`                              |
-| Merge PR              | `gh pr merge <number>`                             |
+| Merge PR              | `gh pr merge <number> --merge`                     |
 | Bump version          | `npm version patch --no-git-tag-version`           |
 | Create tag            | `git tag -a vX.Y.Z -m "Release vX.Y.Z"`            |
 | Push tag only         | `git push origin vX.Y.Z`                           |
@@ -185,42 +185,105 @@ findings are fixed before anything reaches `main`.
    git commit -m "chore: bump version to X.Y.Z"
    ```
    `--no-git-tag-version` keeps the tag off `dev` — tags belong on `main`.
-   Record the bump commit in the changelog's Commits list if you want the entry
-   exhaustive; a follow-up docs commit is fine.
+   The bump commit is inside the range, so it must be in the Commits list.
+   Since it does not exist yet at this point, add it with a follow-up docs
+   commit after step 3. That follow-up touches `CHANGELOG.md`, so it is exempt
+   from the Commits list — see the range rule under _Changelog Format_.
 4. **Push `dev`** — the pre-push hook runs `pnpm test:e2e` first
    ```bash
    git push origin dev
    ```
-5. **Open the release PR `dev` → `main`**
+5. **Validate the range on `dev` before opening the PR.** Run the preamble
+   under _Generating the Changelog_ with `END` snapshotted to the current
+   `dev` HEAD, set `REL='vX.Y.Z'` in the check block, then run all four
+   checks.
+
+   ```bash
+   # Precondition: dev must contain main, so dev-HEAD-bounded == tag-bounded
+   git merge-base --is-ancestor origin/main HEAD \
+     || { echo "main has commits dev lacks — the two ranges diverge"; exit 1; }
+   END=$(git rev-parse HEAD)
+   ```
+
+   The preamble below persists `END` as a full hash when you run it.
+
+   This is the set the tag will cover, because the tag lands on the merge
+   commit whose second parent is this `dev` tip. A gap found here is fixed on
+   `dev`, where pushing is allowed — so no commit to `main` is ever needed
+   after the release has been tagged. Do it **before** step 6: `gh release
+create` takes `CHANGELOG.md` as its notes, so a gap ships in the release.
+
+6. **Open the release PR `dev` → `main`**
    ```bash
    gh pr create --base main --head dev \
      --title "Release: vX.Y.Z" \
      --body "<what shipped, validation results, Gate B record>"
    ```
-6. **Merge the release PR — this deploys.**
+7. **Merge the release PR — this deploys.**
+   Merge with a **merge commit**, not squash or rebase. Step 5's range
+   equivalence depends on it: the tag must land on a merge whose second parent
+   is the `dev` tip that was validated. The other two methods break it
+   invisibly. A squash commit collapses the branch into one commit, so the
+   tag-bounded set is a single hash while the validated set holds every
+   individual commit. A rebase merge rewrites every hash, so the validated list
+   and the tag-bounded set would share none. Step 5 cannot catch either — it
+   runs before the merge choice is made, and step 8 checks it before tagging.
+
+   Step 5 validates `dev` at one instant, but gap fixes land on `dev` after
+   it. A fix touching `CHANGELOG.md` is exempt from the Commits list and adds
+   no gap — but it still advances `dev`, so step 8 still requires the re-run.
+   A fix touching no part of `CHANGELOG.md` would sit inside the tag-bounded
+   set unvalidated, and unlisted as well. **If any commit has landed on `dev`
+   since step 5, re-run step 5** before merging.
+
    Merging into `main` produces a `push` event on `main`, which runs `ci.yml`
    and then `deploy.yml`. Treat the merge as the production release: confirm the
    branch is green and that Gate B has been signed off _before_ merging.
-7. **Tag the release on `main`**
+
+   If merging in the GitHub web UI, select **Create a merge commit**
+   explicitly — `gh pr merge --merge` only governs the CLI path. Note that
+   step 8's guard runs _after_ this deploy, so it protects the tag, not the
+   production release; the merge method has to be right here, not merely
+   correct later.
+
+8. **Tag the release on `main`**
+
    ```bash
    git checkout main
    git pull origin main
+   # Refuse to tag a squash or rebase merge: step 7 requires a merge commit
+   # whose second parent is the dev tip step 5 validated.
+   test -s /tmp/release-end || { echo "/tmp/release-end missing — re-run step 5"; exit 1; }
+   git rev-parse --verify -q HEAD^2 >/dev/null \
+     || { echo "HEAD is not a merge commit — squash/rebase merge, or main moved since step 7"; exit 1; }
+   test "$(git rev-parse HEAD^2)" = "$(cat /tmp/release-end)" \
+     || { echo "second parent is not the dev tip validated in step 5"; exit 1; }
    git tag -a vX.Y.Z -m "Release vX.Y.Z"
    git push origin vX.Y.Z
    ```
+
+   Comparison uses full hashes: `--short` abbreviates to the minimum unique
+   length, recomputed per call, so comparing two abbreviations taken at
+   different times can drift and refuse a valid release.
+   The second test also catches a `dev` that advanced **before the merge**
+   after step 5 — re-run step 5 then. An advance _after_ the merge leaves
+   `HEAD^2` untouched and needs no catch; do not re-run step 5 there, or `END`
+   would land past `HEAD^2` and wedge this guard permanently.
+
    Push only the tag. `git push origin main --follow-tags` re-pushes `main` and
    can trigger a second deployment for no reason. Note the pre-push hook gates on
    the current _branch_, so with `main` checked out this still runs E2E first —
    that is expected, not a second deploy.
-8. **Create the GitHub Release**
+
+9. **Create the GitHub Release**
    ```bash
    gh release create vX.Y.Z \
      --title "vX.Y.Z" \
      --notes-file CHANGELOG.md
    ```
-9. **Verify the deploy** — it fired at step 6, from the merge. Check the
-   `Deploy to GitHub Pages` run for that commit rather than waiting for a new
-   one. Steps 7 and 8 are metadata only and must not produce a second deploy.
+10. **Verify the deploy** — it fired at step 7, from the merge. Check the
+    `Deploy to GitHub Pages` run for that commit rather than waiting for a new
+    one. Steps 8 and 9 are metadata only and must not produce a second deploy.
 
 ### Changelog Format
 
@@ -243,6 +306,10 @@ Maintain a `CHANGELOG.md` at the portfolio root. Use this structure:
 
 - <description of content change> ([`ghi9012`](https://github.com/vshanbha/weshall-portfolio/commit/ghi9012))
 
+### Security
+
+- <description of security change> ([`jkl0123`](https://github.com/vshanbha/weshall-portfolio/commit/jkl0123))
+
 ### Commits
 
 `abc1234` - Commit message
@@ -252,10 +319,30 @@ Maintain a `CHANGELOG.md` at the portfolio root. Use this structure:
 
 Rules:
 
-- Group changes by type: Features, Bug Fixes, Content, Tests, CI/CD, Docs, Chores
+- Group changes by type: Features, Bug Fixes, Content, Security, Tests, CI/CD, Docs, Chores
 - Each entry links to its commit with a short hash
-- The Commits section lists every non-merge commit in the release range
+- **Range rule:** the Commits section lists every non-merge commit in the
+  release range.
+  The check runs on `dev` **before the release PR is opened**, with `END` set
+  to a snapshot of `dev` HEAD. This is the same set the tag will cover: the tag
+  lands on the merge commit, whose second parent is that `dev` tip, and
+  `--no-merges` excludes the merge itself. Verify the precondition with
+  `git merge-base --is-ancestor origin/main HEAD` — if `main` has commits `dev`
+  lacks, the two sets diverge and this shortcut is invalid.
+
+  **Commits that touch `CHANGELOG.md` are exempt from the Commits list.** A
+  commit cannot contain its own hash, so listing record-maintaining commits is
+  self-referential and unbounded. Exempting on _any_ contact with the file — not
+  only commits touching nothing else — is what makes this hold: a gap fix
+  necessarily edits `CHANGELOG.md`, so it is always exempt and one round closes
+  the loop. Restricting it to single-file commits breaks immediately, because a
+  fix that also corrects the skill or the rules is in scope and unlisted,
+  leaving a permanent gap. A commit that touches no part of `CHANGELOG.md` is
+  release content and must be listed.
+
+- The Commits list runs newest-first, in `git log` order, including release-prep commits
 - A commit belongs to exactly one release — check for duplicates and misattribution
+- Every listed hash must be inside the range above, so the range and the list terminate together
 - Newest version at the top; use the tag date for backfilled entries
 - British English; no person or company names beyond what the site already publishes
 - Use markdown formatting throughout
@@ -264,31 +351,127 @@ Rules:
 
 ### Generating the Changelog
 
-Collect commits since the last tag:
+Collect commits since the previous release, up to the range end:
 
 ```bash
-# Find last tag
-git describe --tags --abbrev=0
+END='<dev-head-snapshot-or-tag>'
 
-# List commits in the release range, excluding merge commits
-git log <last-tag>..HEAD --oneline --no-merges
+# Resolve END to a FULL commit hash before the file is written. Two failure
+# modes are guarded at once: git rev-parse --short abbreviates to the minimum
+# unique length, recomputed per call, so a short prefix can drift and refuse a
+# valid release; and plain rev-parse echoes an unresolvable name straight back,
+# so a file would exist and hold garbage. --verify --quiet prints only the hash
+# and fails silently instead, and ^{commit} unwraps an annotated tag (END is a
+# tag on the backfill path) so the value can equal the commit hash step 8
+# compares against. The old file is removed first, so a run that fails
+# anywhere below leaves no file and step 8 cannot mistake it for a completed one.
+rm -f /tmp/release-end
+RESOLVED=$(git rev-parse --verify --quiet "$END^{commit}") \
+  || { echo "cannot resolve END=$END as a commit"; exit 1; }
+
+LAST=$(git describe --tags --abbrev=0 "$END"^)
+
+# Guard LAST itself, not just the range. An empty LAST degrades $LAST..$END to
+# ..$END, which Git reads as HEAD..$END without erroring. Without this direct
+# check, the range guard below would see that: at step 5 END is a snapshot of
+# dev HEAD, so HEAD contains END and the range is empty — the guard fires with
+# the misleading "wrong LAST" message. Re-run later from another branch, where
+# HEAD does not contain END, and the range is non-empty so it passes while LAST
+# is still broken. Checking LAST directly names the real cause either way.
+test -n "$LAST" || { echo "cannot derive LAST from END=$END"; exit 1; }
+test -n "$(git log $LAST..$END)" || { echo "empty range — wrong LAST"; exit 1; }
+
+# Write last, so the file's existence means "this preamble ran to completion".
+# A write before the guards above would leave a file behind after a failure,
+# and step 8 would read it as a signal that step 5 finished when it had not.
+# Equality against $RESOLVED validates what step 8 actually reads, rather than
+# the shape of one line, so extra content cannot pass it either — and a failed
+# verification removes the file, because leaving a partial write behind would
+# hand step 8 a file that passes its existence test and a wrong diagnosis.
+printf '%s\n' "$RESOLVED" > /tmp/release-end
+test "$(cat /tmp/release-end)" = "$RESOLVED" \
+  || { rm -f /tmp/release-end; \
+       echo "/tmp/release-end does not hold the resolved hash"; exit 1; }
+
+# List commits in the release range, excluding merge commits.
+git log $LAST..$END --oneline --no-merges
 ```
+
+Plain `git describe --tags --abbrev=0` without the `^` returns the newest tag,
+which is `END` itself whenever `END` _is_ a tag — a backfill or a post-release
+verification. Then `LAST==END`, the range is empty, and every check passes
+without testing anything. The `^` is required in that case and harmless when
+`END` is a commit snapshot, so it is unconditional.
+
+This preamble is the single source for `LAST` and `END`. The check block below
+and step 5 both consume it; neither restates it.
 
 Use these to populate the changelog sections. Every commit in the range should
 appear in exactly one Commits list — verify rather than assume:
 
 ```bash
-# Any commit in the range missing from CHANGELOG.md?
-for h in $(git log --format='%h' --no-merges <last-tag>..HEAD); do
-  grep -q "\`$h\`" CHANGELOG.md || echo "MISSING: $h"
+# Fails loudly if the preamble has not run. Without these guards, a block
+# pasted on its own would find LAST and END unset, git log .. would fail with
+# its exit status swallowed by the substitution, and the MISSING check's for
+# loop would iterate zero times — so it would pass vacuously while the
+# stray-hash check would report a false failure.
+# Section being written. Set it explicitly — a hardcoded example would
+# silently check the wrong section for every other release.
+: "${LAST:?run the preamble under _Generating the Changelog_ first}"
+: "${END:?run the preamble under _Generating the Changelog_ first}"
+: "${REL:?set REL to the section header, e.g. REL='v0.3.4'}"
+# REL differs from END only while END is a dev-HEAD snapshot rather than the tag.
+
+# Extract the current release's Commits section only. Scoping matters:
+# grepping the whole file reports every hash from older releases as
+# out-of-range, which drowns the result in false positives.
+sed -n "/^## \[$REL\]/,/^## \[/p" CHANGELOG.md \
+  | grep -oE '^`[0-9a-f]{7,}`' | tr -d '`' | sort -u > /tmp/listed
+
+# The range, and the in-scope subset. Any commit touching CHANGELOG.md is
+# exempt: it maintains the record, and a gap fix always does too, so the
+# exemption is what stops the loop recursing.
+git log --format='%h' --no-merges $LAST..$END | sort -u > /tmp/inrange
+> /tmp/inscope
+for h in $(cat /tmp/inrange); do
+  git show --name-only --format='' "$h" | grep -q 'CHANGELOG.md' \
+    || echo "$h" >> /tmp/inscope
 done
 
-# Any commit listed twice across the file?
-grep -oE '^`[0-9a-f]{7}`' CHANGELOG.md | sort | uniq -d
+# 1. Any in-scope commit missing from this release's section? Scope the grep
+# to the section — grepping the whole file gives a false pass when a commit
+# is misfiled under an older release.
+for h in $(cat /tmp/inscope); do
+  sed -n "/^## \[$REL\]/,/^## \[/p" CHANGELOG.md | grep -q "\`$h\`" \
+    || echo "MISSING: $h"
+done
+
+# 2. Any commit listed twice across the file?
+grep -oE '^`[0-9a-f]{7,}`' CHANGELOG.md | sort | uniq -d
+
+# 3. Any listed hash that is not in the range at all? Tested against the full
+# range, not in-scope: an exempt commit may still be listed legitimately.
+comm -23 /tmp/listed /tmp/inrange   # any output = a stray hash
+
+# 4. Any in-scope hash not listed in this release's section?
+comm -13 /tmp/listed /tmp/inscope   # any output = a gap
 ```
 
-Both checks have caught real misattribution, where a commit was filed under the
-wrong release or appeared in two Commits lists at once.
+Use `{7,}` rather than `{7}`: `git log --format='%h'` abbreviates
+dynamically, so it emits 8+ characters when 7 would be ambiguous. A fixed
+`{7}` silently drops those from `/tmp/listed`, producing a phantom gap here
+and missing a real duplicate above. The two patterns must stay identical.
+
+Step 5 snapshots `dev` HEAD into `END`; that is safe because the value is
+copied once, not re-read. The old warning against `HEAD` was about _chasing_ it
+— re-reading HEAD after each fix puts the fix back in range, so the list never
+closes. The `CHANGELOG`-touching exemption now terminates that loop regardless,
+but snapshotting still avoids a needless second round. See the range rule under
+_Changelog Format_ for the rationale; it lives there alone so it cannot go
+stale in a second copy.
+
+The gap and stray-hash checks have caught real misattribution, where a commit
+was filed under the wrong release or appeared in two Commits lists at once.
 
 **Backfills:** when a tagged release has no changelog entry, use that tag as the
 range start rather than the current one. Omit revert pairs and other net-zero

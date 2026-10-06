@@ -45,4 +45,4 @@ regardless of which tool is configured.
 The hook's built-in prompt pastes the diff inline (12 000-byte cap) and does
 not ask for a `VERDICT:` line, so an automatic run cannot be checked the way a
 manual one can. For a review that gates a merge, build the prompt per the rules
-in [`agents.md`](../agents.md) → *Code Review (Gate B)*.
+in [`AGENTS.md`](../AGENTS.md) → *Code Review (Gate B)*.
