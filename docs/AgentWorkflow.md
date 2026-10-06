@@ -8,7 +8,7 @@ This document defines the persistent operating model for the **Portfolio** proje
 |-------------|------------------------------------------|
 | **Pair Programming** | Human (Architect) and Agent (Navigator) collaborate in structured Gate reviews. |
 | **Test-First (TDD)** | Phase II (Design) mandates a test strategy before any feature logic is written. |
-| **Collective Ownership** | Shared `agents.md` and skills act as the common knowledge base. |
+| **Collective Ownership** | Shared `AGENTS.md` and skills act as the common knowledge base. |
 | **Continuous Integration** | Mandatory `pnpm validate` before final validation. |
 | **Small Releases** | Feature-branch isolation for atomic, verified deliverables. |
 
@@ -152,7 +152,7 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 1. **Confirm the active feature branch:** `issue-<number>-<description>`.
    **For parallel multi-agent sessions:** each agent works from a dedicated
    `git worktree` — see §3 Parallel Agent Isolation.
-2. **Read `agents.md`** for applicable standards and quality gates.
+2. **Read `AGENTS.md`** for applicable standards and quality gates.
 3. **Consult Velocity docs** at [docs.deployvelocity.com](https://docs.deployvelocity.com/) for component and pattern guidance.
 4. **Load the relevant skills** for the task at hand.
 5. **Follow the phases** defined in this document.

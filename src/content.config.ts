@@ -47,7 +47,7 @@ const articles = defineCollection({
         featured: z.boolean().default(false),
         locale: localeEnum.default('en'),
         /**
-         * Editorial review gate (see `agents.md` and `factory/AGENTS.md`).
+         * Editorial review gate (see `AGENTS.md` and `factory/AGENTS.md`).
          * These three values are copied from the factory source article, which
          * records the human review behind the export gate.
          */
@@ -58,7 +58,7 @@ const articles = defineCollection({
       // Review gate: nothing reaches the site without a recorded human review.
       .refine((data) => data.draft === true || data.reviewed === true, {
         message:
-          'Published articles must pass the review gate: set `reviewed: true` once the human review is done (see agents.md).',
+          'Published articles must pass the review gate: set `reviewed: true` once the human review is done (see AGENTS.md).',
         path: ['reviewed'],
       }),
 });
