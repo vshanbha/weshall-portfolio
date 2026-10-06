@@ -11,29 +11,30 @@ This skill governs pull request creation and release management for the **portfo
 
 ## Quick Reference
 
-| Task | Command |
-|------|---------|
+| Task                  | Command                                            |
+| --------------------- | -------------------------------------------------- |
 | Create feature branch | `git checkout -b issue-<number>-<description> dev` |
-| Run full validation | `pnpm validate` |
-| Run tests | `pnpm test` |
-| Run E2E tests | `pnpm test:e2e` |
-| Create PR | `gh pr create` |
-| List open PRs | `gh pr list` |
-| View PR | `gh pr view <number>` |
-| Merge PR | `gh pr merge <number>` |
-| Create tag | `git tag -a vX.Y.Z -m "Release vX.Y.Z"` |
-| Push tag | `git push origin vX.Y.Z` |
-| Create GitHub release | `gh release create vX.Y.Z` |
+| Run full validation   | `pnpm validate`                                    |
+| Run tests             | `pnpm test`                                        |
+| Run E2E tests         | `pnpm test:e2e`                                    |
+| Create PR             | `gh pr create`                                     |
+| List open PRs         | `gh pr list`                                       |
+| View PR               | `gh pr view <number>`                              |
+| Merge PR              | `gh pr merge <number>`                             |
+| Bump version          | `npm version patch --no-git-tag-version`           |
+| Create tag            | `git tag -a vX.Y.Z -m "Release vX.Y.Z"`            |
+| Push tag only         | `git push origin vX.Y.Z`                           |
+| Create GitHub release | `gh release create vX.Y.Z`                         |
 
 ## Branch Naming
 
 All work must follow the branching policy from `docs/AgentWorkflow.md`:
 
-| Branch Type | Convention | Example |
-|-------------|-----------|---------|
-| Feature | `issue-<number>-<description>` | `issue-42-add-dark-mode` |
-| Hotfix | `hotfix-<description>` | `hotfix-fix-nav-overlay` |
-| Content | `content-<description>` | `content-add-observability-article` |
+| Branch Type | Convention                     | Example                             |
+| ----------- | ------------------------------ | ----------------------------------- |
+| Feature     | `issue-<number>-<description>` | `issue-42-add-dark-mode`            |
+| Hotfix      | `hotfix-<description>`         | `hotfix-fix-nav-overlay`            |
+| Content     | `content-<description>`        | `content-add-observability-article` |
 
 - Branch from `dev` for all work.
 - Never branch from `main` except for hotfixes.
@@ -61,19 +62,20 @@ Use a prefix that categorises the change:
 <type>: <short description>
 ```
 
-| Type | When to Use |
-|------|-------------|
-| `feat` | New feature or component |
-| `fix` | Bug fix |
-| `content` | New or updated article/content |
+| Type       | When to Use                                 |
+| ---------- | ------------------------------------------- |
+| `feat`     | New feature or component                    |
+| `fix`      | Bug fix                                     |
+| `content`  | New or updated article/content              |
 | `refactor` | Code restructuring without behaviour change |
-| `chore` | Tooling, config, dependencies |
-| `docs` | Documentation only |
-| `test` | Adding or updating tests |
-| `perf` | Performance improvement |
-| `style` | Formatting, no logic change |
+| `chore`    | Tooling, config, dependencies               |
+| `docs`     | Documentation only                          |
+| `test`     | Adding or updating tests                    |
+| `perf`     | Performance improvement                     |
+| `style`    | Formatting, no logic change                 |
 
 Examples:
+
 - `feat: add dark mode toggle to header`
 - `fix: resolve mobile nav overlay z-index`
 - `content: add observability deep-dive article`
@@ -100,11 +102,23 @@ Closes #<number>
 
 ## Validation
 
-- [ ] `pnpm validate` passes
+- [ ] `pnpm validate` passes (lint, `astro check`, build + provenance stamping, `tests/build/`)
 - [ ] `pnpm test` passes
 - [ ] `pnpm test:e2e` passes (local)
-- [ ] Visual review completed in browser
+- [ ] No secrets, keys or credentials in the diff
+- [ ] Visual review completed in the browser
 - [ ] Accessibility check (WCAG 2.2 AA)
+
+## Review (Gate B)
+
+- [ ] Acceptance criteria verified one by one against the issue or plan
+- [ ] Every hunk read: nothing unrelated, nothing speculative
+- [ ] New or changed images carry `imageProvenance` and a visible disclosure _(content PRs)_
+- [ ] Published articles record `reviewed: true` / `human_reviewed: true` _(content PRs)_
+- [ ] Claims checked against their sources _(content PRs)_
+- [ ] New translation strings added to all four locale files, placeholders marked `// TODO: translate` _(i18n changes)_
+
+Reviewed by: <human handle or agent name that performed the review>
 
 ## Screenshots
 
@@ -115,14 +129,14 @@ Closes #<number>
 
 Apply labels to categorise PRs:
 
-| Label | Use |
-|-------|-----|
-| `enhancement` | New feature or improvement |
-| `bug` | Bug fix |
-| `content` | Content addition or update |
-| `chore` | Tooling or config change |
-| `breaking` | Breaking change |
-| `do not merge` | Needs further work |
+| Label          | Use                        |
+| -------------- | -------------------------- |
+| `enhancement`  | New feature or improvement |
+| `bug`          | Bug fix                    |
+| `content`      | Content addition or update |
+| `chore`        | Tooling or config change   |
+| `breaking`     | Breaking change            |
+| `do not merge` | Needs further work         |
 
 ### Draft vs Ready
 
@@ -137,55 +151,76 @@ Mark PR as ready: `gh pr ready <number>`
 
 Follow **Semantic Versioning** (`MAJOR.MINOR.PATCH`):
 
-| Increment | When |
-|-----------|------|
+| Increment | When                                                             |
+| --------- | ---------------------------------------------------------------- |
 | **MAJOR** | Breaking change to site structure, content schema, or deployment |
-| **MINOR** | New feature, new article, new page, non-breaking enhancement |
-| **PATCH** | Bug fix, content correction, dependency update, performance fix |
+| **MINOR** | New feature, new article, new page, non-breaking enhancement     |
+| **PATCH** | Bug fix, content correction, dependency update, performance fix  |
 
-Current version: see `package.json` (`"version": "0.1.0"`).
+Current version: read it from `package.json` — do not hardcode it in this doc.
+The version on `dev` may be ahead of `main` between releases, which is expected:
+the bump lands on `dev` first and is promoted by the release PR.
 
 ### Step-by-Step Release
 
-1. **Ensure `dev` is stable** — all PRs merged, `pnpm validate` passes on `dev`
-2. **Merge `dev` into `main`**
+The version bump and changelog are prepared **on `dev`**, then promoted to
+`main` by a release PR. This is deliberate: every step lands as a local commit
+on `dev`, so `.githooks/post-commit` fires the Gate B review agent and the
+findings are fixed before anything reaches `main`.
+
+1. **Ensure `dev` is stable** — all feature PRs merged, `pnpm validate` passes on `dev`
+2. **Write the changelog on `dev`** (see _Generating the Changelog_ below).
+   Backfill any tagged releases that have no entry while you are in the file.
+   ```bash
+   git add CHANGELOG.md
+   git commit -m "chore: release vX.Y.Z changelog"
+   ```
+3. **Bump the version on `dev`**
+   ```bash
+   # Choose one:
+   npm version patch --no-git-tag-version   # 0.3.2 → 0.3.3
+   npm version minor --no-git-tag-version   # 0.3.2 → 0.4.0
+   npm version major --no-git-tag-version   # 0.3.2 → 1.0.0
+   git add package.json
+   git commit -m "chore: bump version to X.Y.Z"
+   ```
+   `--no-git-tag-version` keeps the tag off `dev` — tags belong on `main`.
+   Record the bump commit in the changelog's Commits list if you want the entry
+   exhaustive; a follow-up docs commit is fine.
+4. **Push `dev`** — the pre-push hook runs `pnpm test:e2e` first
+   ```bash
+   git push origin dev
+   ```
+5. **Open the release PR `dev` → `main`**
+   ```bash
+   gh pr create --base main --head dev \
+     --title "Release: vX.Y.Z" \
+     --body "<what shipped, validation results, Gate B record>"
+   ```
+6. **Merge the release PR — this deploys.**
+   Merging into `main` produces a `push` event on `main`, which runs `ci.yml`
+   and then `deploy.yml`. Treat the merge as the production release: confirm the
+   branch is green and that Gate B has been signed off _before_ merging.
+7. **Tag the release on `main`**
    ```bash
    git checkout main
    git pull origin main
-   git merge dev
-   ```
-3. **Run final validation on `main`**
-   ```bash
-   pnpm validate
-   ```
-4. **Update version in `package.json`**
-   ```bash
-   # Choose one:
-   npm version patch   # 0.1.0 → 0.1.1
-   npm version minor   # 0.1.0 → 0.2.0
-   npm version major   # 0.1.0 → 1.0.0
-   ```
-5. **Generate changelog** (see format below)
-6. **Commit version bump + changelog**
-   ```bash
-   git add package.json pnpm-lock.yaml CHANGELOG.md
-   git commit -m "chore: release vX.Y.Z"
-   ```
-7. **Tag the release**
-   ```bash
    git tag -a vX.Y.Z -m "Release vX.Y.Z"
+   git push origin vX.Y.Z
    ```
-8. **Push to `main`**
-   ```bash
-   git push origin main --follow-tags
-   ```
-9. **Create GitHub Release**
+   Push only the tag. `git push origin main --follow-tags` re-pushes `main` and
+   can trigger a second deployment for no reason. Note the pre-push hook gates on
+   the current _branch_, so with `main` checked out this still runs E2E first —
+   that is expected, not a second deploy.
+8. **Create the GitHub Release**
    ```bash
    gh release create vX.Y.Z \
      --title "vX.Y.Z" \
      --notes-file CHANGELOG.md
    ```
-10. **`deploy.yml` triggers automatically** once Validate succeeds for that push to `main`
+9. **Verify the deploy** — it fired at step 6, from the merge. Check the
+   `Deploy to GitHub Pages` run for that commit rather than waiting for a new
+   one. Steps 7 and 8 are metadata only and must not produce a second deploy.
 
 ### Changelog Format
 
@@ -216,11 +251,16 @@ Maintain a `CHANGELOG.md` at the portfolio root. Use this structure:
 ```
 
 Rules:
-- Group changes by type: Features, Bug Fixes, Content, Chores/Other
+
+- Group changes by type: Features, Bug Fixes, Content, Tests, CI/CD, Docs, Chores
 - Each entry links to its commit with a short hash
-- The Commits section lists all commits included in the release
+- The Commits section lists every non-merge commit in the release range
+- A commit belongs to exactly one release — check for duplicates and misattribution
+- Newest version at the top; use the tag date for backfilled entries
+- British English; no person or company names beyond what the site already publishes
 - Use markdown formatting throughout
 - Date format: `YYYY-MM-DD`
+- Must pass `pnpm format:check` — run `npx prettier --write CHANGELOG.md` if it warns
 
 ### Generating the Changelog
 
@@ -230,11 +270,29 @@ Collect commits since the last tag:
 # Find last tag
 git describe --tags --abbrev=0
 
-# List commits since last tag
-git log <last-tag>..HEAD --oneline
+# List commits in the release range, excluding merge commits
+git log <last-tag>..HEAD --oneline --no-merges
 ```
 
-Use these to populate the changelog sections.
+Use these to populate the changelog sections. Every commit in the range should
+appear in exactly one Commits list — verify rather than assume:
+
+```bash
+# Any commit in the range missing from CHANGELOG.md?
+for h in $(git log --format='%h' --no-merges <last-tag>..HEAD); do
+  grep -q "\`$h\`" CHANGELOG.md || echo "MISSING: $h"
+done
+
+# Any commit listed twice across the file?
+grep -oE '^`[0-9a-f]{7}`' CHANGELOG.md | sort | uniq -d
+```
+
+Both checks have caught real misattribution, where a commit was filed under the
+wrong release or appeared in two Commits lists at once.
+
+**Backfills:** when a tagged release has no changelog entry, use that tag as the
+range start rather than the current one. Omit revert pairs and other net-zero
+commit sequences, and say so in the backfill commit message.
 
 ## CI/CD Integration
 
@@ -245,13 +303,41 @@ succeeded for a push to `main`:
 2. Deploys to GitHub Pages
 
 This means:
+
 - **Every push to `dev` or `main`** — runs the `ci.yml` checks
 - **Checks** — live in `ci.yml` only; deployment waits for them to pass
 - **PRs to `dev`** — do not trigger deployment
-- **Merging `dev` → `main`** — does not trigger deployment (manual release process)
-- **Pushing to `main`** (via release) — triggers deployment
+- **PRs to `main`** — do not deploy until merged; the merge is the trigger
+- **Merging any PR into `main`** — **does** deploy. `deploy.yml` keys off
+  `workflow_run` for `Validate` on `branches: [main]` with
+  `github.event.workflow_run.event == 'push'`, and a merge is a push to `main`.
+  There is no separate deploy step to remember.
+- **Pushing tags** — do not deploy; tag-only pushes do not rerun `Validate` for a
+  new `main` commit.
 
 E2E tests run locally only (pre-push hook), not in CI.
+
+### Git hooks and the Gate B agent
+
+`.githooks/` is active via `git config core.hooksPath .githooks`:
+
+| Hook          | Fires on               | Runs                    |
+| ------------- | ---------------------- | ----------------------- |
+| `pre-commit`  | commit to `dev`/`main` | `pnpm validate`         |
+| `post-commit` | commit to `dev`/`main` | the Gate B review agent |
+| `pre-push`    | push to `dev`/`main`   | `pnpm test:e2e`         |
+
+Review runs on **local commits only**. A GitHub merge fast-forwarded by
+`git pull` creates no local commit, so PRs merged on GitHub are not reviewed
+automatically — start the agent yourself with `./scripts/review-agent` if you
+want the pass. Its findings are worth acting on: it has caught commit
+misattribution and scope errors in release prep that the automated checks miss.
+
+`npm test:e2e` must run with `ASTRO_PREVIEW_BACKGROUND=1` set on the Playwright
+`webServer` command. Astro 7.2+ backgrounds `astro preview` when it detects an
+agentic environment, so the foreground process exits and Playwright fails with
+`Process from config.webServer exited early`. Without this the pre-push hook
+cannot pass.
 
 ## Commit Guidelines
 
@@ -263,11 +349,11 @@ E2E tests run locally only (pre-push hook), not in CI.
 
 ## When to Use This Skill
 
-| Scenario | Action |
-|----------|--------|
-| Finishing a feature | Create PR following PR workflow |
-| Fixing a bug | Create PR with `fix:` prefix |
+| Scenario                        | Action                           |
+| ------------------------------- | -------------------------------- |
+| Finishing a feature             | Create PR following PR workflow  |
+| Fixing a bug                    | Create PR with `fix:` prefix     |
 | Publishing content from factory | Create PR with `content:` prefix |
-| Preparing a release | Follow release process |
-| Bumping version | Follow semantic versioning |
-| Writing changelog | Follow changelog format |
+| Preparing a release             | Follow release process           |
+| Bumping version                 | Follow semantic versioning       |
+| Writing changelog               | Follow changelog format          |
