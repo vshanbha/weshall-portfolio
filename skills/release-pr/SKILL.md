@@ -252,7 +252,7 @@ Maintain a `CHANGELOG.md` at the portfolio root. Use this structure:
 
 Rules:
 
-- Group changes by type: Features, Bug Fixes, Content, Tests, CI/CD, Docs, Chores
+- Group changes by type: Features, Bug Fixes, Content, Security, Tests, CI/CD, Docs, Chores
 - Each entry links to its commit with a short hash
 - The Commits section lists every non-merge commit in the release range
 - A commit belongs to exactly one release — check for duplicates and misattribution
