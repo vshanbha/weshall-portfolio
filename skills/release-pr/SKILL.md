@@ -385,10 +385,13 @@ test -n "$(git log $LAST..$END)" || { echo "empty range — wrong LAST"; exit 1;
 # A write before the guards above would leave a file behind after a failure,
 # and step 8 would read it as a signal that step 5 finished when it had not.
 # Equality against $RESOLVED validates what step 8 actually reads, rather than
-# the shape of one line, so extra content cannot pass it either.
+# the shape of one line, so extra content cannot pass it either — and a failed
+# verification removes the file, because leaving a partial write behind would
+# hand step 8 a file that passes its existence test and a wrong diagnosis.
 printf '%s\n' "$RESOLVED" > /tmp/release-end
 test "$(cat /tmp/release-end)" = "$RESOLVED" \
-  || { echo "/tmp/release-end does not hold the resolved hash"; exit 1; }
+  || { rm -f /tmp/release-end; \
+       echo "/tmp/release-end does not hold the resolved hash"; exit 1; }
 
 # List commits in the release range, excluding merge commits.
 git log $LAST..$END --oneline --no-merges

@@ -33,6 +33,7 @@ npm — and a lint-time devDependency that never reaches the published site.
 
 ### Commits
 
+`e301116` - fix(skill): write release-end last so its existence means completion
 `3ed58f3` - fix(skill): make the persistence guards detect what their messages claim
 `a34fadb` - fix(skill): stop the persistence guard writing garbage, unwrap annotated tags
 `6f8ac13` - fix(skill): close the guard's precision gaps and restate the exemption rule
