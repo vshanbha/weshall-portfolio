@@ -185,8 +185,10 @@ findings are fixed before anything reaches `main`.
    git commit -m "chore: bump version to X.Y.Z"
    ```
    `--no-git-tag-version` keeps the tag off `dev` — tags belong on `main`.
-   Record the bump commit in the changelog's Commits list if you want the entry
-   exhaustive; a follow-up docs commit is fine.
+   The bump commit is inside the range, so it must be in the Commits list.
+   Since it does not exist yet at this point, add it with a follow-up docs
+   commit after step 3 — that commit falls outside the range, so it is not
+   itself listed.
 4. **Push `dev`** — the pre-push hook runs `pnpm test:e2e` first
    ```bash
    git push origin dev
@@ -295,23 +297,31 @@ REL='v0.3.4'          # the section being written, e.g. /^## \[v0.3.4\]/
 LAST='v0.3.3'
 BUMP='<bump-commit>'
 
-# Any commit in the range missing from CHANGELOG.md?
+# Any commit in the range missing from this release's section? Scope the
+# grep to the same section as the checks below — grepping the whole file
+# gives a false pass when a commit is misfiled under an older release.
 for h in $(git log --format='%h' --no-merges $LAST..$BUMP); do
-  grep -q "\`$h\`" CHANGELOG.md || echo "MISSING: $h"
+  sed -n "/^## \[$REL\]/,/^## \[/p" CHANGELOG.md | grep -q "\`$h\`" \
+    || echo "MISSING: $h"
 done
 
 # Any commit listed twice across the file?
-grep -oE '^`[0-9a-f]{7}`' CHANGELOG.md | sort | uniq -d
+grep -oE '^`[0-9a-f]{7,}`' CHANGELOG.md | sort | uniq -d
 
 # Any hash in this release's section that is not in the range?
 sed -n "/^## \[$REL\]/,/^## \[/p" CHANGELOG.md \
-  | grep -oE '^`[0-9a-f]{7}`' | tr -d '`' | sort -u > /tmp/listed
+  | grep -oE '^`[0-9a-f]{7,}`' | tr -d '`' | sort -u > /tmp/listed
 git log --format='%h' --no-merges $LAST..$BUMP | sort -u > /tmp/inrange
 comm -23 /tmp/listed /tmp/inrange   # any output = a stray hash
 
 # Any hash in the range not listed in this release's section?
 comm -13 /tmp/listed /tmp/inrange   # any output = a gap
 ```
+
+Use `{7,}` rather than `{7}`: `git log --format='%h'` abbreviates
+dynamically, so it emits 8+ characters when 7 would be ambiguous. A fixed
+`{7}` silently drops those from `/tmp/listed`, producing a phantom gap here
+and missing a real duplicate above. The two patterns must stay identical.
 
 Stop at `<bump-commit>`, not `HEAD`. Chasing `HEAD` makes the check recurse:
 each fix commit becomes a new commit in range, so it must be listed too, and
