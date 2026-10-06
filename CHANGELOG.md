@@ -33,6 +33,19 @@ npm — and a lint-time devDependency that never reaches the published site.
 
 ### Commits
 
+`02eccad` - fix(skill): restore the list indent lost in the step 8 rewrite
+`550df15` - docs(skill): tighten the guard-comment counterfactuals
+`1e04f93` - docs(skill): correct three prose claims the Gate B pass measured
+`ef84475` - fix(skill): fail loudly on missing LAST and correct the guard rationale
+`43938dc` - fix(skill): guard LAST itself and stop duplicating the derivation
+`159122c` - fix(skill): guard the main check block against an empty range
+`8fd11d7` - fix(skill): single-source the range rationale and add a post-tag re-check
+`66e7a1d` - fix(skill): qualify the follow-up commit claim for both range phases
+`9d223ae` - fix(skill): end the range at the tag once a release is tagged
+`4c43aa7` - fix(changelog): backfill the nine commits missing from v0.3.3
+`d12c038` - fix(skill): close the prep-commit contradiction and harden the checks
+`e585a3e` - fix(skill): scope the out-of-range check and resolve the prep-commit rule
+`3e18ce7` - fix(changelog): make the Commits check verifiable and document its ordering
 `dc4aaa6` - chore: bump version to 0.3.4
 `5c68008` - fix(changelog): apply Gate B findings to the v0.3.4 entry
 `438d0f0` - chore: release v0.3.4 changelog
