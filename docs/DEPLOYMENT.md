@@ -6,11 +6,11 @@ This guide covers deployment scenarios for the We shall build portfolio site.
 
 The site uses three environment variables for configuration:
 
-| Variable | Purpose | Example Values |
-|----------|---------|----------------|
-| `SITE_URL` | Full site URL (used for canonical URLs, OG images, sitemap) | `http://localhost:4321`, `https://vshanbha.github.io/weshall-portfolio`, `https://weshall.build` |
-| `BASE_PATH` | Base path for routing (use `/` for root, `/subpath` for subdirectory) | `/`, `/weshall-portfolio` |
-| `PLAYWRIGHT_BASE_URL` | Base URL for E2E tests | `http://localhost:4321`, `https://vshanbha.github.io/weshall-portfolio` |
+| Variable              | Purpose                                                               | Example Values                                                                                   |
+| --------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `SITE_URL`            | Full site URL (used for canonical URLs, OG images, sitemap)           | `http://localhost:4321`, `https://vshanbha.github.io/weshall-portfolio`, `https://weshall.build` |
+| `BASE_PATH`           | Base path for routing (use `/` for root, `/subpath` for subdirectory) | `/`, `/weshall-portfolio`                                                                        |
+| `PLAYWRIGHT_BASE_URL` | Base URL for E2E tests                                                | `http://localhost:4321`, `https://vshanbha.github.io/weshall-portfolio`                          |
 
 ## Deployment Scenarios
 
@@ -19,11 +19,13 @@ The site uses three environment variables for configuration:
 **Setup:**
 
 1. Copy a deployment template:
+
    ```bash
    cp .env.gh-pages .env
    ```
 
 2. Edit `.env` and update `SITE_URL` to `http://localhost:4321`:
+
    ```bash
    SITE_URL=http://localhost:4321
    BASE_PATH=/
@@ -63,6 +65,7 @@ No `.env` file is needed in CI/CD. Deployment happens automatically on push to `
 To test the GitHub Pages scenario locally:
 
 1. Copy the template:
+
    ```bash
    cp .env.gh-pages .env
    ```
@@ -80,6 +83,7 @@ Site will be available at http://localhost:4321/weshall-portfolio
 **When Ready:**
 
 1. Update GitHub Actions workflow with new URLs:
+
    ```yaml
    - run: pnpm build
      env:
@@ -122,11 +126,13 @@ The latest deployment's `sha` should match the commit on `main`.
 Astro generates deterministic content-hashed filenames under `/_astro/` (e.g. `page.BraL6W9_.js`). If the hashes match between a local build and the live site, the same build is deployed.
 
 1. Build locally:
+
    ```bash
    pnpm build
    ```
 
 2. Pick any asset from the live page source and compare:
+
    ```bash
    # live asset hash
    curl -s https://weshall.build/en/ | grep -o '/_astro/[a-zA-Z0-9._-]*' | sort -u

@@ -30,7 +30,9 @@ const wordCount = entry.body?.split(/\s+/).filter(Boolean).length ?? 0;
 const canonicalUrl = new URL(`/${locale}/blog/${entry.id}/`, siteConfig.url);
 
 const ogImage = entry.data.image
-  ? typeof entry.data.image === 'string' ? entry.data.image : entry.data.image.src
+  ? typeof entry.data.image === 'string'
+    ? entry.data.image
+    : entry.data.image.src
   : `/og/${locale}/blog/${entry.id}.png`;
 
 // Publishing principles — locale-specific About-page editorial-standards anchor.

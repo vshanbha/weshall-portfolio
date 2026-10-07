@@ -20,10 +20,7 @@ const t = useTranslations(locale);
 const tr = getTranslations(locale) as TranslationKeys;
 ---
 
-<PageLayout
-  title={t('about.meta.title')}
-  description={t('about.meta.description')}
->
+<PageLayout title={t('about.meta.title')} description={t('about.meta.description')}>
   <section class="py-24 md:py-32">
     <div class="container mx-auto px-4">
       <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start max-w-4xl mx-auto">
@@ -55,11 +52,19 @@ const tr = getTranslations(locale) as TranslationKeys;
     <div class="container mx-auto px-4 max-w-3xl">
       <h2 class="text-3xl font-bold font-display mb-8">{t('about.beliefs.title')}</h2>
       <Accordion
-        items={[...tr.about.beliefs.commandments].map((item: { title: string; content: string; defaultOpen: boolean; href?: string; linkText?: string }) => ({
-          ...item,
-          href: item.href ? `/${locale}${item.href}` : undefined,
-          linkText: item.linkText ?? t('common.readMore'),
-        }))}
+        items={[...tr.about.beliefs.commandments].map(
+          (item: {
+            title: string;
+            content: string;
+            defaultOpen: boolean;
+            href?: string;
+            linkText?: string;
+          }) => ({
+            ...item,
+            href: item.href ? `/${locale}${item.href}` : undefined,
+            linkText: item.linkText ?? t('common.readMore'),
+          })
+        )}
         variant="card"
         size="lg"
       />
@@ -70,7 +75,7 @@ const tr = getTranslations(locale) as TranslationKeys;
     <div class="container mx-auto px-4 max-w-3xl">
       <h2 class="text-3xl font-bold font-display mb-8">{t('about.careerarc.title')}</h2>
       {tr.about.careerarc.paragraphs.map((p) => (
-        <p class="mb-4 text-muted-foreground leading-relaxed" set:html={p}></p>
+        <p class="mb-4 text-muted-foreground leading-relaxed" set:html={p} />
       ))}
       {tr.about.careerarc.highlights.map((h) => (
         <div class="mb-4">
@@ -78,7 +83,10 @@ const tr = getTranslations(locale) as TranslationKeys;
           <span class="text-muted-foreground leading-relaxed">{h.description}</span>
         </div>
       ))}
-      <p class="mb-4 text-muted-foreground leading-relaxed" set:html={t('about.careerarc.earlier')}></p>
+      <p
+        class="mb-4 text-muted-foreground leading-relaxed"
+        set:html={t('about.careerarc.earlier')}
+      />
       <p class="text-muted-foreground leading-relaxed">
         <a
           href={t('about.careerarc.linkedin.url')}
@@ -97,52 +105,58 @@ const tr = getTranslations(locale) as TranslationKeys;
     <div class="container mx-auto px-4 max-w-3xl">
       <h2 class="text-3xl font-bold font-display mb-4">{t('about.speaking.title')}</h2>
       <h3 class="text-xl font-semibold font-display mb-4">{t('about.speaking.talks.title')}</h3>
-      {tr.about.speaking.talks.items.map((item: { event: string; title: string; description: string }) => (
-        <div class="mb-6">
-          <p class="text-foreground font-semibold mb-1">{item.event}</p>
-          <p class="text-muted-foreground leading-relaxed">
-            <em>{item.title}</em> — {item.description}
-          </p>
-        </div>
-      ))}
+      {tr.about.speaking.talks.items.map(
+        (item: { event: string; title: string; description: string }) => (
+          <div class="mb-6">
+            <p class="text-foreground font-semibold mb-1">{item.event}</p>
+            <p class="text-muted-foreground leading-relaxed">
+              <em>{item.title}</em> — {item.description}
+            </p>
+          </div>
+        )
+      )}
       <p class="text-muted-foreground mb-8">{t('about.speaking.articles.intro')}</p>
       <h3 class="text-xl font-semibold font-display mb-4">{t('about.speaking.articles.title')}</h3>
       <ol class="space-y-3 list-decimal list-inside">
-        {tr.about.speaking.articles.items.map((item: { title: string; url: string; platform: string }) => (
-          <li class="text-muted-foreground">
-            {item.url ? (
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:text-primary underline underline-offset-2 transition-colors"
-              >
-                {item.title}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="inline-block w-3.5 h-3.5 ml-1 align-text-bottom"
-                  aria-hidden="true"
+        {tr.about.speaking.articles.items.map(
+          (item: { title: string; url: string; platform: string }) => (
+            <li class="text-muted-foreground">
+              {item.url ? (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-primary underline underline-offset-2 transition-colors"
                 >
-                  <path d="M7 17L17 7" />
-                  <path d="M7 7h10v10" />
-                </svg>
-              </a>
-            ) : (
-              <span>{item.title}</span>
-            )}
-            <span class="inline-flex items-center rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground ml-2">
-              {item.platform}
-            </span>
-          </li>
-        ))}
+                  {item.title}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="inline-block w-3.5 h-3.5 ml-1 align-text-bottom"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </a>
+              ) : (
+                <span>{item.title}</span>
+              )}
+              <span class="inline-flex items-center rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground ml-2">
+                {item.platform}
+              </span>
+            </li>
+          )
+        )}
       </ol>
-      <h3 class="text-xl font-semibold font-display mt-8 mb-4">{t('about.speaking.mentoring.title')}</h3>
+      <h3 class="text-xl font-semibold font-display mt-8 mb-4">
+        {t('about.speaking.mentoring.title')}
+      </h3>
       {tr.about.speaking.mentoring.items.map((item: { org: string; detail: string }) => (
         <p class="text-muted-foreground leading-relaxed mb-3">
           <strong class="text-foreground font-semibold">{item.org}</strong> — {item.detail}
@@ -159,7 +173,12 @@ const tr = getTranslations(locale) as TranslationKeys;
       ))}
       <p class="mt-8 text-lg font-medium">
         {t('about.offtheclock.closingLead')}
-        <a href={`/${locale}/contact`} class="underline underline-offset-2 hover:text-primary transition-colors">{t('about.offtheclock.closing')}</a>
+        <a
+          href={`/${locale}/contact`}
+          class="underline underline-offset-2 hover:text-primary transition-colors"
+        >
+          {t('about.offtheclock.closing')}
+        </a>
       </p>
     </div>
   </section>

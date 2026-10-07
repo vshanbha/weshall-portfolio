@@ -197,9 +197,7 @@ export function createServiceSchema(): WithContext<Service> {
       name: 'Vishal Shanbhag',
       jobTitle: 'Senior Architect & Engineering Lead',
       url: siteConfig.url,
-      sameAs: [
-        'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
-      ],
+      sameAs: ['https://www.linkedin.com/in/vishal-shanbhag-70b679a/'],
     } as Person,
     description:
       'Senior engineering judgement for post-MVP companies. Architecture, hiring, tech selection, and hardening. 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products.',

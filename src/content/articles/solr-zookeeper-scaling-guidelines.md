@@ -4,7 +4,7 @@ description: A set of guidelines for scaling deployment of Apache Solr and Zooke
 publishedAt: 2026-08-15
 author: Vishal Shanbhag
 image: ./solr-zookeeper-hero.svg
-imageAlt: "Three Node Solr Deployment Architecture showing Solr, Zookeeper, and shard replicas across three nodes"
+imageAlt: 'Three Node Solr Deployment Architecture showing Solr, Zookeeper, and shard replicas across three nodes'
 tags:
   - apache-solr
   - apache-zookeeper
@@ -41,16 +41,19 @@ Apache Solr requires the use of Apache ZooKeeper for cluster management. Therefo
 Apache Solr and Apache ZooKeeper are two separate clusters. Each of them can handle the failure of one or more nodes depending on how they are set up.
 
 **ZooKeeper quorum rules:**
+
 - In a ZooKeeper Ensemble, more than half of the total nodes should be up for ZooKeeper to be fully functional and responsive. For a High Availability (HA) setup, therefore, a minimum of 3 nodes are suggested.
 - In general, there should be 2n+1 nodes in a ZooKeeper ensemble. It can then handle failure of up to "n" nodes.
 - Solr uses ZooKeeper to manage its configuration and, as such, Solr nodes need ZooKeeper to be functional and responsive for each node of the Solr cluster to be responsive.
 
 **Replication and resilience:**
+
 - Solr indexes can be set up to have one or more "replicas". When there are two or more Solr nodes available, and there is a replication factor of 2, then Solr will automatically spread the replicas over multiple nodes at the time of index creation.
 - As such, having a replication factor of a minimum of 2 and having a minimum of two Solr nodes helps ensure high availability.
 - With more Solr nodes being available, along with a higher replication factor, better resilience and query performance can be achieved.
 
 **Memory and storage:**
+
 - Solr is heavy on file I/O and RAM usage; as such, when using the same storage volumes to host multiple Solr index replicas, there may be I/O limitations. In general, it is best to use separate storage volumes for each Solr Node.
 - Solr, being a Java process, needs a JVM Heap allocated for it to be able to use the available RAM. As a general rule, set up each Solr Node with 8 GB to 16 GB of JVM heap.
 - A higher heap size can be allocated, but it comes at the cost of longer Full Garbage Collection pause times.
@@ -62,18 +65,21 @@ Apache Solr and Apache ZooKeeper can be deployed on bare-metal servers, Virtual 
 Logically, the structure of the deployment won't change much. What changes is the containerization technology that is used.
 
 **Each Solr Node will typically contain:**
+
 - Linux OS (e.g. CentOS, Ubuntu, RHEL)
 - Java Runtime Environment
 - Solr installation
 - Apache ZooKeeper (if the cluster is not separately installed)
 
 **Firewall ports should be opened to allow for I/O between:**
+
 - Solr — ZooKeeper
 - Zookeeper — Zookeeper nodes
 - Client Apps — Solr
 - Client Apps — Zookeeper
 
 **Post-install sequence:**
+
 1. Spin up ZooKeeper ensemble
 2. Add application-specific Solr configuration to ZooKeeper
 3. Spin up Solr cluster
@@ -88,6 +94,7 @@ The Solr Collection has been broken into 2 shards (SH1 and SH2), and each shard 
 Since both shards have one replica on each Solr Node (N1, N2, N3) the whole index is available on all 3 Nodes.
 
 **Operations considerations:**
+
 - **Query Performance:** Since all nodes have the full index and the index is distributed into 2 shards, Solr will effectively try to use two servers on most search queries.
 - **Resilience:** This configuration can handle up to two Solr processes going down. However, for ZooKeeper, a majority (more than 50%) of nodes should be up for the ensemble to function properly. In this case, the total ZK nodes are 3, so the majority is 2. As such, this configuration can handle one complete server being offline.
 - **Storage:** Due to a replication factor of 3, the total storage used is three times the total index size.
@@ -100,6 +107,6 @@ If the nodes are in regions that are separated by large geographical distances, 
 
 ---
 
-*The full article covers additional detail relevant to larger-scale deployments with high-throughput search workloads.*
+_The full article covers additional detail relevant to larger-scale deployments with high-throughput search workloads._
 
-[*Read the full version on Medium*](https://levelup.gitconnected.com/apache-solr-and-zookeeper-scaling-guidelines-269dad4fbfb2)
+[_Read the full version on Medium_](https://levelup.gitconnected.com/apache-solr-and-zookeeper-scaling-guidelines-269dad4fbfb2)

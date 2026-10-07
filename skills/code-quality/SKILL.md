@@ -13,36 +13,36 @@ This skill enforces consistent code quality across the Velocity Astro project us
 
 These are **mandatory** and override general TypeScript conventions when they conflict:
 
-| Law | Rule |
-|-----|------|
-| **Zero-JS by Default** | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands. |
-| **Strictly Typed Content** | Content Collections must use Zod schemas via `defineCollection()`. Never skip schema validation. |
-| **Intentional Hydration** | Always specify `client:*` directives explicitly (`client:load`, `client:idle`, `client:visible`). Never rely on defaults. |
-| **Image Optimisation** | Never use raw `<img>` tags. Always use `<Image />` or `getImage()` from `astro:assets`. |
-| **No Untyped Content** | Never use `Astro.glob()`. Always use `getCollection()` / `getEntry()` from `astro:content`. |
-| **Typed Environment** | Use `astro:env` for type-safe environment variables. Never use `process.env`. |
+| Law                        | Rule                                                                                                                      |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Zero-JS by Default**     | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands.            |
+| **Strictly Typed Content** | Content Collections must use Zod schemas via `defineCollection()`. Never skip schema validation.                          |
+| **Intentional Hydration**  | Always specify `client:*` directives explicitly (`client:load`, `client:idle`, `client:visible`). Never rely on defaults. |
+| **Image Optimisation**     | Never use raw `<img>` tags. Always use `<Image />` or `getImage()` from `astro:assets`.                                   |
+| **No Untyped Content**     | Never use `Astro.glob()`. Always use `getCollection()` / `getEntry()` from `astro:content`.                               |
+| **Typed Environment**      | Use `astro:env` for type-safe environment variables. Never use `process.env`.                                             |
 
 ### Anti-Patterns (Never Do)
 
-| Anti-Pattern | Correct Approach |
-|-------------|------------------|
-| Framework UI for static-only content | Use `.astro` components |
-| Raw `<img>` tags | Use `<Image>` from `astro:assets` |
-| Content without Zod schema | Define schema in `src/content.config.ts` |
+| Anti-Pattern                                       | Correct Approach                                     |
+| -------------------------------------------------- | ---------------------------------------------------- |
+| Framework UI for static-only content               | Use `.astro` components                              |
+| Raw `<img>` tags                                   | Use `<Image>` from `astro:assets`                    |
+| Content without Zod schema                         | Define schema in `src/content.config.ts`             |
 | Default hydration (`client:load` without thinking) | Use `client:idle` or `client:visible` where possible |
-| `Astro.glob()` for structured content | Use `getCollection()` from `astro:content` |
-| `process.env` for typed config | Use `astro:env` |
+| `Astro.glob()` for structured content              | Use `getCollection()` from `astro:content`           |
+| `process.env` for typed config                     | Use `astro:env`                                      |
 
 ## Quick Reference
 
-| Task | Command |
-|------|---------|
-| Lint | `pnpm lint` |
-| Lint and fix | `pnpm lint:fix` |
-| Format | `pnpm format` |
+| Task             | Command             |
+| ---------------- | ------------------- |
+| Lint             | `pnpm lint`         |
+| Lint and fix     | `pnpm lint:fix`     |
+| Format           | `pnpm format`       |
 | Check formatting | `pnpm format:check` |
-| Type check | `pnpm check` |
-| Full validation | `pnpm validate` |
+| Type check       | `pnpm check`        |
+| Full validation  | `pnpm validate`     |
 
 **Always run `pnpm validate` before committing.** This runs lint + type check + build in sequence.
 
@@ -157,24 +157,23 @@ import Card from './Card.astro';
 
 Before committing any changes:
 
-1. `pnpm lint` — no errors
-2. `pnpm check` — no type errors
-3. `pnpm build` — build succeeds
-4. `pnpm test:build` — build-output tests pass
-5. Or simply: `pnpm validate` (runs all four)
+1. `pnpm format:check` — all files formatted
+2. `pnpm lint` — no errors
+3. `pnpm check` — no type errors
+4. `pnpm build` — build succeeds
+5. `pnpm test:build` — build-output tests pass
+6. Or simply: `pnpm validate` (runs all five)
 
-`pnpm format:check` is **not** part of `validate` and is not enforced. It
-currently reports issues in roughly 136 files, plus 6 that
-`prettier-plugin-astro` cannot parse at all (`<!-- -->` comments inside certain
-expression positions), so it is not usable as a gate as things stands. Format
-the files you touch with `pnpm format -- <path>`; a repo-wide pass is separate
-work and would touch nearly every source file.
+Formatting is enforced as of the repo-wide format pass. `prettier-plugin-astro`
+is on 1.x; the 0.14 line could not parse five `.astro` files at all
+(`<!-- -->` comments in expression positions), which is why the check was absent
+before. Format the files you touch with `pnpm format -- <path>`.
 
 ## Common Issues
 
-| Problem | Solution |
-|---------|----------|
-| Prettier formatting conflict | Run `pnpm format` to auto-resolve |
-| Type error in Astro file | Check frontmatter types, ensure proper imports |
-| ESLint unused import | Remove the import, don't comment it out |
+| Problem                      | Solution                                               |
+| ---------------------------- | ------------------------------------------------------ |
+| Prettier formatting conflict | Run `pnpm format` to auto-resolve                      |
+| Type error in Astro file     | Check frontmatter types, ensure proper imports         |
+| ESLint unused import         | Remove the import, don't comment it out                |
 | Build fails after type check | Check `astro:content` imports match collection schemas |

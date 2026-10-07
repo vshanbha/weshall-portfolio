@@ -4,24 +4,24 @@ This document defines the persistent operating model for the **Portfolio** proje
 
 ## 1. Core XP Practices Applied
 
-| XP Practice | Human-Agent Collaborative Implementation |
-|-------------|------------------------------------------|
-| **Pair Programming** | Human (Architect) and Agent (Navigator) collaborate in structured Gate reviews. |
-| **Test-First (TDD)** | Phase II (Design) mandates a test strategy before any feature logic is written. |
-| **Collective Ownership** | Shared `AGENTS.md` and skills act as the common knowledge base. |
-| **Continuous Integration** | Mandatory `pnpm validate` before final validation. |
-| **Small Releases** | Feature-branch isolation for atomic, verified deliverables. |
+| XP Practice                | Human-Agent Collaborative Implementation                                        |
+| -------------------------- | ------------------------------------------------------------------------------- |
+| **Pair Programming**       | Human (Architect) and Agent (Navigator) collaborate in structured Gate reviews. |
+| **Test-First (TDD)**       | Phase II (Design) mandates a test strategy before any feature logic is written. |
+| **Collective Ownership**   | Shared `AGENTS.md` and skills act as the common knowledge base.                 |
+| **Continuous Integration** | Mandatory `pnpm validate` before final validation.                              |
+| **Small Releases**         | Feature-branch isolation for atomic, verified deliverables.                     |
 
 ## 2. The Collaborative Lifecycle
 
-| Phase | Description | Participant | XP Practice | Applicable Rules |
-|-------|-------------|-------------|-------------|------------------|
-| **I. Scoping** | Define goal/requirement. | Human | — | — |
-| **II. Design** | Map architecture, propose tasks/skills & Test Strategy. | Agent | Test-First | Architecture Rules, Velocity Patterns |
-| **III. Review** | Gate A: Pair Review Session. | Human | Pair Programming | — |
-| **IV. Build** | Implementation using specialised skills. | Agent | — | Astro Technical Standards, Velocity Conventions |
-| **V. Validation** | Run automated tests + integration checks. | Agent | TDD | Quality Bar / Test Matrix |
-| **VI. Final Review** | Gate B: Pair Review + CI/CD Gate. | Human | CI / Pair Programming | Commit Guidelines |
+| Phase                | Description                                             | Participant | XP Practice           | Applicable Rules                                |
+| -------------------- | ------------------------------------------------------- | ----------- | --------------------- | ----------------------------------------------- |
+| **I. Scoping**       | Define goal/requirement.                                | Human       | —                     | —                                               |
+| **II. Design**       | Map architecture, propose tasks/skills & Test Strategy. | Agent       | Test-First            | Architecture Rules, Velocity Patterns           |
+| **III. Review**      | Gate A: Pair Review Session.                            | Human       | Pair Programming      | —                                               |
+| **IV. Build**        | Implementation using specialised skills.                | Agent       | —                     | Astro Technical Standards, Velocity Conventions |
+| **V. Validation**    | Run automated tests + integration checks.               | Agent       | TDD                   | Quality Bar / Test Matrix                       |
+| **VI. Final Review** | Gate B: Pair Review + CI/CD Gate.                       | Human       | CI / Pair Programming | Commit Guidelines                               |
 
 ## 3. Operational Protocols
 
@@ -49,6 +49,7 @@ When launching multiple agents in parallel, each agent MUST operate in an
 isolated `git worktree` to prevent working-directory cross-contamination.
 
 **Setup:**
+
 - Each parallel agent gets a dedicated worktree:
   `portfolio/.worktrees/<issue-branch>/`
 - Create via: `git worktree add ../.worktrees/<branch> <branch>`
@@ -57,6 +58,7 @@ isolated `git worktree` to prevent working-directory cross-contamination.
 - Each agent receives its worktree path as its working directory
 
 **Constraints:**
+
 - `node_modules` is shared — serialise `pnpm install` and `pnpm test:e2e`
   across agents via the orchestrator
 - Vite's dev server may reject serving font files from the parent tree's
@@ -67,6 +69,7 @@ isolated `git worktree` to prevent working-directory cross-contamination.
   branch
 
 **Cleanup:**
+
 - Remove worktree after merge: `git worktree remove .worktrees/<branch>`
 - Prune orphans: `git worktree prune`
 
@@ -83,14 +86,14 @@ isolated `git worktree` to prevent working-directory cross-contamination.
 
 When executing Phase IV (Build), the Orchestrator delegates tasks to specialised agent skills:
 
-| Domain | Skill |
-|--------|-------|
-| Testing | `testing` (Vitest + Playwright) |
-| Code Quality | `code-quality` (ESLint, Prettier, TypeScript) |
-| Performance | `performance` (Core Web Vitals, images, fonts) |
-| Accessibility | `accessibility` (WCAG 2.2 AA) |
-| SEO | `seo` (meta tags, JSON-LD, OG images) |
-| Astro Framework | `astro-specialist` (via factory reference) |
+| Domain          | Skill                                          |
+| --------------- | ---------------------------------------------- |
+| Testing         | `testing` (Vitest + Playwright)                |
+| Code Quality    | `code-quality` (ESLint, Prettier, TypeScript)  |
+| Performance     | `performance` (Core Web Vitals, images, fonts) |
+| Accessibility   | `accessibility` (WCAG 2.2 AA)                  |
+| SEO             | `seo` (meta tags, JSON-LD, OG images)          |
+| Astro Framework | `astro-specialist` (via factory reference)     |
 
 ### Decision Gates
 
@@ -115,6 +118,7 @@ Architect reviews the implementation, validates UX, and verifies that CI/CD pass
 Before suggesting a task is complete, the agent MUST explicitly review and verify every Acceptance Criteria (AC) item.
 
 **Web tasks:**
+
 - [ ] `pnpm validate` passes (lint + check + build)
 - [ ] No TypeScript errors
 - [ ] Components follow Velocity patterns
@@ -168,9 +172,9 @@ Content arrives from `factory/` via the **Manual Export Gate**. When content lan
 
 ## 6. Quality Matrix
 
-| Work Type | Validation Command | Gate | CI/CD |
-|-----------|-------------------|------|-------|
-| Component/page code | `pnpm validate` | B | Yes |
-| Unit tests | `pnpm test` | B | Yes |
-| E2E tests | `pnpm test:e2e` | B | No (local pre-push hook only) |
-| Content receipt | Verify frontmatter + visual check | B | — |
+| Work Type           | Validation Command                | Gate | CI/CD                         |
+| ------------------- | --------------------------------- | ---- | ----------------------------- |
+| Component/page code | `pnpm validate`                   | B    | Yes                           |
+| Unit tests          | `pnpm test`                       | B    | Yes                           |
+| E2E tests           | `pnpm test:e2e`                   | B    | No (local pre-push hook only) |
+| Content receipt     | Verify frontmatter + visual check | B    | —                             |

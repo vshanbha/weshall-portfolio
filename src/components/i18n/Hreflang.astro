@@ -48,21 +48,15 @@ const translations = routeId ? getRouteTranslations(routeId, extra) : [];
 const defaultUrl = translations.find((t) => t.locale === defaultLocale)?.path || '/';
 ---
 
-{
-  translations.length > 0 && (
-    <>
-      {translations.map(({ locale, path }) => (
-        <link
-          rel="alternate"
-          hreflang={locale}
-          href={new URL(path, siteConfig.url).toString()}
-        />
-      ))}
-      <link
-        rel="alternate"
-        hreflang="x-default"
-        href={new URL(defaultUrl, siteConfig.url).toString()}
-      />
-    </>
-  )
-}
+{translations.length > 0 && (
+  <>
+    {translations.map(({ locale, path }) => (
+      <link rel="alternate" hreflang={locale} href={new URL(path, siteConfig.url).toString()} />
+    ))}
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(defaultUrl, siteConfig.url).toString()}
+    />
+  </>
+)}
