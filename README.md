@@ -31,16 +31,16 @@ We shall build is a platform for deep-dive analysis of complex technical, operat
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start dev server |
-| `pnpm build` | Production build |
-| `pnpm preview` | Preview production build |
-| `pnpm check` | Astro type checker |
-| `pnpm lint` | ESLint |
-| `pnpm format` | Prettier |
-| `pnpm test` | Vitest |
-| `pnpm test:e2e` | Playwright E2E |
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `pnpm dev`      | Start dev server         |
+| `pnpm build`    | Production build         |
+| `pnpm preview`  | Preview production build |
+| `pnpm check`    | Astro type checker       |
+| `pnpm lint`     | ESLint                   |
+| `pnpm format`   | Prettier                 |
+| `pnpm test`     | Vitest                   |
+| `pnpm test:e2e` | Playwright E2E           |
 
 ---
 
@@ -51,11 +51,13 @@ See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instructions.
 ### Quick Start (Local Development)
 
 1. Copy a deployment template:
+
    ```bash
    cp .env.gh-pages .env
    ```
 
 2. Update `SITE_URL` to `http://localhost:4321` in `.env`:
+
    ```bash
    SITE_URL=http://localhost:4321
    BASE_PATH=/

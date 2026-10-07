@@ -10,17 +10,17 @@
      Grayscale - Warm Stone foundation (OKLCH, hue 70 for warm tint)
      Matches brand-identity.md palette: #FAF8F5, #2A2826, #8A8580, #E3DFDA
      ------------------------------------------------------------------------- */
-  --gray-0: oklch(99.5% 0.004 70);      /* #FAF8F5 — warm off-white */
+  --gray-0: oklch(99.5% 0.004 70); /* #FAF8F5 — warm off-white */
   --gray-50: oklch(97.8% 0.005 70);
   --gray-100: oklch(96% 0.006 70);
-  --gray-200: oklch(91% 0.008 70);       /* ~#E3DFDA — warm border */
+  --gray-200: oklch(91% 0.008 70); /* ~#E3DFDA — warm border */
   --gray-300: oklch(85.5% 0.009 70);
-  --gray-400: oklch(63.5% 0.010 70);
-  --gray-500: oklch(51.5% 0.010 70);     /* ~#8A8580 — warm muted */
-  --gray-600: oklch(37.5% 0.010 70);
-  --gray-700: oklch(31.5% 0.010 70);
+  --gray-400: oklch(63.5% 0.01 70);
+  --gray-500: oklch(51.5% 0.01 70); /* ~#8A8580 — warm muted */
+  --gray-600: oklch(37.5% 0.01 70);
+  --gray-700: oklch(31.5% 0.01 70);
   --gray-800: oklch(26% 0.009 70);
-  --gray-900: oklch(19% 0.008 70);       /* ~#2A2826 — warm near-black */
+  --gray-900: oklch(19% 0.008 70); /* ~#2A2826 — warm near-black */
   --gray-950: oklch(12% 0.007 70);
 
   /* -------------------------------------------------------------------------
@@ -30,12 +30,12 @@
   --brand-50: oklch(97.5% 0.015 35);
   --brand-100: oklch(94.8% 0.03 35);
   --brand-200: oklch(87.5% 0.06 35);
-  --brand-300: oklch(77.8% 0.10 35);
+  --brand-300: oklch(77.8% 0.1 35);
   --brand-400: oklch(68.5% 0.14 35);
   --brand-500: oklch(62.5% 0.16 35);
   --brand-600: oklch(53.2% 0.14 35);
   --brand-700: oklch(45.5% 0.12 35);
-  --brand-800: oklch(37.2% 0.10 35);
+  --brand-800: oklch(37.2% 0.1 35);
   --brand-900: oklch(26.5% 0.07 35);
 
   /* Accent - Blue for links/focus */

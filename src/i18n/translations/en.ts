@@ -6,7 +6,8 @@ export const en = {
   site: {
     name: 'We Shall Build',
     tagline: 'Build What Matters',
-    description: 'Senior Java Architect, Startup CTO, and Cloud & AI Engineer. 20+ years building production systems for banking, fintech, SaaS, AI, and climate tech. Techstars Fintech alumnus.',
+    description:
+      'Senior Java Architect, Startup CTO, and Cloud & AI Engineer. 20+ years building production systems for banking, fintech, SaaS, AI, and climate tech. Techstars Fintech alumnus.',
   },
 
   // Navigation
@@ -35,9 +36,10 @@ export const en = {
   // Hero Section
   hero: {
     title: 'Build what matters.',
-    bridge: 'For founders and technical leads at growth-stage companies: senior engineering judgement when the stakes are high and the path isn\'t clear.',
+    bridge:
+      "For founders and technical leads at growth-stage companies: senior engineering judgement when the stakes are high and the path isn't clear.",
     cta: {
-        primary: 'Talk to me',
+      primary: 'Talk to me',
       secondary: 'Read the latest',
     },
     rightColumn: {
@@ -144,7 +146,7 @@ export const en = {
       ],
     },
     testimonial: {
-      quote: "\"The cleanest boilerplate I've seen in 2024. It cuts the fluff.\"",
+      quote: '"The cleanest boilerplate I\'ve seen in 2024. It cuts the fluff."',
       author: '- Alex C., Senior Frontend Dev',
     },
   },
@@ -153,7 +155,8 @@ export const en = {
   cta: {
     title: 'Build what matters.',
     titleHighlight: '',
-    description: 'Every project starts with a conversation. Let\'s talk about what you\'re building and how to get it across the line.',
+    description:
+      "Every project starts with a conversation. Let's talk about what you're building and how to get it across the line.",
     button: 'Start a Conversation',
     docs: '',
     command: '',
@@ -199,7 +202,7 @@ export const en = {
           title: 'HDFC Life Insurance',
           subtitle: 'Strategic architecture consulting, India',
           paragraphs: [
-            'Led serverless/MBaaS platform evaluation in 2015, years before it became mainstream. Architected an internal mobile platform enabling policyholders\' families to request verified home care for elderly parents. Build-versus-buy at scale.',
+            "Led serverless/MBaaS platform evaluation in 2015, years before it became mainstream. Architected an internal mobile platform enabling policyholders' families to request verified home care for elderly parents. Build-versus-buy at scale.",
           ],
         },
       ],
@@ -212,7 +215,8 @@ export const en = {
           company: 'Sable International',
           author: 'Leanne Shrosbree',
           role: 'Customer Service & Operations Director',
-          quote: 'Through a genuinely collaborative partnership with Vishal and the Inbotiqa team, we\u2019ve been able to improve, refine and maximise YuDo\u2019s potential. It\u2019s supported our growth, enabled our teams and helped us deliver for our clients consistently. That longevity and value speak volumes about the people behind it. We\u2019re genuinely grateful for the care, support and partnership you\u2019ve shown us over such a long time.',
+          quote:
+            'Through a genuinely collaborative partnership with Vishal and the Inbotiqa team, we\u2019ve been able to improve, refine and maximise YuDo\u2019s potential. It\u2019s supported our growth, enabled our teams and helped us deliver for our clients consistently. That longevity and value speak volumes about the people behind it. We\u2019re genuinely grateful for the care, support and partnership you\u2019ve shown us over such a long time.',
           linkedin: 'https://www.linkedin.com/in/leanne-shrosbree-74261b53/',
           website: 'https://www.sableinternational.com/',
         },
@@ -221,7 +225,8 @@ export const en = {
           company: 'BlueMoney',
           author: 'Arrie',
           role: 'Founding Engineer',
-          quote: 'Vishal helped us make the right build vs. buy decision under timeline pressure, set up our lending operations with professional SOPs, and continues to be our sounding board as we navigate the real market.',
+          quote:
+            'Vishal helped us make the right build vs. buy decision under timeline pressure, set up our lending operations with professional SOPs, and continues to be our sounding board as we navigate the real market.',
           linkedin: 'https://www.linkedin.com/in/arrie-de-waal-a19a85110/',
           website: 'https://www.bluemoneyfinance.com/',
         },
@@ -230,7 +235,8 @@ export const en = {
           company: 'PowerMarket',
           author: 'Abhinav Jain',
           role: 'Founder',
-          quote: 'We had been looking into developing our tech and dev team. However, we needed advice on how to get started, who to hire, what kind of skills to target, and once we had a pipeline of candidates, how to evaluate their tech skills. Vishal was a phenomenal resource who guided us throughout the process, and then went above and beyond. He is one of the most knowledgeable technology resources that we have come across thus far and will definitely go back to him for further help.',
+          quote:
+            'We had been looking into developing our tech and dev team. However, we needed advice on how to get started, who to hire, what kind of skills to target, and once we had a pipeline of candidates, how to evaluate their tech skills. Vishal was a phenomenal resource who guided us throughout the process, and then went above and beyond. He is one of the most knowledgeable technology resources that we have come across thus far and will definitely go back to him for further help.',
           linkedin: 'https://www.linkedin.com/in/abhinavjainuk/',
           website: 'https://powermarket.net/',
         },
@@ -239,7 +245,8 @@ export const en = {
           company: 'Ourish',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
-          quote: 'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond in delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.',
+          quote:
+            'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond in delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.',
           linkedin: 'https://www.linkedin.com/in/kunalkakar/',
           website: 'https://ourish.co.uk/',
         },
@@ -248,7 +255,8 @@ export const en = {
           company: 'BauAI',
           author: 'Tushar Adsul',
           role: 'Managing Director',
-          quote: "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.",
+          quote:
+            "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.",
           linkedin: 'https://www.linkedin.com/company/bauai/',
           website: 'https://www.bauai.eu/',
         },
@@ -260,11 +268,13 @@ export const en = {
   services: {
     meta: {
       title: 'What I do',
-      description: 'Senior engineering judgement for growth-stage companies. Architecture, hiring, tech selection, and hardening.',
+      description:
+        'Senior engineering judgement for growth-stage companies. Architecture, hiring, tech selection, and hardening.',
     },
     hero: {
       title: 'Senior engineering judgement.',
-      description: 'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.',
+      description:
+        'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.',
     },
     howwork: {
       title: 'How I work',
@@ -285,7 +295,8 @@ export const en = {
   about: {
     meta: {
       title: 'About',
-      description: 'Builder, senior architect, and hands-on engineer. 20+ years from Mumbai to Cologne.',
+      description:
+        'Builder, senior architect, and hands-on engineer. 20+ years from Mumbai to Cologne.',
     },
     origin: {
       title: 'Origin',
@@ -309,52 +320,62 @@ export const en = {
       commandments: [
         {
           title: 'We shall ask WHY before we ask HOW.',
-          content: 'Think like Master Oogway, asking existential questions, not about the universe, but about the product. Why are we doing this? Why does it matter? Who is this for? The answers shape everything that follows.',
+          content:
+            'Think like Master Oogway, asking existential questions, not about the universe, but about the product. Why are we doing this? Why does it matter? Who is this for? The answers shape everything that follows.',
           defaultOpen: false,
         },
         {
           title: 'We shall build for outcomes, not features.',
-          content: 'A king summoned six blind men and asked them to describe an elephant. The one who touched the trunk said, "A snake." The one who touched the leg said, "A tree." The one who touched the tail said, "A rope." Every description was true from where they stood. Every description was wrong for the whole. Often, a feature request is a blind man describing the elephant. The customer touches their piece, a workflow that hurts, a button they keep clicking, a report they export every morning, and names that piece as the problem that needs to be solved. Our job is to see the animal. Work backwards from the outcome. The feature request is just the symptom. Find the cause, the motivation, the desired outcome.',
+          content:
+            'A king summoned six blind men and asked them to describe an elephant. The one who touched the trunk said, "A snake." The one who touched the leg said, "A tree." The one who touched the tail said, "A rope." Every description was true from where they stood. Every description was wrong for the whole. Often, a feature request is a blind man describing the elephant. The customer touches their piece, a workflow that hurts, a button they keep clicking, a report they export every morning, and names that piece as the problem that needs to be solved. Our job is to see the animal. Work backwards from the outcome. The feature request is just the symptom. Find the cause, the motivation, the desired outcome.',
           defaultOpen: false,
         },
         {
           title: 'We shall build by principles, not by whim.',
-          content: 'Ideas are noise until filtered. Design principles are the sieve. They separate what belongs from what distracts. Every feature request, every suggestion, every pivot passes through the same filter.',
+          content:
+            'Ideas are noise until filtered. Design principles are the sieve. They separate what belongs from what distracts. Every feature request, every suggestion, every pivot passes through the same filter.',
           defaultOpen: false,
         },
         {
           title: 'We shall keep it simple and stupid.',
-          content: 'Google launched in 1998 with around a million dollars from angel investors and a white page with a logo and a text box. No categories, no stock tickers, no news, no weather, no email. Their competitors, Lycos, AltaVista, Excite, were multi-billion-dollar portals that did everything. The blank page won. Simplicity is not a limitation. It is a slingshot. David did not try to be Goliath. He found Goliath\'s weakness and aimed for it.',
+          content:
+            "Google launched in 1998 with around a million dollars from angel investors and a white page with a logo and a text box. No categories, no stock tickers, no news, no weather, no email. Their competitors, Lycos, AltaVista, Excite, were multi-billion-dollar portals that did everything. The blank page won. Simplicity is not a limitation. It is a slingshot. David did not try to be Goliath. He found Goliath's weakness and aimed for it.",
           defaultOpen: false,
         },
         {
           title: 'We shall prototype before we commit.',
-          content: 'Google Glass. A product nobody asked for, built by one of the world\'s biggest companies, backed by billions in R&D. It failed because the customer discovery happened after the investment, not before. Prototypes exist to kill bad ideas cheaply. A rough prototype that fails with five users costs you a week. A finished product that fails with five hundred customers costs you months of development time and much more in costs.',
+          content:
+            "Google Glass. A product nobody asked for, built by one of the world's biggest companies, backed by billions in R&D. It failed because the customer discovery happened after the investment, not before. Prototypes exist to kill bad ideas cheaply. A rough prototype that fails with five users costs you a week. A finished product that fails with five hundred customers costs you months of development time and much more in costs.",
           defaultOpen: false,
         },
         {
           title: 'We shall build with grit, spit, and a whole lot of duct tape.',
-          content: 'Like the Penguins of Madagascar building a plane from scrap. The tools are never perfect, the ground is never level, and the requirements change before you finish typing. Most of the building is resourcefulness, making something work with what you have.',
+          content:
+            'Like the Penguins of Madagascar building a plane from scrap. The tools are never perfect, the ground is never level, and the requirements change before you finish typing. Most of the building is resourcefulness, making something work with what you have.',
           defaultOpen: false,
         },
         {
           title: 'We shall deploy what works.',
-          content: '"If you are not embarrassed by the first version of your product, you have launched too late." Reid Hoffman. The Apple I was a circuit board. Ugly, incomplete, but it worked. Done is better than perfect. Perfection achieved through iteration is still perfection. Perfection before launch is a product that never shipped.',
+          content:
+            '"If you are not embarrassed by the first version of your product, you have launched too late." Reid Hoffman. The Apple I was a circuit board. Ugly, incomplete, but it worked. Done is better than perfect. Perfection achieved through iteration is still perfection. Perfection before launch is a product that never shipped.',
           defaultOpen: false,
         },
         {
           title: 'We shall learn from failures.',
-          content: 'Edison found 10,000 ways that did not work. Keep a log. Failures are data, not shame. The features that became the mainstays are often nowhere in the first draft.',
+          content:
+            'Edison found 10,000 ways that did not work. Keep a log. Failures are data, not shame. The features that became the mainstays are often nowhere in the first draft.',
           defaultOpen: false,
         },
         {
           title: 'We shall rise after every hit.',
-          content: '"It ain\'t about how hard you\'re hit. It\'s about how you can get hit and keep moving forward." Rocky Balboa. Building is not a single fight. It is a long sequence of setbacks, near-misses, and unexpected punches. The ones who finish are not the ones who never fell. They are the ones who got back up.',
+          content:
+            "\"It ain't about how hard you're hit. It's about how you can get hit and keep moving forward.\" Rocky Balboa. Building is not a single fight. It is a long sequence of setbacks, near-misses, and unexpected punches. The ones who finish are not the ones who never fell. They are the ones who got back up.",
           defaultOpen: false,
         },
         {
           title: 'We shall run further than a marathon.',
-          content: 'A marathon has a finish line at 42 km. Sufiya Sufi ran 4,167 km from Kanyakumari to Kashmir in 68 days, then kept going toward Karakoram. That is the difference between a product launch and a company. Sprints are for work breakdown. The vision needs the kind of distance where the finish line keeps moving because the purpose has not been met yet. The long game has no finish line.',
+          content:
+            'A marathon has a finish line at 42 km. Sufiya Sufi ran 4,167 km from Kanyakumari to Kashmir in 68 days, then kept going toward Karakoram. That is the difference between a product launch and a company. Sprints are for work breakdown. The vision needs the kind of distance where the finish line keeps moving because the purpose has not been met yet. The long game has no finish line.',
           defaultOpen: false,
           href: '/blog/run-further-than-a-marathon/',
           linkText: 'Read the full analogy',
@@ -371,14 +392,17 @@ export const en = {
       highlights: [
         {
           name: 'Inbotiqa / YUDOmail',
-          description: ' is the work I am asked about most. I built the system that processes 100,000+ transactional emails a day for global banking, at 99.9% availability. The numbers I care about are the operational ones: turnaround-time compliance went from 40–60% to over 95%; same-day close-out from 22% to 85%; email volume dropped 43%, and complaints went to zero. Inbotiqa is a Techstars portfolio company and went through their Fintech accelerator in London in 2019.',
+          description:
+            ' is the work I am asked about most. I built the system that processes 100,000+ transactional emails a day for global banking, at 99.9% availability. The numbers I care about are the operational ones: turnaround-time compliance went from 40–60% to over 95%; same-day close-out from 22% to 85%; email volume dropped 43%, and complaints went to zero. Inbotiqa is a Techstars portfolio company and went through their Fintech accelerator in London in 2019.',
         },
         {
           name: 'BauAI',
-          description: ' (Sep 2025 – Feb 2026) is the most recent. A vibe-coding-generated codebase that needed to become a scalable, production-ready product. The work was less "add more AI" and more "decide which AI-generated decisions survive contact with users."',
+          description:
+            ' (Sep 2025 – Feb 2026) is the most recent. A vibe-coding-generated codebase that needed to become a scalable, production-ready product. The work was less "add more AI" and more "decide which AI-generated decisions survive contact with users."',
         },
       ],
-      earlier: 'Earlier: <strong>HDFC Life Insurance</strong> (early serverless, 2015), <strong>Progress Software</strong> (2011).',
+      earlier:
+        'Earlier: <strong>HDFC Life Insurance</strong> (early serverless, 2015), <strong>Progress Software</strong> (2011).',
       linkedin: {
         text: 'Connect with me on LinkedIn',
         url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
@@ -392,8 +416,9 @@ export const en = {
         items: [
           {
             event: 'Jcon Gen AI (Ljubljana, 2025)',
-            title: 'Hitchhiker\'s Guide to the AI Galaxy – for Java Developers',
-            description: 'A 60-minute session for 100+ developers on entering the GenAI universe: local LLMs, GraalVM polyglot setups, and MCP-powered Java services.',
+            title: "Hitchhiker's Guide to the AI Galaxy – for Java Developers",
+            description:
+              'A 60-minute session for 100+ developers on entering the GenAI universe: local LLMs, GraalVM polyglot setups, and MCP-powered Java services.',
           },
         ],
       },
@@ -401,19 +426,53 @@ export const en = {
         title: 'Select articles',
         intro: 'I write for JavaPro and Baeldung, two names every Java professional recognises.',
         items: [
-          { title: 'Bridging Java and Python for AI/ML in Production: The Case for GraalPy on GraalVM', url: 'https://javapro.io/2026/03/10/bridging-java-and-python-for-ai-ml-in-production-the-case-for-graalpy-on-graalvm/', platform: 'JavaPro' },
-          { title: 'Greener Code: Sustainable Java Deployments with Native Builds and Knative Serverless on Kubernetes', url: 'https://javapro.io/2025/06/11/greener-code-sustainable-java-deployments-with-native-builds-and-knative-serverless-on-kubernetes/', platform: 'JavaPro' },
-          { title: 'How to Secure Ollama Server', url: 'https://medium.com/@vvsvish/how-to-secure-ollama-server-64cde5e59971', platform: 'Medium' },
-          { title: 'Flutter ain\'t going away', url: 'https://medium.com/@vvsvish', platform: 'Level Up Coding' },
-          { title: 'Why you shouldn\'t use Langchain\'s indexing API?', url: 'https://medium.com/@vvsvish', platform: 'Level Up Coding' },
-          { title: 'Baeldung Author Page', url: 'https://www.baeldung.com/author/vishalshanbhag/', platform: 'Baeldung' },
+          {
+            title:
+              'Bridging Java and Python for AI/ML in Production: The Case for GraalPy on GraalVM',
+            url: 'https://javapro.io/2026/03/10/bridging-java-and-python-for-ai-ml-in-production-the-case-for-graalpy-on-graalvm/',
+            platform: 'JavaPro',
+          },
+          {
+            title:
+              'Greener Code: Sustainable Java Deployments with Native Builds and Knative Serverless on Kubernetes',
+            url: 'https://javapro.io/2025/06/11/greener-code-sustainable-java-deployments-with-native-builds-and-knative-serverless-on-kubernetes/',
+            platform: 'JavaPro',
+          },
+          {
+            title: 'How to Secure Ollama Server',
+            url: 'https://medium.com/@vvsvish/how-to-secure-ollama-server-64cde5e59971',
+            platform: 'Medium',
+          },
+          {
+            title: "Flutter ain't going away",
+            url: 'https://medium.com/@vvsvish',
+            platform: 'Level Up Coding',
+          },
+          {
+            title: "Why you shouldn't use Langchain's indexing API?",
+            url: 'https://medium.com/@vvsvish',
+            platform: 'Level Up Coding',
+          },
+          {
+            title: 'Baeldung Author Page',
+            url: 'https://www.baeldung.com/author/vishalshanbhag/',
+            platform: 'Baeldung',
+          },
         ],
       },
       mentoring: {
         title: 'Mentoring',
         items: [
-          { org: 'Founder Institute', detail: 'Mentor (2024 – present), advising early-stage startups on product and technical strategy.' },
-          { org: 'ReDI School', detail: 'Volunteer teacher (2023), mentoring students in HTML/CSS for integration and career development.' },
+          {
+            org: 'Founder Institute',
+            detail:
+              'Mentor (2024 – present), advising early-stage startups on product and technical strategy.',
+          },
+          {
+            org: 'ReDI School',
+            detail:
+              'Volunteer teacher (2023), mentoring students in HTML/CSS for integration and career development.',
+          },
         ],
       },
     },
@@ -421,7 +480,7 @@ export const en = {
       title: 'Off the clock',
       paragraphs: [
         'I trek, I travel, I write — in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.',
-        'I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan\'s condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.',
+        "I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan's condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.",
       ],
       closingLead: 'If you have an idea that needs software to give it life, ',
       closing: 'talk to me.',
@@ -445,21 +504,23 @@ export const en = {
     },
     hero: {
       title: "Let's talk.",
-      description: 'The best way to reach me is through LinkedIn: it keeps the signal high and the noise low. If you have a clear brief, a sounding board session is the fastest route to a structured engagement.',
+      description:
+        'The best way to reach me is through LinkedIn: it keeps the signal high and the noise low. If you have a clear brief, a sounding board session is the fastest route to a structured engagement.',
     },
     linkedin: {
       title: 'Connect on LinkedIn',
-      description: 'Send me a connection request with a note about what you are working on and mention weshall.build — I read every one.',
+      description:
+        'Send me a connection request with a note about what you are working on and mention weshall.build — I read every one.',
       button: 'Connect on LinkedIn',
       url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
     },
     upwork: {
       title: 'Book a Sounding Board',
-      description: 'For sounding board sessions. A technical consultation to break down your challenges and explore the right technical options.',
+      description:
+        'For sounding board sessions. A technical consultation to break down your challenges and explore the right technical options.',
       button: 'Book a Session',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
-
   },
 
   // Forms
@@ -492,13 +553,15 @@ export const en = {
   components: {
     meta: {
       title: 'Components',
-      description: "Explore Velocity's comprehensive UI component library. Production-ready, accessible, and beautifully designed.",
+      description:
+        "Explore Velocity's comprehensive UI component library. Production-ready, accessible, and beautifully designed.",
     },
     hero: {
       badge: 'Production Components',
       title: 'Component',
       titleHighlight: 'Library',
-      description: 'Production-ready UI primitives built with accessibility and performance in mind. Copy, paste, and customize to match your brand.',
+      description:
+        'Production-ready UI primitives built with accessibility and performance in mind. Copy, paste, and customize to match your brand.',
       browseComponents: 'Browse Components',
       viewSource: 'View Source',
     },
@@ -513,7 +576,8 @@ export const en = {
     sections: {
       buttons: {
         title: 'Buttons',
-        description: 'Interactive elements for actions and navigation. All variants support icons, loading states, and full accessibility.',
+        description:
+          'Interactive elements for actions and navigation. All variants support icons, loading states, and full accessibility.',
         variants: 'Variants',
         variantsHint: '6 styles for different contexts',
         sizes: 'Sizes',
@@ -538,7 +602,8 @@ export const en = {
       },
       inputs: {
         title: 'Form Inputs',
-        description: 'Text fields, selects, checkboxes, and more. Built with native validation and ARIA support.',
+        description:
+          'Text fields, selects, checkboxes, and more. Built with native validation and ARIA support.',
         textInput: 'Text Input',
         textInputHint: 'With labels & validation',
         textarea: 'Textarea',
@@ -574,7 +639,8 @@ export const en = {
       },
       feedback: {
         title: 'Feedback',
-        description: 'Badges, alerts, and status indicators to communicate state and guide user actions.',
+        description:
+          'Badges, alerts, and status indicators to communicate state and guide user actions.',
         badges: 'Badges',
         badgesHint: 'Status indicators',
         alerts: 'Alerts',
@@ -598,7 +664,8 @@ export const en = {
       },
       overlays: {
         title: 'Overlays',
-        description: 'Dialogs, dropdowns, tooltips, and tabs. Full keyboard navigation and focus management.',
+        description:
+          'Dialogs, dropdowns, tooltips, and tabs. Full keyboard navigation and focus management.',
         dialog: 'Dialog',
         dialogHint: 'Modal overlay',
         dropdown: 'Dropdown',
@@ -631,8 +698,10 @@ export const en = {
         overview: 'Overview',
         analytics: 'Analytics',
         settings: 'Settings',
-        overviewContent: 'Project overview with key metrics and recent activity. Tabs support full keyboard navigation.',
-        analyticsContent: 'Analytics data with charts and performance insights. Press arrow keys to navigate between tabs.',
+        overviewContent:
+          'Project overview with key metrics and recent activity. Tabs support full keyboard navigation.',
+        analyticsContent:
+          'Analytics data with charts and performance insights. Press arrow keys to navigate between tabs.',
         settingsContent: 'Configure your project settings. Use Home/End to jump to first/last tab.',
       },
       data: {
@@ -647,13 +716,16 @@ export const en = {
         stacked: 'Stacked',
         performance: 'Performance',
         performanceScore: '100/100 Lighthouse',
-        performanceDesc: 'Zero JavaScript by default. Islands architecture with selective hydration for optimal speed.',
+        performanceDesc:
+          'Zero JavaScript by default. Islands architecture with selective hydration for optimal speed.',
         typeSafe: 'Type-Safe',
         typeSafeScore: 'Full TypeScript',
-        typeSafeDesc: 'Strict types throughout with IDE autocompletion and compile-time error checking.',
+        typeSafeDesc:
+          'Strict types throughout with IDE autocompletion and compile-time error checking.',
         i18nReady: 'i18n Ready',
         i18nScore: 'Multi-language',
-        i18nDesc: 'Built-in translation system with SEO-friendly URLs and automatic locale detection.',
+        i18nDesc:
+          'Built-in translation system with SEO-friendly URLs and automatic locale detection.',
       },
       loading: {
         title: 'Loading',
@@ -666,7 +738,8 @@ export const en = {
     },
     cta: {
       title: 'Ready to build?',
-      description: 'These components are just the beginning. Clone Velocity and start shipping faster.',
+      description:
+        'These components are just the beginning. Clone Velocity and start shipping faster.',
       cloneRepo: 'Clone Repository',
       readDocs: 'Read Documentation',
     },
@@ -675,7 +748,8 @@ export const en = {
   // Consent Banner
   consent: {
     heading: 'Cookie Preferences',
-    description: 'We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.',
+    description:
+      'We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.',
     acceptAll: 'Accept All',
     declineAll: 'Decline All',
     customize: 'Customize',

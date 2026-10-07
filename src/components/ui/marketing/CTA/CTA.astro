@@ -45,11 +45,7 @@ const hasDescriptionSlot = Astro.slots.has('description');
 const hasActionsSlot = Astro.slots.has('actions');
 ---
 
-<section
-  id={id}
-  class={cn(sectionStyles[variant], sizes[size], className)}
-  {...attrs}
->
+<section id={id} class={cn(sectionStyles[variant], sizes[size], className)} {...attrs}>
   <div class="mx-auto max-w-6xl px-6">
     <div class={cn(maxWidths[maxWidth], 'text-center mx-auto')}>
       {/* Logo Slot - renders before heading */}
@@ -61,22 +57,26 @@ const hasActionsSlot = Astro.slots.has('actions');
 
       {/* Heading Slot */}
       {hasHeadingSlot && (
-        <div class={cn(
-          'mb-[var(--space-heading-gap)]',
-          '[&>h2]:font-display [&>h2]:text-3xl md:[&>h2]:text-4xl lg:[&>h2]:text-5xl [&>h2]:font-bold [&>h2]:text-balance',
-          '[&>h2]:text-foreground'
-        )}>
+        <div
+          class={cn(
+            'mb-[var(--space-heading-gap)]',
+            '[&>h2]:font-display [&>h2]:text-3xl md:[&>h2]:text-4xl lg:[&>h2]:text-5xl [&>h2]:font-bold [&>h2]:text-balance',
+            '[&>h2]:text-foreground'
+          )}
+        >
           <slot name="heading" />
         </div>
       )}
 
       {/* Description Slot */}
       {hasDescriptionSlot && (
-        <div class={cn(
-          'text-lg md:text-xl mb-[var(--space-stack-lg)]',
-          '[&>p]:text-lg md:[&>p]:text-xl',
-          'text-foreground-muted [&>p]:text-foreground-muted'
-        )}>
+        <div
+          class={cn(
+            'text-lg md:text-xl mb-[var(--space-stack-lg)]',
+            '[&>p]:text-lg md:[&>p]:text-xl',
+            'text-foreground-muted [&>p]:text-foreground-muted'
+          )}
+        >
           <slot name="description" />
         </div>
       )}

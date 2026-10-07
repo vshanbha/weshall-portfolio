@@ -11,14 +11,14 @@ This skill covers testing best practices for the Velocity Astro project using **
 
 ## Quick Reference
 
-| Task | Command |
-|------|---------|
-| Run unit tests | `pnpm test` |
-| Run tests in watch mode | `pnpm test -- --watch` |
-| Run tests with coverage | `pnpm test -- --coverage` |
-| Run E2E tests | `pnpm test:e2e` |
-| Run specific test file | `pnpm test -- path/to/file.test.ts` |
-| Run tests matching pattern | `pnpm test -- -t "pattern"` |
+| Task                       | Command                             |
+| -------------------------- | ----------------------------------- |
+| Run unit tests             | `pnpm test`                         |
+| Run tests in watch mode    | `pnpm test -- --watch`              |
+| Run tests with coverage    | `pnpm test -- --coverage`           |
+| Run E2E tests              | `pnpm test:e2e`                     |
+| Run specific test file     | `pnpm test -- path/to/file.test.ts` |
+| Run tests matching pattern | `pnpm test -- -t "pattern"`         |
 
 ## Vitest (Unit/Integration)
 
@@ -37,10 +37,10 @@ describe('ComponentName', () => {
   it('renders correctly', () => {
     // Arrange
     const props = { title: 'Test' };
-    
+
     // Act
     const result = render(ComponentName, props);
-    
+
     // Assert
     expect(result).toMatchSnapshot();
   });
@@ -60,10 +60,13 @@ describe('ComponentName', () => {
 
 ```typescript
 // Mocking a fetch call
-vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
-  ok: true,
-  json: () => Promise.resolve({ data: 'test' }),
-}));
+vi.stubGlobal(
+  'fetch',
+  vi.fn().mockResolvedValue({
+    ok: true,
+    json: () => Promise.resolve({ data: 'test' }),
+  })
+);
 
 // Mocking a module
 vi.mock('@/lib/utils', () => ({
@@ -123,12 +126,12 @@ test.describe('Homepage', () => {
 
 ## When to Use Which
 
-| Scenario | Tool |
-|----------|------|
-| Component rendering | Vitest |
-| Utility function logic | Vitest |
-| API route behaviour | Vitest |
-| Full page navigation | Playwright |
-| Form submission flow | Playwright |
-| Visual regression | Playwright |
-| Cross-browser testing | Playwright |
+| Scenario               | Tool       |
+| ---------------------- | ---------- |
+| Component rendering    | Vitest     |
+| Utility function logic | Vitest     |
+| API route behaviour    | Vitest     |
+| Full page navigation   | Playwright |
+| Form submission flow   | Playwright |
+| Visual regression      | Playwright |
+| Cross-browser testing  | Playwright |
