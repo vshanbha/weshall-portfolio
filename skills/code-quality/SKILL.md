@@ -158,10 +158,17 @@ import Card from './Card.astro';
 Before committing any changes:
 
 1. `pnpm lint` — no errors
-2. `pnpm format:check` — all files formatted
-3. `pnpm check` — no type errors
-4. `pnpm build` — build succeeds
+2. `pnpm check` — no type errors
+3. `pnpm build` — build succeeds
+4. `pnpm test:build` — build-output tests pass
 5. Or simply: `pnpm validate` (runs all four)
+
+`pnpm format:check` is **not** part of `validate` and is not enforced. It
+currently reports issues in roughly 136 files, plus 6 that
+`prettier-plugin-astro` cannot parse at all (`<!-- -->` comments inside certain
+expression positions), so it is not usable as a gate as things stands. Format
+the files you touch with `pnpm format -- <path>`; a repo-wide pass is separate
+work and would touch nearly every source file.
 
 ## Common Issues
 
