@@ -1,10 +1,4 @@
-import {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  type ReactNode,
-} from 'react';
+import { useState, useRef, useEffect, useCallback, type ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 
 interface DropdownItem {
@@ -42,13 +36,16 @@ const iconPaths: Record<string, string> = {
   edit: 'M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z',
   copy: 'M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 2h6v4H9V2',
   share: 'M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13',
-  trash: 'M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6',
+  trash:
+    'M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6',
   download: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3',
   upload: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12',
-  settings: 'M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
+  settings:
+    'M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
   archive: 'M21 8v13H3V8M1 3h22v5H1zM10 12h4',
   'external-link': 'M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3',
-  'file-text': 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8',
+  'file-text':
+    'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8',
   'arrow-up-right': 'M7 17L17 7M7 7h10v10',
   box: 'M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16zM3.27 6.96L12 12.01l8.73-5.05M12 22.08V12',
   x: 'M18 6L6 18M6 6l12 12',
@@ -70,14 +67,17 @@ function DropdownIcon({ name, disabled }: { name: string; disabled?: boolean }) 
       strokeLinecap="round"
       strokeLinejoin="round"
       className={cn(
-        'w-4 h-4 shrink-0',
+        'h-4 w-4 shrink-0',
         disabled ? 'text-foreground-subtle' : 'text-foreground-muted'
       )}
       aria-hidden="true"
     >
-      {pathData.split('M').filter(Boolean).map((d, i) => (
-        <path key={i} d={`M${d}`} />
-      ))}
+      {pathData
+        .split('M')
+        .filter(Boolean)
+        .map((d, i) => (
+          <path key={i} d={`M${d}`} />
+        ))}
     </svg>
   );
 }
@@ -113,24 +113,27 @@ export function Dropdown({ items, align = 'start', trigger, className }: Dropdow
     setFocusedIndex(-1);
   }, []);
 
-  const focusItem = useCallback((index: number) => {
-    // Cycle through actionable indices
-    const pos = actionableIndices.indexOf(index);
-    let targetIndex: number;
+  const focusItem = useCallback(
+    (index: number) => {
+      // Cycle through actionable indices
+      const pos = actionableIndices.indexOf(index);
+      let targetIndex: number;
 
-    if (pos !== -1) {
-      targetIndex = index;
-    } else if (index < 0 || index < actionableIndices[0]) {
-      targetIndex = actionableIndices[actionableIndices.length - 1];
-    } else {
-      targetIndex = actionableIndices[0];
-    }
+      if (pos !== -1) {
+        targetIndex = index;
+      } else if (index < 0 || index < actionableIndices[0]) {
+        targetIndex = actionableIndices[actionableIndices.length - 1];
+      } else {
+        targetIndex = actionableIndices[0];
+      }
 
-    setFocusedIndex(targetIndex);
-    requestAnimationFrame(() => {
-      itemRefs.current[targetIndex]?.focus();
-    });
-  }, [actionableIndices]);
+      setFocusedIndex(targetIndex);
+      requestAnimationFrame(() => {
+        itemRefs.current[targetIndex]?.focus();
+      });
+    },
+    [actionableIndices]
+  );
 
   const focusNext = useCallback(() => {
     const currentPos = actionableIndices.indexOf(focusedIndex);
@@ -207,9 +210,9 @@ export function Dropdown({ items, align = 'start', trigger, className }: Dropdow
         close();
         // Return focus to trigger
         requestAnimationFrame(() => {
-          const triggerEl = triggerRef.current?.querySelector<HTMLElement>(
-            'button, [tabindex], a'
-          ) || triggerRef.current;
+          const triggerEl =
+            triggerRef.current?.querySelector<HTMLElement>('button, [tabindex], a') ||
+            triggerRef.current;
           triggerEl?.focus();
         });
         break;
@@ -240,11 +243,7 @@ export function Dropdown({ items, align = 'start', trigger, className }: Dropdow
 
   return (
     <div ref={containerRef} className={cn('relative inline-block', className)}>
-      <div
-        ref={triggerRef}
-        onClick={handleTriggerClick}
-        onKeyDown={handleTriggerKeyDown}
-      >
+      <div ref={triggerRef} onClick={handleTriggerClick} onKeyDown={handleTriggerKeyDown}>
         {trigger}
       </div>
 
@@ -252,11 +251,9 @@ export function Dropdown({ items, align = 'start', trigger, className }: Dropdow
         ref={menuRef}
         className={cn(
           'absolute z-[100] mt-2 min-w-[180px] p-1.5',
-          'rounded-xl bg-background border border-border shadow-xl',
+          'bg-background border-border rounded-xl border shadow-xl',
           'transition-all duration-150 ease-out',
-          isOpen
-            ? 'opacity-100 visible translate-y-0'
-            : 'opacity-0 invisible translate-y-1',
+          isOpen ? 'visible translate-y-0 opacity-100' : 'invisible translate-y-1 opacity-0',
           align === 'end' ? 'right-0' : 'left-0'
         )}
         role="menu"
@@ -265,18 +262,20 @@ export function Dropdown({ items, align = 'start', trigger, className }: Dropdow
       >
         {items.map((item, index) =>
           item.separator ? (
-            <div key={index} className="my-1.5 h-px bg-border" role="separator" />
+            <div key={index} className="bg-border my-1.5 h-px" role="separator" />
           ) : item.href ? (
             <a
               key={index}
-              ref={(el) => { itemRefs.current[index] = el; }}
+              ref={(el) => {
+                itemRefs.current[index] = el;
+              }}
               href={item.href}
               className={cn(
-                'flex items-center gap-2.5 px-3 py-2 text-sm rounded-md',
+                'flex items-center gap-2.5 rounded-md px-3 py-2 text-sm',
                 'transition-colors outline-none',
-                'focus-visible:ring-2 focus-visible:ring-ring',
+                'focus-visible:ring-ring focus-visible:ring-2',
                 item.disabled
-                  ? 'opacity-50 cursor-not-allowed pointer-events-none text-foreground-muted'
+                  ? 'text-foreground-muted pointer-events-none cursor-not-allowed opacity-50'
                   : 'hover:bg-secondary focus:bg-secondary text-foreground-secondary hover:text-foreground'
               )}
               role="menuitem"
@@ -297,14 +296,16 @@ export function Dropdown({ items, align = 'start', trigger, className }: Dropdow
           ) : (
             <button
               key={index}
-              ref={(el) => { itemRefs.current[index] = el; }}
+              ref={(el) => {
+                itemRefs.current[index] = el;
+              }}
               type="button"
               className={cn(
-                'flex w-full items-center gap-2.5 px-3 py-2 text-sm rounded-md',
+                'flex w-full items-center gap-2.5 rounded-md px-3 py-2 text-sm',
                 'transition-colors outline-none',
-                'focus-visible:ring-2 focus-visible:ring-ring',
+                'focus-visible:ring-ring focus-visible:ring-2',
                 item.disabled
-                  ? 'opacity-50 cursor-not-allowed pointer-events-none text-foreground-muted'
+                  ? 'text-foreground-muted pointer-events-none cursor-not-allowed opacity-50'
                   : 'hover:bg-secondary focus:bg-secondary text-foreground-secondary hover:text-foreground'
               )}
               role="menuitem"

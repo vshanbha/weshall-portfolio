@@ -29,35 +29,30 @@ const recentArticles = allArticles
   .slice(0, 3);
 ---
 
-<PageLayout
-  title={t('site.tagline')}
-  description={t('site.description')}
->
+<PageLayout title={t('site.tagline')} description={t('site.description')}>
   <SplitHero locale={locale} t={tr.hero as any} />
 
   <section class="py-16 md:py-24 bg-muted/50">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold font-display text-center mb-12">
-        {t('home.stories.title')}
-      </h2>
+      <h2 class="text-3xl font-bold font-display text-center mb-12">{t('home.stories.title')}</h2>
       <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto auto-rows-fr">
-        {(tr.home.stories.items as unknown as any[]).map((item: { title: string; subtitle: string; paragraphs: string[] }) => (
-          <div class="block h-full">
-            <Card variant="default" padding="lg" class="h-full flex flex-col">
-              <div>
-                <h3 class="text-lg font-semibold mb-1">
-                  {item.title}
-                </h3>
-                <p class="text-xs text-muted-foreground mb-4">{item.subtitle}</p>
-              </div>
-              <div class="space-y-3 flex-1">
-                {item.paragraphs.map((p: string) => (
-                  <p class="text-sm text-muted-foreground leading-relaxed">{p}</p>
-                ))}
-              </div>
-            </Card>
-          </div>
-        ))}
+        {(tr.home.stories.items as unknown as any[]).map(
+          (item: { title: string; subtitle: string; paragraphs: string[] }) => (
+            <div class="block h-full">
+              <Card variant="default" padding="lg" class="h-full flex flex-col">
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">{item.title}</h3>
+                  <p class="text-xs text-muted-foreground mb-4">{item.subtitle}</p>
+                </div>
+                <div class="space-y-3 flex-1">
+                  {item.paragraphs.map((p: string) => (
+                    <p class="text-sm text-muted-foreground leading-relaxed">{p}</p>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          )
+        )}
       </div>
     </div>
   </section>
@@ -68,41 +63,45 @@ const recentArticles = allArticles
         {t('home.testimonials.title')}
       </h2>
       <VerticalTabs
-        tabs={(tr.home.testimonials.items as unknown as any[]).map((item: { id: string; company: string; author: string; role: string }) => ({
-          id: item.id,
-          label: item.company,
-          description: `${item.author} — ${item.role}`,
-        }))}
+        tabs={(tr.home.testimonials.items as unknown as any[]).map(
+          (item: { id: string; company: string; author: string; role: string }) => ({
+            id: item.id,
+            label: item.company,
+            description: `${item.author} — ${item.role}`,
+          })
+        )}
       >
-        {(tr.home.testimonials.items as unknown as any[]).map((item: { id: string; quote: string; linkedin: string; website: string }) => (
-          <div data-tab-content={item.id}>
-            <blockquote class="text-lg text-muted-foreground italic mb-6 leading-relaxed">
-              &ldquo;{item.quote}&rdquo;
-            </blockquote>
-            <div class="flex gap-4 text-sm">
-              {item.linkedin && (
-                <a
-                  href={item.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="underline underline-offset-2 hover:text-primary transition-colors"
-                >
-                  LinkedIn
-                </a>
-              )}
-              {item.website && (
-                <a
-                  href={item.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="underline underline-offset-2 hover:text-primary transition-colors"
-                >
-                  Website
-                </a>
-              )}
+        {(tr.home.testimonials.items as unknown as any[]).map(
+          (item: { id: string; quote: string; linkedin: string; website: string }) => (
+            <div data-tab-content={item.id}>
+              <blockquote class="text-lg text-muted-foreground italic mb-6 leading-relaxed">
+                &ldquo;{item.quote}&rdquo;
+              </blockquote>
+              <div class="flex gap-4 text-sm">
+                {item.linkedin && (
+                  <a
+                    href={item.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline underline-offset-2 hover:text-primary transition-colors"
+                  >
+                    LinkedIn
+                  </a>
+                )}
+                {item.website && (
+                  <a
+                    href={item.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline underline-offset-2 hover:text-primary transition-colors"
+                  >
+                    Website
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </VerticalTabs>
     </div>
   </section>
@@ -110,9 +109,7 @@ const recentArticles = allArticles
   {recentArticles.length > 0 && (
     <section class="py-16 md:py-24">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold font-display text-center mb-12">
-          {t('home.blog.title')}
-        </h2>
+        <h2 class="text-3xl font-bold font-display text-center mb-12">{t('home.blog.title')}</h2>
         <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
           {recentArticles.map((entry) => (
             <BlogCard

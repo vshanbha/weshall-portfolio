@@ -1,5 +1,5 @@
 ---
-title: "ZeroClaw: From Zero to Super Powered assistant"
+title: 'ZeroClaw: From Zero to Super Powered assistant'
 description: Installing ZeroClaw on Kali Linux, wiring it to Discord, and verifying the whole thing works. No cloud, no subscription leash, no data leaving your machine.
 publishedAt: 2026-07-19
 author: Vishal Shanbhag
@@ -8,7 +8,7 @@ draft: false
 featured: false
 locale: en
 image: ./zeroclaw-personal-ai-assistant-hero.png
-imageAlt: "ZeroClaw chat interface on Kali Linux"
+imageAlt: 'ZeroClaw chat interface on Kali Linux'
 reviewed: true
 ai_assisted: true
 human_reviewed: true
@@ -18,19 +18,19 @@ human_reviewed: true
 
 ## The Promise (and the Fine Print)
 
-In the last 6 months or so, the internet has gone viral with a phenomenon called [OpenClaw](https://openclaw.ai/). 
-Programmers, Indie hackers, and DIY enthusiasts are all trying out different configurations with the bot to automate their daily workflows and create solutions. 
+In the last 6 months or so, the internet has gone viral with a phenomenon called [OpenClaw](https://openclaw.ai/).
+Programmers, Indie hackers, and DIY enthusiasts are all trying out different configurations with the bot to automate their daily workflows and create solutions.
 
-For the uninitiated, OpenClaw is an AI agent that you can install on your own hardware or cloud and talk to it using channels like WhatsApp, Discord, Telegram, etc. 
+For the uninitiated, OpenClaw is an AI agent that you can install on your own hardware or cloud and talk to it using channels like WhatsApp, Discord, Telegram, etc.
 You ask it to do things for you, and it does that like a diligent assistant.
 
-So now every Tony Stark can have their own Jarvis. 
+So now every Tony Stark can have their own Jarvis.
 
-I am a little late to the game, but the Electronics engineer inside me says, I want more. More like I want less. Something that consumes less memory, less CPU and so on. 
+I am a little late to the game, but the Electronics engineer inside me says, I want more. More like I want less. Something that consumes less memory, less CPU and so on.
 
 Tony Stark didn't buy his Iron Man suit off a shelf. He built it in a cave with a box of scraps. Different constraints, same energy. I have an old 2012 version Mac Mini, and I use it for many things, and my first target was to host my Jarvis on it. More on that later.
 
-Somewhere in my internet browsing, I came across [ZeroClaw](https://www.zeroclawlabs.ai/), which is essentially a lightweight, self-hosted agent runtime. The promise (I mean tagline): 
+Somewhere in my internet browsing, I came across [ZeroClaw](https://www.zeroclawlabs.ai/), which is essentially a lightweight, self-hosted agent runtime. The promise (I mean tagline):
 
 > **You own the agent. You own the data. You own the machine it runs on.**
 
@@ -38,10 +38,11 @@ I also found an [article](https://zeroclaw.net/) that talked about its performan
 
 Per the documentation, ZeroClaw is a single Rust binary. It talks to LLM providers, connects to messaging channels you already use, and acts through tools on your machine. You can ask it to do all things that OpenClaw can.
 
-All of that at a much lower hardware cost. 
-**It's a poor Tony Stark's Jarvis.** 
+All of that at a much lower hardware cost.
+**It's a poor Tony Stark's Jarvis.**
 
 The fine print, though, as with most open source projects, is that the line "**you own it**" implies that practically means you maintain it. There is no support team to call when the agent does something creative with your filesystem at 3 AM. This is the trade-off, and it is worth understanding before you install anything.
+
 ## What You Need
 
 You don't need a Malibu mansion and a reactor in your chest, but you do need a Linux machine and a Discord server. So here is the list:
@@ -57,25 +58,30 @@ ZeroClaw is a binary. So it does not need Node.js, Python, or any runtime you mi
 
 At the time of writing, the [zeroclaw quickstart](https://docs.zeroclawlabs.ai/v0.8.4/en/getting-started/quickstart.html) skips over some details, and it matters for any always-on agent that takes instructions from remote channels.
 
-ZeroClaw runs as whoever invokes it. If that is your everyday user,  the one in the `docker` group, the one with passwordless sudo, then your agent inherits every one of those privileges. Linux does not distinguish between "you running a terminal command" and "your AI agent running a terminal command." They share the same user, the same groups, the same keys.
+ZeroClaw runs as whoever invokes it. If that is your everyday user, the one in the `docker` group, the one with passwordless sudo, then your agent inherits every one of those privileges. Linux does not distinguish between "you running a terminal command" and "your AI agent running a terminal command." They share the same user, the same groups, the same keys.
 
 For an agent you invoke in a terminal session and watch, this is acceptable. For an agent running as a background service, connected to a chat channel (such as Discord or Telegram), trusting instructions implicitly based on the configured channel, it is a different category of risk. A prompt injection in a webpage the agent reads, a skill that contains a surprise, a compromised chat account; All of these can instruct the agent to use its privileges in ways one did not intend.
 
 Therefore, we give the agent its own identity.
+
 ```sh
 sudo useradd -r -s /usr/sbin/nologin zeroclaw
 ```
+
 This creates a system user with no interactive login, no sudo, no Docker, no group memberships beyond its own. A blank slate.
 
 Verify:
+
 ```sh
 groups zeroclaw
 ```
+
 You should see exactly:
 
 ```
 zeroclaw : zeroclaw
 ```
+
 If you see anything else, such as `docker`, `sudo`, `wheel`, your system defaults added it. Investigate before proceeding. Everything from here on runs as this dedicated user. The agent has access to exactly what you explicitly give it, nothing else.
 
 ## 1. Install ZeroClaw
@@ -97,7 +103,7 @@ If the wizard timed out or you closed the terminal in a panic, run it manually:
 zeroclaw quickstart
 ```
 
-This provides for doing either a CLI quickstart (recommended for technical users) OR a browser-based start. I'll choose the latter. 
+This provides for doing either a CLI quickstart (recommended for technical users) OR a browser-based start. I'll choose the latter.
 
 I see the output:
 
@@ -107,28 +113,32 @@ I see the output:
   🌐 Web Dashboard: http://127.0.0.1:42617/
 ```
 
-I am logged on to this machine through SSH, so the browser is not exactly accessible, but I can solve for that by SSH tunnelling into that port and directing my browser to a localhost port. 
+I am logged on to this machine through SSH, so the browser is not exactly accessible, but I can solve for that by SSH tunnelling into that port and directing my browser to a localhost port.
 
 ```sh
 ssh -L 8888:127.0.0.1:42617 Username@<IP of BoT Server>
 ```
 
-Then I can launch it on localhost:8888 in my browser, and I am ready to go. The dashboard requires a pairing code, but that is available in the CLI, so that's easy. 
+Then I can launch it on localhost:8888 in my browser, and I am ready to go. The dashboard requires a pairing code, but that is available in the CLI, so that's easy.
+
 ## 2. Quickstart (Few questions, No DevOps Certification Required)
 
 Quickstart walks you through four steps. One prompt per step. This is the part where the project earns its "simple" claim.
+
 ### Cost Tracking
 
-A caution before we begin. ZeroClaw has a built-in [cost tracking](https://docs.zeroclawlabs.ai/v0.8.3/en/reference/config.html?highlight=cost#cost) system that monitors token usage and calculates expenditure when models are used through its own provider layer. It seems elaborate, and one can configure rates for each provider and model. This feels interesting, but best left for future exploration. 
+A caution before we begin. ZeroClaw has a built-in [cost tracking](https://docs.zeroclawlabs.ai/v0.8.3/en/reference/config.html?highlight=cost#cost) system that monitors token usage and calculates expenditure when models are used through its own provider layer. It seems elaborate, and one can configure rates for each provider and model. This feels interesting, but best left for future exploration.
 
-A quick tip: Create a separate API key on your Opencode account dedicated to the bot. The [Opencode dashboard](https://opencode.ai/dashboard) then shows exactly how much that specific key spent, giving you clean per-bot cost visibility. For other providers (OpenAI, Anthropic, Google), likely the same approach should work. 
+A quick tip: Create a separate API key on your Opencode account dedicated to the bot. The [Opencode dashboard](https://opencode.ai/dashboard) then shows exactly how much that specific key spent, giving you clean per-bot cost visibility. For other providers (OpenAI, Anthropic, Google), likely the same approach should work.
 
 This way, whether ZeroClaw tracks it natively or not, you always have a cost signal from the provider end.
+
 ### Model Provider
 
-I am using **opencode** from the provider list. ZeroClaw has a first-class `opencode` slot. I am going for the **opencode Go** setup, so I need a [URL](https://opencode.ai/docs/go/) as well. 
+I am using **opencode** from the provider list. ZeroClaw has a first-class `opencode` slot. I am going for the **opencode Go** setup, so I need a [URL](https://opencode.ai/docs/go/) as well.
 
 When prompted:
+
 - Provider: **opencode**
 - API key: paste your opencode key
 - Model: mimo-v2.5
@@ -144,36 +154,31 @@ If using a separate device or a Docker instance, then you can afford to reset th
 
 Keep it **Tight**. It limits the capabilities of the agent, but that is better since we don't want to be paying huge bills. I would also recommend setting budget limits and a separate API key at the Model Provider end if possible, so one has control when the bot goes crazy.
 
-
 ### Memory
 
 Pick a backend. **Markdown** is the simplest option. Zero configuration, stores everything locally in human-readable files. Other options exist (Postgres, Qdrant, SQLite), but Markdown is fine for a personal assistant. You are not building a data warehouse.
 
 ### Agent
 
-Give your agent a name and an alias. This is how you reference it from the CLI and channels. 
+Give your agent a name and an alias. This is how you reference it from the CLI and channels.
 
 ### Personality Files
 
-The UI offers several files, such as `IDENTITY.md`, `SOUL.md`. Assuming one does not have them already best to start with the provided templates. 
+The UI offers several files, such as `IDENTITY.md`, `SOUL.md`. Assuming one does not have them already best to start with the provided templates.
 
 That's it. We're now ready to play. Let's hit "Create"
 
-The wizard writes your config to `~/.zeroclaw` and takes you straight to the chat screen. 
+The wizard writes your config to `~/.zeroclaw` and takes you straight to the chat screen.
 
 ### Chat
 
-The built in Chat screen should work already. Time to say hello. 
+The built in Chat screen should work already. Time to say hello.
 
 > hello
->
->
 
 > Hey! 👋 Good to see you around. What's on your mind?
->
->
 
-## 3. Create a Discord Bot 
+## 3. Create a Discord Bot
 
 This is the part that takes the most clicks, but each step is straightforward. Think of it as the bouncer checking your ID at the door of your own party.
 
@@ -183,6 +188,7 @@ This is the part that takes the most clicks, but each step is straightforward. T
 2. Click **New Application**, give it a name (e.g., "ZeroClaw"), and click **Create**.
 3. In the left sidebar, click **Bot**.
 4. Click **Reset Token**, then **Copy**. This is your bot token. Treat it like a password. You cannot see it again.
+
 ### Enable the Two Switches
 
 Still on the **Bot** page, scroll to **Privileged Gateway Intents** and toggle both:
@@ -198,20 +204,24 @@ On the ZeroClaw dashboard, look for the settings gear in the left navigation. It
 The detailed instructions are in the documentation for [Discord](https://docs.zeroclawlabs.ai/v0.8.2/en/channels/discord.html)
 
 The documentation contains a lot of detail, and there is no point in just pasting it again here. Therefore, I have listed the minimum tasks required to get it working.
-Look up the Channel list, find Discord and get started. 
+Look up the Channel list, find Discord and get started.
+
 - Give it a Name
 - Control the Behaviour - Approval Timeout Secs (I'd recommend giving at least 2 mins so you can see and act on the approvals), Slash Commands.
 - Under "Control" - set the token
 
 Look up our Agent in the Agent list on the left navigation.
-- Edit our agent and add the channel that we just created to it. 
+
+- Edit our agent and add the channel that we just created to it.
 
 Look up "Peer Groups".
+
 - Create a new Peer Group for authorising who can talk to the bot.
-- Add allow list users. 
-- Associate our Agent with this peer group. 
+- Add allow list users.
+- Associate our Agent with this peer group.
 
 After all the changes, **reload the daemon** so the changes take effect.
+
 ### Invite the Bot
 
 1. Back in the Developer Portal, open **OAuth2, URL Generator**.
@@ -224,6 +234,7 @@ The bot now appears in your member list (offline until you reload the daemon of 
 ## 4. Start and Test
 
 **Test it:**
+
 1. Open Discord.
 2. Send a message in a channel the bot can see.
 3. The bot should reply.
@@ -232,7 +243,7 @@ If it does not reply, check the troubleshooting table below. The answer is almos
 
 ## 5: Install as a Service
 
-This step is optional, but what is the point if your humble butler can't listen to you all the time? 
+This step is optional, but what is the point if your humble butler can't listen to you all the time?
 After all, Jarvis doesn't sleep. Neither should this. The difference is, ours runs on hardware you can actually afford.
 
 In other words, if you want ZeroClaw to run always-on in the background:
@@ -261,17 +272,15 @@ Before you close the terminal, verify each of these:
 
 If all four pass, your personal AI assistant is live. If you run into any issues, the [Troubleshooting](#troubleshooting) section at the bottom of this article covers the common ones
 
-
 ## What to Do Next
 
 **Add more channels.** ZeroClaw supports 30+ channels. Telegram is the easiest to add after Discord. Go through the [Docs](https://docs.zeroclawlabs.ai/v0.8.2/en/channels/overview.html)
 
 **Explore the dashboard.** Visit `http://127.0.0.1:42617/` (or localhost:8888 if SSH tunnelling on another machine in the network) in your browser. You can chat, browse memory, edit config, and manage cron jobs from there.
 
-**Add skills.** The [ZeroClaw Skills registry](https://github.com/zeroclaw-labs/zeroclaw-skills) has community-contributed tools and workflows. 
+**Add skills.** The [ZeroClaw Skills registry](https://github.com/zeroclaw-labs/zeroclaw-skills) has community-contributed tools and workflows.
 
 **Read the philosophy.** ZeroClaw has a few opinions that shape every design decision. Understanding them helps you configure the agent in ways that match the project's intent rather than fighting it.
-
 
 ## The Bigger Picture
 
@@ -279,7 +288,7 @@ ZeroClaw is not a chatbot wrapper. It is a runtime for autonomous agents that ca
 
 ZeroClaw is what happens when someone looks at the cloud-AI stack and says, 'I want that, but I want it in my garage.' It's Jarvis without the cloud subscription leash.
 
-For technical professionals considering the private AI appliance path, ZeroClaw is the open-core foundation. The stack is open source. The deployment automation, operational excellence, and support are yours to build on top of it. 
+For technical professionals considering the private AI appliance path, ZeroClaw is the open-core foundation. The stack is open source. The deployment automation, operational excellence, and support are yours to build on top of it.
 
 This installation is the first experiment. The article series will cover what we learn, what breaks, and what we wish we had known before starting. The goal is not to document a perfect setup. The goal is to document the real one.
 
@@ -287,17 +296,20 @@ This installation is the first experiment. The article series will cover what we
 
 ---
 
-*If you are building something that matters and want a senior software architect in the room, [let's talk](/en/contact).*
+_If you are building something that matters and want a senior software architect in the room, [let's talk](/en/contact)._
 
-## Troubleshooting 
+## Troubleshooting
 
 ### Common Issues
+
 The maintainers at ZeroClaw already offer a good [troubleshooting note](https://docs.zeroclawlabs.ai/v0.8.2/en/channels/discord.html#troubleshooting).
-However, sometimes that is not enough, and we face our own issues not anticipated by the maintainers. In my case, I was able to troubleshoot this by pointing my ZeroClaw to the GitHub source, asking it questions and giving it relevant information when it asked questions in return. 
+However, sometimes that is not enough, and we face our own issues not anticipated by the maintainers. In my case, I was able to troubleshoot this by pointing my ZeroClaw to the GitHub source, asking it questions and giving it relevant information when it asked questions in return.
+
 ### Approval Buttons not showing up in Discord
+
 If your bot sends approval prompts as plain text (e.g. "APPROVAL REQUIRED [abc123] … Reply: 'abc123 yes'") instead of interactive buttons, the cause is almost always one of two things:
 
-1. Missing *Use Slash Commands*  OAuth2 scope: This scope authorises Discord to route interaction events (button clicks, slash commands, select menus) to your bot. Without it, the bot can send buttons in messages, but Discord has no way to deliver the click back. The bot then falls back to a text-based approval flow. 
+1. Missing _Use Slash Commands_ OAuth2 scope: This scope authorises Discord to route interaction events (button clicks, slash commands, select menus) to your bot. Without it, the bot can send buttons in messages, but Discord has no way to deliver the click back. The bot then falls back to a text-based approval flow.
 
 2. slash_commands not enabled in ZeroClaw config: In the ZeroClaw Discord channel config, buttons only render when the interaction pipe is active. This requires slash_commands = true in the channel config block (e.g. under channels -> discord). Without it, the runtime falls back to the legacy text prompt.
 
@@ -310,21 +322,25 @@ If ZeroClaw fails to open web pages or the browser tool returns an error like `b
 **Fix (using agent_browser):**
 
 1. Install agent-browser globally via npm:
+
    ```sh
    npm install -g agent-browser
    ```
 
 2. Symlink it into the system PATH so the daemon can find it (npm's global bin directory is often not in the service user's PATH):
+
    ```sh
    sudo ln -s "$(which agent-browser)" /usr/local/bin/agent-browser
    ```
 
 3. Tell ZeroClaw which backend to use:
+
    ```sh
    zeroclaw config set browser.backend agent_browser
    ```
 
 4. Restart the daemon:
+
    ```sh
    zeroclaw service restart
    ```
@@ -335,6 +351,7 @@ If ZeroClaw fails to open web pages or the browser tool returns an error like `b
    ```
 
 **Why not use rust_native or computer_use?**
+
 - `rust_native`: only available if you compiled ZeroClaw yourself with `--features browser-native`.
 - `computer_use`: requires a display server (X11/Wayland) and is significantly slower -- every action involves a screenshot -> vision model -> click loop. Not suitable for headless servers without Xvfb.
 
@@ -351,6 +368,7 @@ Fix: Upgrade to **v0.8.3+** which improved the ack reaction timing (👀 now app
 **Flavour 2: Daemon reload from dashboard mid-response (v0.8.3+).** This is likely something I found ([GitHub #9198](https://github.com/zeroclaw-labs/zeroclaw/issues/9198)). If you reload the daemon from the web dashboard while the agent is mid-response, the typing indicator gets stuck permanently. New conversations work, but the indicator reappears after each response, even when nothing is being generated. A full CLI service restart clears it properly.
 
 **Reproduction:**
+
 1. Start a conversation in Discord (wait for typing indicator)
 2. Switch to the ZeroClaw dashboard and hit **Reload Daemon** (no config changes needed)
 3. Switch back to Discord. The bot's response never arrives, and the typing indicator stays stuck
@@ -361,5 +379,4 @@ Fix: Upgrade to **v0.8.3+** which improved the ack reaction timing (👀 now app
 
 ---
 
-*This article is part of the [weshall.build ](https://weshall.build) local-AI and production readiness content series.*
-
+_This article is part of the [weshall.build ](https://weshall.build) local-AI and production readiness content series._

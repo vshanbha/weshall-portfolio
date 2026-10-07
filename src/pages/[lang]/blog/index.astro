@@ -29,10 +29,7 @@ const sorted = localeEntries.sort((a, b) => {
 });
 ---
 
-<PageLayout
-  title={t('blog.title')}
-  description={t('blog.description')}
->
+<PageLayout title={t('blog.title')} description={t('blog.description')}>
   <section class="py-24 md:py-32">
     <div class="container mx-auto px-4">
       <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-center">
@@ -59,9 +56,7 @@ const sorted = localeEntries.sort((a, b) => {
           ))}
         </div>
       ) : (
-        <p class="mt-16 text-center text-muted-foreground">
-          {t('blog.noPosts')}
-        </p>
+        <p class="mt-16 text-center text-muted-foreground">{t('blog.noPosts')}</p>
       )}
     </div>
   </section>

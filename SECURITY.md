@@ -67,7 +67,7 @@ One advisory remains, with no upstream fix:
 `pnpm validate` gate), never in the published artefact of static HTML, CSS
 and images.
 
-Last verified: 2026-10-06 (`pnpm why braces`, `pnpm audit`). Re-check whenever
+Last verified: 2026-10-07 (`pnpm why braces`, `pnpm audit`). Re-check whenever
 `pnpm audit` output changes, or when `braces` gets a patch.
 
 **Verify fixable claims against npm, not just `pnpm audit`.** npm's advisory
@@ -75,7 +75,7 @@ metadata can report `patched_versions: <0.0.0` for a package that does have a
 published fix. `http-cache-semantics` was recorded here as unfixable on that
 basis and was wrong — `4.3.0` exists. Cross-check with
 `npm view <package> dist-tags` before accepting a `<0.0.0` as final.
-Verified 2026-10-06: `dist-tags.latest` is `4.3.0` and the lockfile resolves
+Verified 2026-10-07: `dist-tags.latest` is `4.3.0` and the lockfile resolves
 `4.3.0`.
 
 ## Reporting

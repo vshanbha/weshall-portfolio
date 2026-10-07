@@ -35,8 +35,12 @@ const { title, description, image, imageAlt, noindex, nofollow } = Astro.props;
     <slot />
   </div>
 
-  <Footer slot="footer" layout="stacked" legalLinks={[
-    { label: 'Impressum', href: '/en/impressum' },
-    { label: 'Datenschutz', href: '/en/datenschutz' },
-  ]} />
+  <Footer
+    slot="footer"
+    layout="stacked"
+    legalLinks={[
+      { label: 'Impressum', href: '/en/impressum' },
+      { label: 'Datenschutz', href: '/en/datenschutz' },
+    ]}
+  />
 </BaseLayout>

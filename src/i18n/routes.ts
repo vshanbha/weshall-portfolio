@@ -48,32 +48,46 @@ export type RouteDefinition = Record<string, string> & {
 export const routes = {
   // Home page (root) - not shown in nav (logo links there)
   home: {
-    en: '', de: '', hi: '', mr: '',
+    en: '',
+    de: '',
+    hi: '',
+    mr: '',
     nav: { show: false, order: 0, label: 'nav.home' },
   },
 
   // Blog section
   blog: {
-    en: 'blog', de: 'blog', hi: 'blog', mr: 'blog',
+    en: 'blog',
+    de: 'blog',
+    hi: 'blog',
+    mr: 'blog',
     nav: { show: true, order: 2, label: 'nav.blog' },
   },
 
   // Services page
   services: {
-    en: 'services', de: 'services', hi: 'services', mr: 'services',
+    en: 'services',
+    de: 'services',
+    hi: 'services',
+    mr: 'services',
     nav: { show: true, order: 3, label: 'nav.services' },
   },
 
   // Static pages
   about: {
-    en: 'about', de: 'about', hi: 'about', mr: 'about',
+    en: 'about',
+    de: 'about',
+    hi: 'about',
+    mr: 'about',
     nav: { show: true, order: 4, label: 'nav.about' },
   },
   contact: {
-    en: 'contact', de: 'contact', hi: 'contact', mr: 'contact',
+    en: 'contact',
+    de: 'contact',
+    hi: 'contact',
+    mr: 'contact',
     nav: { show: true, order: 5, label: 'nav.contact' },
   },
-
 } as const;
 
 /**
@@ -92,4 +106,3 @@ export const routeIds = Object.keys(routes) as RouteId[];
 export function isValidRouteId(id: string): id is RouteId {
   return id in routes;
 }
-

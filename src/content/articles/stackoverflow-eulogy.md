@@ -1,6 +1,6 @@
 ---
-title: "The Banyan Tree called StackOverflow is Dying"
-description: "A banyan tree once stood in the centre of every Indian village. StackOverflow was that for programmers. The statistics tell a simple story worth acknowledging."
+title: 'The Banyan Tree called StackOverflow is Dying'
+description: 'A banyan tree once stood in the centre of every Indian village. StackOverflow was that for programmers. The statistics tell a simple story worth acknowledging.'
 publishedAt: 2026-08-08
 author: Vishal Shanbhag
 tags:
@@ -35,4 +35,4 @@ I wrote the longer version of this piece because the data raised a question I co
 
 ---
 
-*Read the full story →* [The Banyan Tree called StackOverflow is Dying — Level Up Coding](https://medium.com/gitconnected/the-banyan-tree-called-stackoverflow-is-dying-3fe216e7682e)
+_Read the full story →_ [The Banyan Tree called StackOverflow is Dying — Level Up Coding](https://medium.com/gitconnected/the-banyan-tree-called-stackoverflow-is-dying-3fe216e7682e)

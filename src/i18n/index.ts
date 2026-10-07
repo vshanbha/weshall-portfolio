@@ -72,8 +72,7 @@ export function t(
  * Create a translation function bound to a specific locale
  */
 export function useTranslations(locale: Locale) {
-  return (key: TranslationKey, params?: Record<string, string | number>) =>
-    t(key, locale, params);
+  return (key: TranslationKey, params?: Record<string, string | number>) => t(key, locale, params);
 }
 
 /**

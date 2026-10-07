@@ -26,12 +26,7 @@ interface Props {
   class?: string;
 }
 
-const {
-  size = 'md',
-  forceDark = false,
-  variant = 'logomark',
-  class: className,
-} = Astro.props;
+const { size = 'md', forceDark = false, variant = 'logomark', class: className } = Astro.props;
 
 const lightLogo = variant === 'full' ? logoFull : logomark;
 const darkLogo = variant === 'full' ? logoFullDark : logomarkDark;
@@ -49,11 +44,7 @@ const sizeClass = sizeClasses[size] || sizeClasses.md;
 
 <span class:list={['inline-block', className]}>
   {forceDark ? (
-    <img
-      src={darkLogo.src}
-      alt={siteConfig.branding.logo.alt}
-      class:list={[sizeClass]}
-    />
+    <img src={darkLogo.src} alt={siteConfig.branding.logo.alt} class:list={[sizeClass]} />
   ) : (
     <Fragment>
       <img

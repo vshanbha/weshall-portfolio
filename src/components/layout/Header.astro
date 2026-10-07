@@ -110,21 +110,23 @@ const isInvert = colorScheme === 'invert';
 
 // Get navigation items from i18n routes or custom nav
 const defaultNav = getNavRoutes(locale);
-const navItems: NavItem[] = nav || [...extraNav, ...defaultNav.map(route => ({
-  label: t(route.label as any) || route.label,
-  href: route.path,
-}))];
+const navItems: NavItem[] = nav || [
+  ...extraNav,
+  ...defaultNav.map((route) => ({
+    label: t(route.label as any) || route.label,
+    href: route.path,
+  })),
+];
 
 // Current path for active state
 const currentPath = Astro.url.pathname;
 
 // Check if we're on the landing page
-const isLandingPage = currentPath === '/' || currentPath === `/${locale}` || currentPath === `/${locale}/`;
+const isLandingPage =
+  currentPath === '/' || currentPath === `/${locale}` || currentPath === `/${locale}/`;
 
 // Process CTA href for landing page anchor links
-const ctaHref = cta.href?.startsWith('#') && !isLandingPage
-  ? `/${cta.href}`
-  : cta.href;
+const ctaHref = cta.href?.startsWith('#') && !isLandingPage ? `/${cta.href}` : cta.href;
 
 // Check slots
 const hasLogoSlot = Astro.slots.has('logo');
@@ -141,9 +143,9 @@ const positions: Record<NonNullable<Props['position']>, string> = {
 
 // Size variants (height)
 const sizes: Record<NonNullable<Props['size']>, string> = {
-  sm: 'h-12',    // 48px - compact
-  md: 'h-14',    // 56px - balanced
-  lg: 'h-16',    // 64px - spacious
+  sm: 'h-12', // 48px - compact
+  md: 'h-14', // 56px - balanced
+  lg: 'h-16', // 64px - spacious
 };
 
 // Background variants
@@ -161,19 +163,10 @@ const containerClasses: Record<NonNullable<Props['layout']>, string> = {
 };
 
 // Compute header classes
-const headerClasses = cn(
-  'z-50 w-full',
-  positions[position],
-  variants[variant],
-  className
-);
+const headerClasses = cn('z-50 w-full', positions[position], variants[variant], className);
 
 // Compute inner container classes
-const innerClasses = cn(
-  'mx-auto max-w-6xl px-6',
-  sizes[size],
-  containerClasses[layout]
-);
+const innerClasses = cn('mx-auto max-w-6xl px-6', sizes[size], containerClasses[layout]);
 
 // Check if a nav item is active
 function isActive(href: string): boolean {
@@ -190,25 +183,26 @@ const buttonId = `${menuId}-button`;
 <header class={headerClasses} {...attrs}>
   <div class={innerClasses}>
     {/* Logo */}
-    {!hideLogo && (
-      hasLogoSlot ? (
+    {!hideLogo &&
+      (hasLogoSlot ? (
         <slot name="logo" />
       ) : (
         <a href={getLocalizedPath('home', locale)} class="flex items-center gap-2">
           <Logo size={size === 'lg' ? 'md' : 'sm'} forceDark={isInvert} />
-          <span class={cn(
-            'font-display text-lg sm:text-xl font-bold tracking-tight whitespace-nowrap',
-            isInvert ? 'text-on-invert' : 'text-brand-500'
-          )}>
+          <span
+            class={cn(
+              'font-display text-lg sm:text-xl font-bold tracking-tight whitespace-nowrap',
+              isInvert ? 'text-on-invert' : 'text-brand-500'
+            )}
+          >
             {logoText || siteConfig.name}
           </span>
         </a>
-      )
-    )}
+      ))}
 
     {/* Desktop Navigation */}
-    {layout !== 'minimal' && (
-      hasNavSlot ? (
+    {layout !== 'minimal' &&
+      (hasNavSlot ? (
         <nav class="hidden items-center gap-1 md:flex" aria-label="Main navigation">
           <slot name="nav" />
         </nav>
@@ -221,8 +215,16 @@ const buttonId = `${menuId}-button`;
                 'nav-link px-3 py-2 text-sm rounded-md',
                 'transition-all duration-(--transition-fast)',
                 isActive(href)
-                  ? cn('nav-link-active font-semibold', isInvert ? 'text-on-invert bg-white/10' : 'text-foreground bg-secondary')
-                  : cn('nav-link-inactive font-medium', isInvert ? 'text-on-invert-secondary hover:text-on-invert hover:bg-white/10' : 'text-foreground-muted hover:text-foreground hover:bg-secondary/70')
+                  ? cn(
+                      'nav-link-active font-semibold',
+                      isInvert ? 'text-on-invert bg-white/10' : 'text-foreground bg-secondary'
+                    )
+                  : cn(
+                      'nav-link-inactive font-medium',
+                      isInvert
+                        ? 'text-on-invert-secondary hover:text-on-invert hover:bg-white/10'
+                        : 'text-foreground-muted hover:text-foreground hover:bg-secondary/70'
+                    )
               )}
               aria-current={isActive(href) ? 'page' : undefined}
             >
@@ -230,8 +232,7 @@ const buttonId = `${menuId}-button`;
             </a>
           ))}
         </nav>
-      )
-    )}
+      ))}
 
     {/* Actions Area */}
     <div class="flex items-center gap-1 sm:gap-2">
@@ -294,8 +295,9 @@ const buttonId = `${menuId}-button`;
   </div>
 
   {/* Mobile Menu */}
-  {showMobileMenu && layout !== 'minimal' && (
-    hasMobileMenuSlot ? (
+  {showMobileMenu &&
+    layout !== 'minimal' &&
+    (hasMobileMenuSlot ? (
       <div
         id={menuId}
         class="md:hidden hidden border-t border-border bg-background shadow-[0_8px_24px_-12px_rgba(0,0,0,0.12)] opacity-0 origin-top scale-y-0"
@@ -337,8 +339,7 @@ const buttonId = `${menuId}-button`;
           )}
         </div>
       </div>
-    )
-  )}
+    ))}
 </header>
 
 {/* Mobile Menu Backdrop - positioned outside header to blur page content */}
