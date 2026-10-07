@@ -193,10 +193,9 @@ findings are fixed before anything reaches `main`.
    ```bash
    git push origin dev
    ```
-5. **Validate the range on `dev` before opening the PR.** Run the preamble
-   under _Generating the Changelog_ with `END` snapshotted to the current
-   `dev` HEAD, set `REL='vX.Y.Z'` in the check block, then run all four
-   checks.
+5. **(Optional) Validate the range on `dev` early.** Run the preamble under
+   _Generating the Changelog_ with `END` snapshotted to the current `dev` HEAD,
+   set `REL='vX.Y.Z'` in the check block, then run all four checks.
 
    ```bash
    # Precondition: dev must contain main, so dev-HEAD-bounded == tag-bounded
@@ -207,12 +206,16 @@ findings are fixed before anything reaches `main`.
 
    The preamble below persists `END` as a full hash when you run it.
 
-   This is the set the tag will cover, because the tag lands on the merge
-   commit whose second parent is this `dev` tip. A gap found here is fixed on
-   `dev`, where pushing is allowed — so no commit to `main` is ever needed
-   after the release has been tagged. Do it **before** step 6: the release
-   notes come from this range's `CHANGELOG.md` section, read from the tag at
-   steps 8–9, so a gap still ships unless caught here.
+   **This step is optional, and skipping it does not lower the bar.** The range
+   check is mandatory either way — skipping only moves it to step 8, after the
+   merge. What you buy by running it here is a cheaper fix: a gap found on `dev`
+   is a commit on `dev`, whereas a gap found at step 8 needs a second
+   `dev` → `main` pass, because the release PR has already merged.
+
+   When it does run, this is the set the tag will cover: the tag lands on the
+   merge commit whose second parent is this `dev` tip. Note the release notes
+   come from this range's `CHANGELOG.md` section, read from the tag at steps
+   8–9, so a gap ships unless it is caught at one of those points.
 
 6. **Open the release PR `dev` → `main`**
    ```bash
@@ -252,13 +255,19 @@ findings are fixed before anything reaches `main`.
    ```bash
    git checkout main
    git pull origin main
-   # Refuse to tag a squash or rebase merge: step 7 requires a merge commit
-   # whose second parent is the dev tip step 5 validated.
-   test -s /tmp/release-end || { echo "/tmp/release-end missing — re-run step 5"; exit 1; }
+   # Refuse to tag a squash or rebase merge: step 7 requires a merge commit.
    git rev-parse --verify -q HEAD^2 >/dev/null \
      || { echo "HEAD is not a merge commit — squash/rebase merge, or main moved since step 7"; exit 1; }
-   test "$(git rev-parse HEAD^2)" = "$(cat /tmp/release-end)" \
-     || { echo "second parent is not the dev tip validated in step 5"; exit 1; }
+   # If step 5 ran, its recorded tip must be this merge's second parent. Skipping
+   # step 5 is allowed — it only moves the range check later — so warn instead of
+   # blocking when the marker is absent.
+   if [ -s /tmp/release-end ]; then
+     test "$(git rev-parse HEAD^2)" = "$(cat /tmp/release-end)" \
+       || { echo "second parent is not the dev tip validated in step 5"; exit 1; }
+   else
+     echo "step 5 was skipped: no validated tip recorded. The range check below"
+     echo "still applies — run it before tagging."
+   fi
    # Assert the tree about to be tagged carries this release's changelog section.
    # Checked HERE rather than in step 9: a tag is awkward to withdraw, and step 9
    # reads this same tree, so a fix that only reached `dev` must reach `main` first.

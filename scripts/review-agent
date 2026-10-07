@@ -1,6 +1,12 @@
 #!/bin/sh
 # Wrapper for the post-commit review agent.
 # Reads REVIEW_AGENT_TOOL from environment, falling back to .env, defaulting to opencode.
+#
+# The tool's exit code is NOT a reliable signal of whether the review completed.
+# Both failure modes have been observed in one day:
+#   - EXIT=0 with no verdict   (session stalled at a provider timeout)
+#   - EXIT=1 with APPROVE      (review finished, tool still exited non-zero)
+# So the output is captured and the verdict line is the only thing trusted.
 
 # Load .env from repo root (env vars take precedence)
 if [ -z "$REVIEW_AGENT_TOOL" ]; then
@@ -12,15 +18,20 @@ fi
 
 TOOL="${REVIEW_AGENT_TOOL:-opencode}"
 
+# Capture output while still showing it, so the operator sees the review as it
+# runs and the verdict can be checked afterwards.
+OUT=$(mktemp)
+trap 'rm -f "$OUT"' EXIT
+
 case "$TOOL" in
   opencode)
-    opencode run --agent plan --auto --format default "$1"
+    opencode run --agent plan --auto --format default "$1" 2>&1 | tee "$OUT"
     ;;
   claude)
-    echo "$1" | claude -p
+    echo "$1" | claude -p 2>&1 | tee "$OUT"
     ;;
   codex)
-    codex --quiet -m "$1"
+    codex --quiet -m "$1" 2>&1 | tee "$OUT"
     ;;
   *)
     echo "Unknown review agent tool: $TOOL"
@@ -28,3 +39,14 @@ case "$TOOL" in
     exit 1
     ;;
 esac
+
+# A review that never produced a verdict did not happen, whatever the exit code
+# said. Fail loudly rather than let an unreviewed commit pass as reviewed.
+if ! grep -qE '^VERDICT: (APPROVE|REQUEST-CHANGES)' "$OUT"; then
+  echo "" >&2
+  echo "review-agent: no 'VERDICT:' line in the output — the review did not complete." >&2
+  echo "Treat this commit as UNREVIEWED. Re-run, or review it by hand." >&2
+  exit 1
+fi
+
+exit 0
