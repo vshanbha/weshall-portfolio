@@ -1,5 +1,39 @@
 # Changelog
 
+## [v0.3.5] - 2026-10-07
+
+Patch: one dependency advisory fixed, formatting now enforced, and three
+release-process gaps closed.
+
+### Security
+
+- Bump `sharp` 0.35.4 → 0.35.5, fixing GHSA-wq5f-xc86-pv6w (CVE-2026-96889, a vulnerability in the bundled librsvg) ([`38c6456`](https://github.com/vshanbha/weshall-portfolio/commit/38c6456))
+
+One advisory remains: `braces`, which has no upstream fix — `3.0.3` is `latest`
+on npm — and is a lint-time devDependency that never reaches the published site.
+
+### Tooling
+
+- Format the repo and enforce it: upgrade `prettier` 3.4 → 3.9.9 and `prettier-plugin-astro` 0.14.1 → 1.1.0, format 142 files, and add `format:check` to `validate` ([`1bb2e26`](https://github.com/vshanbha/weshall-portfolio/commit/1bb2e26))
+
+The old plugin could not parse five `.astro` files at all, which is why the check
+had been absent. Reformatting was verified not to change what the site renders:
+no built HTML file differs in visible text, and the residual build differences
+are per-build non-determinism (a random menu id per page, the RSS build date,
+and which basename Astro picks for two byte-identical SVGs).
+
+### Bug Fixes
+
+- Verify the review agent's verdict instead of trusting its exit code — both failure modes had been observed in one day: exit 0 with no verdict when a session stalled, and exit 1 with `APPROVE` when it completed ([`89aa3ef`](https://github.com/vshanbha/weshall-portfolio/commit/89aa3ef))
+- Make the early range check optional in the release runbook; skipping it no longer blocks tagging, since the check still runs at step 8 and skipping only moves it later ([`89aa3ef`](https://github.com/vshanbha/weshall-portfolio/commit/89aa3ef))
+- Correct `skills/code-quality/SKILL.md`, which claimed `pnpm validate` ran `format:check` when it did not ([`89aa3ef`](https://github.com/vshanbha/weshall-portfolio/commit/89aa3ef))
+
+### Commits
+
+`38c6456` - chore(deps): bump sharp to ^0.35.5
+`1bb2e26` - chore: format the repo and enforce it in validate
+`89aa3ef` - fix: close three of the four gaps recorded after v0.3.4
+
 ## [v0.3.4] - 2026-10-06
 
 Dependency advisories cut from 8 to 1, the release runbook's range rule
