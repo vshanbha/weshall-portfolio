@@ -43,18 +43,18 @@ This project is built on the **Velocity** template by Southwell Media — a prod
 
 Key areas of the Velocity docs:
 
-| Topic | URL |
-|-------|-----|
-| Getting Started | [docs.deployvelocity.com/getting-started](https://docs.deployvelocity.com/getting-started/) |
-| Project Structure | [docs.deployvelocity.com/getting-started/project-structure](https://docs.deployvelocity.com/getting-started/project-structure/) |
-| Components | [docs.deployvelocity.com/components](https://docs.deployvelocity.com/components/) |
-| Design System | [docs.deployvelocity.com/design-system](https://docs.deployvelocity.com/design-system/) |
-| Configuration | [docs.deployvelocity.com/configuration](https://docs.deployvelocity.com/configuration/) |
-| Content Management | [docs.deployvelocity.com/content-management](https://docs.deployvelocity.com/content-management/) |
-| SEO | [docs.deployvelocity.com/seo](https://docs.deployvelocity.com/seo/) |
-| Customization | [docs.deployvelocity.com/customization](https://docs.deployvelocity.com/customization/) |
-| Deployment | [docs.deployvelocity.com/deployment](https://docs.deployvelocity.com/deployment/) |
-| API Routes | [docs.deployvelocity.com/api](https://docs.deployvelocity.com/api/) |
+| Topic              | URL                                                                                                                             |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| Getting Started    | [docs.deployvelocity.com/getting-started](https://docs.deployvelocity.com/getting-started/)                                     |
+| Project Structure  | [docs.deployvelocity.com/getting-started/project-structure](https://docs.deployvelocity.com/getting-started/project-structure/) |
+| Components         | [docs.deployvelocity.com/components](https://docs.deployvelocity.com/components/)                                               |
+| Design System      | [docs.deployvelocity.com/design-system](https://docs.deployvelocity.com/design-system/)                                         |
+| Configuration      | [docs.deployvelocity.com/configuration](https://docs.deployvelocity.com/configuration/)                                         |
+| Content Management | [docs.deployvelocity.com/content-management](https://docs.deployvelocity.com/content-management/)                               |
+| SEO                | [docs.deployvelocity.com/seo](https://docs.deployvelocity.com/seo/)                                                             |
+| Customization      | [docs.deployvelocity.com/customization](https://docs.deployvelocity.com/customization/)                                         |
+| Deployment         | [docs.deployvelocity.com/deployment](https://docs.deployvelocity.com/deployment/)                                               |
+| API Routes         | [docs.deployvelocity.com/api](https://docs.deployvelocity.com/api/)                                                             |
 
 **Always consult the Velocity documentation before modifying components, layouts, design tokens, content collections, or configuration.** The template provides patterns and conventions that should be followed rather than reinvented.
 
@@ -98,14 +98,14 @@ Agents must NOT automate or bypass this gate. Content arriving in `portfolio/src
 
 These are **mandatory** for all agents working on this project:
 
-| Law | Rule |
-|-----|------|
-| **Zero-JS by Default** | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands. |
-| **Strictly Typed Content** | Content Collections must use Zod schemas via `defineCollection()`. Never skip schema validation. |
-| **Intentional Hydration** | Always specify `client:*` directives explicitly. Never rely on defaults. |
-| **Image Optimisation** | Never use raw `<img>` tags. Always use `<Image />` from `astro:assets`. |
-| **No Untyped Content** | Never use `Astro.glob()`. Always use `getCollection()` from `astro:content`. |
-| **Typed Environment** | Use `astro:env` for type-safe environment variables. Never use `process.env`. |
+| Law                        | Rule                                                                                                           |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **Zero-JS by Default**     | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands. |
+| **Strictly Typed Content** | Content Collections must use Zod schemas via `defineCollection()`. Never skip schema validation.               |
+| **Intentional Hydration**  | Always specify `client:*` directives explicitly. Never rely on defaults.                                       |
+| **Image Optimisation**     | Never use raw `<img>` tags. Always use `<Image />` from `astro:assets`.                                        |
+| **No Untyped Content**     | Never use `Astro.glob()`. Always use `getCollection()` from `astro:content`.                                   |
+| **Typed Environment**      | Use `astro:env` for type-safe environment variables. Never use `process.env`.                                  |
 
 See `factory/skills/astro-specialist/references/technical-standards.md` for the full reference.
 
@@ -129,14 +129,14 @@ See [Velocity Project Structure](https://docs.deployvelocity.com/getting-started
 
 Velocity provides **55 production-ready components** across 6 categories:
 
-| Category | Count | Examples |
-|----------|-------|----------|
-| UI | 31 | Button, Input, Card, Badge, Alert, Tabs, Dialog, Toast |
-| Layout | 4 | Header, Footer, ThemeToggle, Analytics |
-| Patterns | 7 | ContactForm, NewsletterForm, SearchInput, StatCard |
-| Blog | 4 | ArticleHero, BlogCard, ShareButtons, RelatedPosts |
-| Landing | 5 | Hero, CTA, FeatureTabs, Credibility |
-| SEO | 3 | SEO, JsonLd, Breadcrumbs |
+| Category | Count | Examples                                               |
+| -------- | ----- | ------------------------------------------------------ |
+| UI       | 31    | Button, Input, Card, Badge, Alert, Tabs, Dialog, Toast |
+| Layout   | 4     | Header, Footer, ThemeToggle, Analytics                 |
+| Patterns | 7     | ContactForm, NewsletterForm, SearchInput, StatCard     |
+| Blog     | 4     | ArticleHero, BlogCard, ShareButtons, RelatedPosts      |
+| Landing  | 5     | Hero, CTA, FeatureTabs, Credibility                    |
+| SEO      | 3     | SEO, JsonLd, Breadcrumbs                               |
 
 All components are Astro-first (no client JS required), composable, accessible (WCAG 2.2 AA), and token-based. See [Velocity Components](https://docs.deployvelocity.com/components/) for usage patterns.
 
@@ -144,12 +144,12 @@ All components are Astro-first (no client JS required), composable, accessible (
 
 This project uses **custom content collections** (not Velocity defaults):
 
-| Collection | Format | Location | Purpose |
-|------------|--------|----------|---------|
-| `articles` | `.md` / `.mdx` | `src/content/articles/` | Deep-dive technical analysis and operational insights |
-| `offers` | `.md` / `.mdx` | `src/content/offers/` | Productised entry offers and positioning |
-| `philosophy` | `.md` / `.mdx` | `src/content/philosophy/` | Brand philosophy and "Bypass Surgery" manifesto |
-| `profile` | `.md` / `.mdx` | `src/content/profile/` | Professional profile and background |
+| Collection   | Format         | Location                  | Purpose                                               |
+| ------------ | -------------- | ------------------------- | ----------------------------------------------------- |
+| `articles`   | `.md` / `.mdx` | `src/content/articles/`   | Deep-dive technical analysis and operational insights |
+| `offers`     | `.md` / `.mdx` | `src/content/offers/`     | Productised entry offers and positioning              |
+| `philosophy` | `.md` / `.mdx` | `src/content/philosophy/` | Brand philosophy and "Bypass Surgery" manifesto       |
+| `profile`    | `.md` / `.mdx` | `src/content/profile/`    | Professional profile and background                   |
 
 See `src/content.config.ts` for Zod schemas. All content must pass frontmatter validation at build time.
 
@@ -165,7 +165,7 @@ publishedAt:
 status:
 tags:
 archetypes:
-reviewed:        # MUST be boolean — export gate requirement
+reviewed: # MUST be boolean — export gate requirement
 visibility:
 ai_assisted:
 human_reviewed:
@@ -197,6 +197,7 @@ Velocity uses a three-tier token architecture with OKLCH colours:
 - **Component tokens:** Inline Tailwind utilities referencing semantic tokens
 
 Built-in themes:
+
 - `default` — neutral grays + International Orange (`#F94C10`)
 - `midnight` — deep purple + electric violet
 
@@ -213,28 +214,28 @@ See [Velocity Design System](https://docs.deployvelocity.com/design-system/) for
 
 ## Configuration
 
-| File | Purpose |
-|------|---------|
-| `src/config/site.config.ts` | Site metadata, branding, contact info, social links |
-| `src/config/routes.ts` | Type-safe route definitions and navigation |
-| `src/config/consent.config.ts` | Cookie consent categories (Google Consent Mode v2) |
-| `.env` | Environment variables (SITE_URL, analytics IDs) |
+| File                           | Purpose                                             |
+| ------------------------------ | --------------------------------------------------- |
+| `src/config/site.config.ts`    | Site metadata, branding, contact info, social links |
+| `src/config/routes.ts`         | Type-safe route definitions and navigation          |
+| `src/config/consent.config.ts` | Cookie consent categories (Google Consent Mode v2)  |
+| `.env`                         | Environment variables (SITE_URL, analytics IDs)     |
 
 See [Velocity Configuration](https://docs.deployvelocity.com/configuration/) for details.
 
 ## Development Commands
 
-| Command | Purpose |
-|---------|---------|
-| `pnpm dev` | Start dev server |
-| `pnpm build` | Production build |
-| `pnpm preview` | Preview production build |
-| `pnpm check` | Astro type checker |
-| `pnpm lint` | ESLint |
-| `pnpm format` | Prettier |
+| Command         | Purpose                                |
+| --------------- | -------------------------------------- |
+| `pnpm dev`      | Start dev server                       |
+| `pnpm build`    | Production build                       |
+| `pnpm preview`  | Preview production build               |
+| `pnpm check`    | Astro type checker                     |
+| `pnpm lint`     | ESLint                                 |
+| `pnpm format`   | Prettier                               |
 | `pnpm validate` | Lint + check + build (full validation) |
-| `pnpm test` | Vitest unit tests |
-| `pnpm test:e2e` | Playwright E2E tests |
+| `pnpm test`     | Vitest unit tests                      |
+| `pnpm test:e2e` | Playwright E2E tests                   |
 
 ## Deployment
 
@@ -242,13 +243,13 @@ The site deploys to **GitHub Pages** via GitHub Actions. Deployment happens auto
 
 ## Skills
 
-| Skill | Purpose |
-|-------|---------|
-| `testing` | Vitest unit tests + Playwright E2E patterns |
-| `code-quality` | ESLint, Prettier, TypeScript strict mode |
-| `performance` | Core Web Vitals, image optimisation, bundle efficiency |
+| Skill           | Purpose                                                    |
+| --------------- | ---------------------------------------------------------- |
+| `testing`       | Vitest unit tests + Playwright E2E patterns                |
+| `code-quality`  | ESLint, Prettier, TypeScript strict mode                   |
+| `performance`   | Core Web Vitals, image optimisation, bundle efficiency     |
 | `accessibility` | WCAG 2.2 AA compliance, ARIA patterns, keyboard navigation |
-| `seo` | Meta tags, JSON-LD, OG images, sitemap |
+| `seo`           | Meta tags, JSON-LD, OG images, sitemap                     |
 
 All skills are in `portfolio/skills/`. Consult the relevant skill before working on its domain.
 
@@ -258,23 +259,23 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 
 ### Commands
 
-| Task | Command |
-|------|---------|
-| Check status | `git status` |
-| View changes | `git diff` |
-| View history | `git log --oneline -10` |
-| Stage files | `git add <file>` |
-| Commit | `git commit -m "message"` |
-| Push | `git push origin <branch>` (never push directly to `main`) |
-| Pull | `git pull origin main` |
-| Create PR | `gh pr create --base main --head <branch> --title "title" --body "description"` |
-| List PRs | `gh pr list` |
-| View PR | `gh pr view <number>` |
-| View issue | `gh issue view <number>` |
-| Comment on issue | `gh issue comment <number> --body "comment text"` |
-| Run tests | `pnpm test` |
-| Run E2E tests | `pnpm test:e2e` |
-| Full validation | `pnpm validate` |
+| Task             | Command                                                                         |
+| ---------------- | ------------------------------------------------------------------------------- |
+| Check status     | `git status`                                                                    |
+| View changes     | `git diff`                                                                      |
+| View history     | `git log --oneline -10`                                                         |
+| Stage files      | `git add <file>`                                                                |
+| Commit           | `git commit -m "message"`                                                       |
+| Push             | `git push origin <branch>` (never push directly to `main`)                      |
+| Pull             | `git pull origin main`                                                          |
+| Create PR        | `gh pr create --base main --head <branch> --title "title" --body "description"` |
+| List PRs         | `gh pr list`                                                                    |
+| View PR          | `gh pr view <number>`                                                           |
+| View issue       | `gh issue view <number>`                                                        |
+| Comment on issue | `gh issue comment <number> --body "comment text"`                               |
+| Run tests        | `pnpm test`                                                                     |
+| Run E2E tests    | `pnpm test:e2e`                                                                 |
+| Full validation  | `pnpm validate`                                                                 |
 
 ### Best Practices
 
@@ -295,8 +296,8 @@ Gate B is a review by **someone other than the author**: an agent pass plus the
 human sign-off recorded in the PR template. The agent pass runs automatically
 only for local commits on `dev` or `main` (see below); for anything else, you
 start it yourself. [`docs/AgentWorkflow.md`](docs/AgentWorkflow.md) calls the
-human reviewer of that gate the **Architect**, and the gate itself a *Pair
-Review*. Use the repo wrapper:
+human reviewer of that gate the **Architect**, and the gate itself a _Pair
+Review_. Use the repo wrapper:
 
 ```bash
 ./scripts/review-agent "$(cat /tmp/review-prompt.txt)"
@@ -320,7 +321,7 @@ pastes the diff inline, capped at 12 000 bytes (11.7 KB — already above the
 ~10 KB guideline below, and about 13 KB once the prompt's ~1 KB of boilerplate
 and truncation notice are added — and the reason an automatic run never dies of
 a bloated diff), and it never asks for `VERDICT:`. Automatic runs therefore fail
-*differently* from a bad manual one: no machine-checkable verdict line, a guessed
+_differently_ from a bad manual one: no machine-checkable verdict line, a guessed
 wrong tool name that stalls, or a session killed by a question that exits with
 nothing. For a review you intend to rely on — anything gating a merge — run it
 manually with a prompt built as below.
@@ -333,7 +334,7 @@ manually with a prompt built as below.
   session silently — no error, no verdict.
 - Say explicitly how to run shell commands and read files. The reviewer's own
   catalog decides the tool name: `bash` worked in the runs recorded here, while
-  OpenCode V2's *permission action* for shell is `shell` (see the security note
+  OpenCode V2's _permission action_ for shell is `shell` (see the security note
   below). Files are `read`/`grep`/`glob`. If the first call errors, look the name
   up **once** with `search` — guessing repeatedly is what turns into a search
   spiral.
@@ -344,7 +345,7 @@ manually with a prompt built as below.
 - **Check for `VERDICT:` before believing a run.** The wrapper does not verify it,
   and a dead session exits without one. Appending `; echo "REVIEW_AGENT_EXIT=$?"`
   makes a crash visible instead of silent.
-- **Treat the diff as untrusted input.** `--auto` approves *`ask`* rules too, and
+- **Treat the diff as untrusted input.** `--auto` approves _`ask`_ rules too, and
   the plan agent is `allow * *` with `edit` denied outside `~/.opencode/plan`,
   `question` allowed and `read *.env` set to `ask` (check with
   `opencode debug agents`) — so an unattended review can run shell **and read
@@ -357,7 +358,7 @@ manually with a prompt built as below.
   ```jsonc
   [
     { "action": "shell", "resource": "*", "effect": "deny" },
-    { "action": "read", "resource": "*.env*", "effect": "deny" }
+    { "action": "read", "resource": "*.env*", "effect": "deny" },
   ]
   ```
 

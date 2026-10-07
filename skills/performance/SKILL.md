@@ -13,34 +13,34 @@ This skill covers performance optimisation for the Velocity Astro project. Focus
 
 These are **mandatory** for performance:
 
-| Law | Rule |
-|-----|------|
-| **Zero-JS by Default** | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands. Shipping framework JS for non-interactive content is prohibited. |
-| **Intentional Hydration** | Always specify `client:*` directives explicitly. Never rely on defaults. Prefer `client:visible` or `client:idle` over `client:load`. |
-| **Image Optimisation** | Never use raw `<img>` tags. Always use `<Image />` or `getImage()` from `astro:assets` for automatic LCP optimisation and format conversion. |
-| **No Untyped Content** | Never use `Astro.glob()`. Always use `getCollection()` / `getEntry()` from `astro:content`. |
-| **Typed Environment** | Use `astro:env` for type-safe environment variables. Never use `process.env`. |
+| Law                       | Rule                                                                                                                                                                            |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Zero-JS by Default**    | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands. Shipping framework JS for non-interactive content is prohibited. |
+| **Intentional Hydration** | Always specify `client:*` directives explicitly. Never rely on defaults. Prefer `client:visible` or `client:idle` over `client:load`.                                           |
+| **Image Optimisation**    | Never use raw `<img>` tags. Always use `<Image />` or `getImage()` from `astro:assets` for automatic LCP optimisation and format conversion.                                    |
+| **No Untyped Content**    | Never use `Astro.glob()`. Always use `getCollection()` / `getEntry()` from `astro:content`.                                                                                     |
+| **Typed Environment**     | Use `astro:env` for type-safe environment variables. Never use `process.env`.                                                                                                   |
 
 ## Quick Reference
 
-| Task | Command |
-|------|---------|
-| Build for production | `pnpm build` |
-| Preview production build | `pnpm preview` |
-| Run Lighthouse | `npx lighthouse http://localhost:4321 --view` |
-| Check bundle size | `npx astro build && du -sh dist/` |
+| Task                     | Command                                       |
+| ------------------------ | --------------------------------------------- |
+| Build for production     | `pnpm build`                                  |
+| Preview production build | `pnpm preview`                                |
+| Run Lighthouse           | `npx lighthouse http://localhost:4321 --view` |
+| Check bundle size        | `npx astro build && du -sh dist/`             |
 
 ## Core Web Vitals
 
 ### Metrics to Track
 
-| Metric | Target | What It Measures |
-|--------|--------|------------------|
-| LCP (Largest Contentful Paint) | < 2.5s | Loading performance |
-| CLS (Cumulative Layout Shift) | < 0.1 | Visual stability |
-| INP (Interaction to Next Paint) | < 200ms | Responsiveness |
-| FCP (First Contentful Paint) | < 1.8s | Perceived load speed |
-| TTFB (Time to First Byte) | < 800ms | Server response time |
+| Metric                          | Target  | What It Measures     |
+| ------------------------------- | ------- | -------------------- |
+| LCP (Largest Contentful Paint)  | < 2.5s  | Loading performance  |
+| CLS (Cumulative Layout Shift)   | < 0.1   | Visual stability     |
+| INP (Interaction to Next Paint) | < 200ms | Responsiveness       |
+| FCP (First Contentful Paint)    | < 1.8s  | Perceived load speed |
+| TTFB (Time to First Byte)       | < 800ms | Server response time |
 
 ### Astro Performance Defaults (Already Configured)
 
@@ -59,10 +59,10 @@ import { Image } from 'astro:assets';
 import heroImage from '../assets/hero.png';
 ---
 
-<Image 
-  src={heroImage} 
-  alt="Description" 
-  widths={[400, 800, 1200]} 
+<Image
+  src={heroImage}
+  alt="Description"
+  widths={[400, 800, 1200]}
   sizes="(max-width: 768px) 100vw, 50vw"
   loading="eager"
   fetchpriority="high"
@@ -81,12 +81,12 @@ import heroImage from '../assets/hero.png';
 
 ### Image Formats
 
-| Format | Use Case |
-|--------|----------|
-| WebP | Default for photos (good compression) |
-| AVIF | Best compression (modern browsers) |
-| SVG | Icons, illustrations, logos |
-| PNG | Only when transparency needed and no WebP |
+| Format | Use Case                                  |
+| ------ | ----------------------------------------- |
+| WebP   | Default for photos (good compression)     |
+| AVIF   | Best compression (modern browsers)        |
+| SVG    | Icons, illustrations, logos               |
+| PNG    | Only when transparency needed and no WebP |
 
 ## Font Loading
 
@@ -148,6 +148,7 @@ ls -lh dist/_astro/  # Check JS/CSS chunk sizes
 ### Caching Headers (Already Configured)
 
 Velocity's deployment configs set:
+
 - `/_astro/*` — immutable, 1 year cache (fingerprinted filenames)
 - `/fonts/*` — immutable, 1 year cache
 - HTML pages — no-cache (always fresh)
@@ -163,11 +164,11 @@ Velocity's deployment configs set:
 
 ### Common Performance Killers
 
-| Issue | Fix |
-|-------|-----|
-| Un optimised images | Use `astro:assets` Image component |
-| Render-blocking scripts | Move to `client:visible` or remove |
+| Issue                    | Fix                                |
+| ------------------------ | ---------------------------------- |
+| Un optimised images      | Use `astro:assets` Image component |
+| Render-blocking scripts  | Move to `client:visible` or remove |
 | Large JavaScript bundles | Audit imports, use dynamic imports |
-| Missing font-display | Add `font-display: swap` |
-| CLS from images | Set explicit `width` and `height` |
-| Third-party scripts | Lazy-load or remove |
+| Missing font-display     | Add `font-display: swap`           |
+| CLS from images          | Set explicit `width` and `height`  |
+| Third-party scripts      | Lazy-load or remove                |

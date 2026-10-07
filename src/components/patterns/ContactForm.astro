@@ -24,34 +24,13 @@ const {
   class={cn('space-y-6', className)}
   data-success-message={successMessage}
 >
-  <Input
-    label="Name"
-    name="name"
-    type="text"
-    required
-    autocomplete="name"
-  />
+  <Input label="Name" name="name" type="text" required autocomplete="name" />
 
-  <Input
-    label="Email"
-    name="email"
-    type="email"
-    required
-    autocomplete="email"
-  />
+  <Input label="Email" name="email" type="email" required autocomplete="email" />
 
-  <Input
-    label="Subject"
-    name="subject"
-    type="text"
-  />
+  <Input label="Subject" name="subject" type="text" />
 
-  <Textarea
-    label="Message"
-    name="message"
-    required
-    rows={5}
-  />
+  <Textarea label="Message" name="message" required rows={5} />
 
   <!-- Honeypot field for spam protection -->
   <div class="hidden" aria-hidden="true">

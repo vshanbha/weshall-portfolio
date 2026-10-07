@@ -43,6 +43,7 @@ There's no map for any of this. But there are questions worth asking before pick
 ## The Questions Nobody Asks First
 
 For a feature a specific customer is asking for:
+
 - Is this a blocker to getting value from the product, or a nice-to-have?
 - How much revenue does this customer actually represent?
 - Would you lose them without it, contractually, not just emotionally?
@@ -50,13 +51,14 @@ For a feature a specific customer is asking for:
 - Does it hold value for other customers beyond this one?
 
 For a feature meant to win new customers:
+
 - Is there research or data behind this, or just a gut feeling?
 - What's the realistic upside over the next six to twelve months?
 - Does it help close deals already in the pipeline?
 
 ## Founder's Wishes
 
-Sometimes a feature gets built because a founder is convinced, and no counter-argument moves them. The usual defence is a Steve Jobs line, frequently misquoted into service: *"How does somebody know what they want if they have never even seen it?"*
+Sometimes a feature gets built because a founder is convinced, and no counter-argument moves them. The usual defence is a Steve Jobs line, frequently misquoted into service: _"How does somebody know what they want if they have never even seen it?"_
 
 There's a fine line between visionary and stubborn, and usually only time tells which side you were on. If you're the founder: sit with it, get outside feedback, talk to mentors, before asking your team to believe. If you're not the founder: don't quote that line back at them. Ask the questions above instead, and let the founder arrive at the answer themselves.
 
@@ -74,6 +76,6 @@ If that's an obvious yes, build it. The introspection above is still worth doing
 
 ---
 
-*The full article covers the complete hiking analogy, the full question set, and the Ulysses/Frankenstein detours that didn't make the cut here.*
+_The full article covers the complete hiking analogy, the full question set, and the Ulysses/Frankenstein detours that didn't make the cut here._
 
-[*Read the full version on Medium*](https://medium.com/@vvsvish/to-build-or-not-to-build-9003412e43d2)
+[_Read the full version on Medium_](https://medium.com/@vvsvish/to-build-or-not-to-build-9003412e43d2)

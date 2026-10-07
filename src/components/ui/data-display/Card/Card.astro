@@ -21,11 +21,7 @@ const {
 
 const Element = href ? 'a' : 'div';
 
-const cardStyles = cn(
-  cardVariants({ variant, padding, hover }),
-  href && 'block',
-  className
-);
+const cardStyles = cn(cardVariants({ variant, padding, hover }), href && 'block', className);
 ---
 
 <Element class={cardStyles} href={href} {...attrs}>

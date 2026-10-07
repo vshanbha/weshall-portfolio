@@ -26,7 +26,9 @@ test.describe('Pages', () => {
 
   test('services page loads', async ({ page }) => {
     await page.goto('/services');
-    await expect(page.getByRole('heading', { name: /Senior engineering judgement/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /Senior engineering judgement/i })
+    ).toBeVisible();
     await expect(page.locator('body')).toContainText(/How I work|What I have learned/i);
   });
 
@@ -112,7 +114,9 @@ test.describe('Home Page Features', () => {
     await expect(page.getByRole('link', { name: 'Talk to me' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Read the latest' })).toBeVisible();
     await expect(page.getByText('From circuit board to boardroom.')).toBeVisible();
-    await expect(page.getByText('Hardware foundations. Enterprise software. Climate focus.')).toBeVisible();
+    await expect(
+      page.getByText('Hardware foundations. Enterprise software. Climate focus.')
+    ).toBeVisible();
     await expect(page.getByText('20+ years of engineering judgement in production.')).toBeVisible();
     await expect(page.getByText('Banking · Fintech · SaaS · AI · Climate Tech')).toBeVisible();
     await expect(page.getByRole('link', { name: /About me/i })).toBeVisible();
@@ -139,9 +143,15 @@ test.describe('Home Page Features', () => {
   test('testimonials show quote when tab selected', async ({ page }) => {
     await page.goto('/');
     await page.locator('[data-vtab-trigger="powermarket"]').click();
-    await expect(page.locator('.vtabs-content-desktop [data-tab-content="powermarket"]')).toBeVisible();
-    await expect(page.locator('.vtabs-content-desktop [data-tab-content="powermarket"] blockquote')).toContainText(/phenomenal resource/);
-    await expect(page.locator('.vtabs-content-desktop [data-tab-content="powermarket"] a[href*="linkedin"]')).toBeVisible();
+    await expect(
+      page.locator('.vtabs-content-desktop [data-tab-content="powermarket"]')
+    ).toBeVisible();
+    await expect(
+      page.locator('.vtabs-content-desktop [data-tab-content="powermarket"] blockquote')
+    ).toContainText(/phenomenal resource/);
+    await expect(
+      page.locator('.vtabs-content-desktop [data-tab-content="powermarket"] a[href*="linkedin"]')
+    ).toBeVisible();
   });
 });
 
@@ -157,7 +167,9 @@ test.describe('About Page Features', () => {
     await expect(page.getByRole('heading', { name: /^How I build$/i }).first()).toBeVisible();
     await expect(page.getByRole('heading', { name: /^What I believe$/i }).first()).toBeVisible();
     await expect(page.getByRole('heading', { name: /The career arc, briefly/i })).toBeVisible();
-    await expect(page.getByRole('heading', { name: /Speaking, writing, mentorship/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /Speaking, writing, mentorship/i })
+    ).toBeVisible();
     await expect(page.getByRole('heading', { name: /Off the clock/i })).toBeVisible();
   });
 
@@ -209,7 +221,9 @@ test.describe('About Page Features', () => {
 test.describe('Services Page Features', () => {
   test('shows hero and how I work section', async ({ page }) => {
     await page.goto('/services');
-    await expect(page.getByRole('heading', { name: /Senior engineering judgement/i })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: /Senior engineering judgement/i })
+    ).toBeVisible();
     await expect(page.getByRole('heading', { name: /How I work/i })).toBeVisible();
     await expect(page.getByText(/sounding board session/i).first()).toBeVisible();
     await expect(page.getByText(/figure out together/i)).toBeVisible();
@@ -275,7 +289,9 @@ test.describe('Blog Article SEO', () => {
         try {
           const parsed = JSON.parse(script.textContent || '');
           if (parsed['@type'] === 'BlogPosting') return parsed;
-        } catch { /* ignore parse errors */ }
+        } catch {
+          /* ignore parse errors */
+        }
       }
       return null;
     });
@@ -316,7 +332,9 @@ test.describe('Blog Article SEO', () => {
         try {
           const parsed = JSON.parse(script.textContent || '');
           if (parsed['@type'] === 'BreadcrumbList') return parsed;
-        } catch { /* ignore parse errors */ }
+        } catch {
+          /* ignore parse errors */
+        }
       }
       return null;
     });

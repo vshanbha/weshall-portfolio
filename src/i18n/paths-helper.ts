@@ -4,5 +4,4 @@
  */
 import { locales } from './config';
 
-export const getStaticPathsHelper = () =>
-  locales.map((lang) => ({ params: { lang } }));
+export const getStaticPathsHelper = () => locales.map((lang) => ({ params: { lang } }));
