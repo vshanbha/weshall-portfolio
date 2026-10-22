@@ -283,7 +283,7 @@ export const de = {
         'Builder, senior architect, and hands-on engineer. 20+ years from Mumbai to Cologne.',
     },
     origin: {
-      title: 'Origin',
+      title: 'Vishal Shanbhag',
       paragraphs: [
         'I come from Mumbai, India. These days I am in Hürth, near Cologne, Germany.',
         'I graduated as an electronics engineer from Mumbai University in 2002. I stumbled into software because, after the 9/11 attacks of 2001, jobs dried up and a financial crisis loomed. The software industry was the first to hire. I have been building production systems ever since.',
