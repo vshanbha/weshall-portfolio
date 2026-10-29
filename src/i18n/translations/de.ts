@@ -147,6 +147,8 @@ export const de = {
     command: '',
   },
   footer: {
+    tagline:
+      'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.', // TODO: translate
     copyright: '© {year} We Shall Build. Alle Rechte vorbehalten.',
     madeWith: 'Erstellt mit',
     maintainedBy: 'Pflege durch',

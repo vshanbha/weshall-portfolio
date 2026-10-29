@@ -163,6 +163,8 @@ export const en = {
 
   // Footer
   footer: {
+    tagline:
+      'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
     copyright: '© {year} We Shall Build. All rights reserved.',
     madeWith: 'Made with',
     maintainedBy: 'Maintained by',

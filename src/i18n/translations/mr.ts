@@ -147,6 +147,8 @@ export const mr = {
     command: '',
   },
   footer: {
+    tagline:
+      'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.', // TODO: translate
     copyright: '© {year} वी शॉल बिल्ड. सर्व हक्क राखीव.',
     madeWith: 'बनवले',
     maintainedBy: 'द्वारे देखभाल केली',
