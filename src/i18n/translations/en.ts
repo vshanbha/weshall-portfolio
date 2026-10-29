@@ -268,25 +268,26 @@ export const en = {
     meta: {
       title: 'What I do',
       description:
-        'Senior engineering judgement for growth-stage companies. Architecture, hiring, tech selection, and hardening.',
+        'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
     },
     hero: {
-      title: 'Senior engineering judgement.',
+      title: 'Some calls cost you when you get them wrong.',
       description:
         'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.',
     },
     howwork: {
       title: 'How I work',
       paragraphs: [
-        'I work alongside founders and technical leads who need senior engineering judgement: for a decision, a hire, a technology bet, or a sanity check.',
-        'The relationship starts with a conversation. A sounding board session, 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.',
+        'I work alongside founders and technical leads at a decision, a hire, a hardening problem, or a sanity check.',
+        "The relationship starts with a free fifteen-minute conversation to work out whether it's worth a longer one. No pitch, no obligation, no sales process.",
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.',
       ],
     },
     cta: {
-      title: 'Talk to me',
-      description: 'A 60-minute sounding board session. No pitch, no obligation.',
-      button: 'Talk to me',
+      title: 'Three shapes, one conversation.',
+      description:
+        'Free intro call · the honest one hour · a two-to-four-week diagnostic · ongoing monthly advisory.',
+      button: "Let's talk",
     },
   },
 
