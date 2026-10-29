@@ -39,7 +39,7 @@ export const en = {
     bridge:
       "For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those calls in production for twenty years.",
     cta: {
-      primary: 'Talk to me',
+      primary: "Let's talk",
       secondary: 'Read the latest',
     },
     rightColumn: {
@@ -155,8 +155,8 @@ export const en = {
     title: 'Build what matters.',
     titleHighlight: '',
     description:
-      "Every project starts with a conversation. Let's talk about what you're building and how to get it across the line.",
-    button: 'Start a Conversation',
+      'Not sure whether you have a problem worth paying to solve? That is the most common reason people write to me.',
+    button: "Let's talk",
     docs: '',
     command: '',
   },
@@ -482,7 +482,7 @@ export const en = {
         "I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan's condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.",
       ],
       closingLead: 'If you have an idea that needs software to give it life, ',
-      closing: 'talk to me.',
+      closing: "let's talk.",
     },
     editorialStandards: {
       title: 'Editorial standards',
@@ -491,7 +491,7 @@ export const en = {
     },
     cta: {
       title: 'Have a problem worth solving?',
-      button: 'Start a Conversation',
+      button: "Let's talk",
     },
   },
 
