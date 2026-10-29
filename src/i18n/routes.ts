@@ -88,6 +88,15 @@ export const routes = {
     mr: 'contact',
     nav: { show: true, order: 5, label: 'nav.contact' },
   },
+
+  // Philosophy page — linked from About, deliberately not shown in nav
+  philosophy: {
+    en: 'philosophy',
+    de: 'philosophy',
+    hi: 'philosophy',
+    mr: 'philosophy',
+    nav: { show: false, order: 6, label: 'nav.philosophy' },
+  },
 } as const;
 
 /**
