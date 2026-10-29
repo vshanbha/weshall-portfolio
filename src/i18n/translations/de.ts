@@ -484,26 +484,39 @@ export const de = {
   contact: {
     meta: {
       title: 'Kontakt',
-      description: 'Nehmen Sie Kontakt mit Vishal Shanbhag auf.',
+      description:
+        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation — including when the answer is no.', // TODO: translate
     },
     hero: {
-      title: 'Lassen Sie uns sprechen.', // TODO: translate
+      title: "You don't need a tidy brief. Bring the mess.", // TODO: translate
       description:
-        'Der beste Weg, mich zu erreichen, ist über LinkedIn — es hält das Signal hoch und das Rauschen niedrig. Wenn Sie ein klares Briefing haben, ist eine Sounding-Board-Sitzung der schnellste Weg zu einem strukturierten Engagement.', // TODO: translate
+        'Most people who write to me are not sure whether they have a problem, a question, or just a feeling that something is off. That is a normal place to start, and it is not a reason to wait.', // TODO: translate
     },
-    linkedin: {
-      title: 'Auf LinkedIn vernetzen', // TODO: translate
+    free: {
       description:
-        'Senden Sie mir eine Kontaktanfrage mit einer Notiz zu dem, woran Sie arbeiten, und erwähnen Sie weshall.build — ich lese jede.', // TODO: translate
-      button: 'Auf LinkedIn vernetzen', // TODO: translate
-      url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation — including when the answer is no.', // TODO: translate
+      button: "Let's talk", // TODO: translate
+      url: 'https://calendly.com/vshanbhag',
     },
-    upwork: {
-      title: 'Sounding-Board buchen', // TODO: translate
+    paid: {
+      title: 'Want the full hour instead?', // TODO: translate
       description:
-        'Für Sounding-Board-Sitzungen. Eine technische Beratung, um Ihre Herausforderungen zu analysieren und die richtigen technischen Optionen zu erkunden.', // TODO: translate
-      button: 'Sitzung buchen', // TODO: translate
+        'A paid sounding board: 60 minutes on your problem with a senior architect, no qualification call.', // TODO: translate
+      button: 'Pressure-test a decision', // TODO: translate
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
+    },
+    write: {
+      title: 'Prefer to write first?', // TODO: translate
+      description:
+        'Send a note with whatever you have — a paragraph, a repo link, a half-formed worry.', // TODO: translate
+      linkedin: {
+        button: 'Connect on LinkedIn', // TODO: translate
+        url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+      },
+      upwork: {
+        button: 'Upwork listings', // TODO: translate
+        url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
+      },
     },
   },
   form: {

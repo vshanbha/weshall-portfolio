@@ -499,26 +499,39 @@ export const en = {
   contact: {
     meta: {
       title: 'Contact',
-      description: 'Connect with Vishal Shanbhag on LinkedIn or book a sounding board session.',
+      description:
+        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation — including when the answer is no.',
     },
     hero: {
-      title: "Let's talk.",
+      title: "You don't need a tidy brief. Bring the mess.",
       description:
-        'The best way to reach me is through LinkedIn: it keeps the signal high and the noise low. If you have a clear brief, a sounding board session is the fastest route to a structured engagement.',
+        'Most people who write to me are not sure whether they have a problem, a question, or just a feeling that something is off. That is a normal place to start, and it is not a reason to wait.',
     },
-    linkedin: {
-      title: 'Connect on LinkedIn',
+    free: {
       description:
-        'Send me a connection request with a note about what you are working on and mention weshall.build — I read every one.',
-      button: 'Connect on LinkedIn',
-      url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation — including when the answer is no.',
+      button: "Let's talk",
+      url: 'https://calendly.com/vshanbhag',
     },
-    upwork: {
-      title: 'Book a Sounding Board',
+    paid: {
+      title: 'Want the full hour instead?',
       description:
-        'For sounding board sessions. A technical consultation to break down your challenges and explore the right technical options.',
-      button: 'Book a Session',
+        'A paid sounding board: 60 minutes on your problem with a senior architect, no qualification call.',
+      button: 'Pressure-test a decision',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
+    },
+    write: {
+      title: 'Prefer to write first?',
+      description:
+        'Send a note with whatever you have — a paragraph, a repo link, a half-formed worry.',
+      linkedin: {
+        button: 'Connect on LinkedIn',
+        url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+      },
+      upwork: {
+        button: 'Upwork listings',
+        url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
+      },
     },
   },
 

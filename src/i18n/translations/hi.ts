@@ -479,26 +479,39 @@ export const hi = {
   contact: {
     meta: {
       title: 'संपर्क करें',
-      description: 'विशाल शानभाग से संपर्क करें।',
+      description:
+        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation — including when the answer is no.', // TODO: translate
     },
     hero: {
-      title: 'चलिए बात करते हैं।', // TODO: translate
+      title: "You don't need a tidy brief. Bring the mess.", // TODO: translate
       description:
-        'मुझसे संपर्क करने का सबसे अच्छा तरीका LinkedIn है — यह सिग्नल को ऊंचा और शोर को कम रखता है। यदि आपके पास एक स्पष्ट ब्रीफ है, तो साउंडिंग बोर्ड सत्र एक संरचित जुड़ाव का सबसे तेज़ तरीका है।', // TODO: translate
+        'Most people who write to me are not sure whether they have a problem, a question, or just a feeling that something is off. That is a normal place to start, and it is not a reason to wait.', // TODO: translate
     },
-    linkedin: {
-      title: 'LinkedIn पर कनेक्ट करें', // TODO: translate
+    free: {
       description:
-        'मुझे एक कनेक्शन अनुरोध भेजें जिसमें आप किस पर काम कर रहे हैं, इसके बारे में एक नोट हो और weshall.build का उल्लेख करें — मैं हर एक पढ़ता हूं।', // TODO: translate
-      button: 'LinkedIn पर कनेक्ट करें', // TODO: translate
-      url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation — including when the answer is no.', // TODO: translate
+      button: "Let's talk", // TODO: translate
+      url: 'https://calendly.com/vshanbhag',
     },
-    upwork: {
-      title: 'साउंडिंग बोर्ड बुक करें', // TODO: translate
+    paid: {
+      title: 'Want the full hour instead?', // TODO: translate
       description:
-        'साउंडिंग बोर्ड सत्रों के लिए। आपकी चुनौतियों को समझने और सही तकनीकी विकल्प तलाशने के लिए एक तकनीकी परामर्श।', // TODO: translate
-      button: 'सत्र बुक करें', // TODO: translate
+        'A paid sounding board: 60 minutes on your problem with a senior architect, no qualification call.', // TODO: translate
+      button: 'Pressure-test a decision', // TODO: translate
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
+    },
+    write: {
+      title: 'Prefer to write first?', // TODO: translate
+      description:
+        'Send a note with whatever you have — a paragraph, a repo link, a half-formed worry.', // TODO: translate
+      linkedin: {
+        button: 'Connect on LinkedIn', // TODO: translate
+        url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+      },
+      upwork: {
+        button: 'Upwork listings', // TODO: translate
+        url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
+      },
     },
   },
   form: {
