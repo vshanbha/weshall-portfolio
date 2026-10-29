@@ -12,11 +12,9 @@ export interface Props {
       secondary: string;
     };
     rightColumn: {
-      lead: string;
-      headline: string;
-      value: string;
-      worksAcross: string;
-      domains: string;
+      name: string;
+      statement: string;
+      also: string;
       aboutLink: string;
     };
   };
@@ -45,21 +43,14 @@ const { locale, t } = Astro.props;
 
       <div class="w-full lg:w-auto lg:flex-[0.8] lg:min-w-[280px]">
         <div class="bg-muted rounded-xl p-7 space-y-4">
-          <div class="font-display text-lg font-semibold text-foreground leading-snug">
-            {t.rightColumn.lead}
-          </div>
-          <div class="font-display text-base font-medium text-foreground leading-snug">
-            {t.rightColumn.headline}
+          <div class="font-sans text-sm text-foreground-muted leading-relaxed">
+            <strong class="font-display text-base font-semibold text-foreground">
+              {t.rightColumn.name}
+            </strong>{' '}
+            {t.rightColumn.statement}
           </div>
           <div class="font-sans text-sm text-foreground-muted leading-relaxed">
-            {t.rightColumn.value}
-          </div>
-          <hr class="border-border" />
-          <div>
-            <div class="font-sans text-xs text-foreground-muted uppercase tracking-wider mb-2">
-              {t.rightColumn.worksAcross}
-            </div>
-            <div class="font-sans text-sm font-medium text-foreground">{t.rightColumn.domains}</div>
+            {t.rightColumn.also}
           </div>
           <div class="pt-2">
             <a

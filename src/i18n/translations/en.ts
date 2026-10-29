@@ -37,17 +37,16 @@ export const en = {
   hero: {
     title: 'Build what matters.',
     bridge:
-      "For founders and technical leads at growth-stage companies: senior engineering judgement when the stakes are high and the path isn't clear.",
+      "For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those calls in production for twenty years.",
     cta: {
       primary: 'Talk to me',
       secondary: 'Read the latest',
     },
     rightColumn: {
-      lead: 'From circuit board to boardroom.',
-      headline: 'Hardware foundations. Enterprise software. Climate focus.',
-      value: '20+ years of engineering judgement in production.',
-      worksAcross: 'Works across',
-      domains: 'Banking · Fintech · SaaS · AI · Climate Tech',
+      name: 'Vishal Shanbhag.',
+      statement:
+        'Co-founded Inbotiqa, which still processes 100,000+ emails a day for global banks at 99.9% availability.',
+      also: 'Also: SaaS, AI, and climate tech.',
       aboutLink: 'About me',
     },
   },
