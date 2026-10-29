@@ -1,16 +1,18 @@
 # We Shall Build
 
-> Senior technical architect and hands-on engineer. 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products. Independent consultancy offering architecture, strategy, and implementation advisory.
+> AI can build it fast. That's the problem.
+>
+> For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those calls in production for twenty years.
 
-Advisory services in AI systems architecture, platform engineering, and technical due diligence. The site features deep-dive technical articles, a philosophy of bypass surgery for broken systems, and productised entry offers.
+Productised senior-architect engagements that start small and lead to embedded work. You don't make the wrong decision, the wrong hire, or the wrong bet on production. It usually starts with a free fifteen-minute conversation to work out whether it's worth a longer one. The site features deep-dive technical articles, the ten We shall commandments, and a four-rung engagement ladder, all visible at once.
 
 ## Key pages
 
 - [Home](https://weshall.build/): Landing page with brand positioning, engagement story cards, and service overview
 - [About](https://weshall.build/en/about/): From Lehman Brothers through Inbotiqa co-founder to independent consulting
-- [Services](https://weshall.build/en/services/): Start with a sounding board session, then fixed-price engagements — hiring advisory, architecture diagnostic, tech-selection, AI agent hardening
+- [Services](https://weshall.build/en/services/): Three shapes, one conversation — free intro call, the honest one hour, a two-to-four-week diagnostic, ongoing monthly advisory
 - [Blog](https://weshall.build/en/blog/): Deep-dive technical analysis, operational case studies, and engineering philosophy
-- [Contact](https://weshall.build/en/contact/): Connect via LinkedIn for direct conversations
+- [Contact](https://weshall.build/en/contact/): "You don't need a tidy brief. Bring the mess." Primary CTA: Let's talk — a free fifteen-minute call via Calendly, no commitment, no pitch. LinkedIn and Upwork are labelled secondary paths.
 
 ## External profiles
 
