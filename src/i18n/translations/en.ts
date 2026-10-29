@@ -184,24 +184,24 @@ export const en = {
       title: 'Engagement stories',
       items: [
         {
-          title: 'BlueMoney',
+          title: 'Talked a team out of building, and it saved the launch',
           subtitle: 'Short-term lending, Nigeria',
           paragraphs: [
-            'Pivoted a three-founder team from inventory lending into a regulated short-term lending business in Nigeria. Convinced them to buy mature platforms instead of building from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.',
+            '<em>BlueMoney</em> is a regulated short-term lender in Nigeria. I pivoted a three-founder team out of inventory lending and convinced them to buy mature platforms rather than build from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.',
           ],
         },
         {
-          title: 'Inbotiqa',
+          title: 'From 40% to 95% compliance on a system banks actually run',
           subtitle: 'Enterprise email processing, global banking',
           paragraphs: [
-            'Founding engineer at a Techstars portfolio company. Built the platform processing 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.',
+            'At <em>Inbotiqa</em>, where I was a founding engineer, the platform processes 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.',
           ],
         },
         {
-          title: 'HDFC Life Insurance',
+          title: 'Led a serverless evaluation years before it went mainstream',
           subtitle: 'Strategic architecture consulting, India',
           paragraphs: [
-            "Led serverless/MBaaS platform evaluation in 2015, years before it became mainstream. Architected an internal mobile platform enabling policyholders' families to request verified home care for elderly parents. Build-versus-buy at scale.",
+            "In 2015, at <em>HDFC Life</em>, I led a serverless/MBaaS platform evaluation — years before it became mainstream. Architected an internal mobile platform enabling policyholders' families to request verified home care for elderly parents. Build-versus-buy at scale.",
           ],
         },
       ],
