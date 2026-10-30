@@ -8,6 +8,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
+import siteConfig from '@/config/site.config';
 
 interface Props {
   title?: string;
@@ -29,7 +30,7 @@ const { title, description, image, imageAlt, noindex, nofollow } = Astro.props;
   noindex={noindex}
   nofollow={nofollow}
 >
-  <Header slot="header" showCta cta={{ label: "Let's talk", href: '/contact' }} />
+  <Header slot="header" showCta cta={{ label: "Let's talk", href: siteConfig.bookingUrl }} />
 
   <div class="min-h-screen pt-16">
     <slot />

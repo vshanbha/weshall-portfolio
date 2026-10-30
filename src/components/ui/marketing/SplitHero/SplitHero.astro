@@ -1,5 +1,6 @@
 ---
 import Button from '@/components/ui/form/Button/Button.astro';
+import siteConfig from '@/config/site.config';
 
 export interface Props {
   locale: string;
@@ -35,7 +36,7 @@ const { locale, t } = Astro.props;
         </h1>
         <p class="text-lg md:text-xl text-foreground-muted mb-8 max-w-2xl">{t.bridge}</p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <Button variant="primary" size="lg" href={`/${locale}/contact`}>
+          <Button variant="primary" size="lg" href={siteConfig.bookingUrl}>
             {t.cta.primary}
           </Button>
           <Button variant="outline" size="lg" href={`/${locale}/blog`}>
