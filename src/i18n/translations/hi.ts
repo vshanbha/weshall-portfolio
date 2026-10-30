@@ -39,7 +39,7 @@ export const hi = {
       secondary: 'Read the latest', // TODO: translate
     },
     rightColumn: {
-      name: 'विशाल शनभग.', // TODO: transliteration to confirm with author
+      name: 'विशाल शानभाग.',
       statement:
         'इनबोटिका के सह-संस्थापक; उसका प्लेटफ़ॉर्म आज भी वैश्विक बैंकों के लिए रोज़ 100,000 से ज़्यादा ईमेल 99.9% उपलब्धता के साथ संसाधित करता है।',
       also: 'साथ ही: SaaS, AI और क्लाइमेट टेक।',
@@ -284,7 +284,7 @@ export const hi = {
         'Builder, senior architect, and hands-on engineer. 20+ years from Mumbai to Cologne.', // TODO: translate
     },
     origin: {
-      title: 'विशाल शनभग', // TODO: transliteration to confirm with author
+      title: 'विशाल शानभाग',
       paragraphs: [
         'I come from Mumbai, India. These days I am in Hürth, near Cologne, Germany.', // TODO: translate
         'I graduated as an electronics engineer from Mumbai University in 2002. I stumbled into software because, after the 9/11 attacks of 2001, jobs dried up and a financial crisis loomed. The software industry was the first to hire. I have been building production systems ever since.', // TODO: translate
