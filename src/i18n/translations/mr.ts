@@ -464,7 +464,7 @@ export const mr = {
       description:
         'Send a note with whatever you have — a paragraph, a repo link, a half-formed worry.', // TODO: translate
       linkedin: {
-        button: 'Connect on LinkedIn', // TODO: translate
+        button: 'LinkedIn वर कनेक्ट करा', // TODO: translate
         url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
       },
       upwork: {

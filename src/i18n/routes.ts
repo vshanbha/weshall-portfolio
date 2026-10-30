@@ -90,6 +90,8 @@ export const routes = {
   },
 
   // Philosophy page — linked from About, deliberately not shown in nav
+  // (the nav.label below is never rendered: getNavRoutes filters on show
+  // before the label key is ever translated)
   philosophy: {
     en: 'philosophy',
     de: 'philosophy',
