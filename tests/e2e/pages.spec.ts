@@ -278,6 +278,11 @@ test.describe('CTA unification and copy guardrails (issue #21)', () => {
         await expect(page.getByRole('link', { name: label })).toHaveCount(0);
         await expect(page.getByRole('button', { name: label })).toHaveCount(0);
       }
+      // Gate B round-1 nit: role assertions only catch CTAs — a ban label
+      // reintroduced as prose must fail the suite too.
+      await expect(page.locator('body')).not.toContainText(
+        /talk to me|start a conversation|book a session|get in touch/i
+      );
     });
   }
 
