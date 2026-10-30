@@ -175,21 +175,21 @@ export const de = {
           title: 'Ein Team vom Bauen abgebracht — und den Launch gerettet',
           subtitle: 'Short-term lending, Nigeria', // TODO: translate
           paragraphs: [
-            '<em>BlueMoney</em> ist ein regulierter Kurzfristkreditgeber in Nigeria. Ich habe ein dreiköpfiges Gründer-Team von der Bestandskredit-Finanzierung weggedreht und in das regulierte Kurzfristgeschäft in Nigeria gebracht — und sie überzeugt, ausgereifte Plattformen zu kaufen, statt bei null zu bauen. Launch im Januar\u00a02026 nach regulatorischen Verzögerungen. Monatliche Sounding-Board-Calls laufen weiter.',
+            '<em>BlueMoney</em> ist ein regulierter Kurzfristkreditgeber in Nigeria. Ich habe ein dreiköpfiges Gründer-Team von der Bestandskredit-Finanzierung weggedreht und sie überzeugt, ausgereifte Plattformen zu kaufen, statt bei null zu bauen. Launch im Januar\u00a02026 nach regulatorischen Verzögerungen. Monatliche Sounding-Board-Calls laufen weiter.',
           ],
         },
         {
           title: 'Von 40 % auf 95 % Compliance — in einem System, das Banken wirklich betreiben',
           subtitle: 'Enterprise email processing, global banking', // TODO: translate
           paragraphs: [
-            'Bei <em>Inbotiqa</em>, wo ich Gründungsingenieur war, verarbeitet die Plattform täglich über 100.000 transaktionale E-Mails für globale Banken bei 99,9 % Verfügbarkeit. Turnaround-Time-Compliance von 40 % auf über 95 %, Same-Day-Close-out von 22 % auf 85 %.',
+            'Bei <em>Inbotiqa</em>, wo ich Gründungsingenieur war, verarbeitet die Plattform täglich über 100.000 transaktionale E-Mails für globale Banken bei 99,9 % Verfügbarkeit. Turnaround-Time-Compliance von 40 % auf 95 %, Same-Day-Close-out von 22 % auf 85 %.',
           ],
         },
         {
           title: 'Eine Serverless-Evaluation geleitet, Jahre bevor sie Mainstream wurde',
           subtitle: 'Strategic architecture consulting, India', // TODO: translate
           paragraphs: [
-            '2015 habe ich bei <em>HDFC Life</em> eine Serverless-/MBaaS-Plattform-Evaluation geleitet — Jahre bevor sie Mainstream wurde. Dazu die Architektur einer internen Mobile-Plattform, mit der Versicherte ihre Familien um verifizierte häusliche Pflege für ältere Eltern bitten konnten. Build-versus-buy im großen Maßstab.',
+            '2015 habe ich bei <em>HDFC Life</em> eine Serverless-/MBaaS-Plattform-Evaluation geleitet — Jahre bevor sie Mainstream wurde. Dazu die Architektur einer internen Mobile-Plattform, mit der die Familien der Versicherten für ältere Eltern verifizierte häusliche Pflege anfordern konnten. Build-versus-buy im großen Maßstab.',
           ],
         },
       ],

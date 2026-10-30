@@ -798,10 +798,12 @@
 
   /* Brand-coloured prose links in the containers that ask for them
      (BlogLayout, philosophy page). Those wrappers carry
-     `prose-a:text-brand-600 … dark:prose-a:text-brand-400`, but a Tailwind
-     utility applies to the element it sits on — it can never colour a
-     descendant link. The class name is therefore used here as a plain CSS
-     hook; the `dark:` half is handled by the `.dark` ancestor rule. */
+     `prose-a:text-brand-600 … dark:prose-a:text-brand-400`, but the
+     `prose-a` element variant they assume needs @tailwindcss/typography —
+     not installed here; prose styling is hand-rolled below — and a utility
+     on a wrapper could not colour a descendant link anyway. The class name
+     is therefore used here as a plain CSS hook; the `dark:` half is
+     handled by the `.dark` ancestor rule. */
   .prose-a\:text-brand-600 a {
     color: var(--color-brand-600);
   }

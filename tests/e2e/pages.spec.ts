@@ -279,9 +279,10 @@ test.describe('CTA unification and copy guardrails (issue #21)', () => {
         await expect(page.getByRole('button', { name: label })).toHaveCount(0);
       }
       // Gate B round-1 nit: role assertions only catch CTAs — a ban label
-      // reintroduced as prose must fail the suite too.
+      // reintroduced as prose must fail the suite too. Word boundaries stop
+      // benign substrings ("talk to mentors") from false-positiving.
       await expect(page.locator('body')).not.toContainText(
-        /talk to me|start a conversation|book a session|get in touch/i
+        /\btalk to me\b|\bstart a conversation\b|\bbook a session\b|\bget in touch\b/i
       );
     });
   }
