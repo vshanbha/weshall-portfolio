@@ -267,7 +267,7 @@ export const mr = {
     howwork: {
       title: 'How I work',
       paragraphs: [
-        'मी अशा संस्थापकांसोबत आणि तंत्रज्ञान लीडसोबत काम करतो जे एखाद्या निर्णयावर, भाड्याने घेण्यावर, हार्डनिंग समस्येवर किंवा सॅनिटी चेकवर असतात.',
+        'मी अशा संस्थापकांसोबत आणि तंत्रज्ञान लीडसोबत काम करतो जे एखाद्या निर्णयावर, भरतीवर, हार्डनिंग समस्येवर किंवा सॅनिटी चेकवर असतात.',
         'नाते एका मोफत पंधरा-मिनिटांच्या बोलण्यापासून सुरू होते — ते लांब बोलण्याइतके चालेल की नाही हे कळण्यासाठी. न पिच, न कोणतीही बंधनकारकता, न कोणतीही सेल्स प्रक्रिया.',
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.', // TODO: translate
       ],
