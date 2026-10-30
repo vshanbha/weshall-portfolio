@@ -15,7 +15,8 @@ test.describe('Pages', () => {
 
   test('contact page loads', async ({ page }) => {
     await page.goto('/contact');
-    await expect(page.getByRole('heading', { name: /Bring the mess/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Reach out/i })).toBeVisible();
+    await expect(page.locator('body')).toContainText(/Fifteen minutes with a founder-engineer/i);
     await expect(page.locator('body')).toContainText(/LinkedIn|Upwork/i);
   });
 
@@ -195,7 +196,7 @@ test.describe('About Page Features', () => {
       await expect(page.getByText(title)).toBeVisible();
     }
     await expect(
-      page.getByText('Every engagement opens here: why build this, why now, who for')
+      page.getByText('Every engagement opens here, before anyone says how: why build this, why now, who for')
     ).toBeVisible();
     const fullTen = page.getByRole('link', { name: 'The way we build →' });
     await expect(fullTen).toBeVisible();
@@ -263,9 +264,8 @@ test.describe('Services Page Features', () => {
     await expect(ctas.first()).toBeVisible();
     await expect(ctas.last()).toBeVisible();
     await expect(page.getByRole('link', { name: 'Talk to me' })).toHaveCount(0);
-    await expect(
-      page.getByText('It starts with a conversation — and goes as far as the problem needs.')
-    ).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'It starts with a conversation.' })).toBeVisible();
+    await expect(page.getByText(/And it goes as far as the problem needs/)).toBeVisible();
     await expect(page.getByText(/a short working sprint/)).toBeVisible();
   });
 });
@@ -321,7 +321,10 @@ test.describe('Blog Article SEO', () => {
     const cta = page.locator('text=senior software architect');
     await expect(cta).toBeVisible();
     // Case-sensitive: the page's prose link is lowercase; header/mobile CTAs are "Let's talk".
-    const link = page.locator('a[href="/en/contact"]').filter({ hasText: /let's talk/ });
+    // "Let's talk" links go directly to Calendly (Gate A rule), not the internal contact page.
+    const link = page
+      .locator('a[href="https://calendly.com/vshanbhag"]')
+      .filter({ hasText: /let's talk/ });
     await expect(link).toBeVisible();
   });
 
