@@ -62,6 +62,14 @@ const recentArticles = allArticles
       <h2 class="text-3xl font-bold font-display text-center mb-12">
         {t('home.testimonials.title')}
       </h2>
+      <blockquote class="max-w-3xl mx-auto text-center mb-6">
+        <p class="text-lg italic text-muted-foreground leading-relaxed">
+          &ldquo;{tr.home.testimonials.oneLiner}&rdquo;
+        </p>
+        <p class="mt-3 text-sm text-muted-foreground not-italic">
+          {tr.home.testimonials.oneLinerAttribution}
+        </p>
+      </blockquote>
       <VerticalTabs
         tabs={(tr.home.testimonials.items as unknown as any[]).map(
           (item: { id: string; company: string; author: string; role: string }) => ({

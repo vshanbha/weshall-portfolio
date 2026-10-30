@@ -41,7 +41,6 @@ const tr = getTranslations(locale) as TranslationKeys;
   <section class="py-16 md:py-24 bg-muted/50">
     <div class="container mx-auto px-4 max-w-3xl">
       <h2 class="text-3xl font-bold font-display mb-8">{t('about.whatido.title')}</h2>
-      <p class="mb-4 text-muted-foreground leading-relaxed">{t('about.whatido.oneLiner')}</p>
       {tr.about.whatido.paragraphs.map((p) => (
         <p class="mb-4 text-muted-foreground leading-relaxed">{p}</p>
       ))}

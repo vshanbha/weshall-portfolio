@@ -33,17 +33,17 @@ export const mr = {
     title: 'Build what matters.', // TODO: translate
     bridge:
       'संस्थापकांसाठी आणि तंत्रज्ञान लीडसाठी, ज्यांच्या निर्णयांची किंमत वेळ आणि पैशात फेडल्यात जाते: स्वतः बनवायचे की विकत घ्यायचे, कोणाला हायर करायचे, आणि AI ने जे बनवले ते टिकेल की नाही. मी वीस वर्षांपासून उत्पादनात याच निर्णय घेत आहे.',
-    oneLiner:
-      "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
     cta: {
       primary: 'चला बोलूया',
       secondary: 'Read the latest', // TODO: translate
     },
     rightColumn: {
-      name: 'विशाल शानभाग.',
-      statement:
-        'इनबोटिकाचा सह-संस्थापक; त्याचे प्लॅटफॉर्म आजही जागतिक बँकांसाठी रोज 100,000 पेक्षा जास्त ईमेल 99.9% उपलब्धतासह प्रक्रिया करते.',
-      also: 'याबरोबर: SaaS, AI आणि क्लायमेट टेक.',
+      name: 'विशाल शानभाग',
+      lead: 'सर्किट बोर्डपासून बोर्डरूमपर्यंत.',
+      headline: 'हार्डवेअर फाउंडेशन. एंटरप्राइज सॉफ्टवेअर. AI एजेंट, डेमोहून उत्पादनापर्यंत.',
+      value: 'वीस वर्षांचा इंजिनिअरिंग अनुभव, उत्पादनात परखलेला.',
+      worksAcross: 'कामाची क्षेत्रे',
+      domains: 'फिनटेक · SaaS · क्लायमेट टेक',
       aboutLink: 'About me', // TODO: translate
     },
   },
@@ -159,6 +159,7 @@ export const mr = {
     links: {
       documentation: 'दस्तऐवज',
       github: 'GitHub',
+      linkedin: 'LinkedIn',
       twitter: 'Twitter',
       license: 'परवाना',
     },
@@ -197,6 +198,9 @@ export const mr = {
     },
     testimonials: {
       title: 'What clients say', // TODO: translate
+      oneLiner:
+        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
+      oneLinerAttribution: '— जशी शिफारश करणारे माझी ओळख करून देतात.',
       items: [
         {
           id: 'bluemoney',
@@ -267,15 +271,15 @@ export const mr = {
     howwork: {
       title: 'How I work',
       paragraphs: [
-        'मी अशा संस्थापकांसोबत आणि तंत्रज्ञान लीडसोबत काम करतो जे एखाद्या निर्णयावर, भरतीवर, हार्डनिंग समस्येवर किंवा सॅनिटी चेकवर असतात.',
+        'मी अशा संस्थापकांसोबत आणि तंत्रज्ञान लीडसोबत काम करतो जे एखाद्या निर्णयावर, भरतीवर, बिनपरखड AI बिल्डवर किंवा सॅनिटी चेकवर असतात.',
         'नाते एका मोफत पंधरा-मिनिटांच्या बोलण्यापासून सुरू होते — ते लांब बोलण्याइतके चालेल की नाही हे कळण्यासाठी. न पिच, न कोणतीही बंधनकारकता, न कोणतीही सेल्स प्रक्रिया.',
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.', // TODO: translate
       ],
     },
     cta: {
-      title: 'तीन आकार, एक बोलणं.',
+      title: 'बोलण्यापासून सुरुवात होते — आणि समस्या जिथपर्यंत नेईल तिथपर्यंत जाते.',
       description:
-        'मोफत इंट्रो कॉल · ईमानदार एक तास · दोन ते चार आठवड्यांचे डायग्नोस्टिक · चालू मासिक सल्लागार.',
+        'भेटीसाठी पंधरा मिनिटांचा कॉल — न पिच, न बंधन. पुढे जाण्यासारखे असेल तर: एक ईमानदार तास, एक छोटा वर्किंग स्प्रिंट, किंवा चालू सल्लागार.',
       button: 'चला बोलूया',
     },
   },
@@ -299,8 +303,6 @@ export const mr = {
     },
     whatido: {
       title: 'How I build', // TODO: translate
-      oneLiner:
-        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
       paragraphs: [
         'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype — and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.', // TODO: translate
@@ -323,7 +325,7 @@ export const mr = {
           tie: 'याच आठवड्यात अपयशी जाणारा मोठा प्रोटोटाइप एक आठवडा खर्च करतो. बाजारात अपयशी जाणारा पूर्ण बिल्ड एक तिमाही.',
         },
       ],
-      fullTen: 'संपूर्ण दहा आदेश पहा →',
+      fullTen: 'आपण जशी बांधणी करतो ती →',
     },
     careerarc: {
       title: 'The career arc, briefly',
@@ -452,31 +454,18 @@ export const mr = {
         'जेव्हा लोक मला लिहितात, त्यांपैकी बहुतेकांना खात्री नसते की त्यांच्याकडे समस्या आहे, प्रश्न आहे, किंवा फक्त ही जाणीव की काहीतरी बरोबर नाही. सुरुवातीची ही एक सामान्य जागा आहे आणि थांबण्याचे कारण नाही.',
       oneLiner:
         "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
+      oneLinerAttribution: '— जशी शिफारश करणारे माझी ओळख करून देतात.',
     },
     free: {
-      description:
-        'पंधरा मिनिटं, कोणतीही बंधनकारकता नाही, कोणताही पिच नाही. लांब बोलण्याइतके चालेल की नाही याच्याबद्दल थेट उत्तर — जरी उत्तर "नाही" असले तरी.',
+      description: 'भेटीसाठी पंधरा मिनिटं — न पिच, न बंधनकारकता.',
       button: 'चला बोलूया',
       url: 'https://calendly.com/vshanbhag',
     },
     paid: {
-      title: 'पूर्ण तास हवा?',
-      description:
-        'एक पेड साउंडिंग बोर्ड: वरिष्ठ आर्किटेक्टसह तुमच्या समस्येवर 60 मिनिटं, क्वालिफिकेशन कॉलशिवाय.',
-      button: 'निर्णयाची चाचणी करा',
+      title: 'तुम्हाला आधीच माहीत आहे तुम्हाला काय हवं?',
+      description: 'तुमच्या समस्येवर एक ईमानदार तास, थेट बांटून, वरिष्ठ आर्किटेक्टसह.',
+      button: 'ईमानदार तास बुक करा',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
-    },
-    write: {
-      title: 'आधी लिहायला आवडते?',
-      description: 'जे काही आहे ते पाठवा — एक पॅराग्राफ, रिपोचा लिंक, किंवा अर्धअपुरी काळजी.',
-      linkedin: {
-        button: 'LinkedIn वर कनेक्ट करा',
-        url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
-      },
-      upwork: {
-        button: 'Upwork यादी पहा',
-        url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
-      },
     },
   },
   form: {

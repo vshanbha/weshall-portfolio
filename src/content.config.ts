@@ -124,7 +124,7 @@ const faqs = defineCollection({
   }),
 });
 
-// Philosophy collection — brand philosophy pages (the ten commandments)
+// Philosophy collection — brand philosophy pages ("The way we build.")
 const philosophy = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/philosophy' }),
   schema: z

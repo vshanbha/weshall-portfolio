@@ -32,17 +32,17 @@ export const de = {
     title: 'Build what matters.', // TODO: translate
     bridge:
       'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Ich mache diese Entscheidungen seit zwanzig Jahren im Produktivbetrieb.',
-    oneLiner:
-      "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
     cta: {
       primary: 'Lassen Sie uns sprechen',
       secondary: 'Read the latest', // TODO: translate
     },
     rightColumn: {
-      name: 'Vishal Shanbhag.',
-      statement:
-        'Mitgründer von Inbotiqa; die Plattform verarbeitet weiterhin über 100.000 E-Mails pro Tag für globale Banken bei 99,9 % Verfügbarkeit.',
-      also: 'Außerdem: SaaS, KI und Climate-Tech.',
+      name: 'Vishal Shanbhag',
+      lead: 'Von der Leiterplatte zum Boardroom.',
+      headline: 'Hardware-Fundamente. Enterprise-Software. KI-Agenten, von der Demo bis zur Produktion.',
+      value: 'Zwanzig Jahre Engineering-Urteil im Produktivbetrieb.',
+      worksAcross: 'Aktiv in',
+      domains: 'Fintech · SaaS · Climate-Tech',
       aboutLink: 'About me', // TODO: translate
     },
   },
@@ -158,6 +158,7 @@ export const de = {
     links: {
       documentation: 'Dokumentation',
       github: 'GitHub',
+      linkedin: 'LinkedIn',
       twitter: 'Twitter',
       license: 'Lizenz',
     },
@@ -196,6 +197,9 @@ export const de = {
     },
     testimonials: {
       title: 'What clients say', // TODO: translate
+      oneLiner:
+        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
+      oneLinerAttribution: '— so beschreiben mich Empfehlungen.',
       items: [
         {
           id: 'bluemoney',
@@ -259,22 +263,22 @@ export const de = {
         'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden — selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
     },
     hero: {
-      title: 'Manche Calls kosten Sie, wenn Sie sie falsch machen.',
+      title: 'Manche Entscheidungen kosten Sie, wenn Sie sie falsch treffen.',
       description:
         'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.', // TODO: translate
     },
     howwork: {
       title: 'How I work',
       paragraphs: [
-        'Ich arbeite mit Gründern und technischen Leads an einer Entscheidung, einer Einstellung, einem Hardening-Problem oder einem Sanity Check.',
+        'Ich arbeite mit Gründern und technischen Leads an einer Entscheidung, einer Einstellung, einem unausgereiften KI-Build oder einem Sanity Check.',
         'Die Beziehung beginnt mit einem kostenlosen Gespräch von fünfzehn Minuten, um herauszufinden, ob sich ein längeres davon lohnt. Kein Pitch, keine Verpflichtung, kein Verkaufsprozess.',
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.',
       ],
     },
     cta: {
-      title: 'Drei Formen, ein Gespräch.',
+      title: 'Es beginnt mit einem Gespräch — und geht so weit, wie es das Problem braucht.',
       description:
-        'Kostenloses Erstgespräch · die ehrliche Stunde · eine zwei- bis vierwöchige Diagnose · laufende monatliche Beratung.',
+        'Ein fünfzehnminütiges Kennenlerngespräch — kein Pitch, keine Verpflichtung. Wenn es sich lohnt weiterzugehen: eine ehrliche Stunde, ein kurzer Arbeits-Sprint oder laufende Beratung.',
       button: 'Lassen Sie uns sprechen',
     },
   },
@@ -297,8 +301,6 @@ export const de = {
     },
     whatido: {
       title: 'How I build', // TODO: translate
-      oneLiner:
-        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
       paragraphs: [
         'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype — and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.',
@@ -321,7 +323,7 @@ export const de = {
           tie: 'Ein grober Prototyp, der diese Woche scheitert, kostet eine Woche. Ein fertiger Build, der im Markt scheitert, kostet ein Quartal.',
         },
       ],
-      fullTen: 'Alle zehn Gebote ansehen →',
+      fullTen: 'So bauen wir →',
     },
     careerarc: {
       title: 'The career arc, briefly',
@@ -451,32 +453,18 @@ export const de = {
         'Die meisten, die mir schreiben, sind sich nicht sicher, ob sie ein Problem, eine Frage oder nur ein Gefühl haben, dass etwas nicht stimmt. Das ist ein normaler Ausgangspunkt und kein Grund zu warten.',
       oneLiner:
         "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
+      oneLinerAttribution: '— so beschreiben mich Empfehlungen.',
     },
     free: {
-      description:
-        'Fünfzehn Minuten, keine Verpflichtung, kein Pitch. Eine klare Antwort darauf, ob sich ein längeres Gespräch lohnt — auch wenn die Antwort nein lautet.',
+      description: 'Fünfzehn Minuten zum Kennenlernen — kein Pitch, keine Verpflichtung.',
       button: 'Lassen Sie uns sprechen',
       url: 'https://calendly.com/vshanbhag',
     },
     paid: {
-      title: 'Sie wollen lieber die volle Stunde?',
-      description:
-        'Ein bezahltes Sounding Board: 60 Minuten an Ihrem Problem mit einem Senior Architect, ohne Qualifikationsgespräch.',
-      button: 'Entscheidung auf den Prüfstand stellen',
+      title: 'Sie wissen schon, was Sie brauchen?',
+      description: 'Eine ehrliche Stunde an Ihrem Problem, live auseinandergenommen, mit einem Senior Architect.',
+      button: 'Die ehrliche Stunde buchen',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
-    },
-    write: {
-      title: 'Lieber zuerst schreiben?',
-      description:
-        'Schicken Sie mir das, was Sie haben — einen Absatz, einen Repo-Link, eine halbfertige Sorge.',
-      linkedin: {
-        button: 'Auf LinkedIn vernetzen',
-        url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
-      },
-      upwork: {
-        button: 'Upwork-Angebote ansehen',
-        url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
-      },
     },
   },
   form: {

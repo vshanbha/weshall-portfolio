@@ -38,17 +38,17 @@ export const en = {
     title: 'Build what matters.',
     bridge:
       "For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those calls in production for twenty years.",
-    oneLiner:
-      "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.",
     cta: {
       primary: "Let's talk",
       secondary: 'Read the latest',
     },
     rightColumn: {
-      name: 'Vishal Shanbhag.',
-      statement:
-        'Co-founded Inbotiqa, which still processes 100,000+ emails a day for global banks at 99.9% availability.',
-      also: 'Also: SaaS, AI, and climate tech.',
+      name: 'Vishal Shanbhag',
+      lead: 'From circuit board to boardroom.',
+      headline: 'Hardware foundations. Enterprise software. AI agents, from demo to production.',
+      value: 'Twenty years of engineering judgement in production.',
+      worksAcross: 'Works across',
+      domains: 'Fintech · SaaS · Climate Tech',
       aboutLink: 'About me',
     },
   },
@@ -166,7 +166,7 @@ export const en = {
   // Footer
   footer: {
     tagline:
-      'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
+      'For founders and technical leads facing the decisions that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
     copyright: '© {year} We Shall Build. All rights reserved.',
     madeWith: 'Made with',
     maintainedBy: 'Maintained by',
@@ -174,6 +174,7 @@ export const en = {
     links: {
       documentation: 'Documentation',
       github: 'GitHub',
+      linkedin: 'LinkedIn',
       twitter: 'Twitter',
       license: 'License',
     },
@@ -212,6 +213,9 @@ export const en = {
     },
     testimonials: {
       title: 'What clients say',
+      oneLiner:
+        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.",
+      oneLinerAttribution: '— how referrals describe me.',
       items: [
         {
           id: 'sable',
@@ -272,25 +276,25 @@ export const en = {
     meta: {
       title: 'What I do',
       description:
-        'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
+        'For founders and technical leads facing the decisions that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
     },
     hero: {
-      title: 'Some calls cost you when you get them wrong.',
+      title: 'Some decisions cost you when you get them wrong.',
       description:
         'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.',
     },
     howwork: {
       title: 'How I work',
       paragraphs: [
-        'I work alongside founders and technical leads at a decision, a hire, a hardening problem, or a sanity check.',
+        'I work alongside founders and technical leads at a decision, a hire, an unproven AI build, or a sanity check.',
         "The relationship starts with a free fifteen-minute conversation to work out whether it's worth a longer one. No pitch, no obligation, no sales process.",
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.',
       ],
     },
     cta: {
-      title: 'Three shapes, one conversation.',
+      title: 'It starts with a conversation — and goes as far as the problem needs.',
       description:
-        'Free intro call · the honest one hour · a two-to-four-week diagnostic · ongoing monthly advisory.',
+        "A fifteen-minute call to meet — no pitch, no obligation. If it's worth continuing: an honest hour, a short working sprint, or ongoing advisory.",
       button: "Let's talk",
     },
   },
@@ -313,8 +317,6 @@ export const en = {
     },
     whatido: {
       title: 'How I build',
-      oneLiner:
-        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.",
       paragraphs: [
         'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype. And prototypes, when they solve something real, attract users, funding, and a team.',
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.',
@@ -337,7 +339,7 @@ export const en = {
           tie: 'A rough prototype that fails this week costs a week. A finished build that fails in market costs a quarter.',
         },
       ],
-      fullTen: 'The full ten commandments →',
+      fullTen: 'The way we build →',
     },
     careerarc: {
       title: 'The career arc, briefly',
@@ -466,32 +468,18 @@ export const en = {
         'Most people who write to me are not sure whether they have a problem, a question, or just a feeling that something is off. That is a normal place to start, and it is not a reason to wait.',
       oneLiner:
         "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.",
+      oneLinerAttribution: '— how referrals describe me.',
     },
     free: {
-      description:
-        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation — including when the answer is no.',
+      description: 'Fifteen minutes to meet — no pitch, no obligation.',
       button: "Let's talk",
       url: 'https://calendly.com/vshanbhag',
     },
     paid: {
-      title: 'Want the full hour instead?',
-      description:
-        'A paid sounding board: 60 minutes on your problem with a senior architect, no qualification call.',
-      button: 'Pressure-test a decision',
+      title: 'Already know what you need?',
+      description: 'An honest hour on your problem, taken apart live, with a senior architect.',
+      button: 'Book the honest hour',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
-    },
-    write: {
-      title: 'Prefer to write first?',
-      description:
-        'Send a note with whatever you have — a paragraph, a repo link, a half-formed worry.',
-      linkedin: {
-        button: 'Connect on LinkedIn',
-        url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
-      },
-      upwork: {
-        button: 'Upwork listings',
-        url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
-      },
     },
   },
 
