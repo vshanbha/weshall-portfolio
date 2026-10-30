@@ -49,7 +49,7 @@ export interface SiteConfig {
 const siteConfig: SiteConfig = {
   name: 'We Shall Build',
   description:
-    'Enterprise software architect. 20+ years of engineering judgement in production for banking, fintech, SaaS, AI, and climate tech.',
+    'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
   url: import.meta.env.SITE_URL || 'http://localhost:4321',
   ogImage: '/og-default.png',
   author: 'Vishal Shanbhag',

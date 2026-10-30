@@ -1,5 +1,7 @@
 # We Shall Build
 
+> He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.
+>
 > AI can build it fast. That's the problem.
 >
 > For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those calls in production for twenty years.

@@ -7,7 +7,7 @@ export const en = {
     name: 'We Shall Build',
     tagline: 'Build What Matters',
     description:
-      'Senior Java Architect, Startup CTO, and Cloud & AI Engineer. 20+ years building production systems for banking, fintech, SaaS, AI, and climate tech. Techstars Fintech alumnus.',
+      'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
   },
 
   // Navigation
@@ -38,6 +38,8 @@ export const en = {
     title: 'Build what matters.',
     bridge:
       "For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those calls in production for twenty years.",
+    oneLiner:
+      "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.",
     cta: {
       primary: "Let's talk",
       secondary: 'Read the latest',
@@ -311,6 +313,8 @@ export const en = {
     },
     whatido: {
       title: 'How I build',
+      oneLiner:
+        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.",
       paragraphs: [
         'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype. And prototypes, when they solve something real, attract users, funding, and a team.',
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.',
@@ -460,6 +464,8 @@ export const en = {
       title: "You don't need a tidy brief. Bring the mess.",
       description:
         'Most people who write to me are not sure whether they have a problem, a question, or just a feeling that something is off. That is a normal place to start, and it is not a reason to wait.',
+      oneLiner:
+        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.",
     },
     free: {
       description:
