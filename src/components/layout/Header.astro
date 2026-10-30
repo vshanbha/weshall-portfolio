@@ -125,8 +125,17 @@ const currentPath = Astro.url.pathname;
 const isLandingPage =
   currentPath === '/' || currentPath === `/${locale}` || currentPath === `/${locale}/`;
 
-// Process CTA href for landing page anchor links
-const ctaHref = cta.href?.startsWith('#') && !isLandingPage ? `/${cta.href}` : cta.href;
+// Process CTA href: anchor links stay on landing pages; page paths get localized
+const ctaHref =
+  cta.href === undefined
+    ? undefined
+    : cta.href.startsWith('#')
+      ? isLandingPage
+        ? cta.href
+        : `/${cta.href}`
+      : cta.href === '/contact'
+        ? getLocalizedPath('contact', locale)
+        : cta.href;
 
 // Check slots
 const hasLogoSlot = Astro.slots.has('logo');
