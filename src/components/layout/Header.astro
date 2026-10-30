@@ -258,9 +258,8 @@ const buttonId = `${menuId}-button`;
           ))}
 
           {showCta && (
-            <Button size="sm" href={ctaHref}>
-              <span class="hidden sm:inline">{cta.label}</span>
-              <span class="sm:hidden">Talk</span>
+            <Button size="sm" href={ctaHref} class="whitespace-nowrap">
+              {cta.label}
             </Button>
           )}
         </>

@@ -9,7 +9,7 @@ tags:
   - startup
   - decision-making
 draft: false
-featured: false
+featured: true
 locale: en
 origin: medium
 medium_url: https://medium.com/@vvsvish/to-build-or-not-to-build-9003412e43d2

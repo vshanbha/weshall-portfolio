@@ -9,13 +9,13 @@ test.describe('Pages', () => {
 
   test('about page loads', async ({ page }) => {
     await page.goto('/en/about');
-    await expect(page.getByRole('heading', { name: /Origin/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Vishal Shanbhag' })).toBeVisible();
     await expect(page.locator('body')).toContainText(/Mumbai|How I build/i);
   });
 
   test('contact page loads', async ({ page }) => {
     await page.goto('/contact');
-    await expect(page.getByRole('heading', { name: /Let.s talk|Kontakt/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Bring the mess/i })).toBeVisible();
     await expect(page.locator('body')).toContainText(/LinkedIn|Upwork/i);
   });
 
@@ -27,7 +27,7 @@ test.describe('Pages', () => {
   test('services page loads', async ({ page }) => {
     await page.goto('/services');
     await expect(
-      page.getByRole('heading', { name: /Senior engineering judgement/i })
+      page.getByRole('heading', { name: /Some calls cost you when you get them wrong/i })
     ).toBeVisible();
     await expect(page.locator('body')).toContainText(/How I work|What I have learned/i);
   });
@@ -110,23 +110,31 @@ test.describe('Home Page Features', () => {
   test('shows brand-led hero with bridge sentence and two CTAs', async ({ page }) => {
     await page.goto('/');
     await expect(page.getByText('Build what matters.').first()).toBeVisible();
-    await expect(page.getByText('For founders and technical leads')).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Talk to me' })).toBeVisible();
+    await expect(page.getByText('For founders and technical leads').first()).toBeVisible();
+    await expect(page.getByRole('link', { name: "Let's talk" }).first()).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Talk to me' })).toHaveCount(0);
     await expect(page.getByRole('link', { name: 'Read the latest' })).toBeVisible();
-    await expect(page.getByText('From circuit board to boardroom.')).toBeVisible();
+    await expect(page.locator('strong', { hasText: 'Vishal Shanbhag' })).toBeVisible();
     await expect(
-      page.getByText('Hardware foundations. Enterprise software. Climate focus.')
+      page.getByText('Co-founded Inbotiqa, which still processes 100,000+ emails a day')
     ).toBeVisible();
-    await expect(page.getByText('20+ years of engineering judgement in production.')).toBeVisible();
-    await expect(page.getByText('Banking · Fintech · SaaS · AI · Climate Tech')).toBeVisible();
+    await expect(page.getByText('Also: SaaS, AI, and climate tech.')).toBeVisible();
     await expect(page.getByRole('link', { name: /About me/i })).toBeVisible();
   });
 
   test('renders three engagement story cards', async ({ page }) => {
     await page.goto('/');
+    await expect(
+      page.getByText('Talked a team out of building, and it saved the launch')
+    ).toBeVisible();
+    await expect(
+      page.getByText('From 40% to 95% compliance on a system banks actually run')
+    ).toBeVisible();
+    await expect(
+      page.getByText('Led a serverless evaluation years before it went mainstream')
+    ).toBeVisible();
     await expect(page.getByText('BlueMoney').first()).toBeVisible();
-    await expect(page.getByText('Inbotiqa').first()).toBeVisible();
-    await expect(page.getByText('HDFC Life Insurance').first()).toBeVisible();
+    await expect(page.getByText('HDFC Life').first()).toBeVisible();
     await expect(page.getByText('Short-term lending, Nigeria')).toBeVisible();
     await expect(page.getByText('Enterprise email processing, global banking')).toBeVisible();
   });
@@ -173,8 +181,36 @@ test.describe('About Page Features', () => {
     await expect(page.getByRole('heading', { name: /Off the clock/i })).toBeVisible();
   });
 
-  test('displays all 10 commandments in accordion', async ({ page }) => {
+  test('displays set A of three commandments with tie lines and full-ten link', async ({
+    page,
+  }) => {
     await page.goto('/en/about');
+    const setA = [
+      'We shall ask WHY before we ask HOW.',
+      'We shall build for outcomes, not features.',
+      'We shall prototype before we commit.',
+    ];
+    for (const title of setA) {
+      await expect(page.getByText(title)).toBeVisible();
+    }
+    await expect(
+      page.getByText('Every engagement opens here: why build this, why now, who for')
+    ).toBeVisible();
+    const fullTen = page.getByRole('link', { name: 'The full ten commandments →' });
+    await expect(fullTen).toBeVisible();
+    await expect(fullTen).toHaveAttribute('href', '/en/philosophy');
+    // The other seven are no longer on About — they moved to the philosophy page.
+    await expect(page.getByText('We shall deploy what works.')).toHaveCount(0);
+  });
+
+  test('career arc mentions Inbotiqa and BauAI', async ({ page }) => {
+    await page.goto('/en/about');
+    await expect(page.locator('body')).toContainText(/Inbotiqa/);
+    await expect(page.locator('body')).toContainText(/BauAI/);
+  });
+
+  test('philosophy page shows all ten commandments with companion link', async ({ page }) => {
+    await page.goto('/en/philosophy');
     const commandments = [
       'We shall ask WHY before we ask HOW.',
       'We shall build for outcomes, not features.',
@@ -190,17 +226,6 @@ test.describe('About Page Features', () => {
     for (const title of commandments) {
       await expect(page.getByText(title)).toBeVisible();
     }
-  });
-
-  test('career arc mentions Inbotiqa and BauAI', async ({ page }) => {
-    await page.goto('/en/about');
-    await expect(page.locator('body')).toContainText(/Inbotiqa/);
-    await expect(page.locator('body')).toContainText(/BauAI/);
-  });
-
-  test('last commandment links to companion article', async ({ page }) => {
-    await page.goto('/en/about');
-    await page.getByText('We shall run further than a marathon.').click();
     const link = page.locator('a[href*="/blog/run-further-than-a-marathon/"]');
     await expect(link).toBeVisible();
     await expect(link).toHaveText('Read the full analogy');
@@ -212,9 +237,11 @@ test.describe('About Page Features', () => {
     await expect(page.locator('body')).toContainText(/JavaPro/);
   });
 
-  test('has "talk to me" closing CTA', async ({ page }) => {
+  test('has "let\'s talk" closing CTA', async ({ page }) => {
     await page.goto('/en/about');
-    await expect(page.locator('body')).toContainText(/talk to me/);
+    await expect(page.locator('body')).toContainText(
+      "If you have an idea that needs software to give it life, let's talk."
+    );
   });
 });
 
@@ -222,17 +249,57 @@ test.describe('Services Page Features', () => {
   test('shows hero and how I work section', async ({ page }) => {
     await page.goto('/services');
     await expect(
-      page.getByRole('heading', { name: /Senior engineering judgement/i })
+      page.getByRole('heading', { name: /Some calls cost you when you get them wrong/i })
     ).toBeVisible();
     await expect(page.getByRole('heading', { name: /How I work/i })).toBeVisible();
-    await expect(page.getByText(/sounding board session/i).first()).toBeVisible();
+    await expect(page.getByText(/free fifteen-minute conversation/i).first()).toBeVisible();
     await expect(page.getByText(/figure out together/i)).toBeVisible();
   });
 
-  test('has sounding board CTA', async ({ page }) => {
+  test('has unified primary CTA', async ({ page }) => {
     await page.goto('/services');
-    const cta = page.getByRole('link', { name: 'Talk to me' });
-    await expect(cta).toBeVisible();
+    const ctas = page.getByRole('link', { name: "Let's talk" });
+    await expect(ctas.first()).toBeVisible();
+    await expect(ctas.last()).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Talk to me' })).toHaveCount(0);
+    await expect(page.getByText('Three shapes, one conversation.')).toBeVisible();
+    await expect(page.getByText(/two-to-four-week diagnostic/)).toBeVisible();
+  });
+});
+
+test.describe('CTA unification and copy guardrails (issue #21)', () => {
+  const pages = ['/', '/en/about', '/en/contact', '/en/services'];
+  const banned = ['Talk to me', 'Start a Conversation', 'Book a Session', 'Get in touch'];
+
+  for (const path of pages) {
+    test(`no banned CTA labels on ${path}`, async ({ page }) => {
+      await page.goto(path);
+      for (const label of banned) {
+        await expect(page.getByRole('link', { name: label })).toHaveCount(0);
+        await expect(page.getByRole('button', { name: label })).toHaveCount(0);
+      }
+      // Gate B round-1 nit: role assertions only catch CTAs — a ban label
+      // reintroduced as prose must fail the suite too. Word boundaries stop
+      // benign substrings ("talk to mentors") from false-positiving.
+      await expect(page.locator('body')).not.toContainText(
+        /\btalk to me\b|\bstart a conversation\b|\bbook a session\b|\bget in touch\b/i
+      );
+    });
+  }
+
+  test('bridge carries the consequence framing, not the banned abstraction', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('body')).not.toContainText(/senior engineering judgement/i);
+    await expect(page.locator('body')).toContainText(
+      'whose consequences are paid in time and money'
+    );
+  });
+
+  test('footer carries the wedge, not the title salad', async ({ page }) => {
+    await page.goto('/');
+    const footer = page.locator('footer');
+    await expect(footer).toContainText('facing the calls that cost time and money');
+    await expect(footer).not.toContainText('Senior Java Architect, Startup CTO');
   });
 });
 

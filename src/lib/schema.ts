@@ -200,7 +200,7 @@ export function createServiceSchema(): WithContext<Service> {
       sameAs: ['https://www.linkedin.com/in/vishal-shanbhag-70b679a/'],
     } as Person,
     description:
-      'Senior engineering judgement for post-MVP companies. Architecture, hiring, tech selection, and hardening. 20+ years building enterprise-grade systems for banking, SaaS, and AI-driven products.',
+      "For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those calls in production for twenty years.",
     areaServed: ['DE', 'UK', 'US', 'EU'],
   };
 }

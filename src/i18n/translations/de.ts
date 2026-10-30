@@ -6,7 +6,7 @@ export const de = {
     name: 'We Shall Build',
     tagline: 'Build What Matters', // TODO: translate
     description:
-      'Tiefgehende Analyse komplexer technischer, operativer und architektonischer Bereiche',
+      'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden — selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
   },
   nav: {
     home: 'Startseite',
@@ -31,17 +31,18 @@ export const de = {
   hero: {
     title: 'Build what matters.', // TODO: translate
     bridge:
-      "For founders and technical leads at growth-stage companies: senior engineering judgement when the stakes are high and the path isn't clear.", // TODO: translate
+      'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Ich mache diese Entscheidungen seit zwanzig Jahren im Produktivbetrieb.',
+    oneLiner:
+      "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
     cta: {
-      primary: 'Talk to me', // TODO: translate
+      primary: 'Lassen Sie uns sprechen',
       secondary: 'Read the latest', // TODO: translate
     },
     rightColumn: {
-      lead: 'From circuit board to boardroom.', // TODO: translate
-      headline: 'Hardware foundations. Enterprise software. Climate focus.', // TODO: translate
-      value: '20+ years of engineering judgement in production.', // TODO: translate
-      worksAcross: 'Works across', // TODO: translate
-      domains: 'Banking · Fintech · SaaS · AI · Climate Tech', // TODO: translate
+      name: 'Vishal Shanbhag.',
+      statement:
+        'Mitgründer von Inbotiqa; die Plattform verarbeitet weiterhin über 100.000 E-Mails pro Tag für globale Banken bei 99,9 % Verfügbarkeit.',
+      also: 'Außerdem: SaaS, KI und Climate-Tech.',
       aboutLink: 'About me', // TODO: translate
     },
   },
@@ -142,12 +143,14 @@ export const de = {
     title: 'Build what matters.',
     titleHighlight: '',
     description:
-      "Every project starts with a conversation. Let's talk about what you're building — and how to get it across the line.",
-    button: 'Start a Conversation',
+      'Nicht sicher, ob Sie ein Problem haben, für das sich die Bezahlung einer Lösung lohnt? Das ist der häufigste Grund, warum mir Leute schreiben.',
+    button: 'Lassen Sie uns sprechen',
     docs: '',
     command: '',
   },
   footer: {
+    tagline:
+      'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden — selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
     copyright: '© {year} We Shall Build. Alle Rechte vorbehalten.',
     madeWith: 'Erstellt mit',
     maintainedBy: 'Pflege durch',
@@ -169,24 +172,24 @@ export const de = {
       title: 'Engagement stories', // TODO: translate
       items: [
         {
-          title: 'BlueMoney',
+          title: 'Ein Team vom Bauen abgebracht — und den Launch gerettet',
           subtitle: 'Short-term lending, Nigeria', // TODO: translate
           paragraphs: [
-            'Pivoted a three-founder team from inventory lending into a regulated short-term lending business in Nigeria. Convinced them to buy mature platforms instead of building from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.', // TODO: translate
+            '<em>BlueMoney</em> ist ein regulierter Kurzfristkreditgeber in Nigeria. Ich habe ein dreiköpfiges Gründer-Team von der Bestandskredit-Finanzierung weggedreht und sie überzeugt, ausgereifte Plattformen zu kaufen, statt bei null zu bauen. Launch im Januar\u00a02026 nach regulatorischen Verzögerungen. Monatliche Sounding-Board-Calls laufen weiter.',
           ],
         },
         {
-          title: 'Inbotiqa',
+          title: 'Von 40 % auf 95 % Compliance — in einem System, das Banken wirklich betreiben',
           subtitle: 'Enterprise email processing, global banking', // TODO: translate
           paragraphs: [
-            'Founding engineer at a Techstars portfolio company. Built the platform processing 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.', // TODO: translate
+            'Bei <em>Inbotiqa</em>, wo ich Gründungsingenieur war, verarbeitet die Plattform täglich über 100.000 transaktionale E-Mails für globale Banken bei 99,9 % Verfügbarkeit. Turnaround-Time-Compliance von 40 % auf 95 %, Same-Day-Close-out von 22 % auf 85 %.',
           ],
         },
         {
-          title: 'HDFC Life Insurance',
+          title: 'Eine Serverless-Evaluation geleitet, Jahre bevor sie Mainstream wurde',
           subtitle: 'Strategic architecture consulting, India', // TODO: translate
           paragraphs: [
-            "Led serverless/MBaaS platform evaluation in 2015 — years before it became mainstream. Architected an internal mobile platform enabling policyholders' families to request verified home care for elderly parents. Build-versus-buy at scale.", // TODO: translate
+            '2015 habe ich bei <em>HDFC Life</em> eine Serverless-/MBaaS-Plattform-Evaluation geleitet — Jahre bevor sie Mainstream wurde. Dazu die Architektur einer internen Mobile-Plattform, mit der die Familien der Versicherten für ältere Eltern verifizierte häusliche Pflege anfordern konnten. Build-versus-buy im großen Maßstab.',
           ],
         },
       ],
@@ -253,25 +256,26 @@ export const de = {
     meta: {
       title: 'What I do', // TODO: translate
       description:
-        'Senior engineering judgement for growth-stage companies. Architecture, hiring, tech selection, and hardening.',
+        'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden — selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
     },
     hero: {
-      title: 'Senior engineering judgement.',
+      title: 'Manche Calls kosten Sie, wenn Sie sie falsch machen.',
       description:
         'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.', // TODO: translate
     },
     howwork: {
       title: 'How I work',
       paragraphs: [
-        'I work alongside founders and technical leads who need senior engineering judgement — for a decision, a hire, a technology bet, or a sanity check.',
-        'The relationship starts with a conversation. A sounding board session, 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.',
+        'Ich arbeite mit Gründern und technischen Leads an einer Entscheidung, einer Einstellung, einem Hardening-Problem oder einem Sanity Check.',
+        'Die Beziehung beginnt mit einem kostenlosen Gespräch von fünfzehn Minuten, um herauszufinden, ob sich ein längeres davon lohnt. Kein Pitch, keine Verpflichtung, kein Verkaufsprozess.',
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.',
       ],
     },
     cta: {
-      title: 'Talk to me',
-      description: 'A 60-minute sounding board session. No pitch, no obligation.',
-      button: 'Talk to me',
+      title: 'Drei Formen, ein Gespräch.',
+      description:
+        'Kostenloses Erstgespräch · die ehrliche Stunde · eine zwei- bis vierwöchige Diagnose · laufende monatliche Beratung.',
+      button: 'Lassen Sie uns sprechen',
     },
   },
   // About page
@@ -283,7 +287,7 @@ export const de = {
         'Builder, senior architect, and hands-on engineer. 20+ years from Mumbai to Cologne.',
     },
     origin: {
-      title: 'Origin',
+      title: 'Vishal Shanbhag',
       paragraphs: [
         'I come from Mumbai, India. These days I am in Hürth, near Cologne, Germany.',
         'I graduated as an electronics engineer from Mumbai University in 2002. I stumbled into software because, after the 9/11 attacks of 2001, jobs dried up and a financial crisis loomed. The software industry was the first to hire. I have been building production systems ever since.',
@@ -293,6 +297,8 @@ export const de = {
     },
     whatido: {
       title: 'How I build', // TODO: translate
+      oneLiner:
+        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
       paragraphs: [
         'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype — and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.',
@@ -304,67 +310,18 @@ export const de = {
       commandments: [
         {
           title: 'We shall ask WHY before we ask HOW.', // TODO: translate
-          content:
-            'Think like Master Oogway, asking existential questions, not about the universe, but about the product. Why are we doing this? Why does it matter? Who is this for? The answers shape everything that follows.', // TODO: translate
-          defaultOpen: false,
+          tie: 'Jedes Engagement beginnt hier: warum das bauen, warum jetzt, für wen — bevor jemand nach dem Wie fragt.',
         },
         {
           title: 'We shall build for outcomes, not features.', // TODO: translate
-          content:
-            'A king summoned six blind men and asked them to describe an elephant. The one who touched the trunk said, "A snake." The one who touched the leg said, "A tree." The one who touched the tail said, "A rope." Every description was true from where they stood. Every description was wrong for the whole. Often, a feature request is a blind man describing the elephant. The customer touches their piece -- a workflow that hurts, a button they keep clicking, a report they export every morning -- and names that piece as the problem that needs to be solved. Our job is to see the animal. Work backwards from the outcome. The feature request is just the symptom. Find the cause, the motivation, the desired outcome.', // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall build by principles, not by whim.', // TODO: translate
-          content:
-            'Ideas are noise until filtered. Design principles are the sieve -- they separate what belongs from what distracts. Every feature request, every suggestion, every pivot passes through the same filter.', // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall keep it simple and stupid.', // TODO: translate
-          content:
-            "Google launched in 1998 with around a million dollars from angel investors and a white page with a logo and a text box. No categories, no stock tickers, no news, no weather, no email. Their competitors -- Lycos, AltaVista, Excite -- were multi-billion-dollar portals that did everything. The blank page won. Simplicity is not a limitation. It is a slingshot. David did not try to be Goliath. He found Goliath's weakness and aimed for it.", // TODO: translate
-          defaultOpen: false,
+          tie: 'Wir arbeiten rückwärts vom Ergebnis, das Sie brauchen; die Feature-Anfrage ist nur ein Symptom davon.',
         },
         {
           title: 'We shall prototype before we commit.', // TODO: translate
-          content:
-            "Google Glass. A product nobody asked for, built by one of the world's biggest companies, backed by billions in R&D. It failed because the customer discovery happened after the investment, not before. Prototypes exist to kill bad ideas cheaply. A rough prototype that fails with five users costs you a week. A finished product that fails with five hundred customers costs you months of development time and much more in costs.", // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall build with grit, spit, and a whole lot of duct tape.', // TODO: translate
-          content:
-            'Like the Penguins of Madagascar building a plane from scrap. The tools are never perfect, the ground is never level, and the requirements change before you finish typing. Most of the building is resourcefulness -- making something work with what you have.', // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall deploy what works.', // TODO: translate
-          content:
-            '"If you are not embarrassed by the first version of your product, you have launched too late." -- Reid Hoffman. The Apple I was a circuit board -- ugly, incomplete, but it worked. Done is better than perfect. Perfection achieved through iteration is still perfection. Perfection before launch is a product that never shipped.', // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall learn from failures.', // TODO: translate
-          content:
-            'Edison found 10,000 ways that did not work. Keep a log. Failures are data, not shame. The features that became the mainstays are often nowhere in the first draft.', // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall rise after every hit.', // TODO: translate
-          content:
-            "\"It ain't about how hard you're hit. It's about how you can get hit and keep moving forward.\" -- Rocky Balboa. Building is not a single fight. It is a long sequence of setbacks, near-misses, and unexpected punches. The ones who finish are not the ones who never fell -- they are the ones who got back up.", // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall run further than a marathon.', // TODO: translate
-          content:
-            'A marathon has a finish line at 42 km. Sufiya Sufi ran 4,167 km from Kanyakumari to Kashmir in 68 days, then kept going toward Karakoram. That is the difference between a product launch and a company. Sprints are for work breakdown. The vision needs the kind of distance where the finish line keeps moving because the purpose has not been met yet. The long game has no finish line.', // TODO: translate
-          defaultOpen: false,
-          href: '/blog/run-further-than-a-marathon/',
-          linkText: 'Read the full analogy', // TODO: translate
+          tie: 'Ein grober Prototyp, der diese Woche scheitert, kostet eine Woche. Ein fertiger Build, der im Markt scheitert, kostet ein Quartal.',
         },
       ],
+      fullTen: 'Alle zehn Gebote ansehen →',
     },
     careerarc: {
       title: 'The career arc, briefly',
@@ -470,7 +427,7 @@ export const de = {
         "I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan's condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.", // TODO: translate
       ],
       closingLead: 'If you have an idea that needs software to give it life, ', // TODO: translate
-      closing: 'talk to me.', // TODO: translate
+      closing: 'lassen Sie uns sprechen.',
     },
     editorialStandards: {
       title: 'Editorial standards', // TODO: translate
@@ -479,32 +436,47 @@ export const de = {
     },
     cta: {
       title: 'Have a problem worth solving?',
-      button: 'Start a Conversation',
+      button: 'Lassen Sie uns sprechen',
     },
   },
   contact: {
     meta: {
       title: 'Kontakt',
-      description: 'Nehmen Sie Kontakt mit Vishal Shanbhag auf.',
+      description:
+        'Fünfzehn Minuten, keine Verpflichtung, kein Pitch. Eine klare Antwort darauf, ob sich ein längeres Gespräch lohnt — auch wenn die Antwort nein lautet.',
     },
     hero: {
-      title: 'Lassen Sie uns sprechen.', // TODO: translate
+      title: 'Sie brauchen kein sauberes Briefing. Bringen Sie das Chaos mit.',
       description:
-        'Der beste Weg, mich zu erreichen, ist über LinkedIn — es hält das Signal hoch und das Rauschen niedrig. Wenn Sie ein klares Briefing haben, ist eine Sounding-Board-Sitzung der schnellste Weg zu einem strukturierten Engagement.', // TODO: translate
+        'Die meisten, die mir schreiben, sind sich nicht sicher, ob sie ein Problem, eine Frage oder nur ein Gefühl haben, dass etwas nicht stimmt. Das ist ein normaler Ausgangspunkt und kein Grund zu warten.',
+      oneLiner:
+        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
     },
-    linkedin: {
-      title: 'Auf LinkedIn vernetzen', // TODO: translate
+    free: {
       description:
-        'Senden Sie mir eine Kontaktanfrage mit einer Notiz zu dem, woran Sie arbeiten, und erwähnen Sie weshall.build — ich lese jede.', // TODO: translate
-      button: 'Auf LinkedIn vernetzen', // TODO: translate
-      url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+        'Fünfzehn Minuten, keine Verpflichtung, kein Pitch. Eine klare Antwort darauf, ob sich ein längeres Gespräch lohnt — auch wenn die Antwort nein lautet.',
+      button: 'Lassen Sie uns sprechen',
+      url: 'https://calendly.com/vshanbhag',
     },
-    upwork: {
-      title: 'Sounding-Board buchen', // TODO: translate
+    paid: {
+      title: 'Sie wollen lieber die volle Stunde?',
       description:
-        'Für Sounding-Board-Sitzungen. Eine technische Beratung, um Ihre Herausforderungen zu analysieren und die richtigen technischen Optionen zu erkunden.', // TODO: translate
-      button: 'Sitzung buchen', // TODO: translate
+        'Ein bezahltes Sounding Board: 60 Minuten an Ihrem Problem mit einem Senior Architect, ohne Qualifikationsgespräch.',
+      button: 'Entscheidung auf den Prüfstand stellen',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
+    },
+    write: {
+      title: 'Lieber zuerst schreiben?',
+      description:
+        'Schicken Sie mir das, was Sie haben — einen Absatz, einen Repo-Link, eine halbfertige Sorge.',
+      linkedin: {
+        button: 'Auf LinkedIn vernetzen',
+        url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+      },
+      upwork: {
+        button: 'Upwork-Angebote ansehen',
+        url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
+      },
     },
   },
   form: {

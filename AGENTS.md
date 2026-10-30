@@ -285,6 +285,7 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 - **Use descriptive commit messages** that explain what and why, not just what.
 - **Branch for features:** `git checkout -b feature/描述` for non-trivial changes.
 - **Run `pnpm validate`** (lint + check + build) before committing web changes.
+- **Run `pnpm test` and `pnpm test:e2e` sequentially** — running them concurrently contends for the dev server and produces spurious e2e failures (observed 5 flakes; back-to-back runs are stable).
 - **Pre-push hook:** E2E tests run automatically via `.githooks/pre-push`. If the hook isn't active on a fresh clone, run `git config core.hooksPath .githooks` once.
 - **Run `git pull` before starting work** to ensure you're on the latest.
 - **Check `gh pr list`** before creating PRs to avoid duplicates.
