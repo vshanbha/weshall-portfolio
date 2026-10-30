@@ -39,7 +39,8 @@ export const de = {
     rightColumn: {
       name: 'Vishal Shanbhag',
       lead: 'Von der Leiterplatte zum Boardroom.',
-      headline: 'Hardware-Fundamente. Enterprise-Software. KI-Agenten, von der Demo bis zur Produktion.',
+      headline:
+        'Hardware-Fundamente. Enterprise-Software. KI-Agenten, von der Demo bis zur Produktion.',
       value: 'Zwanzig Jahre Engineering-Urteil im Produktivbetrieb.',
       worksAcross: 'Aktiv in',
       domains: 'Fintech · SaaS · Climate-Tech',
@@ -460,7 +461,8 @@ export const de = {
     },
     paid: {
       title: 'Sie wissen schon, was Sie brauchen?',
-      description: 'Eine ehrliche Stunde an Ihrem Problem mit einem Senior Architect: Sie wissen danach, was als Nächstes zu tun ist.',
+      description:
+        'Eine ehrliche Stunde an Ihrem Problem mit einem Senior Architect: Sie wissen danach, was als Nächstes zu tun ist.',
       button: 'Die ehrliche Stunde buchen',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
