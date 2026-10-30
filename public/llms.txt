@@ -1,10 +1,10 @@
 # We Shall Build
 
-> He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.
+> Through five client engagements — a build-vs-buy call made under timeline pressure for a regulated lender (BlueMoney), a founder learning to evaluate technical hires (PowerMarket), through-the-door delivery with clear documentation in a complex and ambiguous environment (Ourish), a long-term partnership refining a banking-grade email platform (Sable International), and an AI-built prototype taken safely from demo to production by deciding which AI-generated decisions survive (BauAI) — one thread runs consistently: senior architectural judgement bringing engineering discipline and rigour to increasingly AI-generated codebases — what to keep, what to cut, and what will hold up in production.
 >
 > AI can build it fast. That's the problem.
 >
-> For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those calls in production for twenty years.
+> For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those decisions in production for twenty years.
 
 Productised senior-architect engagements that start small and lead to embedded work. You don't make the wrong decision, the wrong hire, or the wrong bet on production. It usually starts with a free fifteen-minute conversation to work out whether it's worth a longer one. The site features deep-dive technical articles, the ten We shall commandments, and a four-rung engagement ladder, all visible at once.
 
@@ -14,7 +14,7 @@ Productised senior-architect engagements that start small and lead to embedded w
 - [About](https://weshall.build/en/about/): From Lehman Brothers through Inbotiqa co-founder to independent consulting
 - [Services](https://weshall.build/en/services/): Three shapes, one conversation — free intro call, the honest one hour, a two-to-four-week diagnostic, ongoing monthly advisory
 - [Blog](https://weshall.build/en/blog/): Deep-dive technical analysis, operational case studies, and engineering philosophy
-- [Contact](https://weshall.build/en/contact/): "You don't need a tidy brief. Bring the mess." Primary CTA: Let's talk — a free fifteen-minute call via Calendly, no commitment, no pitch. LinkedIn and Upwork are labelled secondary paths.
+- [Contact](https://weshall.build/en/contact/): "Reach out." Primary path: Let's talk, a free fifteen-minute conversation with a founder-engineer, via Calendly, no pitch, no obligation. Second door: the honest hour, booked via Upwork. Writing-first is tertiary: a LinkedIn link lives in the site footer.
 
 ## External profiles
 

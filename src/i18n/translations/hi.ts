@@ -6,7 +6,7 @@ export const hi = {
     name: 'वी शॉल बिल्ड', // We Shall Build — transliterated, needs native-speaker review
     tagline: 'Build What Matters', // TODO: translate
     description:
-      'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है — खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
+      'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है: खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
   },
   nav: {
     home: 'होम',
@@ -143,14 +143,14 @@ export const hi = {
     title: 'Build what matters.',
     titleHighlight: '',
     description:
-      'अनिश्चित हैं कि आपके पास कोई ऐसी समस्या है जिसे हल करने के लिए भुगतान करना ठीक रहेगा? लोग मुझे लिखने का यही सबसे आम कारण है।',
+      'हर प्रोजेक्ट एक बातचीत से शुरू होता है, आप क्या बना रहे हैं और उसे कैसे पार लगाना है, इसी के बारे में।', // TODO: review translation
     button: 'चलिए बात करते हैं',
     docs: '',
     command: '',
   },
   footer: {
     tagline:
-      'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है — खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
+      'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है: खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
     copyright: '© {year} वी शॉल बिल्ड. सर्वाधिकार सुरक्षित।',
     madeWith: 'बनाया गया',
     maintainedBy: 'द्वारा बनाए रखा गया',
@@ -172,14 +172,14 @@ export const hi = {
       title: 'Engagement stories', // TODO: translate
       items: [
         {
-          title: 'टीम को बनाने से मना लिया — और लॉन्च बच गया',
+          title: 'टीम को बनाने से मना लिया, और लॉन्च बच गया',
           subtitle: 'Short-term lending, Nigeria', // TODO: translate
           paragraphs: [
-            '<em>BlueMoney</em> नाइजीरिया में एक रेगुलेटेड शॉर्ट-टर्म लेंडर है। मैंने तीन-संस्थापक टीम को इन्वेंटरी लेंडिंग से निकालकर नाइजीरिया के रेगुलेटेड शॉर्ट-टर्म लेंडिंग धंधे में मोड़ा और उन्हें ज़ीरो से बनाने के बजाय मौजूदा प्लेटफ़ॉर्म खरीदने के लिए राज़ी किया। जनवरी 2026 में लॉन्च — रेगुलेटरी देरी के बाद। मासिक साउंडिंग बोर्ड कॉल्स जारी हैं।',
+            '<em>BlueMoney</em> नाइजीरिया में एक रेगुलेटेड शॉर्ट-टर्म लेंडर है। मैंने तीन-संस्थापक टीम को इन्वेंटरी लेंडिंग से निकालकर नाइजीरिया के रेगुलेटेड शॉर्ट-टर्म लेंडिंग धंधे में मोड़ा और उन्हें ज़ीरो से बनाने के बजाय मौजूदा प्लेटफ़ॉर्म खरीदने के लिए राज़ी किया। जनवरी 2026 में लॉन्च, रेगुलेटरी देरी के बाद। मासिक साउंडिंग बोर्ड सेशन जारी हैं।', // TODO: review translation
           ],
         },
         {
-          title: '40% से 95% कंप्लायंस — उस सिस्टम में जिसे बैंक चलाते हैं',
+          title: '40% से 95% कंप्लायंस, उस सिस्टम में जिसे बैंक चलाते हैं',
           subtitle: 'Enterprise email processing, global banking', // TODO: translate
           paragraphs: [
             'जहाँ मैं फ़ाउंडिंग इंजीनियर था, <em>Inbotiqa</em> का प्लेटफ़ॉर्म वैश्विक बैंकों के लिए रोज़ 100,000 से ज़्यादा ट्रांज़ैक्शनल ईमेल 99.9% उपलब्धता के साथ संसाधित करता है। टर्नअराउंड-टाइम कंप्लायंस 40% से 95% पर, सेम-डे क्लोज़-आउट 22% से 85% पर।',
@@ -189,16 +189,13 @@ export const hi = {
           title: 'मेनस्ट्रीम बनने से बरसों पहले सर्वरलेस इवैल्यूएशन चलाया',
           subtitle: 'Strategic architecture consulting, India', // TODO: translate
           paragraphs: [
-            '2015 में, <em>HDFC Life</em> में मैंने सर्वरलेस/MBaaS प्लेटफ़ॉर्म इवैल्यूएशन चलाया — मेनस्ट्रीम बनने से बरसों पहले। एक आंतरिक मोबाइल प्लेटफ़ॉर्म भी बनाया जिससे पॉलिसीधारकों के परिवार बुज़ुर्ग माता-पिता के लिए सत्यापित घरेलू देखभाल की माँग कर सकें। बड़े पैमाने पर build-versus-buy।',
+            '2015 में, <em>HDFC Life</em> में मैंने सर्वरलेस/MBaaS प्लेटफ़ॉर्म इवैल्यूएशन चलाया, मेनस्ट्रीम बनने से बरसों पहले। एक आंतरिक मोबाइल प्लेटफ़ॉर्म भी बनाया जिससे पॉलिसीधारकों के परिवार बुज़ुर्ग माता-पिता के लिए सत्यापित घरेलू देखभाल की माँग कर सकें। बड़े पैमाने पर build-versus-buy।',
           ],
         },
       ],
     },
     testimonials: {
       title: 'What clients say', // TODO: translate
-      oneLiner:
-        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
-      oneLinerAttribution: '— जैसे रेफ़र करने वाले मेरा परिचय कराते हैं।',
       items: [
         {
           id: 'bluemoney',
@@ -258,7 +255,7 @@ export const hi = {
     meta: {
       title: 'What I do', // TODO: translate
       description:
-        'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है — खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
+        'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है: खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
     },
     hero: {
       title: 'कुछ फ़ैसले गलत होने पर भारी पड़ते हैं।',
@@ -274,9 +271,9 @@ export const hi = {
       ],
     },
     cta: {
-      title: 'यह बातचीत से शुरू होता है — और उतना आगे जाता है जितनी समस्या माँगती है।',
+      title: 'यह बातचीत से शुरू होता है।', // TODO: review translation
       description:
-        'मिलने के लिए पंद्रह मिनट की कॉल — न पिच, न प्रतिबद्धता। आगे बढ़ने लायक हो तो: एक ईमानदार घंटा, एक छोटा वर्किंग स्प्रिंट, या निरंतर सलाहकारी।',
+        'और यह उतना आगे जाता है जितनी समस्या माँगती है। मिलने के लिए पंद्रह मिनट की कॉल, न पिच, न प्रतिबद्धता। आगे बढ़ने लायक हो तो: एक ईमानदार घंटा, एक छोटा वर्किंग स्प्रिंट या निरंतर सलाहकारी।', // TODO: review translation
       button: 'चलिए बात करते हैं',
     },
   },
@@ -293,15 +290,15 @@ export const hi = {
         'I come from Mumbai, India. These days I am in Hürth, near Cologne, Germany.', // TODO: translate
         'I graduated as an electronics engineer from Mumbai University in 2002. I stumbled into software because, after the 9/11 attacks of 2001, jobs dried up and a financial crisis loomed. The software industry was the first to hire. I have been building production systems ever since.', // TODO: translate
         'I came to Germany in 2023 because my wife was transferred. I like to travel, and the startup, software, and climate tech scene here? Das gefällt mir. I am staying.', // TODO: translate
-        'I speak five languages at varying levels of decline: English — native, Hindi and Marathi native, Konkani conversational, German at B1 and counting.', // TODO: translate
+        'I speak five languages at varying levels of decline: English native, Hindi and Marathi native, Konkani conversational, German at B1 and counting.', // TODO: translate
       ],
     },
     whatido: {
       title: 'How I build', // TODO: translate
       paragraphs: [
-        'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype — and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
+        'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype, and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.', // TODO: translate
-        'I work with companies that have found their footing and need to build the systems that carry them through the next phase — without breaking what is already working.', // TODO: translate
+        'I work with companies that have found their footing and need to build the systems that carry them through the next phase, without breaking what is already working.', // TODO: translate
       ],
     },
     beliefs: {
@@ -309,7 +306,7 @@ export const hi = {
       commandments: [
         {
           title: 'We shall ask WHY before we ask HOW.', // TODO: translate
-          tie: 'हर एंगेजमेंट यहीं से शुरू होता है: यह क्यों बनाएँ, अभी क्यों, किसके लिए — इससे पहले कि कोई "कैसे" पूछे।',
+          tie: 'हर एंगेजमेंट यहीं से शुरू होता है, इससे पहले कि कोई "कैसे" पूछे: यह क्यों बनाएँ, अभी क्यों, किसके लिए।',
         },
         {
           title: 'We shall build for outcomes, not features.', // TODO: translate
@@ -365,7 +362,7 @@ export const hi = {
       },
       articles: {
         title: 'Select articles', // TODO: translate
-        intro: 'I write for JavaPro and Baeldung — two names every Java professional recognises.', // TODO: translate
+        intro: 'I write for JavaPro and Baeldung, two names every Java professional recognises.', // TODO: translate
         items: [
           {
             title:
@@ -421,7 +418,7 @@ export const hi = {
     offtheclock: {
       title: 'Off the clock', // TODO: translate
       paragraphs: [
-        'I trek, I travel, I write — in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.', // TODO: translate
+        'I trek, I travel, I write, in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.', // TODO: translate
         "I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan's condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.", // TODO: translate
       ],
       closingLead: 'If you have an idea that needs software to give it life, ', // TODO: translate
@@ -441,24 +438,28 @@ export const hi = {
     meta: {
       title: 'संपर्क करें',
       description:
-        'पंद्रह मिनट, कोई प्रतिबद्धता नहीं, कोई पिच नहीं। यह तय करने का सीधा जवाब कि यह लंबी बातचीत के लायक है — भले ही जवाब न हो।',
+        'पंद्रह मिनट, कोई प्रतिबद्धता नहीं, कोई पिच नहीं। यह तय करने का सीधा जवाब कि यह लंबी बातचीत के लायक है, भले ही जवाब न हो।',
     },
     hero: {
-      title: 'आपको साफ़ ब्रीफ की ज़रूरत नहीं। गड़बड़ी लेकर आइए।',
+      title: 'आपको साफ़ ब्रीफ की ज़रूरत नहीं।',
       description:
         'जो लोग मुझे लिखते हैं, उनमें से ज़्यादातर को यह पक्का नहीं होता कि उनके पास समस्या है, सवाल है, या बस यह एहसास कि कुछ ठीक नहीं है। शुरुआत की यह एक सामान्य जगह है, और इंतज़ार करने की वजह नहीं।',
-      oneLiner:
-        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
-      oneLinerAttribution: '— जैसे रेफ़र करने वाले मेरा परिचय कराते हैं।',
+      // TODO: review translation
+      homework:
+        'शायद किसी ने (AI, कोई कंसल्टेंट, या आपका अपना अध्ययन) पहले ही बता दिया हो कि दिक्कत क्या है। उनका होमवर्क भी साथ लाइए। इसमें से कुछ शायद सही भी हो।',
     },
     free: {
-      description: 'मिलने के लिए पंद्रह मिनट — न पिच, न प्रतिबद्धता।',
+      description: 'मिलने के लिए पंद्रह मिनट: न पिच, न प्रतिबद्धता।',
+      // TODO: review translation
+      identity:
+        'आप किससे मिलेंगे: एक फ़ाउंडर-इंजीनियर, बीस साल से यही फ़ैसले लेते हुए, और उनकी कीमत झेलते हुए।',
       button: 'चलिए बात करते हैं',
       url: 'https://calendly.com/vshanbhag',
     },
     paid: {
       title: 'आपको पहले से पता है कि आपको क्या चाहिए?',
-      description: 'आपकी समस्या पर एक ईमानदार घंटा, लाइव बाँटा हुआ, सीनियर आर्किटेक्ट के साथ।',
+      description:
+        'सीनियर आर्किटेक्ट के साथ आपकी समस्या पर एक ईमानदार घंटा: जाते समय आपको पता होता है कि आगे क्या करना है।',
       button: 'ईमानदार घंटा बुक करें',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
@@ -596,7 +597,7 @@ export const hi = {
           'आपने अपने मासिक API कोटा का 80% उपयोग कर लिया है। अपनी योजना को अपग्रेड करने पर विचार करें।',
         buildTitle: 'बिल्ड विफल',
         buildContent: 'में त्रुटि',
-        buildError: '— आवश्यक प्रॉप "variant" गायब है',
+        buildError: 'आवश्यक प्रॉप "variant" गायब है',
       },
       overlays: {
         title: 'ओवरले',
@@ -648,7 +649,7 @@ export const hi = {
         avatars: 'अवतार',
         avatarsHint: 'उपयोगकर्ता प्रतिनिधित्व',
         icons: 'आइकन',
-        iconsHint: 'Lucide आइकन सेट — 24 शामिल',
+        iconsHint: 'Lucide आइकन सेट: 24 शामिल',
         stacked: 'स्टैक्ड',
         performance: 'परफ़ॉर्मेंस',
         performanceScore: '100/100 लाइटहाउस',

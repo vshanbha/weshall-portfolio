@@ -15,35 +15,19 @@ const t = useTranslations(locale);
 <PageLayout title={t('contact.meta.title')} description={t('contact.meta.description')}>
   <section class="py-24 md:py-32">
     <div class="container mx-auto px-4 text-center max-w-3xl">
-      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl font-display text-balance mb-8">
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl font-display text-balance">
         {t('contact.hero.title')}
       </h1>
-      <p class="text-lg text-muted-foreground text-balance mx-auto max-w-2xl">
-        {t('contact.hero.description')}
-      </p>
-      <blockquote class="mt-8 max-w-2xl mx-auto">
-        <p class="text-base italic text-muted-foreground leading-relaxed text-balance">
-          &ldquo;{t('contact.hero.oneLiner')}&rdquo;
-        </p>
-        <p class="mt-2 text-sm text-muted-foreground not-italic">
-          {t('contact.hero.oneLinerAttribution')}
-        </p>
-      </blockquote>
-    </div>
-  </section>
-
-  <section class="py-16 md:py-24 bg-muted/50">
-    <div class="container mx-auto px-4 max-w-3xl text-center">
-      <p class="text-lg text-foreground leading-relaxed max-w-2xl mx-auto mb-8">
+      <p class="text-lg text-muted-foreground leading-relaxed text-balance mx-auto max-w-2xl mt-10">
         {t('contact.free.description')}
       </p>
-      <Button variant="primary" size="lg" href={t('contact.free.url')}>
+      <Button variant="primary" size="lg" href={t('contact.free.url')} class="mt-10">
         {t('contact.free.button')}
       </Button>
     </div>
   </section>
 
-  <section class="py-16 md:py-24">
+  <section class="py-16 md:py-24 bg-muted/50">
     <div class="container mx-auto px-4 max-w-3xl text-center">
       <h2 class="text-2xl font-bold font-display mb-4">{t('contact.paid.title')}</h2>
       <p class="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">

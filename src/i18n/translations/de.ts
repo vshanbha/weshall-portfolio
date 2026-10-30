@@ -6,7 +6,7 @@ export const de = {
     name: 'We Shall Build',
     tagline: 'Build What Matters', // TODO: translate
     description:
-      'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden — selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
+      'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
   },
   nav: {
     home: 'Startseite',
@@ -143,14 +143,14 @@ export const de = {
     title: 'Build what matters.',
     titleHighlight: '',
     description:
-      'Nicht sicher, ob Sie ein Problem haben, für das sich die Bezahlung einer Lösung lohnt? Das ist der häufigste Grund, warum mir Leute schreiben.',
+      'Jedes Projekt beginnt mit einem Gespräch über das, was Sie bauen, und wie Sie es über die Linie bringen.',
     button: 'Lassen Sie uns sprechen',
     docs: '',
     command: '',
   },
   footer: {
     tagline:
-      'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden — selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
+      'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
     copyright: '© {year} We Shall Build. Alle Rechte vorbehalten.',
     madeWith: 'Erstellt mit',
     maintainedBy: 'Pflege durch',
@@ -173,14 +173,14 @@ export const de = {
       title: 'Engagement stories', // TODO: translate
       items: [
         {
-          title: 'Ein Team vom Bauen abgebracht — und den Launch gerettet',
+          title: 'Ein Team vom Bauen abgebracht, und den Launch gerettet',
           subtitle: 'Short-term lending, Nigeria', // TODO: translate
           paragraphs: [
-            '<em>BlueMoney</em> ist ein regulierter Kurzfristkreditgeber in Nigeria. Ich habe ein dreiköpfiges Gründer-Team von der Bestandskredit-Finanzierung weggedreht und sie überzeugt, ausgereifte Plattformen zu kaufen, statt bei null zu bauen. Launch im Januar\u00a02026 nach regulatorischen Verzögerungen. Monatliche Sounding-Board-Calls laufen weiter.',
+            '<em>BlueMoney</em> ist ein regulierter Kurzfristkreditgeber in Nigeria. Ich habe ein dreiköpfiges Gründer-Team von der Bestandskredit-Finanzierung weggedreht und sie überzeugt, ausgereifte Plattformen zu kaufen, statt bei null zu bauen. Launch im Januar\u00a02026 nach regulatorischen Verzögerungen. Monatliche Sounding-Board-Sitzungen laufen weiter.',
           ],
         },
         {
-          title: 'Von 40 % auf 95 % Compliance — in einem System, das Banken wirklich betreiben',
+          title: 'Von 40 % auf 95 % Compliance, in einem System, das Banken wirklich betreiben',
           subtitle: 'Enterprise email processing, global banking', // TODO: translate
           paragraphs: [
             'Bei <em>Inbotiqa</em>, wo ich Gründungsingenieur war, verarbeitet die Plattform täglich über 100.000 transaktionale E-Mails für globale Banken bei 99,9 % Verfügbarkeit. Turnaround-Time-Compliance von 40 % auf 95 %, Same-Day-Close-out von 22 % auf 85 %.',
@@ -190,16 +190,13 @@ export const de = {
           title: 'Eine Serverless-Evaluation geleitet, Jahre bevor sie Mainstream wurde',
           subtitle: 'Strategic architecture consulting, India', // TODO: translate
           paragraphs: [
-            '2015 habe ich bei <em>HDFC Life</em> eine Serverless-/MBaaS-Plattform-Evaluation geleitet — Jahre bevor sie Mainstream wurde. Dazu die Architektur einer internen Mobile-Plattform, mit der die Familien der Versicherten für ältere Eltern verifizierte häusliche Pflege anfordern konnten. Build-versus-buy im großen Maßstab.',
+            '2015 habe ich bei <em>HDFC Life</em> eine Serverless-/MBaaS-Plattform-Evaluation geleitet, Jahre bevor sie Mainstream wurde. Dazu die Architektur einer internen Mobile-Plattform, mit der die Familien der Versicherten für ältere Eltern verifizierte häusliche Pflege anfordern konnten. Build-versus-buy im großen Maßstab.',
           ],
         },
       ],
     },
     testimonials: {
       title: 'What clients say', // TODO: translate
-      oneLiner:
-        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
-      oneLinerAttribution: '— so beschreiben mich Empfehlungen.',
       items: [
         {
           id: 'bluemoney',
@@ -260,7 +257,7 @@ export const de = {
     meta: {
       title: 'What I do', // TODO: translate
       description:
-        'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden — selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
+        'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
     },
     hero: {
       title: 'Manche Entscheidungen kosten Sie, wenn Sie sie falsch treffen.',
@@ -276,9 +273,9 @@ export const de = {
       ],
     },
     cta: {
-      title: 'Es beginnt mit einem Gespräch — und geht so weit, wie es das Problem braucht.',
+      title: 'Es beginnt mit einem Gespräch.',
       description:
-        'Ein fünfzehnminütiges Kennenlerngespräch — kein Pitch, keine Verpflichtung. Wenn es sich lohnt weiterzugehen: eine ehrliche Stunde, ein kurzer Arbeits-Sprint oder laufende Beratung.',
+        'Und es geht so weit, wie es das Problem braucht. Ein fünfzehnminütiges Kennenlerngespräch, kein Pitch, keine Verpflichtung. Wenn es sich lohnt weiterzugehen: eine ehrliche Stunde, ein kurzer Arbeits-Sprint oder laufende Beratung.',
       button: 'Lassen Sie uns sprechen',
     },
   },
@@ -296,15 +293,15 @@ export const de = {
         'I come from Mumbai, India. These days I am in Hürth, near Cologne, Germany.',
         'I graduated as an electronics engineer from Mumbai University in 2002. I stumbled into software because, after the 9/11 attacks of 2001, jobs dried up and a financial crisis loomed. The software industry was the first to hire. I have been building production systems ever since.',
         'I came to Germany in 2023 because my wife was transferred. I like to travel, and the startup, software, and climate tech scene here? Das gefällt mir. I am staying.',
-        'I speak five languages at varying levels of decline: English — native, Hindi and Marathi native, Konkani conversational, German at B1 and counting.',
+        'I speak five languages at varying levels of decline: English native, Hindi and Marathi native, Konkani conversational, German at B1 and counting.',
       ],
     },
     whatido: {
       title: 'How I build', // TODO: translate
       paragraphs: [
-        'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype — and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
+        'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype, and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.',
-        'I work with companies that have found their footing and need to build the systems that carry them through the next phase — without breaking what is already working.', // TODO: translate
+        'I work with companies that have found their footing and need to build the systems that carry them through the next phase, without breaking what is already working.', // TODO: translate
       ],
     },
     beliefs: {
@@ -312,7 +309,7 @@ export const de = {
       commandments: [
         {
           title: 'We shall ask WHY before we ask HOW.', // TODO: translate
-          tie: 'Jedes Engagement beginnt hier: warum das bauen, warum jetzt, für wen — bevor jemand nach dem Wie fragt.',
+          tie: 'Jedes Engagement beginnt hier, bevor jemand nach dem Wie fragt: warum das bauen, warum jetzt, für wen.',
         },
         {
           title: 'We shall build for outcomes, not features.', // TODO: translate
@@ -367,7 +364,7 @@ export const de = {
       },
       articles: {
         title: 'Select articles',
-        intro: 'I write for JavaPro and Baeldung — two names every Java professional recognises.', // TODO: translate
+        intro: 'I write for JavaPro and Baeldung, two names every Java professional recognises.', // TODO: translate
         items: [
           {
             title:
@@ -425,7 +422,7 @@ export const de = {
     offtheclock: {
       title: 'Off the clock',
       paragraphs: [
-        'I trek, I travel, I write — in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.', // TODO: translate
+        'I trek, I travel, I write, in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.', // TODO: translate
         "I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan's condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.", // TODO: translate
       ],
       closingLead: 'If you have an idea that needs software to give it life, ', // TODO: translate
@@ -445,24 +442,25 @@ export const de = {
     meta: {
       title: 'Kontakt',
       description:
-        'Fünfzehn Minuten, keine Verpflichtung, kein Pitch. Eine klare Antwort darauf, ob sich ein längeres Gespräch lohnt — auch wenn die Antwort nein lautet.',
+        'Fünfzehn Minuten, keine Verpflichtung, kein Pitch. Eine klare Antwort darauf, ob sich ein längeres Gespräch lohnt, auch wenn die Antwort nein lautet.',
     },
     hero: {
-      title: 'Sie brauchen kein sauberes Briefing. Bringen Sie das Chaos mit.',
+      title: 'Sie brauchen kein sauberes Briefing.',
       description:
         'Die meisten, die mir schreiben, sind sich nicht sicher, ob sie ein Problem, eine Frage oder nur ein Gefühl haben, dass etwas nicht stimmt. Das ist ein normaler Ausgangspunkt und kein Grund zu warten.',
-      oneLiner:
-        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
-      oneLinerAttribution: '— so beschreiben mich Empfehlungen.',
+      homework:
+        'Möglicherweise hat Ihnen jemand gesagt, was falsch läuft: eine KI, ein Berater oder Ihr eigenes Lesen. Bringen Sie deren Hausaufgaben mit. Manches davon stimmt vielleicht sogar.',
     },
     free: {
-      description: 'Fünfzehn Minuten zum Kennenlernen — kein Pitch, keine Verpflichtung.',
+      description: 'Fünfzehn Minuten zum Kennenlernen: kein Pitch, keine Verpflichtung.',
+      identity:
+        'Wen Sie treffen: ein Founder-Engineer, zwanzig Jahre, in denen er diese Entscheidungen getroffen hat und deren Kosten erlebt.',
       button: 'Lassen Sie uns sprechen',
       url: 'https://calendly.com/vshanbhag',
     },
     paid: {
       title: 'Sie wissen schon, was Sie brauchen?',
-      description: 'Eine ehrliche Stunde an Ihrem Problem, live auseinandergenommen, mit einem Senior Architect.',
+      description: 'Eine ehrliche Stunde an Ihrem Problem mit einem Senior Architect: Sie wissen danach, was als Nächstes zu tun ist.',
       button: 'Die ehrliche Stunde buchen',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
@@ -600,7 +598,7 @@ export const de = {
           'Sie haben 80 % Ihres monatlichen API-Kontingents verbraucht. Erwägen Sie ein Upgrade Ihres Tarifs.',
         buildTitle: 'Build fehlgeschlagen',
         buildContent: 'Fehler in',
-        buildError: '— erforderliche Eigenschaft "variant" fehlt',
+        buildError: 'erforderliche Eigenschaft "variant" fehlt',
       },
       overlays: {
         title: 'Overlays',
@@ -654,7 +652,7 @@ export const de = {
         avatars: 'Avatare',
         avatarsHint: 'Benutzerdarstellungen',
         icons: 'Symbole',
-        iconsHint: 'Lucide-Icon-Set — 24 enthalten',
+        iconsHint: 'Lucide-Icon-Set: 24 enthalten',
         stacked: 'Gestapelt',
         performance: 'Leistung',
         performanceScore: '100/100 Lighthouse',

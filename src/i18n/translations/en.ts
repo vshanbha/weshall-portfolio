@@ -7,7 +7,7 @@ export const en = {
     name: 'We Shall Build',
     tagline: 'Build What Matters',
     description:
-      'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
+      'For founders and technical leads facing the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold.',
   },
 
   // Navigation
@@ -37,7 +37,7 @@ export const en = {
   hero: {
     title: 'Build what matters.',
     bridge:
-      "For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those calls in production for twenty years.",
+      "For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those decisions in production for twenty years.",
     cta: {
       primary: "Let's talk",
       secondary: 'Read the latest',
@@ -157,7 +157,7 @@ export const en = {
     title: 'Build what matters.',
     titleHighlight: '',
     description:
-      'Not sure whether you have a problem worth paying to solve? That is the most common reason people write to me.',
+      "Every project starts with a conversation about what you're building, and how to get it across the line.",
     button: "Let's talk",
     docs: '',
     command: '',
@@ -166,7 +166,7 @@ export const en = {
   // Footer
   footer: {
     tagline:
-      'For founders and technical leads facing the decisions that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
+      'For founders and technical leads facing the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold.',
     copyright: '© {year} We Shall Build. All rights reserved.',
     madeWith: 'Made with',
     maintainedBy: 'Maintained by',
@@ -192,7 +192,7 @@ export const en = {
           title: 'Talked a team out of building, and it saved the launch',
           subtitle: 'Short-term lending, Nigeria',
           paragraphs: [
-            '<em>BlueMoney</em> is a regulated short-term lender in Nigeria. I pivoted a three-founder team out of inventory lending and convinced them to buy mature platforms rather than build from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.',
+            '<em>BlueMoney</em> is a regulated short-term lender in Nigeria. I pivoted a three-founder team out of inventory lending and convinced them to buy mature platforms rather than build from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board sessions continue.',
           ],
         },
         {
@@ -206,16 +206,13 @@ export const en = {
           title: 'Led a serverless evaluation years before it went mainstream',
           subtitle: 'Strategic architecture consulting, India',
           paragraphs: [
-            "In 2015, at <em>HDFC Life</em>, I led a serverless/MBaaS platform evaluation — years before it became mainstream. Architected an internal mobile platform enabling policyholders' families to request verified home care for elderly parents. Build-versus-buy at scale.",
+            "In 2015, at <em>HDFC Life</em>, I led a serverless/MBaaS platform evaluation, years before it became mainstream. Architected an internal mobile platform enabling policyholders' families to request verified home care for elderly parents. Build-versus-buy at scale.",
           ],
         },
       ],
     },
     testimonials: {
       title: 'What clients say',
-      oneLiner:
-        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.",
-      oneLinerAttribution: '— how referrals describe me.',
       items: [
         {
           id: 'sable',
@@ -276,7 +273,7 @@ export const en = {
     meta: {
       title: 'What I do',
       description:
-        'For founders and technical leads facing the decisions that cost time and money — build or buy, who to hire, and whether what AI built will hold.',
+        'For founders and technical leads facing the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold.',
     },
     hero: {
       title: 'Some decisions cost you when you get them wrong.',
@@ -292,9 +289,9 @@ export const en = {
       ],
     },
     cta: {
-      title: 'It starts with a conversation — and goes as far as the problem needs.',
+      title: 'It starts with a conversation.',
       description:
-        "A fifteen-minute call to meet — no pitch, no obligation. If it's worth continuing: an honest hour, a short working sprint, or ongoing advisory.",
+        "And it goes as far as the problem needs. A fifteen-minute call to meet, no pitch, no obligation. If it's worth continuing: an honest hour, a short working sprint, or ongoing advisory.",
       button: "Let's talk",
     },
   },
@@ -328,7 +325,7 @@ export const en = {
       commandments: [
         {
           title: 'We shall ask WHY before we ask HOW.',
-          tie: 'Every engagement opens here: why build this, why now, who for — before anyone says how.',
+          tie: 'Every engagement opens here, before anyone says how: why build this, why now, who for.',
         },
         {
           title: 'We shall build for outcomes, not features.',
@@ -438,7 +435,7 @@ export const en = {
     offtheclock: {
       title: 'Off the clock',
       paragraphs: [
-        'I trek, I travel, I write — in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.',
+        'I trek, I travel, I write, in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.',
         "I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan's condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.",
       ],
       closingLead: 'If you have an idea that needs software to give it life, ',
@@ -460,24 +457,21 @@ export const en = {
     meta: {
       title: 'Contact',
       description:
-        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation — including when the answer is no.',
+        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation, including when the answer is no.',
     },
     hero: {
-      title: "You don't need a tidy brief. Bring the mess.",
-      description:
-        'Most people who write to me are not sure whether they have a problem, a question, or just a feeling that something is off. That is a normal place to start, and it is not a reason to wait.',
-      oneLiner:
-        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.",
-      oneLinerAttribution: '— how referrals describe me.',
+      title: 'Reach out.',
     },
     free: {
-      description: 'Fifteen minutes to meet — no pitch, no obligation.',
+      description:
+        'Fifteen minutes with a founder-engineer who has spent twenty years making the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold. No pitch, no obligation. You leave knowing whether a longer conversation is worth having.',
       button: "Let's talk",
       url: 'https://calendly.com/vshanbhag',
     },
     paid: {
       title: 'Already know what you need?',
-      description: 'An honest hour on your problem, taken apart live, with a senior architect.',
+      description:
+        'An honest hour on your problem with a senior architect: you leave knowing what to do next.',
       button: 'Book the honest hour',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
@@ -620,7 +614,7 @@ export const en = {
         limitContent: "You've used 80% of your monthly API quota. Consider upgrading your plan.",
         buildTitle: 'Build failed',
         buildContent: 'Error in',
-        buildError: '— missing required prop "variant"',
+        buildError: 'missing required prop "variant"',
       },
       overlays: {
         title: 'Overlays',
@@ -672,7 +666,7 @@ export const en = {
         avatars: 'Avatars',
         avatarsHint: 'User representations',
         icons: 'Icons',
-        iconsHint: 'Lucide icon set — 24 included',
+        iconsHint: 'Lucide icon set: 24 included',
         stacked: 'Stacked',
         performance: 'Performance',
         performanceScore: '100/100 Lighthouse',
