@@ -5,7 +5,8 @@ export const hi = {
   site: {
     name: 'वी शॉल बिल्ड', // We Shall Build — transliterated, needs native-speaker review
     tagline: 'Build What Matters', // TODO: translate
-    description: 'जटिल तकनीकी, संचालन और वास्तुशिल्प क्षेत्रों का गहन विश्लेषण',
+    description:
+      'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है — खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
   },
   nav: {
     home: 'होम',
@@ -30,16 +31,18 @@ export const hi = {
   hero: {
     title: 'Build what matters.', // TODO: translate
     bridge:
-      "For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those calls in production for twenty years.", // TODO: translate
+      'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है: खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं। बीस साल से मैं उत्पादन में यही फैसले ले रहा हूँ।',
+    oneLiner:
+      "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
     cta: {
-      primary: "Let's talk", // TODO: translate
+      primary: 'चलिए बात करते हैं',
       secondary: 'Read the latest', // TODO: translate
     },
     rightColumn: {
       name: 'विशाल शनभग.', // TODO: transliteration to confirm with author
       statement:
-        'Co-founded Inbotiqa, which still processes 100,000+ emails a day for global banks at 99.9% availability.', // TODO: translate
-      also: 'Also: SaaS, AI, and climate tech.', // TODO: translate
+        'इनबोटिका के सह-संस्थापक; उसका प्लेटफ़ॉर्म आज भी वैश्विक बैंकों के लिए रोज़ 100,000 से ज़्यादा ईमेल 99.9% उपलब्धता के साथ संसाधित करता है।',
+      also: 'साथ ही: SaaS, AI और क्लाइमेट टेक।',
       aboutLink: 'About me', // TODO: translate
     },
   },
@@ -140,14 +143,14 @@ export const hi = {
     title: 'Build what matters.',
     titleHighlight: '',
     description:
-      'Not sure whether you have a problem worth paying to solve? That is the most common reason people write to me.', // TODO: translate
-    button: "Let's talk", // TODO: translate
+      'अनिश्चित हैं कि आपके पास कोई ऐसी समस्या है जिसे हल करने के लिए भुगतान करना ठीक रहेगा? लोग मुझे लिखने का यही सबसे आम कारण है।',
+    button: 'चलिए बात करते हैं',
     docs: '',
     command: '',
   },
   footer: {
     tagline:
-      'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.', // TODO: translate
+      'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है — खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
     copyright: '© {year} वी शॉल बिल्ड. सर्वाधिकार सुरक्षित।',
     madeWith: 'बनाया गया',
     maintainedBy: 'द्वारा बनाए रखा गया',
@@ -168,24 +171,24 @@ export const hi = {
       title: 'Engagement stories', // TODO: translate
       items: [
         {
-          title: 'Talked a team out of building, and it saved the launch', // TODO: translate
+          title: 'टीम को बनाने से मना लिया — और लॉन्च बच गया',
           subtitle: 'Short-term lending, Nigeria', // TODO: translate
           paragraphs: [
-            '<em>BlueMoney</em> is a regulated short-term lender in Nigeria. I pivoted a three-founder team out of inventory lending and convinced them to buy mature platforms rather than build from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.', // TODO: translate
+            '<em>BlueMoney</em> नाइजीरिया में एक रेगुलेटेड शॉर्ट-टर्म लेंडर है। मैंने तीन-संस्थापक टीम को इन्वेंटरी लेंडिंग से निकालकर नाइजीरिया के रेगुलेटेड शॉर्ट-टर्म लेंडिंग धंधे में मोड़ा और उन्हें ज़ीरो से बनाने के बजाय मौजूदा प्लेटफ़ॉर्म खरीदने के लिए राज़ी किया। जनवरी 2026 में लॉन्च — रेगुलेटरी देरी के बाद। मासिक साउंडिंग बोर्ड कॉल्स जारी हैं।',
           ],
         },
         {
-          title: 'From 40% to 95% compliance on a system banks actually run', // TODO: translate
+          title: '40% से 95% कंप्लायंस — उस सिस्टम में जिसे बैंक चलाते हैं',
           subtitle: 'Enterprise email processing, global banking', // TODO: translate
           paragraphs: [
-            'At <em>Inbotiqa</em>, where I was a founding engineer, the platform processes 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.', // TODO: translate
+            'जहाँ मैं फ़ाउंडिंग इंजीनियर था, <em>Inbotiqa</em> का प्लेटफ़ॉर्म वैश्विक बैंकों के लिए रोज़ 100,000 से ज़्यादा ट्रांज़ैक्शनल ईमेल 99.9% उपलब्धता के साथ संसाधित करता है। टर्नअराउंड-टाइम कंप्लायंस 40% से 95% पर, सेम-डे क्लोज़-आउट 22% से 85% पर।',
           ],
         },
         {
-          title: 'Led a serverless evaluation years before it went mainstream', // TODO: translate
+          title: 'मेनस्ट्रीम बनने से बरसों पहले सर्वरलेस इवैल्यूएशन चलाया',
           subtitle: 'Strategic architecture consulting, India', // TODO: translate
           paragraphs: [
-            "In 2015, at <em>HDFC Life</em>, I led a serverless/MBaaS platform evaluation — years before it became mainstream. Architected an internal mobile platform enabling policyholders' families to request verified home care for elderly parents. Build-versus-buy at scale.", // TODO: translate
+            '2015 में, <em>HDFC Life</em> में मैंने सर्वरलेस/MBaaS प्लेटफ़ॉर्म इवैल्यूएशन चलाया — मेनस्ट्रीम बनने से बरसों पहले। एक आंतरिक मोबाइल प्लेटफ़ॉर्म भी बनाया जिससे पॉलिसीधारकों के परिवार बुज़ुर्ग माता-पिता के लिए सत्यापित घरेलू देखभाल की माँग कर सकें। बड़े पैमाने पर build-versus-buy।',
           ],
         },
       ],
@@ -251,26 +254,26 @@ export const hi = {
     meta: {
       title: 'What I do', // TODO: translate
       description:
-        'For founders and technical leads facing the calls that cost time and money — build or buy, who to hire, and whether what AI built will hold.', // TODO: translate
+        'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है — खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
     },
     hero: {
-      title: 'Some calls cost you when you get them wrong.', // TODO: translate
+      title: 'कुछ फ़ैसले गलत होने पर भारी पड़ते हैं।',
       description:
         'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.', // TODO: translate
     },
     howwork: {
       title: 'How I work', // TODO: translate
       paragraphs: [
-        'I work alongside founders and technical leads at a decision, a hire, a hardening problem, or a sanity check.', // TODO: translate
-        "The relationship starts with a free fifteen-minute conversation to work out whether it's worth a longer one. No pitch, no obligation, no sales process.", // TODO: translate
+        'मैं उन संस्थापकों और तकनीकी लीड्स के साथ काम करता हूँ जो किसी फ़ैसले, किसी हायरिंग, किसी हार्डनिंग समस्या या किसी सैनिटी चेक पर हैं।',
+        'रिश्ता एक मुफ़्त पंद्रह-मिनट की बातचीत से शुरू होता है, यह समझने के लिए कि क्या यह लंबी बातचीत के लायक है। न पिच, न कोई प्रतिबद्धता, न कोई सेल्स प्रोसेस।',
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.', // TODO: translate
       ],
     },
     cta: {
-      title: 'Three shapes, one conversation.', // TODO: translate
+      title: 'तीन शक्लें, एक बातचीत।',
       description:
-        'Free intro call · the honest one hour · a two-to-four-week diagnostic · ongoing monthly advisory.', // TODO: translate
-      button: "Let's talk", // TODO: translate
+        'मुफ़्त इंट्रो कॉल · ईमानदार एक घंटा · दो से चार हफ़्तों का डायग्नोस्टिक · निरंतर मासिक सलाहकारी।',
+      button: 'चलिए बात करते हैं',
     },
   },
   // About page
@@ -291,6 +294,8 @@ export const hi = {
     },
     whatido: {
       title: 'How I build', // TODO: translate
+      oneLiner:
+        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
       paragraphs: [
         'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype — and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.', // TODO: translate
@@ -302,18 +307,18 @@ export const hi = {
       commandments: [
         {
           title: 'We shall ask WHY before we ask HOW.', // TODO: translate
-          tie: 'Every engagement opens here: why build this, why now, who for — before anyone says how.', // TODO: translate
+          tie: 'हर एंगेजमेंट यहीं से शुरू होता है: यह क्यों बनाएँ, अभी क्यों, किसके लिए — इससे पहले कि कोई "कैसे" पूछे।',
         },
         {
           title: 'We shall build for outcomes, not features.', // TODO: translate
-          tie: 'We work backwards from the outcome you need; the feature request is a symptom of it.', // TODO: translate
+          tie: 'हम उस नतीजे से पीछे चलकर काम करते हैं जो आपको चाहिए; फ़ीचर की माँग उसका सिर्फ़ लक्षण है।',
         },
         {
           title: 'We shall prototype before we commit.', // TODO: translate
-          tie: 'A rough prototype that fails this week costs a week. A finished build that fails in market costs a quarter.', // TODO: translate
+          tie: 'इस हफ़्ते असफल होने वाला मोटा प्रोटोटाइप एक हफ़्ता खर्च करता है। बाज़ार में असफल होने वाला पूरा बिल्ड एक तिमाही।',
         },
       ],
-      fullTen: 'The full ten commandments →', // TODO: translate
+      fullTen: 'पूरे दस आदेश देखें →',
     },
     careerarc: {
       title: 'The career arc, briefly', // TODO: translate
@@ -418,7 +423,7 @@ export const hi = {
         "I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan's condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.", // TODO: translate
       ],
       closingLead: 'If you have an idea that needs software to give it life, ', // TODO: translate
-      closing: "let's talk.", // TODO: translate
+      closing: 'चलिए बात करते हैं।',
     },
     editorialStandards: {
       title: 'Editorial standards', // TODO: translate
@@ -427,43 +432,44 @@ export const hi = {
     },
     cta: {
       title: 'Have a problem worth solving?', // TODO: translate
-      button: "Let's talk", // TODO: translate
+      button: 'चलिए बात करते हैं',
     },
   },
   contact: {
     meta: {
       title: 'संपर्क करें',
       description:
-        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation — including when the answer is no.', // TODO: translate
+        'पंद्रह मिनट, कोई प्रतिबद्धता नहीं, कोई पिच नहीं। यह तय करने का सीधा जवाब कि यह लंबी बातचीत के लायक है — भले ही जवाब न हो।',
     },
     hero: {
-      title: "You don't need a tidy brief. Bring the mess.", // TODO: translate
+      title: 'आपको साफ़ ब्रीफ की ज़रूरत नहीं। गड़बड़ी लेकर आइए।',
       description:
-        'Most people who write to me are not sure whether they have a problem, a question, or just a feeling that something is off. That is a normal place to start, and it is not a reason to wait.', // TODO: translate
+        'जो लोग मुझे लिखते हैं, उनमें से ज़्यादातर को यह पक्का नहीं होता कि उनके पास समस्या है, सवाल है, या बस यह एहसास कि कुछ ठीक नहीं है। शुरुआत की यह एक सामान्य जगह है, और इंतज़ार करने की वजह नहीं।',
+      oneLiner:
+        "He's the one you call when AI has built you something that looks fine in a demo, and you can't tell whether it will hold up in production.", // referral one-liner — verbatim by ruling; do not translate
     },
     free: {
       description:
-        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation — including when the answer is no.', // TODO: translate
-      button: "Let's talk", // TODO: translate
+        'पंद्रह मिनट, कोई प्रतिबद्धता नहीं, कोई पिच नहीं। यह तय करने का सीधा जवाब कि यह लंबी बातचीत के लायक है — भले ही जवाब न हो।',
+      button: 'चलिए बात करते हैं',
       url: 'https://calendly.com/vshanbhag',
     },
     paid: {
-      title: 'Want the full hour instead?', // TODO: translate
+      title: 'पूरा घंटा चाहिए?',
       description:
-        'A paid sounding board: 60 minutes on your problem with a senior architect, no qualification call.', // TODO: translate
-      button: 'Pressure-test a decision', // TODO: translate
+        'एक पेड साउंडिंग बोर्ड: सीनियर आर्किटेक्ट के साथ आपकी समस्या पर 60 मिनट, बिना क्वालिफिकेशन कॉल के।',
+      button: 'फ़ैसले की परख करें',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
     write: {
-      title: 'Prefer to write first?', // TODO: translate
-      description:
-        'Send a note with whatever you have — a paragraph, a repo link, a half-formed worry.', // TODO: translate
+      title: 'पहले लिखना पसंद है?',
+      description: 'जो कुछ भी है वह भेजिए — एक पैराग्राफ़, रिपो का लिंक, या आधा-अधूरा फ़िक्र।',
       linkedin: {
-        button: 'LinkedIn पर कनेक्ट करें', // TODO: translate
+        button: 'LinkedIn पर कनेक्ट करें',
         url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
       },
       upwork: {
-        button: 'Upwork listings', // TODO: translate
+        button: 'Upwork लिस्टिंग देखें',
         url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
       },
     },
