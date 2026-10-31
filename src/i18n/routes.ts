@@ -88,6 +88,17 @@ export const routes = {
     mr: 'contact',
     nav: { show: true, order: 5, label: 'nav.contact' },
   },
+
+  // Philosophy page — linked from About, deliberately not shown in nav
+  // (the nav.label below is never rendered: getNavRoutes filters on show
+  // before the label key is ever translated)
+  philosophy: {
+    en: 'philosophy',
+    de: 'philosophy',
+    hi: 'philosophy',
+    mr: 'philosophy',
+    nav: { show: false, order: 6, label: 'nav.philosophy' },
+  },
 } as const;
 
 /**

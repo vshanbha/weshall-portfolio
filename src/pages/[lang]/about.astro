@@ -8,9 +8,9 @@ import { Image } from 'astro:assets';
 import photo from '@/assets/photo.jpg';
 import Button from '@/components/ui/form/Button/Button.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
-import Accordion from '@/components/ui/overlay/Accordion/Accordion.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import { createPersonSchema } from '@/lib/schema';
+import siteConfig from '@/config/site.config';
 
 export const getStaticPaths = getStaticPathsHelper;
 
@@ -51,23 +51,22 @@ const tr = getTranslations(locale) as TranslationKeys;
   <section class="py-16 md:py-24">
     <div class="container mx-auto px-4 max-w-3xl">
       <h2 class="text-3xl font-bold font-display mb-8">{t('about.beliefs.title')}</h2>
-      <Accordion
-        items={[...tr.about.beliefs.commandments].map(
-          (item: {
-            title: string;
-            content: string;
-            defaultOpen: boolean;
-            href?: string;
-            linkText?: string;
-          }) => ({
-            ...item,
-            href: item.href ? `/${locale}${item.href}` : undefined,
-            linkText: item.linkText ?? t('common.readMore'),
-          })
-        )}
-        variant="card"
-        size="lg"
-      />
+      <ul class="space-y-6">
+        {tr.about.beliefs.commandments.map((item: { title: string; tie: string }) => (
+          <li>
+            <p class="font-display text-lg font-semibold text-foreground mb-1">{item.title}</p>
+            <p class="text-muted-foreground leading-relaxed">{item.tie}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-8">
+        <a
+          href={`/${locale}/philosophy`}
+          class="underline underline-offset-2 hover:text-primary transition-colors font-medium"
+        >
+          {t('about.beliefs.fullTen')}
+        </a>
+      </p>
     </div>
   </section>
 
@@ -110,7 +109,7 @@ const tr = getTranslations(locale) as TranslationKeys;
           <div class="mb-6">
             <p class="text-foreground font-semibold mb-1">{item.event}</p>
             <p class="text-muted-foreground leading-relaxed">
-              <em>{item.title}</em> — {item.description}
+              <em>{item.title}</em>: {item.description}
             </p>
           </div>
         )
@@ -159,7 +158,7 @@ const tr = getTranslations(locale) as TranslationKeys;
       </h3>
       {tr.about.speaking.mentoring.items.map((item: { org: string; detail: string }) => (
         <p class="text-muted-foreground leading-relaxed mb-3">
-          <strong class="text-foreground font-semibold">{item.org}</strong> — {item.detail}
+          <strong class="text-foreground font-semibold">{item.org}</strong>: {item.detail}
         </p>
       ))}
     </div>
@@ -174,7 +173,7 @@ const tr = getTranslations(locale) as TranslationKeys;
       <p class="mt-8 text-lg font-medium">
         {t('about.offtheclock.closingLead')}
         <a
-          href={`/${locale}/contact`}
+          href={siteConfig.bookingUrl}
           class="underline underline-offset-2 hover:text-primary transition-colors"
         >
           {t('about.offtheclock.closing')}
@@ -195,7 +194,7 @@ const tr = getTranslations(locale) as TranslationKeys;
       <h2 class="text-3xl font-bold font-display text-balance">{t('about.cta.title')}</h2>
     </Fragment>
     <Fragment slot="actions">
-      <Button href={`/${locale}/contact`} variant="primary" size="lg">
+      <Button href={siteConfig.bookingUrl} variant="primary" size="lg">
         {t('about.cta.button')}
       </Button>
     </Fragment>

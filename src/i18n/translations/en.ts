@@ -7,7 +7,7 @@ export const en = {
     name: 'We Shall Build',
     tagline: 'Build What Matters',
     description:
-      'Senior Java Architect, Startup CTO, and Cloud & AI Engineer. 20+ years building production systems for banking, fintech, SaaS, AI, and climate tech. Techstars Fintech alumnus.',
+      'For founders and technical leads facing the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold.',
   },
 
   // Navigation
@@ -37,17 +37,18 @@ export const en = {
   hero: {
     title: 'Build what matters.',
     bridge:
-      "For founders and technical leads at growth-stage companies: senior engineering judgement when the stakes are high and the path isn't clear.",
+      "For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those decisions in production for twenty years.",
     cta: {
-      primary: 'Talk to me',
+      primary: "Let's talk",
       secondary: 'Read the latest',
     },
     rightColumn: {
+      name: 'Vishal Shanbhag',
       lead: 'From circuit board to boardroom.',
-      headline: 'Hardware foundations. Enterprise software. Climate focus.',
-      value: '20+ years of engineering judgement in production.',
+      headline: 'Hardware foundations. Enterprise software. AI agents, from demo to production.',
+      value: 'Twenty years of engineering judgement in production.',
       worksAcross: 'Works across',
-      domains: 'Banking · Fintech · SaaS · AI · Climate Tech',
+      domains: 'Fintech · SaaS · Climate Tech',
       aboutLink: 'About me',
     },
   },
@@ -156,14 +157,16 @@ export const en = {
     title: 'Build what matters.',
     titleHighlight: '',
     description:
-      "Every project starts with a conversation. Let's talk about what you're building and how to get it across the line.",
-    button: 'Start a Conversation',
+      "Every project starts with a conversation about what you're building, and how to get it across the line.",
+    button: "Let's talk",
     docs: '',
     command: '',
   },
 
   // Footer
   footer: {
+    tagline:
+      'For founders and technical leads facing the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold.',
     copyright: '© {year} We Shall Build. All rights reserved.',
     madeWith: 'Made with',
     maintainedBy: 'Maintained by',
@@ -171,6 +174,7 @@ export const en = {
     links: {
       documentation: 'Documentation',
       github: 'GitHub',
+      linkedin: 'LinkedIn',
       twitter: 'Twitter',
       license: 'License',
     },
@@ -185,24 +189,24 @@ export const en = {
       title: 'Engagement stories',
       items: [
         {
-          title: 'BlueMoney',
+          title: 'Talked a team out of building, and it saved the launch',
           subtitle: 'Short-term lending, Nigeria',
           paragraphs: [
-            'Pivoted a three-founder team from inventory lending into a regulated short-term lending business in Nigeria. Convinced them to buy mature platforms instead of building from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.',
+            '<em>BlueMoney</em> is a regulated short-term lender in Nigeria. I pivoted a three-founder team out of inventory lending and convinced them to buy mature platforms rather than build from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board sessions continue.',
           ],
         },
         {
-          title: 'Inbotiqa',
+          title: 'From 40% to 95% compliance on a system banks actually run',
           subtitle: 'Enterprise email processing, global banking',
           paragraphs: [
-            'Founding engineer at a Techstars portfolio company. Built the platform processing 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.',
+            'At <em>Inbotiqa</em>, where I was a founding engineer, the platform processes 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.',
           ],
         },
         {
-          title: 'HDFC Life Insurance',
+          title: 'Led a serverless evaluation years before it went mainstream',
           subtitle: 'Strategic architecture consulting, India',
           paragraphs: [
-            "Led serverless/MBaaS platform evaluation in 2015, years before it became mainstream. Architected an internal mobile platform enabling policyholders' families to request verified home care for elderly parents. Build-versus-buy at scale.",
+            "In 2015, at <em>HDFC Life</em>, I led a serverless/MBaaS platform evaluation, years before it became mainstream. Architected an internal mobile platform enabling policyholders' families to request verified home care for elderly parents. Build-versus-buy at scale.",
           ],
         },
       ],
@@ -269,25 +273,26 @@ export const en = {
     meta: {
       title: 'What I do',
       description:
-        'Senior engineering judgement for growth-stage companies. Architecture, hiring, tech selection, and hardening.',
+        'For founders and technical leads facing the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold.',
     },
     hero: {
-      title: 'Senior engineering judgement.',
+      title: 'Some decisions cost you when you get them wrong.',
       description:
         'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.',
     },
     howwork: {
       title: 'How I work',
       paragraphs: [
-        'I work alongside founders and technical leads who need senior engineering judgement: for a decision, a hire, a technology bet, or a sanity check.',
-        'The relationship starts with a conversation. A sounding board session, 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.',
+        'I work alongside founders and technical leads at a decision, a hire, an unproven AI build, or a sanity check.',
+        "The relationship starts with a free fifteen-minute conversation to work out whether it's worth a longer one. No pitch, no obligation, no sales process.",
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.',
       ],
     },
     cta: {
-      title: 'Talk to me',
-      description: 'A 60-minute sounding board session. No pitch, no obligation.',
-      button: 'Talk to me',
+      title: 'It starts with a conversation.',
+      description:
+        "And it goes as far as the problem needs. A fifteen-minute call to meet, no pitch, no obligation. If it's worth continuing: an honest hour, a short working sprint, or ongoing advisory.",
+      button: "Let's talk",
     },
   },
 
@@ -299,7 +304,7 @@ export const en = {
         'Builder, senior architect, and hands-on engineer. 20+ years from Mumbai to Cologne.',
     },
     origin: {
-      title: 'Origin',
+      title: 'Vishal Shanbhag',
       paragraphs: [
         'I come from Mumbai, India. These days I am in Hürth, near Cologne, Germany.',
         'I graduated as an electronics engineer from Mumbai University in 2002. I stumbled into software because, after the 9/11 attacks of 2001, jobs dried up and a financial crisis loomed. The software industry was the first to hire. I have been building production systems ever since.',
@@ -320,67 +325,18 @@ export const en = {
       commandments: [
         {
           title: 'We shall ask WHY before we ask HOW.',
-          content:
-            'Think like Master Oogway, asking existential questions, not about the universe, but about the product. Why are we doing this? Why does it matter? Who is this for? The answers shape everything that follows.',
-          defaultOpen: false,
+          tie: 'Every engagement opens here, before anyone says how: why build this, why now, who for.',
         },
         {
           title: 'We shall build for outcomes, not features.',
-          content:
-            'A king summoned six blind men and asked them to describe an elephant. The one who touched the trunk said, "A snake." The one who touched the leg said, "A tree." The one who touched the tail said, "A rope." Every description was true from where they stood. Every description was wrong for the whole. Often, a feature request is a blind man describing the elephant. The customer touches their piece, a workflow that hurts, a button they keep clicking, a report they export every morning, and names that piece as the problem that needs to be solved. Our job is to see the animal. Work backwards from the outcome. The feature request is just the symptom. Find the cause, the motivation, the desired outcome.',
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall build by principles, not by whim.',
-          content:
-            'Ideas are noise until filtered. Design principles are the sieve. They separate what belongs from what distracts. Every feature request, every suggestion, every pivot passes through the same filter.',
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall keep it simple and stupid.',
-          content:
-            "Google launched in 1998 with around a million dollars from angel investors and a white page with a logo and a text box. No categories, no stock tickers, no news, no weather, no email. Their competitors, Lycos, AltaVista, Excite, were multi-billion-dollar portals that did everything. The blank page won. Simplicity is not a limitation. It is a slingshot. David did not try to be Goliath. He found Goliath's weakness and aimed for it.",
-          defaultOpen: false,
+          tie: 'We work backwards from the outcome you need; the feature request is a symptom of it.',
         },
         {
           title: 'We shall prototype before we commit.',
-          content:
-            "Google Glass. A product nobody asked for, built by one of the world's biggest companies, backed by billions in R&D. It failed because the customer discovery happened after the investment, not before. Prototypes exist to kill bad ideas cheaply. A rough prototype that fails with five users costs you a week. A finished product that fails with five hundred customers costs you months of development time and much more in costs.",
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall build with grit, spit, and a whole lot of duct tape.',
-          content:
-            'Like the Penguins of Madagascar building a plane from scrap. The tools are never perfect, the ground is never level, and the requirements change before you finish typing. Most of the building is resourcefulness, making something work with what you have.',
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall deploy what works.',
-          content:
-            '"If you are not embarrassed by the first version of your product, you have launched too late." Reid Hoffman. The Apple I was a circuit board. Ugly, incomplete, but it worked. Done is better than perfect. Perfection achieved through iteration is still perfection. Perfection before launch is a product that never shipped.',
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall learn from failures.',
-          content:
-            'Edison found 10,000 ways that did not work. Keep a log. Failures are data, not shame. The features that became the mainstays are often nowhere in the first draft.',
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall rise after every hit.',
-          content:
-            "\"It ain't about how hard you're hit. It's about how you can get hit and keep moving forward.\" Rocky Balboa. Building is not a single fight. It is a long sequence of setbacks, near-misses, and unexpected punches. The ones who finish are not the ones who never fell. They are the ones who got back up.",
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall run further than a marathon.',
-          content:
-            'A marathon has a finish line at 42 km. Sufiya Sufi ran 4,167 km from Kanyakumari to Kashmir in 68 days, then kept going toward Karakoram. That is the difference between a product launch and a company. Sprints are for work breakdown. The vision needs the kind of distance where the finish line keeps moving because the purpose has not been met yet. The long game has no finish line.',
-          defaultOpen: false,
-          href: '/blog/run-further-than-a-marathon/',
-          linkText: 'Read the full analogy',
+          tie: 'A rough prototype that fails this week costs a week. A finished build that fails in market costs a quarter.',
         },
       ],
+      fullTen: 'The way we build →',
     },
     careerarc: {
       title: 'The career arc, briefly',
@@ -479,11 +435,11 @@ export const en = {
     offtheclock: {
       title: 'Off the clock',
       paragraphs: [
-        'I trek, I travel, I write — in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.',
+        'I trek, I travel, I write, in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.',
         "I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan's condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.",
       ],
       closingLead: 'If you have an idea that needs software to give it life, ',
-      closing: 'talk to me.',
+      closing: "let's talk.",
     },
     editorialStandards: {
       title: 'Editorial standards',
@@ -492,7 +448,7 @@ export const en = {
     },
     cta: {
       title: 'Have a problem worth solving?',
-      button: 'Start a Conversation',
+      button: "Let's talk",
     },
   },
 
@@ -500,25 +456,23 @@ export const en = {
   contact: {
     meta: {
       title: 'Contact',
-      description: 'Connect with Vishal Shanbhag on LinkedIn or book a sounding board session.',
+      description:
+        'Fifteen minutes, no commitment, no pitch. A straight answer on whether this is worth a longer conversation, including when the answer is no.',
     },
     hero: {
-      title: "Let's talk.",
-      description:
-        'The best way to reach me is through LinkedIn: it keeps the signal high and the noise low. If you have a clear brief, a sounding board session is the fastest route to a structured engagement.',
+      title: 'Reach out.',
     },
-    linkedin: {
-      title: 'Connect on LinkedIn',
+    free: {
       description:
-        'Send me a connection request with a note about what you are working on and mention weshall.build — I read every one.',
-      button: 'Connect on LinkedIn',
-      url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+        'Fifteen minutes with a founder-engineer who has spent twenty years making the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold. No pitch, no obligation. You leave knowing whether a longer conversation is worth having.',
+      button: "Let's talk",
+      url: 'https://calendly.com/vshanbhag',
     },
-    upwork: {
-      title: 'Book a Sounding Board',
+    paid: {
+      title: 'Already know what you need?',
       description:
-        'For sounding board sessions. A technical consultation to break down your challenges and explore the right technical options.',
-      button: 'Book a Session',
+        'An honest hour on your problem with a senior architect: you leave knowing what to do next.',
+      button: 'Book the honest hour',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
   },
@@ -660,7 +614,7 @@ export const en = {
         limitContent: "You've used 80% of your monthly API quota. Consider upgrading your plan.",
         buildTitle: 'Build failed',
         buildContent: 'Error in',
-        buildError: '— missing required prop "variant"',
+        buildError: 'missing required prop "variant"',
       },
       overlays: {
         title: 'Overlays',
@@ -712,7 +666,7 @@ export const en = {
         avatars: 'Avatars',
         avatarsHint: 'User representations',
         icons: 'Icons',
-        iconsHint: 'Lucide icon set — 24 included',
+        iconsHint: 'Lucide icon set: 24 included',
         stacked: 'Stacked',
         performance: 'Performance',
         performanceScore: '100/100 Lighthouse',

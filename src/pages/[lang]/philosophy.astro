@@ -1,0 +1,30 @@
+---
+import { getStaticPathsHelper } from '@/i18n/paths-helper';
+import PageLayout from '@/layouts/PageLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export const getStaticPaths = getStaticPathsHelper;
+
+// Single philosophy entry — the ten commandments, English source for all locales.
+const [entry] = await getCollection('philosophy');
+if (!entry) {
+  throw new Error('Philosophy collection is empty: expected the ten commandments entry.');
+}
+const { Content } = await render(entry);
+---
+
+<PageLayout title={entry.data.title} description={entry.data.description}>
+  <section class="py-24 md:py-32">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl font-display text-balance mb-4">
+        {entry.data.title}
+      </h1>
+      {entry.data.description && (
+        <p class="text-lg text-muted-foreground text-balance mb-10">{entry.data.description}</p>
+      )}
+      <div class="prose prose-lg max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:text-xl prose-a:text-brand-600 hover:prose-a:text-brand-500 dark:prose-invert dark:prose-a:text-brand-400">
+        <Content />
+      </div>
+    </div>
+  </section>
+</PageLayout>

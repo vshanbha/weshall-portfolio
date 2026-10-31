@@ -89,7 +89,7 @@ const {
   nav,
   extraNav = [],
   showCta = true,
-  cta = { label: "Let's talk", href: '/contact' },
+  cta = { label: "Let's talk", href: siteConfig.bookingUrl },
   actions = [],
   showThemeToggle = true,
   showLanguageSwitcher = true,
@@ -125,8 +125,17 @@ const currentPath = Astro.url.pathname;
 const isLandingPage =
   currentPath === '/' || currentPath === `/${locale}` || currentPath === `/${locale}/`;
 
-// Process CTA href for landing page anchor links
-const ctaHref = cta.href?.startsWith('#') && !isLandingPage ? `/${cta.href}` : cta.href;
+// Process CTA href: anchor links stay on landing pages; page paths get localized
+const ctaHref =
+  cta.href === undefined
+    ? undefined
+    : cta.href.startsWith('#')
+      ? isLandingPage
+        ? cta.href
+        : `/${cta.href}`
+      : cta.href === '/contact'
+        ? getLocalizedPath('contact', locale)
+        : cta.href;
 
 // Check slots
 const hasLogoSlot = Astro.slots.has('logo');
@@ -258,9 +267,8 @@ const buttonId = `${menuId}-button`;
           ))}
 
           {showCta && (
-            <Button size="sm" href={ctaHref}>
-              <span class="hidden sm:inline">{cta.label}</span>
-              <span class="sm:hidden">Talk</span>
+            <Button size="sm" href={ctaHref} class="whitespace-nowrap">
+              {cta.label}
             </Button>
           )}
         </>

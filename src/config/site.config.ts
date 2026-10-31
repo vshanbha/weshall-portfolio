@@ -14,6 +14,8 @@ export interface SiteConfig {
     country: string;
   };
   socialLinks: string[];
+  /** Booking URL for every "Let's talk" CTA — links directly to Calendly */
+  bookingUrl: string;
   twitter?: {
     site: string;
     creator: string;
@@ -49,7 +51,7 @@ export interface SiteConfig {
 const siteConfig: SiteConfig = {
   name: 'We Shall Build',
   description:
-    'Enterprise software architect. 20+ years of engineering judgement in production for banking, fintech, SaaS, AI, and climate tech.',
+    'For founders and technical leads facing the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold.',
   url: import.meta.env.SITE_URL || 'http://localhost:4321',
   ogImage: '/og-default.png',
   author: 'Vishal Shanbhag',
@@ -59,6 +61,7 @@ const siteConfig: SiteConfig = {
     'https://stackoverflow.com/users/2324541/vvs',
     'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
   ],
+  bookingUrl: 'https://calendly.com/vshanbhag',
   // Twitter metadata - update with your actual handles or remove
   // twitter: {
   //   site: '@yourhandle',

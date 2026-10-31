@@ -124,10 +124,30 @@ const faqs = defineCollection({
   }),
 });
 
+// Philosophy collection — brand philosophy pages ("The way we build.")
+const philosophy = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/philosophy' }),
+  schema: z
+    .object({
+      title: z.string().max(120),
+      description: z.string().max(250).optional(),
+      updatedAt: z.coerce.date().optional(),
+      locale: localeEnum.default('en'),
+      reviewed: z.boolean().default(false),
+    })
+    // Review gate: philosophy pages are permanent brand copy, same gate as articles.
+    .refine((data) => data.reviewed === true, {
+      message:
+        'Philosophy pages must pass the review gate: set `reviewed: true` once the human review is done (see AGENTS.md).',
+      path: ['reviewed'],
+    }),
+});
+
 export const collections = {
   articles,
   blog,
   pages,
   authors,
   faqs,
+  philosophy,
 };

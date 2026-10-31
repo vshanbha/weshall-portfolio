@@ -5,7 +5,8 @@ export const hi = {
   site: {
     name: 'वी शॉल बिल्ड', // We Shall Build — transliterated, needs native-speaker review
     tagline: 'Build What Matters', // TODO: translate
-    description: 'जटिल तकनीकी, संचालन और वास्तुशिल्प क्षेत्रों का गहन विश्लेषण',
+    description:
+      'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है: खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
   },
   nav: {
     home: 'होम',
@@ -30,17 +31,18 @@ export const hi = {
   hero: {
     title: 'Build what matters.', // TODO: translate
     bridge:
-      "For founders and technical leads at growth-stage companies: senior engineering judgement when the stakes are high and the path isn't clear.", // TODO: translate
+      'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है: खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं। बीस साल से मैं उत्पादन में यही फैसले ले रहा हूँ।',
     cta: {
-      primary: 'Talk to me', // TODO: translate
+      primary: 'चलिए बात करते हैं',
       secondary: 'Read the latest', // TODO: translate
     },
     rightColumn: {
-      lead: 'From circuit board to boardroom.', // TODO: translate
-      headline: 'Hardware foundations. Enterprise software. Climate focus.', // TODO: translate
-      value: '20+ years of engineering judgement in production.', // TODO: translate
-      worksAcross: 'Works across', // TODO: translate
-      domains: 'Banking · Fintech · SaaS · AI · Climate Tech', // TODO: translate
+      name: 'विशाल शानभाग',
+      lead: 'सर्किट बोर्ड से बोर्डरूम तक।',
+      headline: 'हार्डवेयर की नींव। एंटरप्राइज़ सॉफ़्टवेयर। AI एजेंट, डेमो से प्रोडक्शन तक।',
+      value: 'बीस साल का इंजीनियरिंग अनुभव, उत्पादन में परखा हुआ।',
+      worksAcross: 'काम के क्षेत्र',
+      domains: 'फ़िनटेक · SaaS · क्लाइमेट टेक',
       aboutLink: 'About me', // TODO: translate
     },
   },
@@ -141,12 +143,14 @@ export const hi = {
     title: 'Build what matters.',
     titleHighlight: '',
     description:
-      "Every project starts with a conversation. Let's talk about what you're building — and how to get it across the line.",
-    button: 'Start a Conversation',
+      'हर प्रोजेक्ट एक बातचीत से शुरू होता है, आप क्या बना रहे हैं और उसे कैसे पार लगाना है, इसी के बारे में।', // TODO: review translation
+    button: 'चलिए बात करते हैं',
     docs: '',
     command: '',
   },
   footer: {
+    tagline:
+      'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है: खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
     copyright: '© {year} वी शॉल बिल्ड. सर्वाधिकार सुरक्षित।',
     madeWith: 'बनाया गया',
     maintainedBy: 'द्वारा बनाए रखा गया',
@@ -154,6 +158,7 @@ export const hi = {
     links: {
       documentation: 'दस्तावेज़',
       github: 'GitHub',
+      linkedin: 'LinkedIn',
       twitter: 'Twitter',
       license: 'लाइसेंस',
     },
@@ -167,24 +172,24 @@ export const hi = {
       title: 'Engagement stories', // TODO: translate
       items: [
         {
-          title: 'BlueMoney', // TODO: translate
+          title: 'टीम को बनाने से मना लिया, और लॉन्च बच गया',
           subtitle: 'Short-term lending, Nigeria', // TODO: translate
           paragraphs: [
-            'Pivoted a three-founder team from inventory lending into a regulated short-term lending business in Nigeria. Convinced them to buy mature platforms instead of building from scratch. Launched January\u00a02026 after regulatory delays. Monthly sounding board calls continue.', // TODO: translate
+            '<em>BlueMoney</em> नाइजीरिया में एक रेगुलेटेड शॉर्ट-टर्म लेंडर है। मैंने तीन-संस्थापक टीम को इन्वेंटरी लेंडिंग से निकालकर नाइजीरिया के रेगुलेटेड शॉर्ट-टर्म लेंडिंग धंधे में मोड़ा और उन्हें ज़ीरो से बनाने के बजाय मौजूदा प्लेटफ़ॉर्म खरीदने के लिए राज़ी किया। जनवरी 2026 में लॉन्च, रेगुलेटरी देरी के बाद। मासिक साउंडिंग बोर्ड सेशन जारी हैं।', // TODO: review translation
           ],
         },
         {
-          title: 'Inbotiqa', // TODO: translate
+          title: '40% से 95% कंप्लायंस, उस सिस्टम में जिसे बैंक चलाते हैं',
           subtitle: 'Enterprise email processing, global banking', // TODO: translate
           paragraphs: [
-            'Founding engineer at a Techstars portfolio company. Built the platform processing 100,000+ transactional emails daily for global banking at 99.9% availability. Turnaround-time compliance went from 40% to 95%. Same-day close-out from 22% to 85%.', // TODO: translate
+            'जहाँ मैं फ़ाउंडिंग इंजीनियर था, <em>Inbotiqa</em> का प्लेटफ़ॉर्म वैश्विक बैंकों के लिए रोज़ 100,000 से ज़्यादा ट्रांज़ैक्शनल ईमेल 99.9% उपलब्धता के साथ संसाधित करता है। टर्नअराउंड-टाइम कंप्लायंस 40% से 95% पर, सेम-डे क्लोज़-आउट 22% से 85% पर।',
           ],
         },
         {
-          title: 'HDFC Life Insurance', // TODO: translate
+          title: 'मेनस्ट्रीम बनने से बरसों पहले सर्वरलेस इवैल्यूएशन चलाया',
           subtitle: 'Strategic architecture consulting, India', // TODO: translate
           paragraphs: [
-            "Led serverless/MBaaS platform evaluation in 2015 — years before it became mainstream. Architected an internal mobile platform enabling policyholders' families to request verified home care for elderly parents. Build-versus-buy at scale.", // TODO: translate
+            '2015 में, <em>HDFC Life</em> में मैंने सर्वरलेस/MBaaS प्लेटफ़ॉर्म इवैल्यूएशन चलाया, मेनस्ट्रीम बनने से बरसों पहले। एक आंतरिक मोबाइल प्लेटफ़ॉर्म भी बनाया जिससे पॉलिसीधारकों के परिवार बुज़ुर्ग माता-पिता के लिए सत्यापित घरेलू देखभाल की माँग कर सकें। बड़े पैमाने पर build-versus-buy।',
           ],
         },
       ],
@@ -250,25 +255,26 @@ export const hi = {
     meta: {
       title: 'What I do', // TODO: translate
       description:
-        'Senior engineering judgement for growth-stage companies. Architecture, hiring, tech selection, and hardening.', // TODO: translate
+        'संस्थापकों और तकनीकी लीड्स के लिए, उन फैसलों के सामने जिनकी कीमत समय और पैसे में चुकती है: खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं।',
     },
     hero: {
-      title: 'Senior engineering judgement.', // TODO: translate
+      title: 'कुछ फ़ैसले गलत होने पर भारी पड़ते हैं।',
       description:
         'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.', // TODO: translate
     },
     howwork: {
       title: 'How I work', // TODO: translate
       paragraphs: [
-        'I work alongside founders and technical leads who need senior engineering judgement — for a decision, a hire, a technology bet, or a sanity check.', // TODO: translate
-        'The relationship starts with a conversation. A sounding board session, 60 minutes, where you bring the problem and I bring the experience. No pitch, no obligation, no sales process.', // TODO: translate
+        'मैं उन संस्थापकों और तकनीकी लीड्स के साथ काम करता हूँ जो किसी फ़ैसले, किसी हायरिंग, किसी बिना-परखे AI बिल्ड या किसी सैनिटी चेक पर हैं।',
+        'रिश्ता एक मुफ़्त पंद्रह-मिनट की बातचीत से शुरू होता है, यह समझने के लिए कि क्या यह लंबी बातचीत के लायक है। न पिच, न कोई प्रतिबद्धता, न कोई सेल्स प्रोसेस।',
         'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.', // TODO: translate
       ],
     },
     cta: {
-      title: 'Talk to me', // TODO: translate
-      description: 'A 60-minute sounding board session. No pitch, no obligation.', // TODO: translate
-      button: 'Talk to me', // TODO: translate
+      title: 'यह बातचीत से शुरू होता है।', // TODO: review translation
+      description:
+        'और यह उतना आगे जाता है जितनी समस्या माँगती है। मिलने के लिए पंद्रह मिनट की कॉल, न पिच, न प्रतिबद्धता। आगे बढ़ने लायक हो तो: एक ईमानदार घंटा, एक छोटा वर्किंग स्प्रिंट या निरंतर सलाहकारी।', // TODO: review translation
+      button: 'चलिए बात करते हैं',
     },
   },
   // About page
@@ -279,20 +285,20 @@ export const hi = {
         'Builder, senior architect, and hands-on engineer. 20+ years from Mumbai to Cologne.', // TODO: translate
     },
     origin: {
-      title: 'Origin', // TODO: translate
+      title: 'विशाल शानभाग',
       paragraphs: [
         'I come from Mumbai, India. These days I am in Hürth, near Cologne, Germany.', // TODO: translate
         'I graduated as an electronics engineer from Mumbai University in 2002. I stumbled into software because, after the 9/11 attacks of 2001, jobs dried up and a financial crisis loomed. The software industry was the first to hire. I have been building production systems ever since.', // TODO: translate
         'I came to Germany in 2023 because my wife was transferred. I like to travel, and the startup, software, and climate tech scene here? Das gefällt mir. I am staying.', // TODO: translate
-        'I speak five languages at varying levels of decline: English — native, Hindi and Marathi native, Konkani conversational, German at B1 and counting.', // TODO: translate
+        'I speak five languages at varying levels of decline: English native, Hindi and Marathi native, Konkani conversational, German at B1 and counting.', // TODO: translate
       ],
     },
     whatido: {
       title: 'How I build', // TODO: translate
       paragraphs: [
-        'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype — and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
+        'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype, and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
         'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.', // TODO: translate
-        'I work with companies that have found their footing and need to build the systems that carry them through the next phase — without breaking what is already working.', // TODO: translate
+        'I work with companies that have found their footing and need to build the systems that carry them through the next phase, without breaking what is already working.', // TODO: translate
       ],
     },
     beliefs: {
@@ -300,67 +306,18 @@ export const hi = {
       commandments: [
         {
           title: 'We shall ask WHY before we ask HOW.', // TODO: translate
-          content:
-            'Think like Master Oogway, asking existential questions, not about the universe, but about the product. Why are we doing this? Why does it matter? Who is this for? The answers shape everything that follows.', // TODO: translate
-          defaultOpen: false,
+          tie: 'हर एंगेजमेंट यहीं से शुरू होता है, इससे पहले कि कोई "कैसे" पूछे: यह क्यों बनाएँ, अभी क्यों, किसके लिए।',
         },
         {
           title: 'We shall build for outcomes, not features.', // TODO: translate
-          content:
-            'A king summoned six blind men and asked them to describe an elephant. The one who touched the trunk said, "A snake." The one who touched the leg said, "A tree." The one who touched the tail said, "A rope." Every description was true from where they stood. Every description was wrong for the whole. Often, a feature request is a blind man describing the elephant. The customer touches their piece -- a workflow that hurts, a button they keep clicking, a report they export every morning -- and names that piece as the problem that needs to be solved. Our job is to see the animal. Work backwards from the outcome. The feature request is just the symptom. Find the cause, the motivation, the desired outcome.', // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall build by principles, not by whim.', // TODO: translate
-          content:
-            'Ideas are noise until filtered. Design principles are the sieve -- they separate what belongs from what distracts. Every feature request, every suggestion, every pivot passes through the same filter.', // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall keep it simple and stupid.', // TODO: translate
-          content:
-            "Google launched in 1998 with around a million dollars from angel investors and a white page with a logo and a text box. No categories, no stock tickers, no news, no weather, no email. Their competitors -- Lycos, AltaVista, Excite -- were multi-billion-dollar portals that did everything. The blank page won. Simplicity is not a limitation. It is a slingshot. David did not try to be Goliath. He found Goliath's weakness and aimed for it.", // TODO: translate
-          defaultOpen: false,
+          tie: 'हम उस नतीजे से पीछे चलकर काम करते हैं जो आपको चाहिए; फ़ीचर की माँग उसका सिर्फ़ लक्षण है।',
         },
         {
           title: 'We shall prototype before we commit.', // TODO: translate
-          content:
-            "Google Glass. A product nobody asked for, built by one of the world's biggest companies, backed by billions in R&D. It failed because the customer discovery happened after the investment, not before. Prototypes exist to kill bad ideas cheaply. A rough prototype that fails with five users costs you a week. A finished product that fails with five hundred customers costs you months of development time and much more in costs.", // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall build with grit, spit, and a whole lot of duct tape.', // TODO: translate
-          content:
-            'Like the Penguins of Madagascar building a plane from scrap. The tools are never perfect, the ground is never level, and the requirements change before you finish typing. Most of the building is resourcefulness -- making something work with what you have.', // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall deploy what works.', // TODO: translate
-          content:
-            '"If you are not embarrassed by the first version of your product, you have launched too late." -- Reid Hoffman. The Apple I was a circuit board -- ugly, incomplete, but it worked. Done is better than perfect. Perfection achieved through iteration is still perfection. Perfection before launch is a product that never shipped.', // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall learn from failures.', // TODO: translate
-          content:
-            'Edison found 10,000 ways that did not work. Keep a log. Failures are data, not shame. The features that became the mainstays are often nowhere in the first draft.', // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall rise after every hit.', // TODO: translate
-          content:
-            "\"It ain't about how hard you're hit. It's about how you can get hit and keep moving forward.\" -- Rocky Balboa. Building is not a single fight. It is a long sequence of setbacks, near-misses, and unexpected punches. The ones who finish are not the ones who never fell -- they are the ones who got back up.", // TODO: translate
-          defaultOpen: false,
-        },
-        {
-          title: 'We shall run further than a marathon.', // TODO: translate
-          content:
-            'A marathon has a finish line at 42 km. Sufiya Sufi ran 4,167 km from Kanyakumari to Kashmir in 68 days, then kept going toward Karakoram. That is the difference between a product launch and a company. Sprints are for work breakdown. The vision needs the kind of distance where the finish line keeps moving because the purpose has not been met yet. The long game has no finish line.', // TODO: translate
-          defaultOpen: false,
-          href: '/blog/run-further-than-a-marathon/',
-          linkText: 'Read the full analogy', // TODO: translate
+          tie: 'इस हफ़्ते असफल होने वाला मोटा प्रोटोटाइप एक हफ़्ता खर्च करता है। बाज़ार में असफल होने वाला पूरा बिल्ड एक तिमाही।',
         },
       ],
+      fullTen: 'जिस तरह हम बनाते हैं →',
     },
     careerarc: {
       title: 'The career arc, briefly', // TODO: translate
@@ -405,7 +362,7 @@ export const hi = {
       },
       articles: {
         title: 'Select articles', // TODO: translate
-        intro: 'I write for JavaPro and Baeldung — two names every Java professional recognises.', // TODO: translate
+        intro: 'I write for JavaPro and Baeldung, two names every Java professional recognises.', // TODO: translate
         items: [
           {
             title:
@@ -461,11 +418,11 @@ export const hi = {
     offtheclock: {
       title: 'Off the clock', // TODO: translate
       paragraphs: [
-        'I trek, I travel, I write — in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.', // TODO: translate
+        'I trek, I travel, I write, in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.', // TODO: translate
         "I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan's condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.", // TODO: translate
       ],
       closingLead: 'If you have an idea that needs software to give it life, ', // TODO: translate
-      closing: 'talk to me.', // TODO: translate
+      closing: 'चलिए बात करते हैं।',
     },
     editorialStandards: {
       title: 'Editorial standards', // TODO: translate
@@ -474,31 +431,29 @@ export const hi = {
     },
     cta: {
       title: 'Have a problem worth solving?', // TODO: translate
-      button: 'Start a Conversation', // TODO: translate
+      button: 'चलिए बात करते हैं',
     },
   },
   contact: {
     meta: {
       title: 'संपर्क करें',
-      description: 'विशाल शानभाग से संपर्क करें।',
+      description:
+        'पंद्रह मिनट, कोई प्रतिबद्धता नहीं, कोई पिच नहीं। यह तय करने का सीधा जवाब कि यह लंबी बातचीत के लायक है, भले ही जवाब न हो।',
     },
     hero: {
-      title: 'चलिए बात करते हैं।', // TODO: translate
-      description:
-        'मुझसे संपर्क करने का सबसे अच्छा तरीका LinkedIn है — यह सिग्नल को ऊंचा और शोर को कम रखता है। यदि आपके पास एक स्पष्ट ब्रीफ है, तो साउंडिंग बोर्ड सत्र एक संरचित जुड़ाव का सबसे तेज़ तरीका है।', // TODO: translate
+      title: 'संपर्क करें।',
     },
-    linkedin: {
-      title: 'LinkedIn पर कनेक्ट करें', // TODO: translate
+    free: {
       description:
-        'मुझे एक कनेक्शन अनुरोध भेजें जिसमें आप किस पर काम कर रहे हैं, इसके बारे में एक नोट हो और weshall.build का उल्लेख करें — मैं हर एक पढ़ता हूं।', // TODO: translate
-      button: 'LinkedIn पर कनेक्ट करें', // TODO: translate
-      url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
+        'पंद्रह मिनट एक फ़ाउंडर-इंजीनियर के साथ, जिसने बीस साल से वही फ़ैसले लिए जिनकी कीमत समय और पैसे में चुकती है: खुद बनाएँ या खरीदें, किसे हायर करें, और जो AI ने बनाया वह टिकेगा या नहीं। न पिच, न प्रतिबद्धता। जाते समय आपको पता चलता है कि क्या लंबी बातचीत लायक है।', // TODO: review translation
+      button: 'चलिए बात करते हैं',
+      url: 'https://calendly.com/vshanbhag',
     },
-    upwork: {
-      title: 'साउंडिंग बोर्ड बुक करें', // TODO: translate
+    paid: {
+      title: 'आपको पहले से पता है कि आपको क्या चाहिए?',
       description:
-        'साउंडिंग बोर्ड सत्रों के लिए। आपकी चुनौतियों को समझने और सही तकनीकी विकल्प तलाशने के लिए एक तकनीकी परामर्श।', // TODO: translate
-      button: 'सत्र बुक करें', // TODO: translate
+        'सीनियर आर्किटेक्ट के साथ आपकी समस्या पर एक ईमानदार घंटा: जाते समय आपको पता होता है कि आगे क्या करना है।',
+      button: 'ईमानदार घंटा बुक करें',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
   },
@@ -635,7 +590,7 @@ export const hi = {
           'आपने अपने मासिक API कोटा का 80% उपयोग कर लिया है। अपनी योजना को अपग्रेड करने पर विचार करें।',
         buildTitle: 'बिल्ड विफल',
         buildContent: 'में त्रुटि',
-        buildError: '— आवश्यक प्रॉप "variant" गायब है',
+        buildError: 'आवश्यक प्रॉप "variant" गायब है',
       },
       overlays: {
         title: 'ओवरले',
@@ -687,7 +642,7 @@ export const hi = {
         avatars: 'अवतार',
         avatarsHint: 'उपयोगकर्ता प्रतिनिधित्व',
         icons: 'आइकन',
-        iconsHint: 'Lucide आइकन सेट — 24 शामिल',
+        iconsHint: 'Lucide आइकन सेट: 24 शामिल',
         stacked: 'स्टैक्ड',
         performance: 'परफ़ॉर्मेंस',
         performanceScore: '100/100 लाइटहाउस',
