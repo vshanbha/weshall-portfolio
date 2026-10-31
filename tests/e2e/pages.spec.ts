@@ -69,6 +69,7 @@ test.describe('Root-Level Redirects', () => {
     { from: '/contact', to: '/en/contact' },
     { from: '/services', to: '/en/services' },
     { from: '/blog', to: '/en/blog' },
+    { from: '/de/blog', to: '/en/blog' },
     { from: '/impressum', to: '/en/impressum' },
     { from: '/datenschutz', to: '/en/datenschutz' },
   ];
@@ -83,7 +84,7 @@ test.describe('Root-Level Redirects', () => {
   }
 });
 
-test.describe('English-only locale', () => {
+test.describe('Locale pages', () => {
   test('/en/about returns 200', async ({ page }) => {
     const response = await page.goto('/en/about');
     expect(response?.status()).toBe(200);
@@ -104,6 +105,45 @@ test.describe('English-only locale', () => {
   test('/en/services returns 200', async ({ page }) => {
     const response = await page.goto('/en/services');
     expect(response?.status()).toBe(200);
+  });
+});
+
+test.describe('German locale', () => {
+  test('/de/ returns 200 with German content and lang=de', async ({ page }) => {
+    const response = await page.goto('/de/');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'de');
+    await expect(page.locator('body')).toContainText('Bauen Sie, was zählt.');
+    await expect(page.getByRole('link', { name: 'Lassen Sie uns sprechen' }).first()).toBeVisible();
+  });
+
+  test('/de/about returns 200 with German content', async ({ page }) => {
+    const response = await page.goto('/de/about');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('body')).toContainText('Wie ich baue');
+  });
+
+  test('/de/services returns 200 with German nav label', async ({ page }) => {
+    const response = await page.goto('/de/services');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('body')).toContainText('Was ich mache');
+  });
+
+  test('/de/contact returns 200', async ({ page }) => {
+    const response = await page.goto('/de/contact');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('body')).toContainText('Kontakt');
+  });
+
+  test('blog stays English: German nav links Blog to /en/blog', async ({ page }) => {
+    await page.goto('/de/about');
+    await expect(page.locator('a[href="/en/blog"]').first()).toBeVisible();
+    await expect(page.locator('a[href="/de/blog"]')).toHaveCount(0);
+  });
+
+  test('language switcher on an English blog post sends German to /de/', async ({ page }) => {
+    await page.goto('/en/blog/how-this-site-was-built');
+    await expect(page.locator('#language-switcher-menu a[href="/de"]')).toHaveCount(1);
   });
 });
 
