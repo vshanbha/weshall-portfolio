@@ -446,16 +446,11 @@ export const de = {
         'Fünfzehn Minuten, keine Verpflichtung, kein Pitch. Eine klare Antwort darauf, ob sich ein längeres Gespräch lohnt, auch wenn die Antwort nein lautet.',
     },
     hero: {
-      title: 'Sie brauchen kein sauberes Briefing.',
-      description:
-        'Die meisten, die mir schreiben, sind sich nicht sicher, ob sie ein Problem, eine Frage oder nur ein Gefühl haben, dass etwas nicht stimmt. Das ist ein normaler Ausgangspunkt und kein Grund zu warten.',
-      homework:
-        'Möglicherweise hat Ihnen jemand gesagt, was falsch läuft: eine KI, ein Berater oder Ihr eigenes Lesen. Bringen Sie deren Hausaufgaben mit. Manches davon stimmt vielleicht sogar.',
+      title: 'Melden Sie sich.',
     },
     free: {
-      description: 'Fünfzehn Minuten zum Kennenlernen: kein Pitch, keine Verpflichtung.',
-      identity:
-        'Wen Sie treffen: ein Founder-Engineer, zwanzig Jahre, in denen er diese Entscheidungen getroffen hat und deren Kosten erlebt.',
+      description:
+        'Fünfzehn Minuten mit einem Founder-Engineer, der zwanzig Jahre lang die Entscheidungen getroffen hat, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Kein Pitch, keine Verpflichtung. Sie wissen danach, ob sich ein längeres Gespräch lohnt.', // TODO: review translation
       button: 'Lassen Sie uns sprechen',
       url: 'https://calendly.com/vshanbhag',
     },
