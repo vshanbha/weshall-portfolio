@@ -113,7 +113,10 @@ test.describe('German locale', () => {
     const response = await page.goto('/de/');
     expect(response?.status()).toBe(200);
     await expect(page.locator('html')).toHaveAttribute('lang', 'de');
-    await expect(page.locator('body')).toContainText('Bauen Sie, was zählt.');
+    // Brand voice stays English in every locale: tagline and hero lead-in.
+    await expect(page.locator('body')).toContainText('Build what matters.');
+    await expect(page.locator('body')).toContainText('From circuit board to boardroom.');
+    await expect(page.locator('body')).not.toContainText('Bauen Sie, was zählt');
     await expect(page.getByRole('link', { name: 'Lassen Sie uns sprechen' }).first()).toBeVisible();
   });
 

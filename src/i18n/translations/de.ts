@@ -4,7 +4,8 @@
 export const de = {
   site: {
     name: 'We Shall Build',
-    tagline: 'Bauen Sie, was zählt',
+    // Brand tagline stays English in every locale, like the philosophy one-liners.
+    tagline: 'Build What Matters',
     description:
       'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
   },
@@ -30,7 +31,7 @@ export const de = {
   },
   // Hero Section
   hero: {
-    title: 'Bauen Sie, was zählt.',
+    title: 'Build what matters.',
     bridge:
       'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Ich mache diese Entscheidungen seit zwanzig Jahren im Produktivbetrieb.',
     cta: {
@@ -39,7 +40,7 @@ export const de = {
     },
     rightColumn: {
       name: 'Vishal Shanbhag',
-      lead: 'Von der Leiterplatte zum Boardroom.',
+      lead: 'From circuit board to boardroom.',
       headline:
         'Hardware-Fundamente. Enterprise-Software. KI-Agenten, von der Demo bis zur Produktion.',
       value: 'Zwanzig Jahre Engineering-Urteil im Produktivbetrieb.',
@@ -142,7 +143,7 @@ export const de = {
     },
   },
   cta: {
-    title: 'Bauen Sie, was zählt.',
+    title: 'Build what matters.',
     titleHighlight: '',
     description:
       'Jedes Projekt beginnt mit einem Gespräch über das, was Sie bauen, und wie Sie es über die Linie bringen.',
