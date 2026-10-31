@@ -26,7 +26,7 @@ import Logo from '@/components/ui/marketing/Logo/Logo.astro';
 import ThemeToggle from '@/components/layout/ThemeToggle.astro';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher.astro';
 import siteConfig from '@/config/site.config';
-import { type Locale, defaultLocale, getLocaleFromPath } from '@/i18n/config';
+import { type Locale, getLocaleFromPath } from '@/i18n/config';
 import { useTranslations, getLocalizedPath, getNavRoutes } from '@/i18n/index';
 
 export interface NavItem {
@@ -113,7 +113,7 @@ const defaultNav = getNavRoutes(locale);
 const navItems: NavItem[] = nav || [
   ...extraNav,
   ...defaultNav.map((route) => ({
-    label: t(route.label as any) || route.label,
+    label: t(route.label) || route.label,
     href: route.path,
   })),
 ];

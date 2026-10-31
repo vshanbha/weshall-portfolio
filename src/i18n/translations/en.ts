@@ -15,6 +15,9 @@ export const en = {
     home: 'Home',
     about: 'About',
     blog: 'Blog',
+    // Label for the philosophy route; never rendered in the navbar today
+    // (the route's nav.show is false), but kept valid for the NavConfig type.
+    philosophy: 'The way we build',
     services: 'What I do',
     contact: 'Contact',
     features: 'Features',
@@ -715,3 +718,18 @@ export const en = {
 } as const;
 
 export type TranslationKeys = typeof en;
+
+/**
+ * Recursive union of every dotted translation key path (e.g. 'nav.about').
+ */
+type NestedKeyOf<T> = T extends object
+  ? {
+      [K in keyof T]: K extends string
+        ? T[K] extends object
+          ? `${K}.${NestedKeyOf<T[K]>}`
+          : K
+        : never;
+    }[keyof T]
+  : never;
+
+export type TranslationKey = NestedKeyOf<TranslationKeys>;

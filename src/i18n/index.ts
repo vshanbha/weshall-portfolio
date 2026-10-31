@@ -4,7 +4,7 @@
  */
 
 import { type Locale, defaultLocale } from './config';
-import { en } from './translations/en';
+import { en, type TranslationKey } from './translations/en';
 import { de } from './translations/de';
 import { hi } from './translations/hi';
 import { mr } from './translations/mr';
@@ -17,17 +17,10 @@ const translations = {
   mr,
 } as const;
 
-type NestedKeyOf<T> = T extends object
-  ? {
-      [K in keyof T]: K extends string
-        ? T[K] extends object
-          ? `${K}.${NestedKeyOf<T[K]>}`
-          : K
-        : never;
-    }[keyof T]
-  : never;
-
-export type TranslationKey = NestedKeyOf<typeof en>;
+// TranslationKey is defined next to the English source (see
+// ./translations/en) so route/config modules can import it without a
+// circular dependency through this index.
+export type { TranslationKey } from './translations/en';
 
 /**
  * Get a nested value from an object using dot notation

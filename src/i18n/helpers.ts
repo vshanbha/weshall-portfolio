@@ -10,6 +10,7 @@
 
 import { type Locale, locales, defaultLocale, isValidLocale } from './config';
 import { routes, englishOnlyRoutes, type RouteId } from './routes';
+import type { TranslationKey } from './translations/en';
 
 /**
  * Check whether a route exists in a given locale.
@@ -260,7 +261,7 @@ export function isRoute(pathname: string, routeId: RouteId): boolean {
  */
 export type NavRoute = {
   routeId: RouteId;
-  label: string;
+  label: TranslationKey;
   order: number;
   path: string;
 };

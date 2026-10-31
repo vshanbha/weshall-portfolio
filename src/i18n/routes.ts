@@ -11,7 +11,7 @@
  * Note: Empty string '' represents the root/home page.
  */
 
-import type { Locale } from './config';
+import type { TranslationKey } from './translations/en';
 
 /**
  * Navigation configuration for a route
@@ -22,7 +22,7 @@ export type NavConfig = {
   /** Sort order in navigation (lower = first) */
   order: number;
   /** Translation key for the navigation label (e.g., 'nav.about') */
-  label: string;
+  label: TranslationKey;
 };
 
 /**
