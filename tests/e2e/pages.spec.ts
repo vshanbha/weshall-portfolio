@@ -173,6 +173,49 @@ test.describe('German locale', () => {
   });
 });
 
+test.describe('Mobile header (slim viewports)', () => {
+  const cases = [
+    { locale: 'en', cta: "Let's talk" },
+    { locale: 'de', cta: 'Gespräch vereinbaren' },
+  ];
+
+  for (const { locale, cta } of cases) {
+    test(`${locale}: menu button stays visible and uncovered at 320px`, async ({ page }) => {
+      await page.setViewportSize({ width: 320, height: 568 });
+      await page.goto(`/${locale}/`);
+
+      // The menu button must fit inside the viewport — the header row must not
+      // push it past the right edge (the wider German labels used to).
+      const menuButton = page.getByRole('button', { name: 'Toggle menu' });
+      await expect(menuButton).toBeVisible();
+      const box = await menuButton.boundingBox();
+      if (!box) throw new Error('menu button has no bounding box');
+      expect(box.x).toBeGreaterThanOrEqual(0);
+      expect(box.x + box.width).toBeLessThanOrEqual(320);
+
+      // Nothing else may sit on top of the menu button.
+      const uncovered = await menuButton.evaluate((btn) => {
+        const r = btn.getBoundingClientRect();
+        const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+        return btn.contains(hit);
+      });
+      expect(uncovered).toBe(true);
+
+      // The header row must not cause horizontal page overflow.
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+      );
+      expect(overflow).toBeLessThanOrEqual(0);
+
+      // The CTA leaves the top bar on slim viewports but stays reachable in the menu.
+      await menuButton.click();
+      await expect(
+        page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link', { name: cta })
+      ).toBeVisible();
+    });
+  }
+});
+
 test.describe('Home Page Features', () => {
   test('shows brand-led hero with bridge sentence and two CTAs', async ({ page }) => {
     await page.goto('/');

@@ -143,6 +143,11 @@ const hasNavSlot = Astro.slots.has('nav');
 const hasActionsSlot = Astro.slots.has('actions');
 const hasMobileMenuSlot = Astro.slots.has('mobile-menu');
 
+// On slim viewports the top-bar CTA crowds the menu button off the right edge
+// (the longer German labels make it worse), so below md the CTA lives inside the
+// mobile menu instead — unless the layout has no mobile menu to fall back on.
+const ctaMovesToMobileMenu = showMobileMenu && layout !== 'minimal';
+
 // Position variants
 const positions: Record<NonNullable<Props['position']>, string> = {
   fixed: 'fixed top-0 left-0 right-0',
@@ -267,7 +272,11 @@ const buttonId = `${menuId}-button`;
           ))}
 
           {showCta && (
-            <Button size="sm" href={ctaHref} class="whitespace-nowrap">
+            <Button
+              size="sm"
+              href={ctaHref}
+              class={cn('whitespace-nowrap', ctaMovesToMobileMenu && 'hidden md:inline-flex')}
+            >
               {cta.label}
             </Button>
           )}
