@@ -2,11 +2,20 @@
 import { getStaticPathsHelper } from '@/i18n/paths-helper';
 import PageLayout from '@/layouts/PageLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { defaultLocale, type Locale } from '@/i18n/config';
 
 export const getStaticPaths = getStaticPathsHelper;
 
-// Single philosophy entry — the ten commandments, English source for all locales.
-const [entry] = await getCollection('philosophy');
+// The ten commandments exist as one content entry per locale (see the
+// collection's `locale` field). The "We shall …" imperative headings stay
+// English in every variant; only the detail prose is translated. Locales
+// without their own variant fall back to the English source.
+const { lang } = Astro.params;
+const locale = (lang as Locale) || defaultLocale;
+const entries = await getCollection('philosophy');
+const entry =
+  entries.find((e) => e.data.locale === locale) ??
+  entries.find((e) => e.data.locale === defaultLocale);
 if (!entry) {
   throw new Error('Philosophy collection is empty: expected the ten commandments entry.');
 }
