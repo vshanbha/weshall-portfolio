@@ -4,7 +4,7 @@
 export const de = {
   site: {
     name: 'We Shall Build',
-    tagline: 'Build What Matters', // TODO: translate
+    tagline: 'Bauen Sie, was zählt',
     description:
       'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
   },
@@ -12,7 +12,7 @@ export const de = {
     home: 'Startseite',
     about: 'Über uns',
     blog: 'Blog',
-    services: 'What I do', // TODO: translate
+    services: 'Was ich mache',
     contact: 'Kontakt',
     features: 'Funktionen',
     docs: 'Dokumentation',
@@ -29,12 +29,12 @@ export const de = {
   },
   // Hero Section
   hero: {
-    title: 'Build what matters.', // TODO: translate
+    title: 'Bauen Sie, was zählt.',
     bridge:
       'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Ich mache diese Entscheidungen seit zwanzig Jahren im Produktivbetrieb.',
     cta: {
       primary: 'Lassen Sie uns sprechen',
-      secondary: 'Read the latest', // TODO: translate
+      secondary: 'Neueste Artikel lesen',
     },
     rightColumn: {
       name: 'Vishal Shanbhag',
@@ -44,7 +44,7 @@ export const de = {
       value: 'Zwanzig Jahre Engineering-Urteil im Produktivbetrieb.',
       worksAcross: 'Aktiv in',
       domains: 'Fintech · SaaS · Climate-Tech',
-      aboutLink: 'About me', // TODO: translate
+      aboutLink: 'Über mich',
     },
   },
   techStack: {
@@ -141,7 +141,7 @@ export const de = {
     },
   },
   cta: {
-    title: 'Build what matters.',
+    title: 'Bauen Sie, was zählt.',
     titleHighlight: '',
     description:
       'Jedes Projekt beginnt mit einem Gespräch über das, was Sie bauen, und wie Sie es über die Linie bringen.',
@@ -155,7 +155,7 @@ export const de = {
     copyright: '© {year} We Shall Build. Alle Rechte vorbehalten.',
     madeWith: 'Erstellt mit',
     maintainedBy: 'Pflege durch',
-    aiUseInPublishing: 'AI use in publishing', // TODO: translate
+    aiUseInPublishing: 'KI-Einsatz bei der Veröffentlichung',
     links: {
       documentation: 'Dokumentation',
       github: 'GitHub',
@@ -165,31 +165,30 @@ export const de = {
     },
   },
   // Home page
-  // TODO: translate
   home: {
     blog: {
-      title: 'Latest articles', // TODO: translate
+      title: 'Neueste Artikel',
     },
     stories: {
-      title: 'Engagement stories', // TODO: translate
+      title: 'Projektgeschichten',
       items: [
         {
           title: 'Ein Team vom Bauen abgebracht, und den Launch gerettet',
-          subtitle: 'Short-term lending, Nigeria', // TODO: translate
+          subtitle: 'Kurzfristkredite, Nigeria',
           paragraphs: [
             '<em>BlueMoney</em> ist ein regulierter Kurzfristkreditgeber in Nigeria. Ich habe ein dreiköpfiges Gründer-Team von der Bestandskredit-Finanzierung weggedreht und sie überzeugt, ausgereifte Plattformen zu kaufen, statt bei null zu bauen. Launch im Januar\u00a02026 nach regulatorischen Verzögerungen. Monatliche Sounding-Board-Sitzungen laufen weiter.',
           ],
         },
         {
           title: 'Von 40 % auf 95 % Compliance, in einem System, das Banken wirklich betreiben',
-          subtitle: 'Enterprise email processing, global banking', // TODO: translate
+          subtitle: 'Unternehmens-E-Mail-Verarbeitung, globales Bankwesen',
           paragraphs: [
             'Bei <em>Inbotiqa</em>, wo ich Gründungsingenieur war, verarbeitet die Plattform täglich über 100.000 transaktionale E-Mails für globale Banken bei 99,9 % Verfügbarkeit. Turnaround-Time-Compliance von 40 % auf 95 %, Same-Day-Close-out von 22 % auf 85 %.',
           ],
         },
         {
           title: 'Eine Serverless-Evaluation geleitet, Jahre bevor sie Mainstream wurde',
-          subtitle: 'Strategic architecture consulting, India', // TODO: translate
+          subtitle: 'Strategische Architekturberatung, Indien',
           paragraphs: [
             '2015 habe ich bei <em>HDFC Life</em> eine Serverless-/MBaaS-Plattform-Evaluation geleitet, Jahre bevor sie Mainstream wurde. Dazu die Architektur einer internen Mobile-Plattform, mit der die Familien der Versicherten für ältere Eltern verifizierte häusliche Pflege anfordern konnten. Build-versus-buy im großen Maßstab.',
           ],
@@ -197,15 +196,15 @@ export const de = {
       ],
     },
     testimonials: {
-      title: 'What clients say', // TODO: translate
+      title: 'Was Kunden sagen',
       items: [
         {
           id: 'bluemoney',
           company: 'BlueMoney',
           author: 'Arrie',
-          role: 'Founding Engineer',
+          role: 'Gründungsingenieur',
           quote:
-            'Vishal helped us make the right build vs. buy decision under timeline pressure, set up our lending operations with professional SOPs, and continues to be our sounding board as we navigate the real market.', // TODO: translate
+            'Vishal hat uns geholfen, unter Zeitdruck die richtige Entscheidung zwischen Bauen und Kaufen zu treffen, unseren Kreditbetrieb mit professionellen SOPs aufzusetzen und ist weiterhin unser Sparringpartner, während wir uns durch den realen Markt navigieren.',
           linkedin: '',
           website: '',
         },
@@ -213,9 +212,9 @@ export const de = {
           id: 'ourish',
           company: 'Ourish',
           author: 'Kunal Kakar',
-          role: 'Director, Sales and Operations',
+          role: 'Direktor für Vertrieb und Betrieb',
           quote:
-            'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond in delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.', // TODO: translate
+            'Vishal war in seiner Zusammenarbeit großartig. Er hat die Projektarbeit klar dokumentiert, hat das Projekt von Anfang bis Ende unterstützt und in einer sehr komplexen und mehrdeutigen Umgebung weit über die Anforderungen hinausgeliefert. Danke, Vishal, für all die Hilfe und die Erkenntnisse.',
           linkedin: 'https://www.linkedin.com/in/kunalkakar/',
           website: '',
         },
@@ -223,9 +222,9 @@ export const de = {
           id: 'powermarket',
           company: 'PowerMarket',
           author: 'Abhinav Jain',
-          role: 'Founder',
+          role: 'Gründer',
           quote:
-            'We had been looking into developing our tech and dev team. However, we needed advice on how to get started, who to hire, what kind of skills to target, and once we had a pipeline of candidates, how to evaluate their tech skills. Vishal was a phenomenal resource who guided us throughout the process, and then went above and beyond. He is one of the most knowledgeable technology resources that we have come across thus far and will definitely go back to him for further help.', // TODO: translate
+            'Wir hatten uns mit dem Aufbau unseres Tech- und Dev-Teams beschäftigt. Aber wir brauchten Beratung, wie wir anfangen sollen, wen wir einstellen und welche Kompetenzen wir anstreben sollten – und wie wir, sobald wir eine Pipeline von Kandidaten hatten, ihre technischen Fähigkeiten bewerten. Vishal war eine hervorragende Ressource, die uns durch den gesamten Prozess geführt hat und dann weit darüber hinausgegangen ist. Er ist einer der kompetentesten Technologie-Experten, die wir bisher getroffen haben, und wir werden auf jeden Fall wieder auf ihn zukommen.',
           linkedin: 'https://www.linkedin.com/in/abhinavjainuk/',
           website: 'https://powermarket.net/',
         },
@@ -233,9 +232,9 @@ export const de = {
           id: 'sable',
           company: 'Sable International',
           author: 'Leanne Shrosbree',
-          role: 'Customer Service & Operations Director',
+          role: 'Leiterin Kundenservice und Betrieb',
           quote:
-            'Through a genuinely collaborative partnership with Vishal and the Inbotiqa team, we\u2019ve been able to improve, refine and maximise YuDo\u2019s potential. It\u2019s supported our growth, enabled our teams and helped us deliver for our clients consistently. That longevity and value speak volumes about the people behind it. We\u2019re genuinely grateful for the care, support and partnership you\u2019ve shown us over such a long time.', // TODO: translate
+            'Durch eine echte partnerschaftliche Zusammenarbeit mit Vishal und dem Inbotiqa-Team haben wir das Potenzial von YuDo verbessert, verfeinert und maximiert. Es hat unser Wachstum unterstützt, unsere Teams befähigt und uns geholfen, unseren Kunden konsistent zu liefern. Diese Langlebigkeit und dieser Wert sprechen für die Menschen dahinter. Wir sind aufrichtig dankbar für die Sorge, die Unterstützung und die Partnerschaft, die Sie über so lange Zeit gezeigt haben.',
           linkedin: 'https://www.linkedin.com/in/leanne-shrosbree-74261b53/',
           website: '',
         },
@@ -243,9 +242,9 @@ export const de = {
           id: 'bauai',
           company: 'BauAI',
           author: 'Tushar Adsul',
-          role: 'Managing Director',
+          role: 'Geschäftsführer',
           quote:
-            "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.", // TODO: translate
+            'Wir hatten einen frühen Prototyp, der in Demos großartig aussah, aber nicht produktionsreif war. Ich suchte jemanden, der mir sagen konnte, was wirklich kaputt war. Vishal kam als Berater dazu, hat unseren Code überprüft und uns geholfen, unsere Schwächen zu erkennen: was behalten, was streichen und wie wir auf den soliden Teilen aufbauen, ohne alles neu zu schreiben. Als wir auf Basis von Kundenfeedback umgesagt haben, hat er uns gezeigt, wie wir neue Funktionen integrieren, ohne das zu brechen, was bereits funktionierte. Wir haben zwei voll funktionsfähige Agenten ausgeliefert und waren bereit für unsere ersten Pilotkunden.',
           linkedin: 'https://www.linkedin.com/company/bauai/',
           website: 'https://www.bauai.eu/',
         },
@@ -253,24 +252,23 @@ export const de = {
     },
   },
   // Services page
-  // TODO: translate
   services: {
     meta: {
-      title: 'What I do', // TODO: translate
+      title: 'Was ich mache',
       description:
         'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
     },
     hero: {
       title: 'Manche Entscheidungen kosten Sie, wenn Sie sie falsch treffen.',
       description:
-        'For founders and technical leads at growth-stage companies who need a second senior operator in the room. Not a lecturer, not a slide deck, not an overconfident hallucinator. An engineer who has seen the patterns and can help you navigate them.', // TODO: translate
+        'Für Gründer und technische Leads in Wachstumsunternehmen, die einen zweiten Senior-Operator im Raum brauchen. Kein Lehrer, kein Slide-Deck, kein selbstüberschwingender Halluzinierer. Ein Ingenieur, der die Muster gesehen hat und Ihnen hilft, sich durch sie zu navigieren.',
     },
     howwork: {
-      title: 'How I work',
+      title: 'Wie ich arbeite',
       paragraphs: [
         'Ich arbeite mit Gründern und technischen Leads an einer Entscheidung, einer Einstellung, einem unausgereiften KI-Build oder einem Sanity Check.',
         'Die Beziehung beginnt mit einem kostenlosen Gespräch von fünfzehn Minuten, um herauszufinden, ob sich ein längeres davon lohnt. Kein Pitch, keine Verpflichtung, kein Verkaufsprozess.',
-        'We figure out together what needs to happen next. Sometimes it is a single conversation. Sometimes it leads to ongoing work. The shape of the engagement follows the shape of the problem.',
+        'Gemeinsam finden wir heraus, was als Nächstes passieren muss. Manchmal ist es ein einziges Gespräch. Manchmal führt es zu einer laufenden Zusammenarbeit. Die Form des Engagements folgt der Form des Problems.',
       ],
     },
     cta: {
@@ -281,91 +279,91 @@ export const de = {
     },
   },
   // About page
-  // TODO: translate
   about: {
     meta: {
-      title: 'About',
+      title: 'Über mich',
       description:
-        'Builder, senior architect, and hands-on engineer. 20+ years from Mumbai to Cologne.',
+        'Builder, Senior-Architekt und Hands-on-Engineer. 20+ Jahre von Mumbai nach Köln.',
     },
     origin: {
       title: 'Vishal Shanbhag',
       paragraphs: [
-        'I come from Mumbai, India. These days I am in Hürth, near Cologne, Germany.',
-        'I graduated as an electronics engineer from Mumbai University in 2002. I stumbled into software because, after the 9/11 attacks of 2001, jobs dried up and a financial crisis loomed. The software industry was the first to hire. I have been building production systems ever since.',
-        'I came to Germany in 2023 because my wife was transferred. I like to travel, and the startup, software, and climate tech scene here? Das gefällt mir. I am staying.',
-        'I speak five languages at varying levels of decline: English native, Hindi and Marathi native, Konkani conversational, German at B1 and counting.',
+        'Ich komme aus Mumbai, Indien. Heute lebe ich in Hürth, bei Köln, Deutschland.',
+        'Ich habe 2002 als Elektroingenieur an der Mumbai University abgeschlossen. In die Softwarewelt bin ich quasi gestolpert: Nach den Anschlägen vom 11. September 2001 trockneten die Jobs aus und eine Finanzkrise stand bevor. Die Softwareindustrie war die Erste, die eingestellt hat. Seitdem baue ich Produktivsysteme.',
+        'Ich bin 2023 nach Deutschland gekommen, weil meine Frau versetzt wurde. Ich reise gerne, und die Startup-, Software- und Climate-Tech-Szene hier? Das gefällt mir. Ich bleibe.',
+        'Ich spreche fünf Sprachen, in unterschiedlichem Verfallszustand: Englisch muttersprachlich, Hindi und Marathi muttersprachlich, Konkani auf Gesprächsniveau, Deutsch auf B1 und zählend.',
       ],
     },
     whatido: {
-      title: 'How I build', // TODO: translate
+      title: 'Wie ich baue',
       paragraphs: [
-        'I am, by nature, a builder. Most of my work starts the same way: a whiteboard or a napkin drawing, a founder saying, "I have an idea that needs software to give it life." Within a few months, that idea becomes a working prototype, and prototypes, when they solve something real, attract users, funding, and a team.', // TODO: translate
-        'When the system already exists, and the team is hitting the ceiling of what the current architecture can carry, the same instinct applies. I sit in a room with a founder or a CTO and a few senior engineers, and we take it apart together until we can all see what is actually there. Then we put it back together, sequenced, in a way the business can scale and the team can execute.',
-        'I work with companies that have found their footing and need to build the systems that carry them through the next phase, without breaking what is already working.', // TODO: translate
+        'Ich bin von Natur aus ein Builder. Die meisten meiner Arbeiten beginnen gleich: ein Whiteboard oder eine Zeichnung auf einer Serviette, ein Gründer, der sagt: „Ich habe eine Idee, die Software braucht, um lebendig zu werden." Innerhalb weniger Monate wird aus dieser Idee ein funktionierender Prototyp – und Prototypen, wenn sie etwas Echtes lösen, ziehen Nutzer, Finanzierung und ein Team an.',
+        'Wenn das System bereits existiert und das Team an die Decke dessen stößt, was die aktuelle Architektur tragen kann, greift derselbe Instinkt. Ich setze mich mit einem Gründer oder CTO und einigen Senior Engineers in einen Raum, und zerlegen ihn gemeinsam, bis wir alle sehen, was tatsächlich da ist. Dann setzen wir ihn zusammen, in einer Reihenfolge, mit der das Unternehmen skalieren und das Team ausführen kann.',
+        'Ich arbeite mit Unternehmen, die festen Boden unter den Füßen gefunden haben und die Systeme bauen müssen, die sie durch die nächste Phase tragen, ohne das zu brechen, was bereits funktioniert.',
       ],
     },
     beliefs: {
-      title: 'What I believe', // TODO: translate
+      title: 'Woran ich glaube',
       commandments: [
         {
-          title: 'We shall ask WHY before we ask HOW.', // TODO: translate
+          title: 'Wir fragen WARUM, bevor wir nach WIE fragen.',
           tie: 'Jedes Engagement beginnt hier, bevor jemand nach dem Wie fragt: warum das bauen, warum jetzt, für wen.',
         },
         {
-          title: 'We shall build for outcomes, not features.', // TODO: translate
+          title: 'Wir bauen für Ergebnisse, nicht für Funktionen.',
           tie: 'Wir arbeiten rückwärts vom Ergebnis, das Sie brauchen; die Feature-Anfrage ist nur ein Symptom davon.',
         },
         {
-          title: 'We shall prototype before we commit.', // TODO: translate
+          title: 'Wir prototypen, bevor wir uns festlegen.',
           tie: 'Ein grober Prototyp, der diese Woche scheitert, kostet eine Woche. Ein fertiger Build, der im Markt scheitert, kostet ein Quartal.',
         },
       ],
       fullTen: 'So bauen wir →',
     },
     careerarc: {
-      title: 'The career arc, briefly',
+      title: 'Der Karriereweg, kurz erzählt',
       paragraphs: [
-        'My first big job out of university was at <strong>Infosys</strong>, in their Banking & Capital Markets group. That is where I got my first global exposure: on-site in Richmond, Virginia, for a major US bank, harmonising a relational data model across 500+ tables.',
-        '2006 took me to <strong>Lehman Brothers</strong> in Mumbai. I survived the 2008 bankruptcy. Met my future co-founder there.',
-        'At <strong>Nomura</strong> I stayed with the same team, working in the same building. A few years later, in 2011, I co-founded <strong>Inbotiqa</strong> with the colleague I met at Lehman.',
+        'Mein erster großer Job nach der Universität war bei <strong>Infosys</strong>, in der Banking-&-Capital-Markets-Gruppe. Dort bekam ich meine erste internationale Erfahrung: vor Ort in Richmond, Virginia, für eine große US-Bank – ich harmonisierte ein relationales Datenmodell über mehr als 500 Tabellen hinweg.',
+        '2006 führte es mich zu <strong>Lehman Brothers</strong> nach Mumbai. Ich habe die Insolvenz von 2008 überlebt und dort meinen späteren Mitgründer kennengelernt.',
+        'Bei <strong>Nomura</strong> blieb ich im selben Team, im selben Gebäude. Einige Jahre später, 2011, habe ich <strong>Inbotiqa</strong> zusammen mit dem Kollegen mitgegründet, den ich bei Lehman kennengelernt hatte.',
       ],
       highlights: [
         {
           name: 'Inbotiqa / YUDOmail',
           description:
-            ' is the work I am asked about most. I built the system that processes 100,000+ transactional emails a day for global banking, at 99.9% availability. The numbers I care about are the operational ones: turnaround-time compliance went from 40–60% to over 95%; same-day close-out from 22% to 85%; email volume dropped 43%, and complaints went to zero. Inbotiqa is a Techstars portfolio company and went through their Fintech accelerator in London in 2019.',
+            ' ist die Arbeit, nach der ich am häufigsten gefragt werde. Ich habe das System gebaut, das für das globale Bankwesen über 100.000 transaktionale E-Mails pro Tag bei 99,9 % Verfügbarkeit verarbeitet. Die Zahlen, die mich interessieren, sind die operativen: Die Turnaround-Time-Compliance stieg von 40–60 % auf über 95 %, der Same-Day-Close-out von 22 % auf 85 %, das E-Mail-Volumen sank um 43 % und Beschwerden gingen gegen null. Inbotiqa ist ein Techstars-Portfolio-Unternehmen und durchlief 2019 deren Fintech-Accelerator in London.',
         },
         {
           name: 'BauAI',
           description:
-            ' (Sep 2025 – Feb 2026) is the most recent. A vibe-coding-generated codebase that needed to become a scalable, production-ready product. The work was less "add more AI" and more "decide which AI-generated decisions survive contact with users."',
+            ' (Sep. 2025 – Feb. 2026) ist die jüngste. Eine per Vibe-Coding generierte Codebasis, die zu einem skalierbaren, produktionsreifen Produkt werden musste. Die Arbeit bestand weniger aus „mehr KI“ und mehr aus „entscheiden, welche KI-generierten Entscheidungen den Kontakt mit Nutzern überstehen“.',
         },
       ],
       earlier:
-        'Earlier: <strong>HDFC Life Insurance</strong> (early serverless, 2015), <strong>Progress Software</strong> (2011).',
+        'Zuvor: <strong>HDFC Life Insurance</strong> (frühes Serverless, 2015), <strong>Progress Software</strong> (2011).',
       linkedin: {
-        text: 'Connect with me on LinkedIn',
+        text: 'Vernetzen Sie sich mit mir auf LinkedIn',
         url: 'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
-        note: '; drop a note when you connect, or I might filter you as spam.',
+        note: '; schreiben Sie mir beim Vernetzen eine kurze Nachricht, sonst filtere ich Sie möglicherweise als Spam.',
       },
     },
     speaking: {
-      title: 'Speaking, writing, mentorship',
+      title: 'Vorträge, Schreiben, Mentoring',
       talks: {
-        title: 'Speaking', // TODO: translate
+        title: 'Vorträge',
         items: [
           {
             event: 'Jcon Gen AI (Ljubljana, 2025)',
             title: "Hitchhiker's Guide to the AI Galaxy – for Java Developers",
             description:
-              'A 60-minute session for 100+ developers on entering the GenAI universe: local LLMs, GraalVM polyglot setups, and MCP-powered Java services.', // TODO: translate
+              'Eine 60-minütige Session für über 100 Entwickler über den Einstieg in das GenAI-Universum: lokale LLMs, GraalVM-Polyglot-Setups und MCP-gestützte Java-Services.',
           },
         ],
       },
       articles: {
-        title: 'Select articles',
-        intro: 'I write for JavaPro and Baeldung, two names every Java professional recognises.', // TODO: translate
+        title: 'Ausgewählte Artikel',
+        intro:
+          'Ich schreibe für JavaPro und Baeldung – zwei Namen, die jeder Java-Professional kennt.',
         items: [
           {
             title:
@@ -384,58 +382,57 @@ export const de = {
             url: 'https://medium.com/@vvsvish/how-to-secure-ollama-server-64cde5e59971',
             platform: 'Medium',
           },
-          // TODO: translate
           {
+            // Published article title — kept in English
             title: "Flutter ain't going away",
             url: 'https://medium.com/@vvsvish',
             platform: 'Level Up Coding',
           },
-          // TODO: translate
           {
+            // Published article title — kept in English
             title: "Why you shouldn't use Langchain's indexing API?",
             url: 'https://medium.com/@vvsvish',
             platform: 'Level Up Coding',
           },
-          // TODO: translate
           {
-            title: 'Baeldung Author Page',
+            title: 'Baeldung-Autorenseite',
             url: 'https://www.baeldung.com/author/vishalshanbhag/',
             platform: 'Baeldung',
           },
         ],
       },
       mentoring: {
-        title: 'Mentoring', // TODO: translate
+        title: 'Mentoring',
         items: [
           {
             org: 'Founder Institute',
             detail:
-              'Mentor (2024 – present), advising early-stage startups on product and technical strategy.',
-          }, // TODO: translate
+              'Mentor (2024 – heute), Beratung früher Start-ups bei Produkt- und Technikstrategie.',
+          },
           {
             org: 'ReDI School',
             detail:
-              'Volunteer teacher (2023), mentoring students in HTML/CSS for integration and career development.',
-          }, // TODO: translate
+              'Ehrenamtliche Lehrkraft (2023), Mentoring von Studierenden in HTML/CSS für Integration und berufliche Entwicklung.',
+          },
         ],
       },
     },
     offtheclock: {
-      title: 'Off the clock',
+      title: 'Feierabend',
       paragraphs: [
-        'I trek, I travel, I write, in order of increasing frequency. I travel mostly by public transport. I cook rarely, badly, and enthusiastically (all three are related). I live to eat. I am, like every self-respecting Indian, a fan of spicy food, particularly the Malwani style Bombay duck, which is a fish, not a bird, named after my hometown. Yes, it confuses everyone.', // TODO: translate
-        "I like stories presented on a bigger screen. I watch Bollywood and Hollywood movies. I grew up listening to music from Kishore Kumar, Asha Bhosle, and R.D. Burman, and am now trying to make sense of German music. The Mahabharata, R.K. Narayan's condensed English version, is the one book that has stayed with me. As a kid, I was fascinated with technology. I always wanted to take things apart and put them back together. I called it reverse engineering. These days, I explore software builds with the same curiosity and write what I learn, sometimes with metaphors and analogies from Hollywood or Bollywood movies.", // TODO: translate
+        'Ich trekke, ich reise, ich schreibe – in aufsteigender Frequenz. Ich reise meistens mit öffentlichen Verkehrsmitteln. Ich koche selten, schlecht und begeistert (alle drei hängen zusammen). Ich lebe, um zu essen. Ich bin, wie jeder selbstrespektierende Inder, ein Fan von scharfen Speisen, besonders dem Malwani-Stil Bombay Duck – das ist ein Fisch, kein Vogel, benannt nach meiner Heimatstadt. Ja, es verwirrt alle.',
+        'Ich mag Geschichten auf der großen Leinwand. Ich schaue Bollywood- und Hollywood-Filme. Ich bin mit der Musik von Kishore Kumar, Asha Bhosle und R.D. Burman aufgewachsen und versuche jetzt, deutscher Musik beizukommen. Die Mahabharata, die komprimierte englische Fassung von R.K. Narayan, ist das eine Buch, das mir geblieben ist. Als Kind war ich fasziniert von Technik. Ich wollte immer alles auseinandernehmen und wieder zusammenbauen. Ich nannte es Reverse Engineering. Heute erkunde ich Software-Builds mit derselben Neugier und schreibe auf, was ich lerne, manchmal mit Metaphern und Analogien aus Hollywood- oder Bollywood-Filmen.',
       ],
-      closingLead: 'If you have an idea that needs software to give it life, ', // TODO: translate
+      closingLead: 'Wenn Sie eine Idee haben, die Software braucht, um lebendig zu werden, ',
       closing: 'lassen Sie uns sprechen.',
     },
     editorialStandards: {
-      title: 'Editorial standards', // TODO: translate
+      title: 'Redaktionelle Standards',
       statement:
-        'AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own.', // TODO: translate
+        'KI kann bei Recherche, Entwürfen, Plausibilitätsprüfungen und Reviews unterstützen. Jeder Artikel durchläuft ein menschliches Review-Gate. Text, Meinungen und Beobachtungen bleiben die eigenen des Autors.',
     },
     cta: {
-      title: 'Have a problem worth solving?',
+      title: 'Ein Problem, das es wert ist, gelöst zu werden?',
       button: 'Lassen Sie uns sprechen',
     },
   },
