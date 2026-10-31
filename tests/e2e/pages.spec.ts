@@ -160,6 +160,16 @@ test.describe('German locale', () => {
     await expect(page.locator('body')).not.toContainText('Wir fragen WARUM');
   });
 
+  test('/de/philosophy serves all ten commandments', async ({ page }) => {
+    const response = await page.goto('/de/philosophy');
+    expect(response?.status()).toBe(200);
+    // The German variant must carry all ten "We shall …" headings, in source
+    // order — it previously shipped nine while claiming "Zehn Regeln".
+    const headings = await page.locator('h2').allInnerTexts();
+    const commandments = headings.filter((text) => text.startsWith('We shall'));
+    expect(commandments).toHaveLength(10);
+  });
+
   test('/de/about keeps commandment one-liners in English with German detail', async ({ page }) => {
     await page.goto('/de/about');
     await expect(page.locator('body')).toContainText('We shall build for outcomes, not features.');

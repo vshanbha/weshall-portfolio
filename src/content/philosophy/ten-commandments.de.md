@@ -33,6 +33,10 @@ Google startete 1998 mit rund einer Million Dollar von Angel-Investoren und eine
 
 Google Glass. Ein Produkt, wonach niemand fragte, gebaut von einem der größten Unternehmen der Welt, getragen von Milliarden an F&E. Es scheiterte, weil die Customer Discovery nach der Investierung stattfand, nicht davor. Prototypen existieren, um schlechte Ideen billig zu töten. Ein grober Prototyp, der mit fünf Nutzern scheitert, kostet eine Woche. Ein fertiges Produkt, das mit fünfhundert Kunden scheitert, kostet Monate an Entwicklung und noch viel mehr an Kosten.
 
+## We shall build with grit, spit, and a whole lot of duct tape.
+
+Wie die Pinguine aus Madagascar, die sich aus Schrottteilen ein Flugzeug zusammenbauen. Die Werkzeuge sind nie perfekt, der Boden ist nie eben, und die Anforderungen ändern sich, bevor Sie fertig getippt haben. Das meiste Bauen besteht aus Einfallsreichtum: mit dem, was Sie haben, etwas zum Laufen zu bringen.
+
 ## We shall deploy what works.
 
 „Wenn Sie sich nicht für die erste Version Ihres Produkts schämen, haben Sie zu spät gestartet." Reid Hoffman. Die Apple I war eine Leiterplatte. Hässlich, unvollständig – aber sie funktionierte. Fertig ist besser als perfekt. Perfektion, die durch Iteration entsteht, ist immer noch Perfektion. Perfektion vor dem Launch ist ein Produkt, das nie ausgeliefert wurde.
