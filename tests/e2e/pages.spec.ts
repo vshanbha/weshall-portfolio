@@ -123,7 +123,7 @@ test.describe('German locale', () => {
       'Vishal helped us make the right build vs. buy decision'
     );
     await expect(page.locator('body')).not.toContainText('Vishal hat uns geholfen');
-    await expect(page.getByRole('link', { name: 'Lassen Sie uns sprechen' }).first()).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Gespräch vereinbaren' }).first()).toBeVisible();
   });
 
   test('/de/about returns 200 with German content', async ({ page }) => {

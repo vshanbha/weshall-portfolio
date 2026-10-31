@@ -38,7 +38,7 @@ export const de = {
     bridge:
       'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Ich mache diese Entscheidungen seit zwanzig Jahren im Produktivbetrieb.',
     cta: {
-      primary: 'Lassen Sie uns sprechen',
+      primary: 'Gespräch vereinbaren',
       secondary: 'Neueste Artikel lesen',
     },
     rightColumn: {
@@ -150,7 +150,7 @@ export const de = {
     titleHighlight: '',
     description:
       'Jedes Projekt beginnt mit einem Gespräch über das, was Sie bauen, und wie Sie es über die Linie bringen.',
-    button: 'Lassen Sie uns sprechen',
+    button: 'Gespräch vereinbaren',
     docs: '',
     command: '',
   },
@@ -283,7 +283,7 @@ export const de = {
       title: 'Es beginnt mit einem Gespräch.',
       description:
         'Und es geht so weit, wie es das Problem braucht. Ein fünfzehnminütiges Kennenlerngespräch, kein Pitch, keine Verpflichtung. Wenn es sich lohnt weiterzugehen: eine ehrliche Stunde, ein kurzer Arbeits-Sprint oder laufende Beratung.',
-      button: 'Lassen Sie uns sprechen',
+      button: 'Gespräch vereinbaren',
     },
   },
   // About page
@@ -444,7 +444,7 @@ export const de = {
     },
     cta: {
       title: 'Ein Problem, das es wert ist, gelöst zu werden?',
-      button: 'Lassen Sie uns sprechen',
+      button: 'Gespräch vereinbaren',
     },
   },
   contact: {
@@ -459,7 +459,7 @@ export const de = {
     free: {
       description:
         'Fünfzehn Minuten mit einem Founder-Engineer, der zwanzig Jahre lang die Entscheidungen getroffen hat, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Kein Pitch, keine Verpflichtung. Sie wissen danach, ob sich ein längeres Gespräch lohnt.', // TODO: review translation
-      button: 'Lassen Sie uns sprechen',
+      button: 'Gespräch vereinbaren',
       url: 'https://calendly.com/vshanbhag',
     },
     paid: {
