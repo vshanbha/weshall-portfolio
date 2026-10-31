@@ -10,11 +10,11 @@ export const de = {
     // role: the anglicism "Lead" reads as a sales prospect in German, and
     // "engineering" alone evokes manufacturing, so the term pins it to software.
     description:
-      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
+      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, die Zeit und Geld kosten: selbst bauen oder kaufen, wen einstellen und ob das hält, was KI gebaut hat.',
   },
   nav: {
     home: 'Startseite',
-    about: 'Über uns',
+    about: 'Über mich',
     blog: 'Blog',
     philosophy: 'So bauen wir',
     services: 'Was ich mache',
@@ -36,7 +36,7 @@ export const de = {
   hero: {
     title: 'Build what matters.',
     bridge:
-      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Ich mache diese Entscheidungen seit zwanzig Jahren im Produktivbetrieb.',
+      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, die Zeit und Geld kosten: selbst bauen oder kaufen, wen einstellen und ob das hält, was KI gebaut hat. Ich mache diese Entscheidungen seit zwanzig Jahren im Produktivbetrieb.',
     cta: {
       primary: 'Gespräch vereinbaren',
       secondary: 'Neueste Artikel lesen',
@@ -46,7 +46,7 @@ export const de = {
       lead: 'From circuit board to boardroom.',
       headline:
         'Hardware-Fundamente. Enterprise-Software. KI-Agenten, von der Demo bis zur Produktion.',
-      value: 'Zwanzig Jahre Engineering-Urteil im Produktivbetrieb.',
+      value: 'Zwanzig Jahre Engineering-Urteilskraft im Produktivbetrieb.',
       worksAcross: 'Aktiv in',
       domains: 'Fintech · SaaS · Climate-Tech',
       aboutLink: 'Über mich',
@@ -81,7 +81,7 @@ export const de = {
         desc: 'Globale Tokens & Typografie',
         title: 'CSS-First Design Tokens',
         content:
-          'Velocity implementiert ein vollständiges Designsystem mit Tailwind v4 neuer CSS-First-Konfiguration. Keine unübersichtlichen JavaScript-Konfigurationsdateien für Theme-Werte.',
+          'Velocity implementiert ein vollständiges Designsystem mit der neuen CSS-First-Konfiguration von Tailwind v4. Keine unübersichtlichen JavaScript-Konfigurationsdateien für Theme-Werte.',
       },
       seo: {
         label: 'SEO & Meta',
@@ -141,7 +141,7 @@ export const de = {
       ],
     },
     testimonial: {
-      quote: '„Das sauberste Boilerplate, das ich 2024 gesehen habe. Es reduziert den Überflut."',
+      quote: '„Das sauberste Boilerplate, das ich 2024 gesehen habe. Es streicht den Ballast."',
       author: '— Alex C., Senior Frontend-Entwickler',
     },
   },
@@ -149,17 +149,17 @@ export const de = {
     title: 'Build what matters.',
     titleHighlight: '',
     description:
-      'Jedes Projekt beginnt mit einem Gespräch über das, was Sie bauen, und wie Sie es über die Linie bringen.',
+      'Jedes Projekt beginnt mit einem Gespräch über das, was Sie bauen, und wie Sie es ans Ziel bringen.',
     button: 'Gespräch vereinbaren',
     docs: '',
     command: '',
   },
   footer: {
     tagline:
-      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
+      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, die Zeit und Geld kosten: selbst bauen oder kaufen, wen einstellen und ob das hält, was KI gebaut hat.',
     copyright: '© {year} We Shall Build. Alle Rechte vorbehalten.',
     madeWith: 'Erstellt mit',
-    maintainedBy: 'Pflege durch',
+    maintainedBy: 'Betreut von',
     aiUseInPublishing: 'KI-Einsatz bei der Veröffentlichung',
     links: {
       documentation: 'Dokumentation',
@@ -178,14 +178,14 @@ export const de = {
       title: 'Projektgeschichten',
       items: [
         {
-          title: 'Ein Team vom Bauen abgebracht, und den Launch gerettet',
+          title: 'Ein Team vom Bauen abgebracht und den Launch gerettet',
           subtitle: 'Kurzfristkredite, Nigeria',
           paragraphs: [
-            '<em>BlueMoney</em> ist ein regulierter Kurzfristkreditgeber in Nigeria. Ich habe ein dreiköpfiges Gründer-Team von der Bestandskredit-Finanzierung weggedreht und sie überzeugt, ausgereifte Plattformen zu kaufen, statt bei null zu bauen. Launch im Januar\u00a02026 nach regulatorischen Verzögerungen. Monatliche Sounding-Board-Sitzungen laufen weiter.',
+            '<em>BlueMoney</em> ist ein regulierter Kurzfristkreditgeber in Nigeria. Ich habe ein dreiköpfiges Gründer-Team von der Lagerbestandsfinanzierung weggelenkt und sie überzeugt, ausgereifte Plattformen zu kaufen, statt bei null zu bauen. Launch im Januar\u00a02026 nach regulatorischen Verzögerungen. Monatliche Sounding-Board-Sitzungen laufen weiter.',
           ],
         },
         {
-          title: 'Von 40 % auf 95 % Compliance, in einem System, das Banken wirklich betreiben',
+          title: 'Von 40 % auf 95 % Compliance in einem System, das Banken wirklich betreiben',
           subtitle: 'Unternehmens-E-Mail-Verarbeitung, globales Bankwesen',
           paragraphs: [
             'Bei <em>Inbotiqa</em>, wo ich Gründungsingenieur war, verarbeitet die Plattform täglich über 100.000 transaktionale E-Mails für globale Banken bei 99,9 % Verfügbarkeit. Turnaround-Time-Compliance von 40 % auf 95 %, Same-Day-Close-out von 22 % auf 85 %.',
@@ -195,7 +195,7 @@ export const de = {
           title: 'Eine Serverless-Evaluation geleitet, Jahre bevor sie Mainstream wurde',
           subtitle: 'Strategische Architekturberatung, Indien',
           paragraphs: [
-            '2015 habe ich bei <em>HDFC Life</em> eine Serverless-/MBaaS-Plattform-Evaluation geleitet, Jahre bevor sie Mainstream wurde. Dazu die Architektur einer internen Mobile-Plattform, mit der die Familien der Versicherten für ältere Eltern verifizierte häusliche Pflege anfordern konnten. Build-versus-buy im großen Maßstab.',
+            '2015 habe ich bei <em>HDFC Life</em> eine Serverless-/MBaaS-Plattform-Evaluation geleitet, Jahre bevor sie Mainstream wurde. Dazu habe ich eine interne Mobile-Plattform entworfen, mit der die Familien der Versicherten für ältere Eltern verifizierte häusliche Pflege anfordern konnten. Build-versus-buy im großen Maßstab.',
           ],
         },
       ],
@@ -264,25 +264,25 @@ export const de = {
     meta: {
       title: 'Was ich mache',
       description:
-        'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
+        'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, die Zeit und Geld kosten: selbst bauen oder kaufen, wen einstellen und ob das hält, was KI gebaut hat.',
     },
     hero: {
       title: 'Manche Entscheidungen kosten Sie, wenn Sie sie falsch treffen.',
       description:
-        'Für Gründer und Teamleiter der Softwareentwicklung in Wachstumsunternehmen, die einen zweiten Senior-Operator im Raum brauchen. Kein Lehrer, kein Slide-Deck, kein selbstüberschwingender Halluzinierer. Ein Ingenieur, der die Muster gesehen hat und Ihnen hilft, sich durch sie zu navigieren.',
+        'Für Gründer und Teamleiter der Softwareentwicklung in Wachstumsunternehmen, die einen zweiten Senior-Operator im Raum brauchen. Kein Belehrer, kein Slide-Deck, kein selbstüberschätzender Halluzinierer. Ein Ingenieur, der die Muster gesehen hat und Ihnen hilft, sich durch sie zu navigieren.',
     },
     howwork: {
       title: 'Wie ich arbeite',
       paragraphs: [
         'Ich arbeite mit Gründern und Teamleitern der Softwareentwicklung an einer Entscheidung, einer Einstellung, einem unausgereiften KI-Build oder einem Sanity Check.',
-        'Die Beziehung beginnt mit einem kostenlosen Gespräch von fünfzehn Minuten, um herauszufinden, ob sich ein längeres davon lohnt. Kein Pitch, keine Verpflichtung, kein Verkaufsprozess.',
+        'Die Beziehung beginnt mit einem kostenlosen fünfzehnminütigen Gespräch, um herauszufinden, ob sich ein längeres davon lohnt. Kein Pitch, keine Verpflichtung, kein Verkaufsprozess.',
         'Gemeinsam finden wir heraus, was als Nächstes passieren muss. Manchmal ist es ein einziges Gespräch. Manchmal führt es zu einer laufenden Zusammenarbeit. Die Form des Engagements folgt der Form des Problems.',
       ],
     },
     cta: {
       title: 'Es beginnt mit einem Gespräch.',
       description:
-        'Und es geht so weit, wie es das Problem braucht. Ein fünfzehnminütiges Kennenlerngespräch, kein Pitch, keine Verpflichtung. Wenn es sich lohnt weiterzugehen: eine ehrliche Stunde, ein kurzer Arbeits-Sprint oder laufende Beratung.',
+        'Und es geht so weit, wie es das Problem braucht. Ein fünfzehnminütiges Kennenlerngespräch, kein Pitch, keine Verpflichtung. Wenn es sich lohnt, weiterzugehen: eine ehrliche Stunde, ein kurzer Sprint oder laufende Beratung.',
       button: 'Gespräch vereinbaren',
     },
   },
@@ -297,17 +297,17 @@ export const de = {
       title: 'Vishal Shanbhag',
       paragraphs: [
         'Ich komme aus Mumbai, Indien. Heute lebe ich in Hürth, bei Köln, Deutschland.',
-        'Ich habe 2002 als Elektroingenieur an der Mumbai University abgeschlossen. In die Softwarewelt bin ich quasi gestolpert: Nach den Anschlägen vom 11. September 2001 trockneten die Jobs aus und eine Finanzkrise stand bevor. Die Softwareindustrie war die Erste, die eingestellt hat. Seitdem baue ich Produktivsysteme.',
+        'Ich habe 2002 als Elektroingenieur an der Mumbai University abgeschlossen. Ich bin quasi in die Softwarewelt gerutscht: Nach den Anschlägen vom 11. September 2001 trockneten die Jobs aus und eine Finanzkrise stand bevor. Die Softwareindustrie war die Erste, die eingestellt hat. Seitdem baue ich Produktivsysteme.',
         'Ich bin 2023 nach Deutschland gekommen, weil meine Frau versetzt wurde. Ich reise gerne, und die Startup-, Software- und Climate-Tech-Szene hier? Das gefällt mir. Ich bleibe.',
-        'Ich spreche fünf Sprachen, in unterschiedlichem Verfallszustand: Englisch muttersprachlich, Hindi und Marathi muttersprachlich, Konkani auf Gesprächsniveau, Deutsch auf B1 und zählend.',
+        'Ich spreche fünf Sprachen, in unterschiedlichem Verfallszustand: Englisch muttersprachlich, Hindi und Marathi muttersprachlich, Konkani auf Gesprächsniveau, Deutsch auf B1 – Tendenz steigend.',
       ],
     },
     whatido: {
       title: 'Wie ich baue',
       paragraphs: [
-        'Ich bin von Natur aus ein Builder. Die meisten meiner Arbeiten beginnen gleich: ein Whiteboard oder eine Zeichnung auf einer Serviette, ein Gründer, der sagt: „Ich habe eine Idee, die Software braucht, um lebendig zu werden." Innerhalb weniger Monate wird aus dieser Idee ein funktionierender Prototyp – und Prototypen, wenn sie etwas Echtes lösen, ziehen Nutzer, Finanzierung und ein Team an.',
-        'Wenn das System bereits existiert und das Team an die Decke dessen stößt, was die aktuelle Architektur tragen kann, greift derselbe Instinkt. Ich setze mich mit einem Gründer oder CTO und einigen Senior Engineers in einen Raum, und zerlegen ihn gemeinsam, bis wir alle sehen, was tatsächlich da ist. Dann setzen wir ihn zusammen, in einer Reihenfolge, mit der das Unternehmen skalieren und das Team ausführen kann.',
-        'Ich arbeite mit Unternehmen, die festen Boden unter den Füßen gefunden haben und die Systeme bauen müssen, die sie durch die nächste Phase tragen, ohne das zu brechen, was bereits funktioniert.',
+        'Ich bin von Natur aus ein Builder. Meine Arbeit beginnt meistens so: ein Whiteboard oder eine Zeichnung auf einer Serviette, ein Gründer, der sagt: „Ich habe eine Idee, die Software braucht, um lebendig zu werden." Innerhalb weniger Monate wird aus dieser Idee ein funktionierender Prototyp – und Prototypen, wenn sie etwas Echtes lösen, ziehen Nutzer, Finanzierung und ein Team an.',
+        'Wenn das System bereits existiert und das Team an die Grenze dessen stößt, was die aktuelle Architektur noch tragen kann, greift derselbe Instinkt. Ich setze mich mit einem Gründer oder CTO und einigen Senior Engineers in einen Raum und zerlege das System gemeinsam mit ihnen, bis wir alle sehen, was tatsächlich da ist. Dann setzen wir es wieder zusammen – so geordnet, dass das Unternehmen skalieren und das Team seine Arbeit umsetzen kann.',
+        'Ich arbeite mit Unternehmen, die festen Boden unter den Füßen gefunden haben und die Systeme bauen müssen, die sie durch die nächste Phase tragen, ohne das bisher Funktionierende zu zerstören.',
       ],
     },
     beliefs: {
@@ -334,7 +334,7 @@ export const de = {
     careerarc: {
       title: 'Der Karriereweg, kurz erzählt',
       paragraphs: [
-        'Mein erster großer Job nach der Universität war bei <strong>Infosys</strong>, in der Banking-&-Capital-Markets-Gruppe. Dort bekam ich meine erste internationale Erfahrung: vor Ort in Richmond, Virginia, für eine große US-Bank – ich harmonisierte ein relationales Datenmodell über mehr als 500 Tabellen hinweg.',
+        'Mein erster großer Job nach der Universität war bei <strong>Infosys</strong> in der Gruppe Banking & Capital Markets. Dort bekam ich meine erste internationale Erfahrung: vor Ort in Richmond, Virginia, für eine große US-Bank – ich harmonisierte ein relationales Datenmodell über mehr als 500 Tabellen hinweg.',
         '2006 führte es mich zu <strong>Lehman Brothers</strong> nach Mumbai. Ich habe die Insolvenz von 2008 überlebt und dort meinen späteren Mitgründer kennengelernt.',
         'Bei <strong>Nomura</strong> blieb ich im selben Team, im selben Gebäude. Einige Jahre später, 2011, habe ich <strong>Inbotiqa</strong> zusammen mit dem Kollegen mitgegründet, den ich bei Lehman kennengelernt hatte.',
       ],
@@ -342,7 +342,7 @@ export const de = {
         {
           name: 'Inbotiqa / YUDOmail',
           description:
-            ' ist die Arbeit, nach der ich am häufigsten gefragt werde. Ich habe das System gebaut, das für das globale Bankwesen über 100.000 transaktionale E-Mails pro Tag bei 99,9 % Verfügbarkeit verarbeitet. Die Zahlen, die mich interessieren, sind die operativen: Die Turnaround-Time-Compliance stieg von 40–60 % auf über 95 %, der Same-Day-Close-out von 22 % auf 85 %, das E-Mail-Volumen sank um 43 % und Beschwerden gingen gegen null. Inbotiqa ist ein Techstars-Portfolio-Unternehmen und durchlief 2019 deren Fintech-Accelerator in London.',
+            ' ist die Arbeit, nach der ich am häufigsten gefragt werde. Ich habe das System gebaut, das für das globale Bankwesen über 100.000 transaktionale E-Mails pro Tag bei 99,9 % Verfügbarkeit verarbeitet. Die Zahlen, die mich interessieren, sind die operativen: Die Turnaround-Time-Compliance stieg von 40–60 % auf über 95 %, der Same-Day-Close-out von 22 % auf 85 %, das E-Mail-Volumen sank um 43 % und Beschwerden gingen auf null. Inbotiqa ist ein Techstars-Portfolio-Unternehmen und durchlief 2019 deren Fintech-Accelerator in London.',
         },
         {
           name: 'BauAI',
@@ -367,14 +367,13 @@ export const de = {
             event: 'Jcon Gen AI (Ljubljana, 2025)',
             title: "Hitchhiker's Guide to the AI Galaxy – for Java Developers",
             description:
-              'Eine 60-minütige Session für über 100 Entwickler über den Einstieg in das GenAI-Universum: lokale LLMs, GraalVM-Polyglot-Setups und MCP-gestützte Java-Services.',
+              'Eine 60-minütige Session für über 100 Entwickler zum Einstieg in das GenAI-Universum: lokale LLMs, GraalVM-Polyglot-Setups und MCP-gestützte Java-Services.',
           },
         ],
       },
       articles: {
         title: 'Ausgewählte Artikel',
-        intro:
-          'Ich schreibe für JavaPro und Baeldung – zwei Namen, die jeder Java-Professional kennt.',
+        intro: 'Ich schreibe für JavaPro und Baeldung – zwei Namen, die jeder Java-Profi kennt.',
         items: [
           {
             title:
@@ -418,7 +417,7 @@ export const de = {
           {
             org: 'Founder Institute',
             detail:
-              'Mentor (2024 – heute), Beratung früher Start-ups bei Produkt- und Technikstrategie.',
+              'Mentor (2024 – heute), Beratung von Start-ups in der Frühphase bei Produkt- und Technikstrategie.',
           },
           {
             org: 'ReDI School',
@@ -431,8 +430,8 @@ export const de = {
     offtheclock: {
       title: 'Feierabend',
       paragraphs: [
-        'Ich wandere, ich reise, ich schreibe – in aufsteigender Frequenz. Ich reise meistens mit öffentlichen Verkehrsmitteln. Ich koche selten, schlecht und begeistert (alle drei hängen zusammen). Ich lebe, um zu essen. Ich bin, wie jeder selbstrespektierende Inder, ein Fan von scharfen Speisen, besonders dem Malwani-Stil Bombay Duck – das ist ein Fisch, kein Vogel, benannt nach meiner Heimatstadt. Ja, es verwirrt alle.',
-        'Ich mag Geschichten auf der großen Leinwand. Ich schaue Bollywood- und Hollywood-Filme. Ich bin mit der Musik von Kishore Kumar, Asha Bhosle und R.D. Burman aufgewachsen und versuche jetzt, deutscher Musik beizukommen. Die Mahabharata, die komprimierte englische Fassung von R.K. Narayan, ist das eine Buch, das mir geblieben ist. Als Kind war ich fasziniert von Technik. Ich wollte immer alles auseinandernehmen und wieder zusammenbauen. Ich nannte es Reverse Engineering. Heute erkunde ich Software-Builds mit derselben Neugier und schreibe auf, was ich lerne, manchmal mit Metaphern und Analogien aus Hollywood- oder Bollywood-Filmen.',
+        'Ich wandere, ich reise, ich schreibe – in aufsteigender Frequenz. Ich reise meistens mit öffentlichen Verkehrsmitteln. Ich koche selten, schlecht und begeistert (alle drei hängen zusammen). Ich lebe, um zu essen. Wie jeder Inder, der auf sich hält, bin ich ein Fan von scharfen Speisen, besonders dem Malwani-Stil Bombay Duck – das ist ein Fisch, kein Vogel, benannt nach meiner Heimatstadt. Ja, es verwirrt alle.',
+        'Ich mag Geschichten auf der großen Leinwand. Ich schaue Bollywood- und Hollywood-Filme. Ich bin mit der Musik von Kishore Kumar, Asha Bhosle und R.D. Burman aufgewachsen und versuche jetzt, deutscher Musik beizukommen. Die Mahabharata, die englische Kurzfassung von R.K. Narayan, ist das eine Buch, das mir geblieben ist. Als Kind war ich fasziniert von Technik. Ich wollte immer alles auseinandernehmen und wieder zusammenbauen. Ich nannte es Reverse Engineering. Heute erkunde ich Software-Builds mit derselben Neugier und schreibe auf, was ich lerne, manchmal mit Metaphern und Analogien aus Hollywood- oder Bollywood-Filmen.',
       ],
       closingLead: 'Wenn Sie eine Idee haben, die Software braucht, um lebendig zu werden, ',
       closing: 'lassen Sie uns sprechen.',
@@ -458,14 +457,14 @@ export const de = {
     },
     free: {
       description:
-        'Fünfzehn Minuten mit einem Founder-Engineer, der zwanzig Jahre lang die Entscheidungen getroffen hat, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Kein Pitch, keine Verpflichtung. Sie wissen danach, ob sich ein längeres Gespräch lohnt.', // TODO: review translation
+        'Fünfzehn Minuten mit einem Founder-Engineer, der zwanzig Jahre lang die Entscheidungen getroffen hat, die Zeit und Geld kosten: selbst bauen oder kaufen, wen einstellen und ob das hält, was KI gebaut hat. Kein Pitch, keine Verpflichtung. Sie wissen danach, ob sich ein längeres Gespräch lohnt.',
       button: 'Gespräch vereinbaren',
       url: 'https://calendly.com/vshanbhag',
     },
     paid: {
       title: 'Sie wissen schon, was Sie brauchen?',
       description:
-        'Eine ehrliche Stunde an Ihrem Problem mit einem Senior Architect: Sie wissen danach, was als Nächstes zu tun ist.',
+        'Eine ehrliche Stunde an Ihrem Problem mit einem Senior-Architekten: Sie wissen danach, was als Nächstes zu tun ist.',
       button: 'Die ehrliche Stunde buchen',
       url: 'https://www.upwork.com/services/consultation/development-it-vishal-1688119352130330624?ref=project_share',
     },
@@ -693,13 +692,13 @@ export const de = {
   consent: {
     heading: 'Cookie-Einstellungen',
     description:
-      'Wir verwenden Cookies, um Ihr Surfingerlebnis zu verbessern, personalisierte Inhalte bereitzustellen und unseren Verkehr zu analysieren.',
+      'Wir verwenden Cookies, um Ihr Surfingerlebnis zu verbessern, personalisierte Inhalte bereitzustellen und unseren Datenverkehr zu analysieren.',
     acceptAll: 'Alle akzeptieren',
     declineAll: 'Alle ablehnen',
     customize: 'Anpassen',
     savePreferences: 'Einstellungen speichern',
     settingsHeading: 'Datenschutzeinstellungen',
-    privacyPolicyLabel: 'Datenschutzrichtlinie',
+    privacyPolicyLabel: 'Datenschutzerklärung',
     alwaysOn: 'Immer aktiv',
   },
 } as const;
