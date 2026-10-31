@@ -431,7 +431,7 @@ export const de = {
     offtheclock: {
       title: 'Feierabend',
       paragraphs: [
-        'Ich trekke, ich reise, ich schreibe – in aufsteigender Frequenz. Ich reise meistens mit öffentlichen Verkehrsmitteln. Ich koche selten, schlecht und begeistert (alle drei hängen zusammen). Ich lebe, um zu essen. Ich bin, wie jeder selbstrespektierende Inder, ein Fan von scharfen Speisen, besonders dem Malwani-Stil Bombay Duck – das ist ein Fisch, kein Vogel, benannt nach meiner Heimatstadt. Ja, es verwirrt alle.',
+        'Ich wandere, ich reise, ich schreibe – in aufsteigender Frequenz. Ich reise meistens mit öffentlichen Verkehrsmitteln. Ich koche selten, schlecht und begeistert (alle drei hängen zusammen). Ich lebe, um zu essen. Ich bin, wie jeder selbstrespektierende Inder, ein Fan von scharfen Speisen, besonders dem Malwani-Stil Bombay Duck – das ist ein Fisch, kein Vogel, benannt nach meiner Heimatstadt. Ja, es verwirrt alle.',
         'Ich mag Geschichten auf der großen Leinwand. Ich schaue Bollywood- und Hollywood-Filme. Ich bin mit der Musik von Kishore Kumar, Asha Bhosle und R.D. Burman aufgewachsen und versuche jetzt, deutscher Musik beizukommen. Die Mahabharata, die komprimierte englische Fassung von R.K. Narayan, ist das eine Buch, das mir geblieben ist. Als Kind war ich fasziniert von Technik. Ich wollte immer alles auseinandernehmen und wieder zusammenbauen. Ich nannte es Reverse Engineering. Heute erkunde ich Software-Builds mit derselben Neugier und schreibe auf, was ich lerne, manchmal mit Metaphern und Analogien aus Hollywood- oder Bollywood-Filmen.',
       ],
       closingLead: 'Wenn Sie eine Idee haben, die Software braucht, um lebendig zu werden, ',
