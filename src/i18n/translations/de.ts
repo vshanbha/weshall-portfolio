@@ -12,6 +12,7 @@ export const de = {
     home: 'Startseite',
     about: 'Über uns',
     blog: 'Blog',
+    philosophy: 'So bauen wir',
     services: 'Was ich mache',
     contact: 'Kontakt',
     features: 'Funktionen',
@@ -304,17 +305,20 @@ export const de = {
     },
     beliefs: {
       title: 'Woran ich glaube',
+      // The "We shall …" imperative one-liners stay in English in every
+      // locale (brand voice, same convention as the philosophy page);
+      // only the tie lines below them are translated.
       commandments: [
         {
-          title: 'Wir fragen WARUM, bevor wir nach WIE fragen.',
+          title: 'We shall ask WHY before we ask HOW.',
           tie: 'Jedes Engagement beginnt hier, bevor jemand nach dem Wie fragt: warum das bauen, warum jetzt, für wen.',
         },
         {
-          title: 'Wir bauen für Ergebnisse, nicht für Funktionen.',
+          title: 'We shall build for outcomes, not features.',
           tie: 'Wir arbeiten rückwärts vom Ergebnis, das Sie brauchen; die Feature-Anfrage ist nur ein Symptom davon.',
         },
         {
-          title: 'Wir prototypen, bevor wir uns festlegen.',
+          title: 'We shall prototype before we commit.',
           tie: 'Ein grober Prototyp, der diese Woche scheitert, kostet eine Woche. Ein fertiger Build, der im Markt scheitert, kostet ein Quartal.',
         },
       ],

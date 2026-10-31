@@ -139,6 +139,23 @@ test.describe('German locale', () => {
     await page.goto('/de/about');
     await expect(page.locator('a[href="/en/blog"]').first()).toBeVisible();
     await expect(page.locator('a[href="/de/blog"]')).toHaveCount(0);
+    await page.goto('/de/');
+    await expect(page.locator('a[href="/de/blog"]')).toHaveCount(0);
+  });
+
+  test('/de/philosophy keeps the imperative one-liners in English', async ({ page }) => {
+    const response = await page.goto('/de/philosophy');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('body')).toContainText('We shall ask WHY before we ask HOW.');
+    await expect(page.locator('body')).toContainText('Meister Oogway');
+    await expect(page.locator('body')).not.toContainText('Wir fragen WARUM');
+  });
+
+  test('/de/about keeps commandment one-liners in English with German detail', async ({ page }) => {
+    await page.goto('/de/about');
+    await expect(page.locator('body')).toContainText('We shall build for outcomes, not features.');
+    await expect(page.locator('body')).toContainText('rückwärts vom Ergebnis');
+    await expect(page.locator('body')).not.toContainText('Wir bauen für Ergebnisse');
   });
 
   test('language switcher on an English blog post sends German to /de/', async ({ page }) => {
