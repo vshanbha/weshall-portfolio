@@ -91,6 +91,7 @@ export {
   getLocalizedPath,
   resolveRouteFromPath,
   switchLocale,
+  routeHasLocale,
   getRouteTranslations,
   getRouteSlug,
   isRoute,

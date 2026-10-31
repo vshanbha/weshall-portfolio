@@ -9,27 +9,41 @@
  */
 
 import { type Locale, locales, defaultLocale, isValidLocale } from './config';
-import { routes, type RouteId } from './routes';
+import { routes, englishOnlyRoutes, type RouteId } from './routes';
+
+/**
+ * Check whether a route exists in a given locale.
+ *
+ * Routes listed in `englishOnlyRoutes` (currently only the blog) exist in the
+ * default locale only, until translated content makes them available elsewhere.
+ */
+export function routeHasLocale(routeId: RouteId, locale: Locale): boolean {
+  return locale === defaultLocale || !englishOnlyRoutes.includes(routeId);
+}
 
 /**
  * Get the localized URL path for a route
  *
  * @param routeId - The internal route identifier (e.g., 'about', 'blog')
  * @param locale - The target locale
- * @returns The full path with locale prefix if needed
+ * @returns The full path with locale prefix if needed. Routes that do not
+ *   exist in the target locale (see englishOnlyRoutes) fall back to the
+ *   default locale's URL.
  *
  * @example
  * getLocalizedPath('about', 'en') // → '/about'
  * getLocalizedPath('about', 'es') // → '/es/sobre-nosotros'
  * getLocalizedPath('about', 'fr') // → '/fr/a-propos'
  * getLocalizedPath('home', 'es')  // → '/es'
+ * getLocalizedPath('blog', 'de')  // → '/en/blog' (blog is English-only)
  */
 export function getLocalizedPath(routeId: RouteId, locale: Locale): string {
   const route = routes[routeId];
-  const slug = route[locale];
+  const effectiveLocale = routeHasLocale(routeId, locale) ? locale : defaultLocale;
+  const slug = route[effectiveLocale];
 
   // Always prefix with locale
-  return slug ? `/${locale}/${slug}` : `/${locale}`;
+  return slug ? `/${effectiveLocale}/${slug}` : `/${effectiveLocale}`;
 }
 
 /**
@@ -164,6 +178,12 @@ export function switchLocale(currentPath: string, targetLocale: Locale): string 
   const resolved = resolveRouteFromPath(currentPath);
 
   if (resolved) {
+    // The route does not exist in the target locale (e.g. the English-only
+    // blog when switching to German): fall back to that locale's home page.
+    if (!routeHasLocale(resolved.routeId, targetLocale)) {
+      return getLocalizedPath('home', targetLocale);
+    }
+
     const basePath = getLocalizedPath(resolved.routeId, targetLocale);
 
     // If there's extra path info (like blog post slug), append it
@@ -198,11 +218,15 @@ export function getRouteTranslations(
   routeId: RouteId,
   extra?: string
 ): Array<{ locale: Locale; path: string }> {
-  return locales.map((locale) => {
-    const basePath = getLocalizedPath(routeId, locale);
-    const path = extra ? `${basePath}/${extra}/` : `${basePath}/`;
-    return { locale, path };
-  });
+  // Only locales where the route actually exists (see englishOnlyRoutes),
+  // so hreflang never advertises a page that would 404.
+  return locales
+    .filter((locale) => routeHasLocale(routeId, locale))
+    .map((locale) => {
+      const basePath = getLocalizedPath(routeId, locale);
+      const path = extra ? `${basePath}/${extra}/` : `${basePath}/`;
+      return { locale, path };
+    });
 }
 
 /**

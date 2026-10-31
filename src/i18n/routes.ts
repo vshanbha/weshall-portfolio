@@ -107,6 +107,22 @@ export const routes = {
 export type RouteId = keyof typeof routes;
 
 /**
+ * Routes that exist only in the default (English) locale.
+ *
+ * The blog is English-only for now; German posts will be added later as
+ * translations (content entries with `locale: 'de'`). Until then:
+ * - getLocalizedPath() falls back to the English URL, so navigation on the
+ *   German site never links to a missing /de/blog page.
+ * - switchLocale() sends language-switch attempts to the target locale's
+ *   home page instead of a page that does not exist.
+ * - getRouteTranslations() emits hreflang alternates for English only.
+ *
+ * Remove 'blog' from this list once /de/blog should be the German nav target
+ * (i.e. the first German post has been published).
+ */
+export const englishOnlyRoutes: readonly RouteId[] = ['blog'];
+
+/**
  * Get all available route IDs
  */
 export const routeIds = Object.keys(routes) as RouteId[];

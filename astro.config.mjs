@@ -33,7 +33,7 @@ export default defineConfig({
   // i18n configuration
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'de'],
     routing: {
       prefixDefaultLocale: true,
     },
@@ -45,6 +45,9 @@ export default defineConfig({
     '/contact': '/en/contact',
     '/services': '/en/services',
     '/blog': '/en/blog',
+    // Blog is English-only for now (see englishOnlyRoutes in src/i18n/routes.ts).
+    // Remove this redirect once the first German post is published.
+    '/de/blog': '/en/blog',
     '/impressum': '/en/impressum',
     '/datenschutz': '/en/datenschutz',
   },
@@ -55,12 +58,13 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const pathname = new URL(page).pathname;
-        return pathname.startsWith('/en/');
+        return pathname.startsWith('/en/') || pathname.startsWith('/de/');
       },
       i18n: {
         defaultLocale: 'en',
         locales: {
           en: 'en',
+          de: 'de',
         },
       },
     }),
