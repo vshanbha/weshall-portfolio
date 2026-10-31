@@ -6,8 +6,11 @@ export const de = {
     name: 'We Shall Build',
     // Brand tagline stays English in every locale, like the philosophy one-liners.
     tagline: 'Build What Matters',
+    // "Teamleiter Softwareentwicklung" is the term German job portals use for this
+    // role: the anglicism "Lead" reads as a sales prospect in German, and
+    // "engineering" alone evokes manufacturing, so the term pins it to software.
     description:
-      'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
+      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
   },
   nav: {
     home: 'Startseite',
@@ -33,7 +36,7 @@ export const de = {
   hero: {
     title: 'Build what matters.',
     bridge:
-      'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Ich mache diese Entscheidungen seit zwanzig Jahren im Produktivbetrieb.',
+      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat. Ich mache diese Entscheidungen seit zwanzig Jahren im Produktivbetrieb.',
     cta: {
       primary: 'Lassen Sie uns sprechen',
       secondary: 'Neueste Artikel lesen',
@@ -153,7 +156,7 @@ export const de = {
   },
   footer: {
     tagline:
-      'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
+      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
     copyright: '© {year} We Shall Build. Alle Rechte vorbehalten.',
     madeWith: 'Erstellt mit',
     maintainedBy: 'Pflege durch',
@@ -258,17 +261,17 @@ export const de = {
     meta: {
       title: 'Was ich mache',
       description:
-        'Für Gründer und technische Leads vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
+        'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, deren Konsequenzen in Zeit und Geld bezahlt werden: selbst bauen oder kaufen, wen einstellen, und ob das hält, was KI gebaut hat.',
     },
     hero: {
       title: 'Manche Entscheidungen kosten Sie, wenn Sie sie falsch treffen.',
       description:
-        'Für Gründer und technische Leads in Wachstumsunternehmen, die einen zweiten Senior-Operator im Raum brauchen. Kein Lehrer, kein Slide-Deck, kein selbstüberschwingender Halluzinierer. Ein Ingenieur, der die Muster gesehen hat und Ihnen hilft, sich durch sie zu navigieren.',
+        'Für Gründer und Teamleiter der Softwareentwicklung in Wachstumsunternehmen, die einen zweiten Senior-Operator im Raum brauchen. Kein Lehrer, kein Slide-Deck, kein selbstüberschwingender Halluzinierer. Ein Ingenieur, der die Muster gesehen hat und Ihnen hilft, sich durch sie zu navigieren.',
     },
     howwork: {
       title: 'Wie ich arbeite',
       paragraphs: [
-        'Ich arbeite mit Gründern und technischen Leads an einer Entscheidung, einer Einstellung, einem unausgereiften KI-Build oder einem Sanity Check.',
+        'Ich arbeite mit Gründern und Teamleitern der Softwareentwicklung an einer Entscheidung, einer Einstellung, einem unausgereiften KI-Build oder einem Sanity Check.',
         'Die Beziehung beginnt mit einem kostenlosen Gespräch von fünfzehn Minuten, um herauszufinden, ob sich ein längeres davon lohnt. Kein Pitch, keine Verpflichtung, kein Verkaufsprozess.',
         'Gemeinsam finden wir heraus, was als Nächstes passieren muss. Manchmal ist es ein einziges Gespräch. Manchmal führt es zu einer laufenden Zusammenarbeit. Die Form des Engagements folgt der Form des Problems.',
       ],
