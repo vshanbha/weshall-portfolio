@@ -202,34 +202,37 @@ export const de = {
     },
     testimonials: {
       title: 'Was Kunden sagen',
+      // Client quotes are approved by their authors in English only, so they are
+      // kept verbatim in every locale; translating would misattribute unapproved
+      // words to the quoted person.
       items: [
         {
           id: 'bluemoney',
           company: 'BlueMoney',
           author: 'Arrie',
-          role: 'Gründungsingenieur',
+          role: 'Founding Engineer',
           quote:
-            'Vishal hat uns geholfen, unter Zeitdruck die richtige Entscheidung zwischen Bauen und Kaufen zu treffen, unseren Kreditbetrieb mit professionellen SOPs aufzusetzen und ist weiterhin unser Sparringpartner, während wir uns durch den realen Markt navigieren.',
-          linkedin: '',
-          website: '',
+            'Vishal helped us make the right build vs. buy decision under timeline pressure, set up our lending operations with professional SOPs, and continues to be our sounding board as we navigate the real market.',
+          linkedin: 'https://www.linkedin.com/in/arrie-de-waal-a19a85110/',
+          website: 'https://www.bluemoneyfinance.com/',
         },
         {
           id: 'ourish',
           company: 'Ourish',
           author: 'Kunal Kakar',
-          role: 'Direktor für Vertrieb und Betrieb',
+          role: 'Director, Sales and Operations',
           quote:
-            'Vishal war in seiner Zusammenarbeit großartig. Er hat die Projektarbeit klar dokumentiert, hat das Projekt von Anfang bis Ende unterstützt und in einer sehr komplexen und mehrdeutigen Umgebung weit über die Anforderungen hinausgeliefert. Danke, Vishal, für all die Hilfe und die Erkenntnisse.',
+            'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond in delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.',
           linkedin: 'https://www.linkedin.com/in/kunalkakar/',
-          website: '',
+          website: 'https://ourish.co.uk/',
         },
         {
           id: 'powermarket',
           company: 'PowerMarket',
           author: 'Abhinav Jain',
-          role: 'Gründer',
+          role: 'Founder',
           quote:
-            'Wir hatten uns mit dem Aufbau unseres Tech- und Dev-Teams beschäftigt. Aber wir brauchten Beratung, wie wir anfangen sollen, wen wir einstellen und welche Kompetenzen wir anstreben sollten – und wie wir, sobald wir eine Pipeline von Kandidaten hatten, ihre technischen Fähigkeiten bewerten. Vishal war eine hervorragende Ressource, die uns durch den gesamten Prozess geführt hat und dann weit darüber hinausgegangen ist. Er ist einer der kompetentesten Technologie-Experten, die wir bisher getroffen haben, und wir werden auf jeden Fall wieder auf ihn zukommen.',
+            'We had been looking into developing our tech and dev team. However, we needed advice on how to get started, who to hire, what kind of skills to target, and once we had a pipeline of candidates, how to evaluate their tech skills. Vishal was a phenomenal resource who guided us throughout the process, and then went above and beyond. He is one of the most knowledgeable technology resources that we have come across thus far and will definitely go back to him for further help.',
           linkedin: 'https://www.linkedin.com/in/abhinavjainuk/',
           website: 'https://powermarket.net/',
         },
@@ -237,19 +240,19 @@ export const de = {
           id: 'sable',
           company: 'Sable International',
           author: 'Leanne Shrosbree',
-          role: 'Leiterin Kundenservice und Betrieb',
+          role: 'Customer Service & Operations Director',
           quote:
-            'Durch eine echte partnerschaftliche Zusammenarbeit mit Vishal und dem Inbotiqa-Team haben wir das Potenzial von YuDo verbessert, verfeinert und maximiert. Es hat unser Wachstum unterstützt, unsere Teams befähigt und uns geholfen, unseren Kunden konsistent zu liefern. Diese Langlebigkeit und dieser Wert sprechen für die Menschen dahinter. Wir sind aufrichtig dankbar für die Sorge, die Unterstützung und die Partnerschaft, die Sie über so lange Zeit gezeigt haben.',
+            'Through a genuinely collaborative partnership with Vishal and the Inbotiqa team, we\u2019ve been able to improve, refine and maximise YuDo\u2019s potential. It\u2019s supported our growth, enabled our teams and helped us deliver for our clients consistently. That longevity and value speak volumes about the people behind it. We\u2019re genuinely grateful for the care, support and partnership you\u2019ve shown us over such a long time.',
           linkedin: 'https://www.linkedin.com/in/leanne-shrosbree-74261b53/',
-          website: '',
+          website: 'https://www.sableinternational.com/',
         },
         {
           id: 'bauai',
           company: 'BauAI',
           author: 'Tushar Adsul',
-          role: 'Geschäftsführer',
+          role: 'Managing Director',
           quote:
-            'Wir hatten einen frühen Prototyp, der in Demos großartig aussah, aber nicht produktionsreif war. Ich suchte jemanden, der mir sagen konnte, was wirklich kaputt war. Vishal kam als Berater dazu, hat unseren Code überprüft und uns geholfen, unsere Schwächen zu erkennen: was behalten, was streichen und wie wir auf den soliden Teilen aufbauen, ohne alles neu zu schreiben. Als wir auf Basis von Kundenfeedback umgesagt haben, hat er uns gezeigt, wie wir neue Funktionen integrieren, ohne das zu brechen, was bereits funktionierte. Wir haben zwei voll funktionsfähige Agenten ausgeliefert und waren bereit für unsere ersten Pilotkunden.',
+            "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.",
           linkedin: 'https://www.linkedin.com/company/bauai/',
           website: 'https://www.bauai.eu/',
         },
