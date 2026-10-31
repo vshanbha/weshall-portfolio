@@ -8,6 +8,7 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import { createServiceSchema } from '@/lib/schema';
+import siteConfig from '@/config/site.config';
 
 export const getStaticPaths = getStaticPathsHelper;
 
@@ -48,7 +49,7 @@ const tr = getTranslations(locale) as TranslationKeys;
       <p>{t('services.cta.description')}</p>
     </Fragment>
     <Fragment slot="actions">
-      <Button variant="primary" size="lg" href={`/${locale}/contact`}>
+      <Button variant="primary" size="lg" href={siteConfig.bookingUrl}>
         {t('services.cta.button')}
       </Button>
     </Fragment>

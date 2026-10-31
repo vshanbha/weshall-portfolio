@@ -1,6 +1,7 @@
 ---
-title: The ten commandments
-updatedAt: 2026-10-29
+title: The way we build.
+description: Ten rules, earned in production.
+updatedAt: 2026-10-30
 locale: en
 reviewed: true
 ---

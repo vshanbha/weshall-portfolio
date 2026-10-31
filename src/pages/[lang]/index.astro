@@ -12,6 +12,7 @@ import CTA from '@/components/ui/marketing/CTA/CTA.astro';
 import VerticalTabs from '@/components/ui/overlay/VerticalTabs/VerticalTabs.astro';
 import { SplitHero } from '@/components/ui/marketing/SplitHero';
 import BlogCard from '@/components/blog/BlogCard.astro';
+import siteConfig from '@/config/site.config';
 
 export const getStaticPaths = getStaticPathsHelper;
 
@@ -141,7 +142,7 @@ const recentArticles = allArticles
       <p>{t('cta.description')}</p>
     </Fragment>
     <Fragment slot="actions">
-      <Button variant="primary" size="lg" href={`/${locale}/contact`}>
+      <Button variant="primary" size="lg" href={siteConfig.bookingUrl}>
         {t('cta.button')}
       </Button>
     </Fragment>

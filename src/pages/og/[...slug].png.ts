@@ -10,7 +10,7 @@ const STATIC_PAGES = [
   {
     slug: 'contact',
     title: 'Contact',
-    description: "You don't need a tidy brief. Bring the mess.",
+    description: 'Reach out.',
   },
   {
     slug: 'blog',

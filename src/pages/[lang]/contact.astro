@@ -4,7 +4,6 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import { useTranslations } from '@/i18n/index';
 import type { Locale } from '@/i18n/config';
 import Button from '@/components/ui/form/Button/Button.astro';
-import Card from '@/components/ui/data-display/Card/Card.astro';
 
 export const getStaticPaths = getStaticPathsHelper;
 
@@ -16,53 +15,27 @@ const t = useTranslations(locale);
 <PageLayout title={t('contact.meta.title')} description={t('contact.meta.description')}>
   <section class="py-24 md:py-32">
     <div class="container mx-auto px-4 text-center max-w-3xl">
-      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl font-display text-balance mb-8">
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl font-display text-balance">
         {t('contact.hero.title')}
       </h1>
-      <p class="text-lg text-muted-foreground text-balance mx-auto max-w-2xl">
-        {t('contact.hero.description')}
+      <p class="text-lg text-muted-foreground leading-relaxed text-balance mx-auto max-w-2xl mt-10">
+        {t('contact.free.description')}
       </p>
-      <p class="mt-6 text-base text-muted-foreground text-balance mx-auto max-w-2xl">
-        {t('contact.hero.oneLiner')}
-      </p>
+      <Button variant="primary" size="lg" href={t('contact.free.url')} class="mt-10">
+        {t('contact.free.button')}
+      </Button>
     </div>
   </section>
 
   <section class="py-16 md:py-24 bg-muted/50">
     <div class="container mx-auto px-4 max-w-3xl text-center">
-      <Button variant="primary" size="lg" href={t('contact.free.url')}>
-        {t('contact.free.button')}
-      </Button>
-      <p class="mt-6 text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-        {t('contact.free.description')}
+      <h2 class="text-2xl font-bold font-display mb-4">{t('contact.paid.title')}</h2>
+      <p class="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
+        {t('contact.paid.description')}
       </p>
-    </div>
-  </section>
-
-  <section class="py-16 md:py-24">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <div class="grid gap-8 md:grid-cols-2">
-        <Card variant="default" padding="lg" class="flex flex-col">
-          <h2 class="text-2xl font-bold font-display mb-4">{t('contact.paid.title')}</h2>
-          <p class="text-muted-foreground mb-6 flex-1">{t('contact.paid.description')}</p>
-          <Button variant="outline" size="lg" href={t('contact.paid.url')}>
-            {t('contact.paid.button')}
-          </Button>
-        </Card>
-
-        <Card variant="default" padding="lg" class="flex flex-col">
-          <h2 class="text-2xl font-bold font-display mb-4">{t('contact.write.title')}</h2>
-          <p class="text-muted-foreground mb-6 flex-1">{t('contact.write.description')}</p>
-          <div class="flex flex-wrap gap-3">
-            <Button variant="outline" size="md" href={t('contact.write.linkedin.url')}>
-              {t('contact.write.linkedin.button')}
-            </Button>
-            <Button variant="ghost" size="md" href={t('contact.write.upwork.url')}>
-              {t('contact.write.upwork.button')}
-            </Button>
-          </div>
-        </Card>
-      </div>
+      <Button variant="outline" size="lg" href={t('contact.paid.url')}>
+        {t('contact.paid.button')}
+      </Button>
     </div>
   </section>
 </PageLayout>
