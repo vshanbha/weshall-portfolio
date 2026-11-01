@@ -1,9 +1,11 @@
 ---
 import Button from '@/components/ui/form/Button/Button.astro';
 import siteConfig from '@/config/site.config';
+import { getLocalizedPath } from '@/i18n/helpers';
+import type { Locale } from '@/i18n/config';
 
 export interface Props {
-  locale: string;
+  locale: Locale;
   /** Translation object containing hero section strings */
   t: {
     title: string;
@@ -39,7 +41,7 @@ const { locale, t } = Astro.props;
           <Button variant="primary" size="lg" href={siteConfig.bookingUrl}>
             {t.cta.primary}
           </Button>
-          <Button variant="outline" size="lg" href={`/${locale}/blog`}>
+          <Button variant="outline" size="lg" href={getLocalizedPath('blog', locale)}>
             {t.cta.secondary}
           </Button>
         </div>

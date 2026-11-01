@@ -8,7 +8,7 @@ import ConsentBanner from '@/components/ui/overlay/ConsentBanner';
 import { createWebsiteSchema, createOrganizationSchema } from '@/lib/schema';
 import type { WebSite, Organization, WithContext } from 'schema-dts';
 import siteConfig from '@/config/site.config';
-import { type Locale, defaultLocale, getLocaleFromPath } from '@/i18n/config';
+import { type Locale, getLocaleFromPath } from '@/i18n/config';
 import { useTranslations } from '@/i18n/index';
 import type { RouteId } from '@/i18n/routes';
 
@@ -65,7 +65,11 @@ const consentUi = {
 const consentAlwaysOnLabel = tc('consent.alwaysOn');
 
 // Build JSON-LD schemas
-const schemas: Array<WithContext<WebSite> | WithContext<Organization>> = [createWebsiteSchema()];
+// Pass the page's own language: WebSite.description must be locale-correct
+// (the SEO audit found the English text shipping on /de/* pages).
+const schemas: Array<WithContext<WebSite> | WithContext<Organization>> = [
+  createWebsiteSchema(tc('site.description')),
+];
 if (includeOrgSchema) {
   schemas.push(createOrganizationSchema());
 }

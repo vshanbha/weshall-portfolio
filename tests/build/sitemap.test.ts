@@ -5,14 +5,14 @@ import { resolve } from 'node:path';
 describe('Sitemap build output', () => {
   const sitemapPath = resolve('dist/sitemap-0.xml');
 
-  it('contains only /en/ prefixed URLs', () => {
+  it('contains only /en/ or /de/ prefixed URLs', () => {
     const xml = readFileSync(sitemapPath, 'utf-8');
     const urls = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
     expect(urls.length).toBeGreaterThan(0);
     for (const url of urls) {
       const loc = url.replace(/<\/?loc>/g, '');
       const pathname = new URL(loc).pathname;
-      expect(pathname).toMatch(/^\/en\//);
+      expect(pathname).toMatch(/^\/(en|de)\//);
     }
   });
 
@@ -23,7 +23,7 @@ describe('Sitemap build output', () => {
       const loc = url.replace(/<\/?loc>/g, '');
       expect(loc).not.toBe('https://weshall.build/');
       const pathname = new URL(loc).pathname;
-      expect(pathname).not.toMatch(/^\/(?!en\/)[a-z]/);
+      expect(pathname).not.toMatch(/^\/(?!en\/|de\/)[a-z]/);
     }
   });
 });

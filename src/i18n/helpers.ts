@@ -9,24 +9,25 @@
  */
 
 import { type Locale, locales, defaultLocale, isValidLocale } from './config';
-import { routes, type RouteId } from './routes';
+import { routes, englishOnlyDetailRoutes, type RouteId } from './routes';
+import type { TranslationKey } from './translations/en';
 
 /**
  * Get the localized URL path for a route
  *
  * @param routeId - The internal route identifier (e.g., 'about', 'blog')
  * @param locale - The target locale
- * @returns The full path with locale prefix if needed
+ * @returns The full path with locale prefix. Index routes exist in every
+ *   active locale, so no fallback to the default locale is needed.
  *
  * @example
- * getLocalizedPath('about', 'en') // → '/about'
- * getLocalizedPath('about', 'es') // → '/es/sobre-nosotros'
- * getLocalizedPath('about', 'fr') // → '/fr/a-propos'
- * getLocalizedPath('home', 'es')  // → '/es'
+ * getLocalizedPath('about', 'en') // → '/en/about'
+ * getLocalizedPath('about', 'de') // → '/de/about'
+ * getLocalizedPath('home', 'de')  // → '/de'
+ * getLocalizedPath('blog', 'de')  // → '/de/blog' (the index is localised)
  */
 export function getLocalizedPath(routeId: RouteId, locale: Locale): string {
-  const route = routes[routeId];
-  const slug = route[locale];
+  const slug = routes[routeId][locale];
 
   // Always prefix with locale
   return slug ? `/${locale}/${slug}` : `/${locale}`;
@@ -153,17 +154,28 @@ export function resolveRouteFromPath(pathname: string): ResolvedRoute | null {
  * @returns The new path in the target locale, or the home page if route unknown
  *
  * @example
- * switchLocale('/about', 'es')               // → '/es/sobre-nosotros'
- * switchLocale('/es/sobre-nosotros', 'fr')   // → '/fr/a-propos'
- * switchLocale('/es/sobre-nosotros', 'en')   // → '/about'
- * switchLocale('/blog/my-post', 'es')        // → '/es/blog/my-post'
- * switchLocale('/es/blog/my-post', 'fr')     // → '/fr/blogue/my-post'
- * switchLocale('/unknown', 'es')             // → '/es' (fallback to home)
+ * switchLocale('/about', 'de')           // → '/de/about'
+ * switchLocale('/de/about', 'en')        // → '/en/about'
+ * switchLocale('/en/blog', 'de')         // → '/de/blog'
+ * switchLocale('/en/blog/my-post', 'de') // → '/de/blog' (no German post; the index lists it)
+ * switchLocale('/de/blog', 'en')         // → '/en/blog'
+ * switchLocale('/unknown', 'de')         // → '/de' (fallback to home)
  */
 export function switchLocale(currentPath: string, targetLocale: Locale): string {
   const resolved = resolveRouteFromPath(currentPath);
 
   if (resolved) {
+    // A detail page of an English-only route (e.g. a blog post) has no
+    // counterpart in the target locale: send the reader to that locale's
+    // localised index rather than the home page or a page that 404s.
+    if (
+      resolved.extra &&
+      englishOnlyDetailRoutes.includes(resolved.routeId) &&
+      targetLocale !== defaultLocale
+    ) {
+      return getLocalizedPath(resolved.routeId, targetLocale);
+    }
+
     const basePath = getLocalizedPath(resolved.routeId, targetLocale);
 
     // If there's extra path info (like blog post slug), append it
@@ -183,22 +195,36 @@ export function switchLocale(currentPath: string, targetLocale: Locale): string 
 /**
  * Get all localized URLs for a route (for hreflang tags)
  *
+ * Index pages are listed for every active locale. Detail pages (with an
+ * `extra` slug) of English-only routes are listed for the default locale
+ * only, so hreflang never advertises a page that would 404.
+ *
  * @param routeId - The route identifier
- * @returns An array of { locale, path } for all locales
+ * @param extra - Optional detail slug after the route (e.g. a blog post)
+ * @returns An array of { locale, path } for the relevant locales
  *
  * @example
  * getRouteTranslations('about')
  * // → [
- * //   { locale: 'en', path: '/about' },
- * //   { locale: 'es', path: '/es/sobre-nosotros' },
- * //   { locale: 'fr', path: '/fr/a-propos' }
+ * //   { locale: 'en', path: '/en/about/' },
+ * //   { locale: 'de', path: '/de/about/' }
  * // ]
+ * getRouteTranslations('blog')
+ * // → [
+ * //   { locale: 'en', path: '/en/blog/' },
+ * //   { locale: 'de', path: '/de/blog/' }
+ * // ]
+ * getRouteTranslations('blog', 'my-post')
+ * // → [{ locale: 'en', path: '/en/blog/my-post/' }]
  */
 export function getRouteTranslations(
   routeId: RouteId,
   extra?: string
 ): Array<{ locale: Locale; path: string }> {
-  return locales.map((locale) => {
+  const targets: readonly Locale[] =
+    extra && englishOnlyDetailRoutes.includes(routeId) ? [defaultLocale] : locales;
+
+  return targets.map((locale) => {
     const basePath = getLocalizedPath(routeId, locale);
     const path = extra ? `${basePath}/${extra}/` : `${basePath}/`;
     return { locale, path };
@@ -236,7 +262,7 @@ export function isRoute(pathname: string, routeId: RouteId): boolean {
  */
 export type NavRoute = {
   routeId: RouteId;
-  label: string;
+  label: TranslationKey;
   order: number;
   path: string;
 };

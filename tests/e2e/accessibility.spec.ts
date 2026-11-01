@@ -33,6 +33,14 @@ const PAGES = [
   '/en/datenschutz',
   '/en/impressum',
   '/en/services',
+  // German locale — published alongside English; blog posts stay English-only
+  // (the index itself is localised and listed below).
+  '/de',
+  '/de/about',
+  '/de/blog',
+  '/de/contact',
+  '/de/philosophy',
+  '/de/services',
   // Locale-less routes are meta-refresh stubs; this one is a real rendered page.
   '/404.html',
 ];

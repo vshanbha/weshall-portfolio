@@ -11,7 +11,7 @@
  * Note: Empty string '' represents the root/home page.
  */
 
-import type { Locale } from './config';
+import type { TranslationKey } from './translations/en';
 
 /**
  * Navigation configuration for a route
@@ -22,7 +22,7 @@ export type NavConfig = {
   /** Sort order in navigation (lower = first) */
   order: number;
   /** Translation key for the navigation label (e.g., 'nav.about') */
-  label: string;
+  label: TranslationKey;
 };
 
 /**
@@ -105,6 +105,24 @@ export const routes = {
  * Type-safe route identifier
  */
 export type RouteId = keyof typeof routes;
+
+/**
+ * Routes whose DETAIL pages (sub-pages under the route, e.g. blog posts)
+ * exist in the default (English) locale only.
+ *
+ * The INDEX of these routes is localised in every active locale: German
+ * navigation and the German hero link to /de/blog, which serves German chrome
+ * and lists the English posts. The posts themselves stay at /en/blog/<slug>/;
+ * detail pages pick up translated content automatically via the content locale
+ * (see [lang]/blog/[...slug].astro).
+ *
+ * Consequences:
+ * - getRouteTranslations() emits an en+de hreflang pair for the index, but
+ *   default-locale-only alternates for detail pages.
+ * - switchLocale() sends a detail-page switch to the target locale's
+ *   localised index (e.g. /en/blog/my-post → /de/blog).
+ */
+export const englishOnlyDetailRoutes: readonly RouteId[] = ['blog'];
 
 /**
  * Get all available route IDs

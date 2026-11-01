@@ -7,8 +7,12 @@ reviewed: true
 ---
 
 <!--
-  English source for all four locales (en/de/hi/mr).
-  TODO: translate, or provide locale variants in this collection.
+  English variant of the ten commandments. The default for locales without
+  a translated variant (currently hi/mr, once activated).
+  Convention: the "We shall …" imperative one-liners (the ## headings)
+  stay in English in every locale — they are brand voice, not body copy.
+  Locale variants (e.g. ten-commandments.de.md) translate only the detail
+  prose below each heading.
 -->
 
 ## We shall ask WHY before we ask HOW.

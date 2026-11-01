@@ -3,7 +3,7 @@ import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import { createBlogPostSchema, createWebPageSchema } from '@/lib/schema';
-import { locales, type Locale } from '@/i18n/config';
+import { defaultLocale, locales, type Locale } from '@/i18n/config';
 import siteConfig from '@/config/site.config';
 import type { GetStaticPaths } from 'astro';
 
@@ -14,6 +14,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [];
   for (const locale of locales) {
     for (const entry of entries) {
+      // Each post is generated only for its own locale: the blog is
+      // English-only until German translations are published.
+      if ((entry.data.locale || defaultLocale) !== locale) continue;
       paths.push({
         params: { lang: locale, slug: entry.id },
         props: { entry, locale },

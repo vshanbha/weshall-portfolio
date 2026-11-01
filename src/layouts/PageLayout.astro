@@ -9,6 +9,8 @@ import BaseLayout from './BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import siteConfig from '@/config/site.config';
+import { getLocaleFromPath, localePath } from '@/i18n/config';
+import { useTranslations } from '@/i18n/index';
 
 interface Props {
   title?: string;
@@ -20,6 +22,9 @@ interface Props {
 }
 
 const { title, description, image, imageAlt, noindex, nofollow } = Astro.props;
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
 ---
 
 <BaseLayout
@@ -30,7 +35,11 @@ const { title, description, image, imageAlt, noindex, nofollow } = Astro.props;
   noindex={noindex}
   nofollow={nofollow}
 >
-  <Header slot="header" showCta cta={{ label: "Let's talk", href: siteConfig.bookingUrl }} />
+  <Header
+    slot="header"
+    showCta
+    cta={{ label: t('hero.cta.primary'), href: siteConfig.bookingUrl }}
+  />
 
   <div class="min-h-screen pt-16">
     <slot />
@@ -40,8 +49,8 @@ const { title, description, image, imageAlt, noindex, nofollow } = Astro.props;
     slot="footer"
     layout="stacked"
     legalLinks={[
-      { label: 'Impressum', href: '/en/impressum' },
-      { label: 'Datenschutz', href: '/en/datenschutz' },
+      { label: 'Impressum', href: localePath('/impressum', locale) },
+      { label: 'Datenschutz', href: localePath('/datenschutz', locale) },
     ]}
   />
 </BaseLayout>

@@ -20,7 +20,7 @@ This document defines the persistent operating model for the **Portfolio** proje
 | **II. Design**       | Map architecture, propose tasks/skills & Test Strategy. | Agent       | Test-First            | Architecture Rules, Velocity Patterns           |
 | **III. Review**      | Gate A: Pair Review Session.                            | Human       | Pair Programming      | —                                               |
 | **IV. Build**        | Implementation using specialised skills.                | Agent       | —                     | Astro Technical Standards, Velocity Conventions |
-| **V. Validation**    | Run automated tests + integration checks.               | Agent       | TDD                   | Quality Bar / Test Matrix                       |
+| **V. Validation**    | Run automated tests + integration checks + SEO audit.   | Agent       | TDD                   | Quality Bar / Test Matrix, SEO Audit (§3)       |
 | **VI. Final Review** | Gate B: Pair Review + CI/CD Gate.                       | Human       | CI / Pair Programming | Commit Guidelines                               |
 
 ## 3. Operational Protocols
@@ -82,6 +82,27 @@ isolated `git worktree` to prevent working-directory cross-contamination.
   - Enabled via `git config core.hooksPath .githooks` (runs automatically after clone).
 - **When to promote to CI:** Once the site has stable pages and content, E2E tests should be added to the GitHub Actions workflow.
 
+### SEO Audit (Pre-Review)
+
+The SEO audit is a **Phase V (Validation) activity that runs BEFORE Gate B** —
+never after the Architect's final review. It uses the `seo` skill checklist
+against the built output (`dist/`), extended by the locale expectations the
+site now carries.
+
+- **Scope (minimum):** `<title>` ≤ 60 chars and unique per page; meta
+  description ≤ 160 chars per locale; self-referencing canonical with
+  trailing slash; `<html lang>` correct per locale; hreflang pairs (+
+  `x-default`) for every page that exists in more than one locale — and
+  ONLY for those pages; sitemap covers every locale and contains no redirect
+  stubs; robots.txt reachable; every `og:image` referenced in HTML resolves to
+  a generated file; `og:locale` matches the locale; JSON-LD is
+  locale-correct; internal link integrity (no broken targets).
+- **Gate rule:** every finding must be fixed or explicitly waived by the
+  Architect before Gate B starts. Record the audit outcome in the PR's
+  `## Validation` section.
+- **When to re-run:** after any locale, routing, head-tag, or content-schema
+  change — not only when a site is first built.
+
 ### Specialised Agent Skills
 
 When executing Phase IV (Build), the Orchestrator delegates tasks to specialised agent skills:
@@ -109,6 +130,7 @@ Architect reviews the proposed design and the Test-First plan. **No coding begin
 
 Architect reviews the implementation, validates UX, and verifies that CI/CD passed successfully.
 
+- Confirm the pre-Gate-B SEO audit (§3 _SEO Audit (Pre-Review)_) is recorded in the PR with no unfixed findings
 - Run `pnpm validate` (lint + check + build)
 - Review visual output in browser
 - Verify tests pass
@@ -124,6 +146,7 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 - [ ] Components follow Velocity patterns
 - [ ] Astro Technical Standards (Iron Laws) respected
 - [ ] Accessibility requirements met (WCAG 2.2 AA)
+- [ ] SEO audit passed (§3 _SEO Audit (Pre-Review)_) — findings fixed or waived before Gate B
 
 ### Layout Protection Rule
 
@@ -172,9 +195,10 @@ Content arrives from `factory/` via the **Manual Export Gate**. When content lan
 
 ## 6. Quality Matrix
 
-| Work Type           | Validation Command                | Gate | CI/CD                         |
-| ------------------- | --------------------------------- | ---- | ----------------------------- |
-| Component/page code | `pnpm validate`                   | B    | Yes                           |
-| Unit tests          | `pnpm test`                       | B    | Yes                           |
-| E2E tests           | `pnpm test:e2e`                   | B    | No (local pre-push hook only) |
-| Content receipt     | Verify frontmatter + visual check | B    | —                             |
+| Work Type           | Validation Command                 | Gate | CI/CD                         |
+| ------------------- | ---------------------------------- | ---- | ----------------------------- |
+| Component/page code | `pnpm validate`                    | B    | Yes                           |
+| Unit tests          | `pnpm test`                        | B    | Yes                           |
+| E2E tests           | `pnpm test:e2e`                    | B    | No (local pre-push hook only) |
+| SEO / i18n / head   | `seo` skill audit (§3, pre-Gate-B) | B    | —                             |
+| Content receipt     | Verify frontmatter + visual check  | B    | —                             |

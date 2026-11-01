@@ -15,6 +15,9 @@ export const en = {
     home: 'Home',
     about: 'About',
     blog: 'Blog',
+    // Label for the philosophy route; never rendered in the navbar today
+    // (the route's nav.show is false), but kept valid for the NavConfig type.
+    philosophy: 'The way we build',
     services: 'What I do',
     contact: 'Contact',
     features: 'Features',
@@ -444,7 +447,7 @@ export const en = {
     editorialStandards: {
       title: 'Editorial standards',
       statement:
-        'AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own.',
+        "AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own. The German edition is machine-translated and machine-naturalised under the author's direction, then reviewed by the author. It has not yet passed a native-speaker review. Client testimonials stay in the language in which they were written, quoted verbatim exactly as their authors approved them.",
     },
     cta: {
       title: 'Have a problem worth solving?',
@@ -495,6 +498,7 @@ export const en = {
     allPosts: 'All posts',
     featured: 'Featured',
     noPosts: 'No posts found',
+    englishOnlyNotice: 'Note: the blog is currently published in English only.',
     relatedPosts: 'Related Posts',
     backToBlog: 'Back to Blog',
     subscribe: 'Subscribe',
@@ -715,3 +719,18 @@ export const en = {
 } as const;
 
 export type TranslationKeys = typeof en;
+
+/**
+ * Recursive union of every dotted translation key path (e.g. 'nav.about').
+ */
+type NestedKeyOf<T> = T extends object
+  ? {
+      [K in keyof T]: K extends string
+        ? T[K] extends object
+          ? `${K}.${NestedKeyOf<T[K]>}`
+          : K
+        : never;
+    }[keyof T]
+  : never;
+
+export type TranslationKey = NestedKeyOf<TranslationKeys>;
