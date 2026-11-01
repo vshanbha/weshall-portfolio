@@ -28,6 +28,7 @@ This document defines the persistent operating model for the **Portfolio** proje
 ### Branching Policy
 
 - **Dev branch:** `dev` is the integration branch for all features. All work merges to `dev` first.
+- **Pull requests are required only for `dev` → `main` releases.** Feature branches merge into `dev` directly and locally after Gate B passes — no PR (owner decision, November 2026).
 - **Main branch protection:** `main` is production-ready only. `dev` → `main` via PR only — never push or merge directly. See [`DEPLOYMENT.md`](DEPLOYMENT.md) for deployment details.
 - **Feature branches:** All work for a specific issue must be isolated to a dedicated feature branch: `issue-<number>-<description>` or `feature/<description>`.
 - **Workflow:**
@@ -35,7 +36,7 @@ This document defines the persistent operating model for the **Portfolio** proje
   2. Implement and test locally
   3. Run `pnpm validate` + `pnpm test:e2e`
   4. Manual verification in browser (Gate B)
-  5. Merge to `dev` after approval
+  5. Merge to `dev` locally after approval (no PR — see Branching Policy)
   6. `dev` → `main` only after full QA pass
 - Agents must commit in atomic, logical chunks to facilitate granular review.
 
