@@ -83,7 +83,7 @@ test.describe('Root-Level Redirects', () => {
   }
 });
 
-test.describe('English-only locale', () => {
+test.describe('Locale pages', () => {
   test('/en/about returns 200', async ({ page }) => {
     const response = await page.goto('/en/about');
     expect(response?.status()).toBe(200);
@@ -105,6 +105,158 @@ test.describe('English-only locale', () => {
     const response = await page.goto('/en/services');
     expect(response?.status()).toBe(200);
   });
+});
+
+test.describe('German locale', () => {
+  test('/de/ returns 200 with German content and lang=de', async ({ page }) => {
+    const response = await page.goto('/de/');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'de');
+    // Brand voice stays English in every locale: tagline and hero lead-in.
+    await expect(page.locator('body')).toContainText('Build what matters.');
+    await expect(page.locator('body')).toContainText('From circuit board to boardroom.');
+    await expect(page.locator('body')).not.toContainText('Bauen Sie, was zählt');
+    // Client quotes stay in the language they were provided in (all current
+    // ones are English): the verbatim quote renders, and a German rendering
+    // must not return.
+    await expect(page.locator('body')).toContainText(
+      'Vishal helped us make the right build vs. buy decision'
+    );
+    await expect(page.locator('body')).not.toContainText('Vishal hat uns geholfen');
+    // Owner decision: the German homepage leads with the BauAI testimonial.
+    await expect(page.locator('main [data-vtab-trigger]').first()).toContainText('BauAI');
+    await expect(page.getByRole('link', { name: 'Gespräch vereinbaren' }).first()).toBeVisible();
+  });
+
+  test('/de/about returns 200 with German content', async ({ page }) => {
+    const response = await page.goto('/de/about');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('body')).toContainText('Wie ich baue');
+  });
+
+  test('/de/services returns 200 with German nav label', async ({ page }) => {
+    const response = await page.goto('/de/services');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('body')).toContainText('Was ich mache');
+  });
+
+  test('/de/contact returns 200', async ({ page }) => {
+    const response = await page.goto('/de/contact');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('body')).toContainText('Kontakt');
+  });
+
+  test('German nav, footer and hero link Blog to /de/blog', async ({ page }) => {
+    await page.goto('/de/about');
+    await expect(page.locator('header a[href="/de/blog"]').first()).toBeVisible();
+    await expect(page.locator('footer a[href="/de/blog"]').first()).toBeVisible();
+    await page.goto('/de/');
+    await expect(page.getByRole('link', { name: 'Neueste Artikel lesen' }).first()).toHaveAttribute(
+      'href',
+      '/de/blog'
+    );
+  });
+
+  test('/de/blog serves German chrome with a notice listing the English posts', async ({
+    page,
+  }) => {
+    const response = await page.goto('/de/blog');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'de');
+    await expect(page.locator('body')).toContainText(
+      'Hinweis: Der Blog ist bis auf Weiteres nur auf Englisch.'
+    );
+    // Every listed post links to its English detail page …
+    expect(await page.locator('a[href^="/en/blog/"]').count()).toBeGreaterThan(0);
+    // … and never to a German post URL that does not exist.
+    await expect(page.locator('a[href^="/de/blog/"]')).toHaveCount(0);
+  });
+
+  test('/de/blog hreflang advertises the en and de index pair', async ({ page }) => {
+    await page.goto('/de/blog');
+    await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute(
+      'href',
+      /\/en\/blog\//
+    );
+    await expect(page.locator('link[rel="alternate"][hreflang="de"]')).toHaveAttribute(
+      'href',
+      /\/de\/blog\//
+    );
+  });
+
+  test('/de/philosophy keeps the imperative one-liners in English', async ({ page }) => {
+    const response = await page.goto('/de/philosophy');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('body')).toContainText('We shall ask WHY before we ask HOW.');
+    await expect(page.locator('body')).toContainText('Meister Oogway');
+    await expect(page.locator('body')).not.toContainText('Wir fragen WARUM');
+  });
+
+  test('/de/philosophy serves all ten commandments', async ({ page }) => {
+    const response = await page.goto('/de/philosophy');
+    expect(response?.status()).toBe(200);
+    // The German variant must carry all ten "We shall …" headings, in source
+    // order — it previously shipped nine while claiming "Zehn Regeln".
+    const headings = await page.locator('h2').allInnerTexts();
+    const commandments = headings.filter((text) => text.startsWith('We shall'));
+    expect(commandments).toHaveLength(10);
+  });
+
+  test('/de/about keeps commandment one-liners in English with German detail', async ({ page }) => {
+    await page.goto('/de/about');
+    await expect(page.locator('body')).toContainText('We shall build for outcomes, not features.');
+    await expect(page.locator('body')).toContainText('rückwärts vom Ergebnis');
+    await expect(page.locator('body')).not.toContainText('Wir bauen für Ergebnisse');
+  });
+
+  test('language switcher on an English blog post sends German to /de/blog', async ({ page }) => {
+    await page.goto('/en/blog/how-this-site-was-built');
+    await expect(page.locator('#language-switcher-menu a[href="/de/blog"]')).toHaveCount(1);
+    await expect(page.locator('#language-switcher-menu a[href="/de"]')).toHaveCount(0);
+  });
+});
+
+test.describe('Mobile header (slim viewports)', () => {
+  const cases = [
+    { locale: 'en', cta: "Let's talk" },
+    { locale: 'de', cta: 'Gespräch vereinbaren' },
+  ];
+
+  for (const { locale, cta } of cases) {
+    test(`${locale}: menu button stays visible and uncovered at 320px`, async ({ page }) => {
+      await page.setViewportSize({ width: 320, height: 568 });
+      await page.goto(`/${locale}/`);
+
+      // The menu button must fit inside the viewport — the header row must not
+      // push it past the right edge (the wider German labels used to).
+      const menuButton = page.getByRole('button', { name: 'Toggle menu' });
+      await expect(menuButton).toBeVisible();
+      const box = await menuButton.boundingBox();
+      if (!box) throw new Error('menu button has no bounding box');
+      expect(box.x).toBeGreaterThanOrEqual(0);
+      expect(box.x + box.width).toBeLessThanOrEqual(320);
+
+      // Nothing else may sit on top of the menu button.
+      const uncovered = await menuButton.evaluate((btn) => {
+        const r = btn.getBoundingClientRect();
+        const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+        return btn.contains(hit);
+      });
+      expect(uncovered).toBe(true);
+
+      // The header row must not cause horizontal page overflow.
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+      );
+      expect(overflow).toBeLessThanOrEqual(0);
+
+      // The CTA leaves the top bar on slim viewports but stays reachable in the menu.
+      await menuButton.click();
+      await expect(
+        page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link', { name: cta })
+      ).toBeVisible();
+    });
+  }
 });
 
 test.describe('Home Page Features', () => {
@@ -387,6 +539,8 @@ test.describe('Blog Article SEO', () => {
     await expect(hreflang).toHaveAttribute('href', /\/en\/blog\/how-this-site-was-built\//);
     const href = await hreflang.getAttribute('href');
     expect(href).not.toBe('http://localhost:4321/en/blog');
+    // Detail pages advertise the default locale only — no German alternate.
+    await expect(page.locator('link[rel="alternate"][hreflang="de"]')).toHaveCount(0);
   });
 
   test('exactly one canonical tag per page', async ({ page }) => {

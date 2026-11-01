@@ -20,7 +20,7 @@ This document defines the persistent operating model for the **Portfolio** proje
 | **II. Design**       | Map architecture, propose tasks/skills & Test Strategy. | Agent       | Test-First            | Architecture Rules, Velocity Patterns           |
 | **III. Review**      | Gate A: Pair Review Session.                            | Human       | Pair Programming      | —                                               |
 | **IV. Build**        | Implementation using specialised skills.                | Agent       | —                     | Astro Technical Standards, Velocity Conventions |
-| **V. Validation**    | Run automated tests + integration checks.               | Agent       | TDD                   | Quality Bar / Test Matrix                       |
+| **V. Validation**    | Run automated tests + integration checks + SEO audit.   | Agent       | TDD                   | Quality Bar / Test Matrix, SEO Audit (§3)       |
 | **VI. Final Review** | Gate B: Pair Review + CI/CD Gate.                       | Human       | CI / Pair Programming | Commit Guidelines                               |
 
 ## 3. Operational Protocols
@@ -28,6 +28,7 @@ This document defines the persistent operating model for the **Portfolio** proje
 ### Branching Policy
 
 - **Dev branch:** `dev` is the integration branch for all features. All work merges to `dev` first.
+- **Pull requests are required only for `dev` → `main` releases.** Feature branches merge into `dev` locally after Gate B passes — no pull request (owner decision, November 2026). Merge with `git merge --no-ff`: `.githooks/post-merge` then runs the Gate B agent review over `ORIG_HEAD..HEAD` — it reviews only when the merge creates a merge commit (detected via `MERGE_HEAD`; git never runs `pre-commit`/`post-commit` for merges). The hook itself fires after fast-forward `git pull` and squash merges too, but the guard exits those immediately. The review is advisory; the blocking gates remain the `pre-push` E2E hook and GitHub CI on the push to `dev`.
 - **Main branch protection:** `main` is production-ready only. `dev` → `main` via PR only — never push or merge directly. See [`DEPLOYMENT.md`](DEPLOYMENT.md) for deployment details.
 - **Feature branches:** All work for a specific issue must be isolated to a dedicated feature branch: `issue-<number>-<description>` or `feature/<description>`.
 - **Workflow:**
@@ -35,8 +36,13 @@ This document defines the persistent operating model for the **Portfolio** proje
   2. Implement and test locally
   3. Run `pnpm validate` + `pnpm test:e2e`
   4. Manual verification in browser (Gate B)
-  5. Merge to `dev` after approval
-  6. `dev` → `main` only after full QA pass
+  5. Merge to `dev` locally after approval with `git merge --no-ff`
+     (no PR — see Branching Policy); the post-merge hook reviews the payload.
+     A `VERDICT: REQUEST-CHANGES` from that review must be fixed on `dev`
+     (or the merge reverted) **before** the push in step 6
+  6. Push `dev` to origin and wait for CI green before closing the issue
+     (for feature work, GitHub CI runs on the push — not pre-merge)
+  7. `dev` → `main` only after full QA pass
 - Agents must commit in atomic, logical chunks to facilitate granular review.
 
 ### Git Hooks
@@ -75,12 +81,34 @@ isolated `git worktree` to prevent working-directory cross-contamination.
 
 ### E2E Testing Policy
 
-- **Local only (for now):** E2E tests (`pnpm test:e2e`) run locally via a git pre-push hook before any push to `dev` or feature branches.
+- **Local only (for now):** E2E tests (`pnpm test:e2e`) run locally via a git pre-push hook before any push to `dev` or `main` (feature-branch pushes run no hooks).
 - **CI/CD exclusion:** E2E tests are NOT part of the CI/CD pipeline until the site is stable. Only unit tests (`pnpm test`) run in CI.
 - **Pre-push hook:** The hook at `.githooks/pre-push` runs `pnpm test:e2e` automatically. Skip with `git push --no-verify` if needed.
   - Hook is version-controlled — update `.githooks/pre-push` to modify behaviour.
   - Enabled via `git config core.hooksPath .githooks` (runs automatically after clone).
 - **When to promote to CI:** Once the site has stable pages and content, E2E tests should be added to the GitHub Actions workflow.
+
+### SEO Audit (Pre-Review)
+
+The SEO audit is a **Phase V (Validation) activity that runs BEFORE Gate B** —
+never after the Architect's final review. It uses the `seo` skill checklist
+against the built output (`dist/`), extended by the locale expectations the
+site now carries.
+
+- **Scope (minimum):** `<title>` ≤ 60 chars and unique per page; meta
+  description ≤ 160 chars per locale; self-referencing canonical with
+  trailing slash; `<html lang>` correct per locale; hreflang pairs (+
+  `x-default`) for every page that exists in more than one locale — and
+  ONLY for those pages; sitemap covers every locale and contains no redirect
+  stubs; robots.txt reachable; every `og:image` referenced in HTML resolves to
+  a generated file; `og:locale` matches the locale; JSON-LD is
+  locale-correct; internal link integrity (no broken targets).
+- **Gate rule:** every finding must be fixed or explicitly waived by the
+  Architect before Gate B starts. Record the audit outcome in the merge
+  commit message or the linked issue (feature work has no PR); release PRs
+  record it in `## Validation`.
+- **When to re-run:** after any locale, routing, head-tag, or content-schema
+  change — not only when a site is first built.
 
 ### Specialised Agent Skills
 
@@ -107,8 +135,9 @@ Architect reviews the proposed design and the Test-First plan. **No coding begin
 
 #### Gate B (Post-Validation)
 
-Architect reviews the implementation, validates UX, and verifies that CI/CD passed successfully.
+Architect approves the implementation **before** the merge (step 5); Gate B closes only once CI is green on `dev` after the merge push (step 6). For releases: CI on the `dev` → `main` PR.
 
+- Confirm the pre-Gate-B SEO audit (§3 _SEO Audit (Pre-Review)_) is recorded (merge commit message / issue, or the release PR) with no unfixed findings
 - Run `pnpm validate` (lint + check + build)
 - Review visual output in browser
 - Verify tests pass
@@ -124,6 +153,7 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 - [ ] Components follow Velocity patterns
 - [ ] Astro Technical Standards (Iron Laws) respected
 - [ ] Accessibility requirements met (WCAG 2.2 AA)
+- [ ] SEO audit passed (§3 _SEO Audit (Pre-Review)_) — findings fixed or waived before Gate B
 
 ### Layout Protection Rule
 
@@ -172,9 +202,10 @@ Content arrives from `factory/` via the **Manual Export Gate**. When content lan
 
 ## 6. Quality Matrix
 
-| Work Type           | Validation Command                | Gate | CI/CD                         |
-| ------------------- | --------------------------------- | ---- | ----------------------------- |
-| Component/page code | `pnpm validate`                   | B    | Yes                           |
-| Unit tests          | `pnpm test`                       | B    | Yes                           |
-| E2E tests           | `pnpm test:e2e`                   | B    | No (local pre-push hook only) |
-| Content receipt     | Verify frontmatter + visual check | B    | —                             |
+| Work Type           | Validation Command                 | Gate | CI/CD                         |
+| ------------------- | ---------------------------------- | ---- | ----------------------------- |
+| Component/page code | `pnpm validate`                    | B    | Yes                           |
+| Unit tests          | `pnpm test`                        | B    | Yes                           |
+| E2E tests           | `pnpm test:e2e`                    | B    | No (local pre-push hook only) |
+| SEO / i18n / head   | `seo` skill audit (§3, pre-Gate-B) | B    | —                             |
+| Content receipt     | Verify frontmatter + visual check  | B    | —                             |

@@ -1,13 +1,17 @@
 ---
-import { getStaticPathsHelper } from '@/i18n/paths-helper';
 import PageLayout from '@/layouts/PageLayout.astro';
 import BlogCard from '@/components/blog/BlogCard.astro';
-import { getCollection } from 'astro:content';
-import { useTranslations } from '@/i18n/index';
-import { defaultLocale } from '@/i18n/config';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { getLocalizedPath, useTranslations } from '@/i18n/index';
+import { defaultLocale, locales, isValidLocale } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
+import type { GetStaticPaths } from 'astro';
 
-export const getStaticPaths = getStaticPathsHelper;
+// The index is generated for every active locale, so /de/blog serves German
+// chrome. Posts stay English-only until locale-tagged content exists (see
+// englishOnlyDetailRoutes in src/i18n/routes.ts).
+export const getStaticPaths: GetStaticPaths = async () =>
+  locales.map((lang) => ({ params: { lang } }));
 
 const { lang } = Astro.params;
 const locale = lang as Locale;
@@ -17,16 +21,54 @@ const allEntries = await getCollection('articles', ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
 
+// Posts written for this page's locale.
 const localeEntries = allEntries.filter((e) => {
   const articleLocale = e.data.locale || defaultLocale;
   return articleLocale === locale;
 });
 
-const sorted = localeEntries.sort((a, b) => {
+// A non-default locale also lists the default-locale posts — they are the only
+// published ones — each linking to its English detail page.
+const englishEntries =
+  locale === defaultLocale
+    ? []
+    : allEntries.filter((e) => (e.data.locale || defaultLocale) === defaultLocale);
+
+const byPriority = (a: CollectionEntry<'articles'>, b: CollectionEntry<'articles'>) => {
   if (a.data.featured && !b.data.featured) return -1;
   if (!a.data.featured && b.data.featured) return 1;
   return b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf();
-});
+};
+
+// Detail URLs follow each entry's content locale, narrowed to the locales the
+// site builds (the content schema also allows dormant ones).
+const detailLocale = (entry: CollectionEntry<'articles'>): Locale => {
+  const entryLocale = entry.data.locale ?? defaultLocale;
+  return isValidLocale(entryLocale) ? entryLocale : defaultLocale;
+};
+
+type BlogGroup = {
+  entries: CollectionEntry<'articles'>[];
+  /** Honest note rendered above the English group on a localised index. */
+  notice?: string;
+  hrefFor: (entry: CollectionEntry<'articles'>) => string;
+};
+
+const groups: BlogGroup[] = [];
+if (localeEntries.length > 0) {
+  groups.push({
+    entries: localeEntries.sort(byPriority),
+    hrefFor: (entry) => `/${locale}/blog/${entry.id}/`,
+  });
+}
+if (englishEntries.length > 0) {
+  groups.push({
+    entries: englishEntries.sort(byPriority),
+    // Notice text comes from the translation bundles (blog.englishOnlyNotice).
+    notice: locale === defaultLocale ? undefined : t('blog.englishOnlyNotice'),
+    hrefFor: (entry) => `${getLocalizedPath('blog', detailLocale(entry))}/${entry.id}/`,
+  });
+}
 ---
 
 <PageLayout title={t('blog.title')} description={t('blog.description')}>
@@ -39,22 +81,37 @@ const sorted = localeEntries.sort((a, b) => {
         {t('blog.description')}
       </p>
 
-      {sorted.length > 0 ? (
-        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {sorted.map((entry) => (
-            <BlogCard
-              title={entry.data.title}
-              description={entry.data.description}
-              href={`/${locale}/blog/${entry.id}/`}
-              publishedAt={entry.data.publishedAt}
-              tags={entry.data.tags}
-              author={entry.data.author}
-              image={entry.data.image}
-              featured={entry.data.featured}
-              wordCount={entry.body?.split(/\s+/).filter(Boolean).length ?? 0}
-            />
-          ))}
-        </div>
+      {groups.length > 0 ? (
+        groups.map((group) => (
+          <>
+            {group.notice && (
+              <p class="mt-12 rounded-lg border border-border bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
+                {group.notice}
+              </p>
+            )}
+            <div
+              class={
+                group.notice
+                  ? 'mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3'
+                  : 'mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3'
+              }
+            >
+              {group.entries.map((entry) => (
+                <BlogCard
+                  title={entry.data.title}
+                  description={entry.data.description}
+                  href={group.hrefFor(entry)}
+                  publishedAt={entry.data.publishedAt}
+                  tags={entry.data.tags}
+                  author={entry.data.author}
+                  image={entry.data.image}
+                  featured={entry.data.featured}
+                  wordCount={entry.body?.split(/\s+/).filter(Boolean).length ?? 0}
+                />
+              ))}
+            </div>
+          </>
+        ))
       ) : (
         <p class="mt-16 text-center text-muted-foreground">{t('blog.noPosts')}</p>
       )}

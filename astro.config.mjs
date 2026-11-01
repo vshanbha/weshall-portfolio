@@ -33,7 +33,7 @@ export default defineConfig({
   // i18n configuration
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'de'],
     routing: {
       prefixDefaultLocale: true,
     },
@@ -55,12 +55,13 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const pathname = new URL(page).pathname;
-        return pathname.startsWith('/en/');
+        return pathname.startsWith('/en/') || pathname.startsWith('/de/');
       },
       i18n: {
         defaultLocale: 'en',
         locales: {
           en: 'en',
+          de: 'de',
         },
       },
     }),

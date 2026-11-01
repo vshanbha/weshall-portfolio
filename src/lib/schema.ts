@@ -13,14 +13,19 @@ import siteConfig from '@/config/site.config';
 
 /**
  * Create WebSite schema for homepage
+ *
+ * @param description - Page-language description for the schema. Defaults to
+ *   the English site config so existing callers are unchanged.
  */
-export function createWebsiteSchema(): WithContext<WebSite> {
+export function createWebsiteSchema(
+  description: string = siteConfig.description
+): WithContext<WebSite> {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: siteConfig.name,
     url: siteConfig.url,
-    description: siteConfig.description,
+    description,
   };
 }
 

@@ -73,7 +73,11 @@ const fullUrl = new URL(Astro.url.pathname, siteConfig.url).toString();
     tags,
   }}
 >
-  <Header slot="header" showCta cta={{ label: "Let's talk", href: siteConfig.bookingUrl }} />
+  <Header
+    slot="header"
+    showCta
+    cta={{ label: t('hero.cta.primary'), href: siteConfig.bookingUrl }}
+  />
 
   <!-- Article Hero -->
   <ArticleHero
