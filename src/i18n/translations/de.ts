@@ -202,9 +202,9 @@ export const de = {
     },
     testimonials: {
       title: 'Was Kunden sagen',
-      // Client quotes are approved by their authors in English only, so they are
-      // kept verbatim in every locale; translating would misattribute unapproved
-      // words to the quoted person.
+      // Client quotes stay in the language they were provided in, verbatim in
+      // every locale: translating would misattribute words their authors never
+      // approved (all current quotes were provided in English).
       items: [
         {
           id: 'bluemoney',
@@ -439,7 +439,7 @@ export const de = {
     editorialStandards: {
       title: 'Redaktionelle Standards',
       statement:
-        'KI kann bei Recherche, Entwürfen, Plausibilitätsprüfungen und Reviews unterstützen. Jeder Artikel durchläuft ein menschliches Review-Gate. Text, Meinungen und Beobachtungen bleiben die eigenen des Autors. Die deutsche Ausgabe wurde maschinell übersetzt und unter der Leitung des Autors sprachlich überarbeitet, dann vom Autor geprüft. Eine Prüfung durch einen Muttersprachler steht noch aus. Kundenstimmen bleiben in jeder Sprachfassung auf Englisch — wörtlich so, wie ihre Autoren sie freigegeben haben.',
+        'KI kann bei Recherche, Entwürfen, Plausibilitätsprüfungen und Reviews unterstützen. Jeder Artikel durchläuft ein menschliches Review-Gate. Text, Meinungen und Beobachtungen bleiben die eigenen des Autors. Die deutsche Ausgabe wurde maschinell übersetzt und unter der Leitung des Autors sprachlich überarbeitet, dann vom Autor geprüft. Eine Prüfung durch einen Muttersprachler steht noch aus. Kundenstimmen bleiben in der Sprache, in der sie verfasst wurden — wörtlich so, wie ihre Autoren sie freigegeben haben. Alle bisherigen Testimonials wurden auf Englisch verfasst.',
     },
     cta: {
       title: 'Ein Problem, das es wert ist, gelöst zu werden?',

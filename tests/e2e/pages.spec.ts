@@ -117,8 +117,9 @@ test.describe('German locale', () => {
     await expect(page.locator('body')).toContainText('Build what matters.');
     await expect(page.locator('body')).toContainText('From circuit board to boardroom.');
     await expect(page.locator('body')).not.toContainText('Bauen Sie, was zählt');
-    // Client quotes are approved in English only: the verbatim quote renders,
-    // and the German rendering must not return.
+    // Client quotes stay in the language they were provided in (all current
+    // ones are English): the verbatim quote renders, and a German rendering
+    // must not return.
     await expect(page.locator('body')).toContainText(
       'Vishal helped us make the right build vs. buy decision'
     );
