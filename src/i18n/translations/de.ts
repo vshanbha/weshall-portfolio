@@ -299,7 +299,7 @@ export const de = {
         'Ich komme aus Mumbai, Indien. Heute lebe ich in Hürth, bei Köln, Deutschland.',
         'Ich habe 2002 als Elektroingenieur an der Mumbai University abgeschlossen. Ich bin quasi in die Softwarewelt gerutscht: Nach den Anschlägen vom 11. September 2001 trockneten die Jobs aus und eine Finanzkrise stand bevor. Die Softwareindustrie war die Erste, die eingestellt hat. Seitdem baue ich Produktivsysteme.',
         'Ich bin 2023 nach Deutschland gekommen, weil meine Frau versetzt wurde. Ich reise gerne, und die Startup-, Software- und Climate-Tech-Szene hier? Das gefällt mir. Ich bleibe.',
-        'Ich spreche fünf Sprachen, in unterschiedlichem Verfallszustand: Englisch muttersprachlich, Hindi und Marathi muttersprachlich, Konkani auf Gesprächsniveau, Deutsch auf B1 – Tendenz steigend.',
+        'Ich spreche fünf Sprachen, in unterschiedlichem Verfallszustand: Englisch muttersprachlich, Hindi und Marathi muttersprachlich, Konkani auf Gesprächsniveau, Deutsch auf B1-Niveau – Tendenz steigend.',
       ],
     },
     whatido: {
@@ -439,7 +439,7 @@ export const de = {
     editorialStandards: {
       title: 'Redaktionelle Standards',
       statement:
-        'KI kann bei Recherche, Entwürfen, Plausibilitätsprüfungen und Reviews unterstützen. Jeder Artikel durchläuft ein menschliches Review-Gate. Text, Meinungen und Beobachtungen bleiben die eigenen des Autors.',
+        'KI kann bei Recherche, Entwürfen, Plausibilitätsprüfungen und Reviews unterstützen. Jeder Artikel durchläuft ein menschliches Review-Gate. Text, Meinungen und Beobachtungen bleiben die eigenen des Autors. Die deutsche Ausgabe wurde maschinell übersetzt und unter der Leitung des Autors sprachlich überarbeitet, dann vom Autor geprüft. Eine Prüfung durch einen Muttersprachler steht noch aus. Kundenstimmen bleiben in jeder Sprachfassung auf Englisch — wörtlich so, wie ihre Autoren sie freigegeben haben.',
     },
     cta: {
       title: 'Ein Problem, das es wert ist, gelöst zu werden?',

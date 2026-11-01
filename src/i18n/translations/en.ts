@@ -447,7 +447,7 @@ export const en = {
     editorialStandards: {
       title: 'Editorial standards',
       statement:
-        'AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own.',
+        "AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own. The German edition is machine-translated and machine-naturalised under the author's direction, then reviewed by the author. It has not yet passed a native-speaker review. Client testimonials stay in English in every locale — verbatim as their authors approved them.",
     },
     cta: {
       title: 'Have a problem worth solving?',
