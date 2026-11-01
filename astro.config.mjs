@@ -45,9 +45,6 @@ export default defineConfig({
     '/contact': '/en/contact',
     '/services': '/en/services',
     '/blog': '/en/blog',
-    // Blog is English-only for now (see englishOnlyRoutes in src/i18n/routes.ts).
-    // Remove this redirect once the first German post is published.
-    '/de/blog': '/en/blog',
     '/impressum': '/en/impressum',
     '/datenschutz': '/en/datenschutz',
   },

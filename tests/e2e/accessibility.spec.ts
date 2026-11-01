@@ -33,9 +33,11 @@ const PAGES = [
   '/en/datenschutz',
   '/en/impressum',
   '/en/services',
-  // German locale — published alongside English; blog stays English-only.
+  // German locale — published alongside English; blog posts stay English-only
+  // (the index itself is localised and listed below).
   '/de',
   '/de/about',
+  '/de/blog',
   '/de/contact',
   '/de/philosophy',
   '/de/services',

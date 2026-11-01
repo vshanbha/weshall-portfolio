@@ -69,7 +69,6 @@ test.describe('Root-Level Redirects', () => {
     { from: '/contact', to: '/en/contact' },
     { from: '/services', to: '/en/services' },
     { from: '/blog', to: '/en/blog' },
-    { from: '/de/blog', to: '/en/blog' },
     { from: '/impressum', to: '/en/impressum' },
     { from: '/datenschutz', to: '/en/datenschutz' },
   ];
@@ -145,12 +144,42 @@ test.describe('German locale', () => {
     await expect(page.locator('body')).toContainText('Kontakt');
   });
 
-  test('blog stays English: German nav links Blog to /en/blog', async ({ page }) => {
+  test('German nav, footer and hero link Blog to /de/blog', async ({ page }) => {
     await page.goto('/de/about');
-    await expect(page.locator('a[href="/en/blog"]').first()).toBeVisible();
-    await expect(page.locator('a[href="/de/blog"]')).toHaveCount(0);
+    await expect(page.locator('header a[href="/de/blog"]').first()).toBeVisible();
+    await expect(page.locator('footer a[href="/de/blog"]').first()).toBeVisible();
     await page.goto('/de/');
-    await expect(page.locator('a[href="/de/blog"]')).toHaveCount(0);
+    await expect(page.getByRole('link', { name: 'Neueste Artikel lesen' }).first()).toHaveAttribute(
+      'href',
+      '/de/blog'
+    );
+  });
+
+  test('/de/blog serves German chrome with a notice listing the English posts', async ({
+    page,
+  }) => {
+    const response = await page.goto('/de/blog');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'de');
+    await expect(page.locator('body')).toContainText(
+      'Hinweis: Der Blog ist bis auf Weiteres nur auf Englisch.'
+    );
+    // Every listed post links to its English detail page …
+    expect(await page.locator('a[href^="/en/blog/"]').count()).toBeGreaterThan(0);
+    // … and never to a German post URL that does not exist.
+    await expect(page.locator('a[href^="/de/blog/"]')).toHaveCount(0);
+  });
+
+  test('/de/blog hreflang advertises the en and de index pair', async ({ page }) => {
+    await page.goto('/de/blog');
+    await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute(
+      'href',
+      /\/en\/blog\//
+    );
+    await expect(page.locator('link[rel="alternate"][hreflang="de"]')).toHaveAttribute(
+      'href',
+      /\/de\/blog\//
+    );
   });
 
   test('/de/philosophy keeps the imperative one-liners in English', async ({ page }) => {
@@ -178,9 +207,10 @@ test.describe('German locale', () => {
     await expect(page.locator('body')).not.toContainText('Wir bauen für Ergebnisse');
   });
 
-  test('language switcher on an English blog post sends German to /de/', async ({ page }) => {
+  test('language switcher on an English blog post sends German to /de/blog', async ({ page }) => {
     await page.goto('/en/blog/how-this-site-was-built');
-    await expect(page.locator('#language-switcher-menu a[href="/de"]')).toHaveCount(1);
+    await expect(page.locator('#language-switcher-menu a[href="/de/blog"]')).toHaveCount(1);
+    await expect(page.locator('#language-switcher-menu a[href="/de"]')).toHaveCount(0);
   });
 });
 
@@ -507,6 +537,8 @@ test.describe('Blog Article SEO', () => {
     await expect(hreflang).toHaveAttribute('href', /\/en\/blog\/how-this-site-was-built\//);
     const href = await hreflang.getAttribute('href');
     expect(href).not.toBe('http://localhost:4321/en/blog');
+    // Detail pages advertise the default locale only — no German alternate.
+    await expect(page.locator('link[rel="alternate"][hreflang="de"]')).toHaveCount(0);
   });
 
   test('exactly one canonical tag per page', async ({ page }) => {

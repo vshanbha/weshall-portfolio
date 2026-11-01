@@ -107,20 +107,22 @@ export const routes = {
 export type RouteId = keyof typeof routes;
 
 /**
- * Routes that exist only in the default (English) locale.
+ * Routes whose DETAIL pages (sub-pages under the route, e.g. blog posts)
+ * exist in the default (English) locale only.
  *
- * The blog is English-only for now; German posts will be added later as
- * translations (content entries with `locale: 'de'`). Until then:
- * - getLocalizedPath() falls back to the English URL, so navigation on the
- *   German site never links to a missing /de/blog page.
- * - switchLocale() sends language-switch attempts to the target locale's
- *   home page instead of a page that does not exist.
- * - getRouteTranslations() emits hreflang alternates for English only.
+ * The INDEX of these routes is localised in every active locale: German
+ * navigation and the German hero link to /de/blog, which serves German chrome
+ * and lists the English posts. The posts themselves stay at /en/blog/<slug>/;
+ * detail pages pick up translated content automatically via the content locale
+ * (see [lang]/blog/[...slug].astro).
  *
- * Remove 'blog' from this list once /de/blog should be the German nav target
- * (i.e. the first German post has been published).
+ * Consequences:
+ * - getRouteTranslations() emits an en+de hreflang pair for the index, but
+ *   default-locale-only alternates for detail pages.
+ * - switchLocale() sends a detail-page switch to the target locale's
+ *   localised index (e.g. /en/blog/my-post → /de/blog).
  */
-export const englishOnlyRoutes: readonly RouteId[] = ['blog'];
+export const englishOnlyDetailRoutes: readonly RouteId[] = ['blog'];
 
 /**
  * Get all available route IDs
