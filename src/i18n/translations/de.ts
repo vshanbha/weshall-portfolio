@@ -10,7 +10,7 @@ export const de = {
     // role: the anglicism "Lead" reads as a sales prospect in German, and
     // "engineering" alone evokes manufacturing, so the term pins it to software.
     description:
-      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, die Zeit und Geld kosten: selbst bauen oder kaufen, wen einstellen und ob das hält, was KI gebaut hat.',
+      'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, die Zeit und Geld kosten: bauen oder kaufen, wen einstellen, ob das KI-Gebaute hält.',
   },
   nav: {
     home: 'Startseite',
@@ -264,7 +264,7 @@ export const de = {
     meta: {
       title: 'Was ich mache',
       description:
-        'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, die Zeit und Geld kosten: selbst bauen oder kaufen, wen einstellen und ob das hält, was KI gebaut hat.',
+        'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, die Zeit und Geld kosten: bauen oder kaufen, wen einstellen, ob das KI-Gebaute hält.',
     },
     hero: {
       title: 'Manche Entscheidungen kosten Sie, wenn Sie sie falsch treffen.',

@@ -65,7 +65,11 @@ const consentUi = {
 const consentAlwaysOnLabel = tc('consent.alwaysOn');
 
 // Build JSON-LD schemas
-const schemas: Array<WithContext<WebSite> | WithContext<Organization>> = [createWebsiteSchema()];
+// Pass the page's own language: WebSite.description must be locale-correct
+// (the SEO audit found the English text shipping on /de/* pages).
+const schemas: Array<WithContext<WebSite> | WithContext<Organization>> = [
+  createWebsiteSchema(tc('site.description')),
+];
 if (includeOrgSchema) {
   schemas.push(createOrganizationSchema());
 }
