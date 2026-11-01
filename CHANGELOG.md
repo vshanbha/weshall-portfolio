@@ -21,7 +21,7 @@ and the remaining lint/type cleanup.
 
 ### Bug Fixes
 
-- Generate locale OG images so every referenced `og:image` resolves, shorten German meta descriptions to 160 characters, and localise the WebSite schema ([`0734f5e`](https://github.com/vshanbha/weshall-portfolio/commit/0734f5e))
+- Generate locale OG images so every referenced `og:image` resolves, shorten German meta descriptions to within 160 characters, and localise the WebSite schema ([`0734f5e`](https://github.com/vshanbha/weshall-portfolio/commit/0734f5e))
 - Keep the menu usable on slim mobile viewports, where the wider German labels pushed it off-screen ([`c1fca81`](https://github.com/vshanbha/weshall-portfolio/commit/c1fca81))
 - Clear the remaining Velocity lint and type warnings, closing #11 ([`729e5db`](https://github.com/vshanbha/weshall-portfolio/commit/729e5db))
 - Add the missing tenth commandment to the German philosophy variant ([`f32611c`](https://github.com/vshanbha/weshall-portfolio/commit/f32611c))
@@ -30,9 +30,19 @@ and the remaining lint/type cleanup.
 - Use the job-portal term for technical leads in German ([`f4de006`](https://github.com/vshanbha/weshall-portfolio/commit/f4de006))
 - Keep client testimonials verbatim in the language they were provided ([`11beab1`](https://github.com/vshanbha/weshall-portfolio/commit/11beab1))
 - Shorten the German CTA to the native idiom ([`7f6434a`](https://github.com/vshanbha/weshall-portfolio/commit/7f6434a))
-- Use "wandern" instead of the Denglish "trekken" in German copy ([`baf4f82`](https://github.com/vshanbha/weshall-portfolio/commit/baf4f82))
+- Use "wandere" instead of the Denglish "trekken" in German copy ([`baf4f82`](https://github.com/vshanbha/weshall-portfolio/commit/baf4f82))
 - Clear AI-writing tells from the new copy and state the testimonial language policy ([`1823c83`](https://github.com/vshanbha/weshall-portfolio/commit/1823c83), [`4e492fa`](https://github.com/vshanbha/weshall-portfolio/commit/4e492fa))
 - Move the blog-index notice into the translation bundles; lead German testimonials with BauAI ([`77411ea`](https://github.com/vshanbha/weshall-portfolio/commit/77411ea))
+
+### Content
+
+- Unify the primary CTA label to "Let's talk" site-wide ([`8254ed4`](https://github.com/vshanbha/weshall-portfolio/commit/8254ed4))
+- Rewrite the hero bridge and clear credentials from the right-hand card ([`847dd5d`](https://github.com/vshanbha/weshall-portfolio/commit/847dd5d))
+- Rewrite the contact page around the free 15-minute call ([`8f50e59`](https://github.com/vshanbha/weshall-portfolio/commit/8f50e59))
+- Add the services ladder CTA and situation headline ([`2af5e72`](https://github.com/vshanbha/weshall-portfolio/commit/2af5e72))
+- Replace the footer title salad with the approved wedge ([`8bed18f`](https://github.com/vshanbha/weshall-portfolio/commit/8bed18f))
+- Outcome-first case-study headlines on the home page ([`2d9786b`](https://github.com/vshanbha/weshall-portfolio/commit/2d9786b))
+- Land the author-approved positioning review pass ([`8fc0e52`](https://github.com/vshanbha/weshall-portfolio/commit/8fc0e52), [`1a742f9`](https://github.com/vshanbha/weshall-portfolio/commit/1a742f9))
 
 ### Tests
 
@@ -50,6 +60,7 @@ and the remaining lint/type cleanup.
 
 ### Commits
 
+`cede736` - chore: bump version to 0.4.0
 `73c707a` - docs: align all workflow docs with the PR-free dev policy
 `7b1a4fd` - docs: require PRs only for dev → main releases
 `77411ea` - fix(i18n): move the blog notice into the translation bundles; lead German testimonials with BauAI
