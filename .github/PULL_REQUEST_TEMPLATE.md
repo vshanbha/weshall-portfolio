@@ -26,9 +26,9 @@ Review of the change itself — by a human (paired session or line-by-line read)
 
 - [ ] Acceptance criteria verified one by one against the issue or plan
 - [ ] Every hunk read: nothing unrelated, nothing speculative
-- [ ] New or changed images carry `imageProvenance` and a visible disclosure _(content PRs)_
-- [ ] Published articles record `reviewed: true` / `human_reviewed: true` _(content PRs)_
-- [ ] Claims checked against their sources _(content PRs)_
+- [ ] New or changed images carry `imageProvenance` and a visible disclosure _(content changes in this release)_
+- [ ] Published articles record `reviewed: true` / `human_reviewed: true` _(content changes in this release)_
+- [ ] Claims checked against their sources _(content changes in this release)_
 - [ ] New translation strings added to all four locale files, placeholders marked `// TODO: translate` _(i18n changes)_
 
 Reviewed by: <!-- human handle or agent name that performed the review -->

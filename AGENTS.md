@@ -259,23 +259,23 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 
 ### Commands
 
-| Task             | Command                                                                         |
-| ---------------- | ------------------------------------------------------------------------------- |
-| Check status     | `git status`                                                                    |
-| View changes     | `git diff`                                                                      |
-| View history     | `git log --oneline -10`                                                         |
-| Stage files      | `git add <file>`                                                                |
-| Commit           | `git commit -m "message"`                                                       |
-| Push             | `git push origin <branch>` (never push directly to `main`)                      |
-| Pull             | `git pull origin main`                                                          |
-| Create PR        | `gh pr create --base main --head <branch> --title "title" --body "description"` |
-| List PRs         | `gh pr list`                                                                    |
-| View PR          | `gh pr view <number>`                                                           |
-| View issue       | `gh issue view <number>`                                                        |
-| Comment on issue | `gh issue comment <number> --body "comment text"`                               |
-| Run tests        | `pnpm test`                                                                     |
-| Run E2E tests    | `pnpm test:e2e`                                                                 |
-| Full validation  | `pnpm validate`                                                                 |
+| Task              | Command                                                                    |
+| ----------------- | -------------------------------------------------------------------------- |
+| Check status      | `git status`                                                               |
+| View changes      | `git diff`                                                                 |
+| View history      | `git log --oneline -10`                                                    |
+| Stage files       | `git add <file>`                                                           |
+| Commit            | `git commit -m "message"`                                                  |
+| Push              | `git push origin <branch>` (never push directly to `main`)                 |
+| Pull              | `git pull origin main`                                                     |
+| Create release PR | `gh pr create --base main --head dev --title "title" --body "description"` |
+| List PRs          | `gh pr list`                                                               |
+| View PR           | `gh pr view <number>`                                                      |
+| View issue        | `gh issue view <number>`                                                   |
+| Comment on issue  | `gh issue comment <number> --body "comment text"`                          |
+| Run tests         | `pnpm test`                                                                |
+| Run E2E tests     | `pnpm test:e2e`                                                            |
+| Full validation   | `pnpm validate`                                                            |
 
 ### Best Practices
 
@@ -283,7 +283,7 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 - **Always run `git status` and `git diff`** before committing to understand what changed.
 - **Never commit secrets, API keys, or credentials.** Use `.env` (gitignored).
 - **Use descriptive commit messages** that explain what and why, not just what.
-- **Branch for features:** `git checkout -b feature/描述` for non-trivial changes.
+- **Branch for features:** `git checkout -b feature/<description>` for non-trivial changes.
 - **Run `pnpm validate`** (lint + check + build) before committing web changes.
 - **Run `pnpm test` and `pnpm test:e2e` sequentially** — running them concurrently contends for the dev server and produces spurious e2e failures (observed 5 flakes; back-to-back runs are stable).
 - **Pre-push hook:** E2E tests run automatically via `.githooks/pre-push`. If the hook isn't active on a fresh clone, run `git config core.hooksPath .githooks` once.
@@ -311,21 +311,29 @@ It reads `REVIEW_AGENT_TOOL` from the environment first, then falls back to
 
 **When it runs by itself:** `.githooks/post-commit` fires it after local commits
 on `dev` or `main`, reviewing `HEAD~1..HEAD` — **one commit only**. Feature-branch
-commits are skipped, and a GitHub merge that your `git pull` fast-forwards
-creates no local commit, so a PR is not reviewed automatically: `git fetch`,
-then give it the range in the prompt yourself — `git diff --stat
-origin/<base>...HEAD` for the changed-file list (`dev` is the base for feature
-PRs, `main` for release PRs).
+commits are skipped. Local feature MERGES are covered by `.githooks/post-merge`
+instead: it runs the agent over `ORIG_HEAD..HEAD` (advisory, after the fact) and
+only when the merge creates a merge commit (detected via `MERGE_HEAD`; `git
+merge --no-ff` is the convention). post-merge also fires after fast-forward
+pulls and squash merges — the guard exits those immediately — and git never
+runs `pre-commit`/`post-commit` for merges. A GitHub merge pulled into your
+local branch (the release PR) typically fast-forwards with no local merge
+commit, and a GitHub squash merge leaves nothing at all, so neither hook
+reviews it: `git fetch`, then give the range in a manual
+`./scripts/review-agent` prompt yourself — `git diff --stat
+origin/<base>...HEAD` for the changed-file list (`main` is the base for release
+PRs).
 
-Note that the hook's built-in prompt does **not** include the rules below: it
-pastes the diff inline, capped at 12 000 bytes (11.7 KB — already above the
-~10 KB guideline below, and about 13 KB once the prompt's ~1 KB of boilerplate
-and truncation notice are added — and the reason an automatic run never dies of
-a bloated diff), and it never asks for `VERDICT:`. Automatic runs therefore fail
-_differently_ from a bad manual one: no machine-checkable verdict line, a guessed
-wrong tool name that stalls, or a session killed by a question that exits with
-nothing. For a review you intend to rely on — anything gating a merge — run it
-manually with a prompt built as below.
+Note that the hook's built-in prompt is fixed: it pastes the diff inline,
+capped at 12 000 bytes (11.7 KB — already above the ~10 KB guideline below, and
+about 13 KB once the prompt's ~1 KB of boilerplate and truncation notice are
+added — and the reason an automatic run never dies of a bloated diff), and it
+does not include the tool-discovery or hardening rules below. It does demand a
+`VERDICT:` line, forbids clarifying questions, and treats the diff as
+untrusted text — so runs are machine-checkable and cannot stall on an
+unanswered question, but a guessed wrong tool name can still kill one. For a
+review you intend to gate a merge on, run it manually with a prompt built as
+below.
 
 **Writing the prompt — these rules were learned by getting them wrong:**
 
@@ -372,10 +380,12 @@ manually with a prompt built as below.
   deliberate config change, not something to do from inside a review.
   TODO: file an issue for the dedicated `review` agent.
 
-Record the outcome in the PR's `## Review (Gate B)` section — tick items the
-reviewer passed, leave failed items unticked with the reason, and put the agent's
-attribution on `Reviewed by:`. The checklist lives in
-`.github/PULL_REQUEST_TEMPLATE.md`.
+Record the outcome of the review. For release PRs (`dev` → `main`) use the
+PR's `## Review (Gate B)` section — tick items the reviewer passed, leave
+failed items unticked with the reason, and put the agent's attribution on
+`Reviewed by:`; the checklist lives in `.github/PULL_REQUEST_TEMPLATE.md`.
+Feature work has no PR: record the Gate B outcome in the merge commit message
+or the linked issue instead.
 
 ## When Working on This Project
 

@@ -5,24 +5,36 @@ fire only on `dev` and `main` — feature branches commit freely.
 
 ## Active Hooks
 
-| Hook          | Branch        | What it does                                                                          |
-| ------------- | ------------- | ------------------------------------------------------------------------------------- |
-| `pre-commit`  | `dev`, `main` | Runs `pnpm validate` (lint + typecheck + build). Blocks commit on failure.            |
-| `post-commit` | `dev`, `main` | Fires an agentic code review via `scripts/review-agent`. Prints feedback to terminal. |
-| `pre-push`    | `dev`, `main` | Runs `pnpm test:e2e`. Blocks push on failure.                                         |
+| Hook          | Branch        | What it does                                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pre-commit`  | `dev`, `main` | Runs `pnpm validate` (lint + typecheck + build). Blocks commit on failure.                                                                                                                                                                                                                                     |
+| `post-commit` | `dev`, `main` | Fires an agentic code review via `scripts/review-agent`. Prints feedback to terminal.                                                                                                                                                                                                                          |
+| `pre-push`    | `dev`, `main` | Runs `pnpm test:e2e`. Blocks push on failure.                                                                                                                                                                                                                                                                  |
+| `post-merge`  | `dev`, `main` | Gate B agent review of `ORIG_HEAD..HEAD` when a merge creates a merge commit (detected via `MERGE_HEAD`; `--no-ff` is the convention). Advisory, after the fact. post-merge also runs after fast-forward (`git pull`) and squash results — the `MERGE_HEAD` guard exits those immediately, so they stay quiet. |
 
 ## Workflow
 
 ```
-feature/* → commit (no gates) → push (no gates) → PR to dev
-dev       → commit (validate gate + agent review) → push (E2E tests) → merge to main
+feature/* → commit (no gates) → merge locally to dev (post-merge review) → push (E2E + CI)
+dev       → commit (validate gate + agent review) → push (E2E tests) → release PR to main
 main      → commit (validate gate + agent review) → push (E2E tests) → deploy
 ```
+
+Feature work has no PR (see [`AgentWorkflow.md`](AgentWorkflow.md) → _Branching
+Policy_), so merge it with `git merge --no-ff`: git does **not** run
+`pre-commit`/`post-commit` for merge commits — `.githooks/post-merge` covers
+those instead, reviewing `ORIG_HEAD..HEAD` (advisory, after the fact).
+`post-merge` itself fires after every successful merge, including fast-forward
+`git pull` and squash results; the `MERGE_HEAD` guard makes those exits
+immediately, so they stay quiet. The blocking gates stay on push: `pre-push`
+(E2E) and GitHub CI.
 
 ## Escape Hatch
 
 `git commit --no-verify` or `git push --no-verify` bypasses the gate. Use only
-when there is a genuine reason — document it.
+when there is a genuine reason — document it. `--no-verify` suppresses only the
+**pre**-hooks (`pre-commit`, `pre-push`): the `post-commit` and `post-merge`
+reviews still run, so do not expect silence from them.
 
 ## Activation
 

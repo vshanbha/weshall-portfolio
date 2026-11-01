@@ -17,7 +17,7 @@ This skill governs pull request creation and release management for the **portfo
 | Run full validation   | `pnpm validate`                                    |
 | Run tests             | `pnpm test`                                        |
 | Run E2E tests         | `pnpm test:e2e`                                    |
-| Create PR             | `gh pr create`                                     |
+| Create release PR     | `gh pr create --base main --head dev`              |
 | List open PRs         | `gh pr list`                                       |
 | View PR               | `gh pr view <number>`                              |
 | Merge PR              | `gh pr merge <number> --merge`                     |
@@ -41,6 +41,12 @@ All work must follow the branching policy from `docs/AgentWorkflow.md`:
 - Use lowercase kebab-case for descriptions.
 
 ## PR Workflow
+
+Since November 2026, pull requests are used **only** for `dev` → `main`
+releases (see [`docs/AgentWorkflow.md`](../../docs/AgentWorkflow.md) → _Branching
+Policy_). Feature work merges into `dev` locally after Gate B — no PR. The
+checklist below therefore applies to the release PR, created with
+`--base main --head dev`.
 
 ### Pre-PR Checklist
 
@@ -113,9 +119,9 @@ Closes #<number>
 
 - [ ] Acceptance criteria verified one by one against the issue or plan
 - [ ] Every hunk read: nothing unrelated, nothing speculative
-- [ ] New or changed images carry `imageProvenance` and a visible disclosure _(content PRs)_
-- [ ] Published articles record `reviewed: true` / `human_reviewed: true` _(content PRs)_
-- [ ] Claims checked against their sources _(content PRs)_
+- [ ] New or changed images carry `imageProvenance` and a visible disclosure _(content changes in this release)_
+- [ ] Published articles record `reviewed: true` / `human_reviewed: true` _(content changes in this release)_
+- [ ] Claims checked against their sources _(content changes in this release)_
 - [ ] New translation strings added to all four locale files, placeholders marked `// TODO: translate` _(i18n changes)_
 
 Reviewed by: <human handle or agent name that performed the review>
@@ -168,7 +174,7 @@ The version bump and changelog are prepared **on `dev`**, then promoted to
 on `dev`, so `.githooks/post-commit` fires the Gate B review agent and the
 findings are fixed before anything reaches `main`.
 
-1. **Ensure `dev` is stable** — all feature PRs merged, `pnpm validate` passes on `dev`
+1. **Ensure `dev` is stable** — all approved features merged into `dev`, `pnpm validate` passes on `dev`
 2. **Write the changelog on `dev`** (see _Generating the Changelog_ below).
    Backfill any tagged releases that have no entry while you are in the file.
    ```bash
@@ -525,7 +531,7 @@ This means:
 
 - **Every push to `dev` or `main`** — runs the `ci.yml` checks
 - **Checks** — live in `ci.yml` only; deployment waits for them to pass
-- **PRs to `dev`** — do not trigger deployment
+- **Pushes to `dev`** — run `ci.yml` only; nothing deploys until `main`
 - **PRs to `main`** — do not deploy until merged; the merge is the trigger
 - **Merging any PR into `main`** — **does** deploy. `deploy.yml` keys off
   `workflow_run` for `Validate` on `branches: [main]` with
@@ -568,11 +574,11 @@ cannot pass.
 
 ## When to Use This Skill
 
-| Scenario                        | Action                           |
-| ------------------------------- | -------------------------------- |
-| Finishing a feature             | Create PR following PR workflow  |
-| Fixing a bug                    | Create PR with `fix:` prefix     |
-| Publishing content from factory | Create PR with `content:` prefix |
-| Preparing a release             | Follow release process           |
-| Bumping version                 | Follow semantic versioning       |
-| Writing changelog               | Follow changelog format          |
+| Scenario                        | Action                                  |
+| ------------------------------- | --------------------------------------- |
+| Finishing a feature             | Merge to `dev` locally after Gate B     |
+| Fixing a bug                    | Merge to `dev` with a `fix:` commit     |
+| Publishing content from factory | Merge to `dev` with a `content:` commit |
+| Preparing a release             | Follow release process                  |
+| Bumping version                 | Follow semantic versioning              |
+| Writing changelog               | Follow changelog format                 |
