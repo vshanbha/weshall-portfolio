@@ -1,5 +1,111 @@
 # Changelog
 
+## [v0.4.0] - 2026-11-01
+
+Minor: the German edition ships. Every section except blog detail pages is
+available under `/de/` with naturalised German copy, an honest provenance
+disclosure in the editorial standards, and a German-chrome blog index that
+lists the English posts until translated ones exist. Also lands the PR-free
+`dev` workflow with its `post-merge` review hook, the pre-Gate-B SEO audit,
+and the remaining lint/type cleanup.
+
+### Features
+
+- Publish the German locale across every section, blog detail pages excluded ([`8a4c245`](https://github.com/vshanbha/weshall-portfolio/commit/8a4c245))
+- Complete the German translation placeholders ([`a0384f8`](https://github.com/vshanbha/weshall-portfolio/commit/a0384f8))
+- Serve a German-chrome blog index listing the English posts behind an honest notice ([`fc5ac48`](https://github.com/vshanbha/weshall-portfolio/commit/fc5ac48))
+- Keep the philosophy imperative one-liners in English and localise the detail prose per locale ([`13942fd`](https://github.com/vshanbha/weshall-portfolio/commit/13942fd))
+- Disclose the German edition's provenance and the testimonial language policy in the editorial standards ([`690346b`](https://github.com/vshanbha/weshall-portfolio/commit/690346b))
+- Add the philosophy page with the About principles split ([`b7c06f8`](https://github.com/vshanbha/weshall-portfolio/commit/b7c06f8))
+- Point the featured blog flags at the buyer-facing posts ([`058c46e`](https://github.com/vshanbha/weshall-portfolio/commit/058c46e))
+
+### Bug Fixes
+
+- Generate locale OG images so every referenced `og:image` resolves, shorten German meta descriptions to 160 characters, and localise the WebSite schema ([`0734f5e`](https://github.com/vshanbha/weshall-portfolio/commit/0734f5e))
+- Keep the menu usable on slim mobile viewports, where the wider German labels pushed it off-screen ([`c1fca81`](https://github.com/vshanbha/weshall-portfolio/commit/c1fca81))
+- Clear the remaining Velocity lint and type warnings, closing #11 ([`729e5db`](https://github.com/vshanbha/weshall-portfolio/commit/729e5db))
+- Add the missing tenth commandment to the German philosophy variant ([`f32611c`](https://github.com/vshanbha/weshall-portfolio/commit/f32611c))
+- Localise the BlogLayout header CTA ([`0a633ca`](https://github.com/vshanbha/weshall-portfolio/commit/0a633ca))
+- Keep the brand tagline and hero lead-in English in every locale ([`1d71a63`](https://github.com/vshanbha/weshall-portfolio/commit/1d71a63))
+- Use the job-portal term for technical leads in German ([`f4de006`](https://github.com/vshanbha/weshall-portfolio/commit/f4de006))
+- Keep client testimonials verbatim in the language they were provided ([`11beab1`](https://github.com/vshanbha/weshall-portfolio/commit/11beab1))
+- Shorten the German CTA to the native idiom ([`7f6434a`](https://github.com/vshanbha/weshall-portfolio/commit/7f6434a))
+- Use "wandern" instead of the Denglish "trekken" in German copy ([`baf4f82`](https://github.com/vshanbha/weshall-portfolio/commit/baf4f82))
+- Clear AI-writing tells from the new copy and state the testimonial language policy ([`1823c83`](https://github.com/vshanbha/weshall-portfolio/commit/1823c83), [`4e492fa`](https://github.com/vshanbha/weshall-portfolio/commit/4e492fa))
+- Move the blog-index notice into the translation bundles; lead German testimonials with BauAI ([`77411ea`](https://github.com/vshanbha/weshall-portfolio/commit/77411ea))
+
+### Tests
+
+- Cover the German locale and the English-only blog in e2e ([`8b55977`](https://github.com/vshanbha/weshall-portfolio/commit/8b55977))
+- Scan the German pages with the WCAG axe suite ([`47f3093`](https://github.com/vshanbha/weshall-portfolio/commit/47f3093))
+
+### Docs
+
+- Add the SEO audit as a pre-Gate-B validation step ([`bf12794`](https://github.com/vshanbha/weshall-portfolio/commit/bf12794))
+- Require PRs only for `dev` → `main`, add the `post-merge` review hook, and align the workflow documents ([`7b1a4fd`](https://github.com/vshanbha/weshall-portfolio/commit/7b1a4fd), [`73c707a`](https://github.com/vshanbha/weshall-portfolio/commit/73c707a))
+
+### Chores
+
+- Bump `astro` 7.2.8 → 7.3.3 ([`19d6e24`](https://github.com/vshanbha/weshall-portfolio/commit/19d6e24))
+
+### Commits
+
+`73c707a` - docs: align all workflow docs with the PR-free dev policy
+`7b1a4fd` - docs: require PRs only for dev → main releases
+`77411ea` - fix(i18n): move the blog notice into the translation bundles; lead German testimonials with BauAI
+`bf12794` - docs: add the SEO audit as a pre-Gate-B validation step
+`0734f5e` - fix(seo): generate locale OG images, shorten German descriptions, localise WebSite schema
+`fc5ac48` - feat(blog): serve a German-chrome blog index listing the English posts
+`1823c83` - fix(i18n): drop the testimonial clause and clear AI-writing tells from the new copy
+`4e492fa` - fix(i18n): state the testimonial language policy as provided-language, not English-only
+`690346b` - feat(i18n): disclose the German edition's provenance in the editorial standards
+`f32611c` - fix(philosophy): add the missing tenth commandment to the German variant
+`610cedf` - style(i18n): naturalise the German copy in context
+`c1fca81` - fix(header): keep the menu usable on slim mobile viewports
+`baf4f82` - fix(i18n): use 'wandere' instead of the Denglish 'trekken' in German copy
+`7f6434a` - fix(i18n): shorten the German CTA to 'Gespräch vereinbaren'
+`11beab1` - fix(i18n): keep client testimonials verbatim in English
+`f4de006` - fix(i18n): use the job-portal term for technical leads in German
+`1d71a63` - fix(i18n): keep the brand tagline English in every locale
+`0a633ca` - fix(blog): localise the BlogLayout header CTA
+`47f3093` - test(a11y): scan the German pages with the WCAG axe suite
+`13942fd` - feat(philosophy): keep the imperative one-liners English, localise the detail
+`729e5db` - fix(i18n): clear the remaining lint and type warnings (fixes #11)
+`8b55977` - test(i18n): cover the German locale and the English-only blog
+`a0384f8` - feat(i18n): complete the German translations
+`8a4c245` - feat(i18n): publish the German locale with an English-only blog
+`d444335` - review: clear Gate B findings from the agent pass
+`edb01c7` - style: prettier pass over review-pass files
+`c63d580` - tests: align guardrail assertions with the review-pass copy
+`1a742f9` - copy: click-through review rulings — contact N3, closing band, vocabulary
+`8cbb59f` - cta: route every Let's-talk action straight to the booking URL
+`01485a3` - tests: align pinned assertions with the ruled copy
+`9b99f91` - header: localise the primary CTA href
+`8fc0e52` - copy: positioning review pass — brand copy ruled with the author
+`9484377` - i18n: author-confirmed name transliteration — विशाल शानभाग
+`6c866fb` - i18n: last inflected 'hire' word in mr (Gate B round-4 finding)
+`0e25e69` - Fix Gate B round-3 findings in the translation pass
+`a742772` - i18n: de/hi/mr translation pass + one-liner/meta keys
+`313e364` - Referral one-liner on four surfaces; wedge into both meta slots
+`cc51952` - docs: note that test and e2e must run sequentially
+`9e2e47f` - tests: banned-label guardrails also scan page prose
+`5332d54` - Prose links: brand colour via the wrapper class as CSS hook
+`521ec97` - i18n: restore translated profile-button labels (Gate B finding)
+`2238648` - Header: keep the CTA chip on one line below 640px
+`d851532` - tests: update e2e spec to the rebuilt copy, add CTA guardrails
+`e669985` - style: prettier-format philosophy page
+`9d33200` - llms.txt: un-hold and rewrite to current reality
+`058c46e` - Blog: point featured flags at the buyer-facing posts (Option A)
+`b7c06f8` - About: principles split — set A plus link to a new philosophy page
+`8bed18f` - Footer: replace the title salad with the approved wedge (copy-examples §4)
+`2d9786b` - Home: outcome-first case-study headlines (copy-examples §3)
+`2af5e72` - Services: ladder CTA, situation headline, de-banned abstraction
+`8f50e59` - Contact: rewrite around the free 15-minute call (copy-examples §2)
+`8254ed4` - CTAs: unify primary label to "Let's talk" site-wide
+`847dd5d` - Hero: bridge v8 text and credential-free right-hand card
+`19d6e24` - chore(deps): bump astro
+`968a97a` - About: name the author on the page in all four locales
+
 ## [v0.3.5] - 2026-10-07
 
 Patch: one dependency advisory fixed, formatting now enforced, and three
