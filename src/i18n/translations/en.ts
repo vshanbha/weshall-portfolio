@@ -498,6 +498,7 @@ export const en = {
     allPosts: 'All posts',
     featured: 'Featured',
     noPosts: 'No posts found',
+    englishOnlyNotice: 'Note: the blog is currently published in English only.',
     relatedPosts: 'Related Posts',
     backToBlog: 'Back to Blog',
     subscribe: 'Subscribe',

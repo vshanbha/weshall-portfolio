@@ -64,11 +64,8 @@ if (localeEntries.length > 0) {
 if (englishEntries.length > 0) {
   groups.push({
     entries: englishEntries.sort(byPriority),
-    // Owner-approved wording for the German index.
-    notice:
-      locale === defaultLocale
-        ? undefined
-        : 'Hinweis: Der Blog ist bis auf Weiteres nur auf Englisch.',
+    // Notice text comes from the translation bundles (blog.englishOnlyNotice).
+    notice: locale === defaultLocale ? undefined : t('blog.englishOnlyNotice'),
     hrefFor: (entry) => `${getLocalizedPath('blog', detailLocale(entry))}/${entry.id}/`,
   });
 }

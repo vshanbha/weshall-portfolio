@@ -123,6 +123,8 @@ test.describe('German locale', () => {
       'Vishal helped us make the right build vs. buy decision'
     );
     await expect(page.locator('body')).not.toContainText('Vishal hat uns geholfen');
+    // Owner decision: the German homepage leads with the BauAI testimonial.
+    await expect(page.locator('main [data-vtab-trigger]').first()).toContainText('BauAI');
     await expect(page.getByRole('link', { name: 'Gespräch vereinbaren' }).first()).toBeVisible();
   });
 

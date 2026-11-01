@@ -207,6 +207,16 @@ export const de = {
       // approved (all current quotes were provided in English).
       items: [
         {
+          id: 'bauai',
+          company: 'BauAI',
+          author: 'Tushar Adsul',
+          role: 'Managing Director',
+          quote:
+            "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.",
+          linkedin: 'https://www.linkedin.com/company/bauai/',
+          website: 'https://www.bauai.eu/',
+        },
+        {
           id: 'bluemoney',
           company: 'BlueMoney',
           author: 'Arrie',
@@ -245,16 +255,6 @@ export const de = {
             'Through a genuinely collaborative partnership with Vishal and the Inbotiqa team, we\u2019ve been able to improve, refine and maximise YuDo\u2019s potential. It\u2019s supported our growth, enabled our teams and helped us deliver for our clients consistently. That longevity and value speak volumes about the people behind it. We\u2019re genuinely grateful for the care, support and partnership you\u2019ve shown us over such a long time.',
           linkedin: 'https://www.linkedin.com/in/leanne-shrosbree-74261b53/',
           website: 'https://www.sableinternational.com/',
-        },
-        {
-          id: 'bauai',
-          company: 'BauAI',
-          author: 'Tushar Adsul',
-          role: 'Managing Director',
-          quote:
-            "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.",
-          linkedin: 'https://www.linkedin.com/company/bauai/',
-          website: 'https://www.bauai.eu/',
         },
       ],
     },
@@ -484,6 +484,7 @@ export const de = {
     allPosts: 'Alle Beiträge',
     featured: 'Hervorgehoben',
     noPosts: 'Keine Beiträge gefunden',
+    englishOnlyNotice: 'Hinweis: Der Blog ist bis auf Weiteres nur auf Englisch.',
     relatedPosts: 'Verwandte Beiträge',
     backToBlog: 'Zurück zum Blog',
     subscribe: 'Abonnieren',

@@ -472,6 +472,7 @@ export const hi = {
     allPosts: 'सभी पोस्ट',
     featured: 'फ़ीचर्ड',
     noPosts: 'कोई पोस्ट नहीं मिली',
+    englishOnlyNotice: 'Note: the blog is currently published in English only.', // TODO: translate
     relatedPosts: 'संबंधित पोस्ट',
     backToBlog: 'ब्लॉग पर वापस जाएं',
     subscribe: 'सब्सक्राइब करें',
