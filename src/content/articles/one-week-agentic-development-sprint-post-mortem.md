@@ -7,6 +7,14 @@ tags: [AI, agentic-ai, llm, software-engineering, sprint, retrospective, evals, 
 draft: false
 featured: false
 locale: en
+image: ./one-week-agentic-development-sprint-post-mortem-hero.png
+imageAlt: 'AI-generated illustration: a green brute smashing concrete blocks beside a scientist carefully placing a single orange block'
+imageProvenance:
+  kind: ai-generated
+  disclosure: AI-generated illustration
+  system: ChatGPT
+  systemVersion: gpt-image
+  createdOn: 2026-11-05
 reviewed: true
 ai_assisted: true
 human_reviewed: true
