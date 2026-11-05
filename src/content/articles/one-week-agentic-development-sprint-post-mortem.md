@@ -15,6 +15,7 @@ imageProvenance:
   system: ChatGPT
   systemVersion: gpt-image
   createdOn: 2026-11-05
+heroCaption: 'AI-generated illustration used for commentary. Resembles a Marvel character — no copyright intended, no affiliation or endorsement; illustrative use only.'
 reviewed: true
 ai_assisted: true
 human_reviewed: true
@@ -71,6 +72,10 @@ The rules are ordered by when they bite:
 ## Final Word
 
 So what did the week actually teach me? Don't "Smash" just because you now have the power of The Hulk. Every day, our job as Software Engineers is about being Banner and operating The Hulk with precision. It's a bit like asking the Hulk to do a surgical change instead of smash.
+
+---
+
+_Illustrative-use note: the opening image depicts a green brute reminiscent of Marvel's Hulk. It is an AI-generated illustration used to visualise this article's own Hulk-versus-Banner metaphor. No copyright is intended or claimed, there is no affiliation with or endorsement by Marvel, and the image is used for non-commercial illustrative purposes only._
 
 ---
 
