@@ -1,6 +1,6 @@
 ---
 title: 'One Week Agentic Development Sprint: Post Mortem'
-description: "A senior AI-engineering screen test: build an end-to-end product slice in seven days. The engineering impressed; the intelligence wasn't validated. Ten rules for the next one, ordered by when they bite."
+description: "A seven-day agentic development sprint: build an end-to-end product slice. The engineering impressed; the intelligence wasn't validated. Ten rules for the next one, ordered by when they bite."
 publishedAt: 2026-11-05
 author: Vishal Shanbhag
 tags: [AI, agentic-ai, llm, software-engineering, sprint, retrospective, evals, testing, process]
