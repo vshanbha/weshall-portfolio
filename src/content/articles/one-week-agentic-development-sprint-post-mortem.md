@@ -76,7 +76,3 @@ So what did the week actually teach me? Don't "Smash" just because you now have 
 ---
 
 _Illustrative-use note: the opening image depicts a green brute reminiscent of Marvel's Hulk. It is an AI-generated illustration used to visualise this article's own Hulk-versus-Banner metaphor. No copyright is intended or claimed, there is no affiliation with or endorsement by Marvel, and the image is used for non-commercial illustrative purposes only._
-
----
-
-_If any of this is familiar — the sprint that shipped and the intelligence that didn't — [let's talk](https://weshall.build/en/contact)._
