@@ -1,12 +1,35 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { execSync } from 'node:child_process';
 
+/** Newest mtime (ms) anywhere under a directory tree. */
+function newestMtime(dir: string): number {
+  let newest = 0;
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const path = resolve(dir, entry.name);
+    newest = Math.max(newest, entry.isDirectory() ? newestMtime(path) : statSync(path).mtimeMs);
+  }
+  return newest;
+}
+
 describe('ArticleHero rendering', () => {
   beforeAll(() => {
-    // Build the site once before running tests
-    execSync('pnpm build', { cwd: resolve('.'), stdio: 'pipe' });
+    // Rebuild only when dist is missing or older than src. The validate
+    // chain builds immediately before running tests, so the unconditional
+    // nested build it used to do was redundant — and in CI's cold cache it
+    // exceeded vitest's hook timeout (issue #20 follow-up). A standalone
+    // `pnpm test` after source edits still gets a fresh build.
+    const distMarker = resolve('dist/en/blog/run-further-than-a-marathon/index.html');
+    let fresh = false;
+    try {
+      fresh = statSync(distMarker).mtimeMs >= newestMtime(resolve('src'));
+    } catch {
+      fresh = false;
+    }
+    if (!fresh) {
+      execSync('pnpm build', { cwd: resolve('.'), stdio: 'pipe' });
+    }
   });
 
   describe('hero caption', () => {
