@@ -1,6 +1,8 @@
 /**
  * Hindi translations
  */
+import type { SiteStrings } from './en';
+
 export const hi = {
   site: {
     name: 'वी शॉल बिल्ड', // We Shall Build — transliterated, needs native-speaker review
@@ -12,6 +14,7 @@ export const hi = {
     home: 'होम',
     about: 'हमारे बारे में',
     blog: 'ब्लॉग',
+    philosophy: 'The way we build', // TODO: translate
     services: 'What I do', // TODO: translate
     contact: 'संपर्क',
     features: 'विशेषताएँ',
@@ -685,6 +688,6 @@ export const hi = {
     privacyPolicyLabel: 'गोपनीयता नीति',
     alwaysOn: 'हमेशा चालू',
   },
-} as const;
+} as const satisfies SiteStrings;
 
 export type TranslationKeys = typeof hi;

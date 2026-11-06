@@ -1,6 +1,8 @@
 /**
  * Marathi translations
  */
+import type { SiteStrings } from './en';
+
 export const mr = {
   site: {
     name: 'वी शॉल बिल्ड', // We Shall Build — transliterated, needs native-speaker review
@@ -12,6 +14,7 @@ export const mr = {
     home: 'मुख्यपृष्ठ',
     about: 'आमच्याबद्दल',
     blog: 'ब्लॉग',
+    philosophy: 'The way we build', // TODO: translate
     services: 'What I do', // TODO: translate
     contact: 'संपर्क',
     features: 'वैशिष्ट्ये',
@@ -690,6 +693,6 @@ export const mr = {
     privacyPolicyLabel: 'गोपनीयता धोरण',
     alwaysOn: 'नेहमी चालू',
   },
-} as const;
+} as const satisfies SiteStrings;
 
 export type TranslationKeys = typeof mr;

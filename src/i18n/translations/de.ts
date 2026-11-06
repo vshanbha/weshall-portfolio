@@ -1,6 +1,8 @@
 /**
  * German translations
  */
+import type { SiteStrings } from './en';
+
 export const de = {
   site: {
     name: 'We Shall Build',
@@ -702,6 +704,6 @@ export const de = {
     privacyPolicyLabel: 'Datenschutzerklärung',
     alwaysOn: 'Immer aktiv',
   },
-} as const;
+} as const satisfies SiteStrings;
 
 export type TranslationKeys = typeof de;
