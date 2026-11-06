@@ -1,8 +1,11 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
+import { locales } from './i18n/config';
 
-const localeEnum = z.enum(['en', 'de', 'hi', 'mr']);
+// Content frontmatter accepts exactly the enabled locales — derived from the
+// single switch in src/i18n/config.ts, never a second copy of the list.
+const localeEnum = z.enum(locales);
 
 /**
  * Image provenance — source of truth for AI transparency (EU AI Act Art. 50).
