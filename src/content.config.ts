@@ -1,7 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
-import { locales } from './i18n/config';
+import { defaultLocale, locales } from './i18n/config';
 
 // Content frontmatter accepts exactly the enabled locales — derived from the
 // single switch in src/i18n/config.ts, never a second copy of the list.
@@ -48,7 +48,7 @@ const articles = defineCollection({
         tags: z.array(z.string()).default([]),
         draft: z.boolean().default(false),
         featured: z.boolean().default(false),
-        locale: localeEnum.default('en'),
+        locale: localeEnum.default(defaultLocale),
         /**
          * Editorial review gate (see `AGENTS.md` and `factory/AGENTS.md`).
          * These three values are copied from the factory source article, which
@@ -82,7 +82,7 @@ const blog = defineCollection({
       tags: z.array(z.string()).default([]),
       draft: z.boolean().default(false),
       featured: z.boolean().default(false),
-      locale: localeEnum.default('en'),
+      locale: localeEnum.default(defaultLocale),
     }),
 });
 
@@ -93,7 +93,7 @@ const pages = defineCollection({
     title: z.string(),
     description: z.string(),
     updatedAt: z.coerce.date().optional(),
-    locale: localeEnum.default('en'),
+    locale: localeEnum.default(defaultLocale),
   }),
 });
 
@@ -123,7 +123,7 @@ const faqs = defineCollection({
     answer: z.string(),
     category: z.string().optional(),
     order: z.number().default(0),
-    locale: localeEnum.default('en'),
+    locale: localeEnum.default(defaultLocale),
   }),
 });
 
@@ -135,7 +135,7 @@ const philosophy = defineCollection({
       title: z.string().max(120),
       description: z.string().max(250).optional(),
       updatedAt: z.coerce.date().optional(),
-      locale: localeEnum.default('en'),
+      locale: localeEnum.default(defaultLocale),
       reviewed: z.boolean().default(false),
     })
     // Review gate: philosophy pages are permanent brand copy, same gate as articles.
