@@ -27,8 +27,9 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate": "pnpm format:check && pnpm lint && pnpm check && pnpm build && vitest run",
+    "validate": "pnpm format:check && pnpm lint && pnpm check && pnpm build && pnpm test:run",
     "test": "vitest",
+    "test:run": "vitest run",
     "test:build": "vitest run tests/build/",
     "test:e2e": "playwright test"
   },

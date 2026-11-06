@@ -225,17 +225,17 @@ See [Velocity Configuration](https://docs.deployvelocity.com/configuration/) for
 
 ## Development Commands
 
-| Command         | Purpose                                |
-| --------------- | -------------------------------------- |
-| `pnpm dev`      | Start dev server                       |
-| `pnpm build`    | Production build                       |
-| `pnpm preview`  | Preview production build               |
-| `pnpm check`    | Astro type checker                     |
-| `pnpm lint`     | ESLint                                 |
-| `pnpm format`   | Prettier                               |
-| `pnpm validate` | Lint + check + build (full validation) |
-| `pnpm test`     | Vitest unit tests                      |
-| `pnpm test:e2e` | Playwright E2E tests                   |
+| Command         | Purpose                                                           |
+| --------------- | ----------------------------------------------------------------- |
+| `pnpm dev`      | Start dev server                                                  |
+| `pnpm build`    | Production build                                                  |
+| `pnpm preview`  | Preview production build                                          |
+| `pnpm check`    | Astro type checker                                                |
+| `pnpm lint`     | ESLint                                                            |
+| `pnpm format`   | Prettier                                                          |
+| `pnpm validate` | Format + lint + check + build + full test suite (full validation) |
+| `pnpm test`     | Vitest unit tests                                                 |
+| `pnpm test:e2e` | Playwright E2E tests                                              |
 
 ## Deployment
 
@@ -284,7 +284,7 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 - **Never commit secrets, API keys, or credentials.** Use `.env` (gitignored).
 - **Use descriptive commit messages** that explain what and why, not just what.
 - **Branch for features:** `git checkout -b feature/<description>` for non-trivial changes.
-- **Run `pnpm validate`** (lint + check + build) before committing web changes.
+- **Run `pnpm validate`** (format + lint + check + build + tests) before committing web changes.
 - **Run `pnpm test` and `pnpm test:e2e` sequentially** — running them concurrently contends for the dev server and produces spurious e2e failures (observed 5 flakes; back-to-back runs are stable).
 - **Pre-push hook:** E2E tests run automatically via `.githooks/pre-push`. If the hook isn't active on a fresh clone, run `git config core.hooksPath .githooks` once.
 - **Run `git pull` before starting work** to ensure you're on the latest.

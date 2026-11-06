@@ -162,7 +162,7 @@ Before committing any changes:
 3. `pnpm check` — no type errors
 4. `pnpm build` — build succeeds
 5. `pnpm test:build` — build-output tests pass
-6. Or simply: `pnpm validate` (runs all five)
+6. Or simply: `pnpm validate` (runs steps 1–4, then the full `vitest` suite — which includes `tests/build/`)
 
 Formatting is enforced as of the repo-wide format pass. `prettier-plugin-astro`
 is on 1.x; the 0.14 line could not parse five `.astro` files at all
