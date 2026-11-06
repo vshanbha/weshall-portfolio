@@ -154,6 +154,27 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 - [ ] Astro Technical Standards (Iron Laws) respected
 - [ ] Accessibility requirements met (WCAG 2.2 AA)
 - [ ] SEO audit passed (§3 _SEO Audit (Pre-Review)_) — findings fixed or waived before Gate B
+- [ ] Every issue uncovered during the task has a guard at the cheapest automatic layer (see _Regression Guard Rule_ below)
+
+### Regression Guard Rule
+
+**Every issue uncovered during work must leave behind a guard at the cheapest
+layer that runs automatically.** Ask "what will stop this recurring?" — if the
+answer is _human memory_, the issue is not fixed.
+
+| Layer           | Use for                                                                                                     | Runs in                    |
+| --------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------- |
+| **Type system** | Structural/data invariants — preferred: free, compile-time, catches the problem before runtime              | `pnpm validate` / CI       |
+| **Unit test**   | Runtime invariants, or backstops for type guards that can themselves be deleted (e.g. a `satisfies` clause) | `pnpm test` / CI           |
+| **E2E test**    | User-visible behaviour only                                                                                 | pre-push hook (local only) |
+
+- **Reference the issue** in the test name, assertion message, or `// TODO`
+  comment so the provenance stays traceable.
+- **Verify the guard fails against the pre-fix code** before trusting it:
+  reproduce the failure with the fix stashed, then restore.
+- Not every issue needs a test — a typo or content fix needs none — but the
+  answer to "what prevents recurrence?" must live somewhere that runs without
+  human discipline.
 
 ### Layout Protection Rule
 

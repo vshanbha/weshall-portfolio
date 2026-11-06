@@ -3,25 +3,25 @@
  * Defines supported locales and default language settings
  */
 
+/**
+ * Enabled languages — the single switch for what is live (the Velocity
+ * `locales.mjs` pattern). Aspirational locales (hi, mr) keep their
+ * translation files, type-checked via `satisfies SiteStrings`; activation
+ * is adding the code here — see issue #20.
+ */
 export const locales = ['en', 'de'] as const;
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
 
-// TODO: Narrow to Record<Locale, string> when de/hi/mr locales are activated
-export const localeNames: Record<string, string> = {
+export const localeNames: Record<Locale, string> = {
   en: 'English',
   de: 'Deutsch',
-  hi: 'हिन्दी',
-  mr: 'मराठी',
 };
 
-// TODO: Narrow to Record<Locale, string> when de/hi/mr locales are activated
-export const localeFlags: Record<string, string> = {
+export const localeFlags: Record<Locale, string> = {
   en: '🇬🇧',
   de: '🇩🇪',
-  hi: '🇮🇳',
-  mr: '🇮🇳',
 };
 
 /**

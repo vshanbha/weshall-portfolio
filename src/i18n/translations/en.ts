@@ -734,3 +734,12 @@ type NestedKeyOf<T> = T extends object
   : never;
 
 export type TranslationKey = NestedKeyOf<TranslationKeys>;
+
+/**
+ * Structure every locale file must satisfy (Velocity's `SiteStrings`
+ * pattern): all keys from `en`, with string values widened to `string`.
+ * Use with `satisfies` so a missing or extra key is a type error.
+ */
+export type SiteStrings<T = TranslationKeys> = {
+  [K in keyof T]: T[K] extends string ? string : T[K] extends object ? SiteStrings<T[K]> : T[K];
+};
