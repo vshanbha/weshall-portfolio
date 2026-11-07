@@ -28,7 +28,7 @@ These are **mandatory** for all agents working on this project:
 | **No Untyped Content**     | Never use `Astro.glob()`. Always use `getCollection()` from `astro:content`.                                   |
 | **Typed Environment**      | Use `astro:env` for type-safe environment variables. Never use `process.env`.                                  |
 
-See `factory/skills/astro-specialist/references/technical-standards.md` for the full reference.
+Full reference: `factory/skills/astro-specialist/references/technical-standards.md` — the private `factory/` vault at the workspace root, outside this repo.
 
 ## Conventions
 

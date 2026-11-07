@@ -11,16 +11,10 @@ This skill enforces consistent code quality across the Velocity Astro project us
 
 ## Astro Technical Standards (Iron Laws)
 
-These are **mandatory** and override general TypeScript conventions when they conflict:
+The canonical table lives in [`docs/STANDARDS.md`](../../docs/STANDARDS.md) — read it first; it **overrides general TypeScript conventions when they conflict**. Skill-specific readings:
 
-| Law                        | Rule                                                                                                                      |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **Zero-JS by Default**     | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands.            |
-| **Strictly Typed Content** | Content Collections must use Zod schemas via `defineCollection()`. Never skip schema validation.                          |
-| **Intentional Hydration**  | Always specify `client:*` directives explicitly (`client:load`, `client:idle`, `client:visible`). Never rely on defaults. |
-| **Image Optimisation**     | Never use raw `<img>` tags. Always use `<Image />` or `getImage()` from `astro:assets`.                                   |
-| **No Untyped Content**     | Never use `Astro.glob()`. Always use `getCollection()` / `getEntry()` from `astro:content`.                               |
-| **Typed Environment**      | Use `astro:env` for type-safe environment variables. Never use `process.env`.                                             |
+- **Intentional Hydration** — explicit means `client:load`, `client:idle` or `client:visible`; never rely on defaults.
+- **Image Optimisation / No Untyped Content** — `getImage()` and `getEntry()` are equally acceptable to `<Image />` and `getCollection()`.
 
 ### Anti-Patterns (Never Do)
 
