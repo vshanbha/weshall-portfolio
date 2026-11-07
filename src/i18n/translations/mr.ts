@@ -27,6 +27,8 @@ export const mr = {
     error: 'एक त्रुटी झाली',
     notFound: 'पृष्ठ सापडले नाही',
     backHome: 'मुख्यपृष्ठावर परत जा',
+    notFoundDescription: "The page you're looking for doesn't exist.", // TODO: translate
+    notFoundMessage: "Sorry, we couldn't find the page you're looking for.", // TODO: translate
     copied: 'कॉपी झाले!',
     copy: 'कॉपी करा',
   },
@@ -692,6 +694,16 @@ export const mr = {
     settingsHeading: 'गोपनीयता सेटिंग्ज',
     privacyPolicyLabel: 'गोपनीयता धोरण',
     alwaysOn: 'नेहमी चालू',
+  },
+
+  // Redirect shims (root / and locale-less /blog/…) — the visible fallback
+  // text while the JS/meta refresh runs; rendered from this bundle, never
+  // hardcoded in the pages (AGENTS.md → String Integrity).
+  redirect: {
+    home: 'Go to the English homepage', // TODO: translate
+    title: 'Redirecting...', // TODO: translate
+    toArticle: 'Redirecting to', // TODO: translate
+    articleName: 'the article', // TODO: translate
   },
 } as const satisfies SiteStrings;
 

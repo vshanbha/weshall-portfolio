@@ -31,6 +31,8 @@ export const de = {
     error: 'Ein Fehler ist aufgetreten',
     notFound: 'Seite nicht gefunden',
     backHome: 'Zurück zur Startseite',
+    notFoundDescription: 'Die gesuchte Seite existiert nicht.',
+    notFoundMessage: 'Die gesuchte Seite konnte nicht gefunden werden.',
     copied: 'Kopiert!',
     copy: 'Kopieren',
   },
@@ -703,6 +705,16 @@ export const de = {
     settingsHeading: 'Datenschutzeinstellungen',
     privacyPolicyLabel: 'Datenschutzerklärung',
     alwaysOn: 'Immer aktiv',
+  },
+
+  // Redirect shims (root / and locale-less /blog/…) — the visible fallback
+  // text while the JS/meta refresh runs; rendered from this bundle, never
+  // hardcoded in the pages (AGENTS.md → String Integrity).
+  redirect: {
+    home: 'Zur deutschen Startseite',
+    title: 'Weiterleitung...',
+    toArticle: 'Weiterleitung zu',
+    articleName: 'dem Artikel',
   },
 } as const satisfies SiteStrings;
 

@@ -32,6 +32,8 @@ export const en = {
     error: 'An error occurred',
     notFound: 'Page not found',
     backHome: 'Back to home',
+    notFoundDescription: "The page you're looking for doesn't exist.",
+    notFoundMessage: "Sorry, we couldn't find the page you're looking for.",
     copied: 'Copied!',
     copy: 'Copy',
   },
@@ -715,6 +717,16 @@ export const en = {
     settingsHeading: 'Privacy Settings',
     privacyPolicyLabel: 'Privacy Policy',
     alwaysOn: 'Always on',
+  },
+
+  // Redirect shims (root / and locale-less /blog/…) — the visible fallback
+  // text while the JS/meta refresh runs; rendered from this bundle, never
+  // hardcoded in the pages (AGENTS.md → String Integrity).
+  redirect: {
+    home: 'Go to the English homepage',
+    title: 'Redirecting...',
+    toArticle: 'Redirecting to',
+    articleName: 'the article',
   },
 } as const;
 

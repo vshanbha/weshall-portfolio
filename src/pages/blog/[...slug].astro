@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import { defaultLocale } from '@/i18n/config';
+import { t } from '@/i18n/index';
 import { siteBase } from '@/i18n/url';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -22,14 +23,15 @@ const target = `${siteBase()}/${defaultLocale}/blog/${slug}`;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting...</title>
+    <title>{t('redirect.title', defaultLocale)}</title>
     <meta http-equiv="refresh" content={`2;url=${target}`} />
     <meta name="robots" content="noindex" />
     <link rel="canonical" href={target} />
   </head>
   <body>
     <p>
-      Redirecting to <a href={target}>the article</a>…
+      {t('redirect.toArticle', defaultLocale)}{' '}
+      <a href={target}>{t('redirect.articleName', defaultLocale)}</a>…
     </p>
     <script define:vars={{ target }}>
       window.location.href = target;

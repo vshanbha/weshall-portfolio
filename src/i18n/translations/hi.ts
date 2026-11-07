@@ -27,6 +27,8 @@ export const hi = {
     error: 'एक त्रुटि हुई',
     notFound: 'पृष्ठ नहीं मिला',
     backHome: 'होम पर वापस जाएं',
+    notFoundDescription: "The page you're looking for doesn't exist.", // TODO: translate
+    notFoundMessage: "Sorry, we couldn't find the page you're looking for.", // TODO: translate
     copied: 'कॉपी हो गया!',
     copy: 'कॉपी करें',
   },
@@ -687,6 +689,16 @@ export const hi = {
     settingsHeading: 'गोपनीयता सेटिंग्स',
     privacyPolicyLabel: 'गोपनीयता नीति',
     alwaysOn: 'हमेशा चालू',
+  },
+
+  // Redirect shims (root / and locale-less /blog/…) — the visible fallback
+  // text while the JS/meta refresh runs; rendered from this bundle, never
+  // hardcoded in the pages (AGENTS.md → String Integrity).
+  redirect: {
+    home: 'Go to the English homepage', // TODO: translate
+    title: 'Redirecting...', // TODO: translate
+    toArticle: 'Redirecting to', // TODO: translate
+    articleName: 'the article', // TODO: translate
   },
 } as const satisfies SiteStrings;
 

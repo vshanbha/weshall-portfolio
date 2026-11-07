@@ -1,6 +1,7 @@
 ---
 import siteConfig from '@/config/site.config';
-import { defaultLocale, localeNames } from '@/i18n/config';
+import { defaultLocale } from '@/i18n/config';
+import { t } from '@/i18n/index';
 import { siteBase } from '@/i18n/url';
 
 const home = `${siteBase()}/${defaultLocale}/`;
@@ -17,7 +18,7 @@ const home = `${siteBase()}/${defaultLocale}/`;
     <link rel="canonical" href={home} />
   </head>
   <body>
-    <a href={home}>Go to {localeNames[defaultLocale]} homepage</a>
+    <a href={home}>{t('redirect.home', defaultLocale)}</a>
     <script define:vars={{ home }}>
       window.location.href = home;
     </script>
