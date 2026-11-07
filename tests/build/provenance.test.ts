@@ -21,8 +21,10 @@ const ARTICLES_DIR = join(ROOT, 'src', 'content', 'articles');
 const DIST = join(ROOT, 'dist');
 const DIST_ASSETS = join(DIST, '_astro');
 
-// Collection-time guard: every dist read below happens inside tests, but the
-// suite must never run against a stale build (issue #20's Regression Guard Rule).
+// Collection-time guard: most dist reads happen inside tests, but the
+// Editorial standards describe block reads dist/en/about/index.html while
+// this file is being collected. Either way, never run against a stale
+// build (issue #20's Regression Guard Rule).
 ensureFreshDist([join(DIST, 'index.html')]);
 
 const DIGITAL_SOURCE_TYPE =

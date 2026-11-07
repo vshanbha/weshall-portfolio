@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { defaultLocale } from '@/i18n/config';
 import { ensureFreshDist } from '../helpers/dist';
@@ -13,8 +13,12 @@ describe('RSS feed', () => {
   const feedPath = resolve('dist/rss.xml');
   ensureFreshDist([feedPath]);
 
-  const xml = readFileSync(feedPath, 'utf-8');
-  const itemLinks = [...xml.matchAll(/<item>[\s\S]*?<link>([^<]+)<\/link>/g)].map((m) => m[1]);
+  // Missing feed → empty string, so every test fails with a legible
+  // assertion instead of an opaque suite-load error.
+  const xml = existsSync(feedPath) ? readFileSync(feedPath, 'utf-8') : '';
+  const itemLinks = [...xml.matchAll(/<item>(?:(?!<\/item>)[\s\S])*?<link>([^<]+)<\/link>/g)].map(
+    (m) => m[1] as string
+  );
 
   it('exists with at least one item', () => {
     expect(itemLinks.length).toBeGreaterThan(0);

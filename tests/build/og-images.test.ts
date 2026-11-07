@@ -37,11 +37,12 @@ function toPathname(content: string): string {
 describe('Locale OG image references', () => {
   const dist = resolve('dist');
   // Collection-time guard: the directory walk below runs while this file is
-  // being collected, before any beforeAll could run.
+  // being collected, before any beforeAll could run. Locale index pages
+  // derive from the switch; og/de.png is this suite's German-homepage
+  // assertion, not locale state.
   ensureFreshDist([
-    resolve('dist/en/index.html'),
-    resolve('dist/de/index.html'),
-    resolve('dist/og/de.png'),
+    ...locales.map((locale) => join(dist, locale, 'index.html')),
+    join(dist, 'og', 'de.png'),
   ]);
   const pages = locales.flatMap((locale) => collectHtmlFiles(join(dist, locale)));
 
