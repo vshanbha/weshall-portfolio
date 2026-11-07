@@ -3,10 +3,23 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
-// Vite only watches astro.config.mjs itself for config reload: restart
-// `pnpm dev` after changing src/i18n/config.ts, or the derived i18n and
-// sitemap settings below stay stale until the server restarts.
+// Astro restarts the dev server when astro.config.mjs itself changes, but
+// not when its imports change: restart `pnpm dev` after editing
+// src/i18n/config.ts so the derived settings below pick it up.
 import { defaultLocale, locales } from './src/i18n/config';
+import { routes } from './src/i18n/routes';
+import { isLocalePath, siteBase } from './src/i18n/url';
+
+/** Base path without its trailing slash ('' on the root domain). */
+const base = siteBase();
+
+/** Bare-path redirects derived from the route table: '/about' → '/en/about'. */
+const bareLocaleRedirects = Object.fromEntries(
+  Object.values(routes)
+    .map((definition) => definition[defaultLocale])
+    .filter((slug) => slug !== '')
+    .map((slug) => [`/${slug}`, `${base}/${defaultLocale}/${slug}`])
+);
 
 /**
  * remark-gfm renders a markdown task list (`- [ ] item`) as a bare
@@ -45,25 +58,20 @@ export default defineConfig({
 
   redirects: {
     '/sitemap.xml': '/sitemap-index.xml',
-    '/about': `/${defaultLocale}/about`,
-    '/contact': `/${defaultLocale}/contact`,
-    '/services': `/${defaultLocale}/services`,
-    '/blog': `/${defaultLocale}/blog`,
-    '/impressum': `/${defaultLocale}/impressum`,
-    '/datenschutz': `/${defaultLocale}/datenschutz`,
+    // Derived from the route table so a new route or a default-locale change
+    // cannot be forgotten; home is handled by src/pages/index.astro, and the
+    // two legal pages are not route-table entries. Targets carry the base:
+    // Astro writes them verbatim into the meta-refresh.
+    ...bareLocaleRedirects,
+    '/impressum': `${base}/${defaultLocale}/impressum`,
+    '/datenschutz': `${base}/${defaultLocale}/datenschutz`,
   },
 
   integrations: [
     react(),
     mdx(),
     sitemap({
-      filter: (page) => {
-        const pathname = new URL(page).pathname;
-        // @astrojs/sitemap emits absolute URLs including the Astro base, so
-        // the prefix must account for BASE_PATH (empty on the root domain).
-        const base = (process.env.BASE_PATH || '/').replace(/\/$/, '');
-        return locales.some((locale) => pathname.startsWith(`${base}/${locale}/`));
-      },
+      filter: (page) => isLocalePath(new URL(page).pathname),
       i18n: {
         defaultLocale,
         // hreflang language codes — one per enabled locale (identity today)

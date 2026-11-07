@@ -78,6 +78,14 @@ To test the GitHub Pages scenario locally:
 
 Site will be available at http://localhost:4321/weshall-portfolio
 
+3. Run the validation suite against the base build — the sitemap and
+   OG-image guards derive their expectations from `BASE_PATH`, so this is
+   the check that keeps them honest:
+
+   ```bash
+   pnpm validate
+   ```
+
 ### Scenario 3: Custom Domain (weshall.build)
 
 **When Ready:**

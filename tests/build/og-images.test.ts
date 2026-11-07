@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { locales } from '@/i18n/config';
+import { stripSiteBase } from '@/i18n/url';
 
 /**
  * OG image coverage for the localised pages (SEO audit fix): every og:image
@@ -27,7 +28,9 @@ function collectHtmlFiles(dir: string): string[] {
 
 /** Absolute or root-relative og:image content → pathname under dist. */
 function toPathname(content: string): string {
-  return content.startsWith('http') ? new URL(content).pathname : content.split('?')[0];
+  const pathname = content.startsWith('http') ? new URL(content).pathname : content.split('?')[0];
+  // og:image URLs include the Astro base; dist/ output paths do not.
+  return stripSiteBase(pathname);
 }
 
 describe('Locale OG image references', () => {
@@ -50,6 +53,8 @@ describe('Locale OG image references', () => {
     expect(missing).toEqual([]);
   });
 
+  // The German homepage specifically — the 'de' literals below are the point
+  // of this assertion, not locale state to derive.
   it('serves the German homepage a locale-prefixed PNG card over 1KB', () => {
     const html = readFileSync(join(dist, 'de', 'index.html'), 'utf8');
     const [first] = html.matchAll(OG_IMAGE_PATTERN);

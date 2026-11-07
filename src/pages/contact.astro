@@ -1,15 +1,18 @@
 ---
+import { defaultLocale } from '@/i18n/config';
+
+const target = `/${defaultLocale}/contact`;
 ---
 
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="canonical" href="/en/contact" />
+    <link rel="canonical" href={target} />
   </head>
   <body>
-    <script>
-      window.location.href = '/en/contact';
+    <script define:vars={{ target }}>
+      window.location.href = target;
     </script>
   </body>
 </html>

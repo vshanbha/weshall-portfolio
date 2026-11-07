@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
+import { defaultLocale } from '@/i18n/config';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const entries = await getCollection('articles', ({ data }) => {
@@ -12,6 +13,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { slug } = Astro.params;
+const target = `/${defaultLocale}/blog/${slug}`;
 ---
 
 <!doctype html>
@@ -20,11 +22,11 @@ const { slug } = Astro.params;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redirecting...</title>
-    <link rel="canonical" href={`/en/blog/${slug}`} />
+    <link rel="canonical" href={target} />
   </head>
   <body>
-    <script define:vars={{ slug }}>
-      window.location.href = `/en/blog/${slug}`;
+    <script define:vars={{ target }}>
+      window.location.href = target;
     </script>
   </body>
 </html>

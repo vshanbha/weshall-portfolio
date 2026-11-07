@@ -3,6 +3,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { parse } from 'yaml';
+import { defaultLocale } from '../../src/i18n/config';
 
 /**
  * Built-output checks for AI transparency (EU AI Act Article 50).
@@ -21,8 +22,8 @@ const DIST_ASSETS = join(DIST, '_astro');
 
 const DIGITAL_SOURCE_TYPE =
   'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
-const PUBLISHING_PRINCIPLES = 'https://weshall.build/en/about#editorial-standards';
-const FOOTER_LINK_HREF = '/en/about#editorial-standards';
+const PUBLISHING_PRINCIPLES = `https://weshall.build/${defaultLocale}/about#editorial-standards`;
+const FOOTER_LINK_HREF = `/${defaultLocale}/about#editorial-standards`;
 const EDITORIAL_STANDARDS_STATEMENT =
   'AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own.';
 
