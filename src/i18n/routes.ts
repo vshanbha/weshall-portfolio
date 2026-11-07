@@ -6,7 +6,8 @@
  * define the actual URL segments for each language.
  *
  * Example:
- * - Route 'about' → /about (en), /es/sobre-nosotros (es), /fr/a-propos (fr)
+ * - Route 'about' → /en/about (en) and /de/about (de) — slugs currently
+ *   mirror English; they may diverge once German URLs are decided
  *
  * Note: Empty string '' represents the root/home page.
  */

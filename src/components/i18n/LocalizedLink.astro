@@ -8,11 +8,11 @@
  *
  * @example
  * <LocalizedLink to="about">About Us</LocalizedLink>
- * // → /about (en) or /es/sobre-nosotros (es) or /fr/a-propos (fr)
+ * // → /en/about (en) or /de/about (de)
  *
  * @example
- * <LocalizedLink to="blog" locale="fr">Blog en Français</LocalizedLink>
- * // → /fr/blogue (always French)
+ * <LocalizedLink to="blog" locale="de">Blog auf Deutsch</LocalizedLink>
+ * // → /de/blog (always German)
  */
 
 import { getLocalizedPath, type RouteId } from '@/i18n/helpers';
@@ -22,7 +22,7 @@ type AnchorProps = Omit<astroHTML.JSX.AnchorHTMLAttributes, 'href'>;
 
 interface Props extends AnchorProps {
   /**
-   * The route ID to link to (e.g., 'home', 'about', 'blog', 'contact', 'components')
+   * The route ID to link to (e.g., 'home', 'about', 'blog', 'services', 'contact', 'philosophy')
    */
   to: RouteId;
   /**
