@@ -118,7 +118,7 @@ import heroImage from '../assets/hero.png';
 ### Rules for Agents
 
 - **Minimise client-side JavaScript** — prefer Astro components over React
-- **Use `client:visible`** over `client:load`** — defer non-critical interactivity
+- **Use `client:visible` over `client:load`** — defer non-critical interactivity
 - **Avoid large client-side libraries** — check bundle impact before adding
 - **Use dynamic imports** for heavy components: `const Module = await import('./Heavy.tsx')`
 - **Never add jQuery, lodash, or other large utilities** — use native JS or small alternatives

@@ -19,14 +19,14 @@ checklists and cross-references (Gate B, skills, docs) keep working.
 
 These are **mandatory** for all agents working on this project:
 
-| Law                        | Rule                                                                                                                      |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **Zero-JS by Default**     | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands.            |
-| **Strictly Typed Content** | Content Collections must use Zod schemas via `defineCollection()`. Never skip schema validation.                          |
-| **Intentional Hydration**  | Always specify `client:*` directives explicitly (`client:load`, `client:idle`, `client:visible`). Never rely on defaults. |
-| **Image Optimisation**     | Never use raw `<img>` tags. Always use `<Image />` or `getImage()` from `astro:assets`.                                   |
-| **No Untyped Content**     | Never use `Astro.glob()`. Always use `getCollection()` / `getEntry()` from `astro:content`.                               |
-| **Typed Environment**      | Use `astro:env` for type-safe environment variables. Never use `process.env`.                                             |
+| Law                        | Rule                                                                                                                           |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Zero-JS by Default**     | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands.                 |
+| **Strictly Typed Content** | Content Collections must use Zod schemas via `defineCollection()`. Never skip schema validation.                               |
+| **Intentional Hydration**  | Always specify `client:*` directives explicitly (e.g. `client:load`, `client:idle`, `client:visible`). Never rely on defaults. |
+| **Image Optimisation**     | Never use raw `<img>` tags. Always use `<Image />` or `getImage()` from `astro:assets`.                                        |
+| **No Untyped Content**     | Never use `Astro.glob()`. Always use `getCollection()` / `getEntry()` from `astro:content`.                                    |
+| **Typed Environment**      | Use `astro:env` for type-safe environment variables. Never use `process.env`.                                                  |
 
 Full reference: `factory/skills/astro-specialist/references/technical-standards.md` — the private `factory/` vault at the workspace root, outside this repo.
 

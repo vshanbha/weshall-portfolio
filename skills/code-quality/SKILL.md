@@ -15,14 +15,14 @@ The canonical table lives in [`docs/STANDARDS.md`](../../docs/STANDARDS.md) — 
 
 ### Anti-Patterns (Never Do)
 
-| Anti-Pattern                                       | Correct Approach                                     |
-| -------------------------------------------------- | ---------------------------------------------------- |
-| Framework UI for static-only content               | Use `.astro` components                              |
-| Raw `<img>` tags                                   | Use `<Image>` from `astro:assets`                    |
-| Content without Zod schema                         | Define schema in `src/content.config.ts`             |
-| Default hydration (`client:load` without thinking) | Use `client:idle` or `client:visible` where possible |
-| `Astro.glob()` for structured content              | Use `getCollection()` from `astro:content`           |
-| `process.env` for typed config                     | Use `astro:env`                                      |
+| Anti-Pattern                                   | Correct Approach                                     |
+| ---------------------------------------------- | ---------------------------------------------------- |
+| Framework UI for static-only content           | Use `.astro` components                              |
+| Raw `<img>` tags                               | Use `<Image>` from `astro:assets`                    |
+| Content without Zod schema                     | Define schema in `src/content.config.ts`             |
+| `client:load` without considering alternatives | Use `client:idle` or `client:visible` where possible |
+| `Astro.glob()` for structured content          | Use `getCollection()` from `astro:content`           |
+| `process.env` for typed config                 | Use `astro:env`                                      |
 
 ## Quick Reference
 
