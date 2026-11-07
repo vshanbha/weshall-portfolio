@@ -3,9 +3,14 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { locales } from '@/i18n/config';
 import { siteBase } from '@/i18n/url';
+import { ensureFreshDist } from '../helpers/dist';
 
 describe('Sitemap build output', () => {
   const sitemapPath = resolve('dist/sitemap-0.xml');
+  const sitemapRedirectPath = resolve('dist/sitemap.xml/index.html');
+  // Collection-time guard: the reads below happen while this file is being
+  // collected, before any beforeAll could run.
+  ensureFreshDist([sitemapPath, sitemapRedirectPath]);
   // Mirrors astro.config.mjs: @astrojs/sitemap emits the base in every <loc>,
   // so the guards must be BASE_PATH-aware or a subpath build fails them.
   const base = siteBase();

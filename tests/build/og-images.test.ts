@@ -3,6 +3,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { locales } from '@/i18n/config';
 import { stripSiteBase } from '@/i18n/url';
+import { ensureFreshDist } from '../helpers/dist';
 
 /**
  * OG image coverage for the localised pages (SEO audit fix): every og:image
@@ -35,6 +36,13 @@ function toPathname(content: string): string {
 
 describe('Locale OG image references', () => {
   const dist = resolve('dist');
+  // Collection-time guard: the directory walk below runs while this file is
+  // being collected, before any beforeAll could run.
+  ensureFreshDist([
+    resolve('dist/en/index.html'),
+    resolve('dist/de/index.html'),
+    resolve('dist/og/de.png'),
+  ]);
   const pages = locales.flatMap((locale) => collectHtmlFiles(join(dist, locale)));
 
   it('resolves every referenced og:image to a generated file', () => {

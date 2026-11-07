@@ -1,57 +1,16 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { execSync } from 'node:child_process';
+import { ensureFreshDist } from '../helpers/dist';
 
 /** Pages this suite asserts on — also the build-freshness markers. */
 const MARATHON_PAGE = resolve('dist/en/blog/run-further-than-a-marathon/index.html');
 const STACKOVERFLOW_PAGE = resolve('dist/en/blog/stackoverflow-eulogy/index.html');
 const NO_CAPTION_PAGE = resolve('dist/en/blog/how-this-site-was-built/index.html');
 
-/**
- * Newest mtime (ms) anywhere under a directory tree. Descends into
- * symlinked directories; a broken link throws, which the caller treats as
- * "stale".
- */
-function newestMtime(dir: string): number {
-  let newest = 0;
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    const path = resolve(dir, entry.name);
-    const linkStat = entry.isSymbolicLink() ? statSync(path) : null;
-    const isDirectory = linkStat ? linkStat.isDirectory() : entry.isDirectory();
-    newest = Math.max(
-      newest,
-      isDirectory ? newestMtime(path) : (linkStat ?? statSync(path)).mtimeMs
-    );
-  }
-  return newest;
-}
-
 describe('ArticleHero rendering', () => {
   beforeAll(() => {
-    // Rebuild only when dist is missing or older than the build inputs
-    // (src/, public/, astro.config.mjs, package.json, pnpm-lock.yaml), and
-    // only when every page this file asserts on exists. The validate chain
-    // builds immediately before running tests, so the unconditional nested
-    // build this used to do was redundant — and in CI's cold cache it
-    // exceeded vitest's hook timeout (issue #20 follow-up). A standalone
-    // `pnpm test` after source edits still gets a fresh build.
-    try {
-      const newestInput = Math.max(
-        newestMtime(resolve('src')),
-        newestMtime(resolve('public')),
-        statSync(resolve('astro.config.mjs')).mtimeMs,
-        statSync(resolve('package.json')).mtimeMs,
-        statSync(resolve('pnpm-lock.yaml')).mtimeMs
-      );
-      const fresh = [MARATHON_PAGE, STACKOVERFLOW_PAGE, NO_CAPTION_PAGE].every(
-        (page) => statSync(page).mtimeMs >= newestInput
-      );
-      if (fresh) return;
-    } catch {
-      // Missing or unstat-able inputs/markers → fall through and rebuild.
-    }
-    execSync('pnpm build', { cwd: resolve('.'), stdio: 'pipe' });
+    ensureFreshDist([MARATHON_PAGE, STACKOVERFLOW_PAGE, NO_CAPTION_PAGE]);
   });
 
   describe('hero caption', () => {

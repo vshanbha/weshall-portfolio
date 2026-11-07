@@ -4,6 +4,7 @@ import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { parse } from 'yaml';
 import { defaultLocale } from '@/i18n/config';
+import { ensureFreshDist } from '../helpers/dist';
 
 /**
  * Built-output checks for AI transparency (EU AI Act Article 50).
@@ -19,6 +20,10 @@ const ROOT = resolve('.');
 const ARTICLES_DIR = join(ROOT, 'src', 'content', 'articles');
 const DIST = join(ROOT, 'dist');
 const DIST_ASSETS = join(DIST, '_astro');
+
+// Collection-time guard: every dist read below happens inside tests, but the
+// suite must never run against a stale build (issue #20's Regression Guard Rule).
+ensureFreshDist([join(DIST, 'index.html')]);
 
 const DIGITAL_SOURCE_TYPE =
   'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
