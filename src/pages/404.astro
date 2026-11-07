@@ -2,10 +2,12 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import { getLocaleFromPath } from '@/i18n/config';
 import { useTranslations } from '@/i18n/index';
+import { stripSiteBase } from '@/i18n/url';
 
-// Match the layout chrome: path prefix when the dev server serves this per
-// request, the default locale for the static build (no prefix on /404).
-const locale = getLocaleFromPath(Astro.url.pathname);
+// Match the layout chrome: path prefix (after stripping any deploy base)
+// when the dev server serves this per request, the default locale for the
+// static build (no prefix on /404).
+const locale = getLocaleFromPath(stripSiteBase(Astro.url.pathname));
 const t = useTranslations(locale);
 ---
 

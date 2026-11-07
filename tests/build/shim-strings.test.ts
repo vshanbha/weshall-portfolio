@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { defaultLocale } from '@/i18n/config';
 import { t } from '@/i18n/index';
@@ -14,18 +14,30 @@ import { ensureFreshDist } from '../helpers/dist';
 describe('Shim and 404 strings come from the default-locale bundle', () => {
   const rootShim = resolve('dist/index.html');
   const notFound = resolve('dist/404.html');
-  const blogShim = resolve('dist/blog/zeroclaw-personal-ai-assistant/index.html');
-  ensureFreshDist([rootShim, notFound, blogShim]);
+  ensureFreshDist([rootShim, notFound]);
+  // Enumerate the built blog-detail shims after the freshness gate, so a
+  // renamed or drafted article can't break this test (root + 404 markers
+  // gate freshness for the whole build — dist is written in one pass).
+  const blogDir = resolve('dist/blog');
+  const blogShims = existsSync(blogDir)
+    ? readdirSync(blogDir, { withFileTypes: true })
+        .filter((entry) => entry.isDirectory())
+        .map((entry) => resolve(blogDir, entry.name, 'index.html'))
+        .filter(existsSync)
+    : [];
 
   it('root shim fallback link is the bundle string', () => {
     expect(readFileSync(rootShim, 'utf8')).toContain(t('redirect.home', defaultLocale));
   });
 
-  it('blog shim title and sentence are bundle strings', () => {
-    const html = readFileSync(blogShim, 'utf8');
-    expect(html).toContain(`<title>${t('redirect.title', defaultLocale)}</title>`);
-    expect(html).toContain(t('redirect.toArticle', defaultLocale));
-    expect(html).toContain(`>${t('redirect.articleName', defaultLocale)}</a>`);
+  it('blog shim titles and sentences are bundle strings', () => {
+    expect(blogShims.length).toBeGreaterThan(0);
+    for (const shim of blogShims) {
+      const html = readFileSync(shim, 'utf8');
+      expect(html).toContain(`<title>${t('redirect.title', defaultLocale)}</title>`);
+      expect(html).toContain(t('redirect.toArticle', defaultLocale));
+      expect(html).toContain(`>${t('redirect.articleName', defaultLocale)}</a>`);
+    }
   });
 
   it('404 page strings are bundle strings', () => {

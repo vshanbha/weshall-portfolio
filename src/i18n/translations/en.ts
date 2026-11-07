@@ -719,9 +719,10 @@ export const en = {
     alwaysOn: 'Always on',
   },
 
-  // Redirect shims (root / and locale-less /blog/…) — the visible fallback
-  // text while the JS/meta refresh runs; rendered from this bundle, never
-  // hardcoded in the pages (AGENTS.md → String Integrity).
+  // Redirect shims (root / and locale-less /blog/…) — visible fallback text
+  // while the JS/meta refresh runs. Shims render t('redirect.*',
+  // defaultLocale): this entry displays while this locale is the default and
+  // is never hardcoded in the pages (AGENTS.md → String Integrity).
   redirect: {
     home: 'Go to the English homepage',
     title: 'Redirecting...',

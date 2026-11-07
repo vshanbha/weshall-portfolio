@@ -707,9 +707,9 @@ export const de = {
     alwaysOn: 'Immer aktiv',
   },
 
-  // Redirect shims (root / and locale-less /blog/…) — the visible fallback
-  // text while the JS/meta refresh runs; rendered from this bundle, never
-  // hardcoded in the pages (AGENTS.md → String Integrity).
+  // Sibling of en's redirect block: the shims render t('redirect.*',
+  // defaultLocale), so this entry displays only while this locale is the
+  // default — kept type-complete per SiteStrings.
   redirect: {
     home: 'Zur deutschen Startseite',
     title: 'Weiterleitung...',

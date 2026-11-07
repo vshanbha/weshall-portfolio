@@ -696,9 +696,9 @@ export const mr = {
     alwaysOn: 'नेहमी चालू',
   },
 
-  // Redirect shims (root / and locale-less /blog/…) — the visible fallback
-  // text while the JS/meta refresh runs; rendered from this bundle, never
-  // hardcoded in the pages (AGENTS.md → String Integrity).
+  // Sibling of en's redirect block: the shims render t('redirect.*',
+  // defaultLocale), so this entry displays only while this locale is the
+  // default — kept type-complete per SiteStrings.
   redirect: {
     home: 'Go to the English homepage', // TODO: translate
     title: 'Redirecting...', // TODO: translate

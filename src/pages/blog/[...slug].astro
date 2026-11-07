@@ -31,7 +31,7 @@ const target = `${siteBase()}/${defaultLocale}/blog/${slug}`;
   <body>
     <p>
       {t('redirect.toArticle', defaultLocale)}{' '}
-      <a href={target}>{t('redirect.articleName', defaultLocale)}</a>…
+      <a href={target}>{t('redirect.articleName', defaultLocale)}</a>...
     </p>
     <script define:vars={{ target }}>
       window.location.href = target;
