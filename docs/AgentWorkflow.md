@@ -102,7 +102,10 @@ site now carries.
   ONLY for those pages; sitemap covers every locale and contains no redirect
   stubs; robots.txt reachable; every `og:image` referenced in HTML resolves to
   a generated file; `og:locale` matches the locale; JSON-LD is
-  locale-correct; internal link integrity (no broken targets).
+  locale-correct; internal link integrity (no broken targets); redirect
+  shims and the 404 page render their visible strings from the
+  default-locale bundle — no hardcoded user-facing text (String Integrity,
+  AGENTS.md).
 - **Gate rule:** every finding must be fixed or explicitly waived by the
   Architect before Gate B starts. Record the audit outcome in the merge
   commit message or the linked issue (feature work has no PR); release PRs
