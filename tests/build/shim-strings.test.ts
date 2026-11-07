@@ -19,12 +19,12 @@ describe('Shim and 404 strings come from the default-locale bundle', () => {
   // renamed or drafted article can't break this test (root + 404 markers
   // gate freshness for the whole build — dist is written in one pass).
   const blogDir = resolve('dist/blog');
-  const blogShims = existsSync(blogDir)
-    ? readdirSync(blogDir, { withFileTypes: true })
-        .filter((entry) => entry.isDirectory())
-        .map((entry) => resolve(blogDir, entry.name, 'index.html'))
-        .filter(existsSync)
+  const blogDirs = existsSync(blogDir)
+    ? readdirSync(blogDir, { withFileTypes: true }).filter((entry) => entry.isDirectory())
     : [];
+  const blogShims = blogDirs
+    .map((entry) => resolve(blogDir, entry.name, 'index.html'))
+    .filter(existsSync);
 
   it('root shim fallback link is the bundle string', () => {
     expect(readFileSync(rootShim, 'utf8')).toContain(t('redirect.home', defaultLocale));
@@ -32,6 +32,8 @@ describe('Shim and 404 strings come from the default-locale bundle', () => {
 
   it('blog shim titles and sentences are bundle strings', () => {
     expect(blogShims.length).toBeGreaterThan(0);
+    // A directory without index.html would silently drop its shim here.
+    expect(blogShims.length).toBe(blogDirs.length);
     for (const shim of blogShims) {
       const html = readFileSync(shim, 'utf8');
       expect(html).toContain(`<title>${t('redirect.title', defaultLocale)}</title>`);

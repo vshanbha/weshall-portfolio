@@ -4,9 +4,10 @@ import { getLocaleFromPath } from '@/i18n/config';
 import { useTranslations } from '@/i18n/index';
 import { stripSiteBase } from '@/i18n/url';
 
-// Match the layout chrome: path prefix (after stripping any deploy base)
-// when the dev server serves this per request, the default locale for the
-// static build (no prefix on /404).
+// Path prefix (after stripping any deploy base) when the dev server serves
+// this per request, the default locale for the static build (no prefix on
+// /404). Base-aware ahead of the layout chrome: PageLayout/Header/Footer
+// still read the raw pathname — the chrome-wide pass is #52 Item 1.
 const locale = getLocaleFromPath(stripSiteBase(Astro.url.pathname));
 const t = useTranslations(locale);
 ---
