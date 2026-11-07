@@ -92,7 +92,7 @@ Agents must NOT automate or bypass this gate. Content arriving in `portfolio/src
 - **Shell Command Integrity:** All shell commands must be executed independently. Do not chain commands using operators like `&&`, `;`, `||`, or pipes `|` when multiple distinct actions are involved. Each command must be proposed and approved separately.
 - **No Secrets in Code:** Never commit environment variables, API keys, or secrets. Use `.env` (gitignored) and reference `.env.example` for documentation.
 - **Locale Integrity:** When modifying translation files (`src/i18n/translations/*.ts`), existing translations in non-English locales (de, hi, mr) must be preserved. Never replace a language-specific translation with English text. If new content needs to be added to a locale file and no translation exists, add the English text as a placeholder AND flag it in a comment (e.g. `// TODO: translate`). For brand names that appear in all locales, transliterate into the target script (e.g. Devanagari for hi/mr) rather than keeping Roman script. See [`docs/LOCALES.md`](docs/LOCALES.md) for the current locale state (hi/mr are aspirational) and the language-activation checklist.
-- **String Integrity:** All user-facing strings must come from the translation bundles via `t()` / `useTranslations()` (`@/i18n`) — never hardcoded in a page or component; the string equivalent of the colours/design-tokens rule. Redirect shims and the 404 page included. For a new string, add the key to `src/i18n/translations/en.ts` first — `satisfies SiteStrings` then names every locale file that needs it, and non-English placeholders get `// TODO: translate` per Locale Integrity. Guarded by `tests/build/shim-strings.test.ts`.
+- **String Integrity:** All user-facing strings must come from the translation bundles via `t()` / `useTranslations()` (`@/i18n`) — never hardcoded in a page or component; the string equivalent of the colours/design-tokens rule. Redirect shims and the 404 page included. For a new string, add the key to `src/i18n/translations/en.ts` first — `satisfies SiteStrings` then names every locale file that needs it, and non-English placeholders get `// TODO: translate` per Locale Integrity. The shim/404 clause is machine-guarded by `tests/build/shim-strings.test.ts`; the rest is enforced at review and in the SEO/i18n audit. Branding constants (the site name in `src/config/site.config.ts`) are configuration, not prose.
 
 ## Astro Technical Standards (Iron Laws)
 
@@ -116,7 +116,7 @@ src/
   components/         # UI components (ui/, patterns/, layout/, seo/)
   content/            # Content collections (articles, offers, philosophy, profile)
   config/             # Site config, navigation, consent
-  i18n/               # Locale routes, translations (en, es, fr)
+  i18n/               # Locale routes, translations (en, de, hi, mr)
   layouts/            # BaseLayout, PageLayout
   lib/                # Utilities (cn, schema, og image helpers)
   pages/              # Routes and API endpoints
