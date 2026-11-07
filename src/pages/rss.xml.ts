@@ -1,6 +1,7 @@
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 import siteConfig from '@/config/site.config';
+import { defaultLocale } from '@/i18n/config';
 
 /**
  * Escapes XML special characters
@@ -22,8 +23,11 @@ function formatRfc822Date(date: Date): string {
 }
 
 export async function GET(context: APIContext) {
-  // Get only English, non-draft posts for RSS
-  const posts = await getCollection('articles', ({ data }) => data.locale === 'en' && !data.draft);
+  // Get only default-locale, non-draft posts for RSS
+  const posts = await getCollection(
+    'articles',
+    ({ data }) => data.locale === defaultLocale && !data.draft
+  );
 
   // Sort posts by date (newest first)
   const sortedPosts = posts.sort(

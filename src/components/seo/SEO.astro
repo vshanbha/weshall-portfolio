@@ -1,5 +1,6 @@
 ---
 import siteConfig from '@/config/site.config';
+import { defaultLocale } from '@/i18n/config';
 
 interface Props {
   title?: string;
@@ -60,7 +61,7 @@ const localeMap: Record<string, string> = {
   pl: 'pl_PL',
   sv: 'sv_SE',
 };
-const rawLocale = Astro.currentLocale || 'en';
+const rawLocale = Astro.currentLocale || defaultLocale;
 const locale =
   rawLocale.includes('_') || rawLocale.includes('-')
     ? rawLocale.replace('-', '_')

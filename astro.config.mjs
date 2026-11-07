@@ -3,6 +3,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import { defaultLocale, locales } from './src/i18n/config';
 
 /**
  * remark-gfm renders a markdown task list (`- [ ] item`) as a bare
@@ -30,10 +31,10 @@ export default defineConfig({
   site: process.env.SITE_URL || 'http://localhost:4321',
   base: process.env.BASE_PATH || '/',
 
-  // i18n configuration
+  // i18n configuration — derived from the single switch in src/i18n/config.ts
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'de'],
+    defaultLocale,
+    locales: [...locales],
     routing: {
       prefixDefaultLocale: true,
     },
@@ -55,14 +56,12 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const pathname = new URL(page).pathname;
-        return pathname.startsWith('/en/') || pathname.startsWith('/de/');
+        return locales.some((locale) => pathname.startsWith(`/${locale}/`));
       },
       i18n: {
-        defaultLocale: 'en',
-        locales: {
-          en: 'en',
-          de: 'de',
-        },
+        defaultLocale,
+        // hreflang language codes — one per enabled locale (identity today)
+        locales: Object.fromEntries(locales.map((locale) => [locale, locale])),
       },
     }),
   ],
