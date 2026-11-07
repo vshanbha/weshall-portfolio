@@ -17,9 +17,12 @@ function newestMtime(dir: string): number {
   let newest = 0;
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const path = resolve(dir, entry.name);
-    const isDirectory =
-      entry.isDirectory() || (entry.isSymbolicLink() && statSync(path).isDirectory());
-    newest = Math.max(newest, isDirectory ? newestMtime(path) : statSync(path).mtimeMs);
+    const linkStat = entry.isSymbolicLink() ? statSync(path) : null;
+    const isDirectory = linkStat ? linkStat.isDirectory() : entry.isDirectory();
+    newest = Math.max(
+      newest,
+      isDirectory ? newestMtime(path) : (linkStat ?? statSync(path)).mtimeMs
+    );
   }
   return newest;
 }
@@ -37,14 +40,15 @@ describe('ArticleHero rendering', () => {
       const newestInput = Math.max(
         newestMtime(resolve('src')),
         newestMtime(resolve('public')),
-        statSync(resolve('astro.config.mjs')).mtimeMs
+        statSync(resolve('astro.config.mjs')).mtimeMs,
+        statSync(resolve('package.json')).mtimeMs
       );
       const fresh = [MARATHON_PAGE, STACKOVERFLOW_PAGE, NO_CAPTION_PAGE].every(
         (page) => statSync(page).mtimeMs >= newestInput
       );
       if (fresh) return;
     } catch {
-      // Missing dist/public/markers → fall through and rebuild.
+      // Missing or unstat-able inputs/markers → fall through and rebuild.
     }
     execSync('pnpm build', { cwd: resolve('.'), stdio: 'pipe' });
   });
