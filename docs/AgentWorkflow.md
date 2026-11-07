@@ -105,7 +105,7 @@ site now carries.
   locale-correct; internal link integrity (no broken targets); redirect
   shims and the 404 page render their visible strings from the
   default-locale bundle — no hardcoded user-facing text (String Integrity,
-  AGENTS.md).
+  docs/STANDARDS.md).
 - **Gate rule:** every finding must be fixed or explicitly waived by the
   Architect before Gate B starts. Record the audit outcome in the merge
   commit message or the linked issue (feature work has no PR); release PRs
@@ -154,7 +154,7 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 - [ ] `pnpm validate` passes (format + lint + check + build + vitest suite)
 - [ ] No TypeScript errors
 - [ ] Components follow Velocity patterns
-- [ ] Astro Technical Standards (Iron Laws) respected
+- [ ] Astro Technical Standards (Iron Laws) respected (`docs/STANDARDS.md`)
 - [ ] Accessibility requirements met (WCAG 2.2 AA)
 - [ ] SEO audit passed (§3 _SEO Audit (Pre-Review)_) — findings fixed or waived before Gate B
 - [ ] Every issue uncovered during the task has a guard at the cheapest automatic layer (see _Regression Guard Rule_ below)
@@ -210,7 +210,7 @@ answer is _human memory_, the issue is not fixed.
 1. **Confirm the active feature branch:** `issue-<number>-<description>`.
    **For parallel multi-agent sessions:** each agent works from a dedicated
    `git worktree` — see §3 Parallel Agent Isolation.
-2. **Read `AGENTS.md`** for applicable standards and quality gates.
+2. **Read `AGENTS.md` and `docs/STANDARDS.md`** for applicable standards and quality gates.
 3. **Consult Velocity docs** at [docs.deployvelocity.com](https://docs.deployvelocity.com/) for component and pattern guidance.
 4. **Load the relevant skills** for the task at hand.
 5. **Follow the phases** defined in this document.

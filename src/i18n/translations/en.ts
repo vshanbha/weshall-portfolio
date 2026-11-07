@@ -722,7 +722,7 @@ export const en = {
   // Redirect shims (root / and locale-less /blog/…) — visible fallback text
   // while the JS/meta refresh runs. Shims render t('redirect.*',
   // defaultLocale): this entry displays while this locale is the default and
-  // is never hardcoded in the pages (AGENTS.md → String Integrity).
+  // is never hardcoded in the pages (docs/STANDARDS.md → String Integrity).
   redirect: {
     home: 'Go to the English homepage',
     title: 'Redirecting...',

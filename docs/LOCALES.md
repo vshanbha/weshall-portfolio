@@ -22,7 +22,7 @@ Rules that keep this honest:
 - Translation files are checked **structurally** at compile time: each ends
   with `satisfies SiteStrings` (derived from `en`), so a missing or extra
   key is a type error. The machine checks structure; a human checks quality —
-  the Locale Integrity rule in AGENTS.md governs placeholders
+  the Locale Integrity rule in `docs/STANDARDS.md` governs placeholders
   (`// TODO: translate`) and brand transliteration.
 - `tests/i18n/locales.test.ts` is the **runtime backstop**: it fails if the
   data those types enforce ever drifts again (stale or missing entries —

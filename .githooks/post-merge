@@ -63,7 +63,7 @@ echo ""
 Merge message: $MERGE_MSG
 Range: ORIG_HEAD..HEAD (the full merged payload)
 
-Context: Astro 6 portfolio site (Velocity template), Tailwind CSS, TypeScript, React islands, pnpm. Project standards: WCAG 2.2 AA, British English, strict Astro conventions (zero-JS by default, typed content collections, Image component for optimisation). The rules live in AGENTS.md and docs/AgentWorkflow.md — read them when a rule matters.
+Context: Astro 6 portfolio site (Velocity template), Tailwind CSS, TypeScript, React islands, pnpm. Project standards: WCAG 2.2 AA, British English, strict Astro conventions (zero-JS by default, typed content collections, Image component for optimisation). The rules live in AGENTS.md, docs/STANDARDS.md and docs/AgentWorkflow.md — read them when a rule matters.
 
 Review for:
 1. Correctness — does the merged work match its commit messages?
