@@ -3,6 +3,9 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+// Vite only watches astro.config.mjs itself for config reload: restart
+// `pnpm dev` after changing src/i18n/config.ts, or the derived i18n and
+// sitemap settings below stay stale until the server restarts.
 import { defaultLocale, locales } from './src/i18n/config';
 
 /**
@@ -42,12 +45,12 @@ export default defineConfig({
 
   redirects: {
     '/sitemap.xml': '/sitemap-index.xml',
-    '/about': '/en/about',
-    '/contact': '/en/contact',
-    '/services': '/en/services',
-    '/blog': '/en/blog',
-    '/impressum': '/en/impressum',
-    '/datenschutz': '/en/datenschutz',
+    '/about': `/${defaultLocale}/about`,
+    '/contact': `/${defaultLocale}/contact`,
+    '/services': `/${defaultLocale}/services`,
+    '/blog': `/${defaultLocale}/blog`,
+    '/impressum': `/${defaultLocale}/impressum`,
+    '/datenschutz': `/${defaultLocale}/datenschutz`,
   },
 
   integrations: [
@@ -56,7 +59,10 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const pathname = new URL(page).pathname;
-        return locales.some((locale) => pathname.startsWith(`/${locale}/`));
+        // @astrojs/sitemap emits absolute URLs including the Astro base, so
+        // the prefix must account for BASE_PATH (empty on the root domain).
+        const base = (process.env.BASE_PATH || '/').replace(/\/$/, '');
+        return locales.some((locale) => pathname.startsWith(`${base}/${locale}/`));
       },
       i18n: {
         defaultLocale,

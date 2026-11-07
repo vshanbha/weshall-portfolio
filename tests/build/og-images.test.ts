@@ -1,11 +1,13 @@
 import { describe, it, expect } from 'vitest';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { locales } from '@/i18n/config';
 
 /**
  * OG image coverage for the localised pages (SEO audit fix): every og:image
- * URL referenced by an HTML file under dist/en or dist/de must resolve to a
- * generated file in dist/, or social crawlers get a 404 on the card image.
+ * URL referenced by an HTML file under an enabled locale's dist/<locale>
+ * directory must resolve to a generated file in dist/, or social crawlers
+ * get a 404 on the card image.
  */
 
 const OG_IMAGE_PATTERN = /<meta property="og:image" content="([^"]+)"/g;
@@ -30,7 +32,7 @@ function toPathname(content: string): string {
 
 describe('Locale OG image references', () => {
   const dist = resolve('dist');
-  const pages = ['en', 'de'].flatMap((locale) => collectHtmlFiles(join(dist, locale)));
+  const pages = locales.flatMap((locale) => collectHtmlFiles(join(dist, locale)));
 
   it('resolves every referenced og:image to a generated file', () => {
     expect(pages.length).toBeGreaterThan(0);
