@@ -24,6 +24,10 @@ Rules that keep this honest:
   key is a type error. The machine checks structure; a human checks quality —
   the Locale Integrity rule in AGENTS.md governs placeholders
   (`// TODO: translate`) and brand transliteration.
+- `tests/i18n/locales.test.ts` is the **runtime backstop**: it fails if a
+  `satisfies` clause or strict record type is ever loosened, and it pins the
+  aspirational set (`isValidLocale('hi')` must be `false`), so it moves with
+  activation — see step 3.
 - Blog **posts** stay English-only: `englishOnlyDetailRoutes` in
   `src/i18n/routes.ts` plus the per-post `locale` frontmatter gate. The blog
   _index_ gets chrome in every enabled locale automatically.
@@ -38,12 +42,18 @@ The steps are ordered so the compiler does the bookkeeping. Example uses
    marker. This is the quality gate and cannot be automated — it is the
    reason activation is usually funded, not scheduled.
 2. **Flip the switch:** add `'hi'` to `locales` in `src/i18n/config.ts`.
+   Restart `pnpm dev` afterwards — Astro does not reload `astro.config.mjs`
+   when its imported files change (see the comment there), so a running dev
+   server keeps serving the stale derived settings until restart.
 3. **Fill the compiler's checklist.** The type errors that follow are the
-   complete work list — do not widen types to silence it:
+   main work list — do not widen types to silence it:
    - `src/i18n/routes.ts` — URL slugs for each route
    - `localeNames` / `localeFlags` in `src/i18n/config.ts`
    - OG card text: `localizedCards` in `src/pages/og/[...slug].png.ts`
    - any other `Record<Locale, …>` the compiler names
+   - `tests/i18n/locales.test.ts` — **invisible to the compiler**: its
+     "aspirational locales are known but not routable" assertions hard-code
+     the current set, so the suite fails until the activated code moves
 
    The content-schema enum (`src/content.config.ts`), the Astro `i18n`
    block and the redirect map derive automatically — no edits needed.
@@ -65,13 +75,15 @@ The steps are ordered so the compiler does the bookkeeping. Example uses
 ## Deactivating / narrowing
 
 Remove the code from `locales`; the same compiler checklist runs in reverse
-(its route slugs and map entries become excess properties). Keep the
-translation file — AGENTS.md rule 5 forbids deleting half-done locale work.
+(its route slugs and map entries become excess properties), and the
+aspirational-set assertions in `tests/i18n/locales.test.ts` must move back.
+Keep the translation file — AGENTS.md rule 5 forbids deleting half-done
+locale work.
 
 ## History
 
 - #20 — the locale type mismatch that led to the single-switch design and
   this document; its description also records the base-path, redirect and
   OG follow-up work.
-- `de` was activated in PR #47 ("Publish the German locale"); the `hi`/`mr`
+- `de` was activated in PR #47 (Publish the German locale); the `hi`/`mr`
   files date from the original multi-locale stubs.
