@@ -1,6 +1,6 @@
 #!/bin/sh
 # Pre-commit hook — validates code quality on dev and main branches
-# Runs pnpm validate (lint + typecheck + build) before allowing commits
+# Runs pnpm validate (format, lint, typecheck, build, full vitest suite) before allowing commits
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
