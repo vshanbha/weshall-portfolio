@@ -3,7 +3,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { parse } from 'yaml';
-import { defaultLocale } from '../../src/i18n/config';
+import { defaultLocale } from '@/i18n/config';
 
 /**
  * Built-output checks for AI transparency (EU AI Act Article 50).

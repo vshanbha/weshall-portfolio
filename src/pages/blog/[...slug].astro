@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import { defaultLocale } from '@/i18n/config';
+import { siteBase } from '@/i18n/url';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const entries = await getCollection('articles', ({ data }) => {
@@ -13,11 +14,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { slug } = Astro.params;
-const target = `/${defaultLocale}/blog/${slug}`;
+const target = `${siteBase()}/${defaultLocale}/blog/${slug}`;
 ---
 
 <!doctype html>
-<html>
+<html lang={defaultLocale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

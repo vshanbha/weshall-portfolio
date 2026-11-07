@@ -9,9 +9,10 @@ describe('Sitemap build output', () => {
   // Mirrors astro.config.mjs: @astrojs/sitemap emits the base in every <loc>,
   // so the guards must be BASE_PATH-aware or a subpath build fails them.
   const base = siteBase();
-  const localePrefixed = new RegExp(`^${base}/(${locales.join('|')})(/|$)`);
+  const escapedBase = base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const localePrefixed = new RegExp(`^${escapedBase}/(${locales.join('|')})(/|$)`);
   const bareLocalePath = new RegExp(
-    `^${base}/(?!${locales.map((locale) => `${locale}/`).join('|')})[a-z]`
+    `^${escapedBase}/(?!${locales.map((locale) => `${locale}/`).join('|')})[a-z]`
   );
   const xml = readFileSync(sitemapPath, 'utf-8');
   const urls = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
@@ -36,10 +37,13 @@ describe('Sitemap build output', () => {
 });
 
 describe('Sitemap redirect', () => {
-  it('/sitemap.xml redirects to /sitemap-index.xml', () => {
+  const base = siteBase();
+
+  it('/sitemap.xml redirects to the base-prefixed sitemap index', () => {
     const html = readFileSync(resolve('dist/sitemap.xml/index.html'), 'utf-8');
-    expect(html).toContain('http-equiv="refresh"');
-    expect(html).toContain('/sitemap-index.xml');
+    // Assert the actual url= target, not a substring: a bare
+    // 'url=/sitemap-index.xml' would also contain '/sitemap-index.xml'.
+    expect(html).toContain(`url=${base}/sitemap-index.xml`);
     expect(html).toMatch(/<link rel="canonical" href="[^"]*\/sitemap-index\.xml">/);
   });
 });

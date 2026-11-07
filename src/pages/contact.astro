@@ -1,11 +1,12 @@
 ---
 import { defaultLocale } from '@/i18n/config';
+import { siteBase } from '@/i18n/url';
 
-const target = `/${defaultLocale}/contact`;
+const target = `${siteBase()}/${defaultLocale}/contact`;
 ---
 
 <!doctype html>
-<html>
+<html lang={defaultLocale}>
   <head>
     <meta charset="utf-8" />
     <link rel="canonical" href={target} />

@@ -57,7 +57,7 @@ export default defineConfig({
   },
 
   redirects: {
-    '/sitemap.xml': '/sitemap-index.xml',
+    '/sitemap.xml': `${base}/sitemap-index.xml`,
     // Derived from the route table so a new route or a default-locale change
     // cannot be forgotten; home is handled by src/pages/index.astro, and the
     // two legal pages are not route-table entries. Targets carry the base:
