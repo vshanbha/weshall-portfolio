@@ -44,7 +44,7 @@ These are **mandatory** and override general TypeScript conventions when they co
 | Type check       | `pnpm check`        |
 | Full validation  | `pnpm validate`     |
 
-**Always run `pnpm validate` before committing.** This runs format check, lint, type check, build and the full test suite in sequence.
+**Always run `pnpm validate` before committing.** This runs format check, lint, type check, build and the full vitest suite in sequence.
 
 ## ESLint
 

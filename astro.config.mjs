@@ -45,7 +45,7 @@ function rehypeTaskListLabels() {
 
 export default defineConfig({
   site: process.env.SITE_URL || 'http://localhost:4321',
-  // Same normalisation as every other base consumer (siteBase()).
+  // siteBase() adapted to Astro's base format ('' on the root → '/').
   base: base === '' ? '/' : base,
 
   // i18n configuration — derived from the single switch in src/i18n/config.ts

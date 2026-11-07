@@ -138,7 +138,7 @@ Architect reviews the proposed design and the Test-First plan. **No coding begin
 Architect approves the implementation **before** the merge (step 5); Gate B closes only once CI is green on `dev` after the merge push (step 6). For releases: CI on the `dev` → `main` PR.
 
 - Confirm the pre-Gate-B SEO audit (§3 _SEO Audit (Pre-Review)_) is recorded (merge commit message / issue, or the release PR) with no unfixed findings
-- Run `pnpm validate` (format + lint + check + build + tests)
+- Run `pnpm validate` (format + lint + check + build + vitest suite)
 - Review visual output in browser
 - Verify tests pass
 
@@ -148,7 +148,7 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 
 **Web tasks:**
 
-- [ ] `pnpm validate` passes (format + lint + check + build + tests)
+- [ ] `pnpm validate` passes (format + lint + check + build + vitest suite)
 - [ ] No TypeScript errors
 - [ ] Components follow Velocity patterns
 - [ ] Astro Technical Standards (Iron Laws) respected
