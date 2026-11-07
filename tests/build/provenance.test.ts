@@ -25,7 +25,7 @@ const DIST_ASSETS = join(DIST, '_astro');
 // Editorial standards describe block reads dist/en/about/index.html while
 // this file is being collected. Either way, never run against a stale
 // build (issue #20's Regression Guard Rule).
-ensureFreshDist([join(DIST, 'index.html')]);
+ensureFreshDist([join(DIST, 'index.html'), join(DIST, 'en', 'about', 'index.html')]);
 
 const DIGITAL_SOURCE_TYPE =
   'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
