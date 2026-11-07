@@ -68,9 +68,15 @@ test.describe('Root-Level Redirects', () => {
     );
   });
 
-  const redirects = ['/about', '/contact', '/services', '/blog', '/impressum', '/datenschutz'].map(
-    (from) => ({ from, to: `/${defaultLocale}${from}` })
-  );
+  const redirects = [
+    '/about',
+    '/contact',
+    '/services',
+    '/blog',
+    '/impressum',
+    '/datenschutz',
+    '/philosophy',
+  ].map((from) => ({ from, to: `/${defaultLocale}${from}` }));
 
   for (const { from, to } of redirects) {
     test(`${from} redirects to ${to}`, async ({ page }) => {
