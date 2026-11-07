@@ -11,10 +11,7 @@ This skill enforces consistent code quality across the Velocity Astro project us
 
 ## Astro Technical Standards (Iron Laws)
 
-The canonical table lives in [`docs/STANDARDS.md`](../../docs/STANDARDS.md) — read it first; it **overrides general TypeScript conventions when they conflict**. Skill-specific readings:
-
-- **Intentional Hydration** — explicit means `client:load`, `client:idle` or `client:visible`; never rely on defaults.
-- **Image Optimisation / No Untyped Content** — `getImage()` and `getEntry()` are equally acceptable to `<Image />` and `getCollection()`.
+The canonical table lives in [`docs/STANDARDS.md`](../../docs/STANDARDS.md) — read it first; it **overrides general TypeScript conventions when they conflict**.
 
 ### Anti-Patterns (Never Do)
 

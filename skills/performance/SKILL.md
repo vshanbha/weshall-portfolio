@@ -15,7 +15,7 @@ The canonical table lives in [`docs/STANDARDS.md`](../../docs/STANDARDS.md) — 
 
 - **Zero-JS by Default** — shipping framework JS for non-interactive content is prohibited.
 - **Intentional Hydration** — prefer `client:visible` or `client:idle` over `client:load`.
-- **Image Optimisation** — `<Image />` / `getImage()` also give automatic LCP optimisation and format conversion.
+- **Image Optimisation** — `<Image />` / `getImage()` give automatic LCP optimisation and format conversion.
 
 ## Quick Reference
 
