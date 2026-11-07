@@ -24,10 +24,11 @@ Rules that keep this honest:
   key is a type error. The machine checks structure; a human checks quality —
   the Locale Integrity rule in AGENTS.md governs placeholders
   (`// TODO: translate`) and brand transliteration.
-- `tests/i18n/locales.test.ts` is the **runtime backstop**: it fails if a
-  `satisfies` clause or strict record type is ever loosened, and it pins the
-  aspirational set (`isValidLocale('hi')` must be `false`), so it moves with
-  activation — see step 3.
+- `tests/i18n/locales.test.ts` is the **runtime backstop**: it fails if the
+  data those types enforce ever drifts again (loosened `satisfies` clauses,
+  stale or missing entries), and it pins the aspirational set
+  (`isValidLocale('hi')` must be `false`), so it moves with activation —
+  see step 3.
 - Blog **posts** stay English-only: `englishOnlyDetailRoutes` in
   `src/i18n/routes.ts` plus the per-post `locale` frontmatter gate. The blog
   _index_ gets chrome in every enabled locale automatically.
@@ -52,8 +53,9 @@ The steps are ordered so the compiler does the bookkeeping. Example uses
    - OG card text: `localizedCards` in `src/pages/og/[...slug].png.ts`
    - any other `Record<Locale, …>` the compiler names
    - `tests/i18n/locales.test.ts` — **invisible to the compiler**: its
-     "aspirational locales are known but not routable" assertions hard-code
-     the current set, so the suite fails until the activated code moves
+     "aspirational locales (hi, mr) are known but not routable" assertions
+     hard-code the current set, so the suite fails until the activated code
+     moves
 
    The content-schema enum (`src/content.config.ts`), the Astro `i18n`
    block and the redirect map derive automatically — no edits needed.
