@@ -54,11 +54,10 @@ Before creating a PR, verify every item:
 
 1. **Branch is up to date** — `git pull origin dev` and rebase if needed
 2. **Validation passes** — `pnpm validate` (format + lint + type check + build + vitest suite)
-3. **Tests pass** — `pnpm test`
-4. **E2E tests pass locally** — `pnpm test:e2e`
-5. **No secrets or credentials** in diff — `git diff --cached` review
-6. **Commits are atomic** — one logical change per commit
-7. **Commit messages are descriptive** — explain what and why
+3. **E2E tests pass locally** — `pnpm test:e2e`
+4. **No secrets or credentials** in diff — `git diff --cached` review
+5. **Commits are atomic** — one logical change per commit
+6. **Commit messages are descriptive** — explain what and why
 
 ### PR Title Format
 
