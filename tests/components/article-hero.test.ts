@@ -30,18 +30,19 @@ function newestMtime(dir: string): number {
 describe('ArticleHero rendering', () => {
   beforeAll(() => {
     // Rebuild only when dist is missing or older than the build inputs
-    // (src/, public/, astro.config.mjs), and only when every page this file
-    // asserts on exists. The validate chain builds immediately before
-    // running tests, so the unconditional nested build this used to do was
-    // redundant — and in CI's cold cache it exceeded vitest's hook timeout
-    // (issue #20 follow-up). A standalone `pnpm test` after source edits
-    // still gets a fresh build.
+    // (src/, public/, astro.config.mjs, package.json, pnpm-lock.yaml), and
+    // only when every page this file asserts on exists. The validate chain
+    // builds immediately before running tests, so the unconditional nested
+    // build this used to do was redundant — and in CI's cold cache it
+    // exceeded vitest's hook timeout (issue #20 follow-up). A standalone
+    // `pnpm test` after source edits still gets a fresh build.
     try {
       const newestInput = Math.max(
         newestMtime(resolve('src')),
         newestMtime(resolve('public')),
         statSync(resolve('astro.config.mjs')).mtimeMs,
-        statSync(resolve('package.json')).mtimeMs
+        statSync(resolve('package.json')).mtimeMs,
+        statSync(resolve('pnpm-lock.yaml')).mtimeMs
       );
       const fresh = [MARATHON_PAGE, STACKOVERFLOW_PAGE, NO_CAPTION_PAGE].every(
         (page) => statSync(page).mtimeMs >= newestInput
