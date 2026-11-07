@@ -14,7 +14,6 @@ Closes #<number>
 ## Validation
 
 - [ ] `pnpm validate` passes (format, lint, `astro check`, build + provenance stamping, full `vitest` suite)
-- [ ] `pnpm test` passes
 - [ ] `pnpm test:e2e` passes (local)
 - [ ] No secrets, keys or credentials in the diff
 - [ ] Visual review completed in the browser
