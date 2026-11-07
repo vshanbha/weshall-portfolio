@@ -25,10 +25,10 @@ Rules that keep this honest:
   the Locale Integrity rule in AGENTS.md governs placeholders
   (`// TODO: translate`) and brand transliteration.
 - `tests/i18n/locales.test.ts` is the **runtime backstop**: it fails if the
-  data those types enforce ever drifts again (loosened `satisfies` clauses,
-  stale or missing entries), and it pins the aspirational set
-  (`isValidLocale('hi')` must be `false`), so it moves with activation —
-  see step 3.
+  data those types enforce ever drifts again (stale or missing entries —
+  which a loosened `satisfies` clause would no longer stop), and it pins the
+  aspirational set (`isValidLocale('hi')` must be `false`), so it moves with
+  activation — see step 3.
 - Blog **posts** stay English-only: `englishOnlyDetailRoutes` in
   `src/i18n/routes.ts` plus the per-post `locale` frontmatter gate. The blog
   _index_ gets chrome in every enabled locale automatically.

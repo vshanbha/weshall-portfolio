@@ -13,8 +13,9 @@ import { mr } from '@/i18n/translations/mr';
  *
  * These invariants are also enforced at compile time (`satisfies` on routes
  * and translation files, `Record<Locale, …>` on the locale maps). These tests
- * are the runtime backstop: they still fail if the `satisfies` clauses or the
- * strict record types are ever removed or loosened again.
+ * are the runtime backstop: they catch drift in the data the types guard
+ * (stale or missing entries) even if the `satisfies` clauses or the strict
+ * record types are ever removed or loosened again.
  */
 
 /** Flatten a translation object to dotted key paths (leaf values only). */
