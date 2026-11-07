@@ -15,11 +15,11 @@
  */
 import { locales } from './config';
 
-/** The Astro base path normalised to '/…' without a trailing slash ('' on the root domain). */
+/** Base path without its trailing slash ('' on the root domain). */
 export function siteBase(): string {
   const raw = process.env.BASE_PATH || '/';
   const withLeadingSlash = raw.startsWith('/') ? raw : `/${raw}`;
-  return withLeadingSlash.replace(/\/$/, '');
+  return withLeadingSlash.replace(/\/+$/, '');
 }
 
 /** True when a pathname lives under any enabled locale at the current base. */

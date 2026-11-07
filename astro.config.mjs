@@ -45,7 +45,8 @@ function rehypeTaskListLabels() {
 
 export default defineConfig({
   site: process.env.SITE_URL || 'http://localhost:4321',
-  base: process.env.BASE_PATH || '/',
+  // Same normalisation as every other base consumer (siteBase()).
+  base: base === '' ? '/' : base,
 
   // i18n configuration — derived from the single switch in src/i18n/config.ts
   i18n: {

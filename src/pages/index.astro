@@ -1,5 +1,6 @@
 ---
-import { defaultLocale } from '@/i18n/config';
+import siteConfig from '@/config/site.config';
+import { defaultLocale, localeNames } from '@/i18n/config';
 import { siteBase } from '@/i18n/url';
 
 const home = `${siteBase()}/${defaultLocale}/`;
@@ -9,11 +10,14 @@ const home = `${siteBase()}/${defaultLocale}/`;
 <html lang={defaultLocale}>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{siteConfig.name}</title>
     <meta http-equiv="refresh" content={`2;url=${home}`} />
+    <meta name="robots" content="noindex" />
     <link rel="canonical" href={home} />
   </head>
   <body>
-    <a href={home}>Go to English homepage</a>
+    <a href={home}>Go to {localeNames[defaultLocale]} homepage</a>
     <script define:vars={{ home }}>
       window.location.href = home;
     </script>

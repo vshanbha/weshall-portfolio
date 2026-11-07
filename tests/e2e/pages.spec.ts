@@ -80,6 +80,18 @@ test.describe('Root-Level Redirects', () => {
       await expect(page.locator('body')).toContainText('We Shall Build');
     });
   }
+
+  test('blog detail pages redirect with JS and a meta-refresh fallback', async ({ page }) => {
+    const response = await page.request.get('/blog/zeroclaw-personal-ai-assistant');
+    expect(response.status()).toBe(200);
+    const html = await response.text();
+    expect(html).toContain('<title>Redirecting...</title>');
+    expect(html).toMatch(
+      new RegExp(
+        `http-equiv="refresh"\\s+content="[12];url=/${defaultLocale}/blog/zeroclaw-personal-ai-assistant`
+      )
+    );
+  });
 });
 
 test.describe('Locale pages', () => {
