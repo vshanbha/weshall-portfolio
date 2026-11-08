@@ -1,5 +1,108 @@
 # Changelog
 
+## [v0.5.0] - 2026-11-08
+
+Minor: the i18n layer is rebuilt on a single locale switch — locale types
+narrowed to the enabled set, redirects/sitemap/content-schema derived from
+it, base-path-aware URL helpers, and a language-activation playbook that
+closes #20. The redirect shims and the 404 page now render from the
+translation bundles under a new String Integrity rule with a machine guard,
+GitHub Actions move off Node 20 (closing #51), the build-test suite gains
+RSS, freshness and shim guards, the sprint post-mortem ships, and the
+project standards move out of AGENTS.md into `docs/STANDARDS.md`.
+
+### Bug Fixes
+
+- Narrow locale types to the enabled locales and type-check every translation file, closing #20 ([`d41cfc7`](https://github.com/vshanbha/weshall-portfolio/commit/d41cfc7))
+- Derive the content-schema locale enum and default from the enabled locales ([`f001b50`](https://github.com/vshanbha/weshall-portfolio/commit/f001b50), [`8a67244`](https://github.com/vshanbha/weshall-portfolio/commit/8a67244))
+- Make the base dimension real: shared URL helper, base-aware redirect/sitemap/OG guards, derived shims, with the review fixes ([`aebf426`](https://github.com/vshanbha/weshall-portfolio/commit/aebf426), [`f948443`](https://github.com/vshanbha/weshall-portfolio/commit/f948443), [`cb85cd9`](https://github.com/vshanbha/weshall-portfolio/commit/cb85cd9))
+- Link and tag RSS items by `defaultLocale` instead of stripping the en/ prefix ([`592ff06`](https://github.com/vshanbha/weshall-portfolio/commit/592ff06))
+- Render the redirect shims and the 404 page from the default-locale bundle, with a base-aware 404 locale ([`ec52e4c`](https://github.com/vshanbha/weshall-portfolio/commit/ec52e4c), [`4971889`](https://github.com/vshanbha/weshall-portfolio/commit/4971889))
+
+### Content
+
+- Export the one-week agentic development sprint post-mortem with hero image and AI-provenance disclosure ([`fdf5ece`](https://github.com/vshanbha/weshall-portfolio/commit/fdf5ece), [`0d5483a`](https://github.com/vshanbha/weshall-portfolio/commit/0d5483a), [`de79249`](https://github.com/vshanbha/weshall-portfolio/commit/de79249), [`d5752a8`](https://github.com/vshanbha/weshall-portfolio/commit/d5752a8), [`9ab36f5`](https://github.com/vshanbha/weshall-portfolio/commit/9ab36f5))
+
+### Tests
+
+- Add the RSS feed guard and a shared dist-freshness gate across every build suite, with review nits ([`12540e4`](https://github.com/vshanbha/weshall-portfolio/commit/12540e4), [`9084d40`](https://github.com/vshanbha/weshall-portfolio/commit/9084d40), [`e4756e6`](https://github.com/vshanbha/weshall-portfolio/commit/e4756e6))
+- Harden the article-hero freshness check and skip its nested build when dist is fresh ([`e12cead`](https://github.com/vshanbha/weshall-portfolio/commit/e12cead), [`51a19ae`](https://github.com/vshanbha/weshall-portfolio/commit/51a19ae), [`2a44729`](https://github.com/vshanbha/weshall-portfolio/commit/2a44729))
+- Guard the shim and 404 strings against re-hardcoding, count-checking every built blog shim ([`6584cba`](https://github.com/vshanbha/weshall-portfolio/commit/6584cba))
+- Cover the /philosophy bare redirect in e2e ([`fd7b854`](https://github.com/vshanbha/weshall-portfolio/commit/fd7b854))
+
+### CI/CD
+
+- Run the full test suite inside `pnpm validate` so guards run automatically ([`e1152d3`](https://github.com/vshanbha/weshall-portfolio/commit/e1152d3))
+- Bump GitHub Actions off Node 20, closing #51 ([`b093371`](https://github.com/vshanbha/weshall-portfolio/commit/b093371))
+
+### Docs
+
+- Add the language-activation playbook, closing #20, with its review fixes ([`7d0a9a5`](https://github.com/vshanbha/weshall-portfolio/commit/7d0a9a5), [`85d6f09`](https://github.com/vshanbha/weshall-portfolio/commit/85d6f09), [`e608c58`](https://github.com/vshanbha/weshall-portfolio/commit/e608c58), [`99365a0`](https://github.com/vshanbha/weshall-portfolio/commit/99365a0))
+- Add the String Integrity rule and pre-Gate-B audit step, the AGENTS.md i18n exception, and the Regression Guard Rule ([`dbb8498`](https://github.com/vshanbha/weshall-portfolio/commit/dbb8498), [`c53da8b`](https://github.com/vshanbha/weshall-portfolio/commit/c53da8b), [`05edf08`](https://github.com/vshanbha/weshall-portfolio/commit/05edf08), [`5ccb44c`](https://github.com/vshanbha/weshall-portfolio/commit/5ccb44c))
+- Move the project standards into `docs/STANDARDS.md` and point the skills at the canonical Iron Laws ([`b8463d6`](https://github.com/vshanbha/weshall-portfolio/commit/b8463d6), [`a78c571`](https://github.com/vshanbha/weshall-portfolio/commit/a78c571), [`37dc532`](https://github.com/vshanbha/weshall-portfolio/commit/37dc532), [`1da70b3`](https://github.com/vshanbha/weshall-portfolio/commit/1da70b3))
+- Replace the template's es/fr JSDoc examples with real en/de URLs ([`f946117`](https://github.com/vshanbha/weshall-portfolio/commit/f946117))
+- Describe the full validate chain and fix the stale enumerations ([`825a438`](https://github.com/vshanbha/weshall-portfolio/commit/825a438), [`c38b34d`](https://github.com/vshanbha/weshall-portfolio/commit/c38b34d), [`b80a4e7`](https://github.com/vshanbha/weshall-portfolio/commit/b80a4e7))
+- Drop the redundant test checklist items from both release-pr templates ([`6c888fb`](https://github.com/vshanbha/weshall-portfolio/commit/6c888fb), [`b3110d6`](https://github.com/vshanbha/weshall-portfolio/commit/b3110d6))
+- Remove the duplicated Shell Command Integrity bullet ([`558e80a`](https://github.com/vshanbha/weshall-portfolio/commit/558e80a))
+
+### Chores
+
+- Refactor: derive the remaining locale state, redirects, sitemap filter and build tests from the single switch ([`2db74f1`](https://github.com/vshanbha/weshall-portfolio/commit/2db74f1), [`8ce7111`](https://github.com/vshanbha/weshall-portfolio/commit/8ce7111))
+- Delete the three shadowed redirect shims ([`756c10c`](https://github.com/vshanbha/weshall-portfolio/commit/756c10c))
+- Final review nits: freshness comment, lockfile input, release-pr wording ([`2f201ab`](https://github.com/vshanbha/weshall-portfolio/commit/2f201ab))
+- Bump satori ([`d0b7fc7`](https://github.com/vshanbha/weshall-portfolio/commit/d0b7fc7))
+
+### Commits
+
+`1da70b3` - docs(standards): final nits from the 37dc532 review
+`37dc532` - docs(standards): widen the canonical Iron Laws rows to cover valid usage
+`a78c571` - docs: point the skills at the canonical Iron Laws; scope the factory reference
+`b8463d6` - docs: move project standards out of AGENTS.md into docs/STANDARDS.md
+`f946117` - docs(i18n): replace the template's es/fr JSDoc examples with real en/de URLs (refs #52)
+`5ccb44c` - docs(agents): String Integrity wording nits + stale locale list (refs #52)
+`05edf08` - docs(agents): add the String Integrity rule and the audit step (refs #52)
+`6584cba` - test(shim-strings): count-check the blog shims; honest 404 chrome comment (refs #52)
+`4971889` - fix(i18n): resolve the ec52e4c review findings — dynamic shim test, base-aware 404 locale (refs #52)
+`ec52e4c` - fix(i18n): render redirect shims and the 404 page from the default-locale bundle (refs #52)
+`b3110d6` - docs(release-pr): drop the redundant 'pnpm test' checklist box from both templates (refs #20)
+`6c888fb` - docs(release-pr): drop the redundant 'Tests pass' checklist item (refs #20)
+`e4756e6` - test(provenance): include the collection-time about page in the freshness markers (refs #20)
+`9084d40` - test(build): review nits on the freshness gate and RSS guard (refs #20)
+`12540e4` - test(build): RSS feed guard + shared dist-freshness gate for all build suites (refs #20)
+`558e80a` - docs: remove the duplicated Shell Command Integrity bullet (refs #20)
+`99365a0` - docs(i18n): align the backstop wording in doc and test header (refs #20)
+`e608c58` - docs(i18n): final playbook nits from the review (refs #20)
+`85d6f09` - docs(i18n): resolve REQUEST-CHANGES on the activation playbook (refs #20)
+`7d0a9a5` - docs(i18n): add the language-activation playbook (closes #20)
+`b093371` - ci: bump GitHub Actions off Node 20 (fixes #51)
+`fd7b854` - test(e2e): cover the /philosophy bare redirect (refs #20)
+`756c10c` - chore(i18n): delete the three shadowed redirect shims (refs #20)
+`2f201ab` - chore: final review nits — freshness comment, lockfile input, release-pr wording (refs #20)
+`51a19ae` - test(article-hero): add package.json to freshness inputs, tidy statSync (refs #20)
+`b80a4e7` - docs: standardise validate wording as 'vitest suite' (refs #20)
+`592ff06` - fix(rss): drop the dead en/ slug strip, link and tag by defaultLocale (refs #20)
+`cb85cd9` - fix(i18n): resolve REQUEST-CHANGES on f948443 — shim titles, blog-detail fallback, base consistency (refs #20)
+`f948443` - fix(i18n): resolve REQUEST-CHANGES on aebf426 — live shims, meta-refresh, sitemap target (refs #20)
+`aebf426` - fix(i18n): make the base dimension real — shared helper, base-aware guards, derived shims (refs #20)
+`8ce7111` - refactor(i18n): derive redirects, sitemap filter and build tests from the switch (refs #20)
+`e12cead` - test(article-hero): harden the freshness check per review nits (refs #20)
+`2db74f1` - refactor(i18n): derive remaining locale state from the single switch (refs #20)
+`c38b34d` - docs(validate): fix the stale enumerations the Gate B review caught (refs #20)
+`825a438` - docs(validate): describe the full validate chain, add test:run script (refs #20)
+`2a44729` - fix(tests): skip the nested build in article-hero when dist is fresh (refs #20)
+`8a67244` - fix(content): derive the schema locale default from defaultLocale (refs #20)
+`f001b50` - fix(content): derive the frontmatter locale enum from the enabled locales (refs #20)
+`e1152d3` - fix(ci): run the full test suite in validate so guards run automatically (refs #20)
+`c53da8b` - docs(workflow): add the Regression Guard Rule (refs #20)
+`dbb8498` - docs(agents): add the i18n exception to rule 5 (refs #20)
+`d41cfc7` - fix(i18n): narrow locale types to enabled locales, type-check translations (refs #20)
+`9ab36f5` - content: drop custom CTA footer, keep the standard article CTA
+`d5752a8` - content: reframe description as a development sprint, not a screen test
+`de79249` - content: add hero caption and illustrative-use disclaimer to the post-mortem
+`0d5483a` - content: add hero image and AI-provenance disclosure to the sprint post-mortem
+`fdf5ece` - content: export the one-week agentic sprint post-mortem to the blog
+`d0b7fc7` - chore(deps): bump satori
+
 ## [v0.4.0] - 2026-11-01
 
 Minor: the German edition ships. Every section except blog detail pages is
