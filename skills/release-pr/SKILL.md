@@ -11,20 +11,20 @@ This skill governs pull request creation and release management for the **portfo
 
 ## Quick Reference
 
-| Task                  | Command                                            |
-| --------------------- | -------------------------------------------------- |
-| Create feature branch | `git checkout -b issue-<number>-<description> dev` |
-| Run full validation   | `pnpm validate`                                    |
-| Run tests             | `pnpm test`                                        |
-| Run E2E tests         | `pnpm test:e2e`                                    |
-| Create release PR     | `gh pr create --base main --head dev`              |
-| List open PRs         | `gh pr list`                                       |
-| View PR               | `gh pr view <number>`                              |
-| Merge PR              | `gh pr merge <number> --merge`                     |
-| Bump version          | `npm version patch --no-git-tag-version`           |
-| Create tag            | `git tag -a vX.Y.Z -m "Release vX.Y.Z"`            |
-| Push tag only         | `git push origin vX.Y.Z`                           |
-| Create GitHub release | `gh release create vX.Y.Z`                         |
+| Task                  | Command                                                  |
+| --------------------- | -------------------------------------------------------- |
+| Create feature branch | `git checkout -b issue-<number>-<description> dev`       |
+| Run full validation   | `pnpm validate`                                          |
+| Run tests             | `pnpm test`                                              |
+| Run E2E tests         | `pnpm test:e2e`                                          |
+| Create release PR     | `gh pr create --base main --head dev`                    |
+| List open PRs         | `gh pr list`                                             |
+| View PR               | `gh pr view <number>`                                    |
+| Merge PR              | `gh pr merge <number> --merge`                           |
+| Bump version          | `npm version [patch\|minor\|major] --no-git-tag-version` |
+| Create tag            | `git tag -a vX.Y.Z -m "Release vX.Y.Z"`                  |
+| Push tag only         | `git push origin vX.Y.Z`                                 |
+| Create GitHub release | `gh release create vX.Y.Z`                               |
 
 ## Branch Naming
 

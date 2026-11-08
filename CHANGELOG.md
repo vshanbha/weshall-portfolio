@@ -54,6 +54,7 @@ project standards move out of AGENTS.md into `docs/STANDARDS.md`.
 
 ### Commits
 
+`79eabf6` - chore: bump version to 0.5.0
 `1da70b3` - docs(standards): final nits from the 37dc532 review
 `37dc532` - docs(standards): widen the canonical Iron Laws rows to cover valid usage
 `a78c571` - docs: point the skills at the canonical Iron Laws; scope the factory reference
