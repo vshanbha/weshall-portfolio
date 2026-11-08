@@ -13,7 +13,7 @@ project standards move out of AGENTS.md into `docs/STANDARDS.md`.
 
 ### Bug Fixes
 
-- Narrow locale types to the enabled locales and type-check every translation file, closing #20 ([`d41cfc7`](https://github.com/vshanbha/weshall-portfolio/commit/d41cfc7))
+- Narrow locale types to the enabled locales and type-check every translation file, the core #20 fix ([`d41cfc7`](https://github.com/vshanbha/weshall-portfolio/commit/d41cfc7))
 - Derive the content-schema locale enum and default from the enabled locales ([`f001b50`](https://github.com/vshanbha/weshall-portfolio/commit/f001b50), [`8a67244`](https://github.com/vshanbha/weshall-portfolio/commit/8a67244))
 - Make the base dimension real: shared URL helper, base-aware redirect/sitemap/OG guards, derived shims, with the review fixes ([`aebf426`](https://github.com/vshanbha/weshall-portfolio/commit/aebf426), [`f948443`](https://github.com/vshanbha/weshall-portfolio/commit/f948443), [`cb85cd9`](https://github.com/vshanbha/weshall-portfolio/commit/cb85cd9))
 - Link and tag RSS items by `defaultLocale` instead of stripping the en/ prefix ([`592ff06`](https://github.com/vshanbha/weshall-portfolio/commit/592ff06))
