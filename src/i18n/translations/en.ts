@@ -32,6 +32,8 @@ export const en = {
     error: 'An error occurred',
     notFound: 'Page not found',
     backHome: 'Back to home',
+    notFoundDescription: "The page you're looking for doesn't exist.",
+    notFoundMessage: "Sorry, we couldn't find the page you're looking for.",
     copied: 'Copied!',
     copy: 'Copy',
   },
@@ -716,6 +718,17 @@ export const en = {
     privacyPolicyLabel: 'Privacy Policy',
     alwaysOn: 'Always on',
   },
+
+  // Redirect shims (root / and locale-less /blog/…) — visible fallback text
+  // while the JS/meta refresh runs. Shims render t('redirect.*',
+  // defaultLocale): this entry displays while this locale is the default and
+  // is never hardcoded in the pages (docs/STANDARDS.md → String Integrity).
+  redirect: {
+    home: 'Go to the English homepage',
+    title: 'Redirecting...',
+    toArticle: 'Redirecting to',
+    articleName: 'the article',
+  },
 } as const;
 
 export type TranslationKeys = typeof en;
@@ -734,3 +747,12 @@ type NestedKeyOf<T> = T extends object
   : never;
 
 export type TranslationKey = NestedKeyOf<TranslationKeys>;
+
+/**
+ * Structure every locale file must satisfy (Velocity's `SiteStrings`
+ * pattern): all keys from `en`, with string values widened to `string`.
+ * Use with `satisfies` so a missing or extra key is a type error.
+ */
+export type SiteStrings<T = TranslationKeys> = {
+  [K in keyof T]: T[K] extends string ? string : T[K] extends object ? SiteStrings<T[K]> : T[K];
+};

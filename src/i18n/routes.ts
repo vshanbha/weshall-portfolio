@@ -6,11 +6,13 @@
  * define the actual URL segments for each language.
  *
  * Example:
- * - Route 'about' → /about (en), /es/sobre-nosotros (es), /fr/a-propos (fr)
+ * - Route 'about' → /en/about (en) and /de/about (de) — slugs currently
+ *   mirror English; they may diverge once German URLs are decided
  *
  * Note: Empty string '' represents the root/home page.
  */
 
+import type { Locale } from './config';
 import type { TranslationKey } from './translations/en';
 
 /**
@@ -29,8 +31,7 @@ export type NavConfig = {
  * A route definition maps each locale to its URL slug
  * Optionally includes navigation configuration
  */
-// TODO: Narrow to Record<Locale, string> when de/hi/mr locales are activated
-export type RouteDefinition = Record<string, string> & {
+export type RouteDefinition = Record<Locale, string> & {
   nav?: NavConfig;
 };
 
@@ -50,8 +51,6 @@ export const routes = {
   home: {
     en: '',
     de: '',
-    hi: '',
-    mr: '',
     nav: { show: false, order: 0, label: 'nav.home' },
   },
 
@@ -59,8 +58,6 @@ export const routes = {
   blog: {
     en: 'blog',
     de: 'blog',
-    hi: 'blog',
-    mr: 'blog',
     nav: { show: true, order: 2, label: 'nav.blog' },
   },
 
@@ -68,8 +65,6 @@ export const routes = {
   services: {
     en: 'services',
     de: 'services',
-    hi: 'services',
-    mr: 'services',
     nav: { show: true, order: 3, label: 'nav.services' },
   },
 
@@ -77,15 +72,11 @@ export const routes = {
   about: {
     en: 'about',
     de: 'about',
-    hi: 'about',
-    mr: 'about',
     nav: { show: true, order: 4, label: 'nav.about' },
   },
   contact: {
     en: 'contact',
     de: 'contact',
-    hi: 'contact',
-    mr: 'contact',
     nav: { show: true, order: 5, label: 'nav.contact' },
   },
 
@@ -95,11 +86,9 @@ export const routes = {
   philosophy: {
     en: 'philosophy',
     de: 'philosophy',
-    hi: 'philosophy',
-    mr: 'philosophy',
     nav: { show: false, order: 6, label: 'nav.philosophy' },
   },
-} as const;
+} as const satisfies Record<string, RouteDefinition>;
 
 /**
  * Type-safe route identifier

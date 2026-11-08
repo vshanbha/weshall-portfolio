@@ -1,6 +1,7 @@
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 import siteConfig from '@/config/site.config';
+import { defaultLocale } from '@/i18n/config';
 
 /**
  * Escapes XML special characters
@@ -22,23 +23,23 @@ function formatRfc822Date(date: Date): string {
 }
 
 export async function GET(context: APIContext) {
-  // Get only English, non-draft posts for RSS
-  const posts = await getCollection('articles', ({ data }) => data.locale === 'en' && !data.draft);
+  // Get only default-locale, non-draft posts for RSS
+  const posts = await getCollection(
+    'articles',
+    ({ data }) => data.locale === defaultLocale && !data.draft
+  );
 
   // Sort posts by date (newest first)
   const sortedPosts = posts.sort(
     (a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
   );
 
-  // Generate slug from post id (remove 'en/' prefix)
-  const getSlug = (id: string) => id.replace('en/', '');
-
   const site = context.site?.toString() ?? siteConfig.url;
   const siteUrl = site.endsWith('/') ? site.slice(0, -1) : site;
 
   const items = sortedPosts
     .map((post) => {
-      const link = `${siteUrl}/blog/${getSlug(post.id)}/`;
+      const link = `${siteUrl}/${defaultLocale}/blog/${post.id}/`;
       const categories = post.data.tags
         .map((tag) => `<category>${escapeXml(tag)}</category>`)
         .join('\n        ');
@@ -62,7 +63,7 @@ export async function GET(context: APIContext) {
     <description>${escapeXml(siteConfig.description)}</description>
     <link>${siteUrl}</link>
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml"/>
-    <language>en-us</language>
+    <language>${defaultLocale}</language>
     <lastBuildDate>${formatRfc822Date(new Date())}</lastBuildDate>
 ${items}
   </channel>

@@ -1,38 +1,54 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { locales } from '@/i18n/config';
+import { siteBase } from '@/i18n/url';
+import { ensureFreshDist } from '../helpers/dist';
 
 describe('Sitemap build output', () => {
   const sitemapPath = resolve('dist/sitemap-0.xml');
+  const sitemapRedirectPath = resolve('dist/sitemap.xml/index.html');
+  // Collection-time guard: the reads below happen while this file is being
+  // collected, before any beforeAll could run.
+  ensureFreshDist([sitemapPath, sitemapRedirectPath]);
+  // Mirrors astro.config.mjs: @astrojs/sitemap emits the base in every <loc>,
+  // so the guards must be BASE_PATH-aware or a subpath build fails them.
+  const base = siteBase();
+  const escapedBase = base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const localePrefixed = new RegExp(`^${escapedBase}/(${locales.join('|')})(/|$)`);
+  const bareLocalePath = new RegExp(
+    `^${escapedBase}/(?!${locales.map((locale) => `${locale}/`).join('|')})[a-z]`
+  );
+  const xml = readFileSync(sitemapPath, 'utf-8');
+  const urls = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
 
-  it('contains only /en/ or /de/ prefixed URLs', () => {
-    const xml = readFileSync(sitemapPath, 'utf-8');
-    const urls = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
+  it('contains only enabled-locale-prefixed URLs', () => {
     expect(urls.length).toBeGreaterThan(0);
     for (const url of urls) {
       const loc = url.replace(/<\/?loc>/g, '');
       const pathname = new URL(loc).pathname;
-      expect(pathname).toMatch(/^\/(en|de)\//);
+      expect(pathname).toMatch(localePrefixed);
     }
   });
 
   it('does not contain bare domain URLs without locale prefix', () => {
-    const xml = readFileSync(sitemapPath, 'utf-8');
-    const urls = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
     for (const url of urls) {
       const loc = url.replace(/<\/?loc>/g, '');
       expect(loc).not.toBe('https://weshall.build/');
       const pathname = new URL(loc).pathname;
-      expect(pathname).not.toMatch(/^\/(?!en\/|de\/)[a-z]/);
+      expect(pathname).not.toMatch(bareLocalePath);
     }
   });
 });
 
 describe('Sitemap redirect', () => {
-  it('/sitemap.xml redirects to /sitemap-index.xml', () => {
+  const base = siteBase();
+
+  it('/sitemap.xml redirects to the base-prefixed sitemap index', () => {
     const html = readFileSync(resolve('dist/sitemap.xml/index.html'), 'utf-8');
-    expect(html).toContain('http-equiv="refresh"');
-    expect(html).toContain('/sitemap-index.xml');
+    // Assert the actual url= target, not a substring: a bare
+    // 'url=/sitemap-index.xml' would also contain '/sitemap-index.xml'.
+    expect(html).toContain(`url=${base}/sitemap-index.xml`);
     expect(html).toMatch(/<link rel="canonical" href="[^"]*\/sitemap-index\.xml">/);
   });
 });

@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+// No '@' alias in playwright.config.ts — use the relative path.
+import { defaultLocale } from '../../src/i18n/config';
 
 test.describe('Pages', () => {
   test('home page loads with correct branding', async ({ page }) => {
@@ -61,17 +63,20 @@ test.describe('Root-Level Redirects', () => {
     const html = await response.text();
     expect(html).not.toContain('<title>Redirecting');
     expect(html).toContain('<script');
-    expect(html).toMatch(/http-equiv="refresh"\s+content="[12];url=\/en\//);
+    expect(html).toMatch(
+      new RegExp(`http-equiv="refresh"\\s+content="[12];url=/${defaultLocale}/`)
+    );
   });
 
   const redirects = [
-    { from: '/about', to: '/en/about' },
-    { from: '/contact', to: '/en/contact' },
-    { from: '/services', to: '/en/services' },
-    { from: '/blog', to: '/en/blog' },
-    { from: '/impressum', to: '/en/impressum' },
-    { from: '/datenschutz', to: '/en/datenschutz' },
-  ];
+    '/about',
+    '/contact',
+    '/services',
+    '/blog',
+    '/impressum',
+    '/datenschutz',
+    '/philosophy',
+  ].map((from) => ({ from, to: `/${defaultLocale}${from}` }));
 
   for (const { from, to } of redirects) {
     test(`${from} redirects to ${to}`, async ({ page }) => {
@@ -81,6 +86,18 @@ test.describe('Root-Level Redirects', () => {
       await expect(page.locator('body')).toContainText('We Shall Build');
     });
   }
+
+  test('blog detail pages redirect with JS and a meta-refresh fallback', async ({ page }) => {
+    const response = await page.request.get('/blog/zeroclaw-personal-ai-assistant');
+    expect(response.status()).toBe(200);
+    const html = await response.text();
+    expect(html).toContain('<title>Redirecting...</title>');
+    expect(html).toMatch(
+      new RegExp(
+        `http-equiv="refresh"\\s+content="[12];url=/${defaultLocale}/blog/zeroclaw-personal-ai-assistant`
+      )
+    );
+  });
 });
 
 test.describe('Locale pages', () => {

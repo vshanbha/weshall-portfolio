@@ -1,39 +1,34 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { execSync } from 'node:child_process';
+import { ensureFreshDist } from '../helpers/dist';
+
+/** Pages this suite asserts on — also the build-freshness markers. */
+const MARATHON_PAGE = resolve('dist/en/blog/run-further-than-a-marathon/index.html');
+const STACKOVERFLOW_PAGE = resolve('dist/en/blog/stackoverflow-eulogy/index.html');
+const NO_CAPTION_PAGE = resolve('dist/en/blog/how-this-site-was-built/index.html');
 
 describe('ArticleHero rendering', () => {
   beforeAll(() => {
-    // Build the site once before running tests
-    execSync('pnpm build', { cwd: resolve('.'), stdio: 'pipe' });
+    ensureFreshDist([MARATHON_PAGE, STACKOVERFLOW_PAGE, NO_CAPTION_PAGE]);
   });
 
   describe('hero caption', () => {
     it('renders caption element when heroCaption is set', () => {
-      const html = readFileSync(
-        resolve('dist/en/blog/run-further-than-a-marathon/index.html'),
-        'utf-8'
-      );
+      const html = readFileSync(MARATHON_PAGE, 'utf-8');
       expect(html).toContain('data-testid="hero-caption"');
       expect(html).toContain('Forrest running through Monument Valley');
     });
 
     it('does not render caption element when heroCaption is absent', () => {
-      const html = readFileSync(
-        resolve('dist/en/blog/how-this-site-was-built/index.html'),
-        'utf-8'
-      );
+      const html = readFileSync(NO_CAPTION_PAGE, 'utf-8');
       expect(html).not.toContain('data-testid="hero-caption"');
     });
   });
 
   describe('reading time', () => {
     it('shows reading time based on actual content length', () => {
-      const html = readFileSync(
-        resolve('dist/en/blog/run-further-than-a-marathon/index.html'),
-        'utf-8'
-      );
+      const html = readFileSync(MARATHON_PAGE, 'utf-8');
       // Article is substantial — should show at least 3 min read
       const match = html.match(/(\d+)\s*min read/);
       expect(match).not.toBeNull();
@@ -42,14 +37,8 @@ describe('ArticleHero rendering', () => {
     });
 
     it('shows different reading times for different articles', () => {
-      const marathon = readFileSync(
-        resolve('dist/en/blog/run-further-than-a-marathon/index.html'),
-        'utf-8'
-      );
-      const shortArticle = readFileSync(
-        resolve('dist/en/blog/stackoverflow-eulogy/index.html'),
-        'utf-8'
-      );
+      const marathon = readFileSync(MARATHON_PAGE, 'utf-8');
+      const shortArticle = readFileSync(STACKOVERFLOW_PAGE, 'utf-8');
       const marathonMatch = marathon.match(/(\d+)\s*min read/);
       const shortMatch = shortArticle.match(/(\d+)\s*min read/);
       expect(marathonMatch).not.toBeNull();

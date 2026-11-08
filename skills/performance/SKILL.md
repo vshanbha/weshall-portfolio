@@ -11,15 +11,11 @@ This skill covers performance optimisation for the Velocity Astro project. Focus
 
 ## Astro Technical Standards (Iron Laws)
 
-These are **mandatory** for performance:
+The canonical table lives in [`docs/STANDARDS.md`](../../docs/STANDARDS.md) — read it first. Performance-relevant readings:
 
-| Law                       | Rule                                                                                                                                                                            |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Zero-JS by Default**    | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands. Shipping framework JS for non-interactive content is prohibited. |
-| **Intentional Hydration** | Always specify `client:*` directives explicitly. Never rely on defaults. Prefer `client:visible` or `client:idle` over `client:load`.                                           |
-| **Image Optimisation**    | Never use raw `<img>` tags. Always use `<Image />` or `getImage()` from `astro:assets` for automatic LCP optimisation and format conversion.                                    |
-| **No Untyped Content**    | Never use `Astro.glob()`. Always use `getCollection()` / `getEntry()` from `astro:content`.                                                                                     |
-| **Typed Environment**     | Use `astro:env` for type-safe environment variables. Never use `process.env`.                                                                                                   |
+- **Zero-JS by Default** — shipping framework JS for non-interactive content is prohibited.
+- **Intentional Hydration** — prefer `client:visible` or `client:idle` over `client:load`.
+- **Image Optimisation** — `<Image />` / `getImage()` give automatic LCP optimisation and format conversion.
 
 ## Quick Reference
 
@@ -122,7 +118,7 @@ import heroImage from '../assets/hero.png';
 ### Rules for Agents
 
 - **Minimise client-side JavaScript** — prefer Astro components over React
-- **Use `client:visible`** over `client:load`** — defer non-critical interactivity
+- **Use `client:visible` over `client:load`** — defer non-critical interactivity
 - **Avoid large client-side libraries** — check bundle impact before adding
 - **Use dynamic imports** for heavy components: `const Module = await import('./Heavy.tsx')`
 - **Never add jQuery, lodash, or other large utilities** — use native JS or small alternatives

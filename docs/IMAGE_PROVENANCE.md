@@ -151,8 +151,9 @@ there is no evidence they were AI-generated.
 
 ## Checks
 
-`pnpm validate` runs lint, `astro check`, the build (including the provenance
-step) and `tests/build/`, which covers:
+`pnpm validate` runs format checks, lint, `astro check`, the build (including
+the provenance step) and the full `vitest` suite — which includes
+`tests/build/`, covering:
 
 - visible disclosure on every marked article;
 - the editorial-standards statement and its anchor;

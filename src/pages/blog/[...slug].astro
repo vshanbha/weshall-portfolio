@@ -1,6 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
+import { defaultLocale } from '@/i18n/config';
+import { t } from '@/i18n/index';
+import { siteBase } from '@/i18n/url';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const entries = await getCollection('articles', ({ data }) => {
@@ -12,19 +15,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { slug } = Astro.params;
+const target = `${siteBase()}/${defaultLocale}/blog/${slug}`;
 ---
 
 <!doctype html>
-<html>
+<html lang={defaultLocale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting...</title>
-    <link rel="canonical" href={`/en/blog/${slug}`} />
+    <title>{t('redirect.title', defaultLocale)}</title>
+    <meta http-equiv="refresh" content={`2;url=${target}`} />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={target} />
   </head>
   <body>
-    <script define:vars={{ slug }}>
-      window.location.href = `/en/blog/${slug}`;
+    <p>
+      {t('redirect.toArticle', defaultLocale)}{' '}
+      <a href={target}>{t('redirect.articleName', defaultLocale)}</a>...
+    </p>
+    <script define:vars={{ target }}>
+      window.location.href = target;
     </script>
   </body>
 </html>

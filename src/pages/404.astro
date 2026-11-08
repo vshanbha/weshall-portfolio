@@ -1,23 +1,33 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
+import { getLocaleFromPath } from '@/i18n/config';
+import { useTranslations } from '@/i18n/index';
+import { stripSiteBase } from '@/i18n/url';
+
+// Path prefix (after stripping any deploy base) when the dev server serves
+// this per request, the default locale for the static build (no prefix on
+// /404). Base-aware ahead of the layout chrome: PageLayout/Header/Footer
+// still read the raw pathname — the chrome-wide pass is #52 Item 1.
+const locale = getLocaleFromPath(stripSiteBase(Astro.url.pathname));
+const t = useTranslations(locale);
 ---
 
 <PageLayout
-  title="Page Not Found"
-  description="The page you're looking for doesn't exist."
+  title={t('common.notFound')}
+  description={t('common.notFoundDescription')}
   noindex={true}
 >
   <section class="py-24 md:py-32">
     <div class="container mx-auto px-4 text-center">
       <p class="text-7xl font-bold text-primary">404</p>
-      <h1 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Page not found</h1>
-      <p class="mt-4 text-muted-foreground">Sorry, we couldn't find the page you're looking for.</p>
+      <h1 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{t('common.notFound')}</h1>
+      <p class="mt-4 text-muted-foreground">{t('common.notFoundMessage')}</p>
       <div class="mt-8">
         <a
           href="/"
           class="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
         >
-          Go back home
+          {t('common.backHome')}
         </a>
       </div>
     </div>

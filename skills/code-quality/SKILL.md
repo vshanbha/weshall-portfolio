@@ -11,27 +11,18 @@ This skill enforces consistent code quality across the Velocity Astro project us
 
 ## Astro Technical Standards (Iron Laws)
 
-These are **mandatory** and override general TypeScript conventions when they conflict:
-
-| Law                        | Rule                                                                                                                      |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **Zero-JS by Default**     | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands.            |
-| **Strictly Typed Content** | Content Collections must use Zod schemas via `defineCollection()`. Never skip schema validation.                          |
-| **Intentional Hydration**  | Always specify `client:*` directives explicitly (`client:load`, `client:idle`, `client:visible`). Never rely on defaults. |
-| **Image Optimisation**     | Never use raw `<img>` tags. Always use `<Image />` or `getImage()` from `astro:assets`.                                   |
-| **No Untyped Content**     | Never use `Astro.glob()`. Always use `getCollection()` / `getEntry()` from `astro:content`.                               |
-| **Typed Environment**      | Use `astro:env` for type-safe environment variables. Never use `process.env`.                                             |
+The canonical table lives in [`docs/STANDARDS.md`](../../docs/STANDARDS.md) — read it first; it **overrides general TypeScript conventions when they conflict**.
 
 ### Anti-Patterns (Never Do)
 
-| Anti-Pattern                                       | Correct Approach                                     |
-| -------------------------------------------------- | ---------------------------------------------------- |
-| Framework UI for static-only content               | Use `.astro` components                              |
-| Raw `<img>` tags                                   | Use `<Image>` from `astro:assets`                    |
-| Content without Zod schema                         | Define schema in `src/content.config.ts`             |
-| Default hydration (`client:load` without thinking) | Use `client:idle` or `client:visible` where possible |
-| `Astro.glob()` for structured content              | Use `getCollection()` from `astro:content`           |
-| `process.env` for typed config                     | Use `astro:env`                                      |
+| Anti-Pattern                                   | Correct Approach                                     |
+| ---------------------------------------------- | ---------------------------------------------------- |
+| Framework UI for static-only content           | Use `.astro` components                              |
+| Raw `<img>` tags                               | Use `<Image>` from `astro:assets`                    |
+| Content without Zod schema                     | Define schema in `src/content.config.ts`             |
+| `client:load` without considering alternatives | Use `client:idle` or `client:visible` where possible |
+| `Astro.glob()` for structured content          | Use `getCollection()` from `astro:content`           |
+| `process.env` for typed config                 | Use `astro:env`                                      |
 
 ## Quick Reference
 
@@ -44,7 +35,7 @@ These are **mandatory** and override general TypeScript conventions when they co
 | Type check       | `pnpm check`        |
 | Full validation  | `pnpm validate`     |
 
-**Always run `pnpm validate` before committing.** This runs lint + type check + build in sequence.
+**Always run `pnpm validate` before committing.** This runs format check, lint, type check, build and the full vitest suite in sequence.
 
 ## ESLint
 
@@ -162,7 +153,7 @@ Before committing any changes:
 3. `pnpm check` — no type errors
 4. `pnpm build` — build succeeds
 5. `pnpm test:build` — build-output tests pass
-6. Or simply: `pnpm validate` (runs all five)
+6. Or simply: `pnpm validate` (runs steps 1–4, then the full `vitest` suite — which includes `tests/build/`)
 
 Formatting is enforced as of the repo-wide format pass. `prettier-plugin-astro`
 is on 1.x; the 0.14 line could not parse five `.astro` files at all

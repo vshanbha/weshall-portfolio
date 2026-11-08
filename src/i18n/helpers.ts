@@ -67,15 +67,14 @@ export type ResolvedRoute = {
 /**
  * Resolve route information from a URL path
  *
- * @param pathname - The URL pathname (e.g., '/es/sobre-nosotros')
+ * @param pathname - The URL pathname (e.g., '/de/about')
  * @returns The route ID, locale, and any extra path segments, or null if not a known route
  *
  * @example
  * resolveRouteFromPath('/about')           // → { routeId: 'about', locale: 'en' }
- * resolveRouteFromPath('/es/sobre-nosotros') // → { routeId: 'about', locale: 'es' }
- * resolveRouteFromPath('/fr/a-propos')     // → { routeId: 'about', locale: 'fr' }
+ * resolveRouteFromPath('/de/about')        // → { routeId: 'about', locale: 'de' }
  * resolveRouteFromPath('/blog/my-post')    // → { routeId: 'blog', locale: 'en', extra: 'my-post' }
- * resolveRouteFromPath('/es/blog/my-post') // → { routeId: 'blog', locale: 'es', extra: 'my-post' }
+ * resolveRouteFromPath('/de/blog/my-post') // → { routeId: 'blog', locale: 'de', extra: 'my-post' }
  * resolveRouteFromPath('/unknown')         // → null
  */
 export function resolveRouteFromPath(pathname: string): ResolvedRoute | null {
@@ -112,7 +111,7 @@ export function resolveRouteFromPath(pathname: string): ResolvedRoute | null {
     return { routeId: 'home', locale: segments[0] as Locale };
   }
 
-  // Handle nested routes like blog posts: /blog/my-post or /es/blog/my-post
+  // Handle nested routes like blog posts: /blog/my-post or /de/blog/my-post
   // Check if the first slug segment matches a known route
   if (slugSegments.length > 1) {
     const firstSlug = slugSegments[0];
@@ -129,8 +128,11 @@ export function resolveRouteFromPath(pathname: string): ResolvedRoute | null {
       };
     }
 
-    // Also check for translated blog slugs (e.g., /fr/blogue/my-post)
-    // We need to find which route this slug belongs to
+    // Fallback for a locale whose slug differs from the lookup above —
+    // currently unreachable, since pathLookup is built from the same table.
+    // We need to find which route this slug belongs to.
+    // TODO: verify and remove (collision semantics: pathLookup keeps the
+    // last route for a shared slug, this loop the first). Flagged in #52.
     for (const [routeId, routeSlugs] of Object.entries(routes)) {
       if (routeSlugs[locale] === firstSlug) {
         const extra = slugSegments.slice(1).join('/');
@@ -239,7 +241,7 @@ export function getRouteTranslations(
  * @returns The URL slug (without locale prefix)
  *
  * @example
- * getRouteSlug('about', 'es') // → 'sobre-nosotros'
+ * getRouteSlug('about', 'de') // → 'about' (slugs are currently identical to English)
  */
 export function getRouteSlug(routeId: RouteId, locale: Locale): string {
   return routes[routeId][locale];
@@ -276,10 +278,10 @@ export type NavRoute = {
  * @example
  * const navRoutes = getNavRoutes('en');
  * // → [
- * //   { routeId: 'components', label: 'nav.components', order: 1, path: '/components' },
- * //   { routeId: 'blog', label: 'nav.blog', order: 2, path: '/blog' },
- * //   { routeId: 'about', label: 'nav.about', order: 3, path: '/about' },
- * //   { routeId: 'contact', label: 'nav.contact', order: 4, path: '/contact' },
+ * //   { routeId: 'blog', label: 'nav.blog', order: 2, path: '/en/blog' },
+ * //   { routeId: 'services', label: 'nav.services', order: 3, path: '/en/services' },
+ * //   { routeId: 'about', label: 'nav.about', order: 4, path: '/en/about' },
+ * //   { routeId: 'contact', label: 'nav.contact', order: 5, path: '/en/contact' },
  * // ]
  */
 export function getNavRoutes(locale: Locale = defaultLocale): NavRoute[] {

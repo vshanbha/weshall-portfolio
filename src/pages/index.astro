@@ -1,17 +1,26 @@
 ---
+import siteConfig from '@/config/site.config';
+import { defaultLocale } from '@/i18n/config';
+import { t } from '@/i18n/index';
+import { siteBase } from '@/i18n/url';
+
+const home = `${siteBase()}/${defaultLocale}/`;
 ---
 
 <!doctype html>
-<html>
+<html lang={defaultLocale}>
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="2;url=/en/" />
-    <link rel="canonical" href="/en/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{siteConfig.name}</title>
+    <meta http-equiv="refresh" content={`2;url=${home}`} />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={home} />
   </head>
   <body>
-    <a href="/en/">Go to English homepage</a>
-    <script>
-      window.location.href = '/en/';
+    <a href={home}>{t('redirect.home', defaultLocale)}</a>
+    <script define:vars={{ home }}>
+      window.location.href = home;
     </script>
   </body>
 </html>

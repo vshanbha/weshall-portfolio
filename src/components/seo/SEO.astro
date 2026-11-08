@@ -1,5 +1,7 @@
 ---
 import siteConfig from '@/config/site.config';
+import { defaultLocale } from '@/i18n/config';
+import { stripSiteBase } from '@/i18n/url';
 
 interface Props {
   title?: string;
@@ -35,9 +37,12 @@ let ogImage: string;
 if (image) {
   ogImage = image.startsWith('http') ? image : new URL(image, siteConfig.url).toString();
 } else {
-  // Generate dynamic OG image path based on current URL
-  const pathname = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'index';
-  ogImage = new URL(`/og/${pathname}.png`, siteConfig.url).toString();
+  // Dynamic OG path from the current URL: strip the Astro base (dist/ output
+  // is flat) and resolve against siteConfig.url, which carries the base in
+  // subpath deployments — a root-relative '/og/...' would drop it there.
+  const pathname = stripSiteBase(Astro.url.pathname).replace(/^\/|\/$/g, '') || 'index';
+  const origin = siteConfig.url.endsWith('/') ? siteConfig.url : `${siteConfig.url}/`;
+  ogImage = new URL(`og/${pathname}.png`, origin).toString();
 }
 
 const robotsContent = [noindex ? 'noindex' : 'index', nofollow ? 'nofollow' : 'follow'].join(', ');
@@ -60,7 +65,7 @@ const localeMap: Record<string, string> = {
   pl: 'pl_PL',
   sv: 'sv_SE',
 };
-const rawLocale = Astro.currentLocale || 'en';
+const rawLocale = Astro.currentLocale || defaultLocale;
 const locale =
   rawLocale.includes('_') || rawLocale.includes('-')
     ? rawLocale.replace('-', '_')

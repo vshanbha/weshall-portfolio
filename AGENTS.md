@@ -8,7 +8,7 @@ All agents operating in this workspace must treat these as foundational, non-neg
 2. **Simplicity first.** Write the minimum code that solves the problem. No speculative abstractions.
 3. **Surgical changes.** Touch only what you were asked to touch. Don't refactor adjacent code.
 4. **Goal-driven execution.** Define what "done" looks like. Use tests as success criteria, not vibes.
-5. **Preserve half-done work.** If files cause lint/type errors but represent intentional future work (e.g. placeholder translations, stub routes), fix the errors by widening types or adding suppression — never delete the files. Prefer type widening over `@ts-expect-error` over `@ts-ignore`. Track the work with `// TODO: <description>` or an issue reference. Ask the human if uncertain.
+5. **Preserve half-done work.** If files cause lint/type errors but represent intentional future work (e.g. placeholder translations, stub routes), fix the errors by widening types or adding suppression — never delete the files. Prefer type widening over `@ts-expect-error` over `@ts-ignore`. Track the work with `// TODO: <description>` or an issue reference. **i18n exception (Velocity pattern, issue #20):** do not widen `Locale`-keyed record types to accommodate locales that are not enabled — narrow to the enabled list in `src/i18n/config.ts` and keep aspirational locales in their translation files, typed with `satisfies SiteStrings`, so missing keys remain type errors. Ask the human if uncertain.
 
 ---
 
@@ -23,7 +23,7 @@ All work follows the **Agent Workflow** defined in [`docs/AgentWorkflow.md`](doc
 - **Definition of Done:** Explicit verification against acceptance criteria
 - **Quality matrix:** Validation commands and gate requirements
 
-Read `docs/AgentWorkflow.md` before starting any new task.
+Read `docs/AgentWorkflow.md` and `docs/STANDARDS.md` before starting any new task.
 
 ## Security and Privacy
 
@@ -85,29 +85,9 @@ No content may be moved, copied, or synced from `factory/` to `portfolio/` witho
 
 Agents must NOT automate or bypass this gate. Content arriving in `portfolio/src/content/articles/` is considered **published source material** — treat it as canonical.
 
-## Operational Principles
+## Standards & Best Practices
 
-- **AI Safety:** AI agents may draft components, propose styling, and suggest content structure. They must NOT deploy directly, alter production configuration, or bypass human review.
-- **Data Integrity:** Agents MUST NOT delete, move, rename, or otherwise modify files or directory structures without explicit, prior user approval for each specific action.
-- **Shell Command Integrity:** All shell commands must be executed independently. Do not chain commands using operators like `&&`, `;`, `||`, or pipes `|` when multiple distinct actions are involved. Each command must be proposed and approved separately.
-- **Shell Command Integrity:** All shell commands must be executed independently. Do not chain commands using operators like `&&`, `;`, `||`, or pipes `|` when multiple distinct actions are involved. Each command must be proposed and approved separately.
-- **No Secrets in Code:** Never commit environment variables, API keys, or secrets. Use `.env` (gitignored) and reference `.env.example` for documentation.
-- **Locale Integrity:** When modifying translation files (`src/i18n/translations/*.ts`), existing translations in non-English locales (de, hi, mr) must be preserved. Never replace a language-specific translation with English text. If new content needs to be added to a locale file and no translation exists, add the English text as a placeholder AND flag it in a comment (e.g. `// TODO: translate`). For brand names that appear in all locales, transliterate into the target script (e.g. Devanagari for hi/mr) rather than keeping Roman script.
-
-## Astro Technical Standards (Iron Laws)
-
-These are **mandatory** for all agents working on this project:
-
-| Law                        | Rule                                                                                                           |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| **Zero-JS by Default**     | Use `.astro` components for static content. Framework components (React, Svelte) only for interactive islands. |
-| **Strictly Typed Content** | Content Collections must use Zod schemas via `defineCollection()`. Never skip schema validation.               |
-| **Intentional Hydration**  | Always specify `client:*` directives explicitly. Never rely on defaults.                                       |
-| **Image Optimisation**     | Never use raw `<img>` tags. Always use `<Image />` from `astro:assets`.                                        |
-| **No Untyped Content**     | Never use `Astro.glob()`. Always use `getCollection()` from `astro:content`.                                   |
-| **Typed Environment**      | Use `astro:env` for type-safe environment variables. Never use `process.env`.                                  |
-
-See `factory/skills/astro-specialist/references/technical-standards.md` for the full reference.
+The full rules — Operational Principles (AI Safety, **Data Integrity**, Shell Command Integrity, No Secrets, Locale Integrity, String Integrity), the Astro Technical Standards (Iron Laws) and the coding Conventions — live in [`docs/STANDARDS.md`](docs/STANDARDS.md). Read it with this file before starting any task: it is part of the rules, not optional reading. Two rules worth carrying without opening it: **never delete, move or rename files without explicit, per-action approval**, and **user-facing strings come from the translation bundles** (`t()` / `useTranslations()`), never hardcoded.
 
 ## Project Structure
 
@@ -116,7 +96,7 @@ src/
   components/         # UI components (ui/, patterns/, layout/, seo/)
   content/            # Content collections (articles, offers, philosophy, profile)
   config/             # Site config, navigation, consent
-  i18n/               # Locale routes, translations (en, es, fr)
+  i18n/               # Locale routes, translations (en, de, hi, mr)
   layouts/            # BaseLayout, PageLayout
   lib/                # Utilities (cn, schema, og image helpers)
   pages/              # Routes and API endpoints
@@ -203,15 +183,6 @@ Built-in themes:
 
 See [Velocity Design System](https://docs.deployvelocity.com/design-system/) for colour tokens, dark mode, and Tailwind utilities.
 
-## Conventions
-
-- **Language:** Use British and Indian English (e.g., 'Modelling', 'Analysed', 'Harmonise') in all user-facing content. Avoid American English spellings.
-- **Source Attribution:** When referencing external sources, provide direct, clickable links/URLs. Validate links before presenting.
-- **Component Naming:** Follow Velocity patterns — PascalCase for component files, colocated with `.tsx` extension.
-- **Styling:** Use Tailwind CSS v4 utility classes. Do not hardcode colours — use design tokens from `src/styles/tokens/`.
-- **TypeScript:** Strict mode (`astro/tsconfigs/strict`). Use the `@/` path alias for imports from `src/`.
-- **Imports:** Use path aliases — `import { Button } from '@/components/ui'` rather than relative paths.
-
 ## Configuration
 
 | File                           | Purpose                                             |
@@ -225,17 +196,17 @@ See [Velocity Configuration](https://docs.deployvelocity.com/configuration/) for
 
 ## Development Commands
 
-| Command         | Purpose                                |
-| --------------- | -------------------------------------- |
-| `pnpm dev`      | Start dev server                       |
-| `pnpm build`    | Production build                       |
-| `pnpm preview`  | Preview production build               |
-| `pnpm check`    | Astro type checker                     |
-| `pnpm lint`     | ESLint                                 |
-| `pnpm format`   | Prettier                               |
-| `pnpm validate` | Lint + check + build (full validation) |
-| `pnpm test`     | Vitest unit tests                      |
-| `pnpm test:e2e` | Playwright E2E tests                   |
+| Command         | Purpose                                                             |
+| --------------- | ------------------------------------------------------------------- |
+| `pnpm dev`      | Start dev server                                                    |
+| `pnpm build`    | Production build                                                    |
+| `pnpm preview`  | Preview production build                                            |
+| `pnpm check`    | Astro type checker                                                  |
+| `pnpm lint`     | ESLint                                                              |
+| `pnpm format`   | Prettier                                                            |
+| `pnpm validate` | Format + lint + check + build + full vitest suite (full validation) |
+| `pnpm test`     | Vitest unit tests                                                   |
+| `pnpm test:e2e` | Playwright E2E tests                                                |
 
 ## Deployment
 
@@ -284,7 +255,7 @@ All skills are in `portfolio/skills/`. Consult the relevant skill before working
 - **Never commit secrets, API keys, or credentials.** Use `.env` (gitignored).
 - **Use descriptive commit messages** that explain what and why, not just what.
 - **Branch for features:** `git checkout -b feature/<description>` for non-trivial changes.
-- **Run `pnpm validate`** (lint + check + build) before committing web changes.
+- **Run `pnpm validate`** (format + lint + check + build + vitest suite) before committing web changes.
 - **Run `pnpm test` and `pnpm test:e2e` sequentially** — running them concurrently contends for the dev server and produces spurious e2e failures (observed 5 flakes; back-to-back runs are stable).
 - **Pre-push hook:** E2E tests run automatically via `.githooks/pre-push`. If the hook isn't active on a fresh clone, run `git config core.hooksPath .githooks` once.
 - **Run `git pull` before starting work** to ensure you're on the latest.

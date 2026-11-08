@@ -11,20 +11,20 @@ This skill governs pull request creation and release management for the **portfo
 
 ## Quick Reference
 
-| Task                  | Command                                            |
-| --------------------- | -------------------------------------------------- |
-| Create feature branch | `git checkout -b issue-<number>-<description> dev` |
-| Run full validation   | `pnpm validate`                                    |
-| Run tests             | `pnpm test`                                        |
-| Run E2E tests         | `pnpm test:e2e`                                    |
-| Create release PR     | `gh pr create --base main --head dev`              |
-| List open PRs         | `gh pr list`                                       |
-| View PR               | `gh pr view <number>`                              |
-| Merge PR              | `gh pr merge <number> --merge`                     |
-| Bump version          | `npm version patch --no-git-tag-version`           |
-| Create tag            | `git tag -a vX.Y.Z -m "Release vX.Y.Z"`            |
-| Push tag only         | `git push origin vX.Y.Z`                           |
-| Create GitHub release | `gh release create vX.Y.Z`                         |
+| Task                  | Command                                                  |
+| --------------------- | -------------------------------------------------------- |
+| Create feature branch | `git checkout -b issue-<number>-<description> dev`       |
+| Run full validation   | `pnpm validate`                                          |
+| Run tests             | `pnpm test`                                              |
+| Run E2E tests         | `pnpm test:e2e`                                          |
+| Create release PR     | `gh pr create --base main --head dev`                    |
+| List open PRs         | `gh pr list`                                             |
+| View PR               | `gh pr view <number>`                                    |
+| Merge PR              | `gh pr merge <number> --merge`                           |
+| Bump version          | `npm version [patch\|minor\|major] --no-git-tag-version` |
+| Create tag            | `git tag -a vX.Y.Z -m "Release vX.Y.Z"`                  |
+| Push tag only         | `git push origin vX.Y.Z`                                 |
+| Create GitHub release | `gh release create vX.Y.Z`                               |
 
 ## Branch Naming
 
@@ -53,12 +53,11 @@ checklist below therefore applies to the release PR, created with
 Before creating a PR, verify every item:
 
 1. **Branch is up to date** — `git pull origin dev` and rebase if needed
-2. **Validation passes** — `pnpm validate` (lint + type check + build)
-3. **Tests pass** — `pnpm test`
-4. **E2E tests pass locally** — `pnpm test:e2e`
-5. **No secrets or credentials** in diff — `git diff --cached` review
-6. **Commits are atomic** — one logical change per commit
-7. **Commit messages are descriptive** — explain what and why
+2. **Validation passes** — `pnpm validate` (format + lint + type check + build + vitest suite)
+3. **E2E tests pass locally** — `pnpm test:e2e`
+4. **No secrets or credentials** in diff — `git diff --cached` review
+5. **Commits are atomic** — one logical change per commit
+6. **Commit messages are descriptive** — explain what and why
 
 ### PR Title Format
 
@@ -108,8 +107,7 @@ Closes #<number>
 
 ## Validation
 
-- [ ] `pnpm validate` passes (lint, `astro check`, build + provenance stamping, `tests/build/`)
-- [ ] `pnpm test` passes
+- [ ] `pnpm validate` passes (format, lint, `astro check`, build + provenance stamping, full `vitest` suite)
 - [ ] `pnpm test:e2e` passes (local)
 - [ ] No secrets, keys or credentials in the diff
 - [ ] Visual review completed in the browser

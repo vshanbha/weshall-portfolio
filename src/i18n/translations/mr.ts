@@ -1,6 +1,8 @@
 /**
  * Marathi translations
  */
+import type { SiteStrings } from './en';
+
 export const mr = {
   site: {
     name: 'वी शॉल बिल्ड', // We Shall Build — transliterated, needs native-speaker review
@@ -12,6 +14,7 @@ export const mr = {
     home: 'मुख्यपृष्ठ',
     about: 'आमच्याबद्दल',
     blog: 'ब्लॉग',
+    philosophy: 'The way we build', // TODO: translate
     services: 'What I do', // TODO: translate
     contact: 'संपर्क',
     features: 'वैशिष्ट्ये',
@@ -24,6 +27,8 @@ export const mr = {
     error: 'एक त्रुटी झाली',
     notFound: 'पृष्ठ सापडले नाही',
     backHome: 'मुख्यपृष्ठावर परत जा',
+    notFoundDescription: "The page you're looking for doesn't exist.", // TODO: translate
+    notFoundMessage: "Sorry, we couldn't find the page you're looking for.", // TODO: translate
     copied: 'कॉपी झाले!',
     copy: 'कॉपी करा',
   },
@@ -690,6 +695,16 @@ export const mr = {
     privacyPolicyLabel: 'गोपनीयता धोरण',
     alwaysOn: 'नेहमी चालू',
   },
-} as const;
+
+  // Sibling of en's redirect block: the shims render t('redirect.*',
+  // defaultLocale), so this entry displays only while this locale is the
+  // default — kept type-complete per SiteStrings.
+  redirect: {
+    home: 'Go to the English homepage', // TODO: translate
+    title: 'Redirecting...', // TODO: translate
+    toArticle: 'Redirecting to', // TODO: translate
+    articleName: 'the article', // TODO: translate
+  },
+} as const satisfies SiteStrings;
 
 export type TranslationKeys = typeof mr;

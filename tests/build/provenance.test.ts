@@ -3,6 +3,8 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { parse } from 'yaml';
+import { defaultLocale } from '@/i18n/config';
+import { ensureFreshDist } from '../helpers/dist';
 
 /**
  * Built-output checks for AI transparency (EU AI Act Article 50).
@@ -19,10 +21,16 @@ const ARTICLES_DIR = join(ROOT, 'src', 'content', 'articles');
 const DIST = join(ROOT, 'dist');
 const DIST_ASSETS = join(DIST, '_astro');
 
+// Collection-time guard: most dist reads happen inside tests, but the
+// Editorial standards describe block reads dist/en/about/index.html while
+// this file is being collected. Either way, never run against a stale
+// build (issue #20's Regression Guard Rule).
+ensureFreshDist([join(DIST, 'index.html'), join(DIST, 'en', 'about', 'index.html')]);
+
 const DIGITAL_SOURCE_TYPE =
   'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
-const PUBLISHING_PRINCIPLES = 'https://weshall.build/en/about#editorial-standards';
-const FOOTER_LINK_HREF = '/en/about#editorial-standards';
+const PUBLISHING_PRINCIPLES = `https://weshall.build/${defaultLocale}/about#editorial-standards`;
+const FOOTER_LINK_HREF = `/${defaultLocale}/about#editorial-standards`;
 const EDITORIAL_STANDARDS_STATEMENT =
   'AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own.';
 

@@ -102,7 +102,10 @@ site now carries.
   ONLY for those pages; sitemap covers every locale and contains no redirect
   stubs; robots.txt reachable; every `og:image` referenced in HTML resolves to
   a generated file; `og:locale` matches the locale; JSON-LD is
-  locale-correct; internal link integrity (no broken targets).
+  locale-correct; internal link integrity (no broken targets); redirect
+  shims and the 404 page render their visible strings from the
+  default-locale bundle — no hardcoded user-facing text (String Integrity,
+  docs/STANDARDS.md).
 - **Gate rule:** every finding must be fixed or explicitly waived by the
   Architect before Gate B starts. Record the audit outcome in the merge
   commit message or the linked issue (feature work has no PR); release PRs
@@ -138,7 +141,7 @@ Architect reviews the proposed design and the Test-First plan. **No coding begin
 Architect approves the implementation **before** the merge (step 5); Gate B closes only once CI is green on `dev` after the merge push (step 6). For releases: CI on the `dev` → `main` PR.
 
 - Confirm the pre-Gate-B SEO audit (§3 _SEO Audit (Pre-Review)_) is recorded (merge commit message / issue, or the release PR) with no unfixed findings
-- Run `pnpm validate` (lint + check + build)
+- Run `pnpm validate` (format + lint + check + build + vitest suite)
 - Review visual output in browser
 - Verify tests pass
 
@@ -148,12 +151,33 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 
 **Web tasks:**
 
-- [ ] `pnpm validate` passes (lint + check + build)
+- [ ] `pnpm validate` passes (format + lint + check + build + vitest suite)
 - [ ] No TypeScript errors
 - [ ] Components follow Velocity patterns
-- [ ] Astro Technical Standards (Iron Laws) respected
+- [ ] Astro Technical Standards (Iron Laws) respected (`docs/STANDARDS.md`)
 - [ ] Accessibility requirements met (WCAG 2.2 AA)
 - [ ] SEO audit passed (§3 _SEO Audit (Pre-Review)_) — findings fixed or waived before Gate B
+- [ ] Every issue uncovered during the task has a guard at the cheapest automatic layer (see _Regression Guard Rule_ below)
+
+### Regression Guard Rule
+
+**Every issue uncovered during work must leave behind a guard at the cheapest
+layer that runs automatically.** Ask "what will stop this recurring?" — if the
+answer is _human memory_, the issue is not fixed.
+
+| Layer           | Use for                                                                                                     | Runs in                    |
+| --------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------- |
+| **Type system** | Structural/data invariants — preferred: free, compile-time, catches the problem before runtime              | `pnpm validate` / CI       |
+| **Unit test**   | Runtime invariants, or backstops for type guards that can themselves be deleted (e.g. a `satisfies` clause) | `pnpm test` / CI           |
+| **E2E test**    | User-visible behaviour only                                                                                 | pre-push hook (local only) |
+
+- **Reference the issue** in the test name, assertion message, or `// TODO`
+  comment so the provenance stays traceable.
+- **Verify the guard fails against the pre-fix code** before trusting it:
+  reproduce the failure with the fix stashed, then restore.
+- Not every issue needs a test — a typo or content fix needs none — but the
+  answer to "what prevents recurrence?" must live somewhere that runs without
+  human discipline.
 
 ### Layout Protection Rule
 
@@ -186,7 +210,7 @@ Before suggesting a task is complete, the agent MUST explicitly review and verif
 1. **Confirm the active feature branch:** `issue-<number>-<description>`.
    **For parallel multi-agent sessions:** each agent works from a dedicated
    `git worktree` — see §3 Parallel Agent Isolation.
-2. **Read `AGENTS.md`** for applicable standards and quality gates.
+2. **Read `AGENTS.md` and `docs/STANDARDS.md`** for applicable standards and quality gates.
 3. **Consult Velocity docs** at [docs.deployvelocity.com](https://docs.deployvelocity.com/) for component and pattern guidance.
 4. **Load the relevant skills** for the task at hand.
 5. **Follow the phases** defined in this document.

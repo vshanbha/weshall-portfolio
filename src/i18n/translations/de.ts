@@ -1,6 +1,8 @@
 /**
  * German translations
  */
+import type { SiteStrings } from './en';
+
 export const de = {
   site: {
     name: 'We Shall Build',
@@ -29,6 +31,8 @@ export const de = {
     error: 'Ein Fehler ist aufgetreten',
     notFound: 'Seite nicht gefunden',
     backHome: 'Zurück zur Startseite',
+    notFoundDescription: 'Die gesuchte Seite existiert nicht.',
+    notFoundMessage: 'Die gesuchte Seite konnte nicht gefunden werden.',
     copied: 'Kopiert!',
     copy: 'Kopieren',
   },
@@ -702,6 +706,16 @@ export const de = {
     privacyPolicyLabel: 'Datenschutzerklärung',
     alwaysOn: 'Immer aktiv',
   },
-} as const;
+
+  // Sibling of en's redirect block: the shims render t('redirect.*',
+  // defaultLocale), so this entry displays only while this locale is the
+  // default — kept type-complete per SiteStrings.
+  redirect: {
+    home: 'Zur deutschen Startseite',
+    title: 'Weiterleitung...',
+    toArticle: 'Weiterleitung zu',
+    articleName: 'dem Artikel',
+  },
+} as const satisfies SiteStrings;
 
 export type TranslationKeys = typeof de;
