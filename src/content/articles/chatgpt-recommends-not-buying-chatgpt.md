@@ -7,6 +7,37 @@ tags: [AI, openai, chatgpt, pricing, developer-tools, opencode, transparency]
 draft: false
 featured: false
 locale: en
+image: ./chatgpt-recommends-not-buying-chatgpt-hero.png
+imageAlt: 'AI-generated illustration: a robot shop assistant holds up a stop gesture and points at an "Expanded Usage" poster, while a weighing scale tips toward numbered coins over a deflating balloon'
+imageProvenance:
+  kind: ai-generated
+  disclosure: AI-generated illustration created with Microsoft Designer; C2PA content credentials embedded in the original file
+  system: Microsoft Designer
+  systemVersion: '2.0'
+  createdOn: 2026-11-11
+  prompt: |
+    Flat editorial illustration, wide landscape 16:9, light warm off-white background,
+    clean geometric shapes with subtle paper grain, generous negative space.
+
+    Scene: a minimalist shop counter. Behind it, a friendly geometric robot shop
+    assistant holds up one hand in a polite "stop" gesture toward a customer, while
+    pointing with the other hand at a poster on the wall behind it. The poster reads
+    "EXPANDED USAGE" and shows an inflated balloon with no numbers anywhere on it.
+
+    On the counter between them sits an old-fashioned weighing scale. One pan holds
+    a small neat stack of coins, each coin marked with a tiny number. The other pan
+    holds a small deflating balloon. The scale tips toward the coins.
+
+    Colour: everything in muted warm greys and charcoal, with a single accent of
+    international orange (#F94C10) used only for the poster, the coins, and the
+    robot's eye. No other colours.
+
+    Mood: wry, calm, consumer-rights editorial. No photorealism, no shading
+    gimmicks, no characters or robots resembling any real person, existing mascot,
+    or trademarked character. Maximum two words of text in the entire image:
+    "EXPANDED USAGE" on the poster. Wide composition with clear empty space along
+    the top edge for a headline.
+heroCaption: 'AI-generated illustration created with Microsoft Designer; C2PA content credentials embedded in the original file. Coins weigh against a deflating balloon labelled "Expanded Usage".'
 reviewed: true
 ai_assisted: true
 human_reviewed: true
