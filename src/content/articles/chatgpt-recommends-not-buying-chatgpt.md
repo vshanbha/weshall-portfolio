@@ -155,7 +155,7 @@ The essential requirements are straightforward:
 - Explain the accounting. Document how models, reasoning effort, context, and background tasks affect the allowance.
 - Make plans comparable. Publish enough information for customers to evaluate the capacity they receive for their money.
 
-The [OpenCode changelog for 9 November 2026](https://opencode.ai/console/changelog/coding-agents) describes connecting other coding agents, Claude Code and Codex among them, to a shared workspace. Every request runs through the workspace, model rules and budgets apply to it, and billed features carry a published price: web search costs one cent per search, billed to the workspace. Budgets can be set for the whole workspace, for each member, or for each model [OpenCode for Teams](https://opencode.ai/console/teams)). Define the unit, expose the consumption, explain the accounting, make plans comparable. OpenCode's workspace does all four.
+The [OpenCode changelog for 9 November 2026](https://opencode.ai/console/changelog/coding-agents) describes connecting other coding agents, Claude Code and Codex among them, to a shared workspace. Every request runs through the workspace, model rules and budgets apply to it, and billed features carry a published price: web search costs one cent per search, billed to the workspace. Budgets can be set for the whole workspace, for each member, or for each model ([OpenCode for Teams](https://opencode.ai/console/teams)). Define the unit, expose the consumption, explain the accounting, make plans comparable. OpenCode's workspace does all four.
 
 ## The better question
 
