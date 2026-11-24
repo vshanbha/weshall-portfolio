@@ -58,6 +58,8 @@ import SEO from '@/components/seo/SEO.astro';
 
 `SEO.astro` composes the document title as `` `${title} - ${siteConfig.name}` `` and derives the canonical URL from the current path — there is no `title` suffix or `canonical` prop to pass. Available props: `title`, `description`, `image`, `imageAlt`, `article` (published/modified time, authors, tags), `noindex`, `nofollow`.
 
+**Long article titles:** since the suffix adds ~16 chars, a frontmatter `title` over ~44 pushes the composed tag past the ~60 chars search engines display. Articles may set an optional `seoTitle` (≤44 chars) in frontmatter — it is used **only** for the `<title>`/`og:title` tag via `BlogLayout`; the hero, h1, RSS and card titles keep the full `title`. Omit it and the full title is used everywhere. Guarded by `tests/build/title-lengths.test.ts`.
+
 ### Meta Tag Best Practices
 
 | Tag                | Rule                                                                                      |
