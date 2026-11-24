@@ -163,7 +163,7 @@ test.describe('German locale', () => {
     await expect(page.locator('body')).toContainText('Kontakt');
   });
 
-  test('German nav, footer and hero link Blog to /de/blog', async ({ page }) => {
+  test('German nav, footer and hero link Blog to /de/blog/', async ({ page }) => {
     await page.goto('/de/about');
     await expect(page.locator('header a[href="/de/blog/"]').first()).toBeVisible();
     await expect(page.locator('footer a[href="/de/blog/"]').first()).toBeVisible();

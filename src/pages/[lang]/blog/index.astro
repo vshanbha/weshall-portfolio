@@ -58,7 +58,7 @@ const groups: BlogGroup[] = [];
 if (localeEntries.length > 0) {
   groups.push({
     entries: localeEntries.sort(byPriority),
-    hrefFor: (entry) => `/${locale}/blog/${entry.id}/`,
+    hrefFor: (entry) => `${getLocalizedPath('blog', locale)}${entry.id}/`,
   });
 }
 if (englishEntries.length > 0) {

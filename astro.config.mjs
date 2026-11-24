@@ -22,12 +22,14 @@ const base = siteBase();
  */
 const noindexSlugs = ['impressum', 'datenschutz'];
 
-/** Bare-path redirects derived from the route table: '/about' → '/en/about'. */
+/** Bare-path redirects derived from the route table: '/about' → '/en/about/'.
+ * Targets are trailing-slashed so the meta-refresh lands on the canonical
+ * URL directly — a slash-less target would 301 again at the host layer. */
 const bareLocaleRedirects = Object.fromEntries(
   Object.values(routes)
     .map((definition) => definition[defaultLocale])
     .filter((slug) => slug !== '')
-    .map((slug) => [`/${slug}`, `${base}/${defaultLocale}/${slug}`])
+    .map((slug) => [`/${slug}`, `${base}/${defaultLocale}/${slug}/`])
 );
 
 /**
