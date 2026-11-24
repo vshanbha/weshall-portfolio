@@ -1,6 +1,6 @@
 ---
-title: 'One Week Agentic Development Sprint: Post Mortem'
-description: "A seven-day agentic development sprint: build an end-to-end product slice. The engineering impressed; the intelligence wasn't validated. Ten rules for the next one, ordered by when they bite."
+title: 'One Week Agentic Sprint: Post Mortem'
+description: "A seven-day agentic sprint: build an end-to-end product slice. The engineering impressed; the intelligence wasn't validated. Ten rules for the next one."
 publishedAt: 2026-11-05
 author: Vishal Shanbhag
 tags: [AI, agentic-ai, llm, software-engineering, sprint, retrospective, evals, testing, process]
@@ -20,8 +20,6 @@ reviewed: true
 ai_assisted: true
 human_reviewed: true
 ---
-
-# One Week Agentic Development Sprint: Post Mortem
 
 Recently, I had an interesting task with a client. The ask: to build an end-to-end product component in seven days, and a key part of the product was to use modern AI (LLM) agentic systems both for development and for production.
 

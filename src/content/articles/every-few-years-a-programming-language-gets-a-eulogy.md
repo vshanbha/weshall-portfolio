@@ -1,6 +1,6 @@
 ---
-title: 'Every Few Years a Programming Language Gets a Eulogy'
-description: 'DHH retired from professional programming, wrote 150,000 lines of code in August alone, and 37signals is rebuilding HEY in Rust. The pattern is older than LLMs. Ecosystem, governance, and who else is forced to use your language decide what survives.'
+title: 'Every Few Years, a Language Gets a Eulogy'
+description: 'DHH retired from programming, wrote 150,000 lines in August alone, and 37signals is rebuilding HEY in Rust. The pattern is older than LLMs.'
 publishedAt: 2026-11-14
 author: Vishal Shanbhag
 tags: [ai, programming-languages, ruby-on-rails, java, ecosystem]
@@ -11,8 +11,6 @@ reviewed: true
 ai_assisted: true
 human_reviewed: true
 ---
-
-# Every Few Years a Programming Language Gets a Eulogy
 
 The seed of this article is in a conversation a couple of weeks ago, where I was hearing someone go on about how amazing Ruby on Rails is for modern Vibe coders. At the same time, I remembered about there being some news about people at 37Signals rewriting their stuff in Rust and then some people started calling it the death of Ruby.
 
