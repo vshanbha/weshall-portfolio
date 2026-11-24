@@ -15,10 +15,10 @@ It also covers **answer-engine visibility**: what an assistant (ChatGPT, Perplex
 
 This project uses **custom content collections** (not Velocity defaults):
 
-| Collection                 | Route     | Purpose                                          |
-| -------------------------- | --------- | ------------------------------------------------ |
-| `articles`                 | `/blog/`  | Deep-dive technical analysis and operational insights — the live blog |
-| `philosophy`               | `/philosophy/` | Ten commandments / brand philosophy        |
+| Collection                 | Route                      | Purpose                                          |
+| -------------------------- | -------------------------- | ------------------------------------------------ |
+| `articles`                 | `/en/blog/` (locale-prefixed) | Deep-dive technical analysis and operational insights — the live blog |
+| `philosophy`               | `/en/philosophy/` (locale-prefixed) | Ten commandments / brand philosophy        |
 | `blog`, `pages`, `authors`, `faqs` | —  | Defined in `src/content.config.ts`, currently empty |
 
 See `src/content.config.ts` for Zod schemas. All content must pass frontmatter validation at build time. The `faqs` collection is the intended JSON source for `createFAQSchema`; no FAQ content exists yet.
@@ -127,7 +127,8 @@ import { createBlogPostSchema } from '@/lib/schema';
 Velocity generates OG images dynamically using **Satori**:
 
 - Endpoint: `src/pages/og/[...slug].png.ts`
-- Input: page/article title, description, locale (static pages, philosophy, articles, and every `/en/*` + `/de/*` path)
+- Card selection: static pages, philosophy, articles, and every `/en/*` + `/de/*` path (locale drives which card is chosen)
+- `generateOGImage` input: `{ title, description, type }`
 - Output: 1200x630px PNG at `/og/<pathname>.png`
 
 When no `image` prop is passed, `SEO.astro` derives the OG path from the current URL (base-aware via `stripSiteBase`).
