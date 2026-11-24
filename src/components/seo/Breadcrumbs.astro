@@ -16,12 +16,19 @@ interface Props {
 
 const { items, class: className } = Astro.props;
 
-// Build schema items with full URLs
+// Build schema items with full URLs. Item URLs are trailing-slashed so they
+// match the page canonicals: the slash-less form 301-hops before resolving,
+// and JSON-LD should state the canonical URL verbatim (a hash, if any, is
+// preserved — only the pathname is normalised).
+function toCanonicalUrl(href: string): string {
+  const url = new URL(href, siteConfig.url);
+  if (!url.pathname.endsWith('/')) url.pathname += '/';
+  return url.toString();
+}
+
 const schemaItems = items.map((item) => ({
   name: item.label,
-  url: item.href
-    ? new URL(item.href, siteConfig.url).toString()
-    : new URL(Astro.url.pathname, siteConfig.url).toString(),
+  url: toCanonicalUrl(item.href ?? Astro.url.pathname),
 }));
 
 const schema = createBreadcrumbSchema(schemaItems);

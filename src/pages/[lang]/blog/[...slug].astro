@@ -38,11 +38,17 @@ const ogImage = entry.data.image
     : entry.data.image.src
   : `/og/${locale}/blog/${entry.id}.png`;
 
-// Publishing principles — locale-specific About-page editorial-standards anchor.
+// Publishing principles — locale-specific About-page editorial-standards
+// anchor. Trailing slash before the hash so it matches the About canonical
+// (the slash-less form 301-hops through the redirect shims).
 const publishingPrinciples = new URL(
-  `/${locale}/about#editorial-standards`,
+  `/${locale}/about/#editorial-standards`,
   siteConfig.url
 ).toString();
+
+// Reviewer URL — trailing slash so it matches the About page canonical
+// (the slash-less `/en/about` 301-hops through the redirect shims).
+const reviewedByUrl = new URL(`/${locale}/about/`, siteConfig.url).toString();
 
 // An explicit hero caption wins; AI-generated images fall back to the
 // provenance disclosure so the disclosure is always rendered.
@@ -86,7 +92,7 @@ const imageCredit = entry.data.imageProvenance ? entry.data.author : undefined;
         url: canonicalUrl.toString(),
         reviewedBy: {
           name: entry.data.author,
-          url: new URL(`/${locale}/about`, siteConfig.url).toString(),
+          url: reviewedByUrl,
         },
         publishingPrinciples,
       }),
