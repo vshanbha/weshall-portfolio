@@ -21,6 +21,11 @@ const STATIC_PAGES = [
     title: 'Blog',
     description: en.blog.description,
   },
+  {
+    slug: '404',
+    title: 'Page not found',
+    description: 'The page you are looking for does not exist.',
+  },
 ];
 
 // Impressum/Datenschutz meta are locale-independent (see [lang]/*.astro).
