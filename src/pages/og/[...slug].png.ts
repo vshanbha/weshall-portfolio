@@ -23,8 +23,9 @@ const STATIC_PAGES = [
   },
   {
     slug: '404',
-    title: 'Page not found',
-    description: 'The page you are looking for does not exist.',
+    // String Integrity: the 404 card must match the page's bundle strings.
+    title: en.common.notFound,
+    description: en.common.notFoundDescription,
   },
 ];
 
