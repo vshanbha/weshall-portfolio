@@ -52,8 +52,33 @@ function rehypeTaskListLabels() {
   return (tree) => walk(tree, null);
 }
 
+import { readFileSync } from 'node:fs';
+
+/**
+ * Vite is not importable from this config under pnpm's strict layout, so
+ * replicate its production-mode precedence for SITE_URL — the one variable
+ * the `site` setting needs. Reading only process.env made local builds emit
+ * localhost into the sitemap/robots/RSS while canonical URLs resolved from
+ * .env.production (site.config.ts reads import.meta.env). CI sets
+ * process.env, which still wins.
+ */
+function resolveSiteUrl() {
+  if (process.env.SITE_URL) return process.env.SITE_URL;
+  for (const file of ['.env.production', '.env']) {
+    try {
+      const line = readFileSync(new URL(`./${file}`, import.meta.url), 'utf-8')
+        .split('\n')
+        .find((l) => l.startsWith('SITE_URL='));
+      if (line) return line.slice('SITE_URL='.length).trim();
+    } catch {
+      // .env files are optional
+    }
+  }
+  return undefined;
+}
+
 export default defineConfig({
-  site: process.env.SITE_URL || 'http://localhost:4321',
+  site: resolveSiteUrl() || 'http://localhost:4321',
   // siteBase() adapted to Astro's base format ('' on the root → '/').
   base: base === '' ? '/' : base,
 
