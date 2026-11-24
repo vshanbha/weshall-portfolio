@@ -21,16 +21,17 @@ import type { TranslationKey } from './translations/en';
  *   active locale, so no fallback to the default locale is needed.
  *
  * @example
- * getLocalizedPath('about', 'en') // → '/en/about'
- * getLocalizedPath('about', 'de') // → '/de/about'
- * getLocalizedPath('home', 'de')  // → '/de'
- * getLocalizedPath('blog', 'de')  // → '/de/blog' (the index is localised)
+ * getLocalizedPath('about', 'en') // → '/en/about/'
+ * getLocalizedPath('about', 'de') // → '/de/about/'
+ * getLocalizedPath('home', 'de')  // → '/de/'
+ * getLocalizedPath('blog', 'de')  // → '/de/blog/' (the index is localised)
  */
 export function getLocalizedPath(routeId: RouteId, locale: Locale): string {
   const slug = routes[routeId][locale];
 
-  // Always prefix with locale
-  return slug ? `/${locale}/${slug}` : `/${locale}`;
+  // Always prefix with locale; trailing slash matches the canonical form
+  // (dist/ emits directory indexes, so the canonical URL is slash-terminated).
+  return slug ? `/${locale}/${slug}/` : `/${locale}/`;
 }
 
 /**
@@ -180,11 +181,10 @@ export function switchLocale(currentPath: string, targetLocale: Locale): string 
 
     const basePath = getLocalizedPath(resolved.routeId, targetLocale);
 
-    // If there's extra path info (like blog post slug), append it
+    // If there's extra path info (like blog post slug), append it — with the
+    // trailing slash so the link matches the canonical URL exactly.
     if (resolved.extra) {
-      // Ensure we don't double-slash
-      const separator = basePath.endsWith('/') ? '' : '/';
-      return `${basePath}${separator}${resolved.extra}`;
+      return `${basePath}${resolved.extra}/`;
     }
 
     return basePath;
@@ -228,7 +228,8 @@ export function getRouteTranslations(
 
   return targets.map((locale) => {
     const basePath = getLocalizedPath(routeId, locale);
-    const path = extra ? `${basePath}/${extra}/` : `${basePath}/`;
+    // basePath is trailing-slashed; append the detail slug before it.
+    const path = extra ? `${basePath}${extra}/` : basePath;
     return { locale, path };
   });
 }
