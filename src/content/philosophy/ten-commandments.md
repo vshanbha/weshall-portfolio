@@ -1,7 +1,7 @@
 ---
 title: The way we build.
-description: Ten rules, earned in production.
-updatedAt: 2026-10-30
+description: The ten We shall commandments — engineering principles earned in twenty years of production, from Lehman Brothers through Inbotiqa to independent advisory.
+updatedAt: 2026-11-24
 locale: en
 reviewed: true
 ---

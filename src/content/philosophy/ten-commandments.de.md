@@ -1,7 +1,7 @@
 ---
 title: The way we build.
-description: Zehn Regeln, im Produktivbetrieb erworben.
-updatedAt: 2026-10-31
+description: Die zehn We-shall-Gebote — Ingenieursprinzipien, erworben in zwanzig Jahren Produktivbetrieb, von Lehman Brothers über Inbotiqa bis zur unabhängigen Beratung.
+updatedAt: 2026-11-24
 locale: de
 reviewed: true
 ---
