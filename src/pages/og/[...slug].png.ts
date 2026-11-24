@@ -80,9 +80,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   // Card text for the locale-prefixed variants that SEO.astro emits as
   // /og/<pathname>.png for every page under /en and /de (home is
-  // /og/<locale>.png, not /og/<locale>/index.png). English reuses the
-  // locale-less constants above so both variants render identically; German
-  // pulls from the translation bundles.
+  // /og/<locale>.png, not /og/<locale>/index.png). English pulls from the
+  // same bundle keys as the locale-less constants above, so both variants
+  // render identically while English is the default locale; the locale-less
+  // cards follow defaultLocale.
   const localizedCards: Record<Locale, Record<string, { title: string; description: string }>> = {
     en: {
       '': { title: siteConfig.name, description: siteConfig.description },
