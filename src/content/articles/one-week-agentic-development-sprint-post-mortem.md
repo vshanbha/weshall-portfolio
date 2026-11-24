@@ -1,5 +1,6 @@
 ---
-title: 'One Week Agentic Sprint: Post Mortem'
+title: 'One Week Agentic Development Sprint: Post Mortem'
+seoTitle: 'One Week Agentic Sprint: Post Mortem'
 description: "A seven-day agentic sprint: build an end-to-end product slice. The engineering impressed; the intelligence wasn't validated. Ten rules for the next one."
 publishedAt: 2026-11-05
 author: Vishal Shanbhag

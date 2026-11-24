@@ -37,6 +37,15 @@ const articles = defineCollection({
     z
       .object({
         title: z.string().max(120),
+        /**
+         * Optional shorter title used ONLY for the <title>/og:title tag:
+         * SEO.astro composes `${title} - ${siteConfig.name}` (the suffix is
+         * 17 chars), so ≤43 keeps the composed tag within the ~60 chars
+         * search engines display. The visible hero/h1, RSS, and card titles
+         * keep the full `title`. Omit it and the full title is used
+         * everywhere.
+         */
+        seoTitle: z.string().max(43).optional(),
         description: z.string().max(250),
         publishedAt: z.coerce.date(),
         updatedAt: z.coerce.date().optional(),

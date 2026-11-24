@@ -14,6 +14,8 @@ import siteConfig from '@/config/site.config';
 
 interface Props {
   title: string;
+  /** Optional shorter title for the <title>/og:title tag only (see articles schema). */
+  seoTitle?: string;
   description: string;
   publishedAt: Date;
   updatedAt?: Date;
@@ -30,6 +32,7 @@ interface Props {
 
 const {
   title,
+  seoTitle,
   description,
   publishedAt,
   updatedAt,
@@ -61,7 +64,7 @@ const fullUrl = new URL(Astro.url.pathname, siteConfig.url).toString();
 ---
 
 <BaseLayout
-  title={title}
+  title={seoTitle ?? title}
   description={description}
   image={ogImage}
   imageAlt={imageAlt || title}
