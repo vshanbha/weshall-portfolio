@@ -157,12 +157,12 @@ export function resolveRouteFromPath(pathname: string): ResolvedRoute | null {
  * @returns The new path in the target locale, or the home page if route unknown
  *
  * @example
- * switchLocale('/about', 'de')           // → '/de/about'
- * switchLocale('/de/about', 'en')        // → '/en/about'
- * switchLocale('/en/blog', 'de')         // → '/de/blog'
- * switchLocale('/en/blog/my-post', 'de') // → '/de/blog' (no German post; the index lists it)
- * switchLocale('/de/blog', 'en')         // → '/en/blog'
- * switchLocale('/unknown', 'de')         // → '/de' (fallback to home)
+ * switchLocale('/about', 'de')           // → '/de/about/'
+ * switchLocale('/de/about', 'en')        // → '/en/about/'
+ * switchLocale('/en/blog', 'de')         // → '/de/blog/'
+ * switchLocale('/en/blog/my-post', 'de') // → '/de/blog/' (no German post; the index lists it)
+ * switchLocale('/de/blog', 'en')         // → '/en/blog/'
+ * switchLocale('/unknown', 'de')         // → '/de/' (fallback to home)
  */
 export function switchLocale(currentPath: string, targetLocale: Locale): string {
   const resolved = resolveRouteFromPath(currentPath);
@@ -279,10 +279,10 @@ export type NavRoute = {
  * @example
  * const navRoutes = getNavRoutes('en');
  * // → [
- * //   { routeId: 'blog', label: 'nav.blog', order: 2, path: '/en/blog' },
- * //   { routeId: 'services', label: 'nav.services', order: 3, path: '/en/services' },
- * //   { routeId: 'about', label: 'nav.about', order: 4, path: '/en/about' },
- * //   { routeId: 'contact', label: 'nav.contact', order: 5, path: '/en/contact' },
+ * //   { routeId: 'blog', label: 'nav.blog', order: 2, path: '/en/blog/' },
+ * //   { routeId: 'services', label: 'nav.services', order: 3, path: '/en/services/' },
+ * //   { routeId: 'about', label: 'nav.about', order: 4, path: '/en/about/' },
+ * //   { routeId: 'contact', label: 'nav.contact', order: 5, path: '/en/contact/' },
  * // ]
  */
 export function getNavRoutes(locale: Locale = defaultLocale): NavRoute[] {

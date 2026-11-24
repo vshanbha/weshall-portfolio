@@ -294,7 +294,7 @@ This installation is the first experiment. The article series will cover what we
 
 ---
 
-_If you are building something that matters and want a senior software architect in the room, [let's talk](/en/contact)._
+_If you are building something that matters and want a senior software architect in the room, [let's talk](/en/contact/)._
 
 ## Troubleshooting
 

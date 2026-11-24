@@ -376,7 +376,7 @@ test.describe('About Page Features', () => {
     ).toBeVisible();
     const fullTen = page.getByRole('link', { name: 'The way we build →' });
     await expect(fullTen).toBeVisible();
-    await expect(fullTen).toHaveAttribute('href', '/en/philosophy');
+    await expect(fullTen).toHaveAttribute('href', '/en/philosophy/');
     // The other seven are no longer on About — they moved to the philosophy page.
     await expect(page.getByText('We shall deploy what works.')).toHaveCount(0);
   });

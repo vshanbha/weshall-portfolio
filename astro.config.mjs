@@ -98,8 +98,8 @@ export default defineConfig({
     // two legal pages are not route-table entries. Targets carry the base:
     // Astro writes them verbatim into the meta-refresh.
     ...bareLocaleRedirects,
-    '/impressum': `${base}/${defaultLocale}/impressum`,
-    '/datenschutz': `${base}/${defaultLocale}/datenschutz`,
+    '/impressum': `${base}/${defaultLocale}/impressum/`,
+    '/datenschutz': `${base}/${defaultLocale}/datenschutz/`,
   },
 
   integrations: [
