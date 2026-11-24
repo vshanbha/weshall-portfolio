@@ -32,9 +32,15 @@ const pageTitle = title ? `${title} - ${siteConfig.name}` : siteConfig.name;
 
 const canonicalURL = new URL(Astro.url.pathname, siteConfig.url);
 
-// Process image - use dynamic OG image if no custom image provided
+// Process image. The dynamic OG fallback covers both a missing image and an
+// SVG custom image: Facebook/X/LinkedIn will not render an SVG og:image, so
+// SVG heroes fall back to the generated PNG for the current pathname — the
+// same single derivation as the no-image branch.
+const isSvgImage = image ? /\.svg$/i.test(image.split(/[?#]/)[0]) : false;
+const isGeneratedOgImage = !image || isSvgImage;
+
 let ogImage: string;
-if (image) {
+if (image && !isGeneratedOgImage) {
   ogImage = image.startsWith('http') ? image : new URL(image, siteConfig.url).toString();
 } else {
   // Dynamic OG path from the current URL: strip the Astro base (dist/ output
@@ -71,8 +77,8 @@ const locale =
     ? rawLocale.replace('-', '_')
     : localeMap[rawLocale] || `${rawLocale}_${rawLocale.toUpperCase()}`;
 
-// Determine OG image metadata — only emit width/height/type for the auto-generated fallback
-const isGeneratedOgImage = !image;
+// Determine OG image metadata — only emit width/height/type for the
+// auto-generated fallback (isGeneratedOgImage, declared above)
 const extToMime: Record<string, string> = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',

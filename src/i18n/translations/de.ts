@@ -268,7 +268,7 @@ export const de = {
     meta: {
       title: 'Was ich mache',
       description:
-        'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, die Zeit und Geld kosten: bauen oder kaufen, wen einstellen, ob das KI-Gebaute hält.',
+        'Produktisierte Senior-Architekt-Angebote: kostenloses 15-Minuten-Gespräch, ehrliche Stunde, kurzer Sprint oder monatliche Beratung — so weit das Problem reicht.',
     },
     hero: {
       title: 'Manche Entscheidungen kosten Sie, wenn Sie sie falsch treffen.',
@@ -484,7 +484,8 @@ export const de = {
   },
   blog: {
     title: 'Blog',
-    description: 'Neueste Artikel und Updates',
+    description:
+      'Tiefgehende technische Analysen, operative Fallstudien und Engineering-Philosophie aus zwanzig Jahren Produktionsarchitektur.',
     allPosts: 'Alle Beiträge',
     featured: 'Hervorgehoben',
     noPosts: 'Keine Beiträge gefunden',

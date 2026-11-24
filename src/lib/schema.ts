@@ -10,6 +10,7 @@ import type {
   WithContext,
 } from 'schema-dts';
 import siteConfig from '@/config/site.config';
+import { defaultLocale, type Locale } from '@/i18n/config';
 
 /**
  * Create WebSite schema for homepage
@@ -152,8 +153,12 @@ export function createBreadcrumbSchema(
 
 /**
  * Create Person schema for about page
+ *
+ * @param locale - Locale of the about page. The emitted URL is
+ *   locale-prefixed and trailing-slashed so it matches the page canonical —
+ *   the bare `/about` 301-hops through the redirect shims.
  */
-export function createPersonSchema(): WithContext<Person> {
+export function createPersonSchema(locale: Locale = defaultLocale): WithContext<Person> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -161,12 +166,17 @@ export function createPersonSchema(): WithContext<Person> {
     givenName: 'Vishal',
     familyName: 'Shanbhag',
     jobTitle: 'Senior Architect & Engineering Lead',
-    url: `${siteConfig.url}/about`,
+    // Canonical about URL: `/${locale}/about/` (trailing slash matches the
+    // page canonical; the slash-less form 301-hops before resolving). Built
+    // with new URL so a SITE_URL carrying a trailing slash cannot double it.
+    url: new URL(`/${locale}/about/`, siteConfig.url).toString(),
     sameAs: [
       'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
       'https://www.baeldung.com/author/vishalshanbhag/',
       'https://javapro.io/author/vishalshanbhag/',
       'https://medium.com/@vvsvish',
+      'https://github.com/vshanbha',
+      'https://stackoverflow.com/users/2324541/vvs',
     ],
     knowsAbout: [
       'Enterprise Architecture',

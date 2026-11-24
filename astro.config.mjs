@@ -8,10 +8,19 @@ import tailwindcss from '@tailwindcss/vite';
 // src/i18n/config.ts so the derived settings below pick it up.
 import { defaultLocale, locales } from './src/i18n/config';
 import { routes } from './src/i18n/routes';
-import { isLocalePath, siteBase } from './src/i18n/url';
+import { isLocalePath, siteBase, stripSiteBase } from './src/i18n/url';
 
 /** Base path without its trailing slash ('' on the root domain). */
 const base = siteBase();
+
+/**
+ * noindex slugs kept out of the sitemap: /impressum/ and /datenschutz/
+ * render with `noindex` in every locale but were listed with hreflang
+ * alternates. Neither is a route-table entry (see the redirects below), so
+ * the slugs are named once here and matched against the locale-stripped
+ * pathname in the sitemap filter.
+ */
+const noindexSlugs = ['impressum', 'datenschutz'];
 
 /** Bare-path redirects derived from the route table: '/about' → '/en/about'. */
 const bareLocaleRedirects = Object.fromEntries(
@@ -72,7 +81,19 @@ export default defineConfig({
     react(),
     mdx(),
     sitemap({
-      filter: (page) => isLocalePath(new URL(page).pathname),
+      filter: (page) => {
+        const { pathname } = new URL(page);
+        // Existing gate: only locale-prefixed pages are listed.
+        if (!isLocalePath(pathname)) return false;
+        // Drop noindex pages: strip the base and locale prefix so
+        // '/en/impressum/' → 'impressum', then reject the noindex slugs.
+        const slug = stripSiteBase(pathname)
+          .replace(/^\/+|\/+$/g, '')
+          .split('/')
+          .slice(1)
+          .join('/');
+        return !noindexSlugs.includes(slug);
+      },
       i18n: {
         defaultLocale,
         // hreflang language codes — one per enabled locale (identity today)

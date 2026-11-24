@@ -19,7 +19,7 @@ const STATIC_PAGES = [
   {
     slug: 'blog',
     title: 'Blog',
-    description: `Latest articles and updates from ${siteConfig.name}`,
+    description: en.blog.description,
   },
 ];
 
@@ -64,7 +64,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       '': { title: siteConfig.name, description: siteConfig.description },
       about: { title: 'About', description: `Learn more about ${siteConfig.name}` },
       contact: { title: 'Contact', description: 'Reach out.' },
-      blog: { title: 'Blog', description: `Latest articles and updates from ${siteConfig.name}` },
+      blog: { title: 'Blog', description: en.blog.description },
       services: { title: en.services.meta.title, description: en.services.meta.description },
       philosophy: philosophyCard('en'),
       impressum: IMPRESSUM_CARD,

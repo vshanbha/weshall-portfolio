@@ -1,5 +1,5 @@
 ---
-title: 'ZeroClaw: From Zero to Super Powered assistant'
+title: 'ZeroClaw: Zero to Super Powered Assistant'
 description: Installing ZeroClaw on Kali Linux, wiring it to Discord, and verifying the whole thing works. No cloud, no subscription leash, no data leaving your machine.
 publishedAt: 2026-07-19
 author: Vishal Shanbhag
@@ -13,8 +13,6 @@ reviewed: true
 ai_assisted: true
 human_reviewed: true
 ---
-
-# ZeroClaw: From Zero to Super Powered assistant.
 
 ## The Promise (and the Fine Print)
 

@@ -19,6 +19,10 @@ describe('Sitemap build output', () => {
   const bareLocalePath = new RegExp(
     `^${escapedBase}/(?!${locales.map((locale) => `${locale}/`).join('|')})[a-z]`
   );
+  // noindex legal pages: astro.config.mjs's sitemap filter rejects these
+  // slugs (they render `noindex` in every locale), so they must never appear
+  // — not even with hreflang alternates.
+  const noindexPath = new RegExp(`/(impressum|datenschutz)/?$`);
   const xml = readFileSync(sitemapPath, 'utf-8');
   const urls = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
 
@@ -37,6 +41,15 @@ describe('Sitemap build output', () => {
       expect(loc).not.toBe('https://weshall.build/');
       const pathname = new URL(loc).pathname;
       expect(pathname).not.toMatch(bareLocalePath);
+    }
+  });
+
+  it('does not contain the noindex legal pages (impressum, datenschutz)', () => {
+    expect(urls.length).toBeGreaterThan(0);
+    for (const url of urls) {
+      const loc = url.replace(/<\/?loc>/g, '');
+      const pathname = new URL(loc).pathname;
+      expect(pathname).not.toMatch(noindexPath);
     }
   });
 });

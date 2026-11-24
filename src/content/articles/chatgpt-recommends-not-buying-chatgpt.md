@@ -1,6 +1,6 @@
 ---
 title: 'ChatGPT Recommends Not Buying ChatGPT'
-description: 'I asked ChatGPT whether its own paid plans offered better coding value than what I already use. It advised me not to buy on the strength of an unmeasured promise.'
+description: 'I asked ChatGPT whether its own paid plans offered better coding value than what I use. It advised me not to buy on the strength of an unmeasured promise.'
 publishedAt: 2026-11-11
 author: Vishal Shanbhag
 tags: [AI, openai, chatgpt, pricing, developer-tools, opencode, transparency]
@@ -42,8 +42,6 @@ reviewed: true
 ai_assisted: true
 human_reviewed: true
 ---
-
-# ChatGPT Recommends Not Buying ChatGPT
 
 > Does the ChatGPT Go plan offer more Codex usage than the Free plan? And if I am comparing Go and Plus, how do I measure what I actually get for my money?
 
