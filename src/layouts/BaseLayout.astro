@@ -26,6 +26,8 @@ interface Props {
   noindex?: boolean;
   nofollow?: boolean;
   includeOrgSchema?: boolean;
+  /** Forwarded to SEO: the og:image in use is the generated 1200x630 card. */
+  ogImageGenerated?: boolean;
   lang?: Locale;
   /**
    * Route ID for generating proper hreflang tags.
@@ -43,6 +45,7 @@ const {
   noindex = false,
   nofollow = false,
   includeOrgSchema = false,
+  ogImageGenerated = false,
   lang,
   routeId,
 } = Astro.props;
@@ -114,6 +117,7 @@ if (includeOrgSchema) {
       article={article}
       noindex={noindex}
       nofollow={nofollow}
+      ogImageGenerated={ogImageGenerated}
     />
 
     <!-- RSS Feed -->
