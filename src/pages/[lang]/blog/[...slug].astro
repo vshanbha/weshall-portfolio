@@ -32,11 +32,23 @@ const wordCount = entry.body?.split(/\s+/).filter(Boolean).length ?? 0;
 
 const canonicalUrl = new URL(`/${locale}/blog/${entry.id}/`, siteConfig.url);
 
-const ogImage = entry.data.image
-  ? typeof entry.data.image === 'string'
-    ? entry.data.image
-    : entry.data.image.src
-  : `/og/${locale}/blog/${entry.id}.png`;
+// og:image source — SVG heroes are excluded: Facebook/X/LinkedIn do not
+// render SVG, so (as in SEO.astro) they fall back to the generated PNG for
+// this article. The visible hero <img> keeps the original asset.
+const dynamicOgImage = `/og/${locale}/blog/${entry.id}.png`;
+const heroIsSvg = entry.data.image
+  ? /\.svg$/i.test(
+      (typeof entry.data.image === 'string' ? entry.data.image : entry.data.image.src).split(
+        /[?#]/
+      )[0]
+    )
+  : false;
+const ogImage =
+  entry.data.image && !heroIsSvg
+    ? typeof entry.data.image === 'string'
+      ? entry.data.image
+      : entry.data.image.src
+    : dynamicOgImage;
 
 // Publishing principles — locale-specific About-page editorial-standards
 // anchor. Trailing slash before the hash so it matches the About canonical

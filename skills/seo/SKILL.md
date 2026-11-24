@@ -187,7 +187,7 @@ Assistants build answers from the **live web**, not just training data — conte
 ### Ongoing (the weekly hour)
 
 - **Freshness** — publish on a regular, predictable schedule; update `dateModified` when revising.
-- **`llms.txt`** — keep `public/llms.txt` in sync with current positioning (it exists but is stale — factory #22/#23).
+- **`llms.txt`** — keep `public/llms.txt` in sync with current positioning (refreshed 2026-11-24; author sign-off still pending under factory #22/#23).
 - **Entity consistency** — `Person` schema `sameAs` links and backlinks from profiles you control (LinkedIn, Medium author bios) are the cheapest ranking lever (factory #23).
 
 ### Check it yourself
@@ -288,7 +288,7 @@ Ask ChatGPT and Perplexity the three questions your audience asks most; write do
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | portfolio #52 | Custom-image OG branch in `SEO.astro` drops `BASE_PATH` (`new URL(image, siteConfig.url)` resolves root-relative paths against the domain root); RSS autodiscovery hardcoded — root/custom-domain deploys unaffected |
 | factory #24   | GSC + GA setup; `.env.example` does not yet document `GOOGLE_SITE_VERIFICATION`                                                                                                                                      |
-| factory #23   | Name absent from all `<title>`s; `Person` JSON-LD only on About; `llms.txt` stale; backlinks from own profiles unverified                                                                                            |
+| factory #23   | Name absent from all `<title>`s; `Person` JSON-LD only on About; `llms.txt` refresh held for author review; backlinks from own profiles unverified                                                                   |
 
 ## Common SEO Issues
 

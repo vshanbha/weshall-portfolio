@@ -167,8 +167,9 @@ export function createPersonSchema(locale: Locale = defaultLocale): WithContext<
     familyName: 'Shanbhag',
     jobTitle: 'Senior Architect & Engineering Lead',
     // Canonical about URL: `/${locale}/about/` (trailing slash matches the
-    // page canonical; the slash-less form 301-hops before resolving).
-    url: `${siteConfig.url}/${locale}/about/`,
+    // page canonical; the slash-less form 301-hops before resolving). Built
+    // with new URL so a SITE_URL carrying a trailing slash cannot double it.
+    url: new URL(`/${locale}/about/`, siteConfig.url).toString(),
     sameAs: [
       'https://www.linkedin.com/in/vishal-shanbhag-70b679a/',
       'https://www.baeldung.com/author/vishalshanbhag/',
