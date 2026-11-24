@@ -1,5 +1,6 @@
 ---
-title: 'StackOverflow: The Banyan Tree Is Dying'
+title: 'The Banyan Tree called StackOverflow is Dying'
+seoTitle: 'StackOverflow: The Banyan Tree Is Dying'
 description: 'A banyan tree once stood in the centre of every Indian village. StackOverflow was that for programmers. The statistics tell a simple story worth acknowledging.'
 publishedAt: 2026-08-08
 author: Vishal Shanbhag

@@ -1,5 +1,6 @@
 ---
-title: 'Every Few Years, a Language Gets a Eulogy'
+title: 'Every Few Years a Programming Language Gets a Eulogy'
+seoTitle: 'Every Few Years, a Language Gets a Eulogy'
 description: 'DHH retired from programming, wrote 150,000 lines in August alone, and 37signals is rebuilding HEY in Rust. The pattern is older than LLMs.'
 publishedAt: 2026-11-14
 author: Vishal Shanbhag
