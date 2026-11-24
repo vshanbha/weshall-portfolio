@@ -6,6 +6,7 @@ import type { Locale } from '@/i18n/config';
 import type { TranslationKeys } from '@/i18n/translations/en';
 import { getCollection } from 'astro:content';
 import { defaultLocale } from '@/i18n/config';
+import { getLocalizedPath } from '@/i18n/helpers';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
@@ -123,7 +124,7 @@ const recentArticles = allArticles
             <BlogCard
               title={entry.data.title}
               description={entry.data.description}
-              href={`/${locale}/blog/${entry.id}/`}
+              href={`${getLocalizedPath('blog', locale)}${entry.id}/`}
               publishedAt={entry.data.publishedAt}
               tags={entry.data.tags}
               author={entry.data.author}
@@ -133,7 +134,7 @@ const recentArticles = allArticles
           ))}
         </div>
         <div class="mt-12 text-center">
-          <Button variant="outline" size="lg" href={`/${locale}/blog`}>
+          <Button variant="outline" size="lg" href={getLocalizedPath('blog', locale)}>
             {t('common.readMore')}
           </Button>
         </div>

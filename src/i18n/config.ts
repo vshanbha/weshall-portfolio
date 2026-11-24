@@ -64,5 +64,6 @@ export function removeLocaleFromPath(path: string): string {
  */
 export function localePath(path: string, locale: Locale): string {
   const cleanPath = removeLocaleFromPath(path);
-  return `/${locale}${cleanPath}`;
+  // Trailing slash matches the canonical (directory-index) form.
+  return `/${locale}${cleanPath.replace(/\/+$/, '')}/`;
 }

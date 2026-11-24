@@ -12,6 +12,8 @@ tags:
   - high-availability
   - disaster-recovery
   - scaling
+  - software-engineering
+  - developer-tools
 draft: false
 featured: false
 locale: en

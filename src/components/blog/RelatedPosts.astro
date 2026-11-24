@@ -46,7 +46,7 @@ const relatedPosts = allPosts
 // of hopping through the bare-path → noindex meta-refresh shims.
 const getPostUrl = (postId: string) => {
   const slug = postId.replace(`${locale}/`, '');
-  return `${getLocalizedPath('blog', locale)}/${slug}/`;
+  return `${getLocalizedPath('blog', locale)}${slug}/`;
 };
 ---
 

@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { slug } = Astro.params;
-const target = `${siteBase()}/${defaultLocale}/blog/${slug}`;
+const target = `${siteBase()}/${defaultLocale}/blog/${slug}/`;
 ---
 
 <!doctype html>
