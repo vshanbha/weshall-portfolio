@@ -6,26 +6,44 @@ import { defaultLocale, locales, type Locale } from '@/i18n/config';
 import { en } from '@/i18n/translations/en';
 import { de } from '@/i18n/translations/de';
 
+/**
+ * The card strings the locale-less cards need, indexed by locale. The
+ * locale-less cards render the default locale's bundle so a default-locale
+ * flip cannot strand hardcoded English (the shim-strings lesson).
+ */
+interface CardStrings {
+  blog: { title: string; description: string };
+  common: { notFound: string; notFoundDescription: string };
+  about: { meta: { title: string; description: string } };
+  contact: { meta: { title: string; description: string } };
+}
+const bundles: Record<Locale, CardStrings> = { en, de };
+const localeBundle = bundles[defaultLocale];
+
 // Define static pages that need OG images (locale-less outputs, kept for
 // surfaces that still reference them).
 const STATIC_PAGES = [
   { slug: 'index', title: siteConfig.name, description: siteConfig.description },
-  { slug: 'about', title: 'About', description: `Learn more about ${siteConfig.name}` },
+  {
+    slug: 'about',
+    title: localeBundle.about.meta.title,
+    description: localeBundle.about.meta.description,
+  },
   {
     slug: 'contact',
-    title: 'Contact',
-    description: 'Reach out.',
+    title: localeBundle.contact.meta.title,
+    description: localeBundle.contact.meta.description,
   },
   {
     slug: 'blog',
-    title: 'Blog',
-    description: en.blog.description,
+    title: localeBundle.blog.title,
+    description: localeBundle.blog.description,
   },
   {
     slug: '404',
     // String Integrity: the 404 card must match the page's bundle strings.
-    title: en.common.notFound,
-    description: en.common.notFoundDescription,
+    title: localeBundle.common.notFound,
+    description: localeBundle.common.notFoundDescription,
   },
 ];
 
@@ -68,9 +86,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const localizedCards: Record<Locale, Record<string, { title: string; description: string }>> = {
     en: {
       '': { title: siteConfig.name, description: siteConfig.description },
-      about: { title: 'About', description: `Learn more about ${siteConfig.name}` },
-      contact: { title: 'Contact', description: 'Reach out.' },
-      blog: { title: 'Blog', description: en.blog.description },
+      about: { title: en.about.meta.title, description: en.about.meta.description },
+      contact: { title: en.contact.meta.title, description: en.contact.meta.description },
+      blog: { title: en.blog.title, description: en.blog.description },
       services: { title: en.services.meta.title, description: en.services.meta.description },
       philosophy: philosophyCard('en'),
       impressum: IMPRESSUM_CARD,
