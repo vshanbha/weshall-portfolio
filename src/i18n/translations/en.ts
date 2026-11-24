@@ -278,7 +278,7 @@ export const en = {
     meta: {
       title: 'What I do',
       description:
-        'For founders and technical leads facing the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold.',
+        'Productised senior-architect engagements: a free 15-minute call, an honest hour, a short sprint, or ongoing monthly advisory — as far as the problem needs.',
     },
     hero: {
       title: 'Some decisions cost you when you get them wrong.',
@@ -496,7 +496,8 @@ export const en = {
   // Blog
   blog: {
     title: 'Blog',
-    description: 'Latest articles and updates',
+    description:
+      'Deep-dive technical analysis, operational case studies and engineering philosophy from twenty years of production architecture.',
     allPosts: 'All posts',
     featured: 'Featured',
     noPosts: 'No posts found',
