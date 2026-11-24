@@ -50,6 +50,12 @@ const ogImage =
       : entry.data.image.src
     : dynamicOgImage;
 
+// The generated card shows the title/description, not the hero artwork, so
+// its alt text is the full title; SVG-hero articles keep their hero alt for
+// the hero <img> but must not describe the SVG in the og:image meta.
+const ogImageGenerated = ogImage === dynamicOgImage;
+const ogImageAlt = ogImageGenerated ? entry.data.title : undefined;
+
 // Publishing principles — locale-specific About-page editorial-standards
 // anchor. Trailing slash before the hash so it matches the About canonical
 // (the slash-less form 301-hops through the redirect shims).
@@ -79,6 +85,8 @@ const imageCredit = entry.data.imageProvenance ? entry.data.author : undefined;
   updatedAt={entry.data.updatedAt}
   author={entry.data.author}
   ogImage={ogImage}
+  ogImageGenerated={ogImageGenerated}
+  ogImageAlt={ogImageAlt}
   image={entry.data.image}
   imageAlt={entry.data.imageAlt}
   heroCaption={heroCaption}
