@@ -15,29 +15,29 @@ It also covers **answer-engine visibility**: what an assistant (ChatGPT, Perplex
 
 This project uses **custom content collections** (not Velocity defaults):
 
-| Collection                 | Route                      | Purpose                                          |
-| -------------------------- | -------------------------- | ------------------------------------------------ |
-| `articles`                 | `/en/blog/` (locale-prefixed) | Deep-dive technical analysis and operational insights — the live blog |
-| `philosophy`               | `/en/philosophy/` (locale-prefixed) | Ten commandments / brand philosophy        |
-| `blog`, `pages`, `authors`, `faqs` | —  | Defined in `src/content.config.ts`, currently empty |
+| Collection                         | Route                               | Purpose                                                               |
+| ---------------------------------- | ----------------------------------- | --------------------------------------------------------------------- |
+| `articles`                         | `/en/blog/` (locale-prefixed)       | Deep-dive technical analysis and operational insights — the live blog |
+| `philosophy`                       | `/en/philosophy/` (locale-prefixed) | Ten commandments / brand philosophy                                   |
+| `blog`, `pages`, `authors`, `faqs` | —                                   | Defined in `src/content.config.ts`, currently empty                   |
 
 See `src/content.config.ts` for Zod schemas. All content must pass frontmatter validation at build time. The `faqs` collection is the intended JSON source for `createFAQSchema`; no FAQ content exists yet.
 
 ## Quick Reference
 
-| Feature           | Location                                        | Notes                                             |
-| ----------------- | ----------------------------------------------- | ------------------------------------------------- |
-| SEO component     | `src/components/seo/SEO.astro`                  | Per-page meta tags                                |
-| JSON-LD           | `src/components/seo/JsonLd.astro`               | Structured data                                   |
-| Breadcrumbs       | `src/components/seo/Breadcrumbs.astro`          | Blog article pages (rendered via `BlogLayout`)    |
-| hreflang          | `src/components/i18n/Hreflang.astro`            | Locale alternates + `x-default`, emitted by `BaseLayout` |
-| OG images         | `src/pages/og/[...slug].png.ts`                 | Dynamic generation (Satori, via `src/lib/og.ts`)  |
-| Sitemap           | `astro.config.mjs` (`@astrojs/sitemap`)         | Outputs `sitemap-index.xml`; `/sitemap.xml` redirects to it |
-| Robots            | `src/pages/robots.txt.ts`                       | Blocks `/api/`; points at `sitemap-index.xml`     |
-| RSS               | `src/pages/rss.xml.ts`                          | Autodiscovery `<link>` in `BaseLayout`            |
-| `llms.txt`        | `public/llms.txt`                               | Static machine-readable site summary — keep in sync with positioning |
-| Schema helpers    | `src/lib/schema.ts`                             | `create*` JSON-LD generators                      |
-| GSC verification  | `GOOGLE_SITE_VERIFICATION` env → `siteConfig.verification.google` | Rendered as `google-site-verification` meta by `SEO.astro` |
+| Feature          | Location                                                          | Notes                                                                |
+| ---------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------- |
+| SEO component    | `src/components/seo/SEO.astro`                                    | Per-page meta tags                                                   |
+| JSON-LD          | `src/components/seo/JsonLd.astro`                                 | Structured data                                                      |
+| Breadcrumbs      | `src/components/seo/Breadcrumbs.astro`                            | Blog article pages (rendered via `BlogLayout`)                       |
+| hreflang         | `src/components/i18n/Hreflang.astro`                              | Locale alternates + `x-default`, emitted by `BaseLayout`             |
+| OG images        | `src/pages/og/[...slug].png.ts`                                   | Dynamic generation (Satori, via `src/lib/og.ts`)                     |
+| Sitemap          | `astro.config.mjs` (`@astrojs/sitemap`)                           | Outputs `sitemap-index.xml`; `/sitemap.xml` redirects to it          |
+| Robots           | `src/pages/robots.txt.ts`                                         | Blocks `/api/`; points at `sitemap-index.xml`                        |
+| RSS              | `src/pages/rss.xml.ts`                                            | Autodiscovery `<link>` in `BaseLayout`                               |
+| `llms.txt`       | `public/llms.txt`                                                 | Static machine-readable site summary — keep in sync with positioning |
+| Schema helpers   | `src/lib/schema.ts`                                               | `create*` JSON-LD generators                                         |
+| GSC verification | `GOOGLE_SITE_VERIFICATION` env → `siteConfig.verification.google` | Rendered as `google-site-verification` meta by `SEO.astro`           |
 
 ## Meta Tags
 
@@ -60,32 +60,32 @@ import SEO from '@/components/seo/SEO.astro';
 
 ### Meta Tag Best Practices
 
-| Tag                | Rule                                                                 |
-| ------------------ | -------------------------------------------------------------------- |
-| `<title>`          | 50-60 characters including the site name; format: `Page - Site`      |
-| `meta description` | 150-160 characters; compelling, unique per page                      |
-| `og:title`         | Same as `<title>` or shorter for social                              |
-| `og:description`   | Same as meta description                                             |
-| `og:image`         | 1200x630px; include brand elements                                   |
-| `og:url`           | Canonical URL                                                        |
-| `twitter:card`     | `summary_large_image` (emitted for every page)                       |
-| `canonical`        | Self-referencing; trailing slash follows the route table             |
+| Tag                | Rule                                                                                      |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| `<title>`          | 50-60 characters including the site name; format: `Page - Site`                           |
+| `meta description` | 150-160 characters; compelling, unique per page                                           |
+| `og:title`         | Same as `<title>` or shorter for social                                                   |
+| `og:description`   | Same as meta description                                                                  |
+| `og:image`         | 1200x630px; include brand elements                                                        |
+| `og:url`           | Canonical URL                                                                             |
+| `twitter:card`     | `summary_large_image` (emitted for every page)                                            |
+| `canonical`        | Self-referencing; trailing slash follows the route table                                  |
 | `noindex`          | Use the prop for pages that must not be indexed (404, legal pages, locale-redirect shims) |
 
 ## JSON-LD Structured Data
 
 ### Available Schema Generators (in `src/lib/schema.ts`)
 
-| Generator                    | `@type`        | Used on                                    |
-| ---------------------------- | -------------- | ------------------------------------------ |
-| `createWebsiteSchema`        | `WebSite`      | Every page (`BaseLayout`)                  |
-| `createOrganizationSchema`   | `Organization` | Available via `includeOrgSchema` layout prop — **no page enables it today** |
-| `createBlogPostSchema`       | `BlogPosting`  | Blog article pages                         |
-| `createWebPageSchema`        | `WebPage`      | Blog article pages (reviewer + publishing principles) |
-| `createBreadcrumbSchema`     | `BreadcrumbList` | `Breadcrumbs.astro`                      |
-| `createPersonSchema`         | `Person`       | About page                                 |
-| `createServiceSchema`        | `Service`      | Services page                              |
-| `createFAQSchema`            | `FAQPage`      | Ready to use — no FAQ content yet           |
+| Generator                  | `@type`          | Used on                                                                     |
+| -------------------------- | ---------------- | --------------------------------------------------------------------------- |
+| `createWebsiteSchema`      | `WebSite`        | Every page (`BaseLayout`)                                                   |
+| `createOrganizationSchema` | `Organization`   | Available via `includeOrgSchema` layout prop — **no page enables it today** |
+| `createBlogPostSchema`     | `BlogPosting`    | Blog article pages                                                          |
+| `createWebPageSchema`      | `WebPage`        | Blog article pages (reviewer + publishing principles)                       |
+| `createBreadcrumbSchema`   | `BreadcrumbList` | `Breadcrumbs.astro`                                                         |
+| `createPersonSchema`       | `Person`         | About page                                                                  |
+| `createServiceSchema`      | `Service`        | Services page                                                               |
+| `createFAQSchema`          | `FAQPage`        | Ready to use — no FAQ content yet                                           |
 
 ### Using JSON-LD
 
@@ -111,14 +111,14 @@ import { createBlogPostSchema } from '@/lib/schema';
 
 ### Schema Types for This Site
 
-| Page                     | Schema                                          |
-| ------------------------ | ----------------------------------------------- |
-| Every page               | `WebSite`                                       |
-| Blog article             | `BlogPosting` + `WebPage` + `BreadcrumbList`    |
-| About                    | `Person`                                        |
-| Services                 | `Service`                                       |
+| Page                        | Schema                                       |
+| --------------------------- | -------------------------------------------- |
+| Every page                  | `WebSite`                                    |
+| Blog article                | `BlogPosting` + `WebPage` + `BreadcrumbList` |
+| About                       | `Person`                                     |
+| Services                    | `Service`                                    |
 | Home / contact / philosophy | `WebSite` only                               |
-| FAQ (future)             | `FAQPage` via `createFAQSchema`                 |
+| FAQ (future)                | `FAQPage` via `createFAQSchema`              |
 
 ## Open Graph Images
 
@@ -284,20 +284,20 @@ Ask ChatGPT and Perplexity the three questions your audience asks most; write do
 
 ## Known Tracked Issues
 
-| Issue      | Gap                                                                |
-| ---------- | ------------------------------------------------------------------ |
+| Issue         | Gap                                                                                                                                                                                                                  |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | portfolio #52 | Custom-image OG branch in `SEO.astro` drops `BASE_PATH` (`new URL(image, siteConfig.url)` resolves root-relative paths against the domain root); RSS autodiscovery hardcoded — root/custom-domain deploys unaffected |
-| factory #24 | GSC + GA setup; `.env.example` does not yet document `GOOGLE_SITE_VERIFICATION` |
-| factory #23 | Name absent from all `<title>`s; `Person` JSON-LD only on About; `llms.txt` stale; backlinks from own profiles unverified |
+| factory #24   | GSC + GA setup; `.env.example` does not yet document `GOOGLE_SITE_VERIFICATION`                                                                                                                                      |
+| factory #23   | Name absent from all `<title>`s; `Person` JSON-LD only on About; `llms.txt` stale; backlinks from own profiles unverified                                                                                            |
 
 ## Common SEO Issues
 
-| Issue              | Fix                                                        |
-| ------------------ | ---------------------------------------------------------- |
-| Duplicate titles   | Ensure unique `<title>` per page                           |
-| Missing OG image   | Add image to frontmatter or rely on the dynamic `/og/` path |
-| Thin content       | Expand pages to 300+ words minimum                         |
-| Broken links       | Check with `pnpm build` and link checker                   |
-| Slow page speed    | See performance skill                                     |
-| Missing canonical  | Derived automatically — check `siteConfig.url` instead      |
-| Stale `llms.txt`   | Regenerate from current positioning (see factory #22/#23)  |
+| Issue             | Fix                                                         |
+| ----------------- | ----------------------------------------------------------- |
+| Duplicate titles  | Ensure unique `<title>` per page                            |
+| Missing OG image  | Add image to frontmatter or rely on the dynamic `/og/` path |
+| Thin content      | Expand pages to 300+ words minimum                          |
+| Broken links      | Check with `pnpm build` and link checker                    |
+| Slow page speed   | See performance skill                                       |
+| Missing canonical | Derived automatically — check `siteConfig.url` instead      |
+| Stale `llms.txt`  | Regenerate from current positioning (see factory #22/#23)   |

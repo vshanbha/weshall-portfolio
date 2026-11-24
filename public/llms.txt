@@ -6,7 +6,7 @@
 >
 > For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those decisions in production for twenty years.
 
-Productised senior-architect engagements that start small and lead to embedded work. You don't make the wrong decision, the wrong hire, or the wrong bet on production. It usually starts with a free fifteen-minute conversation to work out whether it's worth a longer one. The site features deep-dive technical articles, the ten We shall commandments, and a four-rung engagement ladder, all visible at once.
+Productised senior-architect engagements that start small and lead to embedded work. You don't make the wrong decision, the wrong hire, or the wrong bet on production. It usually starts with a free fifteen-minute conversation to work out whether it's worth a longer one. The site features deep-dive technical articles and the ten We shall commandments, published at https://weshall.build/en/philosophy/.
 
 ## Key pages
 
@@ -15,6 +15,23 @@ Productised senior-architect engagements that start small and lead to embedded w
 - [Services](https://weshall.build/en/services/): It starts with a conversation: a fifteen-minute call to meet, then an honest hour, a short working sprint, or ongoing monthly advisory, as far as the problem needs
 - [Blog](https://weshall.build/en/blog/): Deep-dive technical analysis, operational case studies, and engineering philosophy
 - [Contact](https://weshall.build/en/contact/): "Reach out." Primary path: Let's talk, a free fifteen-minute conversation with a founder-engineer, via Calendly, no pitch, no obligation. Second door: the honest hour, booked via Upwork. Writing-first is tertiary: a LinkedIn link lives in the site footer.
+- [Philosophy](https://weshall.build/en/philosophy/): The ten We shall commandments — the way we build, engineering principles earned in production
+- [Deutsch](https://weshall.build/de/): German locale — the site ships in English and German
+
+## Articles
+
+- [Bye Bye WordPress (Part 1)](https://weshall.build/en/blog/bye-bye-wordpress-part-1/): WordPress served well for a decade, but the complexity tax outweighed the convenience; switching to Jekyll and never looking back — also republished on levelup.gitconnected.com
+- [ChatGPT Recommends Not Buying ChatGPT](https://weshall.build/en/blog/chatgpt-recommends-not-buying-chatgpt/): Asking ChatGPT whether its own paid plans beat the tools already in use — it advised not buying on the strength of an unmeasured promise
+- [Every Few Years a Programming Language Gets a Eulogy](https://weshall.build/en/blog/every-few-years-a-programming-language-gets-a-eulogy/): Why programming languages survive or die — ecosystem, governance, and who else is forced to use yours
+- [How This Site Was Built](https://weshall.build/en/blog/how-this-site-was-built/): Building weshall.build on Astro 6 with the Velocity template — the key decisions, the scorecard, and what went wrong
+- [How to Choose Your Next Tech Stack](https://weshall.build/en/blog/how-to-choose-your-next-tech-stack/): A practical framework for technology selection, demonstrated through a real mobile-platform case study
+- [One Week Agentic Development Sprint: Post Mortem](https://weshall.build/en/blog/one-week-agentic-development-sprint-post-mortem/): A seven-day agentic sprint — the engineering impressed, the intelligence wasn't validated; ten rules for the next one
+- [Oops, I Deleted It Again](https://weshall.build/en/blog/oops-i-deleted-it-again/): An AI coding agent deleted raw notes without authorisation — root cause analysis of agent governance and permission models — also republished on ai.gopubby.com
+- [Run Further Than a Marathon](https://weshall.build/en/blog/run-further-than-a-marathon/): A founder swaps a Forrest Gump slide for a real Indian ultra-runner and finds the metaphor he needed all along
+- [Apache Solr and ZooKeeper Scaling Guidelines](https://weshall.build/en/blog/solr-zookeeper-scaling-guidelines/): Guidelines for scaling Solr and ZooKeeper deployments with high availability and disaster recovery — also republished on levelup.gitconnected.com
+- [The Banyan Tree called StackOverflow is Dying](https://weshall.build/en/blog/stackoverflow-eulogy/): StackOverflow was the banyan tree at the centre of programming; the statistics tell a simple story worth acknowledging
+- [To Build or Not to Build](https://weshall.build/en/blog/to-build-or-not-to-build/): When to add a feature to your product — practical decision advice from a founder and advisor
+- [ZeroClaw: From Zero to Super Powered assistant](https://weshall.build/en/blog/zeroclaw-personal-ai-assistant/): Installing ZeroClaw on Kali Linux and wiring it to Discord — no cloud, no subscription leash, no data leaving your machine
 
 ## External profiles
 
@@ -24,7 +41,4 @@ Productised senior-architect engagements that start small and lead to embedded w
 
 ## Optional
 
-- [Bye Bye WordPress (Part 1)](https://levelup.gitconnected.com/bye-bye-wordpress-61bc464702fb): Site architecture decision and static site rationale
-- [Oops, I Deleted It Again](https://ai.gopubby.com/oops-i-deleted-it-again-f6495ae4706b): AI agent hardening case study
 - [LangChain with Vector Store Indexing](https://levelup.gitconnected.com/langchain-with-vector-store-indexing-documents-at-scale-5d3b7718c29f): Document indexing at scale
-- [Apache Solr & Zookeeper Scaling](https://levelup.gitconnected.com/apache-solr-and-zookeeper-scaling-guidelines-269dad4fbfb2): Distributed systems scaling guidelines
