@@ -31,6 +31,7 @@ short `<title>` tag), and AI-readable meta throughout.
 - Restore the full titles on four articles (the short forms moved into `seoTitle`); the Solr article joins Related Posts via two shared tags ([`115eee1`](https://github.com/vshanbha/weshall-portfolio/commit/115eee1), [`748e947`](https://github.com/vshanbha/weshall-portfolio/commit/748e947))
 - Give the services page its own description, replace the blog-index placeholder and expand the philosophy description, in both locales ([`4213215`](https://github.com/vshanbha/weshall-portfolio/commit/4213215), [`6d8386e`](https://github.com/vshanbha/weshall-portfolio/commit/6d8386e))
 - Refresh `llms.txt`: all twelve articles at their on-site URLs, Philosophy and the German locale in Key pages, stale claims corrected ([`3d40c52`](https://github.com/vshanbha/weshall-portfolio/commit/3d40c52))
+- Testimonials: tabs lead with the strongest quote (BauAI), each gains an engagement context tag linking to the matching story card; quotes stay verbatim ([`9eaf1fc`](https://github.com/vshanbha/weshall-portfolio/commit/9eaf1fc))
 
 ### Docs
 
@@ -38,6 +39,7 @@ short `<title>` tag), and AI-readable meta throughout.
 
 ### Commits
 
+`9eaf1fc` - fix(home): testimonials lead with the strongest quote and gain engagement tags
 `1b0a9b2` - chore: bump version to 0.6.0
 `54f499c` - fix(seo): bare-path redirect targets slash-terminated; link-shape contract tests
 `584ac0e` - fix(seo): close the remaining hand-rolled slash-less links (review nits)
