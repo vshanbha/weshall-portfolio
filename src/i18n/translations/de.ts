@@ -272,6 +272,7 @@ export const de = {
           tag: 'Lieferung in komplexem, mehrdeutigem Umfeld',
           image: '/images/testimonials/kunal-kakar.jpg',
           logo: '/images/testimonials/ourish-logo.png',
+          logoClass: 'h-16',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:

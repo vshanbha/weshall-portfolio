@@ -40,6 +40,8 @@ type TestimonialItem = {
   logoDark?: string;
   /** Text-only brand mark: the client's logo is styled text, not an image. */
   wordmark?: { a: string; b: string; aColor: string };
+  /** Height class for the logomark; portrait marks need more than the default h-10. */
+  logoClass?: string;
   quote: string;
   linkedin: string;
   website: string;
@@ -136,7 +138,7 @@ const recentArticles = allArticles
                   <img
                     src={item.logo}
                     alt={t('home.testimonials.logoAlt', { company: item.company })}
-                    class="h-10 w-auto object-contain shrink-0 block dark:hidden"
+                    class={`${item.logoClass ?? 'h-10'} w-auto object-contain shrink-0 block dark:hidden`}
                     loading="lazy"
                     decoding="async"
                   />
@@ -144,7 +146,7 @@ const recentArticles = allArticles
                     src={item.logoDark}
                     alt=""
                     aria-hidden="true"
-                    class="h-10 w-auto object-contain shrink-0 hidden dark:block"
+                    class={`${item.logoClass ?? 'h-10'} w-auto object-contain shrink-0 hidden dark:block`}
                     loading="lazy"
                     decoding="async"
                   />
@@ -154,7 +156,7 @@ const recentArticles = allArticles
                 <img
                   src={item.logo}
                   alt={t('home.testimonials.logoAlt', { company: item.company })}
-                  class="h-10 w-auto object-contain shrink-0"
+                  class={`${item.logoClass ?? 'h-10'} w-auto object-contain shrink-0`}
                   loading="lazy"
                   decoding="async"
                 />
