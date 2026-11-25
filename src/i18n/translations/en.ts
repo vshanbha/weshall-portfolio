@@ -226,6 +226,8 @@ export const en = {
           id: 'bauai',
           company: 'BauAI',
           tag: 'AI agent hardening · from prototype to pilot',
+          image: '/images/testimonials/tushar-adsul.jpg',
+          logo: '/images/testimonials/bauai-logo.png',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -274,6 +276,7 @@ export const en = {
           id: 'ourish',
           company: 'Ourish',
           tag: 'Delivery leadership · complex, ambiguous scope',
+          image: '/images/testimonials/kunal-kakar.jpg',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:

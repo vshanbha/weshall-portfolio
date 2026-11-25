@@ -211,6 +211,8 @@ export const mr = {
           id: 'bauai',
           company: 'BauAI',
           tag: 'AI agent hardening · from prototype to pilot', // TODO: translate
+          image: '',
+          logo: '',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -259,6 +261,7 @@ export const mr = {
           id: 'ourish',
           company: 'Ourish',
           tag: 'Delivery leadership · complex, ambiguous scope', // TODO: translate
+          image: '',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:

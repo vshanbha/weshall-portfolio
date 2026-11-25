@@ -217,6 +217,8 @@ export const de = {
           id: 'bauai',
           company: 'BauAI',
           tag: 'KI-Agenten-Härtung · vom Prototyp zum Pilotkunden',
+          image: '',
+          logo: '',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -265,6 +267,7 @@ export const de = {
           id: 'ourish',
           company: 'Ourish',
           tag: 'Lieferung in komplexem, mehrdeutigem Umfeld',
+          image: '',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:
