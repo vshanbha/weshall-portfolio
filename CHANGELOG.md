@@ -38,6 +38,7 @@ short `<title>` tag), and AI-readable meta throughout.
 
 ### Commits
 
+`1b0a9b2` - chore: bump version to 0.6.0
 `54f499c` - fix(seo): bare-path redirect targets slash-terminated; link-shape contract tests
 `584ac0e` - fix(seo): close the remaining hand-rolled slash-less links (review nits)
 `c8d1c72` - fix(seo): all internal links resolve to the trailing-slash canonical form
