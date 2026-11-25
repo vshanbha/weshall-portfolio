@@ -212,7 +212,8 @@ export const hi = {
           company: 'BauAI',
           tag: 'AI agent hardening · from prototype to pilot', // TODO: translate
           image: '/images/testimonials/tushar-adsul.jpg',
-          logo: '/images/testimonials/bauai-logo.png',
+          logo: '/images/testimonials/bauai-logo.svg',
+          logoDark: '/images/testimonials/bauai-logo-white.svg',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -226,7 +227,7 @@ export const hi = {
           tag: 'Build vs. buy · regulated lender', // TODO: translate
           storyId: 'bluemoney',
           image: '/images/testimonials/arrie-de-waal.jpg',
-          logo: '/images/testimonials/bluemoney-logo.png',
+          wordmark: { a: 'Blue', b: 'Money', aColor: '#005CF0' },
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:

@@ -220,7 +220,8 @@ export const de = {
           company: 'BauAI',
           tag: 'KI-Agenten-Härtung · vom Prototyp zum Pilotkunden',
           image: '/images/testimonials/tushar-adsul.jpg',
-          logo: '/images/testimonials/bauai-logo.png',
+          logo: '/images/testimonials/bauai-logo.svg',
+          logoDark: '/images/testimonials/bauai-logo-white.svg',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -234,7 +235,7 @@ export const de = {
           tag: 'Build-vs-Buy · regulierter Kreditgeber',
           storyId: 'bluemoney',
           image: '/images/testimonials/arrie-de-waal.jpg',
-          logo: '/images/testimonials/bluemoney-logo.png',
+          wordmark: { a: 'Blue', b: 'Money', aColor: '#005CF0' },
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:
