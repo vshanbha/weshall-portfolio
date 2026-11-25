@@ -262,6 +262,7 @@ export const mr = {
           company: 'Ourish',
           tag: 'Delivery leadership · complex, ambiguous scope', // TODO: translate
           image: '',
+          logo: '',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:

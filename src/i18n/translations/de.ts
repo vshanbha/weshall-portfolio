@@ -268,6 +268,7 @@ export const de = {
           company: 'Ourish',
           tag: 'Lieferung in komplexem, mehrdeutigem Umfeld',
           image: '',
+          logo: '',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:

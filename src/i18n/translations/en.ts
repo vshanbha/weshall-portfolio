@@ -277,6 +277,7 @@ export const en = {
           company: 'Ourish',
           tag: 'Delivery leadership · complex, ambiguous scope',
           image: '/images/testimonials/kunal-kakar.jpg',
+          logo: '/images/testimonials/ourish-logo.png',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:
