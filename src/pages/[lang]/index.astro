@@ -24,12 +24,14 @@ const tr = getTranslations(locale) as TranslationKeys;
 
 // Structural views over the readonly translation tuples (typeof en),
 // so the mapped sections below stay fully typed.
-type StoryItem = { title: string; subtitle: string; paragraphs: string[] };
+type StoryItem = { id?: string; title: string; subtitle: string; paragraphs: string[] };
 type TestimonialItem = {
   id: string;
   company: string;
   author: string;
   role: string;
+  tag: string;
+  storyId?: string;
   quote: string;
   linkedin: string;
   website: string;
@@ -52,7 +54,7 @@ const recentArticles = allArticles
       <h2 class="text-3xl font-bold font-display text-center mb-12">{t('home.stories.title')}</h2>
       <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto auto-rows-fr">
         {(tr.home.stories.items as unknown as StoryItem[]).map((item) => (
-          <div class="block h-full">
+          <div class="block h-full" id={item.id && `story-${item.id}`}>
             <Card variant="default" padding="lg" class="h-full flex flex-col">
               <div>
                 <h3 class="text-lg font-semibold mb-1">{item.title}</h3>
@@ -84,6 +86,18 @@ const recentArticles = allArticles
       >
         {(tr.home.testimonials.items as unknown as TestimonialItem[]).map((item) => (
           <div data-tab-content={item.id}>
+            <p class="text-xs uppercase tracking-wider text-muted-foreground mb-4">
+              {item.storyId ? (
+                <a
+                  href={`#story-${item.storyId}`}
+                  class="underline underline-offset-2 hover:text-primary transition-colors"
+                >
+                  {item.tag}
+                </a>
+              ) : (
+                item.tag
+              )}
+            </p>
             <blockquote class="text-lg text-muted-foreground italic mb-6 leading-relaxed">
               &ldquo;{item.quote}&rdquo;
             </blockquote>
