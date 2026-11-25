@@ -209,6 +209,8 @@ export const de = {
     },
     testimonials: {
       title: 'Was Kunden sagen',
+      photoAlt: 'Foto von {author}',
+      logoAlt: '{company}-Logo',
       // Client quotes stay in the language they were provided in, verbatim in
       // every locale: translating would misattribute words their authors never
       // approved (all current quotes were provided in English).
@@ -217,8 +219,8 @@ export const de = {
           id: 'bauai',
           company: 'BauAI',
           tag: 'KI-Agenten-Härtung · vom Prototyp zum Pilotkunden',
-          image: '',
-          logo: '',
+          image: '/images/testimonials/tushar-adsul.jpg',
+          logo: '/images/testimonials/bauai-logo.png',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -231,8 +233,8 @@ export const de = {
           company: 'BlueMoney',
           tag: 'Build-vs-Buy · regulierter Kreditgeber',
           storyId: 'bluemoney',
-          image: '',
-          logo: '',
+          image: '/images/testimonials/arrie-de-waal.jpg',
+          logo: '/images/testimonials/bluemoney-logo.png',
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:
@@ -267,8 +269,8 @@ export const de = {
           id: 'ourish',
           company: 'Ourish',
           tag: 'Lieferung in komplexem, mehrdeutigem Umfeld',
-          image: '',
-          logo: '',
+          image: '/images/testimonials/kunal-kakar.jpg',
+          logo: '/images/testimonials/ourish-logo.png',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:

@@ -204,13 +204,15 @@ export const hi = {
     },
     testimonials: {
       title: 'What clients say', // TODO: translate
+      photoAlt: 'Photo of {author}', // TODO: translate
+      logoAlt: '{company} logo', // TODO: translate
       items: [
         {
           id: 'bauai',
           company: 'BauAI',
           tag: 'AI agent hardening · from prototype to pilot', // TODO: translate
-          image: '',
-          logo: '',
+          image: '/images/testimonials/tushar-adsul.jpg',
+          logo: '/images/testimonials/bauai-logo.png',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -223,8 +225,8 @@ export const hi = {
           company: 'BlueMoney',
           tag: 'Build vs. buy · regulated lender', // TODO: translate
           storyId: 'bluemoney',
-          image: '',
-          logo: '',
+          image: '/images/testimonials/arrie-de-waal.jpg',
+          logo: '/images/testimonials/bluemoney-logo.png',
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:
@@ -259,8 +261,8 @@ export const hi = {
           id: 'ourish',
           company: 'Ourish',
           tag: 'Delivery leadership · complex, ambiguous scope', // TODO: translate
-          image: '',
-          logo: '',
+          image: '/images/testimonials/kunal-kakar.jpg',
+          logo: '/images/testimonials/ourish-logo.png',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:

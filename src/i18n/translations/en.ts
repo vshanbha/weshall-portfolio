@@ -221,6 +221,8 @@ export const en = {
     },
     testimonials: {
       title: 'What clients say',
+      photoAlt: 'Photo of {author}',
+      logoAlt: '{company} logo',
       items: [
         {
           id: 'bauai',

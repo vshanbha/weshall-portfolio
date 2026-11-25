@@ -109,11 +109,12 @@ const recentArticles = allArticles
               {item.image && (
                 <img
                   src={item.image}
-                  alt={`Photo of ${item.author}`}
+                  alt={t('home.testimonials.photoAlt', { author: item.author })}
                   class="w-12 h-12 rounded-full object-cover shrink-0"
                   width="48"
                   height="48"
                   loading="lazy"
+                  decoding="async"
                 />
               )}
               <div class="flex-1 min-w-0">
@@ -123,11 +124,10 @@ const recentArticles = allArticles
               {item.logo && (
                 <img
                   src={item.logo}
-                  alt={`${item.company} logo`}
+                  alt={t('home.testimonials.logoAlt', { company: item.company })}
                   class="h-8 w-auto object-contain shrink-0"
-                  width="32"
-                  height="32"
                   loading="lazy"
+                  decoding="async"
                 />
               )}
             </div>
