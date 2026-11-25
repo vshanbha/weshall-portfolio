@@ -238,6 +238,8 @@ export const en = {
           company: 'BlueMoney',
           tag: 'Build vs. buy · regulated lender',
           storyId: 'bluemoney',
+          image: '/images/testimonials/arrie-de-waal.jpg',
+          logo: '/images/testimonials/bluemoney-logo.png',
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:

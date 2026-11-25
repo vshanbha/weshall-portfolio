@@ -229,6 +229,8 @@ export const de = {
           company: 'BlueMoney',
           tag: 'Build-vs-Buy · regulierter Kreditgeber',
           storyId: 'bluemoney',
+          image: '',
+          logo: '',
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:

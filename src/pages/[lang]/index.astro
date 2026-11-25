@@ -32,6 +32,10 @@ type TestimonialItem = {
   role: string;
   tag: string;
   storyId?: string;
+  /** Avatar photo (public/ path) — shown only where the client approved its use. */
+  image?: string;
+  /** Client logomark (public/ path) — shown only where the client approved its use. */
+  logo?: string;
   quote: string;
   linkedin: string;
   website: string;
@@ -101,6 +105,32 @@ const recentArticles = allArticles
             <blockquote class="text-lg text-muted-foreground italic mb-6 leading-relaxed">
               &ldquo;{item.quote}&rdquo;
             </blockquote>
+            <div class="flex items-center gap-3 mb-6">
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={`Photo of ${item.author}`}
+                  class="w-12 h-12 rounded-full object-cover shrink-0"
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                />
+              )}
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-foreground">{item.author}</p>
+                <p class="text-xs text-muted-foreground">{item.role}</p>
+              </div>
+              {item.logo && (
+                <img
+                  src={item.logo}
+                  alt={`${item.company} logo`}
+                  class="h-8 w-auto object-contain shrink-0"
+                  width="32"
+                  height="32"
+                  loading="lazy"
+                />
+              )}
+            </div>
             <div class="flex gap-4 text-sm">
               {item.linkedin && (
                 <a

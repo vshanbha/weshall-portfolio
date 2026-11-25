@@ -223,6 +223,8 @@ export const mr = {
           company: 'BlueMoney',
           tag: 'Build vs. buy · regulated lender', // TODO: translate
           storyId: 'bluemoney',
+          image: '',
+          logo: '',
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:
