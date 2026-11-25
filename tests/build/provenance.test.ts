@@ -29,8 +29,8 @@ ensureFreshDist([join(DIST, 'index.html'), join(DIST, 'en', 'about', 'index.html
 
 const DIGITAL_SOURCE_TYPE =
   'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
-const PUBLISHING_PRINCIPLES = `https://weshall.build/${defaultLocale}/about#editorial-standards`;
-const FOOTER_LINK_HREF = `/${defaultLocale}/about#editorial-standards`;
+const PUBLISHING_PRINCIPLES = `https://weshall.build/${defaultLocale}/about/#editorial-standards`;
+const FOOTER_LINK_HREF = `/${defaultLocale}/about/#editorial-standards`;
 const EDITORIAL_STANDARDS_STATEMENT =
   'AI may assist with research, drafting, sense-checking, and review. Every article passes a human review gate. Writing, opinions, and observations remain the author’s own.';
 

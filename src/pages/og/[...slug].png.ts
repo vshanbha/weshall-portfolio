@@ -6,20 +6,44 @@ import { defaultLocale, locales, type Locale } from '@/i18n/config';
 import { en } from '@/i18n/translations/en';
 import { de } from '@/i18n/translations/de';
 
+/**
+ * The card strings the locale-less cards need, indexed by locale. The
+ * locale-less cards render the default locale's bundle so a default-locale
+ * flip cannot strand hardcoded English (the shim-strings lesson).
+ */
+interface CardStrings {
+  blog: { title: string; description: string };
+  common: { notFound: string; notFoundDescription: string };
+  about: { meta: { title: string; description: string } };
+  contact: { meta: { title: string; description: string } };
+}
+const bundles: Record<Locale, CardStrings> = { en, de };
+const localeBundle = bundles[defaultLocale];
+
 // Define static pages that need OG images (locale-less outputs, kept for
 // surfaces that still reference them).
 const STATIC_PAGES = [
   { slug: 'index', title: siteConfig.name, description: siteConfig.description },
-  { slug: 'about', title: 'About', description: `Learn more about ${siteConfig.name}` },
+  {
+    slug: 'about',
+    title: localeBundle.about.meta.title,
+    description: localeBundle.about.meta.description,
+  },
   {
     slug: 'contact',
-    title: 'Contact',
-    description: 'Reach out.',
+    title: localeBundle.contact.meta.title,
+    description: localeBundle.contact.meta.description,
   },
   {
     slug: 'blog',
-    title: 'Blog',
-    description: `Latest articles and updates from ${siteConfig.name}`,
+    title: localeBundle.blog.title,
+    description: localeBundle.blog.description,
+  },
+  {
+    slug: '404',
+    // String Integrity: the 404 card must match the page's bundle strings.
+    title: localeBundle.common.notFound,
+    description: localeBundle.common.notFoundDescription,
   },
 ];
 
@@ -56,15 +80,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   // Card text for the locale-prefixed variants that SEO.astro emits as
   // /og/<pathname>.png for every page under /en and /de (home is
-  // /og/<locale>.png, not /og/<locale>/index.png). English reuses the
-  // locale-less constants above so both variants render identically; German
-  // pulls from the translation bundles.
+  // /og/<locale>.png, not /og/<locale>/index.png). English pulls from the
+  // same bundle keys as the locale-less constants above, so both variants
+  // render identically while English is the default locale; the locale-less
+  // cards follow defaultLocale.
   const localizedCards: Record<Locale, Record<string, { title: string; description: string }>> = {
     en: {
       '': { title: siteConfig.name, description: siteConfig.description },
-      about: { title: 'About', description: `Learn more about ${siteConfig.name}` },
-      contact: { title: 'Contact', description: 'Reach out.' },
-      blog: { title: 'Blog', description: `Latest articles and updates from ${siteConfig.name}` },
+      about: { title: en.about.meta.title, description: en.about.meta.description },
+      contact: { title: en.contact.meta.title, description: en.contact.meta.description },
+      blog: { title: en.blog.title, description: en.blog.description },
       services: { title: en.services.meta.title, description: en.services.meta.description },
       philosophy: philosophyCard('en'),
       impressum: IMPRESSUM_CARD,

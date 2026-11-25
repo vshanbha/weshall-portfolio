@@ -58,7 +58,7 @@ const groups: BlogGroup[] = [];
 if (localeEntries.length > 0) {
   groups.push({
     entries: localeEntries.sort(byPriority),
-    hrefFor: (entry) => `/${locale}/blog/${entry.id}/`,
+    hrefFor: (entry) => `${getLocalizedPath('blog', locale)}${entry.id}/`,
   });
 }
 if (englishEntries.length > 0) {
@@ -66,7 +66,7 @@ if (englishEntries.length > 0) {
     entries: englishEntries.sort(byPriority),
     // Notice text comes from the translation bundles (blog.englishOnlyNotice).
     notice: locale === defaultLocale ? undefined : t('blog.englishOnlyNotice'),
-    hrefFor: (entry) => `${getLocalizedPath('blog', detailLocale(entry))}/${entry.id}/`,
+    hrefFor: (entry) => `${getLocalizedPath('blog', detailLocale(entry))}${entry.id}/`,
   });
 }
 ---

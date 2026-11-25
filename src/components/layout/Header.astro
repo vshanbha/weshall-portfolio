@@ -186,7 +186,12 @@ const innerClasses = cn('mx-auto max-w-6xl px-6', sizes[size], containerClasses[
 function isActive(href: string): boolean {
   if (!showActiveState) return false;
   if (href.startsWith('#')) return false;
-  return currentPath === href || currentPath.startsWith(href + '/');
+  // Compare trailing-slash-insensitively: internal hrefs are slash-
+  // terminated (canonical form) and so is Astro.url.pathname on directory
+  // pages, but the prefix test must not depend on where the slash sits.
+  const path = currentPath.replace(/\/+$/, '');
+  const target = href.replace(/\/+$/, '');
+  return path === target || path.startsWith(target + '/');
 }
 
 // Generate unique ID for this header instance

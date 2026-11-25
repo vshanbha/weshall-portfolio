@@ -163,14 +163,14 @@ test.describe('German locale', () => {
     await expect(page.locator('body')).toContainText('Kontakt');
   });
 
-  test('German nav, footer and hero link Blog to /de/blog', async ({ page }) => {
+  test('German nav, footer and hero link Blog to /de/blog/', async ({ page }) => {
     await page.goto('/de/about');
-    await expect(page.locator('header a[href="/de/blog"]').first()).toBeVisible();
-    await expect(page.locator('footer a[href="/de/blog"]').first()).toBeVisible();
+    await expect(page.locator('header a[href="/de/blog/"]').first()).toBeVisible();
+    await expect(page.locator('footer a[href="/de/blog/"]').first()).toBeVisible();
     await page.goto('/de/');
     await expect(page.getByRole('link', { name: 'Neueste Artikel lesen' }).first()).toHaveAttribute(
       'href',
-      '/de/blog'
+      '/de/blog/'
     );
   });
 
@@ -186,7 +186,10 @@ test.describe('German locale', () => {
     // Every listed post links to its English detail page …
     expect(await page.locator('a[href^="/en/blog/"]').count()).toBeGreaterThan(0);
     // … and never to a German post URL that does not exist.
-    await expect(page.locator('a[href^="/de/blog/"]')).toHaveCount(0);
+    // The nav/footer/switcher links to the German blog index are
+    // slash-terminated ('/de/blog/') and match the prefix above; exclude
+    // them — the assertion is about German ARTICLE pages, which don't exist.
+    await expect(page.locator('a[href^="/de/blog/"]:not([href="/de/blog/"])')).toHaveCount(0);
   });
 
   test('/de/blog hreflang advertises the en and de index pair', async ({ page }) => {
@@ -228,8 +231,8 @@ test.describe('German locale', () => {
 
   test('language switcher on an English blog post sends German to /de/blog', async ({ page }) => {
     await page.goto('/en/blog/how-this-site-was-built');
-    await expect(page.locator('#language-switcher-menu a[href="/de/blog"]')).toHaveCount(1);
-    await expect(page.locator('#language-switcher-menu a[href="/de"]')).toHaveCount(0);
+    await expect(page.locator('#language-switcher-menu a[href="/de/blog/"]')).toHaveCount(1);
+    await expect(page.locator('#language-switcher-menu a[href="/de/"]')).toHaveCount(0);
   });
 });
 
@@ -373,7 +376,7 @@ test.describe('About Page Features', () => {
     ).toBeVisible();
     const fullTen = page.getByRole('link', { name: 'The way we build →' });
     await expect(fullTen).toBeVisible();
-    await expect(fullTen).toHaveAttribute('href', '/en/philosophy');
+    await expect(fullTen).toHaveAttribute('href', '/en/philosophy/');
     // The other seven are no longer on About — they moved to the philosophy page.
     await expect(page.getByText('We shall deploy what works.')).toHaveCount(0);
   });

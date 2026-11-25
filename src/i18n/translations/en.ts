@@ -194,6 +194,7 @@ export const en = {
       title: 'Engagement stories',
       items: [
         {
+          id: 'bluemoney',
           title: 'Talked a team out of building, and it saved the launch',
           subtitle: 'Short-term lending, Nigeria',
           paragraphs: [
@@ -201,6 +202,7 @@ export const en = {
           ],
         },
         {
+          id: 'inbotiqa',
           title: 'From 40% to 95% compliance on a system banks actually run',
           subtitle: 'Enterprise email processing, global banking',
           paragraphs: [
@@ -208,6 +210,7 @@ export const en = {
           ],
         },
         {
+          id: 'hdfc',
           title: 'Led a serverless evaluation years before it went mainstream',
           subtitle: 'Strategic architecture consulting, India',
           paragraphs: [
@@ -220,18 +223,21 @@ export const en = {
       title: 'What clients say',
       items: [
         {
-          id: 'sable',
-          company: 'Sable International',
-          author: 'Leanne Shrosbree',
-          role: 'Customer Service & Operations Director',
+          id: 'bauai',
+          company: 'BauAI',
+          tag: 'AI agent hardening · from prototype to pilot',
+          author: 'Tushar Adsul',
+          role: 'Managing Director',
           quote:
-            'Through a genuinely collaborative partnership with Vishal and the Inbotiqa team, we\u2019ve been able to improve, refine and maximise YuDo\u2019s potential. It\u2019s supported our growth, enabled our teams and helped us deliver for our clients consistently. That longevity and value speak volumes about the people behind it. We\u2019re genuinely grateful for the care, support and partnership you\u2019ve shown us over such a long time.',
-          linkedin: 'https://www.linkedin.com/in/leanne-shrosbree-74261b53/',
-          website: 'https://www.sableinternational.com/',
+            "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.",
+          linkedin: 'https://www.linkedin.com/company/bauai/',
+          website: 'https://www.bauai.eu/',
         },
         {
           id: 'bluemoney',
           company: 'BlueMoney',
+          tag: 'Build vs. buy · regulated lender',
+          storyId: 'bluemoney',
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:
@@ -240,8 +246,21 @@ export const en = {
           website: 'https://www.bluemoneyfinance.com/',
         },
         {
+          id: 'sable',
+          company: 'Sable International',
+          tag: 'Banking-grade email platform · Inbotiqa',
+          storyId: 'inbotiqa',
+          author: 'Leanne Shrosbree',
+          role: 'Customer Service & Operations Director',
+          quote:
+            'Through a genuinely collaborative partnership with Vishal and the Inbotiqa team, we\u2019ve been able to improve, refine and maximise YuDo\u2019s potential. It\u2019s supported our growth, enabled our teams and helped us deliver for our clients consistently. That longevity and value speak volumes about the people behind it. We\u2019re genuinely grateful for the care, support and partnership you\u2019ve shown us over such a long time.',
+          linkedin: 'https://www.linkedin.com/in/leanne-shrosbree-74261b53/',
+          website: 'https://www.sableinternational.com/',
+        },
+        {
           id: 'powermarket',
           company: 'PowerMarket',
+          tag: 'Technical hiring advisory',
           author: 'Abhinav Jain',
           role: 'Founder',
           quote:
@@ -252,22 +271,13 @@ export const en = {
         {
           id: 'ourish',
           company: 'Ourish',
+          tag: 'Delivery leadership · complex, ambiguous scope',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:
             'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond in delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.',
           linkedin: 'https://www.linkedin.com/in/kunalkakar/',
           website: 'https://ourish.co.uk/',
-        },
-        {
-          id: 'bauai',
-          company: 'BauAI',
-          author: 'Tushar Adsul',
-          role: 'Managing Director',
-          quote:
-            "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.",
-          linkedin: 'https://www.linkedin.com/company/bauai/',
-          website: 'https://www.bauai.eu/',
         },
       ],
     },
@@ -278,7 +288,7 @@ export const en = {
     meta: {
       title: 'What I do',
       description:
-        'For founders and technical leads facing the decisions that cost time and money: build or buy, who to hire, and whether what AI built will hold.',
+        'Productised senior-architect engagements: a free 15-minute call, an honest hour, a short sprint, or ongoing monthly advisory — as far as the problem needs.',
     },
     hero: {
       title: 'Some decisions cost you when you get them wrong.',
@@ -496,7 +506,8 @@ export const en = {
   // Blog
   blog: {
     title: 'Blog',
-    description: 'Latest articles and updates',
+    description:
+      'Deep-dive technical analysis, operational case studies and engineering philosophy from twenty years of production architecture.',
     allPosts: 'All posts',
     featured: 'Featured',
     noPosts: 'No posts found',

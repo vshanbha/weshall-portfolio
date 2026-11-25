@@ -32,17 +32,41 @@ const wordCount = entry.body?.split(/\s+/).filter(Boolean).length ?? 0;
 
 const canonicalUrl = new URL(`/${locale}/blog/${entry.id}/`, siteConfig.url);
 
-const ogImage = entry.data.image
-  ? typeof entry.data.image === 'string'
-    ? entry.data.image
-    : entry.data.image.src
-  : `/og/${locale}/blog/${entry.id}.png`;
+// og:image source — SVG heroes are excluded: Facebook/X/LinkedIn do not
+// render SVG, so (as in SEO.astro) they fall back to the generated PNG for
+// this article. The visible hero <img> keeps the original asset.
+const dynamicOgImage = `/og/${locale}/blog/${entry.id}.png`;
+const heroIsSvg = entry.data.image
+  ? /\.svg$/i.test(
+      (typeof entry.data.image === 'string' ? entry.data.image : entry.data.image.src).split(
+        /[?#]/
+      )[0]
+    )
+  : false;
+const ogImage =
+  entry.data.image && !heroIsSvg
+    ? typeof entry.data.image === 'string'
+      ? entry.data.image
+      : entry.data.image.src
+    : dynamicOgImage;
 
-// Publishing principles — locale-specific About-page editorial-standards anchor.
+// The generated card shows the title/description, not the hero artwork, so
+// its alt text is the full title; SVG-hero articles keep their hero alt for
+// the hero <img> but must not describe the SVG in the og:image meta.
+const ogImageGenerated = ogImage === dynamicOgImage;
+const ogImageAlt = ogImageGenerated ? entry.data.title : undefined;
+
+// Publishing principles — locale-specific About-page editorial-standards
+// anchor. Trailing slash before the hash so it matches the About canonical
+// (the slash-less form 301-hops through the redirect shims).
 const publishingPrinciples = new URL(
-  `/${locale}/about#editorial-standards`,
+  `/${locale}/about/#editorial-standards`,
   siteConfig.url
 ).toString();
+
+// Reviewer URL — trailing slash so it matches the About page canonical
+// (the slash-less `/en/about` 301-hops through the redirect shims).
+const reviewedByUrl = new URL(`/${locale}/about/`, siteConfig.url).toString();
 
 // An explicit hero caption wins; AI-generated images fall back to the
 // provenance disclosure so the disclosure is always rendered.
@@ -55,11 +79,14 @@ const imageCredit = entry.data.imageProvenance ? entry.data.author : undefined;
 
 <BlogLayout
   title={entry.data.title}
+  seoTitle={entry.data.seoTitle}
   description={entry.data.description}
   publishedAt={entry.data.publishedAt}
   updatedAt={entry.data.updatedAt}
   author={entry.data.author}
   ogImage={ogImage}
+  ogImageGenerated={ogImageGenerated}
+  ogImageAlt={ogImageAlt}
   image={entry.data.image}
   imageAlt={entry.data.imageAlt}
   heroCaption={heroCaption}
@@ -86,7 +113,7 @@ const imageCredit = entry.data.imageProvenance ? entry.data.author : undefined;
         url: canonicalUrl.toString(),
         reviewedBy: {
           name: entry.data.author,
-          url: new URL(`/${locale}/about`, siteConfig.url).toString(),
+          url: reviewedByUrl,
         },
         publishingPrinciples,
       }),

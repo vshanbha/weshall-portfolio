@@ -18,8 +18,6 @@ ai_assisted: true
 human_reviewed: true
 ---
 
-# To Build or Not to Build
-
 A condensed version of an article originally published on [Medium](https://medium.com/@vvsvish/to-build-or-not-to-build-9003412e43d2) in July 2024.
 
 ---

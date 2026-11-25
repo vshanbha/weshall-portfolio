@@ -177,6 +177,7 @@ export const hi = {
       title: 'Engagement stories', // TODO: translate
       items: [
         {
+          id: 'bluemoney',
           title: 'टीम को बनाने से मना लिया, और लॉन्च बच गया',
           subtitle: 'Short-term lending, Nigeria', // TODO: translate
           paragraphs: [
@@ -184,6 +185,7 @@ export const hi = {
           ],
         },
         {
+          id: 'inbotiqa',
           title: '40% से 95% कंप्लायंस, उस सिस्टम में जिसे बैंक चलाते हैं',
           subtitle: 'Enterprise email processing, global banking', // TODO: translate
           paragraphs: [
@@ -191,6 +193,7 @@ export const hi = {
           ],
         },
         {
+          id: 'hdfc',
           title: 'मेनस्ट्रीम बनने से बरसों पहले सर्वरलेस इवैल्यूएशन चलाया',
           subtitle: 'Strategic architecture consulting, India', // TODO: translate
           paragraphs: [
@@ -203,8 +206,21 @@ export const hi = {
       title: 'What clients say', // TODO: translate
       items: [
         {
+          id: 'bauai',
+          company: 'BauAI',
+          tag: 'AI agent hardening · from prototype to pilot', // TODO: translate
+          author: 'Tushar Adsul',
+          role: 'Managing Director',
+          quote:
+            "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.", // TODO: translate
+          linkedin: 'https://www.linkedin.com/company/bauai/',
+          website: 'https://www.bauai.eu/',
+        },
+        {
           id: 'bluemoney',
           company: 'BlueMoney',
+          tag: 'Build vs. buy · regulated lender', // TODO: translate
+          storyId: 'bluemoney',
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:
@@ -213,28 +229,10 @@ export const hi = {
           website: '',
         },
         {
-          id: 'ourish',
-          company: 'Ourish',
-          author: 'Kunal Kakar',
-          role: 'Director, Sales and Operations',
-          quote:
-            'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond in delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.', // TODO: translate
-          linkedin: 'https://www.linkedin.com/in/kunalkakar/',
-          website: '',
-        },
-        {
-          id: 'powermarket',
-          company: 'PowerMarket',
-          author: 'Abhinav Jain',
-          role: 'Founder',
-          quote:
-            'We had been looking into developing our tech and dev team. However, we needed advice on how to get started, who to hire, what kind of skills to target, and once we had a pipeline of candidates, how to evaluate their tech skills. Vishal was a phenomenal resource who guided us throughout the process, and then went above and beyond. He is one of the most knowledgeable technology resources that we have come across thus far and will definitely go back to him for further help.', // TODO: translate
-          linkedin: 'https://www.linkedin.com/in/abhinavjainuk/',
-          website: 'https://powermarket.net/',
-        },
-        {
           id: 'sable',
           company: 'Sable International',
+          tag: 'Banking-grade email platform · Inbotiqa', // TODO: translate
+          storyId: 'inbotiqa',
           author: 'Leanne Shrosbree',
           role: 'Customer Service & Operations Director',
           quote:
@@ -243,14 +241,26 @@ export const hi = {
           website: '',
         },
         {
-          id: 'bauai',
-          company: 'BauAI',
-          author: 'Tushar Adsul',
-          role: 'Managing Director',
+          id: 'powermarket',
+          company: 'PowerMarket',
+          tag: 'Technical hiring advisory', // TODO: translate
+          author: 'Abhinav Jain',
+          role: 'Founder',
           quote:
-            "We had an early prototype that looked great in demos but wasn't production-ready. I was looking for someone who could tell me what was actually broken. Vishal came in as an advisor, reviewed our codebase, and helped us identify our flaws: what to keep, what to cut, and how to build up from the solid parts without a full rewrite. When we pivoted based on customer feedback, he showed us how to integrate new features without breaking what was already working. We shipped two fully working agents and were ready for our first pilot customers.", // TODO: translate
-          linkedin: 'https://www.linkedin.com/company/bauai/',
-          website: 'https://www.bauai.eu/',
+            'We had been looking into developing our tech and dev team. However, we needed advice on how to get started, who to hire, what kind of skills to target, and once we had a pipeline of candidates, how to evaluate their tech skills. Vishal was a phenomenal resource who guided us throughout the process, and then went above and beyond. He is one of the most knowledgeable technology resources that we have come across thus far and will definitely go back to him for further help.', // TODO: translate
+          linkedin: 'https://www.linkedin.com/in/abhinavjainuk/',
+          website: 'https://powermarket.net/',
+        },
+        {
+          id: 'ourish',
+          company: 'Ourish',
+          tag: 'Delivery leadership · complex, ambiguous scope', // TODO: translate
+          author: 'Kunal Kakar',
+          role: 'Director, Sales and Operations',
+          quote:
+            'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond in delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.', // TODO: translate
+          linkedin: 'https://www.linkedin.com/in/kunalkakar/',
+          website: '',
         },
       ],
     },

@@ -14,12 +14,26 @@ import siteConfig from '@/config/site.config';
 
 interface Props {
   title: string;
+  /** Optional shorter title for the <title>/og:title tag only (see articles schema). */
+  seoTitle?: string;
   description: string;
   publishedAt: Date;
   updatedAt?: Date;
   author?: string;
   image?: ImageMetadata;
   imageAlt?: string;
+  /**
+   * True when the og:image in use is the generated 1200x630 card (no hero,
+   * or an SVG hero that fell back to the dynamic PNG). Forwarded to SEO so
+   * the og:image dimension meta is emitted.
+   */
+  ogImageGenerated?: boolean;
+  /**
+   * Alt text for the og:image specifically, when it differs from the hero
+   * image's alt (e.g. the og image is the generated title card while the
+   * hero <img> keeps the SVG/PNG hero).
+   */
+  ogImageAlt?: string;
   ogImage?: string;
   tags?: string[];
   slug?: string;
@@ -30,12 +44,15 @@ interface Props {
 
 const {
   title,
+  seoTitle,
   description,
   publishedAt,
   updatedAt,
   author = 'Team',
   image,
   imageAlt,
+  ogImageGenerated = false,
+  ogImageAlt,
   ogImage: ogImageProp,
   tags = [],
   slug = '',
@@ -61,10 +78,11 @@ const fullUrl = new URL(Astro.url.pathname, siteConfig.url).toString();
 ---
 
 <BaseLayout
-  title={title}
+  title={seoTitle ?? title}
   description={description}
   image={ogImage}
-  imageAlt={imageAlt || title}
+  imageAlt={ogImageAlt ?? (imageAlt || title)}
+  ogImageGenerated={ogImageGenerated}
   lang={locale}
   article={{
     publishedTime: publishedAt,

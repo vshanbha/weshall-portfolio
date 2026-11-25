@@ -1,5 +1,5 @@
 ---
-title: Apache Solr and ZooKeeper Scaling Guidelines
+title: Apache Solr & ZooKeeper Scaling Guidelines
 description: A set of guidelines for scaling deployment of Apache Solr and Zookeeper with consideration to high availability and disaster recovery.
 publishedAt: 2026-08-15
 author: Vishal Shanbhag
@@ -12,6 +12,8 @@ tags:
   - high-availability
   - disaster-recovery
   - scaling
+  - software-engineering
+  - developer-tools
 draft: false
 featured: false
 locale: en
@@ -21,8 +23,6 @@ reviewed: true
 ai_assisted: true
 human_reviewed: true
 ---
-
-# Apache Solr and ZooKeeper Scaling Guidelines
 
 A condensed summary of an article originally published on [Level Up Coding](https://levelup.gitconnected.com/apache-solr-and-zookeeper-scaling-guidelines-269dad4fbfb2) in August 2024.
 

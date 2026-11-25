@@ -3,6 +3,7 @@ import BlogCard from './BlogCard.astro';
 import { getCollection } from 'astro:content';
 import { defaultLocale, type Locale } from '@/i18n/config';
 import { useTranslations } from '@/i18n/index';
+import { getLocalizedPath } from '@/i18n/helpers';
 
 interface Props {
   currentSlug: string;
@@ -39,14 +40,13 @@ const relatedPosts = allPosts
   })
   .slice(0, maxPosts);
 
-// Generate URLs for each post (locale-aware)
+// Generate URLs for each post (locale-aware): always locale-prefixed (the
+// default locale is prefixed too — `prefixDefaultLocale: true`) and with a
+// trailing slash so the link resolves straight to the canonical URL instead
+// of hopping through the bare-path → noindex meta-refresh shims.
 const getPostUrl = (postId: string) => {
   const slug = postId.replace(`${locale}/`, '');
-  // Default locale doesn't have prefix
-  if (locale === defaultLocale) {
-    return `/blog/${slug}`;
-  }
-  return `/${locale}/blog/${slug}`;
+  return `${getLocalizedPath('blog', locale)}${slug}/`;
 };
 ---
 

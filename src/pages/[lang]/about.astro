@@ -4,6 +4,7 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import { useTranslations, getTranslations } from '@/i18n/index';
 import type { Locale } from '@/i18n/config';
 import type { TranslationKeys } from '@/i18n/translations/en';
+import { getLocalizedPath } from '@/i18n/helpers';
 import { Image } from 'astro:assets';
 import photo from '@/assets/photo.jpg';
 import Button from '@/components/ui/form/Button/Button.astro';
@@ -61,7 +62,7 @@ const tr = getTranslations(locale) as TranslationKeys;
       </ul>
       <p class="mt-8">
         <a
-          href={`/${locale}/philosophy`}
+          href={getLocalizedPath('philosophy', locale)}
           class="underline underline-offset-2 hover:text-primary transition-colors font-medium"
         >
           {t('about.beliefs.fullTen')}
@@ -200,5 +201,5 @@ const tr = getTranslations(locale) as TranslationKeys;
     </Fragment>
   </CTA>
 
-  <JsonLd schema={createPersonSchema()} />
+  <JsonLd schema={createPersonSchema(locale)} />
 </PageLayout>

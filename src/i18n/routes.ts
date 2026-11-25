@@ -109,7 +109,7 @@ export type RouteId = keyof typeof routes;
  * - getRouteTranslations() emits an en+de hreflang pair for the index, but
  *   default-locale-only alternates for detail pages.
  * - switchLocale() sends a detail-page switch to the target locale's
- *   localised index (e.g. /en/blog/my-post → /de/blog).
+ *   localised index (e.g. /en/blog/my-post/ → /de/blog/).
  */
 export const englishOnlyDetailRoutes: readonly RouteId[] = ['blog'];
 

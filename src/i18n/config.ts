@@ -63,6 +63,11 @@ export function removeLocaleFromPath(path: string): string {
  * Add locale prefix to path
  */
 export function localePath(path: string, locale: Locale): string {
+  // Pathname-only normalisation: split off any fragment/query first so the
+  // trailing slash lands on the pathname ('/about#x' → '/en/about/#x').
   const cleanPath = removeLocaleFromPath(path);
-  return `/${locale}${cleanPath}`;
+  const split = cleanPath.search(/[?#]/);
+  const pathname = split === -1 ? cleanPath : cleanPath.slice(0, split);
+  const suffix = split === -1 ? '' : cleanPath.slice(split);
+  return `/${locale}${pathname.replace(/\/+$/, '')}/${suffix}`;
 }

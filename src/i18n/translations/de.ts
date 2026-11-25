@@ -182,6 +182,7 @@ export const de = {
       title: 'Projektgeschichten',
       items: [
         {
+          id: 'bluemoney',
           title: 'Ein Team vom Bauen abgebracht und den Launch gerettet',
           subtitle: 'Kurzfristkredite, Nigeria',
           paragraphs: [
@@ -189,6 +190,7 @@ export const de = {
           ],
         },
         {
+          id: 'inbotiqa',
           title: 'Von 40 % auf 95 % Compliance in einem System, das Banken wirklich betreiben',
           subtitle: 'Unternehmens-E-Mail-Verarbeitung, globales Bankwesen',
           paragraphs: [
@@ -196,6 +198,7 @@ export const de = {
           ],
         },
         {
+          id: 'hdfc',
           title: 'Eine Serverless-Evaluation geleitet, Jahre bevor sie Mainstream wurde',
           subtitle: 'Strategische Architekturberatung, Indien',
           paragraphs: [
@@ -213,6 +216,7 @@ export const de = {
         {
           id: 'bauai',
           company: 'BauAI',
+          tag: 'KI-Agenten-Härtung · vom Prototyp zum Pilotkunden',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -223,6 +227,8 @@ export const de = {
         {
           id: 'bluemoney',
           company: 'BlueMoney',
+          tag: 'Build-vs-Buy · regulierter Kreditgeber',
+          storyId: 'bluemoney',
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:
@@ -231,18 +237,21 @@ export const de = {
           website: 'https://www.bluemoneyfinance.com/',
         },
         {
-          id: 'ourish',
-          company: 'Ourish',
-          author: 'Kunal Kakar',
-          role: 'Director, Sales and Operations',
+          id: 'sable',
+          company: 'Sable International',
+          tag: 'E-Mail-Plattform für Banken · Inbotiqa',
+          storyId: 'inbotiqa',
+          author: 'Leanne Shrosbree',
+          role: 'Customer Service & Operations Director',
           quote:
-            'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond in delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.',
-          linkedin: 'https://www.linkedin.com/in/kunalkakar/',
-          website: 'https://ourish.co.uk/',
+            'Through a genuinely collaborative partnership with Vishal and the Inbotiqa team, we\u2019ve been able to improve, refine and maximise YuDo\u2019s potential. It\u2019s supported our growth, enabled our teams and helped us deliver for our clients consistently. That longevity and value speak volumes about the people behind it. We\u2019re genuinely grateful for the care, support and partnership you\u2019ve shown us over such a long time.',
+          linkedin: 'https://www.linkedin.com/in/leanne-shrosbree-74261b53/',
+          website: 'https://www.sableinternational.com/',
         },
         {
           id: 'powermarket',
           company: 'PowerMarket',
+          tag: 'Beratung zum Aufbau des Tech-Teams',
           author: 'Abhinav Jain',
           role: 'Founder',
           quote:
@@ -251,14 +260,15 @@ export const de = {
           website: 'https://powermarket.net/',
         },
         {
-          id: 'sable',
-          company: 'Sable International',
-          author: 'Leanne Shrosbree',
-          role: 'Customer Service & Operations Director',
+          id: 'ourish',
+          company: 'Ourish',
+          tag: 'Lieferung in komplexem, mehrdeutigem Umfeld',
+          author: 'Kunal Kakar',
+          role: 'Director, Sales and Operations',
           quote:
-            'Through a genuinely collaborative partnership with Vishal and the Inbotiqa team, we\u2019ve been able to improve, refine and maximise YuDo\u2019s potential. It\u2019s supported our growth, enabled our teams and helped us deliver for our clients consistently. That longevity and value speak volumes about the people behind it. We\u2019re genuinely grateful for the care, support and partnership you\u2019ve shown us over such a long time.',
-          linkedin: 'https://www.linkedin.com/in/leanne-shrosbree-74261b53/',
-          website: 'https://www.sableinternational.com/',
+            'Vishal was fantastic in his engagement. He clearly documented the project work, assisted on the project through and through and went above and beyond in delivering to the requirements in a very complex and ambiguous environment. Thanks Vishal for all the help and insights.',
+          linkedin: 'https://www.linkedin.com/in/kunalkakar/',
+          website: 'https://ourish.co.uk/',
         },
       ],
     },
@@ -268,7 +278,7 @@ export const de = {
     meta: {
       title: 'Was ich mache',
       description:
-        'Für Gründer und Teamleiter der Softwareentwicklung vor den Entscheidungen, die Zeit und Geld kosten: bauen oder kaufen, wen einstellen, ob das KI-Gebaute hält.',
+        'Produktisierte Senior-Architekt-Angebote: kostenloses 15-Minuten-Gespräch, ehrliche Stunde, kurzer Sprint oder monatliche Beratung — so weit das Problem reicht.',
     },
     hero: {
       title: 'Manche Entscheidungen kosten Sie, wenn Sie sie falsch treffen.',
@@ -484,7 +494,8 @@ export const de = {
   },
   blog: {
     title: 'Blog',
-    description: 'Neueste Artikel und Updates',
+    description:
+      'Tiefgehende technische Analysen, operative Fallstudien und Engineering-Philosophie aus zwanzig Jahren Produktionsarchitektur.',
     allPosts: 'Alle Beiträge',
     featured: 'Hervorgehoben',
     noPosts: 'Keine Beiträge gefunden',

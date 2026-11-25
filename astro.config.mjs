@@ -8,17 +8,28 @@ import tailwindcss from '@tailwindcss/vite';
 // src/i18n/config.ts so the derived settings below pick it up.
 import { defaultLocale, locales } from './src/i18n/config';
 import { routes } from './src/i18n/routes';
-import { isLocalePath, siteBase } from './src/i18n/url';
+import { isLocalePath, siteBase, stripSiteBase } from './src/i18n/url';
 
 /** Base path without its trailing slash ('' on the root domain). */
 const base = siteBase();
 
-/** Bare-path redirects derived from the route table: '/about' → '/en/about'. */
+/**
+ * noindex slugs kept out of the sitemap: /impressum/ and /datenschutz/
+ * render with `noindex` in every locale but were listed with hreflang
+ * alternates. Neither is a route-table entry (see the redirects below), so
+ * the slugs are named once here and matched against the locale-stripped
+ * pathname in the sitemap filter.
+ */
+const noindexSlugs = ['impressum', 'datenschutz'];
+
+/** Bare-path redirects derived from the route table: '/about' → '/en/about/'.
+ * Targets are trailing-slashed so the meta-refresh lands on the canonical
+ * URL directly — a slash-less target would 301 again at the host layer. */
 const bareLocaleRedirects = Object.fromEntries(
   Object.values(routes)
     .map((definition) => definition[defaultLocale])
     .filter((slug) => slug !== '')
-    .map((slug) => [`/${slug}`, `${base}/${defaultLocale}/${slug}`])
+    .map((slug) => [`/${slug}`, `${base}/${defaultLocale}/${slug}/`])
 );
 
 /**
@@ -43,8 +54,33 @@ function rehypeTaskListLabels() {
   return (tree) => walk(tree, null);
 }
 
+import { readFileSync } from 'node:fs';
+
+/**
+ * Vite is not importable from this config under pnpm's strict layout, so
+ * replicate its production-mode precedence for SITE_URL — the one variable
+ * the `site` setting needs. Reading only process.env made local builds emit
+ * localhost into the sitemap/robots/RSS while canonical URLs resolved from
+ * .env.production (site.config.ts reads import.meta.env). CI sets
+ * process.env, which still wins.
+ */
+function resolveSiteUrl() {
+  if (process.env.SITE_URL) return process.env.SITE_URL;
+  for (const file of ['.env.production', '.env']) {
+    try {
+      const line = readFileSync(new URL(`./${file}`, import.meta.url), 'utf-8')
+        .split('\n')
+        .find((l) => l.startsWith('SITE_URL='));
+      if (line) return line.slice('SITE_URL='.length).trim();
+    } catch {
+      // .env files are optional
+    }
+  }
+  return undefined;
+}
+
 export default defineConfig({
-  site: process.env.SITE_URL || 'http://localhost:4321',
+  site: resolveSiteUrl() || 'http://localhost:4321',
   // siteBase() adapted to Astro's base format ('' on the root → '/').
   base: base === '' ? '/' : base,
 
@@ -64,15 +100,27 @@ export default defineConfig({
     // two legal pages are not route-table entries. Targets carry the base:
     // Astro writes them verbatim into the meta-refresh.
     ...bareLocaleRedirects,
-    '/impressum': `${base}/${defaultLocale}/impressum`,
-    '/datenschutz': `${base}/${defaultLocale}/datenschutz`,
+    '/impressum': `${base}/${defaultLocale}/impressum/`,
+    '/datenschutz': `${base}/${defaultLocale}/datenschutz/`,
   },
 
   integrations: [
     react(),
     mdx(),
     sitemap({
-      filter: (page) => isLocalePath(new URL(page).pathname),
+      filter: (page) => {
+        const { pathname } = new URL(page);
+        // Existing gate: only locale-prefixed pages are listed.
+        if (!isLocalePath(pathname)) return false;
+        // Drop noindex pages: strip the base and locale prefix so
+        // '/en/impressum/' → 'impressum', then reject the noindex slugs.
+        const slug = stripSiteBase(pathname)
+          .replace(/^\/+|\/+$/g, '')
+          .split('/')
+          .slice(1)
+          .join('/');
+        return !noindexSlugs.includes(slug);
+      },
       i18n: {
         defaultLocale,
         // hreflang language codes — one per enabled locale (identity today)
