@@ -1,5 +1,73 @@
 # Changelog
 
+## [v0.6.0] - 2026-11-25
+
+Two SEO audit cycles, both run against the rebuilt `seo` skill. A
+live-site audit fixed every actionable finding; a second pass on the
+local build closed the rest and made internal links resolve to the
+canonical trailing-slash URLs. The article corpus gains two new
+articles, one `<h1>` per page, titles within search display limits
+(the visible title stays full; a new `seoTitle` field carries the
+short `<title>` tag), and AI-readable meta throughout.
+
+### Features
+
+- New optional `seoTitle` frontmatter field: a short title used only for the `<title>`/`og:title`/`twitter:title` tag, so long-titled articles keep their full visible title (hero, h1, RSS, cards) while the SERP tag stays within ~60 characters; guarded by a new build test measuring the decoded title ([`1acf5ef`](https://github.com/vshanbha/weshall-portfolio/commit/1acf5ef)), with the review nit tightening the bound to 43 so schema and guard agree ([`89c1ecd`](https://github.com/vshanbha/weshall-portfolio/commit/89c1ecd))
+
+### Bug Fixes
+
+- Articles: remove the duplicate body `<h1>` (the hero already renders one) and bring six titles/four meta descriptions within search display limits ([`6878fc0`](https://github.com/vshanbha/weshall-portfolio/commit/6878fc0))
+- Canonical JSON-LD: Person, breadcrumb, reviewer and publishing-principles URLs locale-prefixed and trailing-slashed; `Person.sameAs` gains GitHub and Stack Overflow ([`2f0dbae`](https://github.com/vshanbha/weshall-portfolio/commit/2f0dbae))
+- og:image: SVG heroes fall back to the generated PNG (social crawlers do not render SVG); width/height emitted for generated cards; og:image:alt describes the card, not the hero artwork; a duplicated alt meta line removed ([`34725eb`](https://github.com/vshanbha/weshall-portfolio/commit/34725eb), [`8707295`](https://github.com/vshanbha/weshall-portfolio/commit/8707295), [`590b2c6`](https://github.com/vshanbha/weshall-portfolio/commit/590b2c6))
+- Internal links resolve to the trailing-slash canonical form sitewide — nav, footer, language switcher, hero buttons, story cards, redirect targets; Header active-state made slash-insensitive; a 15-case contract suite pins the helper forms ([`8d9cb60`](https://github.com/vshanbha/weshall-portfolio/commit/8d9cb60), [`c8d1c72`](https://github.com/vshanbha/weshall-portfolio/commit/c8d1c72), [`584ac0e`](https://github.com/vshanbha/weshall-portfolio/commit/584ac0e), [`54f499c`](https://github.com/vshanbha/weshall-portfolio/commit/54f499c))
+- Sitemap: the noindex legal pages are excluded, with a build guard ([`d0add19`](https://github.com/vshanbha/weshall-portfolio/commit/d0add19))
+- 404: the og:image card is generated and reads the translation bundles ([`817fcab`](https://github.com/vshanbha/weshall-portfolio/commit/817fcab), [`2c974e5`](https://github.com/vshanbha/weshall-portfolio/commit/2c974e5))
+- Build: `SITE_URL` resolved from one env source for config and canonical URLs — local builds no longer mix localhost into robots/sitemap/RSS while canonicals use production ([`fe8ecbf`](https://github.com/vshanbha/weshall-portfolio/commit/fe8ecbf))
+- OG cards read the translation bundles instead of hardcoded English; the locale-less cards follow `defaultLocale` ([`1150312`](https://github.com/vshanbha/weshall-portfolio/commit/1150312), [`2b72757`](https://github.com/vshanbha/weshall-portfolio/commit/2b72757))
+
+### Content
+
+- Export two articles: ChatGPT Recommends Not Buying ChatGPT (with an AI-disclosed, C2PA-verified hero) and Every Few Years a Programming Language Gets a Eulogy ([`b029cd5`](https://github.com/vshanbha/weshall-portfolio/commit/b029cd5), [`4a05ec2`](https://github.com/vshanbha/weshall-portfolio/commit/4a05ec2), [`9ddd111`](https://github.com/vshanbha/weshall-portfolio/commit/9ddd111), [`9e27de7`](https://github.com/vshanbha/weshall-portfolio/commit/9e27de7))
+- Restore the full titles on four articles (the short forms moved into `seoTitle`); the Solr article joins Related Posts via two shared tags ([`115eee1`](https://github.com/vshanbha/weshall-portfolio/commit/115eee1), [`748e947`](https://github.com/vshanbha/weshall-portfolio/commit/748e947))
+- Give the services page its own description, replace the blog-index placeholder and expand the philosophy description, in both locales ([`4213215`](https://github.com/vshanbha/weshall-portfolio/commit/4213215), [`6d8386e`](https://github.com/vshanbha/weshall-portfolio/commit/6d8386e))
+- Refresh `llms.txt`: all twelve articles at their on-site URLs, Philosophy and the German locale in Key pages, stale claims corrected ([`3d40c52`](https://github.com/vshanbha/weshall-portfolio/commit/3d40c52))
+
+### Docs
+
+- Rebuild the `seo` skill against the codebase — corrected collections, schema-generator and sitemap facts; a new AI Search (answer engines) section; a known-tracked-issues table; an extended checklist — with review nits ([`dc337b6`](https://github.com/vshanbha/weshall-portfolio/commit/dc337b6), [`7daf37f`](https://github.com/vshanbha/weshall-portfolio/commit/7daf37f), [`e4b1a0e`](https://github.com/vshanbha/weshall-portfolio/commit/e4b1a0e))
+
+### Commits
+
+`54f499c` - fix(seo): bare-path redirect targets slash-terminated; link-shape contract tests
+`584ac0e` - fix(seo): close the remaining hand-rolled slash-less links (review nits)
+`c8d1c72` - fix(seo): all internal links resolve to the trailing-slash canonical form
+`748e947` - fix(articles): Solr/ZooKeeper article joins Related Posts via two honest tags
+`2b72757` - docs: refresh stale comment on the localized OG card map
+`1150312` - fix(seo): OG cards read the translation bundles; default-locale derived
+`2c974e5` - fix(seo): 404 OG card reads bundle strings; correct .env.example override story
+`590b2c6` - fix(seo): remove duplicated og:image:alt meta line
+`fe8ecbf` - fix(build): resolve SITE_URL for astro.config from the same env source as canonicals
+`817fcab` - fix(seo): generate the /og/404.png card
+`8707295` - fix(seo): og:image dimensions and accurate alt for generated article cards
+`89c1ecd` - fix(seo): review nits — exact seoTitle bound, twitter:title documented
+`115eee1` - fix(articles): restore full titles on four articles; short titles move to seoTitle
+`1acf5ef` - feat(seo): seoTitle field — short <title>, full visible title
+`e4b1a0e` - fix(seo): close Gate B review nits on the audit-fix branch
+`3d40c52` - fix(seo): refresh llms.txt against the live site; prettier reflow of skill
+`6d8386e` - fix(seo): expand philosophy description to meta length
+`4213215` - fix(seo): unique services description; real blog-index description
+`2f0dbae` - fix(seo): canonical, trailing-slashed URLs in JSON-LD; extend Person sameAs
+`d0add19` - fix(seo): exclude noindex legal pages from the sitemap
+`34725eb` - fix(seo): SVG heroes fall back to the dynamic PNG as og:image
+`8d9cb60` - fix(seo): related-post links resolve to canonical locale URLs
+`6878fc0` - fix(articles): remove duplicate body H1, bring titles/descriptions within limits
+`7daf37f` - docs: seo skill review nits — OG input signature, locale-prefixed routes
+`dc337b6` - docs: update seo skill — fix drift against codebase, add answer-engine guidance
+`9e27de7` - fix: balance parens around OpenCode for Teams link in ChatGPT article
+`9ddd111` - feat: add Every Few Years a Programming Language Gets a Eulogy article
+`4a05ec2` - content: add AI-disclosed hero image (Microsoft Designer, C2PA-verified provenance) to ChatGPT article
+`b029cd5` - content: export ChatGPT Recommends Not Buying ChatGPT to the blog
+
 ## [v0.5.0] - 2026-11-08
 
 Minor: the i18n layer is rebuilt on a single locale switch — locale types
