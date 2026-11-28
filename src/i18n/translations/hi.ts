@@ -53,7 +53,7 @@ export const hi = {
   },
   techStack: {
     astro: {
-      name: 'Astro 6',
+      name: 'Astro 7',
       desc: 'सर्वर आइलैंड्स और कंटेंट लेयर',
     },
     tailwind: {

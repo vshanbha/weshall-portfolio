@@ -11,6 +11,25 @@ export interface OGImageOptions {
   type?: 'website' | 'article';
 }
 
+/**
+ * Trim an OG description to the card budget (120 chars incl. ellipsis),
+ * cutting at the last whitespace before the limit so cards never render
+ * mid-word. Short inputs pass through unchanged; empty/undefined become ''.
+ * Counted in code points, so surrogate pairs are never split.
+ */
+export function truncateDescription(description?: string): string {
+  if (!description) return '';
+  const chars = Array.from(description);
+  if (chars.length <= 120) return description;
+  const cut = chars.slice(0, 117).join('');
+  // \s covers space, tab, newline, NBSP and the rest of the Unicode class.
+  const m = cut.match(/\s+\S*$/);
+  // m?.index is truthy only for a boundary after position 0; a leading-space
+  // match (index 0) would otherwise discard the whole cut.
+  const trimmed = m?.index ? cut.slice(0, m.index) : cut;
+  return trimmed + '...';
+}
+
 // Load Inter font for OG images (Satori requires TTF/OTF, not WOFF2)
 // Bundled locally in public/fonts/ to avoid CDN dependency during builds
 let fontCache: ArrayBuffer | null = null;
@@ -28,11 +47,7 @@ export async function generateOGImage(options: OGImageOptions): Promise<Buffer> 
 
   const fontData = loadFont();
 
-  const truncatedDescription = description
-    ? description.length > 120
-      ? description.slice(0, 117) + '...'
-      : description
-    : '';
+  const truncatedDescription = truncateDescription(description);
 
   // Create the OG image markup using satori-html
   // Note: All divs must have explicit display property for Satori

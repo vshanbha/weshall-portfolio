@@ -16,7 +16,7 @@
 
 ## About
 
-**We shall build** is the public site of **Vishal Shanbhag** — freelance software developer and fractional CTO. The site is the work, written up: deep-dive technical analysis, operational case studies, and engineering philosophy from twenty years of building and deploying software in production. The ways to work together start with a free fifteen-minute call. Built on the [Velocity](https://github.com/southwellmedia/velocity) template.
+**We shall build** is the public site of **Vishal Shanbhag** — freelance software developer and fractional CTO. The site is the work, written up: deep-dive technical analysis, operational case studies and engineering philosophy from twenty years of building and deploying software in production. The ways to work together start with a free fifteen-minute call. Built on the [Velocity](https://github.com/southwellmedia/velocity) template.
 
 ---
 

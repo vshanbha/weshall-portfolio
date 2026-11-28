@@ -37,7 +37,7 @@ Build and maintain the public-facing website for **weshall.build** — a profess
 
 ## Foundation: Velocity Template
 
-This project is built on the **Velocity** template by Southwell Media — a production-ready Astro 6 starter kit. It is not a basic scaffold; it is a full-featured component library and design system.
+This project is built on the **Velocity** template by Southwell Media — a production-ready Astro starter kit (the project now runs Astro 7.3.3). It is not a basic scaffold; it is a full-featured component library and design system.
 
 **Documentation:** [https://docs.deployvelocity.com/](https://docs.deployvelocity.com/)
 

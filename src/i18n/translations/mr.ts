@@ -54,7 +54,7 @@ export const mr = {
   },
   techStack: {
     astro: {
-      name: 'Astro 6',
+      name: 'Astro 7',
       desc: 'सर्व्हर आयलंड्स आणि कंटेंट लेयर',
     },
     tailwind: {

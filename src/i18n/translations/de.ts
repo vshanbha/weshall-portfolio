@@ -58,7 +58,7 @@ export const de = {
   },
   techStack: {
     astro: {
-      name: 'Astro 6',
+      name: 'Astro 7',
       desc: 'Server Islands & Content Layer',
     },
     tailwind: {
