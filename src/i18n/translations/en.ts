@@ -517,7 +517,7 @@ export const en = {
   blog: {
     title: 'Blog',
     description:
-      'Deep-dive technical analysis, operational case studies and engineering philosophy from twenty years of production architecture.',
+      'Deep-dive technical analysis, operational case studies and engineering philosophy from twenty years of building and deploying software in production.',
     allPosts: 'All posts',
     featured: 'Featured',
     noPosts: 'No posts found',

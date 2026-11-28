@@ -505,7 +505,7 @@ export const de = {
   blog: {
     title: 'Blog',
     description:
-      'Tiefgehende technische Analysen, operative Fallstudien und Engineering-Philosophie aus zwanzig Jahren Produktionsarchitektur.',
+      'Tiefgehende technische Analysen, operative Fallstudien und Engineering-Philosophie aus zwanzig Jahren Softwareentwicklung und Deployment im Produktivbetrieb.',
     allPosts: 'Alle Beiträge',
     featured: 'Hervorgehoben',
     noPosts: 'Keine Beiträge gefunden',
