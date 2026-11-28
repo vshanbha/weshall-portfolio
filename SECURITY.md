@@ -2,19 +2,19 @@
 
 ## Overview
 
-This document defines privacy and security rules for the We shall build portfolio project. The portfolio is public-facing; the factory project is always private.
+This document defines privacy and security rules for the We shall build portfolio project. The portfolio is public-facing; its companion content vault is always private.
 
 ## Data Classification
 
-| Data Type                          | Portfolio (Public)      | Factory (Private) |
-| ---------------------------------- | ----------------------- | ----------------- |
-| Business email                     | ✅ Allowed              | ✅ Allowed        |
-| Personal email                     | ❌ Never                | ⚠️ Internal only  |
-| Phone number                       | ❌ Never                | ⚠️ Internal only  |
-| Physical address                   | ❌ Never                | ⚠️ Internal only  |
-| API keys / tokens                  | ❌ Never (use env vars) | ❌ Never          |
-| CV / personal documents            | ❌ Never                | ✅ Allowed        |
-| Public profiles (GitHub, LinkedIn) | ✅ Allowed              | ✅ Allowed        |
+| Data Type                          | Portfolio (Public)      | Private vault    |
+| ---------------------------------- | ----------------------- | ---------------- |
+| Business email                     | ✅ Allowed              | ✅ Allowed       |
+| Personal email                     | ❌ Never                | ⚠️ Internal only |
+| Phone number                       | ❌ Never                | ⚠️ Internal only |
+| Physical address                   | ❌ Never                | ⚠️ Internal only |
+| API keys / tokens                  | ❌ Never (use env vars) | ❌ Never         |
+| CV / personal documents            | ❌ Never                | ✅ Allowed       |
+| Public profiles (GitHub, LinkedIn) | ✅ Allowed              | ✅ Allowed       |
 
 ## Rules for Portfolio Project
 
@@ -39,11 +39,24 @@ This document defines privacy and security rules for the We shall build portfoli
 - Check `.env` is in `.gitignore`
 - Review `git diff` for accidental exposure
 
-## Factory Project
+## Private Vault
 
 - Always private (contains CVs, personal documents, private syntheses)
-- Never merge factory content to portfolio without explicit human review
+- Never merge vault content to portfolio without explicit human review
 - Content export requires the Manual Export Gate protocol
+
+## Residual Exposure
+
+The scrub of the vault's name from this repository's files (November 2026) covers
+current contents only. The name still appears in **public git history** — commit
+messages and older file versions from before the scrub — and in archived deploy
+builds. Rewriting that history would invalidate the still-valid commit hashes
+cited in `CHANGELOG.md` (a number of citations were already invalidated by
+earlier branch rebases) and is the repository owner's decision. Until such a
+change is made, the vault's name appears only in git history and archived
+builds, not in current files. For the same reason, `CHANGELOG.md` quotes of
+pre-scrub commit subjects are scrubbed paraphrases and may differ from the
+messages retrievable from git history.
 
 ## Dependency Advisories
 

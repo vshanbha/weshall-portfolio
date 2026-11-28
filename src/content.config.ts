@@ -59,8 +59,8 @@ const articles = defineCollection({
         featured: z.boolean().default(false),
         locale: localeEnum.default(defaultLocale),
         /**
-         * Editorial review gate (see `AGENTS.md` and `factory/AGENTS.md`).
-         * These three values are copied from the factory source article, which
+         * Editorial review gate (see `AGENTS.md` and the Manual Export Gate Protocol).
+         * These three values are copied from the source article in the private vault, which
          * records the human review behind the export gate.
          */
         reviewed: z.boolean().default(false),

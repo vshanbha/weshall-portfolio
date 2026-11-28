@@ -572,11 +572,11 @@ cannot pass.
 
 ## When to Use This Skill
 
-| Scenario                        | Action                                  |
-| ------------------------------- | --------------------------------------- |
-| Finishing a feature             | Merge to `dev` locally after Gate B     |
-| Fixing a bug                    | Merge to `dev` with a `fix:` commit     |
-| Publishing content from factory | Merge to `dev` with a `content:` commit |
-| Preparing a release             | Follow release process                  |
-| Bumping version                 | Follow semantic versioning              |
-| Writing changelog               | Follow changelog format                 |
+| Scenario                    | Action                                  |
+| --------------------------- | --------------------------------------- |
+| Finishing a feature         | Merge to `dev` locally after Gate B     |
+| Fixing a bug                | Merge to `dev` with a `fix:` commit     |
+| Publishing imported content | Merge to `dev` with a `content:` commit |
+| Preparing a release         | Follow release process                  |
+| Bumping version             | Follow semantic versioning              |
+| Writing changelog           | Follow changelog format                 |

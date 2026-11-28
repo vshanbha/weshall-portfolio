@@ -189,12 +189,12 @@ Assistants build answers from the **live web**, not just training data — conte
 ### Ongoing (the weekly hour)
 
 - **Freshness** — publish on a regular, predictable schedule; update `dateModified` when revising.
-- **`llms.txt`** — keep `public/llms.txt` in sync with current positioning (refreshed 2026-11-24; author sign-off still pending under factory #22/#23).
-- **Entity consistency** — `Person` schema `sameAs` links and backlinks from profiles you control (LinkedIn, Medium author bios) are the cheapest ranking lever (factory #23).
+- **`llms.txt`** — keep `public/llms.txt` in sync with current positioning (refreshed 2026-11-24; author sign-off still pending under private tracker #22/#23).
+- **Entity consistency** — `Person` schema `sameAs` links and backlinks from profiles you control (LinkedIn, Medium author bios) are the cheapest ranking lever (private tracker #23).
 
 ### Check it yourself
 
-Ask ChatGPT and Perplexity the three questions your audience asks most; write down who gets cited; ask again a month later. The Google Search Console query report (factory #24) is the traditional-search baseline for the same check.
+Ask ChatGPT and Perplexity the three questions your audience asks most; write down who gets cited; ask again a month later. The Google Search Console query report (private tracker #24) is the traditional-search baseline for the same check.
 
 ## Semantic HTML
 
@@ -286,20 +286,20 @@ Ask ChatGPT and Perplexity the three questions your audience asks most; write do
 
 ## Known Tracked Issues
 
-| Issue         | Gap                                                                                                                                                                                                                  |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| portfolio #52 | Custom-image OG branch in `SEO.astro` drops `BASE_PATH` (`new URL(image, siteConfig.url)` resolves root-relative paths against the domain root); RSS autodiscovery hardcoded — root/custom-domain deploys unaffected |
-| factory #24   | GSC + GA setup; `.env.example` does not yet document `GOOGLE_SITE_VERIFICATION`                                                                                                                                      |
-| factory #23   | Name absent from all `<title>`s; `Person` JSON-LD only on About; `llms.txt` refresh held for author review; backlinks from own profiles unverified                                                                   |
+| Issue               | Gap                                                                                                                                                                                                                  |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| portfolio #52       | Custom-image OG branch in `SEO.astro` drops `BASE_PATH` (`new URL(image, siteConfig.url)` resolves root-relative paths against the domain root); RSS autodiscovery hardcoded — root/custom-domain deploys unaffected |
+| private tracker #24 | GSC + GA setup; `.env.example` does not yet document `GOOGLE_SITE_VERIFICATION`                                                                                                                                      |
+| private tracker #23 | Name absent from all `<title>`s; `Person` JSON-LD only on About; `llms.txt` refresh held for author review; backlinks from own profiles unverified                                                                   |
 
 ## Common SEO Issues
 
-| Issue             | Fix                                                         |
-| ----------------- | ----------------------------------------------------------- |
-| Duplicate titles  | Ensure unique `<title>` per page                            |
-| Missing OG image  | Add image to frontmatter or rely on the dynamic `/og/` path |
-| Thin content      | Expand pages to 300+ words minimum                          |
-| Broken links      | Check with `pnpm build` and link checker                    |
-| Slow page speed   | See performance skill                                       |
-| Missing canonical | Derived automatically — check `siteConfig.url` instead      |
-| Stale `llms.txt`  | Regenerate from current positioning (see factory #22/#23)   |
+| Issue             | Fix                                                               |
+| ----------------- | ----------------------------------------------------------------- |
+| Duplicate titles  | Ensure unique `<title>` per page                                  |
+| Missing OG image  | Add image to frontmatter or rely on the dynamic `/og/` path       |
+| Thin content      | Expand pages to 300+ words minimum                                |
+| Broken links      | Check with `pnpm build` and link checker                          |
+| Slow page speed   | See performance skill                                             |
+| Missing canonical | Derived automatically — check `siteConfig.url` instead            |
+| Stale `llms.txt`  | Regenerate from current positioning (see private tracker #22/#23) |

@@ -128,7 +128,7 @@ project standards move out of AGENTS.md into `docs/STANDARDS.md`.
 `79eabf6` - chore: bump version to 0.5.0
 `1da70b3` - docs(standards): final nits from the 37dc532 review
 `37dc532` - docs(standards): widen the canonical Iron Laws rows to cover valid usage
-`a78c571` - docs: point the skills at the canonical Iron Laws; scope the factory reference
+`a78c571` - docs: point the skills at the canonical Iron Laws; scope the private-vault reference
 `b8463d6` - docs: move project standards out of AGENTS.md into docs/STANDARDS.md
 `f946117` - docs(i18n): replace the template's es/fr JSDoc examples with real en/de URLs (refs #52)
 `5ccb44c` - docs(agents): String Integrity wording nits + stale locale list (refs #52)
@@ -399,9 +399,9 @@ operator to commit to `main` after tagging — which `AGENTS.md` forbids.
 ### Docs
 
 - Rename `agents.md` → `AGENTS.md` across nine references. OpenCode V2's docs
-  specify `AGENTS.md`, and `factory/` already used that casing, so the two
+  specify `AGENTS.md`, and the private vault already used that casing, so the two
   projects disagreed on the filename
-  ([`633528c`](https://github.com/vshanbha/weshall-portfolio/commit/633528c)).
+  ([`823c1a7`](https://github.com/vshanbha/weshall-portfolio/commit/823c1a7)).
   Three published-article references were deferred to a content release, since
   they change live copy.
 - Drop the advisories vitest 5.0.3 resolved ([`5c15d47`](https://github.com/vshanbha/weshall-portfolio/commit/5c15d47))
@@ -515,8 +515,8 @@ operator to commit to `main` after tagging — which `AGENTS.md` forbids.
 `87633e6` - chore: release v0.3.3 changelog, backfill v0.3.1 and v0.3.2
 `5d43e01` - test(e2e): keep astro preview in foreground for Playwright
 `c2db45e` - chore(deps): raise sharp to ^0.35.4 for astro 7.2.8 minimum
-`b9ff8f4` - feat(home): publish approved BauAI testimonial as fifth client tab (factory issue #14)
-`8cd0b3a` - Restore Jcon talk and mentoring entries to About speaking section (factory issue #5)
+`921bd9e` - feat(home): publish approved BauAI testimonial as fifth client tab (private tracker issue #14)
+`27aed8a` - Restore Jcon talk and mentoring entries to About speaking section (private tracker issue #5)
 `32d5c64` - chore(deps): bump the npm_and_yarn group across 1 directory with 3 updates
 `bde06b2` - docs: fix the Prettier regression and the shell/permission ambiguity
 `7e7bda8` - docs: use current OpenCode V2 names and settle the Gate B wording
