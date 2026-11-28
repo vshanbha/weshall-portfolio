@@ -143,8 +143,8 @@ there is no evidence they were AI-generated.
   returns "No claim found". `system: ChatGPT` and `createdOn: 2026-06-21`
   therefore rest on the publisher's own metadata inspection, recorded during
   planning and approved in the "Approved clarifications to the implementation
-  plan" comment of 2026-09-24 on `vshanbha/weshall-factory` issue #20 (the
-  private factory tracker — portfolio issue #20 is an unrelated bug). That
+  plan" comment of 2026-09-24 on issue #20 of the author's private tracker (this
+  repository's issue #20 is an unrelated bug). That
   comment is the publisher record for this image; `sourceUrl` is the published
   article itself. No model or version is asserted: none is verifiable, and the
   approved clarification says "do not infer or invent an exact model/version".

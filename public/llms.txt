@@ -6,14 +6,14 @@
 >
 > For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those decisions in production for twenty years.
 
-Productised senior-architect engagements that start small and lead to embedded work. You don't make the wrong decision, the wrong hire, or the wrong bet on production. It usually starts with a free fifteen-minute conversation to work out whether it's worth a longer one. The site features deep-dive technical articles and the ten We shall commandments, published at https://weshall.build/en/philosophy/.
+I'm Vishal Shanbhag — freelance software developer and fractional CTO. This is my public site: productised senior-architect engagements that start small and lead to embedded work. You don't make the wrong decision, the wrong hire, or the wrong bet on production. It usually starts with a free fifteen-minute conversation to work out whether it's worth a longer one. The site features deep-dive technical articles and the ten We shall commandments, published at https://weshall.build/en/philosophy/.
 
 ## Key pages
 
 - [Home](https://weshall.build/): Landing page with brand positioning, engagement story cards, and service overview
 - [About](https://weshall.build/en/about/): From Lehman Brothers through Inbotiqa co-founder to independent consulting
 - [Services](https://weshall.build/en/services/): It starts with a conversation: a fifteen-minute call to meet, then an honest hour, a short working sprint, or ongoing monthly advisory, as far as the problem needs
-- [Blog](https://weshall.build/en/blog/): Deep-dive technical analysis, operational case studies, and engineering philosophy
+- [Blog](https://weshall.build/en/blog/): Deep-dive technical analysis, operational case studies and engineering philosophy
 - [Contact](https://weshall.build/en/contact/): "Reach out." Primary path: Let's talk, a free fifteen-minute conversation with a founder-engineer, via Calendly, no pitch, no obligation. Second door: the honest hour, booked via Upwork. Writing-first is tertiary: a LinkedIn link lives in the site footer.
 - [Philosophy](https://weshall.build/en/philosophy/): The ten We shall commandments — the way we build, engineering principles earned in production
 - [Deutsch](https://weshall.build/de/): German locale — the site ships in English and German
@@ -23,7 +23,7 @@ Productised senior-architect engagements that start small and lead to embedded w
 - [Bye Bye WordPress (Part 1)](https://weshall.build/en/blog/bye-bye-wordpress-part-1/): WordPress served well for a decade, but the complexity tax outweighed the convenience; switching to Jekyll and never looking back — also republished on levelup.gitconnected.com
 - [ChatGPT Recommends Not Buying ChatGPT](https://weshall.build/en/blog/chatgpt-recommends-not-buying-chatgpt/): Asking ChatGPT whether its own paid plans beat the tools already in use — it advised not buying on the strength of an unmeasured promise
 - [Every Few Years a Programming Language Gets a Eulogy](https://weshall.build/en/blog/every-few-years-a-programming-language-gets-a-eulogy/): Why programming languages survive or die — ecosystem, governance, and who else is forced to use yours
-- [How This Site Was Built With Astro](https://weshall.build/en/blog/how-this-site-was-built/): Building weshall.build on Astro 6 with the Velocity template — the key decisions, the scorecard, and what went wrong
+- [How This Site Was Built With Astro](https://weshall.build/en/blog/how-this-site-was-built/): Building weshall.build on Astro 6 (now Astro 7) with the Velocity template — the key decisions, the scorecard, and what went wrong
 - [How to Choose Your Next Software Technology Stack](https://weshall.build/en/blog/how-to-choose-your-next-tech-stack/): A practical framework for technology selection, demonstrated through a real mobile-platform case study
 - [One Week Agentic Development Sprint: Post Mortem](https://weshall.build/en/blog/one-week-agentic-development-sprint-post-mortem/): A seven-day agentic sprint — the engineering impressed, the intelligence wasn't validated; ten rules for the next one
 - [Oops, I Deleted It Again](https://weshall.build/en/blog/oops-i-deleted-it-again/): An AI coding agent deleted raw notes without authorisation — root cause analysis of agent governance and permission models — also republished on ai.gopubby.com

@@ -39,7 +39,7 @@ echo ""
 Commit: $COMMIT_HASH
 Message: $COMMIT_MSG
 
-Context: This is an Astro 6 portfolio site (Velocity template) using Tailwind CSS, TypeScript, React islands, and pnpm. The project follows WCAG 2.2 AA accessibility, British English, and strict Astro conventions (zero-JS by default, typed content collections, Image component for optimisation).
+Context: This is an Astro 7 portfolio site (Velocity template) using Tailwind CSS, TypeScript, React islands, and pnpm. The project follows WCAG 2.2 AA accessibility, British English, and strict Astro conventions (zero-JS by default, typed content collections, Image component for optimisation).
 
 Review for:
 1. Correctness — does the code match the commit message intent?

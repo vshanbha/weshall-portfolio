@@ -117,14 +117,14 @@ site now carries.
 
 When executing Phase IV (Build), the Orchestrator delegates tasks to specialised agent skills:
 
-| Domain          | Skill                                          |
-| --------------- | ---------------------------------------------- |
-| Testing         | `testing` (Vitest + Playwright)                |
-| Code Quality    | `code-quality` (ESLint, Prettier, TypeScript)  |
-| Performance     | `performance` (Core Web Vitals, images, fonts) |
-| Accessibility   | `accessibility` (WCAG 2.2 AA)                  |
-| SEO             | `seo` (meta tags, JSON-LD, OG images)          |
-| Astro Framework | `astro-specialist` (via factory reference)     |
+| Domain          | Skill                                            |
+| --------------- | ------------------------------------------------ |
+| Testing         | `testing` (Vitest + Playwright)                  |
+| Code Quality    | `code-quality` (ESLint, Prettier, TypeScript)    |
+| Performance     | `performance` (Core Web Vitals, images, fonts)   |
+| Accessibility   | `accessibility` (WCAG 2.2 AA)                    |
+| SEO             | `seo` (meta tags, JSON-LD, OG images)            |
+| Astro Framework | `astro-specialist` (via private vault reference) |
 
 ### Decision Gates
 
@@ -216,12 +216,12 @@ answer is _human memory_, the issue is not fixed.
 5. **Follow the phases** defined in this document.
 6. **Treat every interaction as a Pair Programming session:** Architect (Human) directs, Navigator (Agent) executes.
 
-## 5. Content Receipt (From Factory)
+## 5. Content Receipt (From the Private Vault)
 
-Content arrives from `factory/` via the **Manual Export Gate**. When content lands in `src/content/articles/`:
+Content arrives from the private vault via the **Manual Export Gate**. When content lands in `src/content/articles/`:
 
 - Treat it as **published source material** — canonical and trusted.
-- Do not modify without going through the factory review process first.
+- Do not modify without going through the vault's review process first.
 - Focus on presentation, not content editing.
 
 ## 6. Quality Matrix

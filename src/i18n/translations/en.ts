@@ -61,7 +61,7 @@ export const en = {
   // Tech Stack Section
   techStack: {
     astro: {
-      name: 'Astro 6',
+      name: 'Astro 7',
       desc: 'Server islands & content layer',
     },
     tailwind: {
@@ -221,11 +221,16 @@ export const en = {
     },
     testimonials: {
       title: 'What clients say',
+      photoAlt: 'Photo of {author}',
+      logoAlt: '{company} logo',
       items: [
         {
           id: 'bauai',
           company: 'BauAI',
           tag: 'AI agent hardening · from prototype to pilot',
+          image: '/images/testimonials/tushar-adsul.jpg',
+          logo: '/images/testimonials/bauai-logo.svg',
+          logoDark: '/images/testimonials/bauai-logo-white.svg',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -238,6 +243,8 @@ export const en = {
           company: 'BlueMoney',
           tag: 'Build vs. buy · regulated lender',
           storyId: 'bluemoney',
+          image: '/images/testimonials/arrie-de-waal.jpg',
+          wordmark: { a: 'Blue', b: 'Money', aColor: '#005CF0' },
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:
@@ -272,6 +279,9 @@ export const en = {
           id: 'ourish',
           company: 'Ourish',
           tag: 'Delivery leadership · complex, ambiguous scope',
+          image: '/images/testimonials/kunal-kakar.jpg',
+          logo: '/images/testimonials/ourish-logo.png',
+          logoClass: 'h-16',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:
@@ -507,7 +517,7 @@ export const en = {
   blog: {
     title: 'Blog',
     description:
-      'Deep-dive technical analysis, operational case studies and engineering philosophy from twenty years of production architecture.',
+      'Deep-dive technical analysis, operational case studies and engineering philosophy from twenty years of building and deploying software in production.',
     allPosts: 'All posts',
     featured: 'Featured',
     noPosts: 'No posts found',

@@ -53,7 +53,7 @@ export const hi = {
   },
   techStack: {
     astro: {
-      name: 'Astro 6',
+      name: 'Astro 7',
       desc: 'सर्वर आइलैंड्स और कंटेंट लेयर',
     },
     tailwind: {
@@ -204,11 +204,16 @@ export const hi = {
     },
     testimonials: {
       title: 'What clients say', // TODO: translate
+      photoAlt: 'Photo of {author}', // TODO: translate
+      logoAlt: '{company} logo', // TODO: translate
       items: [
         {
           id: 'bauai',
           company: 'BauAI',
           tag: 'AI agent hardening · from prototype to pilot', // TODO: translate
+          image: '/images/testimonials/tushar-adsul.jpg',
+          logo: '/images/testimonials/bauai-logo.svg',
+          logoDark: '/images/testimonials/bauai-logo-white.svg',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -221,6 +226,8 @@ export const hi = {
           company: 'BlueMoney',
           tag: 'Build vs. buy · regulated lender', // TODO: translate
           storyId: 'bluemoney',
+          image: '/images/testimonials/arrie-de-waal.jpg',
+          wordmark: { a: 'Blue', b: 'Money', aColor: '#005CF0' },
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:
@@ -255,6 +262,9 @@ export const hi = {
           id: 'ourish',
           company: 'Ourish',
           tag: 'Delivery leadership · complex, ambiguous scope', // TODO: translate
+          image: '/images/testimonials/kunal-kakar.jpg',
+          logo: '/images/testimonials/ourish-logo.png',
+          logoClass: 'h-16',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:

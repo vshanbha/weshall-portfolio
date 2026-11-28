@@ -32,6 +32,16 @@ type TestimonialItem = {
   role: string;
   tag: string;
   storyId?: string;
+  /** Avatar photo (public/ path) — shown only where the client approved its use. */
+  image?: string;
+  /** Client logomark (public/ path) — shown only where the client approved its use. */
+  logo?: string;
+  /** Light-theme variant of a single-colour logomark (e.g. white for dark backgrounds). */
+  logoDark?: string;
+  /** Text-only brand mark: the client's logo is styled text, not an image. */
+  wordmark?: { a: string; b: string; aColor: string };
+  /** Height class for the logomark; portrait marks need more than the default h-10. */
+  logoClass?: string;
   quote: string;
   linkedin: string;
   website: string;
@@ -101,6 +111,57 @@ const recentArticles = allArticles
             <blockquote class="text-lg text-muted-foreground italic mb-6 leading-relaxed">
               &ldquo;{item.quote}&rdquo;
             </blockquote>
+            <div class="flex items-center gap-4 mb-6">
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={t('home.testimonials.photoAlt', { author: item.author })}
+                  class="w-16 h-16 rounded-full object-cover shrink-0"
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-foreground">{item.author}</p>
+                <p class="text-xs text-muted-foreground">{item.role}</p>
+              </div>
+              {item.wordmark && (
+                <p class="text-2xl font-bold shrink-0 leading-none" aria-label={item.company}>
+                  <span style={`color: ${item.wordmark.aColor}`}>{item.wordmark.a}</span>
+                  <span class="text-foreground">{item.wordmark.b}</span>
+                </p>
+              )}
+              {item.logo && item.logoDark && (
+                <>
+                  <img
+                    src={item.logo}
+                    alt={t('home.testimonials.logoAlt', { company: item.company })}
+                    class={`${item.logoClass ?? 'h-10'} w-auto object-contain shrink-0 block dark:hidden`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    src={item.logoDark}
+                    alt=""
+                    aria-hidden="true"
+                    class={`${item.logoClass ?? 'h-10'} w-auto object-contain shrink-0 hidden dark:block`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </>
+              )}
+              {item.logo && !item.logoDark && (
+                <img
+                  src={item.logo}
+                  alt={t('home.testimonials.logoAlt', { company: item.company })}
+                  class={`${item.logoClass ?? 'h-10'} w-auto object-contain shrink-0`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+            </div>
             <div class="flex gap-4 text-sm">
               {item.linkedin && (
                 <a

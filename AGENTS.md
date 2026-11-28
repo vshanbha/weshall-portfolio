@@ -37,7 +37,7 @@ Build and maintain the public-facing website for **weshall.build** — a profess
 
 ## Foundation: Velocity Template
 
-This project is built on the **Velocity** template by Southwell Media — a production-ready Astro 6 starter kit. It is not a basic scaffold; it is a full-featured component library and design system.
+This project is built on the **Velocity** template by Southwell Media — a production-ready Astro starter kit (the project now runs Astro 7.3.3). It is not a basic scaffold; it is a full-featured component library and design system.
 
 **Documentation:** [https://docs.deployvelocity.com/](https://docs.deployvelocity.com/)
 
@@ -64,22 +64,23 @@ This project is currently in its **default Velocity template state** — placeho
 
 ## Project Independence
 
-This is a **standalone web project** with its own build system, component library, and deployment pipeline. Work within this project should follow standard web development practices (Astro, Tailwind, TypeScript, React) and Velocity conventions. Do not assume `factory/` vault structures or workflows apply here unless explicitly stated.
+This is a **standalone web project** with its own build system, component library, and deployment pipeline. Work within this project should follow standard web development practices (Astro, Tailwind, TypeScript, React) and Velocity conventions. Do not assume the private vault's structures or workflows apply here unless explicitly stated.
 
-## Relationship with factory/
+## Relationship with the private vault
 
-The `portfolio/` website is the **public delivery surface** for content authored in `factory/`. However:
+The `portfolio/` website is the **public delivery surface** for content authored in the author's private vault. However:
 
 - `portfolio/` is an independent project with its own conventions.
-- Content from `factory/` is imported into `portfolio/` via the **Manual Export Gate Protocol** (see below).
-- Agents must never treat `portfolio/` as an extension of `factory/`.
-- For factory-specific rules (vault structure, synthesis workflows, memory protocols), refer to [`factory/AGENTS.md`](../factory/AGENTS.md).
+- Content from the private vault is imported into `portfolio/` via the **Manual Export Gate Protocol** (see below).
+- Agents must never treat `portfolio/` as an extension of the private vault.
+- For vault-specific rules (structure, synthesis workflows, memory protocols), refer to the private vault's own `AGENTS.md` — not part of this repository.
+- **Private tracker:** the issue tracker of the author's private vault — not part of this repository. References such as `private tracker #22` in the skills point there.
 
 ### Manual Export Gate Protocol
 
-No content may be moved, copied, or synced from `factory/` to `portfolio/` without:
+No content may be moved, copied, or synced from the private vault to `portfolio/` without:
 
-1. Content prepared and reviewed in `factory/articles/drafts/`.
+1. Content prepared and reviewed in the private vault's drafts area.
 2. Explicit human review with `reviewed: true` in frontmatter.
 3. Manual export approval by the user.
 
@@ -166,7 +167,7 @@ src/content/articles/
 - **Flat files only.** Subdirectories produce `/index` in the URL slug. One `.md` file per article.
 - **Images live alongside** the article file. Reference them as `./my-article-hero.png` in frontmatter `image` field.
 - **Slug = filename** (without extension). E.g. `zeroclaw-personal-ai-assistant.md` → `/blog/zeroclaw-personal-ai-assistant/`.
-- **Already published elsewhere:** Add `portfolio_publish: false` to factory article frontmatter with a note explaining why.
+- **Already published elsewhere:** Add `portfolio_publish: false` to the source article's frontmatter in the private vault, with a note explaining why.
 
 ## Design System
 
@@ -362,7 +363,7 @@ or the linked issue instead.
 
 1. **Consult Velocity docs first** — [docs.deployvelocity.com](https://docs.deployvelocity.com/) covers components, layouts, tokens, content collections, and configuration patterns. Follow existing conventions.
 2. This is a web project — use standard Astro/Tailwind/TypeScript practices.
-3. For content originating from `factory/`, respect the export gate protocol.
+3. For content originating from the private vault, respect the export gate protocol.
 4. Run `pnpm validate` before considering any task complete.
 5. Do not modify deployment configuration without explicit approval.
-6. For factory-related content workflows, see [`factory/AGENTS.md`](../factory/AGENTS.md).
+6. For content workflows, the Manual Export Gate Protocol above is the authority.

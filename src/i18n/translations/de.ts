@@ -58,7 +58,7 @@ export const de = {
   },
   techStack: {
     astro: {
-      name: 'Astro 6',
+      name: 'Astro 7',
       desc: 'Server Islands & Content Layer',
     },
     tailwind: {
@@ -209,6 +209,8 @@ export const de = {
     },
     testimonials: {
       title: 'Was Kunden sagen',
+      photoAlt: 'Foto von {author}',
+      logoAlt: '{company}-Logo',
       // Client quotes stay in the language they were provided in, verbatim in
       // every locale: translating would misattribute words their authors never
       // approved (all current quotes were provided in English).
@@ -217,6 +219,9 @@ export const de = {
           id: 'bauai',
           company: 'BauAI',
           tag: 'KI-Agenten-Härtung · vom Prototyp zum Pilotkunden',
+          image: '/images/testimonials/tushar-adsul.jpg',
+          logo: '/images/testimonials/bauai-logo.svg',
+          logoDark: '/images/testimonials/bauai-logo-white.svg',
           author: 'Tushar Adsul',
           role: 'Managing Director',
           quote:
@@ -229,6 +234,8 @@ export const de = {
           company: 'BlueMoney',
           tag: 'Build-vs-Buy · regulierter Kreditgeber',
           storyId: 'bluemoney',
+          image: '/images/testimonials/arrie-de-waal.jpg',
+          wordmark: { a: 'Blue', b: 'Money', aColor: '#005CF0' },
           author: 'Arrie',
           role: 'Founding Engineer',
           quote:
@@ -263,6 +270,9 @@ export const de = {
           id: 'ourish',
           company: 'Ourish',
           tag: 'Lieferung in komplexem, mehrdeutigem Umfeld',
+          image: '/images/testimonials/kunal-kakar.jpg',
+          logo: '/images/testimonials/ourish-logo.png',
+          logoClass: 'h-16',
           author: 'Kunal Kakar',
           role: 'Director, Sales and Operations',
           quote:
@@ -495,7 +505,7 @@ export const de = {
   blog: {
     title: 'Blog',
     description:
-      'Tiefgehende technische Analysen, operative Fallstudien und Engineering-Philosophie aus zwanzig Jahren Produktionsarchitektur.',
+      'Tiefgehende technische Analysen, operative Fallstudien und Engineering-Philosophie aus zwanzig Jahren Softwareentwicklung und Deployment im Produktivbetrieb.',
     allPosts: 'Alle Beiträge',
     featured: 'Hervorgehoben',
     noPosts: 'Keine Beiträge gefunden',
