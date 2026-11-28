@@ -6,7 +6,7 @@
 >
 > For founders and technical leads facing the decisions whose consequences are paid in time and money: build or buy, who to hire, and whether what AI built will hold. I've been making those decisions in production for twenty years.
 
-Productised senior-architect engagements that start small and lead to embedded work. You don't make the wrong decision, the wrong hire, or the wrong bet on production. It usually starts with a free fifteen-minute conversation to work out whether it's worth a longer one. The site features deep-dive technical articles and the ten We shall commandments, published at https://weshall.build/en/philosophy/.
+We shall build is the public site of Vishal Shanbhag — freelance software developer and fractional CTO. Productised senior-architect engagements that start small and lead to embedded work. You don't make the wrong decision, the wrong hire, or the wrong bet on production. It usually starts with a free fifteen-minute conversation to work out whether it's worth a longer one. The site features deep-dive technical articles and the ten We shall commandments, published at https://weshall.build/en/philosophy/.
 
 ## Key pages
 

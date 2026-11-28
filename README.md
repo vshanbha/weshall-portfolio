@@ -3,11 +3,11 @@
 </p>
 
 <p align="center">
-  <strong>We shall build</strong> — Deep-dive analysis of complex technical, operational, and architectural domains.
+  <strong>We shall build</strong> — Build what matters.
 </p>
 
 <p align="center">
-  <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-6.0-bc52ee?logo=astro&logoColor=white" alt="Astro" /></a>
+  <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-7.0-bc52ee?logo=astro&logoColor=white" alt="Astro" /></a>
   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind-4.0-38bdf8?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.7-3178c6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
 </p>
@@ -16,13 +16,13 @@
 
 ## About
 
-We shall build is a platform for deep-dive analysis of complex technical, operational, and architectural domains. Built on the [Velocity](https://github.com/southwellmedia/velocity) template.
+**We shall build** is the public site of **Vishal Shanbhag** — freelance software developer and fractional CTO. The site is the work, written up: deep-dive technical analysis, operational case studies, and engineering philosophy from twenty years of production. The ways to work together start with a fifteen-minute call. Built on the [Velocity](https://github.com/southwellmedia/velocity) template.
 
 ---
 
 ## Tech Stack
 
-- **Framework:** [Astro 6](https://astro.build)
+- **Framework:** [Astro 7](https://astro.build)
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com)
 - **Language:** [TypeScript](https://www.typescriptlang.org)
 - **Template:** [Velocity](https://github.com/southwellmedia/velocity)
@@ -31,16 +31,17 @@ We shall build is a platform for deep-dive analysis of complex technical, operat
 
 ## Commands
 
-| Command         | Description              |
-| --------------- | ------------------------ |
-| `pnpm dev`      | Start dev server         |
-| `pnpm build`    | Production build         |
-| `pnpm preview`  | Preview production build |
-| `pnpm check`    | Astro type checker       |
-| `pnpm lint`     | ESLint                   |
-| `pnpm format`   | Prettier                 |
-| `pnpm test`     | Vitest                   |
-| `pnpm test:e2e` | Playwright E2E           |
+| Command         | Description                                             |
+| --------------- | ------------------------------------------------------- |
+| `pnpm dev`      | Start dev server                                        |
+| `pnpm build`    | Production build                                        |
+| `pnpm preview`  | Preview production build                                |
+| `pnpm check`    | Astro type checker                                      |
+| `pnpm lint`     | ESLint                                                  |
+| `pnpm format`   | Prettier                                                |
+| `pnpm validate` | Format + lint + check + build + tests (full validation) |
+| `pnpm test`     | Vitest                                                  |
+| `pnpm test:e2e` | Playwright E2E                                          |
 
 ---
 
@@ -77,8 +78,8 @@ Site will be available at http://localhost:4321
 
 - English (default)
 - German (Deutsch)
-- Hindi (हिन्दी)
-- Marathi (मराठी)
+
+Hindi and Marathi translation files exist but are not enabled yet — activation is one line in `src/i18n/config.ts` (see issue #20).
 
 ---
 
